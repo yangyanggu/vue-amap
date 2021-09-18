@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+*.log
+*.log.*
+.idea
+.npmrc
+example
+dist
+.vscode
+.tags*
+/docs
+dist
+coverage

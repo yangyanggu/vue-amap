@@ -1,0 +1,21 @@
+{
+  "plugins": ["vue"],
+  "extends": "elemefe",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "mocha": true
+  },
+  "globals": {
+      "AMap": true,
+      "particlesJS": true,
+      "expect": true,
+      "sinon": true
+  }
+}
