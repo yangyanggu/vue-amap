@@ -1,49 +1,56 @@
-var utils = require('./utils')
-var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var path = require('path')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-var baseWebpackConfig = require('./webpack.base.conf')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const utils = require('./utils')
+const webpack = require('webpack')
+let config = require('../config')
+const merge = require('webpack-merge').merge
+const path = require('path')
+let baseWebpackConfig = require('./webpack.base.conf')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const MiniCssExtract = require('mini-css-extract-plugin')
 
-// add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-  baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
-})
 
 module.exports = merge(baseWebpackConfig, {
-  module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
-  },
+  mode: 'development',
   // cheap-module-eval-source-map is faster for development
-  devtool: 'source-map',
+  devtool: 'cheap-source-map',
+  devServer: {
+    clientLogLevel: 'warning',
+    liveReload: true,
+    watchContentBase: true,
+    port: config.dev.port,
+    open: config.dev.autoOpenBrowser,
+    overlay: {
+      warning: false,
+      error: true
+    },
+    index: 'index.html',
+    contentBase: ['./dist','./src/docs'],
+    publicPath: config.dev.assetsPublicPath,
+    proxy: config.dev.proxyTable,
+    quiet: true,
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vue-amap'],
-      minChunks: 2
-    }),
-    // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/docs/index.html',
       favicon: './src/docs/assets/images/logo.ico',
-      inject: true
+      inject: 'head'
     }),
     new FriendlyErrorsPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, '../src/docs'),
-        to: '',
-        ignore: ['index.html']
-      }
-    ])
+    /*new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.join(__dirname, '../src/docs'),
+          to: '',
+          globOptions: {
+            ignore: ['index.html']
+          }
+        }
+        ]
+    })*/
   ]
 })

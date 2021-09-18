@@ -2,13 +2,13 @@
 require('./check-versions')();
 require('shelljs/global');
 process.env.NODE_ENV = 'production'
-var path = require('path');
-var config = require('../config');
-var ora = require('ora');
-var webpack = require('webpack');
-var webpackConfig = require('./webpack.lib.conf');
+const path = require('path');
+let config = require('../config');
+const ora = require('ora');
+const webpack = require('webpack');
+let webpackConfig = require('./webpack.lib.conf');
 
-var spinner = ora('building for lib release ...');
+const spinner = ora('building for lib release ...\r\n');
 spinner.start();
 
 
