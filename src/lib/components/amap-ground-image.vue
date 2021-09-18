@@ -1,6 +1,7 @@
 <template></template>
 <script>
 import registerMixin from '../mixins/register-component';
+
 export default {
   name: 'el-amap-ground-image',
   mixins: [registerMixin],

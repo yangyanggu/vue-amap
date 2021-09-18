@@ -1,20 +1,21 @@
 <template>
-<div class="el-vue-amap-container">
+  <div class="el-vue-amap-container">
     <div class="el-vue-amap"></div>
     <slot></slot>
-</div>
+  </div>
 </template>
 <script>
 import guid from '../utils/guid';
 import CONST from '../utils/constant';
-import { lngLatTo, toLngLat, toPixel } from '../utils/convert-helper';
+import {lngLatTo, toLngLat, toPixel} from '../utils/convert-helper';
 import registerMixin from '../mixins/register-component';
 import {lazyAMapApiLoaderInstance} from '../services/injected-amap-api-instance';
+
 export default {
   name: 'el-amap',
   mixins: [registerMixin],
   props: [
-  //  add v1.4.0 new feature
+    //  add v1.4.0 new feature
     'viewMode',
     'skyColor',
     'rotateEnable',
@@ -50,7 +51,7 @@ export default {
     'mapStyle',
     'plugin',
     'features',
-    'amapManager'  // 地图管理 manager
+    'amapManager' // 地图管理 manager
   ],
 
   beforeCreate() {
@@ -63,10 +64,10 @@ export default {
 
   computed: {
     /**
-    * convert plugin prop from 'plugin' to 'plugins'
-    * unify plugin options
-    * @return {Array}
-    */
+     * convert plugin prop from 'plugin' to 'plugins'
+     * unify plugin options
+     * @return {Array}
+     */
     plugins() {
       let plus = [];
       // amap plugin prefix reg
@@ -173,10 +174,10 @@ export default {
     },
 
     /**
-    * parse plugin
-    * @param  {Object}
-    * @return {Object}
-    */
+     * parse plugin
+     * @param  {Object}
+     * @return {Object}
+     */
     convertAMapPluginProps(plugin) {
 
       if (typeof plugin === 'object' && plugin.pName) {
@@ -233,7 +234,8 @@ export default {
 <style lang="less">
 .el-vue-amap-container {
   height: 100%;
-.el-vue-amap {
+
+  .el-vue-amap {
     height: 100%;
   }
 }

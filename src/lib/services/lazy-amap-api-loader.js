@@ -1,4 +1,5 @@
-import { patchIOS11Geo } from '../utils/polyfill';
+import {patchIOS11Geo} from '../utils/polyfill';
+
 ;
 const DEFAULT_AMP_CONFIG = {
   key: null,
@@ -21,7 +22,7 @@ export default class AMapAPILoader {
     this._document = document;
     this._window = window;
     this._scriptLoaded = false;
-    this._queueEvents = [ patchIOS11Geo];
+    this._queueEvents = [patchIOS11Geo];
   }
 
   load() {
@@ -106,19 +107,19 @@ export default class AMapAPILoader {
     }
 
     const params = Object.keys(config)
-                         .filter(k => ~paramKeys.indexOf(k))
-                         .filter(k => config[k] != null)
-                         .filter(k => {
-                           return !Array.isArray(config[k]) ||
-                                (Array.isArray(config[k]) && config[k].length > 0);
-                         })
-                         .map(k => {
-                           let v = config[k];
-                           if (Array.isArray(v)) return { key: k, value: v.join(',')};
-                           return {key: k, value: v};
-                         })
-                         .map(entry => `${entry.key}=${entry.value}`)
-                         .join('&');
+      .filter(k => ~paramKeys.indexOf(k))
+      .filter(k => config[k] != null)
+      .filter(k => {
+        return !Array.isArray(config[k]) ||
+        (Array.isArray(config[k]) && config[k].length > 0);
+      })
+      .map(k => {
+        let v = config[k];
+        if (Array.isArray(v)) return {key: k, value: v.join(',')};
+        return {key: k, value: v};
+      })
+      .map(entry => `${entry.key}=${entry.value}`)
+      .join('&');
     return `${this._config.protocol}://${this._config.hostAndPath}?${params}`;
   }
 

@@ -1,4 +1,5 @@
 let eventHelper;
+
 class EventHelper {
   constructor() {
     /**
@@ -38,9 +39,11 @@ class EventHelper {
       this._listener.get(instance)[eventName] = [];
     }
   }
+
   addListenerOnce(instance, eventName, handler, context) {
     return instance.on(eventName, handler, context, true);
   }
+
   trigger(instance, eventName, args) {
     return instance.emit(eventName, args);
   }

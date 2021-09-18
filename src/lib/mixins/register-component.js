@@ -1,7 +1,7 @@
 import upperCamelCase from 'uppercamelcase';
-import { commonConvertMap } from '../utils/convert-helper';
+import {commonConvertMap} from '../utils/convert-helper';
 import eventHelper from '../utils/event-helper';
-import { lazyAMapApiLoaderInstance } from '../services/injected-amap-api-instance';
+import {lazyAMapApiLoaderInstance} from '../services/injected-amap-api-instance';
 import CONSTANTS from '../utils/constant';
 import VueAMap from '../';
 
@@ -52,7 +52,7 @@ export default {
     convertProps() {
       const props = {};
       if (this.$amap) props.map = this.$amap;
-      const { $options: { propsData = {} }, propsRedirect } = this;
+      const {$options: {propsData = {}}, propsRedirect} = this;
       return Object.keys(propsData).reduce((res, _key) => {
         let key = _key;
         let propsValue = this.convertSignalProp(key, propsData[key]);
@@ -74,7 +74,8 @@ export default {
 
           type = componentConfig.props[key].$type;
           converter = commonConvertMap[type];
-        } catch (e) {}
+        } catch (e) {
+        }
       }
 
       if (type && converter) {
@@ -109,7 +110,7 @@ export default {
     },
 
     setPropWatchers() {
-      const { propsRedirect, $options: { propsData = {} } } = this;
+      const {propsRedirect, $options: {propsData = {}}} = this;
 
       Object.keys(propsData).forEach(prop => {
         let handleProp = prop;
@@ -172,7 +173,7 @@ export default {
 
     register() {
       const res = this.__initComponent && this.__initComponent(this.convertProps());
-      if (res && res.then) res.then((instance) => this.registerRest(instance));  // promise
+      if (res && res.then) res.then((instance) => this.registerRest(instance)); // promise
       else this.registerRest(res);
     },
 

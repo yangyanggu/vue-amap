@@ -4,93 +4,96 @@
        @keydown.down="selectTip('down')">
     <div class="search-box-wrapper">
       <input type="text"
-        v-model="keyword"
-        @keyup.enter="search"
-        @input="autoComplete">
-      <span class="search-btn" @click="search" >搜索</span>
+             v-model="keyword"
+             @keyup.enter="search"
+             @input="autoComplete">
+      <span class="search-btn" @click="search">搜索</span>
     </div>
     <div class="search-tips">
       <ul>
         <li v-for="(tip, index) in tips"
-          :key="index"
-          @click="changeTip(tip)"
-          @mouseover="selectedTip=index"
-          :class="{'autocomplete-selected': index === selectedTip}">{{tip.name}}</li>
+            :key="index"
+            @click="changeTip(tip)"
+            @mouseover="selectedTip=index"
+            :class="{'autocomplete-selected': index === selectedTip}">{{ tip.name }}
+        </li>
       </ul>
     </div>
   </div>
 </template>
 <style lang="less">
-  .el-vue-search-box-container {
-    position: relative;
-    width: 360px;
-    height: 45px;
-    background: #fff;
-    box-shadow: 0 2px 2px rgba(0,0,0,.15);
-    border-radius: 2px 3px 3px 2px;
-    z-index: 10;
-    .search-box-wrapper {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
+.el-vue-search-box-container {
+  position: relative;
+  width: 360px;
+  height: 45px;
+  background: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
+  border-radius: 2px 3px 3px 2px;
+  z-index: 10;
+
+  .search-box-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    input {
+      flex: 1;
+      height: 20px;
+      line-height: 20px;
+      letter-spacing: .5px;
+      font-size: 14px;
+      text-indent: 10px;
       box-sizing: border-box;
-
-      input {
-        flex: 1;
-        height: 20px;
-        line-height: 20px;
-        letter-spacing: .5px;
-        font-size: 14px;
-        text-indent: 10px;
-        box-sizing: border-box;
-        border: none;
-        outline: none;
-      }
-
-      .search-btn {
-        width: 45px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        cursor: pointer;
-      }
+      border: none;
+      outline: none;
     }
 
-    .search-tips {
-      position: absolute;
-      top: 100%;
-      border: 1px solid #dbdbdb;
-      background: #FFF;
-      overflow: auto;
+    .search-btn {
+      width: 45px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
 
-      ul {
-        padding: 0;
-        margin: 0;
+  .search-tips {
+    position: absolute;
+    top: 100%;
+    border: 1px solid #dbdbdb;
+    background: #FFF;
+    overflow: auto;
 
-        li {
-          height: 40px;
-          line-height: 40px;
-          box-shadow: 0 1px 1px rgba(0,0,0,.1);
-          padding: 0 10px;
-          cursor: pointer;
+    ul {
+      padding: 0;
+      margin: 0;
 
-          &.autocomplete-selected {
-            background: #eee;
-          }
+      li {
+        height: 40px;
+        line-height: 40px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+        padding: 0 10px;
+        cursor: pointer;
+
+        &.autocomplete-selected {
+          background: #eee;
         }
       }
     }
   }
+}
 </style>
 <script>
 import RegisterComponentMixin from '../mixins/register-component';
 import {lazyAMapApiLoaderInstance} from '../services/injected-amap-api-instance';
+
 export default {
   name: 'el-amap-search-box',
   mixins: [RegisterComponentMixin],

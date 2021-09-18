@@ -1,8 +1,9 @@
 <script>
-import { toLngLat } from '../utils/convert-helper';
+import {toLngLat} from '../utils/convert-helper';
 import registerMixin from '../mixins/register-component';
-import { compile, mountedVNode, mountedRenderFn } from '../utils/compile';
+import {compile, mountedVNode, mountedRenderFn} from '../utils/compile';
 import Vue from 'vue';
+
 export default {
   name: 'el-amap-info-window',
   mixins: [registerMixin],
@@ -70,7 +71,7 @@ export default {
         return {node: ''};
       },
       render(h) {
-        const { node } = this;
+        const {node} = this;
         return h('div', {ref: 'node'}, Array.isArray(node) ? node : [node]);
       }
     }).$mount();

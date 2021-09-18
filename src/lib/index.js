@@ -67,7 +67,8 @@ const install = function(Vue, opts = {}) {
 /* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
-};
+}
+;
 
 export default VueAMap;
 
@@ -76,4 +77,4 @@ export {
   initAMapApiLoader,
   createCustomComponent
 };
-export { lazyAMapApiLoaderInstance } from './services/injected-amap-api-instance';
+export {lazyAMapApiLoaderInstance} from './services/injected-amap-api-instance';

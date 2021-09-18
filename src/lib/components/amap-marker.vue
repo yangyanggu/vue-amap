@@ -81,7 +81,7 @@ export default {
           return template.$el;
         },
         label(options) {
-          const { content = '', offset = [0, 0] } = options;
+          const {content = '', offset = [0, 0]} = options;
           return {
             content: content,
             offset: toPixel(offset)

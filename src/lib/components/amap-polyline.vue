@@ -3,7 +3,8 @@
 <script>
 import registerMixin from '../mixins/register-component';
 import editorMixin from '../mixins/editor-component';
-import { lngLatTo } from '../utils/convert-helper';
+import {lngLatTo} from '../utils/convert-helper';
+
 export default {
   name: 'el-amap-polyline',
   mixins: [registerMixin, editorMixin],

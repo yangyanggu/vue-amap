@@ -1,8 +1,9 @@
 <template></template>
 <script>
 import registerMixin from '../mixins/register-component';
-import { toLngLat, lngLatTo } from '../utils/convert-helper';
+import {toLngLat, lngLatTo} from '../utils/convert-helper';
 import editorMixin from '../mixins/editor-component';
+
 export default {
   name: 'el-amap-circle',
   mixins: [registerMixin, editorMixin],

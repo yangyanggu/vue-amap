@@ -1,6 +1,7 @@
 <template></template>
 <script>
 import registerMixin from '../mixins/register-component';
+
 const TAG = 'el-amap-text';
 
 export default {
@@ -142,8 +143,7 @@ export default {
   },
   data() {
     return {
-      converters: {
-      },
+      converters: {},
 
       handlers: {
         zIndex(index) {

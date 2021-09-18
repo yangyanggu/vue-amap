@@ -1,6 +1,7 @@
 <template></template>
 <script>
 import registerMixin from '../mixins/register-component';
+
 const TAG = 'el-amap-bezier-curve';
 
 export default {
@@ -76,8 +77,7 @@ export default {
   },
   data() {
     return {
-      converters: {
-      },
+      converters: {},
 
       handlers: {
         zIndex(index) {

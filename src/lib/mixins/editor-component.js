@@ -1,4 +1,5 @@
 import eventHelper from '../utils/event-helper';
+
 export default {
   methods: {
     setEditorEvents() {

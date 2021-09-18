@@ -33,7 +33,7 @@ RemoGeoLocation.prototype = {
     var ifrm = document.createElement('iframe');
 
     ifrm.src = this._remoteSvrUrl +
-          (this._remoteSvrUrl.indexOf('?') > 0 ? '&' : '?');
+      (this._remoteSvrUrl.indexOf('?') > 0 ? '&' : '?');
 
     ifrm.width = '0px';
     ifrm.height = '0px';
