@@ -49,6 +49,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      console.log('this: ', this);
       this.$amapComponent = new AMap.Circle(options);
       this.$amapComponent.editor = new AMap.CircleEditor(this.$amap, this.$amapComponent);
     },

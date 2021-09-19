@@ -33,6 +33,11 @@
     "url": "https://gitee.com/guyangyang/vue-amap/issues"
   },
   "homepage": "https://gitee.com/guyangyang/vue-amap#readme",
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "lodash-es": "^4.17.21",
+    "uppercamelcase": "^1.1.0"
+  },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.26.0",
@@ -99,11 +104,7 @@
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^5.4.0"
   },
-  "dependencies": {
-    "uppercamelcase": "^1.1.0"
-  },
   "engines": {
-    "core-js": "^2.5.0",
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   }

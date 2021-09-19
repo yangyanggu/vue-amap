@@ -9,7 +9,6 @@ import {initAMapApiLoader} from './services/injected-amap-api-instance';
 // 组建导入
 import AMap from './components/amap.vue';
 import AMapMarker from './components/amap-marker.vue';
-import AMapSearchBox from './components/amap-search-box.vue';
 import AMapCircle from './components/amap-circle.vue';
 import AMapGroupImage from './components/amap-ground-image.vue';
 import AMapInfoWindow from './components/amap-info-window.vue';
@@ -28,7 +27,6 @@ import createCustomComponent from './adapter/custom-adapter';
 let components = [
   AMap,
   AMapMarker,
-  AMapSearchBox,
   AMapCircle,
   AMapGroupImage,
   AMapInfoWindow,
@@ -58,7 +56,7 @@ VueAMap.install = (Vue) => {
   });
 };
 
-const install = function(Vue, opts = {}) {
+const install = function(Vue) {
   /* istanbul ignore if */
   if (install.installed) return;
   VueAMap.install(Vue);
@@ -77,4 +75,3 @@ export {
   initAMapApiLoader,
   createCustomComponent
 };
-export {lazyAMapApiLoaderInstance} from './services/injected-amap-api-instance';

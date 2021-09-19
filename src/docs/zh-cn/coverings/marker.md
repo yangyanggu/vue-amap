@@ -9,7 +9,7 @@
   <template>
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-marker vid="component-marker" :position="componentMarker.position" :content-render="componentMarker.contentRender" ></el-amap-marker>
+        <el-amap-marker vid="component-marker" :position="componentMarker.position" @init="markerInit" :content-render="componentMarker.contentRender" ></el-amap-marker>
         <el-amap-marker v-for="(marker, index) in markers" :position="marker.position" :events="marker.events" :visible="marker.visible" :draggable="marker.draggable" :vid="index"></el-amap-marker>
       </el-amap>
       <div class="toolbar">
@@ -117,6 +117,9 @@
         removeMarker() {
           if (!this.markers.length) return;
           this.markers.splice(this.markers.length - 1, 1);
+        },
+        markerInit(e){
+          console.log('marker init: ', e);
         }
       }
     };

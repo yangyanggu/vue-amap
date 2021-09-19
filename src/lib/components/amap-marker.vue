@@ -130,7 +130,7 @@ export default {
       return pixelTo(this.$amapComponent.getOffset());
     }
   },
-  render(h) {
+  render() {
     const slots = this.$slots.default || [];
     if (slots.length) {
       this.tmpVM.node = slots;

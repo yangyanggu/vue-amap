@@ -96,7 +96,7 @@ export default {
       if (this.visible !== false) this.$amapComponent.open(this.$amap, toLngLat(this.position));
     }
   },
-  render(h) {
+  render() {
     const slots = this.$slots.default || [];
     if (slots.length) {
       this.tmpVM.node = slots;

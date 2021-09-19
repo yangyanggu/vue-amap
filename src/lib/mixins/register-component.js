@@ -1,7 +1,6 @@
 import upperCamelCase from 'uppercamelcase';
 import {commonConvertMap} from '../utils/convert-helper';
 import eventHelper from '../utils/event-helper';
-import {lazyAMapApiLoaderInstance} from '../services/injected-amap-api-instance';
 import CONSTANTS from '../utils/constant';
 import VueAMap from '../';
 
@@ -13,11 +12,6 @@ export default {
   },
 
   mounted() {
-    if (lazyAMapApiLoaderInstance) {
-      lazyAMapApiLoaderInstance.load().then(() => {
-        this.__contextReady && this.__contextReady.call(this, this.convertProps());
-      });
-    }
     this.$amap = this.$amap || this.$parent.$amap;
     if (this.$amap) {
       this.register();
@@ -90,23 +84,17 @@ export default {
     },
 
     registerEvents() {
-      this.setEditorEvents && this.setEditorEvents();
-      if (!this.$options.propsData) return;
-      if (this.$options.propsData.events) {
-        for (let eventName in this.events) {
-          eventHelper.addListener(this.$amapComponent, eventName, this.events[eventName]);
-        }
-      }
-
-      if (this.$options.propsData.onceEvents) {
-        for (let eventName in this.onceEvents) {
-          eventHelper.addListenerOnce(this.$amapComponent, eventName, this.onceEvents[eventName]);
-        }
-      }
+      let $listeners = this.$listeners;
+      Object.keys($listeners).forEach(key => {
+        eventHelper.addListener(this.$amapComponent, key, $listeners[key]);
+      });
     },
 
     unregisterEvents() {
-      eventHelper.clearListeners(this.$amapComponent);
+      let $listeners = this.$listeners;
+      Object.keys($listeners).forEach(key => {
+        eventHelper.removeListener(this.$amapComponent, key, $listeners[key]);
+      });
     },
 
     setPropWatchers() {
@@ -183,8 +171,9 @@ export default {
       this.initProps();
       this.setPropWatchers();
       this.registerToManager();
-
-      if (this.events && this.events.init) this.events.init(this.$amapComponent, this.$amap, this.amapManager || this.$parent.amapManager);
+      if (this.$listeners.init) {
+        this.$emit('init', this.$amapComponent);
+      }
     },
 
     // helper method
