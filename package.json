@@ -1,6 +1,6 @@
 {
-  "name": "vue-amap2",
-  "version": "2.0.6",
+  "name": "@vuemap/vue-amap",
+  "version": "0.0.1",
   "description": "vue amap for amap2.0",
   "main": "./dist/index.js",
   "sideEffects": false,
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitee.com/guyangyang/vue-amap.git"
+    "url": "git+https://gitee.com/guyangyang/vue-amap2.git"
   },
   "files": [
     "dist",
@@ -30,9 +30,9 @@
   "author": "guyy",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitee.com/guyangyang/vue-amap/issues"
+    "url": "https://gitee.com/guyangyang/vue-amap2/issues"
   },
-  "homepage": "https://gitee.com/guyangyang/vue-amap#readme",
+  "homepage": "https://gitee.com/guyangyang/vue-amap2#readme",
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "lodash-es": "^4.17.21",
