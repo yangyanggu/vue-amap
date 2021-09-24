@@ -13,6 +13,7 @@ import AMap from '@/components/amap.vue';
 import DefaultLayer from '@/components/layer/DefaultLayer';
 import TileLayer from '@/components/layer/TileLayer';
 import Traffic from '@/components/layer/Traffic';
+import Satellite from '@/components/layer/Satellite';
 
 // Marker 点标记导入
 
@@ -40,6 +41,7 @@ let components = [
   DefaultLayer,
   TileLayer,
   Traffic,
+  Satellite,
   Marker,
   AMapCircle,
   AMapGroupImage,

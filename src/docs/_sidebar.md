@@ -10,6 +10,7 @@
   - [默认图层](zh-cn/layer/default-layer.md)
   - [切片图层](zh-cn/layer/tile-layer.md)
   - [实时交通图层](zh-cn/layer/traffic.md)
+  - [卫星图层](zh-cn/layer/satellite.md)
 - 点标记
   -  [点标记](zh-cn/marker/marker.md)
 - 遮盖物
