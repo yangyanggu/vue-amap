@@ -35,6 +35,9 @@ export default {
       handlers: {
         visible(flag) {
           flag === false ? this.hide() : this.show();
+        },
+        zIndex(value) {
+          this.setzIndex(value);
         }
       }
     };

@@ -40,6 +40,9 @@ export default {
         },
         styleOpts(value) {
           this.setStyle(value);
+        },
+        zIndex(value) {
+          this.setzIndex(value);
         }
       }
     };
