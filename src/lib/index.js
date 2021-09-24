@@ -15,6 +15,7 @@ import TileLayer from '@/components/layer/TileLayer';
 import Traffic from '@/components/layer/Traffic';
 import Satellite from '@/components/layer/Satellite';
 import RoadNet from '@/components/layer/RoadNet';
+import Buildings from '@/components/layer/Buildings';
 
 // Marker 点标记导入
 
@@ -44,6 +45,7 @@ let components = [
   Traffic,
   Satellite,
   RoadNet,
+  Buildings,
   Marker,
   AMapCircle,
   AMapGroupImage,

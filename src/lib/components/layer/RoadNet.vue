@@ -35,11 +35,11 @@ export default {
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.TileLayer.RoadNet(options);
-      this.$parentComponent.add(this.$amapComponent);
+      this.$parentComponent.addLayer(this.$amapComponent);
     },
     destroyComponent() {
       this.$amapComponent.destroy();
-      this.$parentComponent.remove(this.$amapComponent);
+      this.$parentComponent.removeLayer(this.$amapComponent);
       this.$amapComponent = null;
     }
   }
