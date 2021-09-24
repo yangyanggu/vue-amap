@@ -1,21 +1,20 @@
 <template></template>
 <script>
-import registerMixin from '@/mixins/register-component';
+import registerMixin from '../../mixins/register-component';
 
 export default {
-  name: 'el-amap-layer-tile',
+  name: 'el-amap-layer-traffic',
   mixins: [registerMixin],
   props: {
-    tileUrl: {
-      type: String,
-      required: true
-    }, // 切片取图地址 如：' https://abc{0,1,2,3}.amap.com/tile?x=[x]&y=[y]&z=[z] ' [x] 、 [y] 、 [z] 分别替代切片的xyz。
-    zoom: {
+    autoRefresh: {
+      type: Boolean
+    }, // 是否自动更新数据，默认开启
+    interval: {
+      type: Number
+    }, // 自动更新数据的间隔毫秒数，默认 180ms
+    zooms: {
       type: Array
     }, // 支持的缩放级别范围，默认范围 [2-30]
-    dataZooms: {
-      type: Array
-    }, // 数据支持的缩放级别范围，默认范围 [2-30]
     visible: {
       type: Boolean,
       default: true
@@ -41,8 +40,13 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new AMap.TileLayer(options);
+      this.$amapComponent = new AMap.TileLayer.Traffic(options);
       this.$parentComponent.add(this.$amapComponent);
+    },
+    stopFresh() {
+      if (this.$amapComponent) {
+        this.$amapComponent.stopFresh();
+      }
     },
     destroyComponent() {
       this.$parentComponent.remove(this.$amapComponent);

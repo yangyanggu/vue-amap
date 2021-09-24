@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new AMap.createDefaultLayer(options);
+      this.$amapComponent = AMap.createDefaultLayer(options);
       this.$parentComponent.add(this.$amapComponent);
     }
   }

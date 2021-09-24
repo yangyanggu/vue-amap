@@ -28,9 +28,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': path.join(__dirname, '../src/lib'),
       'src': path.resolve(__dirname, '../src'),
-      'vue-amap': path.join(__dirname, '../src/lib')
     },
     modules: [resolve('src'), "node_modules"]
   },

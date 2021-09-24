@@ -4,10 +4,15 @@ import './polyfills';
 import upperCamelCase from 'uppercamelcase';
 
 // 初始化接口
-import {initAMapApiLoader} from './services/injected-amap-api-instance';
+import {initAMapApiLoader} from '@/services/injected-amap-api-instance';
 
 // 组建导入
-import AMap from './components/amap.vue';
+import AMap from '@/components/amap.vue';
+
+// Layer 图层导入
+import DefaultLayer from '@/components/layer/DefaultLayer';
+import TileLayer from '@/components/layer/TileLayer';
+import Traffic from '@/components/layer/Traffic';
 
 // Marker 点标记导入
 
@@ -32,6 +37,9 @@ import createCustomComponent from './adapter/custom-adapter';
 
 let components = [
   AMap,
+  DefaultLayer,
+  TileLayer,
+  Traffic,
   Marker,
   AMapCircle,
   AMapGroupImage,

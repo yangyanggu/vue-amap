@@ -6,6 +6,10 @@
   - [地图](zh-cn/base/amap)
 - 控件
   - [比例尺](zh-cn/control/scale.md)
+- 图层
+  - [默认图层](zh-cn/layer/default-layer.md)
+  - [切片图层](zh-cn/layer/tile-layer.md)
+  - [实时交通图层](zh-cn/layer/traffic.md)
 - 点标记
   -  [点标记](zh-cn/marker/marker.md)
 - 遮盖物

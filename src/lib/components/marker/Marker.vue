@@ -107,6 +107,7 @@ export default {
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
         this.$parentComponent.removeOverlay(this.$amapComponent);
       }
+      this.$amapComponent = null;
     }
   },
   render() {
