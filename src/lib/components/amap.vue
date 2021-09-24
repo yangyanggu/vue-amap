@@ -7,7 +7,6 @@
 <script>
 import guid from '../utils/guid';
 import CONST from '../utils/constant';
-import {lngLatTo, toLngLat} from '../utils/convert-helper';
 import registerMixin from '../mixins/register-component';
 import {lazyAMapApiLoaderInstance} from '../services/injected-amap-api-instance';
 
@@ -58,7 +57,7 @@ export default {
   },
 
   destroyed() {
-    this.$amap && this.$amap.destroy();
+    this.$parentComponent && this.$parentComponent.destroy();
   },
 
   computed: {
@@ -66,11 +65,6 @@ export default {
 
   data() {
     return {
-      converters: {
-        center(arr) {
-          return toLngLat(arr);
-        }
-      },
       handlers: {
         zoomEnable(flag) {
           this.setStatus({zoomEnable: flag});
@@ -89,37 +83,21 @@ export default {
     this.createMap();
   },
 
-  addEvents() {
-    this.$amapComponent.on('moveend', () => {
-      let centerLngLat = this.$amapComponent.getCenter();
-      this.center = [centerLngLat.getLng(), centerLngLat.getLat()];
-    });
-  },
-
   methods: {
-
-    setStatus(option) {
-      this.$amap.setStatus(option);
-    },
-
     createMap() {
       lazyAMapApiLoaderInstance.then(() => {
         let mapElement = this.$el.querySelector('.el-vue-amap');
         const elementID = this.vid || guid();
         mapElement.id = elementID;
-        this.$amap = this.$amapComponent = new AMap.Map(elementID, this.convertProps());
-        if (this.amapManager) this.amapManager.setMap(this.$amap);
-        this.$emit(CONST.AMAP_READY_EVENT, this.$amap);
+        this.$parentComponent = this.$amapComponent = new AMap.Map(elementID, this.convertProps());
+        if (this.amapManager) this.amapManager.setMap(this.$parentComponent);
+        this.$emit(CONST.AMAP_READY_EVENT, this.$parentComponent);
         this.$children.forEach(component => {
-          component.$emit(CONST.AMAP_READY_EVENT, this.$amap);
+          component.$emit(CONST.AMAP_READY_EVENT, this.$parentComponent);
         });
       }).catch(e => {
         console.warn('init map error: ', e);
       });
-    },
-    $$getCenter() {
-      if (!this.$amap) return lngLatTo(this.center);
-      return lngLatTo(this.$amap.getCenter());
     }
   }
 };

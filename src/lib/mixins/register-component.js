@@ -12,26 +12,23 @@ export default {
   },
 
   mounted() {
-    this.$amap = this.$amap || this.$parent.$amap;
-    if (this.$amap) {
+    this.$parentComponent = this.$parentComponent || this.$parent.$parentComponent;
+    if (this.$parentComponent) {
       this.register();
     } else {
-      this.$on(CONSTANTS.AMAP_READY_EVENT, map => {
-        this.$amap = map;
+      this.$on(CONSTANTS.AMAP_READY_EVENT, parentComponent => {
+        this.$parentComponent = parentComponent;
         this.register();
       });
     }
   },
 
   destroyed() {
-    this.unregisterEvents();
     if (!this.$amapComponent) return;
-
-    this.$amapComponent.setMap && this.$amapComponent.setMap(null);
-    this.$amapComponent.close && this.$amapComponent.close();
-    this.$amapComponent.editor && this.$amapComponent.editor.close();
+    this.unregisterEvents();
     this.unwatchFns.forEach(item => item());
     this.unwatchFns = [];
+    this.destroyComponent();
   },
 
   methods: {
@@ -40,12 +37,11 @@ export default {
         return this.handlers[prop];
       }
 
-      return this.$amapComponent[`set${upperCamelCase(prop)}`] || this.$amapComponent.setOptions;
+      return this.$amapComponent[`set${upperCamelCase(prop)}`];
     },
 
     convertProps() {
       const props = {};
-      if (this.$amap) props.map = this.$amap;
       const {$options: {propsData = {}}, propsRedirect} = this;
       return Object.keys(propsData).reduce((res, _key) => {
         let key = _key;
@@ -104,19 +100,10 @@ export default {
         let handleProp = prop;
         if (propsRedirect && propsRedirect[prop]) handleProp = propsRedirect[prop];
         let handleFun = this.getHandlerFun(handleProp);
-        if (!handleFun && prop !== 'events') return;
+        if (!handleFun) return;
 
         // watch props
         const unwatch = this.$watch(prop, nv => {
-          if (prop === 'events') {
-            this.unregisterEvents();
-            this.registerEvents();
-            return;
-          }
-          if (handleFun && handleFun === this.$amapComponent.setOptions) {
-            return handleFun.call(this.$amapComponent, {[handleProp]: this.convertSignalProp(prop, nv)});
-          }
-
           handleFun.call(this.$amapComponent, this.convertSignalProp(prop, nv));
         });
 
@@ -179,6 +166,11 @@ export default {
     // helper method
     $$getInstance() {
       return this.$amapComponent;
+    },
+    destroyComponent() {
+      this.$amapComponent.setMap && this.$amapComponent.setMap(null);
+      this.$amapComponent.close && this.$amapComponent.close();
+      this.$amapComponent.editor && this.$amapComponent.editor.close();
     }
   }
 };

@@ -8,7 +8,10 @@ import {initAMapApiLoader} from './services/injected-amap-api-instance';
 
 // 组建导入
 import AMap from './components/amap.vue';
-import AMapMarker from './components/amap-marker.vue';
+
+// Marker 点标记导入
+
+import Marker from './components/marker/Marker.vue';
 import AMapCircle from './components/amap-circle.vue';
 import AMapGroupImage from './components/amap-ground-image.vue';
 import AMapInfoWindow from './components/amap-info-window.vue';
@@ -20,13 +23,16 @@ import AMapCircleMarker from './components/amap-circle-marker.vue';
 import AMapEllipse from './components/amap-ellipse.vue';
 import AMapRectangle from './components/amap-rectangle.vue';
 
+// Control 控件导入
+import Scale from './components/control/Scale';
+
 // managers
 import AMapManager from './managers/amap-manager';
 import createCustomComponent from './adapter/custom-adapter';
 
 let components = [
   AMap,
-  AMapMarker,
+  Marker,
   AMapCircle,
   AMapGroupImage,
   AMapInfoWindow,
@@ -36,7 +42,8 @@ let components = [
   AMapBezierCurve,
   AMapCircleMarker,
   AMapEllipse,
-  AMapRectangle
+  AMapRectangle,
+  Scale
 ];
 
 let VueAMap = {
