@@ -9,7 +9,6 @@
 - 点标记
   -  [点标记](zh-cn/marker/marker.md)
 - 遮盖物
-  - [点坐标](zh-cn/marker/marker.md)
   - [图片覆盖物](zh-cn/coverings/ground-image)
   - [圆](zh-cn/coverings/circle)
   - [多边形](zh-cn/coverings/polygon)

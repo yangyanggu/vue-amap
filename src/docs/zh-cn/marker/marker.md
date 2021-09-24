@@ -122,26 +122,26 @@ extData | any | 用户自定义属 ，支持JavaScript API任意数据类型，�
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | [AMap.Marker](http://lbs.amap.com/api/javascript-api/reference/overlay#Marker) | 获取`marker`实例
+$$getInstance() | AMap.Marker | 获取`marker`实例
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
-click | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标左键单击事件
-dblclick | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标左键双击事件
-rightclick | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标右键单击事件
-mousemove | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标移动
-mouseover | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标移近点标记时触发事件
-mouseout | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标移出点标记时触发事件
-mousedown | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标在点标记上按下时触发事件
-mouseup | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标在点标记上按下后抬起时触发事件
-dragstart | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 开始拖拽点标记时触发事件
-dragging | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 鼠标拖拽移动点标记时触发事件
-dragend | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 点标记拖拽移动结束触发事件
+click | MapsEvent | 鼠标左键单击事件
+dblclick | MapsEvent | 鼠标左键双击事件
+rightclick | MapsEvent | 鼠标右键单击事件
+mousemove | MapsEvent | 鼠标移动
+mouseover | MapsEvent | 鼠标移近点标记时触发事件
+mouseout | MapsEvent | 鼠标移出点标记时触发事件
+mousedown | MapsEvent | 鼠标在点标记上按下时触发事件
+mouseup | MapsEvent | 鼠标在点标记上按下后抬起时触发事件
+dragstart | MapsEvent | 开始拖拽点标记时触发事件
+dragging | MapsEvent | 鼠标拖拽移动点标记时触发事件
+dragend | MapsEvent | 点标记拖拽移动结束触发事件
 moving |  | 点标记在执行moveTo，moveAlong动画时触发事件，Object对象的格式是{passedPath:Array.}。其中passedPath为对象在moveAlong或者moveTo过程中走过的路径。
 moveend |  | 点标记执行moveTo动画结束时触发事件，也可以由moveAlong方法触发
 movealong |  | 点标记执行moveAlong动画一次后触发事件
-touchstart | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 触摸开始时触发事件，仅适用移动设备
-touchmove | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 触摸移动进行中时触发事件，仅适用移动设备
-touchend | [MapsEvent](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#mapsevent) | 触摸结束时触发事件，仅适用移动设备
+touchstart | MapsEvent | 触摸开始时触发事件，仅适用移动设备
+touchmove | MapsEvent | 触摸移动进行中时触发事件，仅适用移动设备
+touchend | MapsEvent | 触摸结束时触发事件，仅适用移动设备
