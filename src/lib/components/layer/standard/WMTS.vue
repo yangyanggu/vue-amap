@@ -3,12 +3,12 @@
 import registerMixin from '../../../mixins/register-component';
 
 export default {
-  name: 'el-amap-layer-wms',
+  name: 'el-amap-layer-wmts',
   mixins: [registerMixin],
   props: {
     url: {
       type: String
-    }, // wms服务的url地址，如' https://ahocevar.com/geoserver/wms '
+    }, // wmts服务的url地址，如：' https://services.arcgisonline.com/arcgis/rest/services/'+ 'Demographics/USA_Population_Density/MapServer/WMTS/'
     blend: {
       type: Boolean
     }, // 地图级别切换时，不同级别的图片是否进行混合，如图层的图像内容为部分透明请设置为false

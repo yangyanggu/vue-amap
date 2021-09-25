@@ -19,6 +19,7 @@ import Buildings from '@/components/layer/official/Buildings';
 import DistrictLayer from '@/components/layer/official/DistrictLayer';
 import IndoorMap from '@/components/layer/official/IndoorMap';
 import WMS from '@/components/layer/standard/WMS';
+import WMTS from '@/components/layer/standard/WMTS';
 
 // Marker 点标记导入
 
@@ -52,6 +53,7 @@ let components = [
   DistrictLayer,
   IndoorMap,
   WMS,
+  WMTS,
   Marker,
   AMapCircle,
   AMapGroupImage,

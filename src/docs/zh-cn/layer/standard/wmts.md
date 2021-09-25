@@ -1,6 +1,6 @@
-# WMS (AMap.TileLayer.WMS)
-用于加载OGC标准的WMS地图服务的一种图层类，仅支持EPSG3857坐标系统的WMS图层。
-[查看 WMS的OGC标准](http://www.opengeospatial.org/standards/wms)
+# WMTS (AMap.TileLayer.WMTS)
+用于加载OGC标准的WMS地图服务的一种图层类，仅支持EPSG3857坐标系统的WMTS图层。
+[查看 WMTS 标准](http://www.opengeospatial.org/standards/wmts)
 
 ## 基础示例
 
@@ -11,7 +11,7 @@
   <template>
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-wms :visible="visible" :url="url" :blend="false" :params="params"></el-amap-layer-wms>
+        <el-amap-layer-wmts :visible="visible" :url="url" :blend="false" :params="params"></el-amap-layer-wmts>
       </el-amap>
       <div class="toolbar">
         <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
@@ -33,7 +33,7 @@
           zoom: 3,
           center: [-99.241291, 39.51401],
           visible: true,
-          url: 'https://ahocevar.com/geoserver/wms',
+          url: 'https://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/WMTS/',
           params: {
             Layer: '0',
             Version: '1.0.0',
@@ -77,12 +77,11 @@ opacity | Number | 透明度，默认 1
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.TileLayer.WMS | 获取实例
+$$getInstance() | AMap.TileLayer.WMTS | 获取实例
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
-init | TileLayer.WMS | 实例初始化结束
-complete |  | 图块切片加载完成事件
+init | TileLayer.WMTS | 实例初始化结束
 
