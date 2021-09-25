@@ -2,8 +2,15 @@
   "name": "@vuemap/vue-amap",
   "version": "0.0.1",
   "description": "vue amap for amap2.0",
+  "keywords": [
+    "vue",
+    "amap"
+  ],
   "main": "./dist/index.js",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.vue",
+    "*.css"
+  ],
   "directories": {
     "doc": "docs"
   },
