@@ -1,6 +1,6 @@
 <template></template>
 <script>
-import registerMixin from '../../mixins/register-component';
+import registerMixin from '../../../mixins/register-component';
 import {isIndoorMapInstance} from '@/utils/util';
 
 export default {

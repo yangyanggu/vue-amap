@@ -10,15 +10,15 @@ import {initAMapApiLoader} from '@/services/injected-amap-api-instance';
 import AMap from '@/components/amap.vue';
 
 // Layer 图层导入
-import DefaultLayer from '@/components/layer/DefaultLayer';
-import TileLayer from '@/components/layer/TileLayer';
-import Traffic from '@/components/layer/Traffic';
-import Satellite from '@/components/layer/Satellite';
-import RoadNet from '@/components/layer/RoadNet';
-import Buildings from '@/components/layer/Buildings';
-import DistrictLayer from '@/components/layer/DistrictLayer';
-import IndoorMap from '@/components/layer/IndoorMap';
-import WMS from '@/components/layer/WMS';
+import DefaultLayer from '@/components/layer/official/DefaultLayer';
+import TileLayer from '@/components/layer/official/TileLayer';
+import Traffic from '@/components/layer/official/Traffic';
+import Satellite from '@/components/layer/official/Satellite';
+import RoadNet from '@/components/layer/official/RoadNet';
+import Buildings from '@/components/layer/official/Buildings';
+import DistrictLayer from '@/components/layer/official/DistrictLayer';
+import IndoorMap from '@/components/layer/official/IndoorMap';
+import WMS from '@/components/layer/standard/WMS';
 
 // Marker 点标记导入
 

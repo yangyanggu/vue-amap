@@ -1,9 +1,9 @@
 <template></template>
 <script>
-import registerMixin from '../../mixins/register-component';
+import registerMixin from '../../../mixins/register-component';
 
 export default {
-  name: 'el-amap-layer-satellite',
+  name: 'el-amap-layer-road-net',
   mixins: [registerMixin],
   props: {
     zooms: {
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new AMap.TileLayer.Satellite(options);
+      this.$amapComponent = new AMap.TileLayer.RoadNet(options);
       this.$parentComponent.addLayer(this.$amapComponent);
     },
     destroyComponent() {
