@@ -64,4 +64,4 @@ opacity | Number | 透明度
 
 事件 | 参数 | 说明
 ---|---|---|
-init | AMap.IndoorMap | 实例初始化结束
+init |  | 实例初始化结束

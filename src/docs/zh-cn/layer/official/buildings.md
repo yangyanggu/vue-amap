@@ -1,5 +1,5 @@
-# 实时交通图层 (AMap.TileLayer.Traffic)
-实时交通图层类，继承自TileLayer。
+# 建筑楼块3D图层 (AMap.Buildings)
+建筑楼块 3D 图层。
 
 ## 基础示例
 
@@ -9,11 +9,11 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-traffic :visible="visible"></el-amap-layer-traffic>
+      <el-amap vid="amapDemo" :zoom="zoom" :center="center" view-mode="3D" class="amap-demo">
+        <el-amap-layer-buildings :visible="visible"></el-amap-layer-buildings>
       </el-amap>
       <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏交通图层' : '显示交通图层'}}</button>
+        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
       </div>
     </div>
   </template>
@@ -50,9 +50,7 @@
 
 名称 | 类型 | 说明
 ---|---|---|
-autoRefresh  | Boolean | 是否自动更新数据，默认开启
 tileSize | Number | 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
-interval | Number | 自动更新数据的间隔毫秒数，默认 180ms
 
 ## 动态属性
 支持响应式。
@@ -69,12 +67,11 @@ opacity | Number | 透明度，默认 1
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.TileLayer.Traffic | 获取实例
-stopFresh |  | 停止自动更新数据
+$$getInstance() | AMap.Buildings | 获取实例
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
-init | AMap.IndoorMap | 实例初始化结束
+init | AMap.Buildings | 实例初始化结束
 complete |  | 图块切片加载完成事件

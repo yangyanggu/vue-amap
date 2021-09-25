@@ -113,4 +113,4 @@ $$getInstance() | AMap.DistrictLayer | 获取实例
 
 事件 | 参数 | 说明
 ---|---|---|
-init | AMap.IndoorMap | 实例初始化结束
+init | AMap.DistrictLayer | 实例初始化结束

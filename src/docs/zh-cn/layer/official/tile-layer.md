@@ -1,5 +1,5 @@
-# 建筑楼块3D图层 (AMap.Buildings)
-建筑楼块 3D 图层。
+# 切片图层 (AMap.TileLayer)
+切片图层类，该类为基础类。
 
 ## 基础示例
 
@@ -9,11 +9,11 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" view-mode="3D" class="amap-demo">
-        <el-amap-layer-buildings :visible="visible"></el-amap-layer-buildings>
+      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+        <el-amap-layer-tile :tile-url="'https://wprd0{1,2,3,4}.is.autonavi.com/appmaptile?x=[x]&y=[y]&z=[z]&size=1&scl=1&style=8&ltype=11'" :visible="visible"></el-amap-layer-tile>
       </el-amap>
       <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
+        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏切片图层' : '显示切片图层'}}</button>
       </div>
     </div>
   </template>
@@ -50,6 +50,7 @@
 
 名称 | 类型 | 说明
 ---|---|---|
+dataZooms | Array | 支持的缩放级别范围，默认范围 [2-30]
 tileSize | Number | 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
 
 ## 动态属性
@@ -57,6 +58,7 @@ tileSize | Number | 切片大小，取值： 256，表示切片大小为256 256�
 
 名称 | 类型 | 说明
 ---|---|---|
+tileUrl | String | 切片取图地址 如：' https://abc{0,1,2,3}.amap.com/tile?x=[x]&y=[y]&z=[z] ' [x] 、 [y] 、 [z] 分别替代切片的xyz。
 zooms | Array | 支持的缩放级别范围，默认范围 [2-30]
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
@@ -67,11 +69,12 @@ opacity | Number | 透明度，默认 1
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.Buildings | 获取实例
+$$getInstance() | AMap.TileLayer | 获取实例
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
-init | AMap.IndoorMap | 实例初始化结束
+init | AMap.TileLayer | 实例初始化结束
 complete |  | 图块切片加载完成事件
+

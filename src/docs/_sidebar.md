@@ -6,15 +6,17 @@
   - [地图](zh-cn/base/amap)
 - 控件
   - [比例尺](zh-cn/control/scale.md)
-- 图层
-  - [默认图层](zh-cn/layer/default-layer.md)
-  - [切片图层](zh-cn/layer/tile-layer.md)
-  - [实时交通图层](zh-cn/layer/traffic.md)
-  - [卫星图层](zh-cn/layer/satellite.md)
-  - [路网图层](zh-cn/layer/roadNet.md)
-  - [建筑楼块 3D 图层](zh-cn/layer/buildings.md)
-  - [简易行政区划图](zh-cn/layer/district-layer.md)
-  - [室内图层](zh-cn/layer/indoor-map.md)
+- 高德官方图层
+  - [默认图层](zh-cn/layer/official/default-layer.md)
+  - [切片图层](zh-cn/layer/official/tile-layer.md)
+  - [实时交通图层](zh-cn/layer/official/traffic.md)
+  - [卫星图层](zh-cn/layer/official/satellite.md)
+  - [路网图层](zh-cn/layer/official/roadNet.md)
+  - [建筑楼块 3D 图层](zh-cn/layer/official/buildings.md)
+  - [简易行政区划图](zh-cn/layer/official/district-layer.md)
+  - [室内图层](zh-cn/layer/official/indoor-map.md)
+- 行业标准图层
+  - [WMS](zh-cn/layer/standard/wms.md)
 - 点标记
   -  [点标记](zh-cn/marker/marker.md)
 - 遮盖物

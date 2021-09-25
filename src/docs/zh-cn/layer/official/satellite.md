@@ -73,6 +73,6 @@ $$getInstance() | AMap.TileLayer.Satellite | 获取实例
 
 事件 | 参数 | 说明
 ---|---|---|
-init | AMap.IndoorMap | 实例初始化结束
+init | AMap.TileLayer.Satellite | 实例初始化结束
 complete |  | 图块切片加载完成事件
 
