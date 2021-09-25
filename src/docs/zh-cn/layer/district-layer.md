@@ -107,9 +107,10 @@ fill | Array<String>, String, Function | 填充色，默认 [1,1,1,1]
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.TileLayer.Traffic | 获取实例
+$$getInstance() | AMap.DistrictLayer | 获取实例
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
+init | AMap.IndoorMap | 实例初始化结束

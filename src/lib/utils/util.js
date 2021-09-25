@@ -21,3 +21,15 @@ export function isOverlayGroupInstance(instance) {
   }
   return instance.className === 'Overlay.OverlayGroup';
 }
+
+/**
+ * 判断对象是不是IndoorMap实例对象
+ * @param instance
+ * @returns {string|boolean}
+ */
+export function isIndoorMapInstance(instance) {
+  if (!instance) {
+    return false;
+  }
+  return instance.className === 'AMap.IndoorMap';
+}

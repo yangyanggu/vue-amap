@@ -17,6 +17,7 @@ import Satellite from '@/components/layer/Satellite';
 import RoadNet from '@/components/layer/RoadNet';
 import Buildings from '@/components/layer/Buildings';
 import DistrictLayer from '@/components/layer/DistrictLayer';
+import IndoorMap from '@/components/layer/IndoorMap';
 
 // Marker 点标记导入
 
@@ -48,6 +49,7 @@ let components = [
   RoadNet,
   Buildings,
   DistrictLayer,
+  IndoorMap,
   Marker,
   AMapCircle,
   AMapGroupImage,

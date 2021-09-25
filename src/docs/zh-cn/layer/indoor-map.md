@@ -1,5 +1,5 @@
-# 卫星图层 (AMap.TileLayer.Satellite)
-卫星图层类，继承自TileLayer。
+# 室内图层 (AMap.IndoorMap)
+室内图层，用于在适当级别展示室内地图，并提供显示商铺tip、切换楼层等功能。
 
 ## 基础示例
 
@@ -9,8 +9,8 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-satellite :visible="visible"></el-amap-layer-satellite>
+      <el-amap vid="amapDemo" :show-indoor-map="false" :zoom="zoom" :center="center" class="amap-demo">
+        <el-amap-layer-indoor-map :visible="visible" @init="init"></el-amap-layer-indoor-map>
       </el-amap>
       <div class="toolbar">
         <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
@@ -21,6 +21,9 @@
   <style>
     .amap-demo {
       height: 300px;
+    }
+    .floor-list{
+      padding-left: 4px;
     }
   </style>
 
@@ -37,6 +40,10 @@
       methods: {
         toggleVisible(){
           this.visible = !this.visible;
+        },
+        init(layer){
+          console.log(layer);
+          layer.showIndoorMap('B000A9VHIG');
         }
       }
     };
@@ -50,29 +57,27 @@
 
 名称 | 类型 | 说明
 ---|---|---|
-tileSize | Number | 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
+cursor  | String | 指定鼠标悬停到店铺面时的鼠标样式
 
 ## 动态属性
 支持响应式。
 
 名称 | 类型 | 说明
 ---|---|---|
-zooms | Array | 支持的缩放级别范围，默认范围 [2-30]
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
 opacity | Number | 透明度，默认 1
+hideFloorBar  | Boolean | 是否隐藏楼层切换控件，默认值：false
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.TileLayer.Satellite | 获取实例
+$$getInstance() | AMap.IndoorMap | 获取实例
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
 init | AMap.IndoorMap | 实例初始化结束
-complete |  | 图块切片加载完成事件
-

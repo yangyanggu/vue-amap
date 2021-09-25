@@ -76,4 +76,5 @@ stopFresh |  | 停止自动更新数据
 
 事件 | 参数 | 说明
 ---|---|---|
+init | AMap.IndoorMap | 实例初始化结束
 complete |  | 图块切片加载完成事件

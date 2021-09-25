@@ -14,6 +14,7 @@
   - [路网图层](zh-cn/layer/roadNet.md)
   - [建筑楼块 3D 图层](zh-cn/layer/buildings.md)
   - [简易行政区划图](zh-cn/layer/district-layer.md)
+  - [室内图层](zh-cn/layer/indoor-map.md)
 - 点标记
   -  [点标记](zh-cn/marker/marker.md)
 - 遮盖物
