@@ -17,6 +17,8 @@
   - [室内图层](zh-cn/layer/official/indoor-map.md)
 - 行业标准图层
   - [WMS](zh-cn/layer/standard/wms.md)
+  - [WMtS](zh-cn/layer/standard/wmts.md)
+  - [矢量瓦片块](zh-cn/layer/standard/mapbox-vector-tile-layer.md)
 - 点标记
   -  [点标记](zh-cn/marker/marker.md)
 - 遮盖物

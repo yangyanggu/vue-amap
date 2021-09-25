@@ -20,6 +20,7 @@ import DistrictLayer from '@/components/layer/official/DistrictLayer';
 import IndoorMap from '@/components/layer/official/IndoorMap';
 import WMS from '@/components/layer/standard/WMS';
 import WMTS from '@/components/layer/standard/WMTS';
+import MapboxVectorTileLayer from '@/components/layer/standard/MapboxVectorTileLayer';
 
 // Marker 点标记导入
 
@@ -54,6 +55,7 @@ let components = [
   IndoorMap,
   WMS,
   WMTS,
+  MapboxVectorTileLayer,
   Marker,
   AMapCircle,
   AMapGroupImage,

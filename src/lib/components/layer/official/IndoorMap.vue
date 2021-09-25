@@ -47,7 +47,6 @@ export default {
           let layers = this.$parentComponent.getLayers();
           layers.push(this.$amapComponent);
           this.$parentComponent.setLayers(layers);
-          console.log(this.$parentComponent.getLayers());
           resolve();
         });
       });
