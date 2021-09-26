@@ -19,10 +19,14 @@ export default {
       unwatchFns: [],
       handlers: {
         visible(flag) {
-          flag === false ? this.hide() : this.show();
+          if (this.show && this.hide) {
+            flag === false ? this.hide() : this.show();
+          }
         },
         zIndex(value) {
-          this.setzIndex(value);
+          if (this.setzIndex) {
+            this.setzIndex(value);
+          }
         }
       }
     };

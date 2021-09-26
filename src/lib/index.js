@@ -21,6 +21,7 @@ import IndoorMap from '@/components/layer/official/IndoorMap';
 import WMS from '@/components/layer/standard/WMS';
 import WMTS from '@/components/layer/standard/WMTS';
 import MapboxVectorTileLayer from '@/components/layer/standard/MapboxVectorTileLayer';
+import HeatMap from '@/components/layer/data/HeatMap';
 
 // Marker 点标记导入
 
@@ -56,6 +57,7 @@ let components = [
   WMS,
   WMTS,
   MapboxVectorTileLayer,
+  HeatMap,
   Marker,
   AMapCircle,
   AMapGroupImage,
