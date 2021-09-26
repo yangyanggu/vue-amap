@@ -22,20 +22,12 @@ import WMS from '@/components/layer/standard/WMS';
 import WMTS from '@/components/layer/standard/WMTS';
 import MapboxVectorTileLayer from '@/components/layer/standard/MapboxVectorTileLayer';
 import HeatMap from '@/components/layer/data/HeatMap';
+import LabelsLayer from '@/components/layer/data/Labels';
 
 // Marker 点标记导入
 
-import Marker from './components/marker/Marker.vue';
-import AMapCircle from './components/amap-circle.vue';
-import AMapGroupImage from './components/amap-ground-image.vue';
-import AMapInfoWindow from './components/amap-info-window.vue';
-import AMapPolyline from './components/amap-polyline.vue';
-import AMapPolygon from './components/amap-polygon.vue';
-import AMapText from './components/amap-text.vue';
-import AMapBezierCurve from './components/amap-bezier-curve.vue';
-import AMapCircleMarker from './components/amap-circle-marker.vue';
-import AMapEllipse from './components/amap-ellipse.vue';
-import AMapRectangle from './components/amap-rectangle.vue';
+import Marker from '@/components/marker/Marker.vue';
+import LabelMarker from '@/components/marker/LabelMarker';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
@@ -58,17 +50,11 @@ let components = [
   WMTS,
   MapboxVectorTileLayer,
   HeatMap,
+  LabelsLayer,
+
   Marker,
-  AMapCircle,
-  AMapGroupImage,
-  AMapInfoWindow,
-  AMapPolygon,
-  AMapPolyline,
-  AMapText,
-  AMapBezierCurve,
-  AMapCircleMarker,
-  AMapEllipse,
-  AMapRectangle,
+  LabelMarker,
+
   Scale
 ];
 
