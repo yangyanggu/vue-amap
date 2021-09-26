@@ -18,27 +18,12 @@ export default {
     zooms: {
       type: Array
     }, // 支持的缩放级别范围，默认范围 [2-30]
-    visible: {
-      type: Boolean,
-      default: true
-    }, // 是否显示，默认 true
     opacity: {
       type: Number
-    }, // 透明度，默认 1
-    zIndex: {
-      type: Number
-    } // 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
+    } // 透明度，默认 1
   },
   data() {
     return {
-      handlers: {
-        visible(flag) {
-          flag === false ? this.hide() : this.show();
-        },
-        zIndex(value) {
-          this.setzIndex(value);
-        }
-      }
     };
   },
   methods: {

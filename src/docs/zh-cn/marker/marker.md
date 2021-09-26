@@ -128,6 +128,7 @@ $$getInstance() | AMap.Marker | 获取`marker`实例
 
 事件 | 参数 | 说明
 ---|---|---|
+init | AMap.Marker | `AMap.Marker`实例
 click | MapsEvent | 鼠标左键单击事件
 dblclick | MapsEvent | 鼠标左键双击事件
 rightclick | MapsEvent | 鼠标右键单击事件

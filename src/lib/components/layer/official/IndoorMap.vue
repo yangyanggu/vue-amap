@@ -7,16 +7,9 @@ export default {
   name: 'el-amap-layer-indoor-map',
   mixins: [registerMixin],
   props: {
-    visible: {
-      type: Boolean,
-      default: true
-    }, // 是否显示，默认 true
     opacity: {
       type: Number
     }, // 透明度，默认 1
-    zIndex: {
-      type: Number
-    }, // 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
     cursor: {
       type: String
     }, // 指定鼠标悬停到店铺面时的鼠标样式
@@ -27,12 +20,6 @@ export default {
   data() {
     return {
       handlers: {
-        visible(flag) {
-          flag === false ? this.hide() : this.show();
-        },
-        zIndex(value) {
-          this.setzIndex(value);
-        },
         hideFloorBar(flag) {
           flag === false ? this.hideFloorBar() : this.showFloorBar();
         }

@@ -26,16 +26,9 @@ export default {
     zooms: {
       type: Array
     }, // 支持的缩放级别范围，默认范围 [2-30]
-    visible: {
-      type: Boolean,
-      default: true
-    }, // 是否显示，默认 true
     opacity: {
       type: Number
     }, // 透明度，默认 1
-    zIndex: {
-      type: Number
-    }, // 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
     styles: {
       type: Object
     }// 为简易行政区图设定各面的填充颜色和描边颜色。 styles各字段的值可以是颜色值，也可以是一个返回颜色值* 的回调函数function。
@@ -43,14 +36,8 @@ export default {
   data() {
     return {
       handlers: {
-        visible(flag) {
-          flag === false ? this.hide() : this.show();
-        },
         SOC(value) {
           this.setSOC(value);
-        },
-        zIndex(value) {
-          this.setzIndex(value);
         }
       }
     };

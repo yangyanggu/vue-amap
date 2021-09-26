@@ -5,9 +5,26 @@ import CONSTANTS from '../utils/constant';
 import VueAMap from '../';
 
 export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: true
+    }, // 是否显示，默认 true
+    zIndex: {
+      type: Number
+    }
+  },
   data() {
     return {
-      unwatchFns: []
+      unwatchFns: [],
+      handlers: {
+        visible(flag) {
+          flag === false ? this.hide() : this.show();
+        },
+        zIndex(value) {
+          this.setzIndex(value);
+        }
+      }
     };
   },
 

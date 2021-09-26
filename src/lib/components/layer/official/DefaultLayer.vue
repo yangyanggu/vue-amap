@@ -9,27 +9,12 @@ export default {
     zoom: {
       type: Array
     },
-    visible: {
-      type: Boolean,
-      default: true
-    },
     opacity: {
-      type: Number
-    },
-    zIndex: {
       type: Number
     }
   },
   data() {
     return {
-      handlers: {
-        visible(flag) {
-          flag === false ? this.hide() : this.show();
-        },
-        zIndex(value) {
-          this.setzIndex(value);
-        }
-      }
     };
   },
   methods: {

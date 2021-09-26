@@ -1,6 +1,8 @@
-# WMS (AMap.TileLayer.WMS)
-用于加载OGC标准的WMS地图服务的一种图层类，仅支持EPSG3857坐标系统的WMS图层。
-[查看 WMS的OGC标准](http://www.opengeospatial.org/standards/wms)
+# 矢量瓦片块 (AMap.MapboxVectorTileLayer)
+为了满足基于矢量瓦片块的数据可视化、矢量瓦片边界展示等开发需求，通过 AMap.MapboxVectorTileLayer 插件提供了简易矢量瓦片图层
+此图层可以使用标准的 MVT 瓦片服务作为数据源。
+可以配合[GeoHub-数据中心](https://geohub.amap.com/)发布的矢量瓦片服务。 注意：使用高德数据平台发布服务，由于服务 URL 地址是明文，建议自行做服务代理转发，防止服务 ID 和 Key 明文传输导致数据泄露。
+[相关示例](https://lbs.amap.com/demo/jsapi-v2/example/thirdlayer/mvt-layer)
 
 ## 基础示例
 
@@ -34,12 +36,6 @@
           center: [120.101743, 30.241665],
           visible: true,
           url: 'https://restapi.amap.com/rest/lbs/geohub/tiles/mvt?key=747f980f217a31ba68d99301045a3fa7&z=[z]&x=[x]&y=[y]&size=512&id=1ed4ee90-dd77-11eb-9642-a7be29d36ac6',
-          params: {
-            Layer: '0',
-            Version: '1.0.0',
-            Format: 'image/png',
-            TileMatrixSet: 'EPSG:3857'
-          }
         };
       },
       methods: {
@@ -58,19 +54,91 @@
 
 名称 | 类型 | 说明
 ---|---|---|
-blend  | Boolean | 地图级别切换时，不同级别的图片是否进行混合，如图层的图像内容为部分透明请设置为false
+url | String | MVT 数据的链接地址
+dataZooms | Array | 瓦片数据等级范围，超过范围会使用最大/最小等级的数据，默认范围 [2,18]
 
 ## 动态属性
 支持响应式。
 
 名称 | 类型 | 说明
 ---|---|---|
-url | String | wmts服务的url地址，如：' https://services.arcgisonline.com/arcgis/rest/services/'+ 'Demographics/USA_Population_Density/MapServer/WMTS/'
-param | Object | OGC标准的WMS地图服务的GetMap接口的参数，包括VERSION、LAYERS、STYLES、FORMAT、TRANSPARENT等，<br/>CRS、BBOX、REQUEST、WIDTH、HEIGHT等参数请勿添加，例如：<br/>{ </br/>  LAYERS: 'topp:states',<br/>  VERSION:'1.3.0',<br/>  FORMAT:'image/png'<br/>  }
-zooms | Array | 支持的缩放级别范围，默认范围 [2-30]
+zooms | Array | 支持的缩放级别范围，默认范围 [2,22]
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
 opacity | Number | 透明度，默认 1
+styles | Object | 样式
+
+### styles
+名称 | 类型 | 说明
+---|---|---|
+polygon | Object | 面类型的样式
+line | Object | 线类型数据的样式
+point | Object | 点类型数据的样式
+
+#### polygon 面类型的样式
+名称 | 类型 | 说明
+---|---|---|
+color | String, Function | 面填充颜色
+borderWidth | Number, Function | 描边宽度
+dash | Array[Number], Function | 描边线的虚线配置，例如： [10,5,8,5]
+borderColor | String, Function | 描边颜色
+injection | Array[any] | 其他属性值中对于函数形式的值，假如需要获取外部变量，要使用数组的形式传入，便于在函数内部访问外部变量。请看下面的示例。
+visible | Boolean, Function | 是否显示
+
+#### line 线类型数据的样式
+名称 | 类型 | 说明
+---|---|---|
+color | String, Function | 线填充颜色
+lineWidth | Number, Function | 宽度
+dash | Array[Number], Function | 描边线的虚线配置，例如： [10,5,8,5]
+injection | Array[any] | 其他属性值中对于函数形式的值，假如需要获取外部变量，要使用数组的形式传入，便于在函数内部访问外部变量。请看下面的示例。
+visible | Boolean, Function | 是否显示
+
+#### point 点类型数据的样式
+名称 | 类型 | 说明
+---|---|---|
+radius | String, Function | 圆点的半径，单位像素
+color | String, Function | 圆的填充颜色
+borderWidth | Number, Function | 描边宽度
+dash | Array[Number], Function | 描边线的虚线配置，例如： [10,5,8,5]
+borderColor | String, Function | 描边颜色
+injection | Array[any] | 其他属性值中对于函数形式的值，假如需要获取外部变量，要使用数组的形式传入，便于在函数内部访问外部变量。请看下面的示例。
+visible | Boolean, Function | 是否显示
+
+
+### styles示例
+```js
+{
+   point: {
+       visible: function (f, inject) {
+           // 这里的 inject 参数就是一个数组，他的值就是 injection 字段的数组值：[visis]。
+           return inject[0].indexOf('这是') > -1;
+       },
+       injection: [globalVar],
+       radius: function (props) {
+           return Math.random() * 20 + 5;
+       },
+       color: 'red',
+       borderWidth: 20 || function (props) {
+           return Math.random() * 5 + 2;
+       },
+       borderColor: 'rgba(255,255,255,1)',
+   },
+   polygon: {
+       color: function (props) {
+           return 'rgba(0,0,0,1)';
+       },
+       dash: [10, 0, 10, 0],
+       borderColor: 'rgba(30,112,255,1)',
+       borderWidth: 5,
+   },
+   line: {
+       color: 'rgba(20,140,40,1)',
+       lineWidth: 5,
+       dash: [10, 0, 10, 0],
+   },
+}
+```
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
@@ -84,5 +152,4 @@ $$getInstance() | AMap.TileLayer.WMS | 获取实例
 事件 | 参数 | 说明
 ---|---|---|
 init | TileLayer.WMS | 实例初始化结束
-complete |  | 图块切片加载完成事件
 

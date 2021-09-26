@@ -22,13 +22,6 @@ export default {
     title: {
       type: String
     }, // 鼠标滑过点标记时的文字提示。不设置则鼠标滑过点标无文字提示。
-    visible: {
-      type: Boolean,
-      default: true
-    }, // 点标记是否可见，默认值：true
-    zIndex: {
-      type: Number
-    }, // 点标记的叠加顺序。地图上存在多个点标记叠加时，通过该属性使级别较高的点标记在上层显示，默认zIndex：12
     offset: {
       type: [Array, Object]
     }, // 点标记显示位置偏移量，默认值为 [0,0] 。Marker指定position后，默认以marker左上角位置为基准点（若设置了anchor，则以anchor设置位置为基准点），对准所给定的position位置，若需使marker指定位置对准在position处，需根据marker的尺寸设置一定的偏移量。
@@ -69,12 +62,6 @@ export default {
       converters: {
       },
       handlers: {
-        zIndex(index) {
-          this.setzIndex(index);
-        },
-        visible(flag) {
-          flag === false ? this.hide() : this.show();
-        }
       }
     };
   },
