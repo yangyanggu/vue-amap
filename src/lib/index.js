@@ -24,6 +24,7 @@ import MapboxVectorTileLayer from '@/components/layer/standard/MapboxVectorTileL
 import HeatMap from '@/components/layer/data/HeatMap';
 import LabelsLayer from '@/components/layer/data/Labels';
 import CustomLayer from '@/components/layer/data/Custom';
+import Flexible from '@/components/layer/data/Flexible';
 
 // Marker 点标记导入
 
@@ -53,6 +54,7 @@ let components = [
   HeatMap,
   LabelsLayer,
   CustomLayer,
+  Flexible,
 
   Marker,
   LabelMarker,
