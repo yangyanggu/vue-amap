@@ -27,6 +27,7 @@ import CustomLayer from '@/components/layer/data/Custom';
 import Flexible from '@/components/layer/data/Flexible';
 import ImageLayer from '@/components/layer/data/Image';
 import CanvasLayer from '@/components/layer/data/Canvas';
+import GLCustomLayer from '@/components/layer/data/GLCustom';
 
 // Marker 点标记导入
 
@@ -59,6 +60,7 @@ let components = [
   Flexible,
   ImageLayer,
   CanvasLayer,
+  GLCustomLayer,
 
   Marker,
   LabelMarker,
