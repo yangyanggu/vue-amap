@@ -13,7 +13,7 @@
         <el-amap-layer-heat-map :visible="visible" :data-set="dataSet"></el-amap-layer-heat-map>
       </el-amap>
       <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏交通图层' : '显示交通图层'}}</button>
+        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
       </div>
     </div>
   </template>

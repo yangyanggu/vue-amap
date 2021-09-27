@@ -22,6 +22,7 @@
 - 自有数据图层
   - [热力图](zh-cn/layer/data/heat-map.md)
   - [标注图层](zh-cn/layer/data/labels.md)
+  - [自定义图层](zh-cn/layer/data/custom.md)
 - 点标记
   - [点标记](zh-cn/marker/marker.md)
   - [标注](zh-cn/marker/label-marker.md)

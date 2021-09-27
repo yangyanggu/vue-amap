@@ -23,6 +23,7 @@ import WMTS from '@/components/layer/standard/WMTS';
 import MapboxVectorTileLayer from '@/components/layer/standard/MapboxVectorTileLayer';
 import HeatMap from '@/components/layer/data/HeatMap';
 import LabelsLayer from '@/components/layer/data/Labels';
+import CustomLayer from '@/components/layer/data/Custom';
 
 // Marker 点标记导入
 
@@ -51,6 +52,7 @@ let components = [
   MapboxVectorTileLayer,
   HeatMap,
   LabelsLayer,
+  CustomLayer,
 
   Marker,
   LabelMarker,
