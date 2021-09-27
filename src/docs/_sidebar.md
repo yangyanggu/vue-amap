@@ -25,6 +25,7 @@
   - [自定义图层](zh-cn/layer/data/custom.md)
   - [灵活切片图层](zh-cn/layer/data/flexible.md)
   - [图片图层](zh-cn/layer/data/image.md)
+  - [Canvas图层](zh-cn/layer/data/canvas.md)
 - 点标记
   - [点标记](zh-cn/marker/marker.md)
   - [标注](zh-cn/marker/label-marker.md)
