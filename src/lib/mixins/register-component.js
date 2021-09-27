@@ -2,7 +2,6 @@ import upperCamelCase from 'uppercamelcase';
 import {commonConvertMap} from '../utils/convert-helper';
 import eventHelper from '../utils/event-helper';
 import CONSTANTS from '../utils/constant';
-import VueAMap from '../';
 
 export default {
   props: {
@@ -77,17 +76,6 @@ export default {
     convertSignalProp(key, sourceData) {
       let converter = '';
       let type = '';
-
-      if (this.amapTagName) {
-        try {
-          const name = upperCamelCase(this.amapTagName).replace(/^El/, '');
-          const componentConfig = VueAMap[name] || '';
-
-          type = componentConfig.props[key].$type;
-          converter = commonConvertMap[type];
-        } catch (e) {
-        }
-      }
 
       if (type && converter) {
         return converter(sourceData);

@@ -29,11 +29,4 @@ export function toBounds(arrs) {
 }
 
 export const commonConvertMap = {
-  position: toLngLat,
-  offset: toPixel,
-  bounds: toBounds,
-  LngLat: toLngLat,
-  Pixel: toPixel,
-  Size: toSize,
-  Bounds: toBounds
 };
