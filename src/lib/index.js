@@ -33,6 +33,7 @@ import GLCustomLayer from '@/components/layer/data/GLCustom';
 
 import Marker from '@/components/marker/Marker.vue';
 import LabelMarker from '@/components/marker/LabelMarker';
+import Text from '@/components/marker/Text';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
@@ -64,6 +65,7 @@ let components = [
 
   Marker,
   LabelMarker,
+  Text,
 
   Scale
 ];

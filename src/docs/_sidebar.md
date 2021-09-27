@@ -30,6 +30,7 @@
 - 点标记
   - [点标记](zh-cn/marker/marker.md)
   - [标注](zh-cn/marker/label-marker.md)
+  - [文本](zh-cn/marker/text.md)
 - 遮盖物
   - [图片覆盖物](zh-cn/coverings/ground-image)
   - [圆](zh-cn/coverings/circle)
