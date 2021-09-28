@@ -6,13 +6,13 @@ import editorMixin from '@/mixins/editor-component';
 import {isMapInstance, isOverlayGroupInstance} from '@/utils/util';
 
 export default {
-  name: 'el-amap-polygon',
+  name: 'el-amap-polyline',
   mixins: [registerMixin, editorMixin],
   props: {
     path: {
       type: Array,
       required: true
-    }, // 多边形轮廓线的节点坐标数组。 支持 单个普通多边形({Array })，单个带孔多边形({Array<Array >})，多个带孔多边形({Array<Array<Array >>})
+    }, // polyline 路径，支持 lineString 和 MultiLineString
     bubble: {
       type: Boolean
     }, // 是否将覆盖物的鼠标或touch等事件冒泡到地图上
@@ -28,12 +28,15 @@ export default {
     strokeWeight: {
       type: Number
     }, // 轮廓线宽度。默认 2
-    fillColor: {
-      type: String
-    }, // 多边形填充颜色，使用16进制颜色代码赋值，如：#00B2D5
-    fillOpacity: {
+    borderWeight: {
       type: Number
-    }, // 多边形填充透明度，取值范围 [0,1] ，0表示完全透明，1表示不透明。默认为0.5
+    }, // 描边线宽度
+    isOutline: {
+      type: Boolean
+    }, // 是否显示描边,默认false
+    outlineColor: {
+      type: String
+    }, // 线条描边颜色，此项仅在isOutline为true时有效，默认：#00B2D5
     draggable: {
       type: Boolean
     }, // 设置多边形是否可拖拽移动，默认为false
@@ -47,7 +50,27 @@ export default {
     }, // 轮廓线样式，实线:solid，虚线:dashed
     strokeDasharray: {
       type: Array
-    }// 勾勒形状轮廓的虚线和间隙的样式，此属性在strokeStyle 为dashed 时有效， 此属性在ie9+浏览器有效 取值： 实线： [0,0,0] 虚线： [10,10] ， [10,10] 表示10个像素的实线和10个像素的空白（如此反复）组成的虚线 点画线： [10,2,10] ， [10,2,10] 表示10个像素的实线和2个像素的空白 + 10个像素的实线和10个像素的空白 （如此反复）组成的虚线
+    }, // 勾勒形状轮廓的虚线和间隙的样式，此属性在strokeStyle 为dashed 时有效， 此属性在ie9+浏览器有效 取值： 实线： [0,0,0] 虚线： [10,10] ， [10,10] 表示10个像素的实线和10个像素的空白（如此反复）组成的虚线 点画线： [10,2,10] ， [10,2,10] 表示10个像素的实线和2个像素的空白 + 10个像素的实线和10个像素的空白 （如此反复）组成的虚线
+    lineJoin: {
+      type: String,
+      validator(value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['miter', 'round', 'bevel'].indexOf(value) !== -1;
+      }
+    }, // 折线拐点的绘制样式，默认值为'miter'尖角，其他可选值：'round'圆角、'bevel'斜角
+    lineCap: {
+      type: String,
+      validator(value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['butt', 'round', 'square'].indexOf(value) !== -1;
+      }
+    }, // 折线两端线帽的绘制样式，默认值为'butt'无头，其他可选值：'round'圆头、'square'方头
+    geodesic: {
+      type: Boolean
+    }, // 是否绘制成大地线，默认false
+    showDir: {
+      type: Boolean
+    }// 是否延路径显示白色方向箭头,默认false。建议折线宽度大于6时使用
   },
   data() {
     const _this = this;
@@ -66,17 +89,32 @@ export default {
         strokeWeight(value) {
           this.setOptions({strokeWeight: value});
         },
-        fillColor(value) {
-          this.setOptions({fillColor: value});
+        borderWeight(value) {
+          this.setOptions({borderWeight: value});
         },
-        fillOpacity(value) {
-          this.setOptions({fillOpacity: value});
+        isOutline(value) {
+          this.setOptions({isOutline: value});
+        },
+        outlineColor(value) {
+          this.setOptions({outlineColor: value});
         },
         strokeStyle(value) {
           this.setOptions({strokeStyle: value});
         },
         strokeDasharray(value) {
           this.setOptions({strokeDasharray: value});
+        },
+        lineJoin(value) {
+          this.setOptions({lineJoin: value});
+        },
+        lineCap(value) {
+          this.setOptions({lineCap: value});
+        },
+        geodesic(value) {
+          this.setOptions({geodesic: value});
+        },
+        showDir(value) {
+          this.setOptions({showDir: value});
         },
         editable(flag) {
           _this.createEditor().then(() => {
@@ -88,7 +126,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new AMap.Polygon(options);
+      this.$amapComponent = new AMap.Polyline(options);
       if (isMapInstance(this.$parentComponent)) {
         this.$parentComponent.add(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
@@ -100,8 +138,8 @@ export default {
         if (this.$amapComponent.editor) {
           resolve();
         } else {
-          AMap.plugin(['AMap.PolygonEditor'], () => {
-            this.$amapComponent.editor = new AMap.PolygonEditor(this.$parentComponent, this.$amapComponent, this.editOptions);
+          AMap.plugin(['AMap.PolylineEditor'], () => {
+            this.$amapComponent.editor = new AMap.PolylineEditor(this.$parentComponent, this.$amapComponent, this.editOptions);
             this.setEditorEvents();
             resolve();
           });

@@ -43,6 +43,7 @@ import InfoWindow from '@/components/infoWindow/InfoWindow';
 
 // 矢量图形
 import Polygon from '@/components/vector/Polygon';
+import Polyline from '@/components/vector/Polyline';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
@@ -82,6 +83,7 @@ let components = [
   InfoWindow,
 
   Polygon,
+  Polyline,
 
   Scale
 ];
