@@ -3,10 +3,8 @@ import registerMixin from '../../mixins/register-component';
 import Vue from 'vue';
 import {isMapInstance, isOverlayGroupInstance} from '../../utils/util';
 
-const TAG = 'el-amap-marker';
-
 export default {
-  name: TAG,
+  name: 'el-amap-marker',
   mixins: [registerMixin],
   props: {
     position: {
@@ -56,7 +54,6 @@ export default {
   },
   data() {
     return {
-      $tagName: TAG,
       withSlots: false,
       tmpVM: null,
       converters: {
