@@ -34,19 +34,18 @@
   - [灵活点标记](zh-cn/marker/elastic-marker.md)
   - [点聚合](zh-cn/marker/marker-cluster.md)
   - [海量点](zh-cn/marker/mass-marks.md)
-- 遮盖物
+- 窗体
+  - [信息窗体](zh-cn/windows/info-window)
+- 矢量图形
+  - [多边形](zh-cn/vector/polygon.md)
   - [图片覆盖物](zh-cn/coverings/ground-image)
   - [圆](zh-cn/coverings/circle)
-  - [多边形](zh-cn/coverings/polygon)
   - [折线](zh-cn/coverings/polyline)
   - [文本](zh-cn/coverings/text)
   - [贝塞尔曲线](zh-cn/coverings/bezier-curve)
   - [圆点标记](zh-cn/coverings/circle-marker)
   - [椭圆](zh-cn/coverings/ellipse)
   - [矩形](zh-cn/coverings/rectangle)
-- 窗体
-  - [信息窗体](zh-cn/windows/info-window)
-
 - 扩展
   - [搜索组件](zh-cn/services/searchbox.md)
 

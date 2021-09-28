@@ -41,6 +41,9 @@ import MassMarks from '@/components/marker/MassMarks';
 // 信息窗体
 import InfoWindow from '@/components/infoWindow/InfoWindow';
 
+// 矢量图形
+import Polygon from '@/components/vector/Polygon';
+
 // Control 控件导入
 import Scale from './components/control/Scale';
 
@@ -77,6 +80,8 @@ let components = [
   MassMarks,
 
   InfoWindow,
+
+  Polygon,
 
   Scale
 ];
