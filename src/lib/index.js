@@ -36,6 +36,7 @@ import LabelMarker from '@/components/marker/LabelMarker';
 import Text from '@/components/marker/Text';
 import ElasticMarker from '@/components/marker/ElasticMarker';
 import MarkerCluster from '@/components/marker/MarkerCluster';
+import MassMarks from '@/components/marker/MassMarks';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
@@ -70,6 +71,7 @@ let components = [
   Text,
   ElasticMarker,
   MarkerCluster,
+  MassMarks,
 
   Scale
 ];

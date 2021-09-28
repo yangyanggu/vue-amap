@@ -33,6 +33,7 @@
   - [文本](zh-cn/marker/text.md)
   - [灵活点标记](zh-cn/marker/elastic-marker.md)
   - [点聚合](zh-cn/marker/marker-cluster.md)
+  - [海量点](zh-cn/marker/mass-marks.md)
 - 遮盖物
   - [图片覆盖物](zh-cn/coverings/ground-image)
   - [圆](zh-cn/coverings/circle)
