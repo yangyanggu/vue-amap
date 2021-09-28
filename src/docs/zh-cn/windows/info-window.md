@@ -76,7 +76,7 @@ offset | Array | 信息窗体显示位置偏移量。默认基准点为信息窗
 名称 | 类型 | 说明
 ---|---|---|
 visible | Boolean | 是否可见，默认 true。支持sync
-content | String, HTMLElement | 显示内容，可以是HTML要素字符串或者HTMLElement对象。
+content | String, HTMLElement | 显示内容，可以是HTML要素字符串或者HTMLElement对象。也可以根据示例中的方式使用slot实现
 size | Array | 信息窗体尺寸（isCustom为true时，该属性无效）
 anchor | String  | 信息窗体锚点。默认值：'bottom-center'。可选值：'top-left'|'top-center'|'top-right'|'middle-left'|'center'|'middle-right'|'bottom-left'|'bottom-center'|'bottom-right'
 size | Size | 信息窗体尺寸（isCustom为true时，该属性无效）
