@@ -1,5 +1,5 @@
 # 信息窗体(AMap.InfoWindow)
-用于在地图上展示复杂的说明性信息的类型
+用于在地图上展示复杂的说明性信息的类型。<br/>信息窗体，地图仅可同时展示一个信息窗体，推荐为信息窗体通过样式显示设置尺寸
 
 ## 基础示例
 
@@ -79,7 +79,6 @@ visible | Boolean | 是否可见，默认 true。支持sync
 content | String, HTMLElement | 显示内容，可以是HTML要素字符串或者HTMLElement对象。也可以根据示例中的方式使用slot实现
 size | Array | 信息窗体尺寸（isCustom为true时，该属性无效）
 anchor | String  | 信息窗体锚点。默认值：'bottom-center'。可选值：'top-left'|'top-center'|'top-right'|'middle-left'|'center'|'middle-right'|'bottom-left'|'bottom-center'|'bottom-right'
-size | Size | 信息窗体尺寸（isCustom为true时，该属性无效）
 position | Array | 信息窗体显示基点位置
 
 
