@@ -38,6 +38,9 @@ import ElasticMarker from '@/components/marker/ElasticMarker';
 import MarkerCluster from '@/components/marker/MarkerCluster';
 import MassMarks from '@/components/marker/MassMarks';
 
+// 信息窗体
+import InfoWindow from '@/components/infoWindow/InfoWindow';
+
 // Control 控件导入
 import Scale from './components/control/Scale';
 
@@ -72,6 +75,8 @@ let components = [
   ElasticMarker,
   MarkerCluster,
   MassMarks,
+
+  InfoWindow,
 
   Scale
 ];
