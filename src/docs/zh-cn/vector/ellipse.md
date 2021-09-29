@@ -1,5 +1,5 @@
-# 圆形(AMap.Circle)
-构造圆形对象，通过CircleOptions指定多边形样式
+# 椭圆(AMap.Ellipse)
+构造椭圆对象
 
 ## 基础示例
 
@@ -12,7 +12,7 @@
       <el-amap vid="amap" :zoom="zoom" :amap-manager="amapManager" :center="center"
       ref="map"
       class="amap-demo">
-        <el-amap-circle :center="circleCenter" :radius="radius" :visible="visible" :editable="edit" :draggable="draggable" @click="click"></el-amap-circle>
+        <el-amap-ellipse :center="circleCenter" :radius="radius" :visible="visible" :editable="edit" :draggable="draggable" @click="click"></el-amap-ellipse>
       </el-amap>
       <div class="toolbar">
         <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
@@ -38,14 +38,14 @@
           amapManager: amapManager,
           draggable: false,
           visible: true,
-          edit: true,
+          edit: false,
           circleCenter: [121.5273285, 31.21515044],
-          radius: 500
+          radius: [500, 200]
         }
       },
       methods: {
         click: () => {
-          alert('click circle');
+          alert('click Ellipse');
         },
         toggleVisible(){
           this.visible = !this.visible;
@@ -76,7 +76,7 @@ editOptions | Object | [设置编辑参数参数](https://a.amap.com/jsapi/stati
 名称 | 类型 | 说明
 ---|---|---|
 center | Array| 圆心位置
-radius | Number | 圆半径，单位:米
+radius | Array | 椭圆的半径，用2个元素的数组表示，单位：米 如： radius: [1000, 2000] 表示横向半径是1000，纵向的半径是2000 默认值： [1000, 1000]
 visible | Boolean | 是否可见
 editable | Boolean | 多边形当前是否可编辑 (启动编辑时需要关闭 draggable，不然会导致图形被移走，但操作点还在原位)
 zIndex | Number | 多边形覆盖物的叠加顺序。地图上存在多个多边形覆盖物叠加时，通过该属性使级别较高的多边形覆盖物在上层显示默认zIndex：10
@@ -95,7 +95,7 @@ draggable | Boolean | 设置多边形是否可拖拽移动，默认为false
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.Circle | 获取实例
+$$getInstance() | AMap.Ellipse | 获取实例
 
 ## 事件
 
@@ -120,3 +120,4 @@ move | {target: Polygon, lnglat: Lnglat, pixel: Pixel} | 移动覆盖物时触�
 adjust |	{target: Polygon, lnglat: Lnglat, pixel: Pixel} |	编辑状态下，鼠标调整折线上某个节点或多边形上某个顶点的位置时触发此事件
 add | {target: target} | 创建一个覆盖物之后触发该事件，target即为创建对象。当editor编辑对象为空时，调用open接口，再点击一次屏幕就会创建新的覆盖物对象
 end |	{type,target}	 | 关闭编辑状态，触发该事件，target即为编辑后的折线/多边形对象
+

@@ -41,11 +41,7 @@
   - [折线](zh-cn/vector/polyline.md)
   - [贝塞尔曲线](zh-cn/vector/bezier-curve.md)
   - [圆](zh-cn/vector/circle.md)
-  - [图片覆盖物](zh-cn/coverings/ground-image)
-  - [文本](zh-cn/coverings/text)
-  - [圆点标记](zh-cn/coverings/circle-marker)
-  - [椭圆](zh-cn/coverings/ellipse)
-  - [矩形](zh-cn/coverings/rectangle)
+  - [椭圆](zh-cn/vector/ellipse.md)
 - 扩展
   - [搜索组件](zh-cn/services/searchbox.md)
 

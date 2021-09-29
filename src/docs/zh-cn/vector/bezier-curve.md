@@ -115,7 +115,7 @@ extData | any | 用户自定义属性，支持JavaScript API任意数据类型�
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.Polyline | 获取实例
+$$getInstance() | AMap.BezierCurve | 获取实例
 
 
 ## 事件
