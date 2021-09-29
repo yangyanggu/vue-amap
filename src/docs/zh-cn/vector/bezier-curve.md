@@ -67,7 +67,7 @@
           this.polyline.draggable = !this.polyline.draggable;
         },
         click(e) {
-          alert('click polyline');
+          alert('click BezierCurve');
         },
       }
     };

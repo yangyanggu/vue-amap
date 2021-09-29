@@ -45,6 +45,7 @@ import InfoWindow from '@/components/infoWindow/InfoWindow';
 import Polygon from '@/components/vector/Polygon';
 import Polyline from '@/components/vector/Polyline';
 import BezierCurve from '@/components/vector/BezierCurve';
+import Circle from '@/components/vector/Circle';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
@@ -86,6 +87,7 @@ let components = [
   Polygon,
   Polyline,
   BezierCurve,
+  Circle,
 
   Scale
 ];

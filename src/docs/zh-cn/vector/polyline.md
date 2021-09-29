@@ -1,4 +1,4 @@
-# 折线
+# 折线(AMap.Polyline)
 构造折线对象，支持 lineString 和 MultiLineString
 
 ## 基础示例
