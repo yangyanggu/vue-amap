@@ -39,10 +39,10 @@
 - 矢量图形
   - [多边形](zh-cn/vector/polygon.md)
   - [折线](zh-cn/vector/polyline.md)
+  - [贝塞尔曲线](zh-cn/vector/bezier-curve.md)
   - [图片覆盖物](zh-cn/coverings/ground-image)
   - [圆](zh-cn/coverings/circle)
   - [文本](zh-cn/coverings/text)
-  - [贝塞尔曲线](zh-cn/coverings/bezier-curve)
   - [圆点标记](zh-cn/coverings/circle-marker)
   - [椭圆](zh-cn/coverings/ellipse)
   - [矩形](zh-cn/coverings/rectangle)
