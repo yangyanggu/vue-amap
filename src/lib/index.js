@@ -47,6 +47,7 @@ import Polyline from '@/components/vector/Polyline';
 import BezierCurve from '@/components/vector/BezierCurve';
 import Circle from '@/components/vector/Circle';
 import Ellipse from '@/components/vector/Ellipse';
+import Rectangle from '@/components/vector/Rectangle';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
@@ -90,6 +91,7 @@ let components = [
   BezierCurve,
   Circle,
   Ellipse,
+  Rectangle,
 
   Scale
 ];
