@@ -48,6 +48,7 @@ import BezierCurve from '@/components/vector/BezierCurve';
 import Circle from '@/components/vector/Circle';
 import Ellipse from '@/components/vector/Ellipse';
 import Rectangle from '@/components/vector/Rectangle';
+import GeoJSON from '@/components/vector/GeoJSON';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
@@ -92,6 +93,7 @@ let components = [
   Circle,
   Ellipse,
   Rectangle,
+  GeoJSON,
 
   Scale
 ];

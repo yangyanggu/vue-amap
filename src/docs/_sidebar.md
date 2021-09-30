@@ -43,6 +43,7 @@
   - [圆](zh-cn/vector/circle.md)
   - [椭圆](zh-cn/vector/ellipse.md)
   - [矩形](zh-cn/vector/rectangle.md)
+  - [GeoJSON](zh-cn/vector/geojson.md)
 - 扩展
   - [搜索组件](zh-cn/services/searchbox.md)
 
