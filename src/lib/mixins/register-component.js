@@ -121,13 +121,6 @@ export default {
       });
     },
 
-    registerToManager() {
-      let manager = this.amapManager || this.$parent.amapManager;
-      if (manager && this.vid !== undefined) {
-        manager.setComponent(this.vid, this.$amapComponent);
-      }
-    },
-
     // some prop can not init by initial created methods
     initProps() {
       const props = ['editable', 'visible'];
@@ -166,7 +159,6 @@ export default {
       this.registerEvents();
       this.initProps();
       this.setPropWatchers();
-      this.registerToManager();
       if (this.$listeners.init) {
         this.$emit('init', this.$amapComponent);
       }

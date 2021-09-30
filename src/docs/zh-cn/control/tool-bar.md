@@ -1,5 +1,5 @@
-# 比例尺插件 (AMap.Scale)
-位于地图右下角，用户可控制其显示与隐藏。继承自 AMap.Control
+# 地图操作工具条插件 (AMap.ToolBar)
+地图操作工具条插件。可支持方向导航、位置定位、视野级别缩放、视野级别选择等操作。继承自 AMap.Control
 
 ## 基础示例
 
@@ -10,7 +10,7 @@
   <template>
     <div class="amap-page-container">
       <el-amap :center="center" :zoom="zoom" class="amap-demo">
-        <el-amap-control-scale :visible="visible" ></el-amap-control-scale>
+        <el-amap-control-tool-bar :visible="visible" ></el-amap-control-tool-bar>
       </el-amap>
 
       <div class="toolbar">
@@ -52,7 +52,6 @@
 ---|---|---|
 position| String, Array | 控件停靠位置 { top: 5; left: 5; right: 5; bottom: 5 } 或者 'LT': 左上角, 'RT': 右上角, 'LB': 左下角, 'RB': 右下角
 offset | String | 地图默认鼠标样式。参数defaultCursor应符合CSS的cursor属性规范。
-animateEnable | Array | 相对于地图容器左上角的偏移量，正数代表向右下偏移。默认为AMap.Pixel(10,10)
 
 ## 动态属性
 
@@ -68,7 +67,7 @@ visible | Boolean | 是否显示，默认true
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | AMap.Scale | 获取实例
+$$getInstance() | AMap.ToolBar | 获取实例
 
 
 ## 事件

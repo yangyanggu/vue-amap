@@ -9,7 +9,6 @@ import guid from '../utils/guid';
 import CONST from '../utils/constant';
 import registerMixin from '../mixins/register-component';
 import {lazyAMapApiLoaderInstance} from '../services/injected-amap-api-instance';
-import AMapManager from '../managers/amap-manager';
 
 export default {
   name: 'el-amap',
@@ -18,9 +17,6 @@ export default {
     vid: {
       type: String
     }, // 地图ID
-    amapManager: {
-      type: AMapManager
-    }, // 地图实例管理
     center: {
       type: Array
     }, // 初始中心经纬度

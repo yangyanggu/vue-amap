@@ -9,7 +9,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amap" :zoom="zoom" :amap-manager="amapManager" :center="center"
+      <el-amap vid="amap" :zoom="zoom" :center="center"
       ref="map"
       class="amap-demo">
         <el-amap-rectangle :bounds="path" :visible="visible" :editable="edit" :draggable="draggable" @click="click"></el-amap-rectangle>
@@ -29,13 +29,11 @@
   </style>
 
   <script>
-    let amapManager = new VueAMap.AMapManager();
     module.exports = {
       data () {
         return {
           zoom: 15,
           center: [121.5273285, 31.21515044],
-          amapManager: amapManager,
           draggable: false,
           visible: true,
           edit: true,

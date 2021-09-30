@@ -10,7 +10,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap ref="map" vid="amapDemo" :amap-manager="amapManager" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
+      <el-amap ref="map" vid="amapDemo" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
       </el-amap>
 
       <div class="toolbar">
@@ -26,14 +26,9 @@
   </style>
 
   <script>
-    // NPM 方式
-    // import { AMapManager } from 'vue-amap';
-    // CDN 方式
-    let amapManager = new VueAMap.AMapManager();
     module.exports = {
       data: function() {
         return {
-          amapManager,
           zoom: 12,
           center: [121.59996, 31.197646],
         };

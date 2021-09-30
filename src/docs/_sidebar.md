@@ -4,8 +4,13 @@
   - [兼容高德原生 SDK](zh-cn/introduction/compatible)
 - 地图
   - [地图](zh-cn/base/amap)
+  - [获取地图实例](zh-cn/base/get-bmap-instance.md)
 - 控件
   - [比例尺](zh-cn/control/scale.md)
+  - [地图操作工具条](zh-cn/control/tool-bar.md)
+  - [地图控制插件](zh-cn/control/control-bar.md)
+  - [地图类型切换](zh-cn/control/map-type.md)
+  - [鹰眼控件](zh-cn/control/hawk-eye.md)
 - 高德官方图层
   - [默认图层](zh-cn/layer/official/default-layer.md)
   - [切片图层](zh-cn/layer/official/tile-layer.md)

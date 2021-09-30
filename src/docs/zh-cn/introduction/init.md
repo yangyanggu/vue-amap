@@ -11,6 +11,7 @@ NPM 安装：
 ```javascript
 import VueAMap from 'vue-amap';
 
+
 Vue.use(VueAMap);
 VueAMap.initAMapApiLoader({
   key: 'YOUR_KEY',

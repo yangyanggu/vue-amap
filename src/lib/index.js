@@ -52,9 +52,12 @@ import GeoJSON from '@/components/vector/GeoJSON';
 
 // Control 控件导入
 import Scale from './components/control/Scale';
+import ToolBar from '@/components/control/ToolBar';
+import ControlBar from '@/components/control/ControlBar';
+import MapType from '@/components/control/MapType';
+import HawkEye from '@/components/control/HawkEye';
 
 // managers
-import AMapManager from './managers/amap-manager';
 import createCustomComponent from './adapter/custom-adapter';
 
 let components = [
@@ -95,12 +98,15 @@ let components = [
   Rectangle,
   GeoJSON,
 
-  Scale
+  Scale,
+  ToolBar,
+  ControlBar,
+  MapType,
+  HawkEye
 ];
 
 let VueAMap = {
-  initAMapApiLoader,
-  AMapManager
+  initAMapApiLoader
 };
 
 VueAMap.install = (Vue) => {
@@ -130,7 +136,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default VueAMap;
 
 export {
-  AMapManager,
   initAMapApiLoader,
   createCustomComponent
 };

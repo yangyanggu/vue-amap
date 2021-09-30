@@ -56,10 +56,8 @@ describe('AMap.Map', function() {
 
   describe('#event', function() {
     it('should get map instance from manager', done => {
-      const amapManager = new AMapManager();
       (new Vue({
         template: `<el-amap
-        :amap-manager="amapManager"
         vid="vid"
         :events="events"
       ></el-amap>`,
