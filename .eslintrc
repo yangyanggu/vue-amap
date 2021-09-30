@@ -17,6 +17,7 @@
       "AMap": true,
       "particlesJS": true,
       "expect": true,
-      "sinon": true
+      "sinon": true,
+      "Loca": true
   }
 }

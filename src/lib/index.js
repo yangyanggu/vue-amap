@@ -57,6 +57,10 @@ import ControlBar from '@/components/control/ControlBar';
 import MapType from '@/components/control/MapType';
 import HawkEye from '@/components/control/HawkEye';
 
+// Loca 导入
+import Loca from '@/components/loca/Loca';
+import PointLayer from '@/components/loca/PointLayer';
+
 // managers
 import createCustomComponent from './adapter/custom-adapter';
 
@@ -102,7 +106,10 @@ let components = [
   ToolBar,
   ControlBar,
   MapType,
-  HawkEye
+  HawkEye,
+
+  Loca,
+  PointLayer
 ];
 
 let VueAMap = {

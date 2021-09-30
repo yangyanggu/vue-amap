@@ -9,6 +9,5 @@ dist
 .vscode
 .tags*
 /docs
-dist
 coverage
-docs*
+*.zip

@@ -52,6 +52,8 @@
   - [椭圆](zh-cn/vector/ellipse.md)
   - [矩形](zh-cn/vector/rectangle.md)
   - [GeoJSON](zh-cn/vector/geojson.md)
+- Loca可视化
+  - [圆点图层](zh-cn/loca/point-layer.md)
 - 扩展
 
 - [FAQ](zh-cn/faq.md)
