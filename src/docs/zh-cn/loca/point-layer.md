@@ -92,6 +92,16 @@ layerStyle | Object | 图层样式
 zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 
+### layerStyle参数
+名称 | 类型 | 说明
+---|---|---|
+radius | Number, Function | 半径（默认单位: px）。支持动画过渡效果。 default 20
+color | String, Function | 填充色，支持回调设置不同的颜色（Hex颜色） default  '#fff'
+unit | String | 点的单位，会影响半径和边宽度。可选值：px：像素，meter：地理单位米  default 'px'
+borderWidth | Number, Function | 边框宽度（默认单位:px） default 10
+borderColor | String, Function | 边框填充色，支持回调设置不同的颜色 default  '#fff'
+blurWidth | Number, Function | 模糊半径，从哪个位置开始向边缘模糊。负数代表不进行模糊。 default -1
+
 ## ref 可用方法
 提供无副作用的同步帮助方法
 
