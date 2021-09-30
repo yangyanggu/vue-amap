@@ -1,7 +1,10 @@
+[![Fork me on Gitee](https://gitee.com/guyangyang/vue-amap2/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-amap2)
 - 基础
   - [安装](zh-cn/introduction/install)
   - [脚本初始化](zh-cn/introduction/init)
   - [兼容高德原生 SDK](zh-cn/introduction/compatible)
+  - [更新日志](https://gitee.com/guyangyang/vue-amap2/blob/master/CHANGELOG.md)
+  - [捐赠支持](zh-cn/other/donation.md)
 - 地图
   - [地图](zh-cn/base/amap)
   - [获取地图实例](zh-cn/base/get-bmap-instance.md)
@@ -50,18 +53,5 @@
   - [矩形](zh-cn/vector/rectangle.md)
   - [GeoJSON](zh-cn/vector/geojson.md)
 - 扩展
-  - [搜索组件](zh-cn/services/searchbox.md)
 
-- 插件
-  - [指南](zh-cn/plugins/base.md)
-  - [类型插件](zh-cn/plugins/maptype.md)
-  - [鹰眼插件](zh-cn/plugins/overview.md)
-  - [比例尺插件](zh-cn/plugins/scale.md)
-  - [工具条插件](zh-cn/plugins/toolbar.md)
-  - [定位插件](zh-cn/plugins/geolocation.md)
-
-- 自定义组件
-  - [指南](zh-cn/custom/custom.md)
-  - [组件列表](zh-cn/custom/list.md)
-  
 - [FAQ](zh-cn/faq.md)

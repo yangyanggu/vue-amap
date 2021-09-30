@@ -12,7 +12,7 @@
 
 *若涉及到高德原生 `AMap` 需要注意的点：*
 
-* 确保 `vue-amap` 的导入名不是 `AMap`，推荐 `import VueAMap from 'vue-amap'` 避免和高德全局的 `AMap` 冲突。
+* 确保 `vue-amap` 的导入名不是 `AMap`，推荐 `import VueAMap from '@vuemap/vue-amap'` 避免和高德全局的 `AMap` 冲突。
 * 若 `eslint` 报错 `AMap is undefined` 之类的错误。请将 `AMap` 配置到 `.eslintrc` 的 `globals` 中。
 
 <vuep template="#example"></vuep>
@@ -21,11 +21,10 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo"  :center="center" :zoom="zoom" :events="events" class="amap-demo">
+      <el-amap  :center="center" :zoom="zoom" @init="init" class="amap-demo">
       </el-amap>
-
       <div class="toolbar">
-        <button @click="add()">add marker</button>
+        <button @click="add()">添加标号</button>
       </div>
     </div>
   </template>
@@ -38,30 +37,28 @@
 
   <script>
     module.exports = {
-      data: function() {
+      data() {
         return {
           zoom: 12,
           center: [121.59996, 31.197646],
-          events: {
-            init(o) {
-              let marker = new AMap.Marker({
-                position: [121.59996, 31.197646]
-              });
-
-              marker.setMap(o);
-            }
-          }
+          map: null
         };
       },
 
       methods: {
+        init(map) {
+          let marker = new AMap.Marker({
+            position: [121.59996, 31.197646]
+          });
+          map.add(marker);
+          this.map = map;
+          console.log('map init: ', map)
+        },
         add() {
-          let o = amapManager.getMap();
           let marker = new AMap.Marker({
             position: [121.59996, 31.177646]
           });
-
-          marker.setMap(o);
+          this.map.add(marker);
         }
       }
     };
