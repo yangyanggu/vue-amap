@@ -15,7 +15,7 @@ module.exports = merge(baseWebpackConfig, {
   devtool: 'cheap-source-map',
   devServer: {
     clientLogLevel: 'warning',
-    liveReload: true,
+    liveReload: false,
     watchContentBase: true,
     port: config.dev.port,
     open: config.dev.autoOpenBrowser,

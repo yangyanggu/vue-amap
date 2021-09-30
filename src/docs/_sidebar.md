@@ -55,6 +55,7 @@
 - Loca可视化
   - [圆点图层](zh-cn/loca/point-layer.md)
   - [图标图层](zh-cn/loca/icon-layer.md)
+  - [棱柱图层](zh-cn/loca/prism-layer.md)
 - 扩展
 
 - [FAQ](zh-cn/faq.md)
