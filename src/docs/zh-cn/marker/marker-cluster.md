@@ -25,7 +25,7 @@
   </style>
 
   <script>
-    const china = require('../../assets/js/china.js');
+    const china = require('./assets/js/china.js');
     module.exports = {
       name: 'amap-page',
       data() {

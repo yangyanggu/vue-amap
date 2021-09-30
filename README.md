@@ -11,13 +11,24 @@
 > 组件中将会对高德可视化组件loca进行封装，同时提供threejs的接口
 > 该项目基于 https://github.com/ElemeFE/vue-amap/ 开发
 
+```html
+觉得有用可以给个star
+```
+
+## 群号
+![avatar](./image/vue-mapvgl.png)
+
+## 捐赠支持
+<img src="./src/docs/assets/images/zhifubao.jpg" alt="支付宝" width="270px" />
+<img src="./src/docs/assets/images/weixin.png" alt="微信" width="270px"/>
+
 ## 安装
 ```
 npm i -S @vuemap/vue-amap
 ```
 
 ## 文档
-[https://docs.guyixi.cn/vue-amap](https://docs.guyixi.cn/vue-amap)
+[https://docs.guyixi.cn/vue-amap/](https://docs.guyixi.cn/vue-amap/)
 
 
 ## 快速上手

@@ -11,3 +11,4 @@ dist
 /docs
 dist
 coverage
+docs*

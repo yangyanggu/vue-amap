@@ -26,7 +26,7 @@
   </style>
 
   <script>
-    const cities = require('../../assets/js/citys.js');
+    const cities = require('./assets/js/citys.js');
     module.exports = {
       name: 'amap-page',
       data() {

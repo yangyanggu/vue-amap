@@ -27,7 +27,7 @@ GeoJSON类，继承自OverLayGroup，可实现GeoJSON对象与OverlayGroup的相
   </style>
 
   <script>
-    const geo = require('../../assets/js/chongqing.js');
+    const geo = require('./assets/js/chongqing.js');
     module.exports = {
       data () {
         return {
