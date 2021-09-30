@@ -36,10 +36,7 @@
 
       methods: {
         getMap() {
-          // amap vue component
-          console.log(amapManager._componentMap);
-          // gaode map instance
-          console.log(amapManager._map);
+          console.log(this.$refs.map.$$getInstance());
         },
         clickMap(e){
           console.log('click map :', e );
@@ -59,7 +56,6 @@
 名称 | 类型 | 说明
 ---|---|---|
 vid | String | 地图容器节点的ID。
-amapManager| AMapManager | 地图管理对象。
 viewMode | String | 地图视图模式, 默认为‘2D’，可选’3D’，选择‘3D’会显示 3D 地图效果。
 showLabel | Boolean | 是否展示地图文字和 POI 信息。默认 true
 defaultCursor | String | 地图默认鼠标样式。参数defaultCursor应符合CSS的cursor属性规范。
@@ -100,14 +96,6 @@ showIndoorMap | Boolean | 是否自动展示室内地图，默认是 false。此
 mapStyle	| String |	设置地图显示样式，目前支持normal（默认样式）、dark（深色样式）、light（浅色样式）、fresh(osm清新风格样式)四种
 labelRejectMask | Boolean | 文字是否拒绝掩模图层进行掩模
 mask | Array | 为 Map 实例指定掩模的路径，各图层将只显示路径范围内图像，3D视图下有效。 格式为一个经纬度的一维、二维或三维数组。
-
-## AmapManager
-
-用于获取地图实例，以及获得地图内组件的实例。
-
-名称 | 参数 | 返回类型 | 说明
----|--- | --- |---|
-getMap | | AMap.Map | 返回地图实例，注入该管理实例的组件的地图实例
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

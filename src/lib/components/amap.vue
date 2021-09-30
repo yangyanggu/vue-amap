@@ -170,7 +170,6 @@ export default {
         const elementID = this.vid || guid();
         mapElement.id = elementID;
         this.$parentComponent = this.$amapComponent = new AMap.Map(elementID, this.convertProps());
-        if (this.amapManager) this.amapManager.setMap(this.$parentComponent);
         this.$emit(CONST.AMAP_READY_EVENT, this.$parentComponent);
         this.$children.forEach(component => {
           component.$emit(CONST.AMAP_READY_EVENT, this.$parentComponent);

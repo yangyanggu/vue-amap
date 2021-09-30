@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import { AMapManager } from 'vue-amap';
 
 describe('AMap.Map', function() {
 
@@ -63,11 +62,9 @@ describe('AMap.Map', function() {
       ></el-amap>`,
         data() {
           return {
-            amapManager,
             vid: 'vid',
             events: {
               init: (instance) => {
-                expect(amapManager.getMap() === instance).to.true;
                 done();
               }
             }
