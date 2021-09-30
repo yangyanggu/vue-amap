@@ -60,6 +60,7 @@ import HawkEye from '@/components/control/HawkEye';
 // Loca 导入
 import Loca from '@/components/loca/Loca';
 import PointLayer from '@/components/loca/PointLayer';
+import IconLayer from '@/components/loca/IconLayer';
 
 // managers
 import createCustomComponent from './adapter/custom-adapter';
@@ -109,7 +110,8 @@ let components = [
   HawkEye,
 
   Loca,
-  PointLayer
+  PointLayer,
+  IconLayer
 ];
 
 let VueAMap = {

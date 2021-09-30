@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     setSource() {
+      console.log('setSource');
       if (this.source) {
         this.source.destroy();
         this.source = null;
@@ -45,6 +46,9 @@ export default {
       } else if (this.sourceData) {
         this.source = new Loca.GeoJSONSource({
           data: this.sourceData
+        });
+      } else {
+        this.source = new Loca.GeoJSONSource({
         });
       }
       this.$amapComponent.setSource(this.source);
