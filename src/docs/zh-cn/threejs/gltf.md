@@ -10,8 +10,9 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
   <template>
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center"  :show-label="false" :zooms="[2, 30]" :show-building-block="false" view-mode="3D" :pitch="55" @init="initMap" class="amap-demo">
-        <el-amap-layer-three :visible="visible" :lights="lights" :hdr="hdrOptions">
-          <el-amap-three-gltf url="./assets/gltf/car4.gltf" :position="position" :rotation="{x:90, y:0, z:0}"></el-amap-three-gltf>
+        <el-amap-layer-three :lights="lights" :hdr="hdrOptions">
+          <el-amap-three-gltf :visible="visible" url="./assets/gltf/car4.gltf" :position="position" :scale="20" :rotation="{x:90, y:0, z:0}" @click="()=>{click(position)}" @mouseover="mouseover" @mouseout="mouseout"></el-amap-three-gltf>
+          <el-amap-three-gltf url="./assets/gltf/sgyj_point_animation.gltf" :position="[116.305206, 39.975468]" :scale="10" :rotation="{x:90, y:0, z:0}" @init="init"></el-amap-three-gltf>
         </el-amap-layer-three>
       </el-amap>
       <div class="toolbar">
@@ -76,6 +77,12 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
         },
         stopCar(){
           clearTimeout(this.timer);
+        },
+        click(e){console.log('click: ', e)},
+        mouseover(e){console.log('mouseover: ', e)},
+        mouseout(e){console.log('mouseout: ', e)},
+        init(object, $vue){
+          $vue.$$startAnimations();
         }
       }
     };
@@ -97,7 +104,7 @@ scale | Number | 缩放大小
 
 名称 | 类型 | 说明
 ---|---|---|
-position | Array | 支持的缩放级别范围，默认范围 [2-20]
+position | Array | 车辆位置经纬度
 visible | Boolean | 是否显示，默认 true
 rotation | Object | 旋转角度,通过该参数调整模型方向
 
@@ -107,10 +114,14 @@ rotation | Object | 旋转角度,通过该参数调整模型方向
 函数 | 返回 | 说明
 ---|---|---|
 $$getInstance() | Object3D | 获取实例
+$$startAnimations |   | 开始动画，当模型自带动画时，调用该方法将触发动画
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
-init | Object3D | 实例初始化结束
+init | Object3D, 组件实例 | 实例初始化结束
+click | Object3D | 点击事件
+mouseover | Object3D | 鼠标悬浮
+mouseout | Object3D | 鼠标离开
 

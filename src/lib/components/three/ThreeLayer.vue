@@ -2,7 +2,7 @@
   <div><slot /></div>
 </template>
 <script>
-import registerMixin from '../../../mixins/register-component';
+import registerMixin from '../../mixins/register-component';
 import {OrthographicCamera,
   PerspectiveCamera,
   WebGLRenderer,
@@ -16,7 +16,9 @@ import {OrthographicCamera,
   PMREMGenerator,
   sRGBEncoding,
   UnsignedByteType,
-  LinearFilter
+  LinearFilter,
+  Raycaster,
+  Vector2
 } from 'three';
 import CONST from '@/utils/constant';
 import {merge} from 'lodash-es';
@@ -30,7 +32,8 @@ const lightTypes = {
   RectAreaLight: RectAreaLight, // 平面光光源  平面光光源从一个矩形平面上均匀地发射光线。这种光源可以用来模拟像明亮的窗户或者条状灯光光源
   SpotLight: SpotLight // 聚光灯  光线从一个点沿一个方向射出，随着光线照射的变远，光线圆锥体的尺寸也逐渐增大
 };
-
+const raycaster = new Raycaster();
+const mouse = new Vector2();
 export default {
   name: 'el-amap-layer-three',
   mixins: [registerMixin],
@@ -94,6 +97,7 @@ export default {
           component.$emit(CONST.AMAP_READY_EVENT, _this.$amapComponent);
         });
         _this._animate();
+        _this._bindEvents();
       };
       options.render = function() {
       // 这里必须执行！！重新设置 three 的 gl 上下文状态。
@@ -245,6 +249,71 @@ export default {
       if (this.$parentComponent) {
         this.$parentComponent.render();
       }
+    },
+    _bindEvents() {
+      this.$parentComponent.on('click', this._clickEvent);
+      this.$parentComponent.on('mousemove', this._hoverEvent);
+    },
+    _unBindEvents() {
+      this.$amapComponent.off('click', this._clickEvent);
+      this.$amapComponent.off('mousemove', this._hoverEvent);
+    },
+    _clickEvent(e) {
+      let group = this._intersectGltf(e);
+      if (group) {
+        group.$vue.$emit('click', group);
+      }
+    },
+    _hoverEvent(e) {
+      let group = this._intersectGltf(e);
+      if (group) {
+        if (!group.isHover) {
+          group.isHover = true;
+          group.$vue.$emit('mouseover', group);
+        }
+      } else {
+        let children = this.scene.children;
+        children.forEach(object => {
+          if (object.isCustomGroup && object.isHover === true) {
+            object.isHover = false;
+            object.$vue.$emit('mouseout', object);
+          }
+        });
+      }
+    },
+    _intersectGltf(e) {
+      let client = this.$parentComponent.getContainer();
+      // 通过鼠标点击位置,计算出 raycaster 所需点的位置,以屏幕为中心点,范围 -1 到 1
+      let getBoundingClientRect = client.getBoundingClientRect();
+
+      // window.pageYOffset 鼠标滚动的距离
+      // clientTop 一个元素顶部边框的宽度
+      let offsetTop = getBoundingClientRect.top + window.pageYOffset - client.clientTop;
+      let offsetLeft = getBoundingClientRect.left + window.pageXOffset - client.clientLeft;
+      mouse.x = ((e.originEvent.x + window.pageXOffset - offsetLeft) / getBoundingClientRect.width) * 2 - 1;
+      mouse.y = -((e.originEvent.y + window.pageYOffset - offsetTop) / getBoundingClientRect.height) * 2 + 1;
+      let camera = this.camera;
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects([this.scene], true);
+      let length = intersects.length;
+      if (length > 0) {
+        let group = null;
+        for (let i = 0;i < length;i++) {
+          let object = intersects[i];
+          group = this._getGroup(object.object);
+          if (group !== null) {
+            break;
+          }
+        }
+        return group;
+      }
+      return null;
+    },
+    _getGroup(object) {
+      if (object.isCustomGroup) {
+        return object;
+      }
+      return this._getGroup(object.parent);
     },
     $$getScene() {
       return this.scene;

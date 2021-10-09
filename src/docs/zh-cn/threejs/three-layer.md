@@ -61,7 +61,7 @@ ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含l
       },
       mounted(){
         let array = [];
-        for(let i=0; i< 200;i++){
+        for(let i=0; i< 2;i++){
           let lng = 116.306206 + Math.random() * 0.001;
           let lat = 39.975468 + Math.random() * 0.001;
           array.push({

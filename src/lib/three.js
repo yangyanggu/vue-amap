@@ -4,7 +4,7 @@ import './polyfills';
 import upperCamelCase from 'uppercamelcase';
 
 // Layer 图层导入
-import ThreeLayer from '@/components/layer/custom/ThreeLayer';
+import ThreeLayer from '@/components/three/ThreeLayer';
 
 // Three
 import Gltf from '@/components/three/Gltf';

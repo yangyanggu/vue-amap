@@ -28,6 +28,11 @@ export default {
       handlers: {
         position() {
           _this.setPosition();
+        },
+        visible(flag) {
+          console.log('visible: ', flag);
+          this.visible = flag;
+          _this._refresh();
         }
       }
     };
@@ -39,15 +44,22 @@ export default {
         let loader = new GLTFLoader(); // 读取模型
         loader.load(options.url, (gltf) => {
           let object = gltf.scene.clone(true);
+          object.isCustomGroup = true;
+          object.$vue = this;
           let animations = gltf.animations;
           let scale = this.scale;
           object.position.set(position[0], position[1], 0);
           object.scale.set(scale, scale, scale);
+          if (this.visible !== undefined) {
+            object.visible = this.visible;
+          }
           this.$parent.addEnvMap(object);
           this.$parent.addObject(object);
           this.$amapComponent = object;
           this.animations = animations;
           this.setRotation();
+          object.on = function() {};
+          object.off = function() {};
           this._refresh();
           resolve();
         });
@@ -55,6 +67,7 @@ export default {
     },
     destroyComponent() {
       cancelAnimationFrame(this.linerAnimationFrame);
+      this.$amapComponent.$vue = null;
       this.$parent.removeObject(this.$amapComponent);
       this.$amapComponent = null;
     },
