@@ -16,6 +16,8 @@ npm install @vuemap/vue-amap --save
 
 ```html
 <script src="https://unpkg.com/@vuemap/vue-amap/dist/index.js"></script>
+<!--加载自定义threeJS组件-->
+<script src="https://unpkg.com/@vuemap/vue-amap/dist/three.js"></script>
 <script src="https://unpkg.com/@vuemap/vue-amap/dist/style.css"></script>
 ```
 
@@ -39,6 +41,8 @@ npm install @vuemap/vue-amap --save
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/@vuemap/vue-amap/dist/index.js"></script>
+  <!--加载自定义threeJS组件-->
+  <script src="https://unpkg.com/@vuemap/vue-amap/dist/three.js"></script>
   <script src="https://unpkg.com/@vuemap/vue-amap/dist/style.css"></script>
   <script>
     // 初始化高德地图的 key 和插件
