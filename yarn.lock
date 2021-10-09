@@ -8302,6 +8302,11 @@ text-table@^0.2.0:
   resolved "https://registry.nlark.com/text-table/download/text-table-0.2.0.tgz"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+three@0.117.1:
+  version "0.117.1"
+  resolved "https://registry.npmmirror.com/three/download/three-0.117.1.tgz#a49bcb1a6ddea2f250003e42585dc3e78e92b9d3"
+  integrity sha1-pJvLGm3eovJQAD5CWF3D546SudM=
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.nlark.com/through2/download/through2-2.0.5.tgz"

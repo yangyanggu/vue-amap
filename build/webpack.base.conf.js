@@ -12,7 +12,8 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    'vue-amap': ['./src/lib/index.js']
+    three: './src/lib/three.js',
+    index: './src/lib/index.js'
   },
   output: {
     path: config.build.assetsRoot,

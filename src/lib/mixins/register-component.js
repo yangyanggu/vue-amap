@@ -123,7 +123,7 @@ export default {
 
     // some prop can not init by initial created methods
     initProps() {
-      const props = ['editable', 'visible'];
+      const props = ['editable', 'visible', 'zooms'];
 
       props.forEach(propStr => {
         if (this[propStr] !== undefined) {
@@ -160,7 +160,7 @@ export default {
       this.initProps();
       this.setPropWatchers();
       if (this.$listeners.init) {
-        this.$emit('init', this.$amapComponent);
+        this.$emit('init', this.$amapComponent, this);
       }
     },
 

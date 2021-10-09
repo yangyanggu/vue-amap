@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "vue amap for amap2.0",
   "keywords": [
     "vue",
@@ -43,6 +43,7 @@
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "lodash-es": "^4.17.21",
+    "three": "0.117.1",
     "uppercamelcase": "^1.1.0"
   },
   "devDependencies": {

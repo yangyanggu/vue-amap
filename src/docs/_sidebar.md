@@ -1,4 +1,4 @@
-[![Fork me on Gitee](https://gitee.com/guyangyang/vue-amap2/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-amap2)
+[![Fork me on Gitee](https://gitee.com/guyangyang/vue-amap/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-amap)
 - 基础
   - [安装](zh-cn/introduction/install)
   - [脚本初始化](zh-cn/introduction/init)
@@ -35,6 +35,9 @@
   - [图片图层](zh-cn/layer/data/image.md)
   - [Canvas图层](zh-cn/layer/data/canvas.md)
   - [3d自定义图层](zh-cn/layer/data/gl-custom.md)
+- 自定义ThreeJS
+  - [Three图层](zh-cn/threejs/three-layer.md)
+  - [GLTF](zh-cn/threejs/gltf.md)
 - 点标记
   - [点标记](zh-cn/marker/marker.md)
   - [标注](zh-cn/marker/label-marker.md)

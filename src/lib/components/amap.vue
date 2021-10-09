@@ -163,6 +163,12 @@ export default {
   mounted() {
     this.createMap();
   },
+  beforeDestroy() {
+    if (this.$amapComponent) {
+      this.$amapComponent.destroy();
+      this.$amapComponent = null;
+    }
+  },
   methods: {
     createMap() {
       lazyAMapApiLoaderInstance.then(() => {

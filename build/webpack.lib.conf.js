@@ -17,8 +17,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.lib_build.productionSourceMap ? 'cheap-source-map' : false,
   output: {
     path: config.lib_build.assetsRoot,
-    filename: 'index.js',
-    library: 'VueBMap',
+    filename: '[name].js',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
