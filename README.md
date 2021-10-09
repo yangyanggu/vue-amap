@@ -1,12 +1,12 @@
 
-# vue-amap2
+# @vuemap/vue-amap
 [![npm package](https://img.shields.io/npm/v/@vuemap/vue-amap.svg)](https://www.npmjs.org/package/@vuemap/vue-amap)
 [![NPM downloads](http://img.shields.io/npm/dm/@vuemap/vue-amap.svg)](https://npmjs.org/package/@vuemap/vue-amap)
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/@vuemap/vue-amap/src/lib/index.js?compression=gzip&label=gzip%20size:%20JS)
 [![license](https://img.shields.io/github/license/elemefe/vue-amap.svg?style=flat-square)](https://github.com/ElemeFE/vue-amap)
 [![star](https://gitee.com/guyangyang/vue-amap/badge/star.svg?theme=dark)](https://gitee.com/guyangyang/vue-amap/stargazers)
 
-> vue-amap2是一套基于Vue 2.0和高德地图的地图组件。
+> @vuemap/vue-amap是一套基于Vue 2.0和高德地图的地图组件。
 > 该版本对原vue-amap组件进行升级，主要适配amap2.0相关的接口，同时调整事件绑定形式，调整为使用v-on进行事件绑定。
 > 组件中将会对高德可视化组件loca进行封装，同时提供threejs的接口
 > 该项目基于 https://github.com/ElemeFE/vue-amap/ 开发
