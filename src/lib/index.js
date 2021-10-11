@@ -67,6 +67,7 @@ import PolygonLayer from '@/components/loca/PolygonLayer';
 import LinkLayer from '@/components/loca/LinkLayer';
 import HeatMapLayer from '@/components/loca/HeatMapLayer';
 import HexagonLayer from '@/components/loca/HexagonLayer';
+import GridLayer from '@/components/loca/GridLayer';
 
 // managers
 import createCustomComponent from './adapter/custom-adapter';
@@ -123,7 +124,8 @@ let components = [
   PolygonLayer,
   LinkLayer,
   HeatMapLayer,
-  HexagonLayer
+  HexagonLayer,
+  GridLayer
 ];
 
 let VueAMap = {
