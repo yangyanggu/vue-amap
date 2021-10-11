@@ -65,6 +65,7 @@
   - [热力图](zh-cn/loca/heatmap-layer.md)
   - [蜂窝网格图](zh-cn/loca/hexagon-layer.md)
   - [网格图](zh-cn/loca/grid-layer.md)
+  - [贴地点图层](zh-cn/loca/scatter-layer.md)
 - 扩展
 
 - [FAQ](zh-cn/faq.md)
