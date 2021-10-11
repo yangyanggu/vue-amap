@@ -10,7 +10,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap ref="map" vid="amapDemo" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
+      <el-amap ref="map" map-style="amap://styles/62009be025f187dd3eafe327d2e55b8e" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
       </el-amap>
 
       <div class="toolbar">
