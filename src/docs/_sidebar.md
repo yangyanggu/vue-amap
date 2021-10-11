@@ -66,6 +66,7 @@
   - [蜂窝网格图](zh-cn/loca/hexagon-layer.md)
   - [网格图](zh-cn/loca/grid-layer.md)
   - [贴地点图层](zh-cn/loca/scatter-layer.md)
+  - [轨迹线图层](zh-cn/loca/pulse-line-layer.md)
 - 扩展
 
 - [FAQ](zh-cn/faq.md)
