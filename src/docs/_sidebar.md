@@ -62,6 +62,7 @@
   - [线图层](zh-cn/loca/line-layer.md)
   - [面图层](zh-cn/loca/polygon-layer.md)
   - [链接线图层](zh-cn/loca/link-layer.md)
+  - [热力图](zh-cn/loca/heatmap-layer.md)
 - 扩展
 
 - [FAQ](zh-cn/faq.md)
