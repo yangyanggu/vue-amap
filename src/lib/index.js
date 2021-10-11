@@ -66,6 +66,7 @@ import LineLayer from '@/components/loca/LineLayer';
 import PolygonLayer from '@/components/loca/PolygonLayer';
 import LinkLayer from '@/components/loca/LinkLayer';
 import HeatMapLayer from '@/components/loca/HeatMapLayer';
+import HexagonLayer from '@/components/loca/HexagonLayer';
 
 // managers
 import createCustomComponent from './adapter/custom-adapter';
@@ -121,7 +122,8 @@ let components = [
   LineLayer,
   PolygonLayer,
   LinkLayer,
-  HeatMapLayer
+  HeatMapLayer,
+  HexagonLayer
 ];
 
 let VueAMap = {
