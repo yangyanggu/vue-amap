@@ -71,6 +71,7 @@
 
 名称 | 类型 | 说明
 ---|---|---|
+initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
 
 ## 动态属性
 支持响应式。
@@ -105,3 +106,5 @@ $$getInstance() | Loca.LineLayer | 获取实例
 事件 | 参数 | 说明
 ---|---|---|
 init | Loca.LineLayer | 实例
+click | Feature | 当点击到标号时返回对应的feature，否则返回undefined
+mousemove | Feature | 当鼠标移动滑过标号时返回对应的feature，否则返回undefined

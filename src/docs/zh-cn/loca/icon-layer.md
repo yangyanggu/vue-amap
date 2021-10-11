@@ -11,7 +11,7 @@
     <div class="amap-page-container">
       <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo">
         <el-amap-loca>
-          <el-amap-loca-icon :visible="visible" :source-data="sourceData" :layer-style="layerStyle"></el-amap-loca-icon>
+          <el-amap-loca-icon :visible="visible" :source-data="sourceData" @click="clickIcon" :layer-style="layerStyle"></el-amap-loca-icon>
         </el-amap-loca>
       </el-amap>
       <div class="toolbar">
@@ -84,6 +84,9 @@
               "type": "FeatureCollection",
               "features": list,
           };
+        },
+        clickIcon(feature){
+          console.log('click: ', feature)
         }
       },
     };
@@ -97,6 +100,7 @@
 
 名称 | 类型 | 说明
 ---|---|---|
+initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
 
 ## 动态属性
 支持响应式。
@@ -132,3 +136,5 @@ $$getInstance() | Loca.IconLayer | 获取实例
 事件 | 参数 | 说明
 ---|---|---|
 init | Loca.IconLayer | 实例
+click | Feature | 当点击到标号时返回对应的feature，否则返回undefined
+mousemove | Feature | 当鼠标移动滑过标号时返回对应的feature，否则返回undefined

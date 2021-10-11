@@ -64,6 +64,7 @@ import IconLayer from '@/components/loca/IconLayer';
 import PrismLayer from '@/components/loca/PrismLayer';
 import LineLayer from '@/components/loca/LineLayer';
 import PolygonLayer from '@/components/loca/PolygonLayer';
+import LinkLayer from '@/components/loca/LinkLayer';
 
 // managers
 import createCustomComponent from './adapter/custom-adapter';
@@ -117,7 +118,8 @@ let components = [
   IconLayer,
   PrismLayer,
   LineLayer,
-  PolygonLayer
+  PolygonLayer,
+  LinkLayer
 ];
 
 let VueAMap = {

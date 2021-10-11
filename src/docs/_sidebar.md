@@ -61,6 +61,7 @@
   - [棱柱图层](zh-cn/loca/prism-layer.md)
   - [线图层](zh-cn/loca/line-layer.md)
   - [面图层](zh-cn/loca/polygon-layer.md)
+  - [链接线图层](zh-cn/loca/link-layer.md)
 - 扩展
 
 - [FAQ](zh-cn/faq.md)

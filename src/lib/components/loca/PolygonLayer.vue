@@ -39,6 +39,7 @@ export default {
         this.$amapComponent.setStyle(this.layerStyle);
       }
       this.$parentComponent.add(this.$amapComponent);
+      this.initComplete();
     }
   }
 };

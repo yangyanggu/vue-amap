@@ -46,6 +46,9 @@ export default {
     },
     destroyComponent() {
       this.$amapComponent.destroy();
+    },
+    getMap() {
+      return this.$parentComponent;
     }
   }
 };

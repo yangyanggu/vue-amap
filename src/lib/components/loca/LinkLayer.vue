@@ -5,7 +5,7 @@ import registerMixin from '@/mixins/register-component';
 import locaMixin from '@/mixins/loca-component';
 
 export default {
-  name: 'el-amap-loca-line',
+  name: 'el-amap-loca-link',
   mixins: [registerMixin, locaMixin],
   props: {
   },
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new Loca.LineLayer(options);
+      this.$amapComponent = new Loca.LinkLayer(options);
       this.setSource();
       if (this.layerStyle) {
         this.$amapComponent.setStyle(this.layerStyle);

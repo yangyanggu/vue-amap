@@ -14,6 +14,10 @@ export default {
     },
     opacity: {
       type: Number
+    },
+    initEvents: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -52,7 +56,13 @@ export default {
       }
       this.$amapComponent.setSource(this.source);
     },
+    initComplete() {
+      if (this.initEvents) {
+        this.bindEvents();
+      }
+    },
     destroyComponent() {
+      this.unBindEvents();
       this.$parentComponent.remove(this.$amapComponent);
       if (this.source) {
         this.source.destroy();
@@ -60,6 +70,24 @@ export default {
       }
       this.$amapComponent.destroy();
       this.$amapComponent = null;
+    },
+    bindEvents() {
+      let map = this.$parent.getMap();
+      map.on('click', this.clickMap);
+      map.on('mousemove', this.mouseMoveMap);
+    },
+    clickMap(e) {
+      let feature = this.$amapComponent.queryFeature(e.pixel.toArray());
+      this.$emit('click', feature);
+    },
+    mouseMoveMap(e) {
+      let feature = this.$amapComponent.queryFeature(e.pixel.toArray());
+      this.$emit('mousemove', feature);
+    },
+    unBindEvents() {
+      let map = this.$parent.getMap();
+      map.off('click', this.clickMap);
+      map.off('mousemove', this.mouseMoveMap);
     }
   }
 };

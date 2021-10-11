@@ -1,6 +1,5 @@
-# 圆点图层 (Loca.PointLayer)
-圆点图层，拥有描边的原点，可以支持边缘模糊特效。<br/>
-支持对每个圆点的半径、颜色、描边信息单独设置。
+# 链接线图层 (Loca.LinkLayer)
+链接线图层
 
 ## 基础示例
 
@@ -10,9 +9,9 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo">
+      <el-amap :zoom="zoom" :center="center":pitch="pitch" view-mode="3D" :show-label="false" class="amap-demo">
         <el-amap-loca>
-          <el-amap-loca-point :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-point>
+          <el-amap-loca-link :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-link>
         </el-amap-loca>
       </el-amap>
       <div class="toolbar">
@@ -28,37 +27,25 @@
   </style>
 
   <script>
-    var colors = [
-        'rgba(254,255,198,0.95)',
-        'rgba(255,238,149,0.95)',
-        'rgba(255,217,99,0.95)',
-        'rgba(255,175,43,0.95)',
-        'rgba(255,135,24,0.95)',
-        'rgba(234,10,0,0.95)',
-        'rgba(195,0,0,0.95)',
-        'rgba(139,0,0,0.95)',
-    ];
+    var colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
     module.exports = {
       name: 'amap-page',
       data() {
         return {
-          zoom: 4.8,
-          center: [105.601, 35.32],
+          zoom: 8,
+          center: [116.335036, 39.900082],
+          pitch: 55,
           visible: true,
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/gdp.json',
+          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/bj_bus.json',
           layerStyle: {
-            unit: 'meter',
-            radius: (index, f) => {
-                var n = f.properties['人口'];
-                return n * 100;
-            },
-            color: (index, f) => {
-                var n = Math.min(7, ~~(f.properties['人均GDP'] / 10000));
-                return colors[n];
-            },
-            borderWidth: 0,
-            blurRadius: -1,
-        }
+              lineColors : colors,
+              height : (index, prop) => {
+                  var i = index % colors.length;
+                  return i * 200 + 40;
+              },
+              smoothSteps : 100,
+              // dashArray: [10, 5, 10, 0],
+          }
         };
       },
       methods: {
@@ -77,7 +64,6 @@
 
 名称 | 类型 | 说明
 ---|---|---|
-blend | String | 图层里面元素的叠加效果，normal：正常透明度叠加，lighter：叠加后可能更加明亮
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
 
 ## 动态属性
@@ -96,24 +82,21 @@ opacity | Number | 图层整体透明度，默认 1
 ### layerStyle参数
 名称 | 类型 | 说明
 ---|---|---|
-radius | Number, Function | 半径（默认单位: px）。支持动画过渡效果。 default 20
-color | String, Function | 填充色，支持回调设置不同的颜色（Hex颜色） default  '#fff'
-unit | String | 点的单位，会影响半径和边宽度。可选值：px：像素，meter：地理单位米  default 'px'
-borderWidth | Number, Function | 边框宽度（默认单位:px） default 10
-borderColor | String, Function | 边框填充色，支持回调设置不同的颜色 default  '#fff'
-blurWidth | Number, Function | 模糊半径，从哪个位置开始向边缘模糊。负数代表不进行模糊。 default -1
+lineColors | Array, Function | 链接线颜色。 类型为Array时，可设置颜色渐变，color[0]为起始色，color[color.lenth-1]为终止色，中间为过渡色； 类型为Function时，返回每根线的颜色。参数为(index,item)，item为一个对象{link,distance}，link为该条线的初始信息。返回结果为Array(渐变)。
+height  | Number, Function | 高度，单位为米，代表弧顶的最高高度。 类型为Function时，返回每根线的高度。参数为(index,item)，item中有distance属性，代表两点间的距离（米），可以用该属性处理高度。
+smoothSteps | Number, Function | 平滑步数，代表弧线的分隔段数，越大平滑度越好，默认为100。
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
 
 函数 | 返回 | 说明
 ---|---|---|
-$$getInstance() | Loca.PointLayer | 获取实例
+$$getInstance() | Loca.LinkLayer | 获取实例
 
 ## 事件
 
 事件 | 参数 | 说明
 ---|---|---|
-init | Loca.PointLayer | 实例
+init | Loca.LinkLayer | 实例
 click | Feature | 当点击到标号时返回对应的feature，否则返回undefined
 mousemove | Feature | 当鼠标移动滑过标号时返回对应的feature，否则返回undefined
