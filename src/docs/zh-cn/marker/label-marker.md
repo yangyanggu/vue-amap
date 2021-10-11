@@ -10,7 +10,9 @@
   <template>
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-label-marker :visible="labelOptions.visible" :position="labelOptions.position" :text="labelOptions.text" :icon="labelOptions.icon" @click="clickMarker"></el-amap-label-marker>
+        <el-amap-layer-labels>
+          <el-amap-label-marker :visible="labelOptions.visible" :position="labelOptions.position" :text="labelOptions.text" :icon="labelOptions.icon" @click="clickMarker"></el-amap-label-marker>
+        </el-amap-layer-labels>
       </el-amap>
       <div class="toolbar">
         <button type="button" name="button" @click="toggleVisible">{{labelOptions.visible ? '隐藏标注' : '显示标注'}}</button>
@@ -36,7 +38,7 @@
             visible: true,
             position: [121.5495395, 31.21515044],
             text: {
-              content: '测试slot',
+              content: '测试content',
               direction: 'right',
               style: {
                   fontSize: 15,
