@@ -10,15 +10,16 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
   <template>
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center"  :show-label="false" :zooms="[2, 30]" :show-building-block="false" view-mode="3D" :pitch="55" @init="initMap" class="amap-demo">
-        <el-amap-layer-three :lights="lights" :hdr="hdrOptions">
-          <el-amap-three-gltf :visible="visible" url="./assets/gltf/car4.gltf" :position="position" :scale="20" :rotation="{x:90, y:0, z:0}" @click="()=>{click(position)}" @mouseover="mouseover" @mouseout="mouseout"></el-amap-three-gltf>
-          <el-amap-three-gltf url="./assets/gltf/sgyj_point_animation.gltf" :position="[116.305206, 39.975468]" :scale="10" :rotation="{x:90, y:0, z:0}" @init="init"></el-amap-three-gltf>
+        <el-amap-layer-three :lights="lights" :hdr="hdrOptions" :zooms="[2, 30]">
+          <el-amap-three-gltf :visible="visible" url="./assets/gltf/car4.gltf" :position="position" :scale="20" :angle="angle" :rotation="rotation" @click="()=>{click(position)}" @mouseover="mouseover" @mouseout="mouseout"></el-amap-three-gltf>
+          <el-amap-three-gltf url="./assets/gltf/sgyj_point_animation.gltf" :position="[116.305206, 39.975468]" :scale="10" :rotation="rotation" @init="init"></el-amap-three-gltf>
         </el-amap-layer-three>
       </el-amap>
       <div class="toolbar">
         <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
         <button type="button" name="button" @click="moveCar">移动车辆</button>
         <button type="button" name="button" @click="stopCar">停止移动</button>
+        <button type="button" name="button" @click="changeAngle">旋转车辆角度</button>
       </div>
     </div>
   </template>
@@ -38,6 +39,8 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
           center: [116.306206, 39.975468],
           visible: true,
           position: [116.306206, 39.975468],
+          angle: 90,
+          rotation: {x:90, y:0, z:0},
           timer: null,
           lights: [
             {
@@ -70,7 +73,7 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
         },
         moveCar(){
           let position = this.position;
-          this.position = [position[0]+0.000001, position[1]];
+          this.position = [position[0], position[1]+0.000001];
           this.timer = setTimeout(() => {
             this.moveCar();
           }, 300)
@@ -83,6 +86,9 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
         mouseout(e){console.log('mouseout: ', e)},
         init(object, $vue){
           $vue.$$startAnimations();
+        },
+        changeAngle(){
+          this.angle += 10;
         }
       }
     };
@@ -107,6 +113,7 @@ scale | Number | 缩放大小
 position | Array | 车辆位置经纬度
 visible | Boolean | 是否显示，默认 true
 rotation | Object | 旋转角度,通过该参数调整模型方向
+angle | Number | 模型绕Y轴旋转角度，该参数主要用于车辆模型的位置调整
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

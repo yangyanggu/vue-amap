@@ -90,6 +90,8 @@ ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含l
 ---|---|---|
 lights  | Array | 配置灯光数据，具体参数见下面
 hdr | Object | HDR功能配置，具体参数见下面
+alpha | Boolean | canvas是否包含alpha (透明度)。默认为 false
+antialias | Boolean | 是否执行抗锯齿。默认为false
 
 ## 动态属性
 支持响应式。

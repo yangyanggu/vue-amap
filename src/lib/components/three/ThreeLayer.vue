@@ -55,7 +55,15 @@ export default {
     }, // 支持的缩放级别范围，默认范围 [2, 20]
     opacity: {
       type: Number
-    } // 透明度，默认 1
+    }, // 透明度，默认 1
+    alpha: {
+      type: Boolean,
+      default: false
+    }, // canvas是否包含alpha (透明度)。默认为 false
+    antialias: {
+      type: Boolean,
+      default: false
+    }// 是否执行抗锯齿。默认为false
   },
   data() {
     return {
@@ -79,9 +87,9 @@ export default {
         }
 
         let renderer = new WebGLRenderer({
-          context: gl// 地图的 gl 上下文
-          // alpha: true,
-          // antialias: true,
+          context: gl, // 地图的 gl 上下文
+          alpha: options.alpha,
+          antialias: options.antialias
           // canvas: gl.canvas,
         });
 
@@ -125,13 +133,6 @@ export default {
           camera.position.set(...position);
           camera.updateProjectionMatrix();
         }
-        // 2D 地图使用的正交相机参数赋值
-        // camera.top = top;
-        // camera.bottom = bottom;
-        // camera.left = left;
-        // camera.right = right;
-        // camera.position.set(...position);
-        // camera.updateProjectionMatrix();
 
         _this.renderer.render(_this.scene, camera);
       };
@@ -143,6 +144,7 @@ export default {
       cancelAnimationFrame(this.frameTimer);
       this.$amapComponent.setMap(null);
       this.customCoords = null;
+      this.scene.dispose();
       this.scene = null;
       this.camera = null;
       this.renderer.dispose();

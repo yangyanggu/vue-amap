@@ -20,6 +20,9 @@ export default {
     scale: {
       type: Number,
       default: 1
+    },
+    angle: {
+      type: Number
     }
   },
   data() {
@@ -29,10 +32,14 @@ export default {
         position() {
           _this.setPosition();
         },
-        visible(flag) {
-          console.log('visible: ', flag);
-          this.visible = flag;
-          _this._refresh();
+        visible() {
+          _this.setVisible();
+        },
+        rotation() {
+          _this.setRotation();
+        },
+        angle() {
+          _this.setAngle();
         }
       }
     };
@@ -49,17 +56,14 @@ export default {
           let animations = gltf.animations;
           let scale = this.scale;
           object.position.set(position[0], position[1], 0);
-          object.scale.set(scale, scale, scale);
-          if (this.visible !== undefined) {
-            object.visible = this.visible;
-          }
           this.$parent.addEnvMap(object);
           this.$parent.addObject(object);
           this.$amapComponent = object;
           this.animations = animations;
+          object.scale.set(scale, scale, scale);
           this.setRotation();
-          object.on = function() {};
-          object.off = function() {};
+          this.setAngle();
+          this.setVisible();
           this._refresh();
           resolve();
         });
@@ -85,6 +89,23 @@ export default {
         this.$amapComponent.rotation.set(x, y, z);
         this._refresh();
       }
+    },
+    setAngle() {
+      if (this.angle !== undefined) {
+        let x = this.$amapComponent.rotation.x;
+        let z = this.$amapComponent.rotation.z;
+        let y = Math.PI / 180 * this.angle;
+        this.$amapComponent.rotation.set(x, y, z);
+        this._refresh();
+      }
+    },
+    setVisible() {
+      if (this.visible === false) {
+        this.$amapComponent.visible = false;
+      } else {
+        this.$amapComponent.visible = true;
+      }
+      this._refresh();
     },
     _refresh() {
       this.$parentComponent.needsUpdate = true;
