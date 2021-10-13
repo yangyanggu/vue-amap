@@ -2,7 +2,8 @@
 <script>
 import registerMixin from '../../mixins/register-component';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
-import {AnimationMixer, Clock} from 'three';
+import {AnimationMixer, Clock, Object3D} from 'three';
+import {clearGroup} from '@/utils/threeUtil';
 
 export default {
   name: 'el-amap-three-gltf',
@@ -50,7 +51,7 @@ export default {
         let position = this.$parent.convertLngLat(options.position);
         let loader = new GLTFLoader(); // 读取模型
         loader.load(options.url, (gltf) => {
-          let object = gltf.scene.clone(true);
+          let object = gltf.scene;
           object.isCustomGroup = true;
           object.$vue = this;
           let animations = gltf.animations;
@@ -70,10 +71,15 @@ export default {
       });
     },
     destroyComponent() {
-      cancelAnimationFrame(this.linerAnimationFrame);
-      this.$amapComponent.$vue = null;
+      if (this.linerAnimationFrame) {
+        cancelAnimationFrame(this.linerAnimationFrame);
+      }
       this.$parent.removeObject(this.$amapComponent);
-      this.$amapComponent = null;
+      if (this.$amapComponent) {
+        this.$amapComponent.$vue = null;
+        clearGroup(this.$amapComponent);
+        this.$amapComponent = null;
+      }
     },
     setPosition() {
       let position = this.$parent.convertLngLat(this.position);

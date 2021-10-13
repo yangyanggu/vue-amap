@@ -327,6 +327,11 @@
   resolved "https://registry.nlark.com/@sinonjs/text-encoding/download/@sinonjs/text-encoding-0.7.1.tgz"
   integrity sha1-jaXGUwkVZT86Hzj9XxAdjD+AecU=
 
+"@tweenjs/tween.js@^18.6.4":
+  version "18.6.4"
+  resolved "https://registry.nlark.com/@tweenjs/tween.js/download/@tweenjs/tween.js-18.6.4.tgz#40a3d0a93647124872dec8e0fd1bd5926695b6ca"
+  integrity sha1-QKPQqTZHEkhy3sjg/RvVkmaVtso=
+
 "@types/eslint@^7.2.6":
   version "7.28.0"
   resolved "https://registry.nlark.com/@types/eslint/download/@types/eslint-7.28.0.tgz"

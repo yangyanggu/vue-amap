@@ -11,7 +11,7 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center"  :show-label="false" :zooms="[2, 30]" :show-building-block="false" view-mode="3D" :pitch="55" @init="initMap" class="amap-demo">
         <el-amap-layer-three :lights="lights" :hdr="hdrOptions" :zooms="[2, 30]">
-          <el-amap-three-gltf :visible="visible" url="./assets/gltf/car4.gltf" :position="position" :scale="20" :angle="angle" :rotation="rotation" @click="()=>{click(position)}" @mouseover="mouseover" @mouseout="mouseout"></el-amap-three-gltf>
+          <el-amap-three-gltf v-if="position" :visible="visible" url="./assets/gltf/car4.gltf" :position="position" :scale="20" :angle="angle" :rotation="rotation" @click="()=>{click(position)}" @mouseover="mouseover" @mouseout="mouseout" @init="initCar"></el-amap-three-gltf>
           <el-amap-three-gltf url="./assets/gltf/sgyj_point_animation.gltf" :position="[116.305206, 39.975468]" :scale="10" :rotation="rotation" @init="init"></el-amap-three-gltf>
         </el-amap-layer-three>
       </el-amap>
@@ -20,6 +20,7 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
         <button type="button" name="button" @click="moveCar">移动车辆</button>
         <button type="button" name="button" @click="stopCar">停止移动</button>
         <button type="button" name="button" @click="changeAngle">旋转车辆角度</button>
+        <button type="button" name="button" @click="disposeCar">{{position ? '销毁车辆' : '生成车辆'}}</button>
       </div>
     </div>
   </template>
@@ -71,6 +72,9 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
         },
         initMap(map){
         },
+        initCar(car){
+          console.log('car: ', car);
+        },
         moveCar(){
           let position = this.position;
           this.position = [position[0], position[1]+0.000001];
@@ -80,6 +84,13 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
         },
         stopCar(){
           clearTimeout(this.timer);
+        },
+        disposeCar(){
+          if(this.position){
+            this.position = null;
+          }else{
+            this.position = [116.306206, 39.975468];
+          }
         },
         click(e){console.log('click: ', e)},
         mouseover(e){console.log('mouseover: ', e)},

@@ -18,11 +18,13 @@ import {OrthographicCamera,
   UnsignedByteType,
   LinearFilter,
   Raycaster,
-  Vector2
+  Vector2,
+  Cache
 } from 'three';
 import CONST from '@/utils/constant';
 import {merge} from 'lodash-es';
 import {HDRCubeTextureLoader} from 'three/examples/jsm/loaders/HDRCubeTextureLoader';
+import {clearScene} from '@/utils/threeUtil';
 
 const lightTypes = {
   AmbientLight: AmbientLight, // 环境光  环境光会均匀的照亮场景中的所有物体
@@ -140,16 +142,24 @@ export default {
       this.$amapComponent.setMap(this.$parentComponent);
     },
     destroyComponent() {
+      this._unBindEvents();
+      this.customCoords = null;
       this.$parentComponent = null;
       cancelAnimationFrame(this.frameTimer);
       this.$amapComponent.setMap(null);
+      if (this.$amapComponent.envMap) {
+        this.$amapComponent.envMap.dispose();
+        this.$amapComponent.envMap = null;
+      }
       this.customCoords = null;
+      clearScene(this.scene);
       this.scene.dispose();
       this.scene = null;
       this.camera = null;
       this.renderer.dispose();
       this.renderer = null;
       this.$amapComponent = null;
+      Cache.clear();
     },
     convertLngLat(lnglat) {
       let data = this.customCoords.lngLatsToCoords([
@@ -257,8 +267,8 @@ export default {
       this.$parentComponent.on('mousemove', this._hoverEvent);
     },
     _unBindEvents() {
-      this.$amapComponent.off('click', this._clickEvent);
-      this.$amapComponent.off('mousemove', this._hoverEvent);
+      this.$parentComponent.off('click', this._clickEvent);
+      this.$parentComponent.off('mousemove', this._hoverEvent);
     },
     _clickEvent(e) {
       let group = this._intersectGltf(e);
