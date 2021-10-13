@@ -2,7 +2,7 @@
 <script>
 import registerMixin from '../../mixins/register-component';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
-import {AnimationMixer, Clock, Object3D} from 'three';
+import {AnimationMixer, Clock} from 'three';
 import {clearGroup} from '@/utils/threeUtil';
 
 export default {
