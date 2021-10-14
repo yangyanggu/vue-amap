@@ -164,5 +164,5 @@ $$getInstance() | Loca.PrismLayer | 获取实例
 事件 | 参数 | 说明
 ---|---|---|
 init | Loca.PrismLayer | 实例
-click | Feature | 当点击到标号时返回对应的feature，否则返回undefined
-mousemove | Feature | 当鼠标移动滑过标号时返回对应的feature，否则返回undefined
+click | Feature, event | 当点击到标号时返回对应的feature，否则返回undefined
+mousemove | Feature, event | 当鼠标移动滑过标号时返回对应的feature，否则返回undefined

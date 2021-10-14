@@ -78,11 +78,11 @@ export default {
     },
     clickMap(e) {
       let feature = this.$amapComponent.queryFeature(e.pixel.toArray());
-      this.$emit('click', feature);
+      this.$emit('click', feature, e);
     },
     mouseMoveMap(e) {
       let feature = this.$amapComponent.queryFeature(e.pixel.toArray());
-      this.$emit('mousemove', feature);
+      this.$emit('mousemove', feature, e);
     },
     unBindEvents() {
       let map = this.$parent.getMap();
