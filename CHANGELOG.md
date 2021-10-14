@@ -1,3 +1,6 @@
+###v0.0.7
+* 重命名text的style属性为textStyle
+
 ###v0.0.6
 * 完善threeJS对象销毁时内存处理
 * loca的Layer事件增加event开放

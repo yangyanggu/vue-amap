@@ -10,7 +10,7 @@
   <template>
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-text :position="componentText.position" :visible="componentText.visible" :text="componentText.text" :draggable="componentText.draggable" @init="initText" @click="clickText">
+        <el-amap-text :position="componentText.position" :text-style="{color: 'red'}" :visible="componentText.visible" :text="componentText.text" :draggable="componentText.draggable" @init="initText" @click="clickText">
         </el-amap-text>
         <el-amap-text v-for="(marker, index) in texts" :key="index" :position="marker.position" :text="marker.text" @click="(e) => {clickArrayMarker(marker, e)}"></el-amap-text>
       </el-amap>
@@ -116,7 +116,7 @@ cursor | String | 指定鼠标悬停时的鼠，默认值：'pointer'
 angle | Number | 点标记的旋转角度，，广泛用于改变车辆行驶方向。默认值：0
 title | String | 鼠标滑过点标记时的文字提示。不设置则鼠标滑过点标无文字提示。
 clickable | Boolean | 点标记是否可点击，默认值: true
-style | Object | 设置文本样式，Object同css样式表，如:{'background-color':'red'}
+textStyle | Object | 设置文本样式，Object同css样式表，如:{'background-color':'red'}
 extData | any | 用户自定义属 ，支持JavaScript API任意数据类型，如 Marker的id等。可将自定义数据保存在该属性上，方便后续操作使用。
 
 ## ref 可用方法

@@ -42,13 +42,16 @@ export default {
     topWhenClick: {
       type: Boolean
     }, // 鼠标点击时marker是否置顶，默认false ，不置顶
-    style: {
+    textStyle: {
       type: Object
     }, // 设置文本样式，Object同css样式表，如:{'background-color':'red'}
     extData: null
   },
   data() {
     return {
+      propsRedirect: {
+        textStyle: 'style'
+      },
       converters: {
       },
       handlers: {
