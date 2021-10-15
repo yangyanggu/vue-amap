@@ -35,11 +35,44 @@ export default {
     __initComponent(options) {
       this.$amapComponent = new Loca.HexagonLayer(options);
       this.setSource();
-      if (this.layerStyle) {
-        this.$amapComponent.setStyle(this.layerStyle);
-      }
+      this.setStyle();
       this.$parentComponent.add(this.$amapComponent);
       this.initComplete();
+    },
+    setStyle() {
+      let defaultStyleValue = {
+        topColor: '#fff',
+        sideTopColor: '#fff',
+        sideBottomColor: '#fff',
+        altitude: 0,
+        height: 0,
+        radius: 1000,
+        gap: 0,
+        unit: 'meter'
+      };
+      let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
+      let defaultLayerStyle = {
+        topColor: (index, feature) => {
+          return feature.properties.topColor === undefined ? style.topColor : feature.properties.topColor;
+        },
+        sideTopColor: (index, feature) => {
+          return feature.properties.sideTopColor === undefined ? style.sideTopColor : feature.properties.sideTopColor;
+        },
+        sideBottomColor: (index, feature) => {
+          return feature.properties.sideBottomColor === undefined ? style.sideBottomColor : feature.properties.sideBottomColor;
+        },
+        altitude: (index, feature) => {
+          return feature.properties.altitude === undefined ? style.altitude : feature.properties.altitude;
+        },
+        height: (index, feature) => {
+          return feature.properties.height === undefined ? style.height : feature.properties.height;
+        },
+        radius: style.radius,
+        gap: style.gap,
+        unit: style.unit
+      };
+      let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);
+      this.$amapComponent.setStyle(layerStyle);
     }
   }
 };

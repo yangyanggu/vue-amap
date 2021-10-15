@@ -9,6 +9,12 @@ export default {
     layerStyle: {
       type: Object
     },
+    defaultStyleValue: {
+      type: Object,
+      default() {
+        return {};
+      }
+    },
     zooms: {
       type: Array
     },
@@ -25,13 +31,23 @@ export default {
     return {
       handlers: {
         layerStyle(style) {
-          this.setStyle(style);
+          _this.$nextTick(() => {
+            if (_this.setStyle) {
+              _this.setStyle();
+            } else {
+              this.setStyle(style);
+            }
+          });
         },
         sourceUrl() {
-          _this.setSource();
+          _this.$nextTick(() => {
+            _this.setSource();
+          });
         },
         sourceData() {
-          _this.setSource();
+          _this.$nextTick(() => {
+            _this.setSource();
+          });
         }
       }
     };

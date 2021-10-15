@@ -99,6 +99,7 @@
 ---|---|---|
 depth | Boolean | 是否开启深度检测，开启后可能会影响zIndex  default true
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
+defaultStyle | Object | 默认样式，可以查看下面属性说明
 
 ## 动态属性
 支持响应式。
@@ -113,7 +114,7 @@ layerStyle | Object | 图层样式
 zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 
-### layerStyle参数
+### layerStyle参数(覆盖所有默认值)
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number, Function | 半径（默认单位: px）。支持动画过渡效果。 default 20
@@ -125,6 +126,92 @@ heightBezier | Array | 热力的最低点到最高点的变化曲线。default [
 max | Number | 热力值的最大值，默认为数据中的最高值，也可以自定义设置，会控制热力的最热区域的显示效果。default null
 min | Number | 热力值的最小值，默认为数据中的最小值，也可以自定义设置，会控制热力的最冷区域的显示效果。default null
 unit | String | 热力的单位，可选值：px：像素，meter：地理单位米  default 'px'
+
+### defaultStyle参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+名称 | 类型 | 说明
+---|---|---|
+radius | Number | 半径（默认单位: px）。支持动画过渡效果。 default 20
+value | Number | 每个热力点的值，会影响最终的聚合结果，值越高代表越热。
+gradient  | Object | 热力的颜色梯度，值是对象映射的形式。default {0.5:'blue',0.65:'rgb(117,211,248)',0.7:'rgb(0, 255, 0)',0.9:'#ffea00',1.0:'red'}
+opacity | Array[Number,Number] | 热力颜色的透明度区间，热力颜色的透明度过渡将在此区间取值，可以用来调节热力图的透明度效果。default [0,1]
+height  | Number | 热力最高点的高度值，单位取决于 unit 字段。支持动画过渡效果。default 100
+heightBezier | Array | 热力的最低点到最高点的变化曲线。default [0.4,0.2,0.4,0.8]
+max | Number | 热力值的最大值，默认为数据中的最高值，也可以自定义设置，会控制热力的最热区域的显示效果。default null
+min | Number | 热力值的最小值，默认为数据中的最小值，也可以自定义设置，会控制热力的最冷区域的显示效果。default null
+unit | String | 热力的单位，可选值：px：像素，meter：地理单位米  default 'px'
+
+
+
+### style说明
+所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyle配置的值，最后会使用组件内默认设置的值。<br/>
+该默认处理可以被layerStyle中的设置给覆盖。目前默认设置已基本符合日常使用，如果需要在选中目标时做高亮处理，则推荐根据示例使用事件监听然后动态修改layerStyle来实现。<br/>
+style数据有可以有三个来源，优先级按顺序处理，第一个最高<br/>
+##### 1、layerStyle属性配置
+```javascript
+{
+  radius: 20,
+  unit: 'px',
+  height: 90,
+  // radius: 10,
+  // unit: 'px',
+  // height: 10,
+  gradient: {
+    0.1: 'rgba(50,48,118,1)',
+    0.2: 'rgba(127,60,255,1)',
+    0.4: 'rgba(166,53,219,1)',
+    0.6: 'rgba(254,64,95,1)',
+    0.8: 'rgba(255,98,4,1)',
+    1: 'rgba(236,220,79,1)',
+  },
+  value: function (index, feature) {
+    return feature.properties.count;
+  },
+  min: 0,
+    max: 10,  //4.6
+    heightBezier: [0, .53, .37, .98],
+}
+```
+
+##### 2、geojson的properties属性
+```json
+{
+  "type": "FeatureCollection",
+  "name": "Polygon",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    { 
+      "type": "Feature", 
+      "properties": {
+        "radius": 50,
+        "height": 100
+      }, 
+      "geometry": { 
+        "type": "MultiPolygon", 
+        "coordinates": [ [ [ [ 119.958676782427744, 32.121127961388339, 9.900800000003301 ], [ 119.958672295405933, 32.121125856630357, 9.900800000003301 ], [ 119.958649511242555, 32.121161034502613, 9.866549999998824 ], [ 119.958649466189797, 32.121161104062303, 9.900800000003301 ], [ 119.958653953212774, 32.121163208821088, 9.900800000003301 ], [ 119.958653991614412, 32.121163149530432, 9.866750000001275 ], [ 119.958676782427744, 32.121127961388339, 9.900800000003301 ] ] ] ]
+      }
+    }
+  ]
+}
+```
+##### 3、defaultStyle属性配置
+```javascript
+{
+  radius: 20,
+  value: 10,
+  gradient: {0.5: 'blue', 0.65: 'rgb(117,211,248)', 0.7: 'rgb(0, 255, 0)', 0.9: '#ffea00', 1.0: 'red'},
+  opacity: [0, 1],
+  height: 100,
+  heightBezier: [0.4, 0.2, 0.4, 0.8],
+  max: null,
+  min: null,
+  unit: 'px'
+}
+```
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

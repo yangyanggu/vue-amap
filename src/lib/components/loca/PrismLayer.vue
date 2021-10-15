@@ -35,11 +35,46 @@ export default {
     __initComponent(options) {
       this.$amapComponent = new Loca.PrismLayer(options);
       this.setSource();
-      if (this.layerStyle) {
-        this.$amapComponent.setStyle(this.layerStyle);
-      }
+      this.setStyle();
       this.$parentComponent.add(this.$amapComponent);
       this.initComplete();
+    },
+    setStyle() {
+      let defaultStyleValue = {
+        radius: 20,
+        unit: 'px',
+        sideNumber: 3,
+        rotation: 0,
+        altitude: 0,
+        height: 100,
+        topColor: '#fff',
+        sideTopColor: '#fff',
+        sideBottomColor: '#fff'
+      };
+      let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
+      let defaultLayerStyle = {
+        radius: style.radius,
+        unit: style.unit,
+        sideNumber: style.sideNumber,
+        rotation: (index, feature) => {
+          return feature.properties.rotation === undefined ? style.rotation : feature.properties.rotation;
+        },
+        altitude: style.altitude,
+        height: (index, feature) => {
+          return feature.properties.height === undefined ? style.height : feature.properties.height;
+        },
+        topColor: (index, feature) => {
+          return feature.properties.topColor === undefined ? style.topColor : feature.properties.topColor;
+        },
+        sideTopColor: (index, feature) => {
+          return feature.properties.sideTopColor === undefined ? style.sideTopColor : feature.properties.sideTopColor;
+        },
+        sideBottomColor: (index, feature) => {
+          return feature.properties.sideBottomColor === undefined ? style.sideBottomColor : feature.properties.sideBottomColor;
+        }
+      };
+      let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);
+      this.$amapComponent.setStyle(layerStyle);
     }
   }
 };

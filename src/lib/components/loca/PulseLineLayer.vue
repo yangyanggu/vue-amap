@@ -23,11 +23,36 @@ export default {
     __initComponent(options) {
       this.$amapComponent = new Loca.PulseLineLayer(options);
       this.setSource();
-      if (this.layerStyle) {
-        this.$amapComponent.setStyle(this.layerStyle);
-      }
+      this.setStyle();
       this.$parentComponent.add(this.$amapComponent);
       this.initComplete();
+    },
+    setStyle() {
+      let defaultStyleValue = {
+        lineWidth: 1,
+        headColor: 'rgba(0, 0, 0, 0.75)',
+        trailColor: 'rgba(0, 0, 0, 0.25)',
+        altitude: 0,
+        interval: 1,
+        duration: 2000
+      };
+      let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
+      let defaultLayerStyle = {
+        lineWidth: (index, feature) => {
+          return feature.properties.lineWidth === undefined ? style.lineWidth : feature.properties.lineWidth;
+        },
+        headColor: (index, feature) => {
+          return feature.properties.headColor === undefined ? style.headColor : feature.properties.headColor;
+        },
+        trailColor: (index, feature) => {
+          return feature.properties.trailColor === undefined ? style.trailColor : feature.properties.trailColor;
+        },
+        altitude: style.altitude,
+        interval: style.interval,
+        duration: style.duration
+      };
+      let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);
+      this.$amapComponent.setStyle(layerStyle);
     }
   }
 };

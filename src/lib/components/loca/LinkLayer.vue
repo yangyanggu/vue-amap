@@ -20,11 +20,30 @@ export default {
     __initComponent(options) {
       this.$amapComponent = new Loca.LinkLayer(options);
       this.setSource();
-      if (this.layerStyle) {
-        this.$amapComponent.setStyle(this.layerStyle);
-      }
+      this.setStyle();
       this.$parentComponent.add(this.$amapComponent);
       this.initComplete();
+    },
+    setStyle() {
+      let defaultStyleValue = {
+        lineColors: ['rgba(255,255,255,1)', 'rgba(255,255,255,0)'],
+        height: 100,
+        smoothSteps: 100
+      };
+      let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
+      let defaultLayerStyle = {
+        lineColors: (index, feature) => {
+          return feature.properties.lineColors === undefined ? style.lineColors : feature.properties.lineColors;
+        },
+        height: (index, feature) => {
+          return feature.properties.height === undefined ? style.height : feature.properties.height;
+        },
+        smoothSteps: (index, feature) => {
+          return feature.properties.smoothSteps === undefined ? style.smoothSteps : feature.properties.smoothSteps;
+        }
+      };
+      let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);
+      this.$amapComponent.setStyle(layerStyle);
     }
   }
 };

@@ -23,11 +23,40 @@ export default {
     __initComponent(options) {
       this.$amapComponent = new Loca.PointLayer(options);
       this.setSource();
-      if (this.layerStyle) {
-        this.$amapComponent.setStyle(this.layerStyle);
-      }
+      this.setStyle();
       this.$parentComponent.add(this.$amapComponent);
       this.initComplete();
+    },
+    setStyle() {
+      let defaultStyleValue = {
+        radius: 20,
+        color: '#fff',
+        unit: 'px',
+        borderWidth: 10,
+        borderColor: '#fff',
+        blurWidth: -1
+      };
+      let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
+      let defaultLayerStyle = {
+        radius: (index, feature) => {
+          return feature.properties.radius === undefined ? style.radius : feature.properties.radius;
+        },
+        color: (index, feature) => {
+          return feature.properties.color === undefined ? style.color : feature.properties.color;
+        },
+        unit: style.unit,
+        borderWidth: (index, feature) => {
+          return feature.properties.borderWidth === undefined ? style.borderWidth : feature.properties.borderWidth;
+        },
+        borderColor: (index, feature) => {
+          return feature.properties.borderColor === undefined ? style.borderColor : feature.properties.borderColor;
+        },
+        blurWidth: (index, feature) => {
+          return feature.properties.blurWidth === undefined ? style.blurWidth : feature.properties.blurWidth;
+        }
+      };
+      let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);
+      this.$amapComponent.setStyle(layerStyle);
     }
   }
 };

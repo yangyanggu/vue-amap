@@ -125,6 +125,7 @@ shininess | Number | 立体网格的粗糙度，值越高，说明表面越粗�
 hasSide | Boolean | 当面有厚度的时候，有没有侧面和底面 default true
 depth | Boolean | 是否开启深度检测，开启后可能会影响zIndex  default true
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
+defaultStyle | Object | 默认样式，可以查看下面属性说明
 
 ## 动态属性
 支持响应式。
@@ -139,7 +140,7 @@ layerStyle | Object | 图层样式
 zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 
-### layerStyle参数
+### layerStyle参数(覆盖所有默认值)
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number, Function | 半径（默认单位: px）。支持动画过渡效果。 default 20
@@ -151,6 +152,107 @@ height  | Number, Function | 棱柱的高度。单位是 unit 的值。支持动
 topColor | String, Function | 棱柱的顶面颜色值。default '#fff'
 sideTopColor | String, Function | 棱柱的侧面顶部颜色值。default '#fff'
 sideBottomColor | String, Function | 棱柱的侧面底部颜色值。default '#fff'
+
+### defaultStyle参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+名称 | 类型 | 说明
+---|---|---|
+radius | Number | 半径（默认单位: px）。支持动画过渡效果。 default 20
+unit | String | 点的单位，会影响半径和边宽度。可选值：px：像素，meter：地理单位米  default 'px'
+sideNumber  | Number | 棱柱的边数，默认是 3，如果希望做成圆柱体效果，可以尝试此字段设置一个较大的值，例如：32。  default 3
+rotation | Number | 每个棱柱的旋转角度，取值范围 0 ~ 360；可以支持动画效果。default 0
+altitude  | Number | 海拔高度，代表棱柱的离地高度。支持动画过渡效果。 default 0
+height  | Number | 棱柱的高度。单位是 unit 的值。支持动画过渡效果。default 100
+topColor | String | 棱柱的顶面颜色值。default '#fff'
+sideTopColor | String | 棱柱的侧面顶部颜色值。default '#fff'
+sideBottomColor | String | 棱柱的侧面底部颜色值。default '#fff'
+
+### style说明
+所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyle配置的值，最后会使用组件内默认设置的值。<br/>
+该默认处理可以被layerStyle中的设置给覆盖。目前默认设置已基本符合日常使用，如果需要在选中目标时做高亮处理，则推荐根据示例使用事件监听然后动态修改layerStyle来实现。<br/>
+style数据有可以有三个来源，优先级按顺序处理，第一个最高<br/>
+##### 1、layerStyle属性配置
+```javascript
+{
+  unit: 'meter',
+    sideNumber: 32,
+    topColor: (index, f) => {
+    var n = f.properties['GDP'];
+    return n > 7000 ? '#E97091' : '#2852F1';
+  },
+    sideTopColor: (index, f) => {
+    var n = f.properties['GDP'];
+    return n > 7000 ? '#E97091' : '#2852F1';
+  },
+    sideBottomColor: '#002bb9',
+    radius: 15000,
+    height: (index, f) => {
+    var props = f.properties;
+    var height = Math.max(100, Math.sqrt(props['GDP']) * 9000 - 50000);
+    var conf = topConf[props['名称']];
+    // top3 的数据，增加文字表达
+    if (conf) {
+      map.add(
+        new AMap.Marker({
+          anchor: 'bottom-center',
+          position: [f.coordinates[0], f.coordinates[1], height],
+          content: '<div style="margin-bottom: 10px; float: left; font-size: 14px;height: 57px; width: 180px; color:#fff; background: no-repeat url(' +
+            conf +
+            '); background-size: 100%;"><p style="margin: 7px 0 0 35px; height: 20px; line-height:20px;">' +
+            props['名称'] + '人口 ' + props['人口'] + '</p>' +
+            '<p style="margin: 4px 0 0 35px; height: 20px; line-height:20px; color: #00a9ff; font-size: 13px;">' +
+            props['GDP'] + ' 元' +
+            '</p></div>',
+        }),
+      );
+    }
+    return height;
+    // return 60000 + n * 100;
+  },
+    // rotation: 360 * 100,
+  altitude: 0,
+}
+```
+
+##### 2、geojson的properties属性
+```json
+{
+  "type": "FeatureCollection",
+  "name": "Polygon",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "topColor": 'blue',
+        "height": 50
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [ [ [ [ 119.958676782427744, 32.121127961388339 ], [ 119.958672295405933, 32.121125856630357 ], [ 119.958649511242555, 32.121161034502613 ], [ 119.958649466189797, 32.121161104062303 ], [ 119.958653953212774, 32.121163208821088 ], [ 119.958653991614412, 32.121163149530432 ], [ 119.958676782427744, 32.121127961388339 ] ] ] ]
+      }
+    }
+  ]
+}
+```
+##### 3、defaultStyle属性配置
+```javascript
+{
+  radius: 20,
+  unit: 'px',
+  sideNumber: 3,
+  rotation: 0,
+  altitude: 0,
+  height: 100,
+  topColor: '#fff',
+  sideTopColor: '#fff',
+  sideBottomColor: '#fff'
+}
+```
 
 ## ref 可用方法
 提供无副作用的同步帮助方法
