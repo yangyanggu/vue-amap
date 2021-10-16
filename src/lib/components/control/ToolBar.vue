@@ -19,9 +19,12 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent.plugin(['AMap.ToolBar'], () => {
-        this.$amapComponent = new AMap.ToolBar(options);
-        this.$amapComponent.addTo(this.$parentComponent);
+      return new Promise((resolve) => {
+        this.$parentComponent.plugin(['AMap.ToolBar'], () => {
+          this.$amapComponent = new AMap.ToolBar(options);
+          this.$amapComponent.addTo(this.$parentComponent);
+        });
+        resolve();
       });
     },
     destroyComponent() {

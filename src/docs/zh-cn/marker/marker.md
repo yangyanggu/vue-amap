@@ -8,7 +8,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-marker :position="componentMarker.position" :visible="componentMarker.visible" :draggable="componentMarker.draggable" @init="markerInit" @click="clickMarker">
           <div style="padding: 5px 10px;white-space: nowrap;background: blue;color: #fff;">测试content</div>
         </el-amap-marker>

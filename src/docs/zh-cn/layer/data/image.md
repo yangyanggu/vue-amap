@@ -9,7 +9,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-layer-image url="https://amappc.cn-hangzhou.oss-pub.aliyun-inc.com/lbs/static/img/dongwuyuan.jpg" :bounds="bounds" :visible="visible"></el-amap-layer-image>
       </el-amap>
       <div class="toolbar">

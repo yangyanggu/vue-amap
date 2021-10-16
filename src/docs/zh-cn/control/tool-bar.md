@@ -50,7 +50,7 @@
 
 名称 | 类型 | 说明
 ---|---|---|
-position| String, Array | 控件停靠位置 { top: 5; left: 5; right: 5; bottom: 5 } 或者 'LT': 左上角, 'RT': 右上角, 'LB': 左下角, 'RB': 右下角
+position| String, Object | 控件停靠位置 { top: 5; left: 5; right: 5; bottom: 5 } 或者 'LT': 左上角, 'RT': 右上角, 'LB': 左下角, 'RB': 右下角
 offset | String | 地图默认鼠标样式。参数defaultCursor应符合CSS的cursor属性规范。
 
 ## 动态属性

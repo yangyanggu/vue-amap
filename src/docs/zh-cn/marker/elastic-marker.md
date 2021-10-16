@@ -8,7 +8,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-elastic-marker :position="componentMarker.position" title="标号" :visible="componentMarker.visible" :draggable="componentMarker.draggable" :zoom-style-mapping="componentMarker.zoomStyleMapping" :styles="componentMarker.styles" @init="markerInit" @click="clickMarker">
         </el-amap-elastic-marker>
       </el-amap>

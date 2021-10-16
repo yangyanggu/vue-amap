@@ -9,7 +9,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-text :position="componentText.position" :text-style="{color: 'red'}" :visible="componentText.visible" :text="componentText.text" :draggable="componentText.draggable" @init="initText" @click="clickText">
         </el-amap-text>
         <el-amap-text v-for="(marker, index) in texts" :key="index" :position="marker.position" :text="marker.text" @click="(e) => {clickArrayMarker(marker, e)}"></el-amap-text>

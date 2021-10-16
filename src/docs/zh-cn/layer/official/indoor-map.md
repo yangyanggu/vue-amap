@@ -9,7 +9,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :show-indoor-map="false" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :show-indoor-map="false" :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-layer-indoor-map :visible="visible" @init="init"></el-amap-layer-indoor-map>
       </el-amap>
       <div class="toolbar">

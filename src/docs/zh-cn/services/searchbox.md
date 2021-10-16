@@ -9,7 +9,7 @@
   <template>
     <div class="amap-page-container">
       <el-amap-search-box class="search-box" :search-option="searchOption" :on-search-result="onSearchResult"></el-amap-search-box>
-      <el-amap vid="amapDemo" :center="mapCenter" :zoom="12" class="amap-demo">
+      <el-amap  :center="mapCenter" :zoom="12" class="amap-demo">
         <el-amap-marker v-for="marker in markers" :position="marker" ></el-amap-marker>
       </el-amap>
     </div>

@@ -22,9 +22,12 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent.plugin(['AMap.ControlBar'], () => {
-        this.$amapComponent = new AMap.ControlBar(options);
-        this.$amapComponent.addTo(this.$parentComponent);
+      return new Promise((resolve) => {
+        this.$parentComponent.plugin(['AMap.ControlBar'], () => {
+          this.$amapComponent = new AMap.ControlBar(options);
+          this.$amapComponent.addTo(this.$parentComponent);
+        });
+        resolve();
       });
     },
     destroyComponent() {

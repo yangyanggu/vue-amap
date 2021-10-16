@@ -10,7 +10,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-layer-wmts :visible="visible" :url="url" :blend="false" :params="params"></el-amap-layer-wmts>
       </el-amap>
       <div class="toolbar">

@@ -12,7 +12,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-layer-mapbox-vector-tile :visible="visible" :url="url"></el-amap-layer-mapbox-vector-tile>
       </el-amap>
       <div class="toolbar">

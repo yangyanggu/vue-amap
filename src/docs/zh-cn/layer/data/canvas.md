@@ -9,7 +9,7 @@ Canvas图层类，用户可以将一个 Canvas 作为图层添加在地图上，
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" @init="initMap" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" @init="initMap" class="amap-demo">
         <el-amap-layer-canvas v-if="canvas" :canvas="canvas" :bounds="bounds" :visible="visible" @init="initLayer"></el-amap-layer-canvas>
       </el-amap>
       <div class="toolbar">

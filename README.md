@@ -58,7 +58,7 @@ Vue.use(VueAmapThree);
 ### 地图
 
 ```vue
-<el-amap vid="amapDemo" :zoom="zoom" :center="center">
+<el-amap  :zoom="zoom" :center="center">
 </el-amap>
 ```
 

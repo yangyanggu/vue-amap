@@ -25,7 +25,7 @@ VueAMap.initAMapApiLoader({
 ```javascript
 <template>
   <div>
-    <el-amap vid="amapDemo" :plugin="plugins"></el-amap>
+    <el-amap  :plugin="plugins"></el-amap>
   </div>
 </template>
 

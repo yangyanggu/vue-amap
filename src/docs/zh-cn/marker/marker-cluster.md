@@ -8,7 +8,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-marker-cluster v-if="visible" :points="points"  @init="markerInit" @click="clickMarker">
         </el-amap-marker-cluster>
       </el-amap>

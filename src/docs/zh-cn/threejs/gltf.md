@@ -9,7 +9,7 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center"  :show-label="false" :zooms="[2, 30]" :show-building-block="false" view-mode="3D" :pitch="55" @init="initMap" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center"  :show-label="false" :zooms="[2, 30]" :show-building-block="false" view-mode="3D" :pitch="55" @init="initMap" class="amap-demo">
         <el-amap-layer-three :lights="lights" :hdr="hdrOptions" :zooms="[2, 30]">
           <el-amap-three-gltf v-if="position" :visible="visible" url="./assets/gltf/car4.gltf" :position="position" :scale="20" :angle="angle" :rotation="rotation" @click="()=>{click(position)}" @mouseover="mouseover" @mouseout="mouseout" @init="initCar"></el-amap-three-gltf>
           <el-amap-three-gltf url="./assets/gltf/sgyj_point_animation.gltf" :position="[116.305206, 39.975468]" :scale="10" :rotation="rotation" @init="init"></el-amap-three-gltf>

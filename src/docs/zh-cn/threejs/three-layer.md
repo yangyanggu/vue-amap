@@ -10,7 +10,7 @@ ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含l
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center"  :show-label="false" :zooms="[2, 30]" :show-building-block="false" view-mode="3D" :pitch="55" @init="initMap" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center"  :show-label="false" :zooms="[2, 30]" :show-building-block="false" view-mode="3D" :pitch="55" @init="initMap" class="amap-demo">
         <el-amap-layer-three :visible="visible" :lights="lights" :hdr="hdrOptions" :zooms="[2, 30]">
           <el-amap-three-gltf v-for="(item, index) in gltfs" :key="index" :scale="6" url="./assets/gltf/sgyj_point_animation.gltf" :position="item.position" :rotation="{x:90, y:0, z:0}"></el-amap-three-gltf>
         </el-amap-layer-three>

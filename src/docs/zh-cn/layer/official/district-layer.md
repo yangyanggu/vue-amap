@@ -9,7 +9,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-layer-district :visible="visible" type="Province" adcode="320000" :depth="2" :styles="styles"></el-amap-layer-district>
       </el-amap>
       <div class="toolbar">

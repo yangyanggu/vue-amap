@@ -60,9 +60,12 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent.plugin(['AMap.HawkEye'], () => {
-        this.$amapComponent = new AMap.HawkEye(options);
-        this.$amapComponent.addTo(this.$parentComponent);
+      return new Promise((resolve) => {
+        this.$parentComponent.plugin(['AMap.HawkEye'], () => {
+          this.$amapComponent = new AMap.HawkEye(options);
+          this.$amapComponent.addTo(this.$parentComponent);
+        });
+        resolve();
       });
     },
     destroyComponent() {

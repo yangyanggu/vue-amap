@@ -9,7 +9,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-mass-marks :data="points" :visible="visible" :styles="styles" @init="markerInit" @click="clickMarker">
         </el-amap-mass-marks>
       </el-amap>

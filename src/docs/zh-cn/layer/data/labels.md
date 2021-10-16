@@ -13,7 +13,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-layer-labels ref="labels" :visible="visible" :collision="false" @init="init">
           <el-amap-label-marker :position="labelOptions.position" :text="labelOptions.text" :icon="labelOptions.icon"></el-amap-label-marker>
         </el-amap-layer-labels>

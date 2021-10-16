@@ -1,3 +1,7 @@
+###v0.0.9
+* 解决控件初始化报错问题
+* 完善API文档
+
 ###v0.0.8
 * loca里的图层对style全部增加默认处理，优先读取geojson中的properties里的参数（仅针对支持function回调的style参数），其次读取defaultStyle中配置的值，当传入layerStyle时，优先使用layerStyle里的处理
 

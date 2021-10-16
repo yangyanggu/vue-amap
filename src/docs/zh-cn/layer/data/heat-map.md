@@ -9,7 +9,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <el-amap-layer-heat-map :visible="visible" :data-set="dataSet"></el-amap-layer-heat-map>
       </el-amap>
       <div class="toolbar">

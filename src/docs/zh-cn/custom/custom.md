@@ -8,7 +8,7 @@
 <script v-pre type="text/x-template" id="example">
   <template>
     <div class="amap-page-container">
-      <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo">
+      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
         <amap-canvas-markers
           :data="markerData"
           :get-position="markerOptions.getPosition"
