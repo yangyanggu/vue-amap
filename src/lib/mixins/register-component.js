@@ -32,7 +32,6 @@ export default {
   },
 
   mounted() {
-    this.$parentComponent = this.$parentComponent || this.$parent.$parentComponent;
     if (this.$parentComponent) {
       this.register();
     } else {
