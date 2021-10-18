@@ -72,7 +72,7 @@
 名称 | 类型 | 说明
 ---|---|---|
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
-defaultStyle | Object | 默认样式，可以查看下面属性说明
+defaultStyleValue | Object | 默认样式，可以查看下面属性说明
 
 ## 动态属性
 支持响应式。
@@ -97,7 +97,7 @@ borderWidth | Number, Function | 边框宽度（默认单位:px） default 0
 borderColor | String, Function | 边框颜色 default '#fff'
 dashArray | [Number, Number, Number, Number], Function | 连接线的虚线配置信息：[实线长度, 虚线长度, 实线长度, 虚线长度]; default [10, 0, 10, 0]
 
-### defaultStyle参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
 名称 | 类型 | 说明
 ---|---|---|
 color | String | 线的颜色 default '#fff'
@@ -108,7 +108,7 @@ borderColor | String, Function | 边框颜色 default '#fff'
 dashArray | [Number, Number, Number, Number] | 连接线的虚线配置信息：[实线长度, 虚线长度, 实线长度, 虚线长度]; default [10, 0, 10, 0]
 
 ### style说明
-所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyle配置的值，最后会使用组件内默认设置的值。<br/>
+所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>
 该默认处理可以被layerStyle中的设置给覆盖。目前默认设置已基本符合日常使用，如果需要在选中目标时做高亮处理，则推荐根据示例使用事件监听然后动态修改layerStyle来实现。<br/>
 style数据有可以有三个来源，优先级按顺序处理，第一个最高<br/>
 ##### 1、layerStyle属性配置
@@ -156,7 +156,7 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
   ]
 }
 ```
-##### 3、defaultStyle属性配置
+##### 3、defaultStyleValue属性配置
 ```javascript
 {
   color: '#fff',

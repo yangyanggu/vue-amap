@@ -101,7 +101,7 @@
 名称 | 类型 | 说明
 ---|---|---|
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
-defaultStyle | Object | 默认样式，可以查看下面属性说明
+defaultStyleValue | Object | 默认样式，可以查看下面属性说明
 
 ## 动态属性
 支持响应式。
@@ -125,7 +125,7 @@ iconSize | Array, Function | 图标大小，影响宽高。支持动画过渡效
 rotation  | Number, Function | 图标的旋转角度，可以通过回调为每个点设置不同的旋转角（单位:角度） default 0
 opacity | Number, Function | 透明度,支持通过回调函数为每个点设置不同的透明度 default 1
 
-### defaultStyle参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
 名称 | 类型 | 说明
 ---|---|---|
 unit | String | 点的单位，会影响半径和边宽度。可选值：px：像素，meter：地理单位米  default 'px'
@@ -135,7 +135,7 @@ rotation  | Number | 图标的旋转角度，可以通过回调为每个点设�
 opacity | Number | 透明度,支持通过回调函数为每个点设置不同的透明度 default 1
 
 ### style说明
-所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyle配置的值，最后会使用组件内默认设置的值。<br/>
+所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>
 该默认处理可以被layerStyle中的设置给覆盖。目前默认设置已基本符合日常使用，如果需要在选中目标时做高亮处理，则推荐根据示例使用事件监听然后动态修改layerStyle来实现。<br/>
 style数据有可以有三个来源，优先级按顺序处理，第一个最高<br/>
 ##### 1、layerStyle属性配置
@@ -178,7 +178,7 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
   ]
 }
 ```
-##### 3、defaultStyle属性配置
+##### 3、defaultStyleValue属性配置
 ```javascript
 {
   unit: 'px',

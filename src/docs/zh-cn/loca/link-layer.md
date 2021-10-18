@@ -65,7 +65,7 @@
 名称 | 类型 | 说明
 ---|---|---|
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
-defaultStyle | Object | 默认样式，可以查看下面属性说明
+defaultStyleValue | Object | 默认样式，可以查看下面属性说明
 
 ## 动态属性
 支持响应式。
@@ -87,7 +87,7 @@ lineColors | Array, Function | 链接线颜色。 类型为Array时，可设置�
 height  | Number, Function | 高度，单位为米，代表弧顶的最高高度。 类型为Function时，返回每根线的高度。参数为(index,item)，item中有distance属性，代表两点间的距离（米），可以用该属性处理高度。
 smoothSteps | Number, Function | 平滑步数，代表弧线的分隔段数，越大平滑度越好，默认为100。
 
-### defaultStyle参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
 名称 | 类型 | 说明
 ---|---|---|
 lineColors | Array | 链接线颜色。 类型为Array时，可设置颜色渐变，color[0]为起始色，color[color.lenth-1]为终止色，中间为过渡色； 类型为Function时，返回每根线的颜色。参数为(index,item)，item为一个对象{link,distance}，link为该条线的初始信息。返回结果为Array(渐变)。
@@ -95,7 +95,7 @@ height  | Number | 高度，单位为米，代表弧顶的最高高度。 类型
 smoothSteps | Number | 平滑步数，代表弧线的分隔段数，越大平滑度越好，默认为100。
 
 ### style说明
-所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyle配置的值，最后会使用组件内默认设置的值。<br/>
+所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>
 该默认处理可以被layerStyle中的设置给覆盖。目前默认设置已基本符合日常使用，如果需要在选中目标时做高亮处理，则推荐根据示例使用事件监听然后动态修改layerStyle来实现。<br/>
 style数据有可以有三个来源，优先级按顺序处理，第一个最高<br/>
 ##### 1、layerStyle属性配置
@@ -137,7 +137,7 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
   ]
 }
 ```
-##### 3、defaultStyle属性配置
+##### 3、defaultStyleValue属性配置
 ```javascript
 {
   lineColors: ['rgba(255,255,255,1)', 'rgba(255,255,255,0)'],
