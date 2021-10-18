@@ -32,6 +32,7 @@ export default {
   },
 
   mounted() {
+    this.$parentComponent = this.$parentComponent || this.$parent.$amapComponent;
     if (this.$parentComponent) {
       this.register();
     } else {

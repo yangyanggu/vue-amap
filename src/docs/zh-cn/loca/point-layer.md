@@ -10,9 +10,9 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo">
+      <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo" @init="initMap">
         <el-amap-loca>
-          <el-amap-loca-point :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle" :default-style-value="defaultStyle"></el-amap-loca-point>
+          <el-amap-loca-point v-if="sourceUrl" :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle" :default-style-value="defaultStyle"></el-amap-loca-point>
         </el-amap-loca>
       </el-amap>
       <div class="toolbar">
@@ -45,7 +45,7 @@
           zoom: 4.8,
           center: [105.601, 35.32],
           visible: true,
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/gdp.json',
+          sourceUrl: '',
           layerStyle: {
             unit: 'meter',
             radius: (index, f) => {
@@ -67,6 +67,11 @@
         toggleVisible() {
           this.visible = !this.visible;
         },
+        initMap(){
+          setTimeout(() => {
+            this.sourceUrl = 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/gdp.json';
+          }, 1000)
+        }
       }
     };
   </script>
