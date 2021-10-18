@@ -14,6 +14,7 @@
       </el-amap>
       <div class="toolbar">
         <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
+        <button type="button" name="button" @click="changeData">修改数据</button>
       </div>
     </div>
   </template>
@@ -46,6 +47,9 @@
         clickMarker(){
           alert('点击了标号')
         },
+        changeData(){
+          this.points = [{"lnglat":["113.864691","22.942327"]},{"lnglat":["113.370643","22.938827"]}]
+        }
       }
     };
   </script>
@@ -67,6 +71,7 @@ clusterByZoomChange | Boolean | 地图缩放过程中是否聚合。默认值 fa
 
 名称 | 类型 | 说明
 ---|---|---|
+points | Array | 数据格式为一组含有经纬度信息的数组，如下所示。其中【经纬度】lnglat 为必填字段，【权重】weight 为可选字段,以权重高的点为中心进行聚合。示例: [{"lnglat":["113.864691","22.942327"], weight: 1},{"lnglat":["113.370643","22.938827"], weight: 8}]
 gridSize | Number | 聚合计算时网格的像素大小，默认60
 maxZoom | Number | 最大的聚合级别，大于该级别就不进行相应的聚合。默认值为 18，即小于 18 级的级别均进行聚合，18 及以上级别不进行聚合
 averageCenter | Boolean | 聚合点的图标位置是否是所有聚合内点的中心点。默认为 true。数据中如果含有权重值，以权重高的点为中心进行聚合

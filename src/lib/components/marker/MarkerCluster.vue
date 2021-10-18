@@ -36,6 +36,11 @@ export default {
       converters: {
       },
       handlers: {
+        points(value) {
+          if (this) {
+            this.setData(value);
+          }
+        }
       }
     };
   },
