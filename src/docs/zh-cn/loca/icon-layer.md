@@ -80,10 +80,10 @@
               }
           })
   
-          this.sourceData = {
+          this.sourceData = Object.freeze({
               "type": "FeatureCollection",
               "features": list,
-          };
+          });
         },
         clickIcon(feature, e){
           console.log('click: ', feature, e)

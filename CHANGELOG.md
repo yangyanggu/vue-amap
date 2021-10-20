@@ -1,3 +1,6 @@
+###v0.0.13
+* prop中如果属性是Object类型的增加deep监听
+
 ###v0.0.12
 * loca图层默认style处理，增加feature.properties赋默认{}，屏蔽geojson数据不存在properties时初始化报错问题
 * 修改包加载方式，取消@ 导入，改用相对路径进行导入
