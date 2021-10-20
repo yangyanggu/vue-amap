@@ -110,11 +110,16 @@ export default {
         if (propsRedirect && propsRedirect[prop]) handleProp = propsRedirect[prop];
         let handleFun = this.getHandlerFun(handleProp);
         if (!handleFun) return;
-
+        let watchOptions = {
+          deep: false
+        };
+        if (Object.prototype.toString.call(propsData[prop]) === '[object Object]') {
+          watchOptions.deep = true;
+        }
         // watch props
         const unwatch = this.$watch(prop, nv => {
           handleFun.call(this.$amapComponent, this.convertSignalProp(prop, nv));
-        });
+        }, watchOptions);
 
         // collect watchers for destroyed
         this.unwatchFns.push(unwatch);
