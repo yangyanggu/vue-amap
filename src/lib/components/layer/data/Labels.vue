@@ -3,7 +3,7 @@
 </template>
 <script>
 import registerMixin from '../../../mixins/register-component';
-import CONST from '@/utils/constant';
+import CONST from '../../../utils/constant';
 
 export default {
   name: 'el-amap-layer-labels',

@@ -1,7 +1,7 @@
 <template></template>
 <script>
 import registerMixin from '../../../mixins/register-component';
-import {isIndoorMapInstance} from '@/utils/util';
+import {isIndoorMapInstance} from '../../../utils/util';
 
 export default {
   name: 'el-amap-layer-indoor-map',

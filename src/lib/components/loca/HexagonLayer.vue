@@ -1,8 +1,8 @@
 <template>
 </template>
 <script>
-import registerMixin from '@/mixins/register-component';
-import locaMixin from '@/mixins/loca-component';
+import registerMixin from '../../mixins/register-component';
+import locaMixin from '../../mixins/loca-component';
 
 export default {
   name: 'el-amap-loca-hexagon',

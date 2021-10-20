@@ -21,10 +21,10 @@ import {OrthographicCamera,
   Vector2,
   Cache
 } from 'three';
-import CONST from '@/utils/constant';
+import CONST from '../../utils/constant';
 import {merge} from 'lodash-es';
 import {HDRCubeTextureLoader} from 'three/examples/jsm/loaders/HDRCubeTextureLoader';
-import {clearScene} from '@/utils/threeUtil';
+import {clearScene} from '../../utils/threeUtil';
 
 const lightTypes = {
   AmbientLight: AmbientLight, // 环境光  环境光会均匀的照亮场景中的所有物体

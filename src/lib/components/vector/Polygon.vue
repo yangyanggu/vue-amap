@@ -1,9 +1,9 @@
 <template>
 </template>
 <script>
-import registerMixin from '@/mixins/register-component';
-import editorMixin from '@/mixins/editor-component';
-import {isMapInstance, isOverlayGroupInstance} from '@/utils/util';
+import registerMixin from '../../mixins/register-component';
+import editorMixin from '../../mixins/editor-component';
+import {isMapInstance, isOverlayGroupInstance} from '../../utils/util';
 
 export default {
   name: 'el-amap-polygon',

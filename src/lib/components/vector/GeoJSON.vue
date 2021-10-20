@@ -1,7 +1,7 @@
 <template>
 </template>
 <script>
-import registerMixin from '@/mixins/register-component';
+import registerMixin from '../../mixins/register-component';
 import {merge} from 'lodash-es';
 
 export default {

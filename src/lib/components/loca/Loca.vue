@@ -2,8 +2,8 @@
   <div><slot/></div>
 </template>
 <script>
-import registerMixin from '@/mixins/register-component';
-import CONST from '@/utils/constant';
+import registerMixin from '../../mixins/register-component';
+import CONST from '../../utils/constant';
 
 export default {
   name: 'el-amap-loca',

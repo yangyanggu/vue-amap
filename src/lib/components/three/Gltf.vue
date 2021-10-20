@@ -3,7 +3,7 @@
 import registerMixin from '../../mixins/register-component';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import {AnimationMixer, Clock} from 'three';
-import {clearGroup} from '@/utils/threeUtil';
+import {clearGroup} from '../../utils/threeUtil';
 
 export default {
   name: 'el-amap-three-gltf',
