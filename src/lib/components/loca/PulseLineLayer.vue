@@ -39,12 +39,15 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         lineWidth: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.lineWidth === undefined ? style.lineWidth : feature.properties.lineWidth;
         },
         headColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.headColor === undefined ? style.headColor : feature.properties.headColor;
         },
         trailColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.trailColor === undefined ? style.trailColor : feature.properties.trailColor;
         },
         altitude: style.altitude,

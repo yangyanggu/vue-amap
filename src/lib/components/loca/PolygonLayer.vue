@@ -52,22 +52,28 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         topColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.topColor === undefined ? style.topColor : feature.properties.topColor;
         },
         sideTopColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.sideTopColor === undefined ? style.sideTopColor : feature.properties.sideTopColor;
         },
         sideBottomColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.sideBottomColor === undefined ? style.sideBottomColor : feature.properties.sideBottomColor;
         },
         altitude: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.altitude === undefined ? style.altitude : feature.properties.altitude;
         },
         height: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.height === undefined ? style.height : feature.properties.height;
         },
         texture: style.texture,
         textureSize: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.textureSize === undefined ? style.textureSize : feature.properties.textureSize;
         }
       };

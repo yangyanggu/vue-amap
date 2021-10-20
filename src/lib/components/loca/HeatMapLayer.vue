@@ -42,9 +42,11 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         radius: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.radius === undefined ? style.radius : feature.properties.radius;
         },
         value: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.value === undefined ? style.value : feature.properties.value;
         },
         gradient: style.gradient,

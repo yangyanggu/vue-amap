@@ -57,19 +57,24 @@ export default {
         unit: style.unit,
         sideNumber: style.sideNumber,
         rotation: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.rotation === undefined ? style.rotation : feature.properties.rotation;
         },
         altitude: style.altitude,
         height: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.height === undefined ? style.height : feature.properties.height;
         },
         topColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.topColor === undefined ? style.topColor : feature.properties.topColor;
         },
         sideTopColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.sideTopColor === undefined ? style.sideTopColor : feature.properties.sideTopColor;
         },
         sideBottomColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.sideBottomColor === undefined ? style.sideBottomColor : feature.properties.sideBottomColor;
         }
       };

@@ -36,21 +36,27 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         color: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.color === undefined ? style.color : feature.properties.color;
         },
         lineWidth: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.lineWidth === undefined ? style.lineWidth : feature.properties.lineWidth;
         },
         altitude: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.altitude === undefined ? style.altitude : feature.properties.altitude;
         },
         borderWidth: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.borderWidth === undefined ? style.borderWidth : feature.properties.borderWidth;
         },
         borderColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.borderColor === undefined ? style.borderColor : feature.properties.borderColor;
         },
         dashArray: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.dashArray === undefined ? style.dashArray : feature.properties.dashArray;
         }
       };

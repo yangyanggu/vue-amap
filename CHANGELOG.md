@@ -1,3 +1,6 @@
+###v0.0.12
+* loca图层默认style处理，增加feature.properties赋默认{}，屏蔽geojson数据不存在properties时初始化报错问题
+
 ###v0.0.11
 * 紧急修复loca图层不能异步加载数据问题
 

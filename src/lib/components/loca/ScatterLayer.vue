@@ -40,21 +40,27 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         size: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.size === undefined ? style.size : feature.properties.size;
         },
         rotation: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.rotation === undefined ? style.rotation : feature.properties.rotation;
         },
         color: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.color === undefined ? style.color : feature.properties.color;
         },
         altitude: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.altitude === undefined ? style.altitude : feature.properties.altitude;
         },
         borderWidth: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.borderWidth === undefined ? style.borderWidth : feature.properties.borderWidth;
         },
         borderColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.borderColor === undefined ? style.borderColor : feature.properties.borderColor;
         },
         texture: style.texture,

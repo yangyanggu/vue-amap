@@ -39,19 +39,24 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         radius: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.radius === undefined ? style.radius : feature.properties.radius;
         },
         color: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.color === undefined ? style.color : feature.properties.color;
         },
         unit: style.unit,
         borderWidth: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.borderWidth === undefined ? style.borderWidth : feature.properties.borderWidth;
         },
         borderColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.borderColor === undefined ? style.borderColor : feature.properties.borderColor;
         },
         blurWidth: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.blurWidth === undefined ? style.blurWidth : feature.properties.blurWidth;
         }
       };

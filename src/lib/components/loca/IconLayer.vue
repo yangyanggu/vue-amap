@@ -36,15 +36,19 @@ export default {
       let defaultLayerStyle = {
         unit: style.unit,
         icon: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.icon === undefined ? style.icon : feature.properties.icon;
         },
         iconSize: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.iconSize === undefined ? style.iconSize : feature.properties.iconSize;
         },
         rotation: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.rotation === undefined ? style.rotation : feature.properties.rotation;
         },
         opacity: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.opacity === undefined ? style.opacity : feature.properties.opacity;
         }
       };

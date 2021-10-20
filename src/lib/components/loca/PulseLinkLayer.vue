@@ -44,31 +44,40 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         lineColors: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.lineColors === undefined ? style.lineColors : feature.properties.lineColors;
         },
         height: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.height === undefined ? style.height : feature.properties.height;
         },
         maxHeightScale: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.maxHeightScale === undefined ? style.maxHeightScale : feature.properties.maxHeightScale;
         },
         smoothSteps: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.smoothSteps === undefined ? style.smoothSteps : feature.properties.smoothSteps;
         },
         lineWidth: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.lineWidth === undefined ? style.lineWidth : feature.properties.lineWidth;
         },
         unit: style.unit,
         dash: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.dash === undefined ? style.dash : feature.properties.dash;
         },
         speed: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.speed === undefined ? style.speed : feature.properties.speed;
         },
         headColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.headColor === undefined ? style.headColor : feature.properties.headColor;
         },
         trailColor: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.trailColor === undefined ? style.trailColor : feature.properties.trailColor;
         },
         flowLength: style.flowLength

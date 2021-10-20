@@ -33,12 +33,15 @@ export default {
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         lineColors: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.lineColors === undefined ? style.lineColors : feature.properties.lineColors;
         },
         height: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.height === undefined ? style.height : feature.properties.height;
         },
         smoothSteps: (index, feature) => {
+          feature.properties = feature.properties || {};
           return feature.properties.smoothSteps === undefined ? style.smoothSteps : feature.properties.smoothSteps;
         }
       };
