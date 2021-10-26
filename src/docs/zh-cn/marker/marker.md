@@ -96,6 +96,7 @@
 topWhenClick | Boolean | 鼠标点击时marker是否置顶，默认false ，不置顶
 bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上, 默认值：false。
 zooms | Array | 点标记显示的层级范围，超过范围不显示。默认值：zooms: [2, 20]
+anchor | String, Array | 设置点标记锚点，可选值：'top-left','top-center','top-right', 'middle-left', 'center', 'middle-right', 'bottom-left', 'bottom-center', 'bottom-right'
 
 ## 动态属性
 支持响应式。
