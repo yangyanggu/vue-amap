@@ -1,3 +1,6 @@
+###v0.0.14
+* loca的所有图层增加visibleDuration属性，用于图层显隐的渐变
+
 ###v0.0.13
 * prop中如果属性是Object类型的增加deep监听
 

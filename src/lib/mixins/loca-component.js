@@ -24,6 +24,10 @@ export default {
     initEvents: {
       type: Boolean,
       default: true
+    },
+    visibleDuration: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -48,6 +52,11 @@ export default {
           _this.$nextTick(() => {
             _this.setSource();
           });
+        },
+        visible(flag) {
+          if (this.show && this.hide) {
+            flag === false ? this.hide(_this.visibleDuration) : this.show(_this.visibleDuration);
+          }
         }
       }
     };

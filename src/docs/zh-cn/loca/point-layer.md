@@ -12,7 +12,7 @@
     <div class="amap-page-container">
       <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo" @init="initMap">
         <el-amap-loca>
-          <el-amap-loca-point v-if="sourceUrl" :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle" :default-style-value="defaultStyle"></el-amap-loca-point>
+          <el-amap-loca-point v-if="sourceUrl" :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle" :default-style-value="defaultStyle" :visible-duration="300"></el-amap-loca-point>
         </el-amap-loca>
       </el-amap>
       <div class="toolbar">
@@ -100,6 +100,7 @@ sourceData | Object | 数据对象。如果你不想使用 url 方式请求数�
 layerStyle | Object | 图层样式
 zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
+visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
 ### layerStyle参数(覆盖所有默认值)
 名称 | 类型 | 说明
