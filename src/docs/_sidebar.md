@@ -1,4 +1,7 @@
 [![Fork me on Gitee](https://gitee.com/guyangyang/vue-amap/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-amap)
+- 友情链接
+  - [vue-mapvgl](https://docs.guyixi.cn/vue-mapvgl/)
+  - [高德地图2.0Vue](https://docs.guyixi.cn/vue-amap/)
 - 基础
   - [安装](zh-cn/introduction/install)
   - [脚本初始化](zh-cn/introduction/init)
