@@ -20,6 +20,7 @@
         </el-amap-info-window>
       </el-amap>
       <button @click="switchWindow()">{{visible ? '隐藏信息窗口' : '显示信息窗口'}}</button>
+      <button @click="changePosition()">修改位置</button>
     </div>
   </template>
 
@@ -49,6 +50,10 @@
         },
         clickButton(){
           alert('点击infowindow的按钮')
+        },
+        changePosition(){
+          let p = this.position;
+          this.position = [p[0]+0.001, p[1]+0.001];
         }
       }
     };

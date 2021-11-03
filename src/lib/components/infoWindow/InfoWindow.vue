@@ -47,6 +47,13 @@ export default {
           if (position) {
             flag === false ? this.close() : this.open(self.$parentComponent, [position.lng, position.lat]);
           }
+        },
+        position(flag) {
+          if (self.visible) {
+            this.open(self.$parentComponent, flag);
+          } else {
+            this.setPosition(flag);
+          }
         }
       }
     };
