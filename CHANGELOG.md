@@ -1,5 +1,6 @@
 ###v0.0.15
 * 修复infoWindow某些情况下改变位置无法显示问题
+* 增加VectorLayer图层
 
 ###v0.0.14
 * loca的所有图层增加visibleDuration属性，用于图层显隐的渐变

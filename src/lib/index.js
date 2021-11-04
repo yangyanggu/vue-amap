@@ -28,6 +28,7 @@ import Flexible from './components/layer/data/Flexible';
 import ImageLayer from './components/layer/data/Image';
 import CanvasLayer from './components/layer/data/Canvas';
 import GLCustomLayer from './components/layer/data/GLCustom';
+import VectorLayer from './components/layer/data/Vector';
 
 // Marker 点标记导入
 
@@ -95,6 +96,7 @@ let components = [
   ImageLayer,
   CanvasLayer,
   GLCustomLayer,
+  VectorLayer,
 
   Marker,
   LabelMarker,

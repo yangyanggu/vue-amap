@@ -45,3 +45,15 @@ export function isLabelsLayerInstance(instance) {
   }
   return instance.className === 'AMap.LabelsLayer';
 }
+
+/**
+ * 判断对象是不是VectorLayer实例对象
+ * @param instance
+ * @returns {string|boolean}
+ */
+export function isVectorLayerInstance(instance) {
+  if (!instance) {
+    return false;
+  }
+  return instance.CLASS_NAME === 'AMap.VectorLayer';
+}

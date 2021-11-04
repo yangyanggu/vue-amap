@@ -3,7 +3,7 @@
 <script>
 import registerMixin from '../../mixins/register-component';
 import editorMixin from '../../mixins/editor-component';
-import {isMapInstance, isOverlayGroupInstance} from '../../utils/util';
+import {isMapInstance, isOverlayGroupInstance, isVectorLayerInstance} from '../../utils/util';
 
 export default {
   name: 'el-amap-polygon',
@@ -93,6 +93,8 @@ export default {
         this.$parentComponent.add(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
         this.$parentComponent.addOverlay(this.$amapComponent);
+      } else if (isVectorLayerInstance(this.$parentComponent)) {
+        this.$parentComponent.add(this.$amapComponent);
       }
     },
     createEditor() {
@@ -117,6 +119,8 @@ export default {
         this.$parentComponent.remove(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
         this.$parentComponent.removeOverlay(this.$amapComponent);
+      } else if (isVectorLayerInstance(this.$parentComponent)) {
+        this.$parentComponent.remove(this.$amapComponent);
       }
       this.$amapComponent = null;
     }

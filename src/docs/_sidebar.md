@@ -31,6 +31,7 @@
   - [WMtS](zh-cn/layer/standard/wmts.md)
   - [矢量瓦片块](zh-cn/layer/standard/mapbox-vector-tile-layer.md)
 - 自有数据图层
+  - [矢量图层](zh-cn/layer/data/vector.md)
   - [热力图](zh-cn/layer/data/heat-map.md)
   - [标注图层](zh-cn/layer/data/labels.md)
   - [自定义图层](zh-cn/layer/data/custom.md)
