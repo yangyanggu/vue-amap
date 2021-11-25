@@ -43,7 +43,7 @@ export default {
     __initComponent(options) {
       this.$amapComponent = new AMap.LabelMarker(options);
       this.$parentComponent.add(this.$amapComponent);
-      console.log('this.$amapComponent: ', this.$amapComponent);
+      // console.log('this.$amapComponent: ', this.$amapComponent);
     },
     destroyComponent() {
       this.$parentComponent.remove(this.$amapComponent);
