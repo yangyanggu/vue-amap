@@ -29,6 +29,9 @@ class EventHelper {
 
   removeListener(instance, eventName, handler) {
     if (!AMap) throw new Error('please wait for Map API load');
+    if (!instance.off) {
+      return;
+    }
     if (!this._listener.get(instance) || !this._listener.get(instance)[eventName]) return;
     let listenerArr = this._listener.get(instance)[eventName];
     if (handler) {
