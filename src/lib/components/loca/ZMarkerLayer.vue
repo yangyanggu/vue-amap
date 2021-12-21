@@ -5,7 +5,7 @@ import registerMixin from '../../mixins/register-component';
 import locaMixin from '../../mixins/loca-component';
 
 export default {
-  name: 'el-amap-loca-icon',
+  name: 'el-amap-loca-z-marker',
   mixins: [registerMixin, locaMixin],
   props: {
   },
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new Loca.IconLayer(options);
+      this.$amapComponent = new Loca.ZMarkerLayer(options);
       this.setSource();
       this.setStyle();
       this.$parentComponent.add(this.$amapComponent);
@@ -27,34 +27,31 @@ export default {
     setStyle() {
       let defaultStyleValue = {
         unit: 'px',
-        icon: '',
-        iconSize: [20, 20],
+        content: '',
+        size: [20, 20],
         rotation: 0,
-        opacity: 1,
-        offset: [0, 0]
+        alwaysFront: false,
+        altitude: 0
       };
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
         unit: style.unit,
-        icon: (index, feature) => {
+        content: (index, feature) => {
           feature.properties = feature.properties || {};
-          return feature.properties.icon === undefined ? style.icon : feature.properties.icon;
+          return feature.properties.content === undefined ? style.content : feature.properties.content;
         },
-        iconSize: (index, feature) => {
+        size: (index, feature) => {
           feature.properties = feature.properties || {};
-          return feature.properties.iconSize === undefined ? style.iconSize : feature.properties.iconSize;
+          return feature.properties.size === undefined ? style.size : feature.properties.size;
         },
         rotation: (index, feature) => {
           feature.properties = feature.properties || {};
           return feature.properties.rotation === undefined ? style.rotation : feature.properties.rotation;
         },
-        opacity: (index, feature) => {
+        alwaysFront: style.alwaysFront,
+        altitude: (index, feature) => {
           feature.properties = feature.properties || {};
-          return feature.properties.opacity === undefined ? style.opacity : feature.properties.opacity;
-        },
-        offset: (index, feature) => {
-          feature.properties = feature.properties || {};
-          return feature.properties.offset === undefined ? style.offset : feature.properties.offset;
+          return feature.properties.altitude === undefined ? style.altitude : feature.properties.altitude ;
         }
       };
       let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);

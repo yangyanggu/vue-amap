@@ -1,6 +1,10 @@
 # 线图层 (Loca.LineLayer)
 线图层，支持设置描边和虚线。
 
+```text
+如果出现显示的线不规整，则最好在init事件中调用 layer.setCustomCenter([lng,lat]) 方法，其中lng和lat最好是数据中的某个点
+```
+
 ## 基础示例
 
 <vuep template="#example"></vuep>

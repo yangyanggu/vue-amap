@@ -125,6 +125,7 @@ icon  | String, Function | 图标资源,接受三种值（Svg,Image,Url），可
 iconSize | Array, Function | 图标大小，影响宽高。支持动画过渡效果，动画 key 字段名称为 radius。 default [20,20]
 rotation  | Number, Function | 图标的旋转角度，可以通过回调为每个点设置不同的旋转角（单位:角度） default 0
 opacity | Number, Function | 透明度,支持通过回调函数为每个点设置不同的透明度 default 1
+offset | Array, Function | 图标偏移的位置大小。右上方为正方向。单位取决于 unit 的值。default [0,0]
 
 ### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
 名称 | 类型 | 说明
@@ -134,6 +135,7 @@ icon  | String | 图标资源,接受三种值（Svg,Image,Url），可通过回�
 iconSize | Array | 图标大小，影响宽高。支持动画过渡效果，动画 key 字段名称为 radius。 default [20,20]
 rotation  | Number | 图标的旋转角度，可以通过回调为每个点设置不同的旋转角（单位:角度） default 0
 opacity | Number | 透明度,支持通过回调函数为每个点设置不同的透明度 default 1
+offset | Array | 图标偏移的位置大小。右上方为正方向。单位取决于 unit 的值。default [0,0]
 
 ### style说明
 所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>
@@ -150,6 +152,7 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
   },
   iconSize: [40,40],
   rotation: 0,
+  offset: [0,0]
 }
 ```
 
@@ -186,7 +189,8 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
   icon: '',
   iconSize: [20, 20],
   rotation: 0,
-  opacity: 1
+  opacity: 1,
+  offset: [0,0]
 }
 ```
 

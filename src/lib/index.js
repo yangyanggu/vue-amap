@@ -73,6 +73,7 @@ import GridLayer from './components/loca/GridLayer';
 import ScatterLayer from './components/loca/ScatterLayer';
 import PulseLineLayer from './components/loca/PulseLineLayer';
 import PulseLinkLayer from './components/loca/PulseLinkLayer';
+import ZMarkerLayer from '@/components/loca/ZMarkerLayer';
 
 // managers
 import createCustomComponent from './adapter/custom-adapter';
@@ -135,7 +136,8 @@ let components = [
   GridLayer,
   ScatterLayer,
   PulseLineLayer,
-  PulseLinkLayer
+  PulseLinkLayer,
+  ZMarkerLayer
 ];
 
 let VueAMap = {

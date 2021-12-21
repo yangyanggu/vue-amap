@@ -126,7 +126,8 @@ height  | Number, Function | 热力最高点的高度值，单位取决于 unit 
 heightBezier | Array | 热力的最低点到最高点的变化曲线。default [0.4,0.2,0.4,0.8]
 max | Number | 热力值的最大值，默认为数据中的最高值，也可以自定义设置，会控制热力的最热区域的显示效果。default null
 min | Number | 热力值的最小值，默认为数据中的最小值，也可以自定义设置，会控制热力的最冷区域的显示效果。default null
-unit | String | 热力的单位，可选值：px：像素，meter：地理单位米  default 'px'
+unit | String | 热力的单位，可选值：px：像素，meter：地理单位米  default 'px',
+difference | Boolean | 热力图默认的过渡效果，颜色默认会渐变过渡，如果开启 difference，将会有明显的边缘效果。default false
 
 ### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
 名称 | 类型 | 说明
@@ -140,6 +141,7 @@ heightBezier | Array | 热力的最低点到最高点的变化曲线。default [
 max | Number | 热力值的最大值，默认为数据中的最高值，也可以自定义设置，会控制热力的最热区域的显示效果。default null
 min | Number | 热力值的最小值，默认为数据中的最小值，也可以自定义设置，会控制热力的最冷区域的显示效果。default null
 unit | String | 热力的单位，可选值：px：像素，meter：地理单位米  default 'px'
+difference | Boolean | 热力图默认的过渡效果，颜色默认会渐变过渡，如果开启 difference，将会有明显的边缘效果。default false
 
 
 

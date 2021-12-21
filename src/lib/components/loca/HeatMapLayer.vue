@@ -37,7 +37,8 @@ export default {
         heightBezier: [0.4, 0.2, 0.4, 0.8],
         max: null,
         min: null,
-        unit: 'px'
+        unit: 'px',
+        difference: false
       };
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
@@ -55,7 +56,8 @@ export default {
         heightBezier: style.heightBezier,
         max: style.max,
         min: style.min,
-        unit: style.unit
+        unit: style.unit,
+        difference: style.difference
       };
       let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);
       this.$amapComponent.setStyle(layerStyle);
