@@ -6,10 +6,12 @@
 [![license](https://img.shields.io/github/license/elemefe/vue-amap.svg?style=flat-square)](https://github.com/ElemeFE/vue-amap)
 [![star](https://gitee.com/guyangyang/vue-amap/badge/star.svg?theme=dark)](https://gitee.com/guyangyang/vue-amap/stargazers)
 
-> @vuemap/vue-amap是一套基于Vue 2.0和高德地图2.0的地图组件。
+> @vuemap/vue-amap是一套基于Vue3 和高德地图2.0的地图组件。
 > 该版本对原vue-amap组件进行升级，主要适配amap2.0相关的接口，同时调整事件绑定形式，调整为使用v-on进行事件绑定。
 > 组件中将会对高德可视化组件loca进行封装，同时提供threejs的接口
 > 该项目基于 https://github.com/ElemeFE/vue-amap/ 开发
+
+>vue2请使用0.x版本
 
 ```html
 觉得有用可以给个star
@@ -24,33 +26,29 @@
 
 ## 安装
 ```
-npm i -S @vuemap/vue-amap
+npm i -S @vuemap/vue-amap@next
 ```
 
 ## 文档
-**[https://docs.guyixi.cn/vue-amap/](https://docs.guyixi.cn/vue-amap/)**
+**[https://vue-amap.guyixi.cn](https://vue-amap.guyixi.cn)**
 
 
 ## 快速上手
 
-引入@vuemap/vue-amap
+引入@vuemap/vue-amap@next
 
 ```javascript
 // 引入vue-amap
-import VueAMap from '@vuemap/vue-amap';
+import VueAMap, {initAMapApiLoader} from '@vuemap/vue-amap';
 import '@vuemap/vue-amap/dist/style.css';
 
-Vue.use(VueAMap);
-
 // 初始化vue-amap
-VueAMap.initAMapApiLoader({
+initAMapApiLoader({
   // 高德的key
   key: 'YOUR_KEY',
 });
+createApp(App).use(VueAmap)
 
-//如果需要使用自定义的threeJS相关的组件，需要额外引入库中的three。该包只提供常用的模型加载，灯光，HDR等相关能力，更细致的控制需要在模型初始化后获取对象进行操作
-import VueAmapThree from '@vuemap/vue-amap/dist/three'
-Vue.use(VueAmapThree);
 ```
 
 ## 组件

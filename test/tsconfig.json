@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "lib": ["ESNext"]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.vue",
+    "../node_modules/.pnpm/@amap+amap-jsapi-loader@1.0.1/node_modules/@amap/amap-jsapi-loader/src/global.d.ts"
+  ]
+}
