@@ -20,5 +20,4 @@ bin-release/
 dist
 node_modules
 .idea
-docs
 *.log
