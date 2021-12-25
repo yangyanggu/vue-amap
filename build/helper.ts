@@ -68,7 +68,7 @@ const reAttribute: InstallOptions['reAttribute'] = (value, key) => {
 
 export const buildHelper: TaskFunction = (done) => {
     const {name, version} = pkg;
-    const entry = path.resolve(apiRoot, 'component', '*.md').replaceAll(/\\/g, '/');
+    const entry = path.resolve(apiRoot, '*.md').replaceAll(/\\/g, '/');
     helper({
         name: name!,
         version,

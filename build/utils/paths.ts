@@ -1,9 +1,9 @@
 import { resolve } from 'path'
 
 export const projRoot = resolve(__dirname, '..', '..')
-export const docRoot = resolve(projRoot, 'src/docs')
+export const docRoot = resolve(projRoot, 'docs')
 
-export const apiRoot = resolve(projRoot, 'ide-tip')
+export const apiRoot = resolve(docRoot, 'zh-CN', 'component')
 
 export const pkgRoot = resolve(projRoot, 'src')
 
