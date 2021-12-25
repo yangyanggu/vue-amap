@@ -1,3 +1,4 @@
+>@vuemap/vue-amap  vue3版本已经发布，版本号1.x，npm标签为next，后续dev分支将维护vue3的版本
 
 # @vuemap/vue-amap
 [![npm package](https://img.shields.io/npm/v/@vuemap/vue-amap.svg)](https://www.npmjs.org/package/@vuemap/vue-amap)
