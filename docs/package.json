@@ -10,7 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "@vueuse/core": "7.2.2",
-    "clipboard-copy": "4.0.1"
+    "clipboard-copy": "4.0.1",
+    "@vuemap/vue-amap": "npm:@vuemap/vue-amap@next"
   },
   "devDependencies": {
     "@types/markdown-it": "12.2.3",
