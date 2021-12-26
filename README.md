@@ -11,7 +11,7 @@
 > 组件中将会对高德可视化组件loca进行封装，同时提供threejs的接口
 > 该项目基于 https://github.com/ElemeFE/vue-amap/ 开发
 
->vue2请使用0.x版本
+>vue2请使用0.x版本，对应分支vue2
 
 ```html
 觉得有用可以给个star
