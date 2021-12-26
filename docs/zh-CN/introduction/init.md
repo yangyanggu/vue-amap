@@ -79,6 +79,6 @@ window.VueAMap.lazyAMapApiLoaderInstance.load().then(() => {
 key | `String` | `` | 高德 Key |
 version | `String` | `2.0` | 指定要加载的 JSAPI 的版本，缺省时默认为 2.0
 plugins | `Array` | `` | 需要使用的的插件列表，如比例尺'AMap.Scale'等 [插件列表](https://lbs.amap.com/api/jsapi-v2/guide/abc/plugins) |
-AMapUI | `Object` | `{ 'version': '1.1', 'plugins': []}` | UI的参数配置 [示例](https://lbs.amap.com/api/amap-ui/intro) |
+AMapUI | `Object` | `` | UI的参数配置 [示例](https://lbs.amap.com/api/amap-ui/intro) |
 Loca | `Object` | `{version: '2.0.0'}` | Loca 版本 |
 

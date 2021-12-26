@@ -7,50 +7,44 @@ title:
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
+<template>
+<div class="amap-page-container">
+  <el-amap ref="map" map-style="amap://styles/62009be025f187dd3eafe327d2e55b8e" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
+  </el-amap>
 
-<script v-pre type="text/x-template" id="example">
+  <div class="toolbar">
+    <button @click="getMap()">获取map实例</button>
+  </div>
+</div>
+</template>
 
-  <template>
-    <div class="amap-page-container">
-      <el-amap ref="map" map-style="amap://styles/62009be025f187dd3eafe327d2e55b8e" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
-      </el-amap>
+<style>
+.amap-demo {
+  height: 300px;
+}
+</style>
 
-      <div class="toolbar">
-        <button @click="getMap()">获取map实例</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      data: function() {
-        return {
-          zoom: 12,
-          center: [121.59996, 31.197646],
-        };
-      },
-
-      methods: {
-        getMap() {
-          console.log(this.$refs.map.$$getInstance());
-        },
-        clickMap(e){
-          console.log('click map :', e );
-        },
-        initMap(e){
-          console.log('init map: ', e);
-        }
-      }
+<script>
+module.exports = {
+  data: function() {
+    return {
+      zoom: 12,
+      center: [121.59996, 31.197646],
     };
-  </script>
+  },
 
+  methods: {
+    getMap() {
+      console.log(this.$refs.map.$$getInstance());
+    },
+    clickMap(e){
+      console.log('click map :', e );
+    },
+    initMap(e){
+      console.log('init map: ', e);
+    }
+  }
+};
 </script>
 
 ## 静态属性
