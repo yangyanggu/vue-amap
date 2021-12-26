@@ -21,3 +21,5 @@ dist
 node_modules
 .idea
 *.log
+.temp
+.cache

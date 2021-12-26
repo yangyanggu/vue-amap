@@ -1,0 +1,29 @@
+---
+title: AmapLayerLabels
+---
+
+# AmapLayerLabels
+标注层。<br/>
+有三种方法添加标注。使用效果见下面示例<br/>
+1、通过init事件拿到layer实例，再调用`add`方法进行添加<br/>
+2、通过$refs拿到layer的vue实例，再通过`$$add`方法进行添加<br/>
+3、通过`slot`方式进行添加
+
+## Attributes
+
+Attribute | Type | Description
+---|---|---|
+zooms | Array | 支持的缩放级别范围，默认范围 [2-30]
+visible | Boolean | 是否显示，默认 true
+zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：120
+opacity | Number | 透明度，默认 1
+collision | Boolean | 标注层内的标注是否避让
+allowCollision | Boolean | 标注层内的标注是否允许其它标注层对它避让
+
+## Events
+
+Event Name | Parameters | Description
+---|---|---|
+init | AMap.LabelsLayer | 实例初始化结束
+
+

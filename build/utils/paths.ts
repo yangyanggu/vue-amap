@@ -3,7 +3,7 @@ import { resolve } from 'path'
 export const projRoot = resolve(__dirname, '..', '..')
 export const docRoot = resolve(projRoot, 'docs')
 
-export const apiRoot = resolve(docRoot, 'zh-CN', 'component')
+export const apiRoot = resolve(projRoot, 'ide-api', 'component')
 
 export const pkgRoot = resolve(projRoot, 'src')
 

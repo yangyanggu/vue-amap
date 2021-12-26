@@ -1,7 +1,7 @@
 import path from 'path'
 import helper from 'components-helper'
-import pkg from '../package.json';
-import {apiRoot, epOutput} from './utils/paths'
+import {getPackageManifest} from './utils/pkg';
+import {apiRoot, epOutput, epPackage} from './utils/paths'
 import type {TaskFunction} from 'gulp'
 import type {InstallOptions} from 'components-helper/lib/type'
 
@@ -11,11 +11,16 @@ const reComponentName: InstallOptions['reComponentName'] = (title: string) =>
         .replace(/[ ]+/g, '-')
         .toLowerCase()}`
 
-const reDocUrl: InstallOptions['reDocUrl'] = (fileName, header) => {
-    const docs = 'https://vue-amap.cn/component/'
+const reDocUrl: InstallOptions['reDocUrl'] = (fileName, header, path = '') => {
+    let suffix = '';
+    const results = path.match(/\/ide-api\/component\/(\S*)\.md/);
+    if(results && results.length > 1){
+        suffix = results[1];
+    }
+    const docs = `https://vue-amap.cn/zh-CN/component/`
     const _header = header ? header.replaceAll(/\s+/g, '-').toLowerCase() : ''
 
-    return `${docs}${fileName}.html${_header ? '#' : ''}${_header}`
+    return `${docs}${suffix ? suffix : fileName}.html${_header ? '#' : ''}${_header}`
 }
 
 const reWebTypesSource: InstallOptions['reWebTypesSource'] = (title) => {
@@ -67,8 +72,8 @@ const reAttribute: InstallOptions['reAttribute'] = (value, key) => {
 }
 
 export const buildHelper: TaskFunction = (done) => {
-    const {name, version} = pkg;
-    const entry = path.resolve(apiRoot, '*.md').replaceAll(/\\/g, '/');
+    const {name, version} = getPackageManifest(epPackage);
+    const entry = path.resolve(apiRoot, '**' ,'*.md').replaceAll(/\\/g, '/');
     helper({
         name: name!,
         version,
