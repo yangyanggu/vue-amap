@@ -8,6 +8,10 @@ export default [
         link: 'https://docs.guyixi.cn/vue-mapvgl/#/'
     },
     {
+        text: 'vue2版本',
+        link: 'https://docs.guyixi.cn/vue-amap/#/'
+    },
+    {
         text: '更新日志',
         link: 'https://gitee.com/guyangyang/vue-amap/blob/dev/CHANGELOG.md'
     },

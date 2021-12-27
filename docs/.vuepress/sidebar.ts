@@ -105,5 +105,11 @@ export default [
       '/zh-cn/component/loca/pulse-link-layer.md',
       '/zh-cn/component/loca/z-marker-layer.md'
     ],
+  },
+  {
+    text: '扩展',
+    children: [
+      '/zh-cn/component/ext/search-box.md',
+    ],
   }
 ]

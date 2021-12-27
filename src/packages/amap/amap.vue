@@ -217,6 +217,7 @@ export default defineComponent ({
 <style lang="scss">
 .el-vue-amap-container {
   height: 100%;
+  position: relative;
 
   .el-vue-amap {
     height: 100%;
