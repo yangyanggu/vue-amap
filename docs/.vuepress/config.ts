@@ -13,6 +13,14 @@ export default defineUserConfig<DefaultThemeOptions>({
   description: '高德地图2.0版本的vue3对应封装',
   head: [
     ['link', {rel: 'stylesheet', type: 'text/css' ,href: '/css/global.css'}],
+    ['script', {}, `var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?3531c3641194434fc0076c594b820067";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();`
+    ]
     // ['script', {src: 'https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@1.0.1/dist/index.js'}]
   ],
 
