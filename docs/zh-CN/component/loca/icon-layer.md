@@ -1,3 +1,7 @@
+---
+title: 图标图层
+---
+
 # 图标图层 (Loca.IconLayer)
 图标图层
 
@@ -79,7 +83,7 @@
                   }
               }
           })
-  
+
           this.sourceData = Object.freeze({
               "type": "FeatureCollection",
               "features": list,
@@ -165,14 +169,14 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
     }
   },
   "features": [
-    { 
-      "type": "Feature", 
+    {
+      "type": "Feature",
       "properties": {
         "icon": '/img/1.png',
         "rotation": 90
-      }, 
-      "geometry": { 
-        "type": "Point", 
+      },
+      "geometry": {
+        "type": "Point",
         "coordinates": [ 119.958676782427744, 32.121127961388339]
       }
     }

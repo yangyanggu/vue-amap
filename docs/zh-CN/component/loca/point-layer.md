@@ -1,3 +1,7 @@
+---
+title: 圆点图层
+---
+
 # 圆点图层 (Loca.PointLayer)
 圆点图层，拥有描边的原点，可以支持边缘模糊特效。<br/>
 支持对每个圆点的半径、颜色、描边信息单独设置。
@@ -153,12 +157,12 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
     }
   },
   "features": [
-    { 
-      "type": "Feature", 
+    {
+      "type": "Feature",
       "properties": {
         "icon": '/img/1.png',
         "color": 'red'
-      }, 
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [ 119.958676782427744, 32.121127961388339]

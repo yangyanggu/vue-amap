@@ -87,5 +87,23 @@ export default [
       '/zh-cn/component/vector/rectangle.md',
       '/zh-cn/component/vector/geojson.md',
     ],
+  },
+  {
+    text: 'Loca可视化',
+    children: [
+      '/zh-cn/component/loca/point-layer.md',
+      '/zh-cn/component/loca/icon-layer.md',
+      '/zh-cn/component/loca/prism-layer.md',
+      '/zh-cn/component/loca/line-layer.md',
+      '/zh-cn/component/loca/polygon-layer.md',
+      '/zh-cn/component/loca/link-layer.md',
+      '/zh-cn/component/loca/heatmap-layer.md',
+      '/zh-cn/component/loca/hexagon-layer.md',
+      '/zh-cn/component/loca/grid-layer.md',
+      '/zh-cn/component/loca/scatter-layer.md',
+      '/zh-cn/component/loca/pulse-line-layer.md',
+      '/zh-cn/component/loca/pulse-link-layer.md',
+      '/zh-cn/component/loca/z-marker-layer.md'
+    ],
   }
 ]

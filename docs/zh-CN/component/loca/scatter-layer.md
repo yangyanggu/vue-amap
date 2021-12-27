@@ -1,3 +1,7 @@
+---
+title: 贴地点图层
+---
+
 # 贴地点图层 (Loca.ScatterLayer)
 大地面上的点，可展示三种类型：颜色圆、图标、动画图标。动画开启需要使用 **loca.animate.start();**
 
@@ -137,12 +141,12 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
     }
   },
   "features": [
-    { 
-      "type": "Feature", 
+    {
+      "type": "Feature",
       "properties": {
-      }, 
-      "geometry": { 
-        "type": "Point", 
+      },
+      "geometry": {
+        "type": "Point",
         "coordinates": [ 119.958676782427744, 32.121127961388339]
       }
     }
