@@ -1,82 +1,15 @@
+---
+title: 标注
+---
+
 # 标注 (AMap.LabelMarker)
 标注类
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-labels>
-          <el-amap-label-marker :visible="labelOptions.visible" :position="labelOptions.position" :text="labelOptions.text" :icon="labelOptions.icon" @click="clickMarker"></el-amap-label-marker>
-        </el-amap-layer-labels>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{labelOptions.visible ? '隐藏标注' : '显示标注'}}</button>
-        <button type="button" name="button" @click="changePosition">改变标注位置</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          labelOptions: {
-            visible: true,
-            position: [121.5495395, 31.21515044],
-            text: {
-              content: '测试content',
-              direction: 'right',
-              style: {
-                  fontSize: 15,
-                  fillColor: '#fff',
-                  strokeColor: 'rgba(255,0,0,0.5)',
-                  strokeWidth: 2,
-                  padding: [3, 10],
-                  backgroundColor: 'yellow',
-                  borderColor: '#ccc',
-                  borderWidth: 3,
-              }
-            },
-            icon: {
-              image: 'https://a.amap.com/jsapi_demos/static/images/poi-marker.png',
-              anchor: 'bottom-center',
-              size: [25, 34],
-              clipOrigin: [459, 92],
-              clipSize: [50, 68]
-            }
-          }
-        };
-      },
-      methods: {
-        changePosition() {
-          let position = this.labelOptions.position;
-          this.labelOptions.position = [position[0] + 0.002, position[1] - 0.002];
-        },
-        toggleVisible() {
-          this.labelOptions.visible = !this.labelOptions.visible;
-        },
-        clickMarker(){
-          alert('点击了标号')
-        },
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/marker/label-marker
+:::
 
 
 ## 静态属性

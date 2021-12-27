@@ -1,106 +1,14 @@
+---
+title: 灵活点标记
+---
+
 # 灵活点标记 (AMap.ElasticMarker)
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-elastic-marker :position="componentMarker.position" title="标号" :visible="componentMarker.visible" :draggable="componentMarker.draggable" :zoom-style-mapping="componentMarker.zoomStyleMapping" :styles="componentMarker.styles" @init="markerInit" @click="clickMarker">
-        </el-amap-elastic-marker>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{componentMarker.visible ? '隐藏标记' : '显示标记'}}</button>
-        <button type="button" name="button" @click="changePosition">改变标记位置</button>
-        <button type="button" name="button" @click="changeDraggable">{{componentMarker.draggable ? '禁止标记移动' : '允许标记移动'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 16,
-          center: [116.412866, 39.88365],
-          componentMarker: {
-            position: [116.412866, 39.88365],
-            visible: true,
-            draggable: false,
-            zoomStyleMapping:  {
-                14: 0,
-                15: 0,
-                16: 1,
-                17: 1,
-                18: 1,
-                19: 1,
-                20: 1
-            },
-            styles: [{
-               icon: {
-                    img: 'https://a.amap.com/jsapi_demos/static/resource/img/故宫.png',
-                    size: [16, 16],//可见区域的大小
-                    anchor: 'bottom-center',//锚点
-                    fitZoom: 14,//最合适的级别
-                    scaleFactor: 2,//地图放大一级的缩放比例系数
-                    maxScale: 2,//最大放大比例
-                    minScale: 1//最小放大比例
-                },
-                label: {
-                    content: '祈年殿',
-                    position: 'BM',
-                    minZoom: 15
-                }
-          },{
-                icon: {
-                    img: 'https://a.amap.com/jsapi_demos/static/resource/img/qiniandian.png',
-                    size: [128, 160],
-                    anchor: 'bottom-center',
-                    fitZoom: 17.5,
-                    scaleFactor: 2,
-                    maxScale: 2,
-                    minScale: 0.125
-                },
-                label: {
-                    content: '祈年殿',
-                    position: 'BM'
-                }
-            }],
-          }
-        };
-      },
-      methods: {
-        changePosition() {
-          let position = this.componentMarker.position;
-          this.componentMarker.position = [position[0] + 0.002, position[1] - 0.002];
-        },
-        changeDraggable() {
-          this.componentMarker.draggable = !this.componentMarker.draggable;
-        },
-        toggleVisible() {
-          this.componentMarker.visible = !this.componentMarker.visible;
-        },
-        markerInit(e){
-          console.log('marker init: ', e);
-        },
-        clickMarker(){
-          alert('点击了标号')
-        },
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/marker/elastic-marker
+:::
 
 
 ## 静态属性

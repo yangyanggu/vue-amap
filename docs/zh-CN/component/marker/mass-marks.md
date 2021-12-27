@@ -1,74 +1,15 @@
+---
+title: 海量点
+---
+
 # 海量点 (AMap.MassMarks)
 海量点类
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-mass-marks :data="points" :visible="visible" :styles="styles" @init="markerInit" @click="clickMarker">
-        </el-amap-mass-marks>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏海量点' : '显示海量点'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    const cities = require('./assets/js/citys.js');
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 3,
-          center: [102.342785, 35.312316],
-          visible: true,
-          points: cities,
-          styles: [{
-              url: 'https://webapi.amap.com/images/mass/mass0.png',
-              anchor: [6, 6],
-              size: [11, 11],
-              zIndex: 3,
-            }, {
-                url: 'https://webapi.amap.com/images/mass/mass1.png',
-                anchor: [4, 4],
-                size: [7, 7],
-                zIndex: 2,
-            }, {
-                url: 'https://webapi.amap.com/images/mass/mass2.png',
-                anchor: [3, 3],
-                size: [5, 5],
-                zIndex: 1,
-            }
-          ]
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        markerInit(e){
-          console.log('marker init: ', e);
-        },
-        clickMarker(){
-          alert('点击了标号')
-        },
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/marker/mass-marker
+:::
 
 
 ## 静态属性

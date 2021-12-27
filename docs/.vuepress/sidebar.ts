@@ -59,4 +59,15 @@ export default [
       '/zh-cn/component/layer/data/gl-custom.md'
     ],
   },
+  {
+    text: '点标记',
+    children: [
+      '/zh-cn/component/marker/marker.md',
+      '/zh-cn/component/marker/label-marker.md',
+      '/zh-cn/component/marker/text.md',
+      '/zh-cn/component/marker/elastic-marker.md',
+      '/zh-cn/component/marker/marker-cluster.md',
+      '/zh-cn/component/marker/mass-marks.md',
+    ],
+  }
 ]

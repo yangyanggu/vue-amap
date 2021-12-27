@@ -1,95 +1,15 @@
+---
+title: 文本
+---
+
 # 文本 (AMap.Text)
 文本标记
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-text :position="componentText.position" :text-style="{color: 'red'}" :visible="componentText.visible" :text="componentText.text" :draggable="componentText.draggable" @init="initText" @click="clickText">
-        </el-amap-text>
-        <el-amap-text v-for="(marker, index) in texts" :key="index" :position="marker.position" :text="marker.text" @click="(e) => {clickArrayMarker(marker, e)}"></el-amap-text>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{componentText.visible ? '隐藏标记' : '显示标记'}}</button>
-        <button type="button" name="button" @click="changePosition">改变标记位置</button>
-        <button type="button" name="button" @click="changeDraggable">{{componentText.draggable ? '禁止标记移动' : '允许标记移动'}}</button>
-        <button type="button" name="button" @click="addMarker">添加标记</button>
-        <button type="button" name="button" @click="removeMarker">移除标记</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          count: 1,
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          texts: [
-            {
-              position: [121.5273285, 31.21515044],
-              id: 1,
-              text: '数组1'
-            }
-          ],
-          componentText: {
-            position: [121.5273285, 31.21315058],
-            visible: true,
-            draggable: false,
-            text: '测试Text'
-          },
-        };
-      },
-      methods: {
-        changePosition() {
-          let position = this.componentText.position;
-          this.componentText.position = [position[0] + 0.002, position[1] - 0.002];
-        },
-        changeDraggable() {
-          this.componentText.draggable = !this.componentText.draggable;
-        },
-        toggleVisible() {
-          this.componentText.visible = !this.componentText.visible;
-        },
-        addMarker() {
-          let marker = {
-            position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02],
-            id: new Date().getTime(),
-            text: new Date().getTime()
-          };
-          this.texts.push(marker);
-        },
-        removeMarker() {
-          if (!this.texts.length) return;
-          this.texts.splice(this.texts.length - 1, 1);
-        },
-        initText(e){
-          console.log('marker init: ', e);
-        },
-        clickText(){
-          alert('点击了标号')
-        },
-        clickArrayMarker(marker){
-          alert('点击了标号,标号ID： '+marker.id)
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/marker/text
+:::
 
 
 ## 静态属性

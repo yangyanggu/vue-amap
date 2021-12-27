@@ -1,60 +1,15 @@
+---
+title: 点聚合
+---
+
 # 点聚合 (AMap.MarkerCluster)
 用于展示大量点标记，将点标记按照距离进行聚合，以提高绘制性能。点聚合支持用户自定义样式，以插件形式调用。
 
 ## 基础示例
-<vuep template="#example"></vuep>
 
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-marker-cluster v-if="visible" :points="points"  @init="markerInit" @click="clickMarker">
-        </el-amap-marker-cluster>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-        <button type="button" name="button" @click="changeData">修改数据</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    const china = require('./assets/js/china.js');
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 5,
-          center: [104.937478,35.439575],
-          points: Object.freeze(china),
-          visible: true
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        markerInit(e){
-          console.log('marker init: ', e);
-        },
-        clickMarker(){
-          alert('点击了标号')
-        },
-        changeData(){
-          this.points = [{"lnglat":["113.864691","22.942327"]},{"lnglat":["113.370643","22.938827"]}]
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/marker/marker-cluster
+:::
 
 
 ## 静态属性

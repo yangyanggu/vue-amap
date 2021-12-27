@@ -1,3 +1,6 @@
 .map-page-container{
     height: 300px;
 }
+.control-container>button{
+    margin-right: 8px;
+}

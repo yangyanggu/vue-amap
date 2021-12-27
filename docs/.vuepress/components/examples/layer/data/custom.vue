@@ -9,7 +9,7 @@
         v-if="canvas"
         :canvas="canvas"
         :render="render"
-        :always-render="true"
+        :always-render="false"
         :visible="visible"
       />
     </el-amap>

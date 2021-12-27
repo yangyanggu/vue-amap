@@ -13,6 +13,7 @@
         :render="render"
         :always-render="true"
         :visible="visible"
+        @init="initLayer"
       />
     </el-amap>
     <div class="control-container">
@@ -83,6 +84,9 @@ export default defineComponent({
       }
       const newPath = `${paths.join(' ')  } Z`;
       this.path.setAttribute('d', newPath);
+    },
+    initLayer(layer){
+      console.log('custom layer: ', layer);
     }
   }
 })
