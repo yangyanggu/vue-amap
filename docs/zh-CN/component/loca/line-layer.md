@@ -7,67 +7,9 @@ title: 线图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center":pitch="pitch" view-mode="3D" :show-label="false" class="amap-demo">
-        <el-amap-loca>
-          <el-amap-loca-line :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-line>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 8,
-          center: [116.335036, 39.900082],
-          pitch: 55,
-          visible: true,
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/bj_bus.json',
-          layerStyle: {
-              color: function (index, prop) {
-                  var i = index % colors.length;
-                  return colors[i];
-              },
-              lineWidth: (index, prop) => {
-                  var i = index % colors.length;
-                  return i * 0.1 + 2;
-              },
-              altitude: function (index, feature) {
-                  var i = index % colors.length;
-                  return 100 * i;
-              },
-              // dashArray: [10, 5, 10, 0],
-              dashArray: [10, 0, 10, 0],
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/line
+:::
 
 
 ## 静态属性
@@ -92,7 +34,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 color | String, Function | 线的颜色
@@ -102,7 +49,12 @@ borderWidth | Number, Function | 边框宽度（默认单位:px） default 0
 borderColor | String, Function | 边框颜色 default '#fff'
 dashArray | [Number, Number, Number, Number], Function | 连接线的虚线配置信息：[实线长度, 虚线长度, 实线长度, 虚线长度]; default [10, 0, 10, 0]
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 color | String | 线的颜色 default '#fff'

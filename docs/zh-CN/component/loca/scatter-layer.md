@@ -7,60 +7,9 @@ title: 贴地点图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo">
-        <el-amap-loca @init="initLoca">
-          <el-amap-loca-scatter :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-scatter>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 11,
-          center: [113.97199630737305, 22.5807295363949],
-          visible: true,
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/sz_road_F.json',
-          layerStyle: {
-             unit: 'meter',
-              size: [2600, 2600],
-              borderWidth: 0,
-              texture: 'https://a.amap.com/Loca/static/loca-v2/demos/images/breath_red.png',
-              duration: 500,
-              animate: true,
-        }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        initLoca(loca){
-          loca.animate.start();
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/scatter
+:::
 
 
 ## 静态属性
@@ -85,7 +34,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 size | [Number, Number], Function | 图标长宽，单位取决于 unit 字段。default [20,20]
@@ -99,7 +53,12 @@ unit | String | size 和 borderWidth 的单位，可以是 'px' 和 'meter'，me
 animate | Boolean | 是否有动画，动画开启需要使用序列帧的纹理，否则没有动画效果。default false
 duration | Number | 一轮动画的时长，单位毫秒(ms)。需要开启 animate 才能使用。default 0
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 size | [Number, Number] | 图标长宽，单位取决于 unit 字段。default [20,20]

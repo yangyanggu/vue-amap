@@ -7,123 +7,9 @@ title: 网格图
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :pitch="pitch" view-mode="3D" @init="initMap" :show-label="false" class="amap-demo">
-        <el-amap-loca :amb-light="ambLight" :dir-light="dirLight" :point-light="pointLight">
-          <el-amap-loca-grid :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-grid>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var colors = ['#FAE200', '#D27E37', '#C53634', '#C12B6E', '#A92E9A', '#67238A', '#211A50', '#18244E'].reverse();
-    var heights = [100, 200, 400, 600, 800, 1400, 1800, 4000];
-    var map = null;
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 11,
-          pitch: 55,
-          center: [114.341232,30.567523],
-          visible: true,
-          ambLight: {
-              intensity: 0.7,
-              color: '#7b7bff',
-          },
-          dirLight: {
-              intensity: 0.8,
-              color: '#fff',
-              target: [0, 0, 0],
-              position: [0, -1, 1],
-          },
-          pointLight:  {
-              color: 'rgb(240,88,25)',
-              position: [112.028276, 31.58538, 2000000],
-              intensity: 3,
-              // 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失。
-              distance: 5000000,
-          },
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/wh_car.json',
-          layerStyle: {
-              unit: 'meter',
-              radius:66,
-              gap: 0,
-              altitude: 100,
-              height: function (index, feature) {
-                  var ranks = feature.coordinates && feature.coordinates.length || 0;
-                  return ranks < 5 ?
-                      heights[0] : ranks < 10 ?
-                          heights[1] : ranks < 20 ?
-                              heights[2] : ranks < 30 ?
-                                  heights[3] : ranks < 50 ?
-                                      heights[4] : ranks < 80 ?
-                                          heights[5] : ranks < 100 ?
-                                              heights[6] : heights[7];
-              },
-              topColor: function (index, feature) {
-                  var ranks = feature.coordinates && feature.coordinates.length || 0;
-                  return ranks < 5 ?
-                      colors[0] : ranks < 10 ?
-                          colors[1] : ranks < 20 ?
-                              colors[2] : ranks < 30 ?
-                                  colors[3] : ranks < 50 ?
-                                      colors[4] : ranks < 80 ?
-                                          colors[5] : ranks < 100 ?
-                                              colors[6] : colors[7];
-              },
-              sideTopColor: function (index, feature) {
-                  var ranks = feature.coordinates && feature.coordinates.length || 0;
-                  return ranks < 5 ?
-                      colors[0] : ranks < 10 ?
-                          colors[1] : ranks < 20 ?
-                              colors[2] : ranks < 30 ?
-                                  colors[3] : ranks < 50 ?
-                                      colors[4] : ranks < 80 ?
-                                          colors[5] : ranks < 100 ?
-                                              colors[6] : colors[7];
-              },
-              sideBottomColor: function (index, feature) {
-                  var ranks = feature.coordinates && feature.coordinates.length || 0;
-                  return ranks < 5 ?
-                      colors[0] : ranks < 10 ?
-                          colors[1] : ranks < 20 ?
-                              colors[2] : ranks < 30 ?
-                                  colors[3] : ranks < 50 ?
-                                      colors[4] : ranks < 80 ?
-                                          colors[5] : ranks < 100 ?
-                                              colors[6] : colors[7];
-              }
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        initMap(e){
-          map = e;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/grid
+:::
 
 
 ## 静态属性
@@ -153,7 +39,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number, Function | 一个网格的半径大小，只能是一个常量值。单位由 unit 决定。 default 1000
@@ -166,7 +57,12 @@ sideTopColor | String, Function | 棱柱的侧面顶部颜色值。default '#fff
 sideBottomColor | String, Function | 棱柱的侧面底部颜色值。default '#fff'
 
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number | 一个网格的半径大小，只能是一个常量值。单位由 unit 决定。 default 1000

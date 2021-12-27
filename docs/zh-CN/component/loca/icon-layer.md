@@ -7,96 +7,9 @@ title: 图标图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo">
-        <el-amap-loca>
-          <el-amap-loca-icon :visible="visible" :source-data="sourceData" @click="clickIcon" :layer-style="layerStyle"></el-amap-loca-icon>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var events = require('./assets/js/events.js');
-    var trafficIcons = {
-        1: 'https://a.amap.com/Loca/static/loca-v2/demos/images/traffic-control.png',
-        2: 'https://a.amap.com/Loca/static/loca-v2/demos/images/jam.png',
-        3: 'https://a.amap.com/Loca/static/loca-v2/demos/images/construction.png',
-        4: 'https://a.amap.com/Loca/static/loca-v2/demos/images/close.png',
-        5: 'https://a.amap.com/Loca/static/loca-v2/demos/images/fog.png',
-        0: 'https://a.amap.com/Loca/static/loca-v2/demos/images/accident.png',
-    };
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 4.8,
-          center: [105.601, 35.32],
-          visible: true,
-          sourceData: {},
-          layerStyle: {
-              unit: 'px',
-              icon: (index, feature) => {
-                  let data = feature.properties.rawData;
-                  let url = trafficIcons[data.type % Object.keys(trafficIcons).length];
-                  return url;
-              },
-              iconSize: [40,40],
-              rotation: 0,
-          }
-        };
-      },
-      mounted(){
-        this.createData();
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        createData(){
-          let _events = events[0].events;
-          var list = _events.map(e => {
-              let ll = e.lngLat.split(',');
-              let arr = [parseFloat(ll[0]), parseFloat(ll[1])]
-              return {
-                  "type": "Feature",
-                  "properties": {
-                      rawData: e
-                  },
-                  "geometry": {
-                      "type": "Point",
-                      "coordinates": arr
-                  }
-              }
-          })
-
-          this.sourceData = Object.freeze({
-              "type": "FeatureCollection",
-              "features": list,
-          });
-        },
-        clickIcon(feature, e){
-          console.log('click: ', feature, e)
-        }
-      },
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/icon
+:::
 
 
 ## 静态属性
@@ -121,7 +34,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 unit | String | 点的单位，会影响半径和边宽度。可选值：px：像素，meter：地理单位米  default 'px'
@@ -130,7 +48,12 @@ iconSize | Array, Function | 图标大小，影响宽高。支持动画过渡效
 rotation  | Number, Function | 图标的旋转角度，可以通过回调为每个点设置不同的旋转角（单位:角度） default 0
 opacity | Number, Function | 透明度,支持通过回调函数为每个点设置不同的透明度 default 1
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 unit | String | 点的单位，会影响半径和边宽度。可选值：px：像素，meter：地理单位米  default 'px'

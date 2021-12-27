@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container">
+  <div class="map-page-container">
     <el-amap
       view-mode="3D"
       :pitch="pitch"
@@ -18,45 +18,36 @@
         />
       </el-amap-loca>
     </el-amap>
-    <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? '隐藏' : '显示' }}
-      </el-button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="changeVisible">
+      {{ visible ? '隐藏' : '显示' }}
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaZMarker from "@vue-map/packages/loca/ZMarkerLayer/ZMarkerLayer.vue";
-
-const colors = [
-  'rgba(254,255,198,0.95)',
-  'rgba(255,238,149,0.95)',
-  'rgba(255,217,99,0.95)',
-  'rgba(255,175,43,0.95)',
-  'rgba(255,135,24,0.95)',
-  'rgba(234,10,0,0.95)',
-  'rgba(195,0,0,0.95)',
-  'rgba(139,0,0,0.95)',
-];
 
 export default defineComponent({
   name: "Map",
-  components: {
-    ElAmapLocaZMarker,
-    ElAmapLoca,
-    ElAmap
-  },
   data() {
+    const colors = [
+      'rgba(254,255,198,0.95)',
+      'rgba(255,238,149,0.95)',
+      'rgba(255,217,99,0.95)',
+      'rgba(255,175,43,0.95)',
+      'rgba(255,135,24,0.95)',
+      'rgba(234,10,0,0.95)',
+      'rgba(195,0,0,0.95)',
+      'rgba(139,0,0,0.95)',
+    ];
     return {
       center: [116.597005,39.914388],
       zoom: 16,
       pitch: 75,
       visible: true,
-      sourceUrl: './zmarker.json',
+      sourceUrl: '/json/zmarker.json',
       layerStyle: {
         unit: 'meter',
         content: (index, feat) => {
@@ -97,19 +88,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.control-container {
-  position: absolute;
-  padding: 24px;
-  background: #ffffff;
-  z-index: 2;
-  bottom: 40px;
-  left: 150px;
-  right: 150px;
-}
 </style>

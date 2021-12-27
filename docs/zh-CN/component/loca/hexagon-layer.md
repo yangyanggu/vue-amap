@@ -7,135 +7,9 @@ title: 蜂窝网格图
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :pitch="pitch" view-mode="3D" @init="initMap" :show-label="false" class="amap-demo">
-        <el-amap-loca :amb-light="ambLight" :dir-light="dirLight" :point-light="pointLight">
-          <el-amap-loca-hexagon :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-hexagon>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var colors = ['#F4FFB3', '#BFDDA8', '#96CA8D', '#75BA89', '#5EAC86', '#4D9A96', '#3F748F', '#1D3748'].reverse();
-    var heights = [100, 200, 300, 900, 1000, 1200, 1500, 3000];
-  // 计算路口rank之和
-    function sum(arr) {
-        var sum = 0;
-        arr.forEach(a => {
-            sum += a.properties.rank;
-        });
-        return sum;
-    }
-    var map = null;
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 11.43,
-          pitch: 55,
-          center: [120.2446746826172, 30.199146446037616],
-          visible: true,
-          ambLight: {
-              intensity: 0.7,
-              color: '#7b7bff',
-          },
-          dirLight: {
-              intensity: 0.8,
-              color: '#fff',
-              target: [0, 0, 0],
-              position: [0, -1, 1],
-          },
-          pointLight:  {
-              color: 'rgb(240,88,25)',
-              position: [112.028276, 31.58538, 2000000],
-              intensity: 3,
-              // 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失。
-              distance: 5000000,
-          },
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/hz_road_level.json',
-          layerStyle: {
-              unit: 'meter',
-              radius: 120,
-              gap: 0,
-              altitude: 0,
-              height: function (index, feature) {
-                  var ranks = sum(feature.coordinates);
-                  // return ranks < 60 ? heights[2] : heights[6];
-                  return ranks < 20 ?
-                      heights[0] : ranks < 40 ?
-                          heights[1] : ranks < 60 ?
-                              heights[2] : ranks < 80 ?
-                                  heights[3] : ranks < 100 ?
-                                      heights[4] : ranks < 120 ?
-                                          heights[5] : ranks < 130 ?
-                                              heights[6] : heights[7];
-              },
-              topColor: function (index, feature) {
-                  var ranks = sum(feature.coordinates);
-                  // return ranks < 60 ? colors[1] : colors[6];
-                  return ranks < 20 ?
-                      colors[0] : ranks < 40 ?
-                          colors[1] : ranks < 60 ?
-                              colors[2] : ranks < 80 ?
-                                  colors[3] : ranks < 100 ?
-                                      colors[4] : ranks < 120 ?
-                                          colors[5] : ranks < 130 ?
-                                              colors[6] : colors[7];
-              },
-              sideBottomColor: function (index, feature) {
-                  var ranks = sum(feature.coordinates);
-                  // return ranks < 60 ? colors[1] : colors[6];
-                  return ranks < 20 ?
-                      colors[0] : ranks < 40 ?
-                          colors[1] : ranks < 60 ?
-                              colors[2] : ranks < 80 ?
-                                  colors[3] : ranks < 100 ?
-                                      colors[4] : ranks < 120 ?
-                                          colors[5] : ranks < 130 ?
-                                              colors[6] : colors[7];
-              },
-              sideTopColor: function (index, feature) {
-                  var ranks = sum(feature.coordinates);
-                  // return ranks < 60 ? colors[1] : colors[6];
-                  return ranks < 20 ?
-                      colors[0] : ranks < 40 ?
-                          colors[1] : ranks < 60 ?
-                              colors[2] : ranks < 80 ?
-                                  colors[3] : ranks < 100 ?
-                                      colors[4] : ranks < 120 ?
-                                          colors[5] : ranks < 130 ?
-                                              colors[6] : colors[7];
-              }
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        initMap(e){
-          map = e;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/hexagon
+:::
 
 
 ## 静态属性
@@ -165,7 +39,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number, Function | 一个网格的半径大小，只能是一个常量值。单位由 unit 决定。 default 1000
@@ -177,7 +56,12 @@ topColor | String, Function | 棱柱的顶面颜色值。default '#fff'
 sideTopColor | String, Function | 棱柱的侧面顶部颜色值。default '#fff'
 sideBottomColor | String, Function | 棱柱的侧面底部颜色值。default '#fff'
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number | 一个网格的半径大小，只能是一个常量值。单位由 unit 决定。 default 1000

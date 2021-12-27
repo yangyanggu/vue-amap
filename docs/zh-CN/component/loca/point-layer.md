@@ -8,79 +8,9 @@ title: 圆点图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo" @init="initMap">
-        <el-amap-loca>
-          <el-amap-loca-point v-if="sourceUrl" :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle" :default-style-value="defaultStyle" :visible-duration="300"></el-amap-loca-point>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var colors = [
-        'rgba(254,255,198,0.95)',
-        'rgba(255,238,149,0.95)',
-        'rgba(255,217,99,0.95)',
-        'rgba(255,175,43,0.95)',
-        'rgba(255,135,24,0.95)',
-        'rgba(234,10,0,0.95)',
-        'rgba(195,0,0,0.95)',
-        'rgba(139,0,0,0.95)',
-    ];
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 4.8,
-          center: [105.601, 35.32],
-          visible: true,
-          sourceUrl: '',
-          layerStyle: {
-            unit: 'meter',
-            radius: (index, f) => {
-                var n = f.properties['人口'];
-                return n * 100;
-            },
-            color: (index, f) => {
-                var n = Math.min(7, ~~(f.properties['人均GDP'] / 10000));
-                return colors[n];
-            },
-          },
-          defaultStyle: {
-            borderWidth: 5000,
-            blurRadius: 3,
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        initMap(){
-          setTimeout(() => {
-            this.sourceUrl = 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/gdp.json';
-          }, 1000)
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/point
+:::
 
 
 ## 静态属性
@@ -106,7 +36,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number, Function | 半径（默认单位: px）。支持动画过渡效果。 default 20
@@ -116,7 +51,12 @@ borderWidth | Number, Function | 边框宽度（默认单位:px） default 10
 borderColor | String, Function | 边框填充色，支持回调设置不同的颜色 default  '#fff'
 blurWidth | Number, Function | 模糊半径，从哪个位置开始向边缘模糊。负数代表不进行模糊。 default -1
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number | 半径（默认单位: px）。支持动画过渡效果。 default 20

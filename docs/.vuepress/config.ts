@@ -23,6 +23,8 @@ export default defineUserConfig<DefaultThemeOptions>({
     editLink: false,
     lastUpdatedText: '最后更新时间',
     contributorsText: '贡献者',
+    tip: '提示',
+    warning: '警告',
     navbar: Navbar,
     sidebar: Sidebar,
 

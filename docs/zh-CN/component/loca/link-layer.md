@@ -7,60 +7,9 @@ title: 链接线图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center":pitch="pitch" view-mode="3D" :show-label="false" class="amap-demo">
-        <el-amap-loca>
-          <el-amap-loca-link :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-link>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 8,
-          center: [116.335036, 39.900082],
-          pitch: 55,
-          visible: true,
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/bj_bus.json',
-          layerStyle: {
-              lineColors : colors,
-              height : (index, prop) => {
-                  var i = index % colors.length;
-                  return i * 200 + 40;
-              },
-              smoothSteps : 100,
-              // dashArray: [10, 5, 10, 0],
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/link
+:::
 
 
 ## 静态属性
@@ -85,14 +34,24 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 lineColors | Array, Function | 链接线颜色。 类型为Array时，可设置颜色渐变，color[0]为起始色，color[color.lenth-1]为终止色，中间为过渡色； 类型为Function时，返回每根线的颜色。参数为(index,item)，item为一个对象{link,distance}，link为该条线的初始信息。返回结果为Array(渐变)。
 height  | Number, Function | 高度，单位为米，代表弧顶的最高高度。 类型为Function时，返回每根线的高度。参数为(index,item)，item中有distance属性，代表两点间的距离（米），可以用该属性处理高度。
 smoothSteps | Number, Function | 平滑步数，代表弧线的分隔段数，越大平滑度越好，默认为100。
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 lineColors | Array | 链接线颜色。 类型为Array时，可设置颜色渐变，color[0]为起始色，color[color.lenth-1]为终止色，中间为过渡色； 类型为Function时，返回每根线的颜色。参数为(index,item)，item为一个对象{link,distance}，link为该条线的初始信息。返回结果为Array(渐变)。

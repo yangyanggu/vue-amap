@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container">
+  <div class="map-page-container">
     <el-amap
       view-mode="3D"
       :pitch="pitch"
@@ -17,38 +17,31 @@
         />
       </el-amap-loca>
     </el-amap>
-    <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? '隐藏' : '显示' }}
-      </el-button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="changeVisible">
+      {{ visible ? '隐藏' : '显示' }}
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaHexagon from "@vue-map/packages/loca/HexagonLayer/HexagonLayer.vue";
 
-const colors = ['#F4FFB3', '#BFDDA8', '#96CA8D', '#75BA89', '#5EAC86', '#4D9A96', '#3F748F', '#1D3748'].reverse();
-const heights = [100, 200, 300, 900, 1000, 1200, 1500, 3000];
-// 计算路口rank之和
-function sum(arr) {
-  let sum = 0;
-  arr.forEach(a => {
-    sum += a.properties.rank;
-  });
-  return sum;
-}
+
 export default defineComponent({
   name: "Map",
-  components: {
-    ElAmapLocaHexagon,
-    ElAmapLoca,
-    ElAmap
-  },
   data() {
+    const colors = ['#F4FFB3', '#BFDDA8', '#96CA8D', '#75BA89', '#5EAC86', '#4D9A96', '#3F748F', '#1D3748'].reverse();
+    const heights = [100, 200, 300, 900, 1000, 1200, 1500, 3000];
+// 计算路口rank之和
+    function sum(arr) {
+      let sum = 0;
+      arr.forEach(a => {
+        sum += a.properties.rank;
+      });
+      return sum;
+    }
     return {
       center: [120.2446746826172, 30.199146446037616],
       zoom: 11,
@@ -126,19 +119,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.control-container {
-  position: absolute;
-  padding: 24px;
-  background: #ffffff;
-  z-index: 2;
-  bottom: 40px;
-  left: 150px;
-  right: 150px;
-}
 </style>

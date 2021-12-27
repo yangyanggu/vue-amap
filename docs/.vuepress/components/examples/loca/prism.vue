@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container">
+  <div class="map-page-container">
     <el-amap
       view-mode="3D"
       :pitch="pitch"
@@ -18,35 +18,27 @@
         />
       </el-amap-loca>
     </el-amap>
-    <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? '隐藏' : '显示' }}
-      </el-button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="changeVisible">
+      {{ visible ? '隐藏' : '显示' }}
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaPrism from "@vue-map/packages/loca/PrismLayer/PrismLayer.vue";
 
-const topConf = {
-  '上海市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-one.png',
-  '北京市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-two.png',
-  '广州市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-three.png',
-};
 let map = null;
 
 export default defineComponent({
   name: "Map",
-  components: {
-    ElAmapLocaPrism,
-    ElAmapLoca,
-    ElAmap
-  },
   data() {
+    const topConf = {
+      '上海市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-one.png',
+      '北京市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-two.png',
+      '广州市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-three.png',
+    };
     return {
       center: [103.594884,36.964587],
       zoom: 2,
@@ -110,19 +102,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.control-container {
-  position: absolute;
-  padding: 24px;
-  background: #ffffff;
-  z-index: 2;
-  bottom: 40px;
-  left: 150px;
-  right: 150px;
-}
 </style>

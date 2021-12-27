@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container">
+  <div class="map-page-container">
     <el-amap
       view-mode="3D"
       :pitch="pitch"
@@ -18,31 +18,22 @@
         />
       </el-amap-loca>
     </el-amap>
-    <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? '隐藏' : '显示' }}
-      </el-button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="changeVisible">
+      {{ visible ? '隐藏' : '显示' }}
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaPolygon from "@vue-map/packages/loca/PolygonLayer/PolygonLayer.vue";
-
-const colors = ['#FFF8B4', '#D3F299', '#9FE084', '#5ACA70', '#00AF53', '#00873A', '#006B31', '#004835', '#003829'].reverse();
-const height = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000];
 
 export default defineComponent({
   name: "Map",
-  components: {
-    ElAmapLocaPolygon,
-    ElAmapLoca,
-    ElAmap
-  },
   data() {
+    const colors = ['#FFF8B4', '#D3F299', '#9FE084', '#5ACA70', '#00AF53', '#00873A', '#006B31', '#004835', '#003829'].reverse();
+    const height = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000];
     return {
       center: [120.109233,30.246411],
       zoom: 11,
@@ -119,19 +110,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.control-container {
-  position: absolute;
-  padding: 24px;
-  background: #ffffff;
-  z-index: 2;
-  bottom: 40px;
-  left: 150px;
-  right: 150px;
-}
 </style>

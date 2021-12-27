@@ -35,126 +35,9 @@ title: 面图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :pitch="pitch" view-mode="3D" @init="initMap" :show-label="false" class="amap-demo">
-        <el-amap-loca :amb-light="ambLight" :dir-light="dirLight" :point-light="pointLight">
-          <el-amap-loca-polygon :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-polygon>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var colors = ['#FFF8B4', '#D3F299', '#9FE084', '#5ACA70', '#00AF53', '#00873A', '#006B31', '#004835', '#003829'].reverse();
-    var height = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000];
-    var map = null;
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 11,
-          pitch: 55,
-          center: [120.109233,30.246411],
-          visible: true,
-          ambLight: {
-              intensity: 0.7,
-              color: '#7b7bff',
-          },
-          dirLight: {
-              intensity: 0.8,
-              color: '#fff',
-              target: [0, 0, 0],
-              position: [0, -1, 1],
-          },
-          pointLight:  {
-              color: 'rgb(240,88,25)',
-              position: [112.028276, 31.58538, 2000000],
-              intensity: 3,
-              // 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失。
-              distance: 5000000,
-          },
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/hz_gn.json',
-          layerStyle: {
-              topColor: function (index, feature) {
-                  var v = feature.properties.health * 100;
-                  return v < 40 ? colors[8] :
-                      v < 50 ? colors[7] :
-                          v < 55 ? colors[6] :
-                              v < 60 ? colors[5] :
-                                  v < 65 ? colors[4] :
-                                      v < 70 ? colors[3] :
-                                          v < 75 ? colors[2] :
-                                              v < 80 ? colors[1] :
-                                                  v < 100 ? colors[0] : 'green';
-              },
-              sideTopColor: function (index, feature) {
-                  // var v = feature.properties.value;
-                  var v = feature.properties.health * 100;
-                  return v < 40 ? colors[8] :
-                      v < 50 ? colors[7] :
-                          v < 55 ? colors[6] :
-                              v < 60 ? colors[5] :
-                                  v < 65 ? colors[4] :
-                                      v < 70 ? colors[3] :
-                                          v < 75 ? colors[2] :
-                                              v < 80 ? colors[1] :
-                                                  v < 100 ? colors[0] : 'green';
-              },
-              sideBottomColor: function (index, feature) {
-                  // var v = feature.properties.value;
-                  var v = feature.properties.health * 100;
-                  return v < 40 ? colors[8] :
-                      v < 50 ? colors[7] :
-                          v < 55 ? colors[6] :
-                              v < 60 ? colors[5] :
-                                  v < 65 ? colors[4] :
-                                      v < 70 ? colors[3] :
-                                          v < 75 ? colors[2] :
-                                              v < 80 ? colors[1] :
-                                                  v < 100 ? colors[0] : 'green';
-              },
-              height: function (index, feature) {
-                  var v = feature.properties.health * 100;
-                  return v < 40 ? height[8] :
-                      v < 50 ? height[7] :
-                          v < 55 ? height[6] :
-                              v < 60 ? height[5] :
-                                  v < 65 ? height[4] :
-                                      v < 70 ? height[3] :
-                                          v < 75 ? height[2] :
-                                              v < 80 ? height[1] :
-                                                  v < 100 ? height[0] : 0;
-              },
-              altitude: 0,
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        initMap(e){
-          map = e;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/polygon
+:::
 
 
 ## 静态属性
@@ -184,7 +67,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 topColor | String, Function | 棱柱的顶面颜色值。default '#fff'
@@ -195,7 +83,12 @@ height  | Number, Function | 棱柱的高度。单位是 unit 的值。支持动
 texture  | Canvas, URL, Image, Base64 | 带有高度的时候，侧面的贴图纹理，目前仅支持侧面。如果需要纹理在侧面重复贴图，需要图片的宽高是 2 的 n 次方像素值。比如：256x256，64x1024
 textureSize  | Array[Number,Number], Function | 一个纹理图片覆盖的大小，[宽度, 高度]，单位是米，默认是宽 20 米，高 3 米贴一张纹理，会重复贴图。default [20,3]
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 topColor | String | 棱柱的顶面颜色值。default '#fff'

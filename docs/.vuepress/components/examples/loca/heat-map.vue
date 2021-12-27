@@ -32,8 +32,8 @@ export default defineComponent({
   name: "Map",
   data() {
     return {
-      center: [114.341232, 30.567523],
-      zoom: 11,
+      center: [120.115196, 30.17133],
+      zoom: 10,
       pitch: 55,
       visible: true,
       sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/hz_house_order.json',

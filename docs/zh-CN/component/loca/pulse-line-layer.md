@@ -7,73 +7,9 @@ title: 轨迹线图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" view-mode="3D" :pitch="0" :show-label="false" class="amap-demo">
-        <el-amap-loca @init="initLoca">
-          <el-amap-loca-pulse-line :visible="visible" :depth="true" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-pulse-line>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    // 颜色配置
-    var headColors = ['#ECFFB1', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968'];
-    var trailColors = [
-        'rgba(255,178,6, 0.2)',
-        'rgba(255,178,6, 0.2)',
-        'rgba(20,105,104, 0.2)',
-        'rgba(20,105,104, 0.2)',
-        'rgba(20,105,104, 0.2)',
-        'rgba(20,105,104, 0.2)',
-        'rgba(20,105,104, 0.2)',
-        'rgba(20,105,104, 0.2)',
-    ];
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 5.29,
-          center: [109.595668,35.447184],
-          visible: true,
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/data-line-in.json',
-          layerStyle: {
-             altitude: 0,
-            lineWidth: (_, feature) => feature.properties.lineWidthRatio * 4 + 1,
-            headColor: (_, feature) => headColors[feature.properties.type],
-            trailColor: (_, feature) => trailColors[feature.properties.type],
-            interval: 0.5,
-            duration: 2000,
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        initLoca(loca){
-          loca.animate.start();
-        }
-      }
-    };
-  </script>
-
-</script>
-
+::: demo
+examples/loca/pulse-line
+:::
 
 ## 静态属性
 仅且可以初始化配置，不支持响应式。
@@ -97,7 +33,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 lineWidth | Number, Function | 脉冲线的宽度。 default 1
@@ -107,7 +48,12 @@ altitude | Number | 线整体海拔高度. default 0
 interval | Number | 每段脉冲占整条路径长度的比例，例如interval = 0.25, 则表示每条路径上同时有4段脉冲. default 1
 duration | Number | 表示一条脉冲动画从头走到尾的时间（毫秒）。 default 2000
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 color | String | 线的颜色 default '#fff'

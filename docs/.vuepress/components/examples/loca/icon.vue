@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container">
+  <div class="map-page-container">
     <el-amap
       view-mode="3D"
       :pitch="pitch"
@@ -17,37 +17,29 @@
         />
       </el-amap-loca>
     </el-amap>
-    <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? '隐藏' : '显示' }}
-      </el-button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="changeVisible">
+      {{ visible ? '隐藏' : '显示' }}
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaIcon from "@vue-map/packages/loca/IconLayer/IconLayer.vue";
 
-const trafficIcons = {
-  1: 'https://a.amap.com/Loca/static/loca-v2/demos/images/traffic-control.png',
-  2: 'https://a.amap.com/Loca/static/loca-v2/demos/images/jam.png',
-  3: 'https://a.amap.com/Loca/static/loca-v2/demos/images/construction.png',
-  4: 'https://a.amap.com/Loca/static/loca-v2/demos/images/close.png',
-  5: 'https://a.amap.com/Loca/static/loca-v2/demos/images/fog.png',
-  0: 'https://a.amap.com/Loca/static/loca-v2/demos/images/accident.png',
-};
 
 export default defineComponent({
   name: "Map",
-  components: {
-    ElAmapLocaIcon,
-    ElAmapLoca,
-    ElAmap
-  },
   data() {
+    const trafficIcons = {
+      1: 'https://a.amap.com/Loca/static/loca-v2/demos/images/traffic-control.png',
+      2: 'https://a.amap.com/Loca/static/loca-v2/demos/images/jam.png',
+      3: 'https://a.amap.com/Loca/static/loca-v2/demos/images/construction.png',
+      4: 'https://a.amap.com/Loca/static/loca-v2/demos/images/close.png',
+      5: 'https://a.amap.com/Loca/static/loca-v2/demos/images/fog.png',
+      0: 'https://a.amap.com/Loca/static/loca-v2/demos/images/accident.png',
+    };
     return {
       center: [105.601, 35.32],
       zoom: 4.8,
@@ -78,7 +70,7 @@ export default defineComponent({
       this.visible = !this.visible;
     },
     createData(){
-      fetch('./events.json').then(response => response.json()).then(events => {
+      fetch('/json/events.json').then(response => response.json()).then(events => {
         const _events = events[0].events;
         const list = _events.map(e => {
           const ll = e.lngLat.split(',');
@@ -106,19 +98,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.control-container {
-  position: absolute;
-  padding: 24px;
-  background: #ffffff;
-  z-index: 2;
-  bottom: 40px;
-  left: 150px;
-  right: 150px;
-}
 </style>

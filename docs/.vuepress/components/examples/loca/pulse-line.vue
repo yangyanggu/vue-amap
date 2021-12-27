@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container">
+  <div class="map-page-container">
     <el-amap
       view-mode="3D"
       :pitch="pitch"
@@ -18,40 +18,32 @@
         />
       </el-amap-loca>
     </el-amap>
-    <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? '隐藏' : '显示' }}
-      </el-button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="changeVisible">
+      {{ visible ? '隐藏' : '显示' }}
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaPulseLine from "@vue-map/packages/loca/PulseLineLayer/PulseLineLayer.vue";
-
-const headColors = ['#ECFFB1', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968'];
-const trailColors = [
-  'rgba(255,178,6, 0.2)',
-  'rgba(255,178,6, 0.2)',
-  'rgba(20,105,104, 0.2)',
-  'rgba(20,105,104, 0.2)',
-  'rgba(20,105,104, 0.2)',
-  'rgba(20,105,104, 0.2)',
-  'rgba(20,105,104, 0.2)',
-  'rgba(20,105,104, 0.2)',
-];
 
 export default defineComponent({
   name: "Map",
-  components: {
-    ElAmapLocaPulseLine,
-    ElAmapLoca,
-    ElAmap
-  },
   data() {
+    const headColors = ['#ECFFB1', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968'];
+    const trailColors = [
+      'rgba(255,178,6, 0.2)',
+      'rgba(255,178,6, 0.2)',
+      'rgba(20,105,104, 0.2)',
+      'rgba(20,105,104, 0.2)',
+      'rgba(20,105,104, 0.2)',
+      'rgba(20,105,104, 0.2)',
+      'rgba(20,105,104, 0.2)',
+      'rgba(20,105,104, 0.2)',
+    ];
+
     return {
       center: [109.595668,35.447184],
       zoom: 5,
@@ -86,19 +78,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.control-container {
-  position: absolute;
-  padding: 24px;
-  background: #ffffff;
-  z-index: 2;
-  bottom: 40px;
-  left: 150px;
-  right: 150px;
-}
 </style>

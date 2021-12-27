@@ -45,6 +45,9 @@ export default defineComponent({
       const layerStyle = Object.assign({}, defaultLayerStyle, this['layerStyle']);
       this.$amapComponent.setStyle(layerStyle);
     }
+  },
+  render(){
+    return null;
   }
 });
 </script>

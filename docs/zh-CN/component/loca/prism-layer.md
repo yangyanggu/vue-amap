@@ -7,115 +7,9 @@ title: 圆点图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :zoom="zoom" :center="center" :pitch="pitch" view-mode="3D" @init="initMap" :show-label="false" class="amap-demo">
-        <el-amap-loca :amb-light="ambLight" :dir-light="dirLight" :point-light="pointLight">
-          <el-amap-loca-prism :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-prism>
-        </el-amap-loca>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    var topConf = {
-        '上海市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-one.png',
-        '北京市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-two.png',
-        '广州市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-three.png',
-    };
-    var map = null;
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 2,
-          pitch: 55,
-          center: [103.594884,36.964587],
-          visible: true,
-          ambLight: {
-              intensity: 0.7,
-              color: '#7b7bff',
-          },
-          dirLight: {
-              intensity: 0.8,
-              color: '#fff',
-              target: [0, 0, 0],
-              position: [0, -1, 1],
-          },
-          pointLight:  {
-              color: 'rgb(240,88,25)',
-              position: [112.028276, 31.58538, 2000000],
-              intensity: 3,
-              // 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失。
-              distance: 5000000,
-          },
-          sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/gdp.json',
-          layerStyle: {
-              unit: 'meter',
-              sideNumber: 32,
-              topColor: (index, f) => {
-                  var n = f.properties['GDP'];
-                  return n > 7000 ? '#E97091' : '#2852F1';
-              },
-              sideTopColor: (index, f) => {
-                  var n = f.properties['GDP'];
-                  return n > 7000 ? '#E97091' : '#2852F1';
-              },
-              sideBottomColor: '#002bb9',
-              radius: 15000,
-              height: (index, f) => {
-                  var props = f.properties;
-                  var height = Math.max(100, Math.sqrt(props['GDP']) * 9000 - 50000);
-                  var conf = topConf[props['名称']];
-                  // top3 的数据，增加文字表达
-                  if (conf) {
-                      map.add(
-                          new AMap.Marker({
-                              anchor: 'bottom-center',
-                              position: [f.coordinates[0], f.coordinates[1], height],
-                              content: '<div style="margin-bottom: 10px; float: left; font-size: 14px;height: 57px; width: 180px; color:#fff; background: no-repeat url(' +
-                                  conf +
-                                  '); background-size: 100%;"><p style="margin: 7px 0 0 35px; height: 20px; line-height:20px;">' +
-                                  props['名称'] + '人口 ' + props['人口'] + '</p>' +
-                                  '<p style="margin: 4px 0 0 35px; height: 20px; line-height:20px; color: #00a9ff; font-size: 13px;">' +
-                                  props['GDP'] + ' 元' +
-                                  '</p></div>',
-                          }),
-                      );
-                  }
-                  return height;
-                  // return 60000 + n * 100;
-              },
-              // rotation: 360 * 100,
-              altitude: 0,
-          }
-        };
-      },
-      methods: {
-        toggleVisible() {
-          this.visible = !this.visible;
-        },
-        initMap(e){
-          map = e;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/loca/prism
+:::
 
 
 ## 静态属性
@@ -145,7 +39,12 @@ zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
 
-### layerStyle参数(覆盖所有默认值)
+### layerStyle参数
+
+::: warning
+layerStyle参数覆盖所有默认值
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number, Function | 半径（默认单位: px）。支持动画过渡效果。 default 20
@@ -158,7 +57,12 @@ topColor | String, Function | 棱柱的顶面颜色值。default '#fff'
 sideTopColor | String, Function | 棱柱的侧面顶部颜色值。default '#fff'
 sideBottomColor | String, Function | 棱柱的侧面底部颜色值。default '#fff'
 
-### defaultStyleValue参数(提供默认参数，但会被geojson的properties属性中的值覆盖)
+### defaultStyleValue参数
+
+::: tip
+defaultStyleValue提供默认参数，但会被geojson的properties属性中的值覆盖
+:::
+
 名称 | 类型 | 说明
 ---|---|---|
 radius | Number | 半径（默认单位: px）。支持动画过渡效果。 default 20
