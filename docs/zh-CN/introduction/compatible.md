@@ -19,8 +19,9 @@ title: 兼容高德原生 SDK
 * 确保 `vue-amap` 的导入名不是 `AMap`，推荐 `import VueAMap from '@vuemap/vue-amap'` 避免和高德全局的 `AMap` 冲突。
 * 若 `eslint` 报错 `AMap is undefined` 之类的错误。请将 `AMap` 配置到 `.eslintrc` 的 `globals` 中。
 
-::: demo You can set `offset` attribute to change the offset top，the default value is 0。
+### 地图示例
+::: demo
 
-amap-basic
+examples/amap/basic
 
 :::

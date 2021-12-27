@@ -1,3 +1,7 @@
+---
+title: 矢量瓦片块图层
+---
+
 # 矢量瓦片块 (AMap.MapboxVectorTileLayer)
 为了满足基于矢量瓦片块的数据可视化、矢量瓦片边界展示等开发需求，通过 AMap.MapboxVectorTileLayer 插件提供了简易矢量瓦片图层
 此图层可以使用标准的 MVT 瓦片服务作为数据源。
@@ -6,47 +10,9 @@
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-mapbox-vector-tile :visible="visible" :url="url"></el-amap-layer-mapbox-vector-tile>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 10.5,
-          center: [120.101743, 30.241665],
-          visible: true,
-          url: 'https://restapi.amap.com/rest/lbs/geohub/tiles/mvt?key=747f980f217a31ba68d99301045a3fa7&z=[z]&x=[x]&y=[y]&size=512&id=1ed4ee90-dd77-11eb-9642-a7be29d36ac6',
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/standard/mapbox-vector
+:::
 
 
 ## 静态属性

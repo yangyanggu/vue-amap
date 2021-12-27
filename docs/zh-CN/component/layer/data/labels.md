@@ -1,3 +1,7 @@
+---
+title: 标注层
+---
+
 # 标注层 (AMap.LabelsLayer)
 标注层。<br/>
 有三种方法添加标注。使用效果见下面示例<br/>
@@ -7,126 +11,9 @@
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-labels ref="labels" :visible="visible" :collision="false" @init="init">
-          <el-amap-label-marker :position="labelOptions.position" :text="labelOptions.text" :icon="labelOptions.icon"></el-amap-label-marker>
-        </el-amap-layer-labels>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          visible: true,
-          labelOptions: {
-            position: [121.5495395, 31.21515044],
-            text: {
-              content: '测试slot',
-              direction: 'right',
-              style: {
-                  fontSize: 15,
-                  fillColor: '#fff',
-                  strokeColor: 'rgba(255,0,0,0.5)',
-                  strokeWidth: 2,
-                  padding: [3, 10],
-                  backgroundColor: 'yellow',
-                  borderColor: '#ccc',
-                  borderWidth: 3,
-              }
-            },
-            icon: {
-              image: 'https://a.amap.com/jsapi_demos/static/images/poi-marker.png',
-              anchor: 'bottom-center',
-              size: [25, 34],
-              clipOrigin: [459, 92],
-              clipSize: [50, 68]
-            }
-          }
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        },
-        init(layer){
-          this.$refs.labels.$$add(new AMap.LabelMarker({
-              position: [121.5273285, 31.21515044],
-              opacity: 1,
-              zIndex: 2,
-              icon: {
-                  image: 'https://a.amap.com/jsapi_demos/static/images/poi-marker.png',
-                  anchor: 'bottom-center',
-                  size: [25, 34],
-                  clipOrigin: [459, 92],
-                  clipSize: [50, 68]
-              },
-              text: {
-                  content: '测试$refs $$add',
-                  direction: 'right',
-                  style: {
-                      fontSize: 15,
-                      fillColor: '#fff',
-                      strokeColor: 'rgba(255,0,0,0.5)',
-                      strokeWidth: 2,
-                      padding: [3, 10],
-                      backgroundColor: 'yellow',
-                      borderColor: '#ccc',
-                      borderWidth: 3,
-                  }
-              }
-          }));
-          layer.add(new AMap.LabelMarker({
-              position: [121.4973285, 31.21515044],
-              opacity: 1,
-              zIndex: 2,
-              icon: {
-                  image: 'https://a.amap.com/jsapi_demos/static/images/poi-marker.png',
-                  anchor: 'bottom-center',
-                  size: [25, 34],
-                  clipOrigin: [459, 92],
-                  clipSize: [50, 68]
-              },
-              text: {
-                  content: '测试layer.add',
-                  direction: 'right',
-                  style: {
-                      fontSize: 15,
-                      fillColor: '#fff',
-                      strokeColor: 'rgba(255,0,0,0.5)',
-                      strokeWidth: 2,
-                      padding: [3, 10],
-                      backgroundColor: 'yellow',
-                      borderColor: '#ccc',
-                      borderWidth: 3,
-                  }
-              }
-          }))
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/data/labels
+:::
 
 
 ## 静态属性

@@ -52,7 +52,7 @@ export const containerPlugin: Plugin<ContainerPluginOptions> = () => {
         return !!params.trim().match(/^demo\s*(.*)$/)
       },
 
-      render(tokens, idx, options, env ) {
+      render(tokens, idx ) {
         const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
         if (tokens[idx].nesting === 1 /* means the tag is opening */) {
           const description = m && m.length > 1 ? m[1] : ''
@@ -61,7 +61,7 @@ export const containerPlugin: Plugin<ContainerPluginOptions> = () => {
           const sourceFile = sourceFileToken.children?.[0].content ?? ''
           if (sourceFileToken.type === 'inline') {
             source = fs.readFileSync(
-              path.resolve(vpRoot, 'components', 'examples', `${sourceFile}.vue`),
+              path.resolve(vpRoot, 'components', `${sourceFile}.vue`),
               'utf-8'
             )
           }

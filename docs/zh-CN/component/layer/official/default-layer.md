@@ -1,40 +1,14 @@
+---
+title: 默认图层
+---
+
 # 默认图层 (AMap.createDefaultLayer)
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-default ></el-amap-layer-default>
-      </el-amap>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-        };
-      },
-      methods: {
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/official/default
+:::
 
 
 ## 静态属性

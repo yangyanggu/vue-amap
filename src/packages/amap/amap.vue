@@ -129,9 +129,6 @@ export default defineComponent ({
     WebGLParams: {
       type: Object
     },// 额外配置的WebGL参数 eg: preserveDrawingBuffer
-    onClick: {
-      type: Function
-    }
   },
 
   data() {

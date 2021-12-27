@@ -1,84 +1,15 @@
+---
+title: 自定义图层
+---
+
 # 自定义图层 (AMap.CustomLayer)
 自定义图层是一种完全由开发者来指定绘制方法的图层
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" @init="initMap" class="amap-demo">
-        <el-amap-layer-custom v-if="canvas" :visible="visible" :canvas="canvas" :render="render"></el-amap-layer-custom>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 3,
-          center: [116.306206, 39.975468],
-          visible: true,
-          canvas: null,
-          map: null,
-          path: null
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        },
-        initMap(map){
-          this.map = map;
-          var size = map.getSize();
-          var canvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-          canvas.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-          canvas.setAttribute('width', size.width);
-          canvas.setAttribute('height', size.height);
-      
-          this.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-          this.path.onclick = function () {
-              console.log('svg path clicked')
-          };
-          var styleText = [];
-          styleText.push('stroke:red');
-          styleText.push('fill:green');
-          styleText.push('fill-opacity:0.3');
-          this.path.style.cssText = styleText.join(';');
-          canvas.appendChild(this.path);
-          this.canvas = canvas;
-        },
-        render(){
-          var newPath = [];
-          var center = this.map.lngLatToContainer(this.center);
-  
-          for (var k = 0; k < 6; k += 1) {
-              var ag = Math.PI * 60 / 180 * k;
-              var x = center.x + Math.cos(ag) * 50;
-              var y = center.y + Math.sin(ag) * 50;
-              newPath.push((k == 0 ? 'M' : 'L') + x + ' ' + y);
-          }
-          newPath = newPath.join(' ') + ' Z';
-          this.path.setAttribute('d', newPath);
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/data/custom
+:::
 
 
 ## 静态属性

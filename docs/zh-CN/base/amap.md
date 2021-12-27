@@ -1,5 +1,5 @@
 ---
-title: 
+title: 地图
 ---
 # 地图(AMap)
 
@@ -7,45 +7,9 @@ title:
 
 ## 基础示例
 
-<template>
-<div class="amap-page-container">
-  <el-amap ref="map" map-style="amap://styles/62009be025f187dd3eafe327d2e55b8e" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
-  </el-amap>
-
-  <div class="toolbar">
-    <button @click="getMap()">获取map实例</button>
-  </div>
-</div>
-</template>
-
-<style>
-.amap-demo {
-  height: 300px;
-}
-</style>
-
-<script>
-module.exports = {
-  data: function() {
-    return {
-      zoom: 12,
-      center: [121.59996, 31.197646],
-    };
-  },
-
-  methods: {
-    getMap() {
-      console.log(this.$refs.map.$$getInstance());
-    },
-    clickMap(e){
-      console.log('click map :', e );
-    },
-    initMap(e){
-      console.log('init map: ', e);
-    }
-  }
-};
-</script>
+::: demo
+examples/amap/basic
+:::
 
 ## 静态属性
 仅且可以初始化配置，不支持响应式。

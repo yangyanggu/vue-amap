@@ -1,82 +1,15 @@
+---
+title: Canvas图层
+---
+
 # Canvas图层 (AMap.CanvasLayer)
 Canvas图层类，用户可以将一个 Canvas 作为图层添加在地图上，Canvas图层会随缩放级别而自适应缩放。
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" @init="initMap" class="amap-demo">
-        <el-amap-layer-canvas v-if="canvas" :canvas="canvas" :bounds="bounds" :visible="visible" @init="initLayer"></el-amap-layer-canvas>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 15,
-          center: [116.33719, 39.942384],
-          visible: true,
-          bounds: [116.327911, 39.939229,116.342659, 39.946275],
-          canvas: null,
-          context: null
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        },
-        initMap(map){
-          var canvas = document.createElement('canvas');
-          canvas.width = canvas.height = 200;
-      
-          var context = canvas.getContext('2d');
-          context.fillStyle = 'rgb(0,100,255)';
-          context.strokeStyle = 'white';
-          context.globalAlpha = 1;
-          context.lineWidth = 2;
-          this.canvas = canvas;
-          this.context = context;
-        },
-        initLayer(layer){
-          var radious = 0;
-          var draw = () => {
-              this.context.clearRect(0, 0, 200, 200);
-              this.context.globalAlpha = (this.context.globalAlpha - 0.01 + 1) % 1;
-              radious = (radious + 1) % 100;
-      
-              this.context.beginPath();
-              this.context.arc(100, 100, radious, 0, 2 * Math.PI);
-              this.context.fill();
-              this.context.stroke();
-      
-              // 刷新渲染图层
-              layer.reFresh();
-      
-              AMap.Util.requestAnimFrame(draw);
-          };
-          draw();
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/data/canvas
+:::
 
 
 ## 静态属性

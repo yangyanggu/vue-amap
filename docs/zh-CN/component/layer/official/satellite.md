@@ -1,48 +1,15 @@
+---
+title: 卫星图层
+---
+
 # 卫星图层 (AMap.TileLayer.Satellite)
 卫星图层类，继承自TileLayer。
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-satellite :visible="visible"></el-amap-layer-satellite>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          visible: true
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/official/satellite
+:::
 
 
 ## 静态属性

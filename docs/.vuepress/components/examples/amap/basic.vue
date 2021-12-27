@@ -1,9 +1,8 @@
 <template>
-  <div class="amap-page-container">
+  <div class="map-page-container">
     <el-amap
       :center="center"
       :zoom="zoom"
-      class="amap-demo"
       @init="init"
     />
   </div>
@@ -46,7 +45,4 @@ export default defineComponent({
 </script>
 
 <style>
-.amap-page-container {
-  height: 300px;
-}
 </style>

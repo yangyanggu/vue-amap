@@ -55,6 +55,9 @@ export default defineComponent({
     __SOC(value){
       this.$amapComponent.setSOC(value);
     }
+  },
+  render(){
+    return null;
   }
 });
 </script>

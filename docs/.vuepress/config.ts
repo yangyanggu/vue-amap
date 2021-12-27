@@ -12,6 +12,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   title: '@vuemap/vue-amap',
   description: '高德地图2.0版本的vue3对应封装',
   head: [
+    ['link', {rel: 'stylesheet', type: 'text/css' ,href: '/css/global.css'}],
   ],
 
   // 主题和它的配置

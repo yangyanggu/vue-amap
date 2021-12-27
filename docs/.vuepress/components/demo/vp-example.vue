@@ -13,7 +13,7 @@ defineProps({
 <template>
   <div class="example-showcase">
       <component
-        :is="'examples-'+demo"
+        :is="demo"
         v-if="demo"
         v-bind="$attrs"
       />

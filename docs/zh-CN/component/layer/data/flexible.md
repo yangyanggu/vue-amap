@@ -1,62 +1,16 @@
+---
+title: 灵活切片图层
+---
+
 # 灵活切片图层 (AMap.TileLayer.Flexible)
 灵活切片图层，继承自AMap.TileLayer，开发者可通过构造时传入给其传入createTile字段来指定每一个切片的内容<br/>
 [相关示例](https://lbs.amap.com/api/jsapi-v2/example/selflayer/flex-canvas/)
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-flexible :visible="visible" :create-tile="createTile"></el-amap-layer-flexible>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏切片图层' : '显示切片图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          visible: true
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        },
-        createTile(x, y, z, success, fail){
-          var c = document.createElement('canvas');
-          c.width = c.height = 256;
-
-          var cxt = c.getContext("2d");
-          cxt.font = "15px Verdana";
-          cxt.fillStyle = "#ff0000";
-          cxt.strokeStyle = "#FF0000";
-          cxt.strokeRect(0, 0, 256, 256);
-          cxt.fillText('(' + [x, y, z].join(',') + ')', 10, 30);
-          // 通知API切片创建完成
-          success(c);
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/data/flexible
+:::
 
 
 ## 静态属性

@@ -1,49 +1,14 @@
+---
+title: 鹰眼控件
+---
 # 鹰眼控件 (AMap.HawkEye)
 鹰眼控件，用于显示缩略地图，显示于地图右下角，可以随主图的视口变化而变化，也可以配置成固定位置实现类似于南海附图的效果。
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap :center="center" :zoom="zoom" class="amap-demo">
-        <el-amap-control-hawk-eye :visible="visible" ></el-amap-control-hawk-eye>
-      </el-amap>
-
-      <div class="toolbar">
-        <button @click="switchVisible()">{{visible? '隐藏' : '显示'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      data: function() {
-        return {
-          zoom: 12,
-          center: [121.59996, 31.197646],
-          visible: true
-        };
-      },
-
-      methods: {
-        switchVisible() {
-          this.visible = !this.visible;
-        },
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/control/hawk-eye
+:::
 
 ## 静态属性
 仅且可以初始化配置，不支持响应式。

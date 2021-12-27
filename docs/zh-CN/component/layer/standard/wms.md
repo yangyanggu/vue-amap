@@ -1,56 +1,16 @@
+---
+title: WMS图层
+---
+
 # WMS (AMap.TileLayer.WMS)
 用于加载OGC标准的WMS地图服务的一种图层类，仅支持EPSG3857坐标系统的WMS图层。
 [查看 WMS的OGC标准](http://www.opengeospatial.org/standards/wms)
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-wms :visible="visible" :url="url" :blend="false" :params="params"></el-amap-layer-wms>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 3,
-          center: [-99.241291, 39.51401],
-          visible: true,
-          url: 'https://ahocevar.com/geoserver/wms',
-          params: {
-            Layer: '0',
-            Version: '1.0.0',
-            Format: 'image/png',
-            TileMatrixSet: 'EPSG:3857'
-          }
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/standard/wms
+:::
 
 
 ## 静态属性

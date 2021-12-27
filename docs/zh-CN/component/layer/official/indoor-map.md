@@ -1,55 +1,15 @@
+---
+title: 室内图层
+---
+
 # 室内图层 (AMap.IndoorMap)
 室内图层，用于在适当级别展示室内地图，并提供显示商铺tip、切换楼层等功能。
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :show-indoor-map="false" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-indoor-map :visible="visible" @init="init"></el-amap-layer-indoor-map>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏图层' : '显示图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-    .floor-list{
-      padding-left: 4px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          visible: true
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        },
-        init(layer){
-          console.log(layer);
-          layer.showIndoorMap('B000A9VHIG');
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/official/indoor-map
+:::
 
 
 ## 静态属性

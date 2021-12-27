@@ -1,48 +1,15 @@
+---
+title: 切片图层
+---
+
 # 切片图层 (AMap.TileLayer)
 切片图层类，该类为基础类。
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap  :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-layer-tile :tile-url="'https://wprd0{1,2,3,4}.is.autonavi.com/appmaptile?x=[x]&y=[y]&z=[z]&size=1&scl=1&style=8&ltype=11'" :visible="visible"></el-amap-layer-tile>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏切片图层' : '显示切片图层'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      name: 'amap-page',
-      data() {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          visible: true
-        };
-      },
-      methods: {
-        toggleVisible(){
-          this.visible = !this.visible;
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/layer/official/tile
+:::
 
 
 ## 静态属性

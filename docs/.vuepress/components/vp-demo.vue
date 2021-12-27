@@ -52,6 +52,8 @@ const copyCode = async () => {
     alert(e.message)
   }
 }
+
+const demoPath = computed(() => props.path.replaceAll('/', '-'))
 </script>
 
 <template>
@@ -84,7 +86,7 @@ const copyCode = async () => {
       />
       <Example
         :file="path"
-        :demo="path"
+        :demo="demoPath"
       />
       <SourceCode
         v-show="sourceVisible"

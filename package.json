@@ -13,7 +13,8 @@
     "dev": "vite",
     "clean:dist": "rimraf dist",
     "lint": "eslint src",
-    "docs:dev": "pnpm run -C docs dev"
+    "docs:dev": "pnpm run -C docs dev",
+    "docs:build": "pnpm run -C docs build"
   },
   "browserslist": [
     "> 1%",
