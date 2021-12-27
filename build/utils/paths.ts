@@ -9,7 +9,7 @@ export const pkgRoot = resolve(projRoot, 'src')
 
 export const vmRoot = resolve(pkgRoot, 'vue-map')
 
-export const epPackage = resolve(vmRoot, 'package.json');
+export const epPackage = resolve(vmRoot, 'package-template.json');
 
 /** dist */
 export const buildOutput = resolve(projRoot, 'dist')

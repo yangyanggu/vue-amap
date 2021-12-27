@@ -8,7 +8,7 @@ import replace from '@rollup/plugin-replace'
 import filesize from 'rollup-plugin-filesize'
 import { parallel } from 'gulp'
 import scss from "rollup-plugin-scss";
-import {version} from '../src/vue-map/package.json';
+import {version} from '../src/vue-map/package-template.json';
 import {vmRoot, buildOutput, epOutput} from './utils/paths'
 import { generateExternal, writeBundles } from './utils/rollup'
 

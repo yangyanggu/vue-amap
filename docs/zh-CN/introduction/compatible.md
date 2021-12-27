@@ -21,6 +21,6 @@ title: 兼容高德原生 SDK
 
 ::: demo You can set `offset` attribute to change the offset top，the default value is 0。
 
-amap/basic
+amap-basic
 
 :::

@@ -5,21 +5,18 @@ defineProps({
     required: true,
   },
   demo: {
-    type: Object,
-    required: true,
+    type: String
   },
 })
 </script>
 
 <template>
   <div class="example-showcase">
-    <ClientOnly>
       <component
-        :is="demo"
+        :is="'examples-'+demo"
         v-if="demo"
         v-bind="$attrs"
       />
-    </ClientOnly>
   </div>
 </template>
 

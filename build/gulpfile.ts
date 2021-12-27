@@ -59,7 +59,7 @@ export const copyFiles = () => {
       resolve(epOutput, 'CHANGELOG.md')
     ),
     copyFile(
-      resolve(vmRoot, 'package.json'),
+      resolve(vmRoot, 'package-template.json'),
       resolve(epOutput, 'package.json')
     ),
     copyTypings(),

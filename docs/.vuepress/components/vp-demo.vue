@@ -4,12 +4,10 @@ import { useClipboard } from '@vueuse/core'
 import { useToggle } from '../composables/toggle'
 
 import SourceCodeIcon from './icons/source-code.vue'
-import CodepenIcon from './icons/codepen.vue'
 import CopyIcon from './icons/copy-icon.vue'
 
 import Example from './demo/vp-example.vue'
 import SourceCode from './demo/vp-source-code.vue'
-import Codepen from './demo/vp-codepen.vue'
 
 const name = 'Demo';
 
@@ -21,30 +19,6 @@ const props = defineProps({
   },
   path: {
     type: String,
-    required: true,
-  },
-  css: {
-    type: String,
-    required: true,
-  },
-  cssPreProcessor: {
-    type: String,
-    required: true,
-  },
-  js: {
-    type: String,
-    required: true,
-  },
-  jsPreProcessor: {
-    type: String,
-    required: true,
-  },
-  html: {
-    type: String,
-    required: true,
-  },
-  demos: {
-    type: Object,
     required: true,
   },
   rawSource: {
@@ -65,24 +39,7 @@ const { copy, isSupported } = useClipboard({
 
 const [sourceVisible, setSourceVisible] = useToggle()
 
-const formatPathDemos = computed(() => {
-  const demos = {}
-  const temp = props.demos;
-  if(temp){
-    Object.keys(temp).forEach((key) => {
-      demos[key.replace('../../examples/', '').replace('.vue', '')] =
-          temp[key].default
-    })
-  }
-  return demos
-})
-
-const codepenRef = ref()
 const decodedDescription = computed(() => decodeURIComponent(props.description))
-
-const onCodepenClicked = () => {
-  codepenRef.value.submit?.()
-}
 
 const copyCode = async () => {
   if (!isSupported) {
@@ -105,21 +62,7 @@ const copyCode = async () => {
       v-html="decodedDescription"
     />
     <div class="example">
-      <Codepen
-        ref="codepenRef"
-        :css="props.css"
-        :css-pre-processor="props.cssPreProcessor"
-        :html="props.html"
-        :js="props.js"
-        :js-pre-processor="props.jsPreProcessor"
-      />
       <div class="op-btns">
-        <div
-          class="op-btn"
-          title="在codepen编辑示例"
-        >
-          <CodepenIcon @click="onCodepenClicked" />
-        </div>
         <div
           class="op-btn"
           title="拷贝代码"
@@ -141,7 +84,7 @@ const copyCode = async () => {
       />
       <Example
         :file="path"
-        :demo="formatPathDemos[path]"
+        :demo="path"
       />
       <SourceCode
         v-show="sourceVisible"

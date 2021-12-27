@@ -19,7 +19,7 @@
     "./*": "./*"
   },
   "main": "lib/index.js",
-  "module": "dist/index.es.js",
+  "module": "es/index.mjs",
   "style": "dist/style.css",
   "unpkg": "dist/index.js",
   "jsdelivr": "dist/index.js",

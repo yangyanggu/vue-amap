@@ -6,22 +6,18 @@
       class="amap-demo"
       @init="init"
     />
-    <div class="toolbar">
-      <button @click="add()">
-        添加标号
-      </button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="add()">
+      添加标号
+    </button>
   </div>
 </template>
 
-<style>
-.amap-page-container {
-  height: 300px;
-}
-</style>
+<script lang="ts">
+import {defineComponent} from "vue";
 
-<script>
-export default {
+export default defineComponent({
   data() {
     return {
       zoom: 12,
@@ -46,4 +42,11 @@ export default {
       this.map.add(marker);
     }
   }
+})
+</script>
+
+<style>
+.amap-page-container {
+  height: 300px;
 }
+</style>
