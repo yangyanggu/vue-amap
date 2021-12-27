@@ -1,59 +1,15 @@
+---
+title: GeoJSON
+---
+
 # GeoJSON(AMap.GeoJSON)
 GeoJSON类，继承自OverLayGroup，可实现GeoJSON对象与OverlayGroup的相互转换
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap vid="amap" :zoom="zoom" :center="center"
-      ref="map"
-      class="amap-demo">
-        <el-amap-geojson :geo="geoJSON" :polygon-options="polygonOptions" :visible="visible" :draggable="draggable" @click="click"></el-amap-geojson>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    const geo = require('./assets/js/chongqing.js');
-    module.exports = {
-      data () {
-        return {
-          zoom: 7,
-          center: [107.943579, 30.131735],
-          draggable: false,
-          visible: true,
-          geoJSON: geo,
-          polygonOptions: {
-            strokeColor: 'red',
-            fillColor: 'blue'
-          }
-        }
-      },
-      methods: {
-        click: (e) => {
-          console.log('click event: ', e);
-          alert('click geojson');
-        },
-        toggleVisible(){
-          this.visible = !this.visible;
-        },
-      }
-    };
-  </script>
-</script>
+::: demo
+examples/vector/geojson
+:::
 
 
 ## 静态属性

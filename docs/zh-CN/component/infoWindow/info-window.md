@@ -1,65 +1,15 @@
+---
+title: 信息窗体
+---
+
 # 信息窗体(AMap.InfoWindow)
 用于在地图上展示复杂的说明性信息的类型。<br/>信息窗体，地图仅可同时展示一个信息窗体，推荐为信息窗体通过样式显示设置尺寸
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap vid="amap" :zoom="zoom" :center="center" class="amap-demo">
-        <el-amap-info-window
-          :position="position"
-          :visible.sync="visible">
-          <div>
-            <p>测试slot</p>
-            <button @click="clickButton">点击按钮</button>
-          </div>
-        </el-amap-info-window>
-      </el-amap>
-      <button @click="switchWindow()">{{visible ? '隐藏信息窗口' : '显示信息窗口'}}</button>
-      <button @click="changePosition()">修改位置</button>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      data () {
-        return {
-          zoom: 14,
-          center: [121.5273285, 31.21515044],
-          position: [121.5273285, 31.21515044],
-          visible: true
-        }
-      },
-
-      mounted() {
-      },
-
-      methods: {
-        switchWindow() {
-          this.visible = !this.visible;
-        },
-        clickButton(){
-          alert('点击infowindow的按钮')
-        },
-        changePosition(){
-          let p = this.position;
-          this.position = [p[0]+0.001, p[1]+0.001];
-        }
-      }
-    };
-  </script>
-
-</script>
+::: demo
+examples/infoWindow/info-window
+:::
 
 
 ## 静态属性

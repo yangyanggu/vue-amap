@@ -1,62 +1,15 @@
+---
+title: 矩形
+---
+
 # 矩形(AMap.Rectangle)
 构造矩形对象
 
 ## 基础示例
 
-<vuep template="#example"></vuep>
-
-<script v-pre type="text/x-template" id="example">
-
-  <template>
-    <div class="amap-page-container">
-      <el-amap vid="amap" :zoom="zoom" :center="center"
-      ref="map"
-      class="amap-demo">
-        <el-amap-rectangle :bounds="path" :visible="visible" :editable="edit" :draggable="draggable" @click="click"></el-amap-rectangle>
-      </el-amap>
-      <div class="toolbar">
-        <button type="button" name="button" @click="toggleVisible">{{visible ? '隐藏标记' : '显示标记'}}</button>
-        <button type="button" name="button" @click="changeDraggable">{{draggable ? '禁止标记移动' : '允许标记移动'}}</button>
-        <button type="button" name="button" @click="toggleEdit">{{edit ? '停止编辑' : '开始编辑'}}</button>
-      </div>
-    </div>
-  </template>
-
-  <style>
-    .amap-demo {
-      height: 300px;
-    }
-  </style>
-
-  <script>
-    module.exports = {
-      data () {
-        return {
-          zoom: 15,
-          center: [121.5273285, 31.21515044],
-          draggable: false,
-          visible: true,
-          edit: true,
-          path: [[121.5273285, 31.21515044], [121.5293285, 31.21515044]],
-        }
-      },
-      methods: {
-        click: () => {
-          alert('click polygon');
-        },
-        toggleVisible(){
-          this.visible = !this.visible;
-        },
-        changeDraggable(){
-          this.draggable = !this.draggable;
-        },
-        toggleEdit(){
-          this.edit = !this.edit;
-        }
-      }
-    };
-  </script>
-</script>
+::: demo
+examples/vector/rectangle
+:::
 
 
 ## 静态属性

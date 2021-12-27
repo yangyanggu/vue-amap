@@ -69,5 +69,23 @@ export default [
       '/zh-cn/component/marker/marker-cluster.md',
       '/zh-cn/component/marker/mass-marks.md',
     ],
+  },
+  {
+    text: '窗体',
+    children: [
+      '/zh-cn/component/infoWindow/info-window.md',
+    ],
+  },
+  {
+    text: '矢量图形',
+    children: [
+      '/zh-cn/component/vector/polygon.md',
+      '/zh-cn/component/vector/polyline.md',
+      '/zh-cn/component/vector/bezier-curve.md',
+      '/zh-cn/component/vector/circle.md',
+      '/zh-cn/component/vector/ellipse.md',
+      '/zh-cn/component/vector/rectangle.md',
+      '/zh-cn/component/vector/geojson.md',
+    ],
   }
 ]

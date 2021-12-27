@@ -13,16 +13,16 @@ title: 脚本初始化
 NPM 安装：
 
 ```javascript
-import VueAMap from '@vuemap/vue-amap';
+import App from './App.vue'
+import VueAMap, {initAMapApiLoader} from '@vuemap/vue-amap';
 import '@vuemap/vue-amap/dist/style.css'
-Vue.use(VueAMap);
-VueAMap.initAMapApiLoader({
-  key: 'YOUR_KEY',
-});
+initAMapApiLoader({
+    key: 'YOUR_KEY'
+})
 
-//如果需要使用自定义的threeJS相关的组件，需要格外引入库中的three。该包只提供常用的模型加载，灯光，HDR等相关能力，更细致的控制需要在模型初始化后获取对象进行操作
-import VueAmapThree from '@vuemap/vue-amap/dist/three'
-Vue.use(VueAmapThree);
+createApp(App)
+    .use(Element)
+    .mount('#app')
 
 ```
 
@@ -41,13 +41,16 @@ window.VueAMap.initAMapApiLoader({
 NPM 安装：
 
 ```javascript
-import VueAMap from '@vuemap/vue-amap';
+import VueAMap, {initAMapApiLoader} from '@vuemap/vue-amap';
 import { lazyAMapApiLoaderInstance } from '@vuemap/vue-amap';
 
-Vue.use(VueAMap);
-VueAMap.initAMapApiLoader({
+initAMapApiLoader({
   key: 'YOUR_KEY',
 });
+
+createApp(App)
+    .use(Element)
+    .mount('#app')
 
 lazyAMapApiLoaderInstance.load().then(() => {
   // your code ...
