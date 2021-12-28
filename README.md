@@ -1,6 +1,6 @@
 
 # @vuemap/vue-amap
-[![npm (tag)](https://img.shields.io/npm/v/@vuemap/vue-amap/next))](https://www.npmjs.org/package/@vuemap/vue-amap)
+[![npm (tag)](https://img.shields.io/npm/v/@vuemap/vue-amap/next)](https://www.npmjs.org/package/@vuemap/vue-amap)
 [![NPM downloads](http://img.shields.io/npm/dm/@vuemap/vue-amap.svg)](https://npmjs.org/package/@vuemap/vue-amap)
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/@vuemap/vue-amap@next/dist/index.min.js?compression=gzip&label=gzip%20size:%20JS)
 [![NPM](https://img.shields.io/npm/l/@vuemap/vue-amap)](https://gitee.com/guyangyang/vue-amap)
