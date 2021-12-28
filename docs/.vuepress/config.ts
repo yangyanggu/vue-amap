@@ -3,6 +3,7 @@ import Navbar from './navbar'
 import Sidebar from './sidebar'
 import registerPlugin from "./plugin/registerPlugin";
 import {containerPlugin} from './plugin/demoPlugin'
+import {sitemapPlugin} from './plugin/sitemapPlugin'
 import type {DefaultThemeOptions} from 'vuepress'
 
 
@@ -41,7 +42,8 @@ export default defineUserConfig<DefaultThemeOptions>({
   plugins: [
     [containerPlugin],
     registerPlugin,
-    ['@vuepress/register-components']
+    ['@vuepress/register-components'],
+    [sitemapPlugin]
   ],
   bundlerConfig: {
     viteOptions: {
