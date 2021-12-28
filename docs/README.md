@@ -8,7 +8,7 @@ actions:
     type: primary
   - text: 项目简介
     link: https://gitee.com/guyangyang/vue-amap/tree/dev
-    type: secondary 
+    type: secondary
 features:
   - title: Vue 驱动
     details: 享受 Vue 的开发体验，只需要关注数据变化。
@@ -33,7 +33,6 @@ npm install @vuemap/vue-amap@next --save
 
 ```html
 <script src="https://unpkg.com/@vuemap/vue-amap@next/dist/index.js"></script>
-<!--加载自定义threeJS组件-->
 <script src="https://unpkg.com/@vuemap/vue-amap@next/dist/style.css"></script>
 ```
 
