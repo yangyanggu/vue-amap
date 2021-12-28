@@ -63,7 +63,7 @@ rotation  | Number | 图标的旋转角度，可以通过回调为每个点设�
 opacity | Number | 透明度,支持通过回调函数为每个点设置不同的透明度 default 1
 
 ### style说明
-所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取gesjson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>
+所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取geojson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>
 该默认处理可以被layerStyle中的设置给覆盖。目前默认设置已基本符合日常使用，如果需要在选中目标时做高亮处理，则推荐根据示例使用事件监听然后动态修改layerStyle来实现。<br/>
 style数据有可以有三个来源，优先级按顺序处理，第一个最高<br/>
 ##### 1、layerStyle属性配置
