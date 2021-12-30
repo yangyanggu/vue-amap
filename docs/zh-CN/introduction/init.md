@@ -49,7 +49,7 @@ initAMapApiLoader({
 });
 
 createApp(App)
-    .use(Element)
+    .use(VueAMap)
     .mount('#app')
 
 lazyAMapApiLoaderInstance.load().then(() => {
