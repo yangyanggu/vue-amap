@@ -104,7 +104,7 @@ importers:
   docs:
     specifiers:
       '@types/markdown-it': 12.2.3
-      '@vuemap/vue-amap': 1.0.1
+      '@vuemap/vue-amap': 1.0.2
       '@vuepress/plugin-debug': v2.0.0-beta.29
       '@vuepress/plugin-docsearch': ^2.0.0-beta.29
       '@vuepress/plugin-register-components': v2.0.0-beta.29
@@ -117,7 +117,7 @@ importers:
       sitemap: ^7.0.0
       vuepress: 2.0.0-beta.31
     dependencies:
-      '@vuemap/vue-amap': 1.0.1_vue@3.2.26
+      '@vuemap/vue-amap': 1.0.2_vue@3.2.26
       '@vueuse/core': 7.2.2_vue@3.2.26
       clipboard-copy: 4.0.1
     devDependencies:
@@ -1235,8 +1235,8 @@ packages:
     resolution: {integrity: sha512-vPV6Cq+NIWbH5pZu+V+2QHE9y1qfuTq49uNWw4f7FDEeZaDU2H2cx5jcUZOAKW7qTrUS4k6qZPbMy1x4N96nbA==}
     dev: true
 
-  /@vuemap/vue-amap/1.0.1_vue@3.2.26:
-    resolution: {integrity: sha512-TIYecFQd/L5guypWEjH1sRRGCkCNGWAeVcFSTF5lozb2xNV5TQjgXLJiRfoQbInt88/gwnA+wdEirF1q3+4e2g==}
+  /@vuemap/vue-amap/1.0.2_vue@3.2.26:
+    resolution: {integrity: sha512-9tJBqeiZW/S8BomeXlQsUC1XN5OuxP5HflL961as0DQpGPHpW5j/lKL4FCsVQKry+yjecCmeawTkc4PnxByx5g==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
