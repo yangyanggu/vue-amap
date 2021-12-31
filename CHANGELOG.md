@@ -1,3 +1,7 @@
+###v0.0.19
+* 解决地图控件加载报错问题
+* 地图容器最外层增加position:relative属性
+
 ###v0.0.17
 * 适配LOCA 2.0.6的API
 * 增加ZMarkerLayer图层

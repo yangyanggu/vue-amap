@@ -23,8 +23,9 @@ export default {
         this.$parentComponent.plugin(['AMap.ToolBar'], () => {
           this.$amapComponent = new AMap.ToolBar(options);
           this.$amapComponent.addTo(this.$parentComponent);
+          resolve();
         });
-        resolve();
+
       });
     },
     destroyComponent() {

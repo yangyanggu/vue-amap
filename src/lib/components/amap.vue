@@ -191,6 +191,7 @@ export default {
 <style lang="less">
 .el-vue-amap-container {
   height: 100%;
+  position: relative;
 
   .el-vue-amap {
     height: 100%;

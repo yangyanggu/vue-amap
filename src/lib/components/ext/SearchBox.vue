@@ -71,8 +71,9 @@ export default {
       return new Promise((resolve) => {
         this.$parentComponent.plugin(['AMap.AutoComplete'], () => {
           this.$amapComponent = new AMap.AutoComplete(options);
+          resolve();
         });
-        resolve();
+
       });
     }
   }

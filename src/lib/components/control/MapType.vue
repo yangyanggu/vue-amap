@@ -26,8 +26,9 @@ export default {
         this.$parentComponent.plugin(['AMap.MapType'], () => {
           this.$amapComponent = new AMap.MapType(options);
           this.$amapComponent.addTo(this.$parentComponent);
+          resolve();
         });
-        resolve();
+
       });
     },
     destroyComponent() {
