@@ -4,7 +4,7 @@ title: 首页
 heroImage: https://vuejs.org/images/logo.png
 actions:
   - text: 快速上手
-    link: /zh-cn/introduction/init.md
+    link: /zh-cn/introduction/init.html
     type: primary
   - text: 项目简介
     link: https://gitee.com/guyangyang/vue-amap/tree/dev
@@ -16,7 +16,8 @@ features:
     details: 接入amap2.0和loca所有常用组件。
   - title: 可自定义
     details: 提供多个接口开发原生对象，方便快速实现自定义功能。
-footer: MIT Licensed | Copyright © 2021-present guyy
+footer: MIT Licensed | Copyright © 2021-present guyy <a href="https://beian.miit.gov.cn">苏ICP备19020085号-1</a>
+footerHtml: true
 ---
 
 ## npm 安装
