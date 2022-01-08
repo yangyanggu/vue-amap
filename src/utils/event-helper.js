@@ -21,7 +21,7 @@ class EventHelper {
     // let listener = AMap.event.addListener(instance, eventName, handler, context);
     instance.on(eventName, handler, context);
     if (!this._listener.get(instance)) this._listener.set(instance, {});
-    let listenerMap = this._listener.get(instance);
+    const listenerMap = this._listener.get(instance);
     if (!listenerMap[eventName]) listenerMap[eventName] = [];
     listenerMap[eventName].push(handler);
 
@@ -29,12 +29,15 @@ class EventHelper {
 
   removeListener(instance, eventName, handler) {
     if (!AMap) throw new Error('please wait for Map API load');
+    if (!instance.off) {
+      return;
+    }
     if (!this._listener.get(instance) || !this._listener.get(instance)[eventName]) return;
-    let listenerArr = this._listener.get(instance)[eventName];
+    const listenerArr = this._listener.get(instance)[eventName];
     if (handler) {
-      let l_index = listenerArr.indexOf(handler);
-      instance.off(listenerArr[l_index]);
-      listenerArr.splice(l_index, 1);
+      const lIndex = listenerArr.indexOf(handler);
+      instance.off(listenerArr[lIndex]);
+      listenerArr.splice(lIndex, 1);
     } else {
       listenerArr.forEach(listener => {
         instance.off(listener);
@@ -52,13 +55,13 @@ class EventHelper {
   }
 
   clearListeners(instance) {
-    let listeners = this._listener.get(instance);
+    const listeners = this._listener.get(instance);
     if (!listeners) return;
     Object.keys(listeners).map(eventName => {
       instance.clearEvents(eventName);
     });
   }
-};
+}
 
 eventHelper = eventHelper || new EventHelper();
 
