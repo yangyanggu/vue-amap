@@ -36,11 +36,11 @@ class EventHelper {
     const listenerArr = this._listener.get(instance)[eventName];
     if (handler) {
       const lIndex = listenerArr.indexOf(handler);
-      instance.off(listenerArr[lIndex]);
+      instance.off(eventName, listenerArr[lIndex]);
       listenerArr.splice(lIndex, 1);
     } else {
       listenerArr.forEach(listener => {
-        instance.off(listener);
+        instance.off(eventName, listener);
       });
       this._listener.get(instance)[eventName] = [];
     }
