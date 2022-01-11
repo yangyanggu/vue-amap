@@ -6,6 +6,9 @@
 [![NPM](https://img.shields.io/npm/l/@vuemap/vue-amap)](https://gitee.com/guyangyang/vue-amap)
 [![star](https://gitee.com/guyangyang/vue-amap/badge/star.svg?theme=dark)](https://gitee.com/guyangyang/vue-amap/stargazers)
 
+## 文档
+**[https://vue-amap.guyixi.cn](https://vue-amap.guyixi.cn)**
+
 > @vuemap/vue-amap@next是一套基于Vue3 和高德地图2.0的地图组件。
 > 该版本对原vue-amap组件进行升级，主要适配amap2.0相关的接口，同时调整事件绑定形式，调整为使用v-on进行事件绑定。
 > 组件中将会对高德可视化组件loca进行封装，同时提供threejs的接口
@@ -28,10 +31,6 @@
 ```
 npm i -S @vuemap/vue-amap@next
 ```
-
-## 文档
-**[https://vue-amap.guyixi.cn](https://vue-amap.guyixi.cn)**
-
 
 ## 快速上手
 
