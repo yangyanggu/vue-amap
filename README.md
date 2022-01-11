@@ -24,8 +24,8 @@
 ![avatar](./image/vue-mapvgl.png)
 
 ## 捐赠支持
-<img src="./docs/.vuepress/assets/public/images/zhifubao.jpg" alt="支付宝" width="270px" />
-<img src="./docs/.vuepress/assets/public/weixin.png" alt="微信" width="270px"/>
+<img src="./image/zhifubao.jpg" alt="支付宝" width="270px" />
+<img src="./image/weixin.png" alt="微信" width="270px"/>
 
 ## 安装
 ```
