@@ -51,7 +51,7 @@ export const buildFull = (minify: boolean) => async () => {
       format: 'umd',
       file: resolve(epOutput, `dist/index${minify ? '.min' : ''}.js`),
       exports: 'named',
-      name: 'VueAmap',
+      name: 'VueAMap',
       globals: {
         vue: 'Vue',
       },
