@@ -100,16 +100,17 @@ export default defineComponent({
         if (propsRedirect && propsRedirect[prop]) handleProp = propsRedirect[prop];
         const handleFun = this.getHandlerFun(handleProp);
         if (!handleFun) return;
-        // const watchOptions = {
-        //   deep: false
-        // };
-        // if (Object.prototype.toString.call($props[prop]) === '[object Object]') {
-        //   watchOptions.deep = true;
-        // }
+        const watchOptions = {
+          deep: false
+        };
+        const propValueType = Object.prototype.toString.call($props[prop]);
+        if ( propValueType === '[object Object]' || propValueType === '[object Array]') {
+          watchOptions.deep = true;
+        }
         // watch props
         const unwatch = this.$watch(prop, nv => {
           handleFun.call(this.$amapComponent, this.convertSignalProp(prop, nv));
-        });
+        }, watchOptions);
 
         // collect watchers for destroyed
         this.unwatchFns.push(unwatch);
