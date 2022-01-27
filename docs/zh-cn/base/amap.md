@@ -7,8 +7,15 @@ title: 地图
 
 ## 基础示例
 
+### 普通示例
 ::: demo
 examples/amap/basic
+:::
+
+
+### Setup示例
+::: demo
+examples/amap/basic-setup
 :::
 
 ## 静态属性

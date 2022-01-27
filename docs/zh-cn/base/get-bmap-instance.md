@@ -11,6 +11,12 @@ title: 获取地图实例
 
 ## 基础示例
 
+### 普通示例
 ::: demo
 examples/amap/get-instance
+:::
+
+### Setup示例
+::: demo
+examples/amap/get-instance-setup
 :::

@@ -1,6 +1,10 @@
 .map-page-container{
     height: 300px;
 }
-.control-container>button{
+.toolbar{
+    padding: 6px 12px;
+    background: #dcdcdc;
+}
+.toolbar>button{
     margin-right: 8px;
 }
