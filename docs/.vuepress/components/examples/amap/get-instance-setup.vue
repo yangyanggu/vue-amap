@@ -8,9 +8,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {ref, getCurrentInstance} from 'vue';
+import {ref} from 'vue';
 
-const {proxy} = getCurrentInstance();
 const mapRef = ref();
 const zoom = ref(16);
 const center = ref([121.59996, 31.197646]);

@@ -43,7 +43,8 @@ export default defineUserConfig<DefaultThemeOptions>({
     [containerPlugin],
     registerPlugin,
     ['@vuepress/register-components'],
-    [sitemapPlugin]
+    [sitemapPlugin],
+    ['@vuepress/plugin-search']
   ],
   bundlerConfig: {
     viteOptions: {
