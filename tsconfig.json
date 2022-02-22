@@ -17,7 +17,8 @@
   },
   "include": [
     "src",
-    "amap.d.ts"
+    "amap.d.ts",
+    "shims-vue.d.ts"
   ],
   "exclude": ["node_modules", "**/__test?__", "**/dist"]
 }

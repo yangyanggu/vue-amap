@@ -167,47 +167,47 @@ export default defineComponent ({
     },
     __dragEnable(flag){
       if(this.$amapComponent){
-        this.$amapComponent({dragEnable: flag});
+        this.$amapComponent.setStatus({dragEnable: flag});
       }
     },
     __zoomEnable(flag){
       if(this.$amapComponent){
-        this.$amapComponent({zoomEnable: flag});
+        this.$amapComponent.setStatus({zoomEnable: flag});
       }
     },
     __jogEnable(flag){
       if(this.$amapComponent){
-        this.$amapComponent({jogEnable: flag});
+        this.$amapComponent.setStatus({jogEnable: flag});
       }
     },
     __keyboardEnable(flag){
       if(this.$amapComponent){
-        this.$amapComponent({keyboardEnable: flag});
+        this.$amapComponent.setStatus({keyboardEnable: flag});
       }
     },
     __doubleClickZoom(flag){
       if(this.$amapComponent){
-        this.$amapComponent({doubleClickZoom: flag});
+        this.$amapComponent.setStatus({doubleClickZoom: flag});
       }
     },
     __scrollWheel(flag){
       if(this.$amapComponent){
-        this.$amapComponent({scrollWheel: flag});
+        this.$amapComponent.setStatus({scrollWheel: flag});
       }
     },
     __rotateEnable(flag){
       if(this.$amapComponent){
-        this.$amapComponent({rotateEnable: flag});
+        this.$amapComponent.setStatus({rotateEnable: flag});
       }
     },
     __resizeEnable(flag){
       if(this.$amapComponent){
-        this.$amapComponent({resizeEnable: flag});
+        this.$amapComponent.setStatus({resizeEnable: flag});
       }
     },
     __showIndoorMap(flag){
       if(this.$amapComponent){
-        this.$amapComponent({showIndoorMap: flag});
+        this.$amapComponent.setStatus({showIndoorMap: flag});
       }
     }
   }

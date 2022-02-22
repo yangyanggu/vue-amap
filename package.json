@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "gulp --require sucrase/register/ts -f build/gulpfile.ts",
-    "dev": "vite",
+    "dev": "vite --host",
     "clean:dist": "rimraf dist",
     "lint": "eslint src",
     "docs:dev": "pnpm run -C docs dev",

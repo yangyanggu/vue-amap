@@ -75,6 +75,7 @@ module.exports = defineConfig({
       'error',
       { disallowTypeAnnotations: false },
     ],
+    '@typescript-eslint/no-this-alias': ['off'],
 
     // vue
     'vue/no-v-html': 'off',

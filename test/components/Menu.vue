@@ -135,6 +135,12 @@ export default defineComponent({
         },{
           path: '/vector/rectangle',
           name: 'vector矩形'
+        },{
+          path: '/layer/tiles3D',
+          name: '3DTiles图层'
+        },{
+          path: '/ext/gltf',
+          name: 'ThreeJS Gltf示例'
         }
       ]
     }

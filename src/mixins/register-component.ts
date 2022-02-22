@@ -20,11 +20,13 @@ export default defineComponent({
     return {
       needInitComponents: [] as (ComponentPublicInstance & customComponent)[],
       unwatchFns: [] as WatchStopHandle[],
-      $amapComponent: null as any,
-      $parentComponent: null as any,
       propsRedirect: {},
       converters: {},
     };
+  },
+  created() {
+    this.$amapComponent = null as any;
+    this.$parentComponent = null as any;
   },
   mounted() {
     this.$parentComponent = this.$parentComponent || (this.$parent as any).$amapComponent;

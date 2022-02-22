@@ -34,6 +34,8 @@ import GeoJSON from "../views/vector/GeoJSON.vue";
 import Polygon from "../views/vector/Polygon.vue";
 import Polyline from "../views/vector/Polyline.vue";
 import Rectangle from "../views/vector/Rectangle.vue";
+import Tiles3D from "../views/layer/Tiles3D.vue";
+import Gltf from '../views/ext/Gltf.vue'
 
 const routes = [
   {path: '/', component: Map},
@@ -70,7 +72,9 @@ const routes = [
   {path: '/vector/geoJSON', component: GeoJSON},
   {path: '/vector/polygon', component: Polygon},
   {path: '/vector/polyline', component: Polyline},
-  {path: '/vector/rectangle', component: Rectangle}
+  {path: '/vector/rectangle', component: Rectangle},
+  {path: '/layer/tiles3D', component: Tiles3D},
+  {path: '/ext/gltf', component: Gltf},
 ]
 
 export default createRouter({

@@ -73,3 +73,25 @@ export function convertEventToLowerCase(functionName){
 }
 
 export const eventReg = /^on[A-Z]+/;
+
+/**
+ * 加载JS文件
+ * @param url
+ * @param callback
+ */
+export function loadScript(url, callback){
+  if(!url){
+    throw new Error('请传入url');
+  }
+  let script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  script.defer = true;
+  script.src = url;
+  document.body.appendChild(script);
+  if(callback){
+    script.addEventListener('load',() => {
+      callback();
+    });
+  }
+}

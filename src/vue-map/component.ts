@@ -52,6 +52,9 @@ import {ElAmapGeojson} from '@vue-map/packages/vector/GeoJSON'
 import {ElAmapPolygon} from '@vue-map/packages/vector/Polygon'
 import {ElAmapPolyline} from '@vue-map/packages/vector/Polyline'
 import {ElAmapRectangle} from '@vue-map/packages/vector/Rectangle'
+import {ElAmapLayerTiles3d} from '@vue-map/packages/layer/data/Tiles3D'
+import {ElAmapThreeLayer} from '@vue-map/packages/ext/ThreeLayer'
+import {ElAmapThreeGltf} from '@vue-map/packages/ext/ThreeGltf'
 
 import type { Plugin } from 'vue'
 
@@ -110,4 +113,7 @@ export default [
   ElAmapPolygon,
   ElAmapPolyline,
   ElAmapRectangle,
+  ElAmapLayerTiles3d,
+  ElAmapThreeLayer,
+  ElAmapThreeGltf
 ] as Plugin[]

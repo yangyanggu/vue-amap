@@ -27,7 +27,7 @@ export default defineComponent({
       default: false
     }, // 点标记显示位置偏移量，默认值为 [0,0] 。Marker指定position后，默认以marker左上角位置为基准点（若设置了anchor，则以anchor设置位置为基准点），对准所给定的position位置，若需使marker指定位置对准在position处，需根据marker的尺寸设置一定的偏移量。
     content: {
-      type: [String, ]
+      type: [String, Object]
     }, // 显示内容，可以是HTML要素字符串或者HTMLElement对象
     size: {
       type: Array
