@@ -13,7 +13,6 @@
           :position="labelOptions.position"
           :text="labelOptions.text"
           :icon="labelOptions.icon"
-          @click="clickMarker"
         />
       </el-amap-layer-labels>
     </el-amap>

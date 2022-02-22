@@ -1,3 +1,6 @@
+### 1.0.5
+* 修复ElAmapLayerThree包名错误问题
+
 ### 1.0.4
 * 增加3dtiles图层
 * 增加gltf模型加载

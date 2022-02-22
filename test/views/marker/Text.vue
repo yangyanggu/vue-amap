@@ -94,7 +94,7 @@ export default defineComponent({
       const marker = {
         position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02],
         id: new Date().getTime(),
-        text: new Date().getTime()
+        text: `${new Date().getTime()  }`
       };
       this.texts.push(marker);
     },

@@ -50,10 +50,14 @@ export default defineComponent({
       this.$amapComponent = null;
     },
     createLayer(options){
+      let layerStyle = {};
+      if(options.layerStyle){
+        layerStyle = JSON.parse(JSON.stringify(options.layerStyle))
+      }
       this.$amapComponent = new AMap['3DTilesLayer']({
         map: this.$parentComponent,
         url: options.url, // 3d Tiles 入口文件
-        style: JSON.parse(JSON.stringify(options.layerStyle))
+        style: layerStyle
       });
       console.log(this.$amapComponent)
     }

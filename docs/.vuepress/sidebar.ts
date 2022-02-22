@@ -56,7 +56,8 @@ export default [
       '/zh-cn/component/layer/data/flexible.md',
       '/zh-cn/component/layer/data/image.md',
       '/zh-cn/component/layer/data/canvas.md',
-      '/zh-cn/component/layer/data/gl-custom.md'
+      '/zh-cn/component/layer/data/gl-custom.md',
+      '/zh-cn/component/layer/data/tiles3d.md'
     ],
   },
   {
@@ -110,6 +111,8 @@ export default [
     text: '扩展',
     children: [
       '/zh-cn/component/ext/search-box.md',
+      '/zh-cn/component/ext/three-layer.md',
+      '/zh-cn/component/ext/three-gltf.md',
     ],
   }
 ]

@@ -9,7 +9,9 @@ ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含l
 
 ## 基础示例
 
-
+::: demo
+examples/ext/three-gltf
+:::
 
 ## 静态属性
 仅且可以初始化配置，不支持响应式。
