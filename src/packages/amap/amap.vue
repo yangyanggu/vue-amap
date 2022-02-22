@@ -139,10 +139,6 @@ export default defineComponent ({
   computed: {
   },
 
-  unmounted() {
-    this.$parentComponent && this.$parentComponent.destroy();
-  },
-
   mounted() {
     this.createMap();
   },
@@ -150,6 +146,7 @@ export default defineComponent ({
     if (this.$amapComponent) {
       this.$amapComponent.destroy();
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   },
   methods: {
@@ -158,9 +155,11 @@ export default defineComponent ({
         const mapElement = this.$el.querySelector('.el-vue-amap');
         const elementID = this.vid || guid();
         mapElement.id = elementID;
-        this.$parentComponent = this.$amapComponent = new AMap.Map(elementID, this.convertProps());
-        this.register();
-        this.createChildren();
+        this.$nextTick(() => {
+          this.$parentComponent = this.$amapComponent = new AMap.Map(elementID, this.convertProps());
+          this.register();
+          this.createChildren();
+        })
       }).catch(e => {
         console.warn('init map error: ', e);
       });

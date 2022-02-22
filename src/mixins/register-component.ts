@@ -50,7 +50,9 @@ export default defineComponent({
       if (this[`__${prop}`]) {
         return this[`__${prop}`];
       }
-
+      if(!this.$amapComponent){
+        return null;
+      }
       return this.$amapComponent[`set${upperCamelCase(prop)}`];
     },
 

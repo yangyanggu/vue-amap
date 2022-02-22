@@ -54,7 +54,10 @@ declare module '@vue/runtime-core' {
     ElAmapGeojson: typeof import('@vuemap/vue-amap')['ElAmapGeojson'],
     ElAmapPolygon: typeof import('@vuemap/vue-amap')['ElAmapPolygon'],
     ElAmapPolyline: typeof import('@vuemap/vue-amap')['ElAmapPolyline'],
-    ElAmapRectangle: typeof import('@vuemap/vue-amap')['ElAmapRectangle']
+    ElAmapRectangle: typeof import('@vuemap/vue-amap')['ElAmapRectangle'],
+    ElAmapLayerTiles3d: typeof import('@vuemap/vue-amap')['ElAmapLayerTiles3d'],
+    ElAmapLayerThree: typeof import('@vuemap/vue-amap')['ElAmapLayerThree'],
+    ElAmapThreeGltf: typeof import('@vuemap/vue-amap')['ElAmapThreeGltf']
   }
 }
 

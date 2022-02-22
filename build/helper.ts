@@ -17,7 +17,7 @@ const reDocUrl: InstallOptions['reDocUrl'] = (fileName, header, path = '') => {
     if(results && results.length > 1){
         suffix = results[1];
     }
-    const docs = `https://vue-amap.guyixi.cn/zh-CN/component/`
+    const docs = `https://vue-amap.guyixi.cn/zh-cn/component/`
     const _header = header ? header.replaceAll(/\s+/g, '-').toLowerCase() : ''
 
     return `${docs}${suffix ? suffix : fileName}.html${_header ? '#' : ''}${_header}`
