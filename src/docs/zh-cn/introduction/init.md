@@ -60,7 +60,7 @@ window.VueAMap.initAMapApiLoader({
   key: 'YOUR_KEY',
 });
 
-window.VueAMap.lazyAMapApiLoaderInstance.load().then(() => {
+window.VueAMap.lazyAMapApiLoaderInstance.then(() => {
   // your code ...
   this.map = new AMap.Map('amapContainer', {
     center: new AMap.LngLat(121.59996, 31.197646)
