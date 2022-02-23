@@ -1,3 +1,6 @@
+###v0.0.20
+* 开放lazyAMapApiLoaderInstance
+
 ###v0.0.19
 * 解决地图控件加载报错问题
 * 地图容器最外层增加position:relative属性

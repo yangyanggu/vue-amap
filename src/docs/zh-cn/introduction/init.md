@@ -45,7 +45,7 @@ VueAMap.initAMapApiLoader({
   key: 'YOUR_KEY',
 });
 
-lazyAMapApiLoaderInstance.load().then(() => {
+lazyAMapApiLoaderInstance.then(() => {
   // your code ...
   this.map = new AMap.Map('amapContainer', {
     center: new AMap.LngLat(121.59996, 31.197646)

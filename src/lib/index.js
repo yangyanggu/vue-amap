@@ -4,7 +4,7 @@ import './polyfills';
 import upperCamelCase from 'uppercamelcase';
 
 // 初始化接口
-import {initAMapApiLoader} from './services/injected-amap-api-instance';
+import {initAMapApiLoader, lazyAMapApiLoaderInstance} from './services/injected-amap-api-instance';
 
 // 组建导入
 import AMap from './components/amap.vue';
@@ -141,7 +141,8 @@ let components = [
 ];
 
 let VueAMap = {
-  initAMapApiLoader
+  initAMapApiLoader,
+  lazyAMapApiLoaderInstance
 };
 
 VueAMap.install = (Vue) => {
@@ -172,5 +173,6 @@ export default VueAMap;
 
 export {
   initAMapApiLoader,
-  createCustomComponent
+  createCustomComponent,
+  lazyAMapApiLoaderInstance
 };
