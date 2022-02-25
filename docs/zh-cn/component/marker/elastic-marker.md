@@ -1,8 +1,14 @@
 ---
 title: 灵活点标记
+description: AMap.ElasticMarker 灵活点标记是可随地图级别变化而改变图标和大小的点标记。可满足用户在地图缩放到不同级别有不同展示效果的需求
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 灵活点标记, AMap.ElasticMarker
 ---
 
 # 灵活点标记 (AMap.ElasticMarker)
+灵活点标记是可随地图级别变化而改变图标和大小的点标记。可满足用户在地图缩放到不同级别有不同展示效果的需求
 
 ## 基础示例
 

@@ -1,9 +1,14 @@
 ---
 title: 多边形
+description: AMap.Polygon 为用户提供在地图图面绘制多边形的能力。可以为多边形设置填充颜色、描边颜色、轮廓线样式等属性
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 多边形, AMap.Polygon
 ---
 
 # 多边形(AMap.Polygon)
-构造多边形对象
+AMap.Polygon 对象为用户提供在地图图面绘制多边形的能力。可以为多边形设置填充颜色、描边颜色、轮廓线样式等属性。
 
 ## 基础示例
 

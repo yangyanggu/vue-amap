@@ -1,9 +1,14 @@
 ---
 title: 文本
+description: AMap.Text 纯文本标记。文本标记的展示内容为纯文本
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 文本, AMap.Text
 ---
 
 # 文本 (AMap.Text)
-文本标记
+纯文本标记。文本标记的展示内容为纯文本。继承自 Marker 类，具有 Marker 的大部分属性、方法和事件。
 
 ## 基础示例
 

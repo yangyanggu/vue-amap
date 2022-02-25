@@ -1,5 +1,10 @@
 ---
 title: 矢量标记图层
+description: 使用 AMap.VectorLayer 矢量图层，可以将点线面统一管理
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 矢量标记图层, AMap.VectorLayer
 ---
 
 # 矢量标记图层 (AMap.VectorLayer)

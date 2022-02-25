@@ -1,6 +1,10 @@
 ---
 title: 3DTiles图层
 description: 使用 AMap.3DTilesLayer 图层加载渲染标准 3D Tiles 数据，可支持 i3dm、b3dm、pnts 格式
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 3D Tiles, AMap.3DTilesLayer
 ---
 
 # 3DTiles图层 (AMap.3DTilesLayer)

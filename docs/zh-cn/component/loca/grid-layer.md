@@ -1,5 +1,10 @@
 ---
 title: 网格图
+description: Loca.GridLayer 网格图，将普通的点数据按照网格划分成若干区域，每个网格区域都会包含落在此区域内的点数据信息
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 网格图, Loca.GridLayer
 ---
 
 # 网格图 (Loca.GridLayer)

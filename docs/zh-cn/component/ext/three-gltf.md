@@ -1,5 +1,10 @@
 ---
 title: Gltf模型加载
+description: gltf图层用于加载gltf模型，提供基础的模型加载和修改基础属性的能力
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, Gltf, threeJS
 ---
 
 # GLTF

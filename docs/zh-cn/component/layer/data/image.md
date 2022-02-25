@@ -1,5 +1,10 @@
 ---
 title: 图片图层
+description: AMap.ImageLayer 图片图层类，用户可以将一张静态图片作为图层添加在地图上，图片图层会随缩放级别而自适应缩放
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 图片图层, AMap.ImageLayer
 ---
 
 # 图片图层 (AMap.ImageLayer)

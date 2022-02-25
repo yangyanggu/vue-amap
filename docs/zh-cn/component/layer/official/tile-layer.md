@@ -1,5 +1,10 @@
 ---
 title: 切片图层
+description: AMap.TileLayer 切片图层类，该类为基础类
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 切片图层, AMap.TileLayer
 ---
 
 # 切片图层 (AMap.TileLayer)

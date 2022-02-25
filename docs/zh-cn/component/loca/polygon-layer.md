@@ -1,5 +1,10 @@
 ---
 title: 面图层
+description: Loca.PolygonLayer 面图层，支持多边形、复杂多边形、带洞多边形的绘制。支持底面海拔高度和面的厚度效果。 并且还支持对每个多边形设置不同的个性化样式，而且性能依然很好
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 面图层, Loca.PolygonLayer
 ---
 
 # 面图层 (Loca.PolygonLayer)
@@ -30,6 +35,12 @@ title: 面图层
       }
     }
   ]
+}
+```
+当绘制高精地图的面出现显示不规则时需要在init事件中调用setCustomCenter方法，将中心点移到面数据的某个点上
+```js
+initPolygon(polygonLayer){
+  polygonLayer.setCustomCenter(this.areas.features[0].geometry.coordinates[0][0][0]);
 }
 ```
 

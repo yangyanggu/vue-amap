@@ -1,5 +1,10 @@
 ---
 title: 室内图层
+description: AMap.IndoorMap 室内图层，用于在适当级别展示室内地图，并提供显示商铺tip、切换楼层等功能
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 室内图层, AMap.IndoorMap
 ---
 
 # 室内图层 (AMap.IndoorMap)

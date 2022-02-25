@@ -1,8 +1,14 @@
 ---
 title: 点标记
+description: AMap.Marker 点标记适用于用户需要在地图上创建一个标记的场景
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 点标记, AMap.Marker
 ---
 
 # 点标记 (AMap.Marker)
+点标记适用于用户需要在地图上创建一个标记的场景。Marker 类型推荐在数据量为 500 以内时使用。若数据量大于 500 ，推荐使用 LabelMarker，可以获得更好的性能。另外需要地图标注可以避让用户标注时，也推荐使用 LabelMarker。
 
 ## 基础示例
 

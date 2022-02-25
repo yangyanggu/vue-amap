@@ -1,5 +1,10 @@
 ---
 title: 垂直于大地表面的Marker图层
+description: Loca.ZMarkerLayer 垂直于大地表面的 Marker 图层，支持传入自定义 DOM 进行绘制。你可以使用它展示一些 和数据相关的文字、图片信息，而且它还支持永远朝向屏幕的特性，非常适合对文字类信息的展示
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 垂直Marker, Loca.ZMarkerLayer
 ---
 
 # 垂直于大地表面的 Marker 图层 (Loca.ZMarkerLayer)

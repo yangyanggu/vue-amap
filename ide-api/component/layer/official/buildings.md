@@ -9,8 +9,11 @@ title: AmapLayerBuildings
 
 Attribute | Type | Description
 ---|---|---|
-tileSize | Number | 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
-zooms | Array | 支持的缩放级别范围，默认范围 [2-30]
+wallColor | Array<String>,String | 楼块侧面颜色，支持 rgba、rgb、十六进制等
+roofColor | Array<String>,String | 楼块顶面颜色，支持 rgba、rgb、十六进制等
+heightFactor | Number | 楼块的高度系数因子，默认为 1，也就是正常高度
+styleOpts | Object | 楼块的围栏和样式设置
+zooms | Array | 图层缩放等级范围，默认 [2, 20]
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
 opacity | Number | 透明度，默认 1

@@ -1,5 +1,10 @@
 ---
 title: 简易行政区划图
+description: AMap.DistrictLayer 简易行政区图世界图可用来展示全球所有国家和地区的分界线及区块，并支持颜色配置，可用于满足可视化数据展示
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 简易行政区划图, AMap.DistrictLayer
 ---
 
 # 简易行政区划图 (AMap.DistrictLayer)

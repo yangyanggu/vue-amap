@@ -1,5 +1,10 @@
 ---
 title: 兼容高德原生 SDK
+description: 组件兼容直接调用高德原生API，通过使用init事件可以获取所有高德地图组件实例
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 兼容高德原生SDK, init事件
 ---
 
 # 兼容高德原生 SDK

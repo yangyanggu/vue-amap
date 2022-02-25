@@ -1,5 +1,10 @@
 ---
 title: 卫星图层
+description: AMap.TileLayer.Satellite 卫星影像图层
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 卫星图层, AMap.TileLayer.Satellite
 ---
 
 # 卫星图层 (AMap.TileLayer.Satellite)

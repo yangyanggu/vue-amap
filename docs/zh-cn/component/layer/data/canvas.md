@@ -1,5 +1,10 @@
 ---
 title: Canvas图层
+description: AMap.CanvasLayer Canvas图层类，用户可以将一个 Canvas 作为图层添加在地图上，Canvas图层会随缩放级别而自适应缩放
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, Canvas图层类, AMap.CanvasLayer
 ---
 
 # Canvas图层 (AMap.CanvasLayer)

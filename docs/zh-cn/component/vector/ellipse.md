@@ -1,9 +1,15 @@
 ---
 title: 椭圆
+description: AMap.Ellipse 为用户提供在地图图面绘制椭圆形覆盖物的能力。可以为椭圆形覆盖物设置填充颜色、描边颜色、轮廓线样式等属性
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 椭圆, AMap.Ellipse
 ---
 
 # 椭圆(AMap.Ellipse)
-构造椭圆对象
+AMap.Ellipse 对象为用户提供在地图图面绘制椭圆形覆盖物的能力。可以为椭圆形覆盖物设置填充颜色、描边颜色、轮廓线样式等属性。
+
 
 ## 基础示例
 

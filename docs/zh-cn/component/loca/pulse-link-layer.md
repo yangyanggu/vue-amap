@@ -1,5 +1,10 @@
 ---
 title: 连接飞线图层
+description: Loca.PulseLinkLayer 连接飞线图层，可以支持弧度，宽度，过渡色等能力,并且还支持脉冲动画，可以表达数据的朝向
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 连接飞线图层, Loca.PulseLinkLayer
 ---
 
 # 连接飞线图层 (Loca.PulseLinkLayer)

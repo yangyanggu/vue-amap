@@ -1,5 +1,10 @@
 ---
 title: 信息窗体
+description: AMap.InfoWindow用于在地图上展示复杂的说明性信息的类型。地图仅可同时展示一个信息窗体，推荐为信息窗体通过样式显示设置尺寸
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 信息窗体, AMap.InfoWindow
 ---
 
 # 信息窗体(AMap.InfoWindow)

@@ -1,9 +1,14 @@
 ---
 title: 矩形
+description: AMap.Rectangle 为用户提供在地图图面绘制矩形覆盖物的能力。此方法可以通过指定矩形的边界（ AMap.Bounds ）来快速绘制一个矩形覆盖物
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 折线, AMap.Rectangle
 ---
 
 # 矩形(AMap.Rectangle)
-构造矩形对象
+AMap.Rectangle 对象为用户提供在地图图面绘制矩形覆盖物的能力。此方法可以通过指定矩形的边界（ AMap.Bounds ）来快速绘制一个矩形覆盖物。
 
 ## 基础示例
 

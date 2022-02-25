@@ -1,5 +1,10 @@
 ---
 title: GeoJSON
+description: AMap.GeoJSON GeoJSON类，继承自OverLayGroup，可实现GeoJSON对象与OverlayGroup的相互转换
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, GeoJSON, AMap.GeoJSON
 ---
 
 # GeoJSON(AMap.GeoJSON)

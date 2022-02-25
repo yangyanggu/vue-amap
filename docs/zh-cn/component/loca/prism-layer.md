@@ -1,8 +1,13 @@
 ---
-title: 圆点图层
+title: 棱柱图层
+description: Loca.PrismLayer 棱柱图层，使用点类型数据表达带有高度的立体棱柱，使用高度、颜色、半径等样式表达点数据的不同维度属性信息
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 棱柱图层, Loca.PrismLayer
 ---
 
-# 圆点图层 (Loca.PrismLayer)
+# 棱柱图层 (Loca.PrismLayer)
 棱柱图层，使用点类型数据表达带有高度的立体棱柱，使用高度、颜色、半径等样式表达点数据的不同维度属性信息。支持动画、光照效果。
 
 ## 基础示例

@@ -1,5 +1,10 @@
 ---
 title: 地图
+description: 地图组件，提供基础的地图容器，提供vue3普通示例和setup示例代码
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 地图组件, setup
 ---
 # 地图(AMap)
 

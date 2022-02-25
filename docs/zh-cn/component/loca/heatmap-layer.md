@@ -1,5 +1,10 @@
 ---
 title: 热力图
+description: Loca.HeatMapLayer 热力图，支持 3D 和不同颜色设置的聚合点数据显示。并且支持像素单位和米单位的热力聚合
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 热力图, Loca.HeatMapLayer
 ---
 
 # 热力图 (Loca.HeatMapLayer)

@@ -1,5 +1,10 @@
 ---
 title: 贴地点图层
+description: Loca.ScatterLayer 大地面上的点，可展示三种类型：颜色圆、图标、动画图标。动画开启需要使用,通过帧图片可以实现光波、雷达扫描等效果
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 贴地点图层, Loca.ScatterLayer
 ---
 
 # 贴地点图层 (Loca.ScatterLayer)

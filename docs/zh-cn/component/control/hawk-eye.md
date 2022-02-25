@@ -1,5 +1,10 @@
 ---
 title: 鹰眼控件
+description: AMap.HawkEye鹰眼控件，用于显示缩略地图，显示于地图右下角，可以随主图的视口变化而变化，也可以配置成固定位置实现类似于南海附图的效果
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 鹰眼控件, AMap.HawkEye
 ---
 # 鹰眼控件 (AMap.HawkEye)
 鹰眼控件，用于显示缩略地图，显示于地图右下角，可以随主图的视口变化而变化，也可以配置成固定位置实现类似于南海附图的效果。

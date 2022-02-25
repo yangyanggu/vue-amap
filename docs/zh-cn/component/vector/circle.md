@@ -1,9 +1,14 @@
 ---
 title: 圆形
+description: AMap.Circle 为用户提供在地图图面绘制圆形覆盖物的能力。可以为圆形覆盖物设置填充颜色、描边颜色、轮廓线样式等属性
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 圆形, AMap.Circle
 ---
 
 # 圆形(AMap.Circle)
-构造圆形对象，通过CircleOptions指定多边形样式
+AMap.Circle 对象为用户提供在地图图面绘制圆形覆盖物的能力。可以为圆形覆盖物设置填充颜色、描边颜色、轮廓线样式等属性。
 
 ## 基础示例
 

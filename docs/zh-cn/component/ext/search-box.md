@@ -1,5 +1,10 @@
 ---
 title: 搜索
+description: AMap.AutoComplete用于进行 POI 搜索联想与数据查询的相关类型,提供默认的功能
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 搜索, AMap.AutoComplete
 ---
 
 # 搜索 (AMap.AutoComplete)

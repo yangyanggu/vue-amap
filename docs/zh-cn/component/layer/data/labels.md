@@ -1,5 +1,10 @@
 ---
 title: 标注层
+description: AMap.LabelsLayer 标注层，可以通过init事件、vue实例中的$$add方法、slot三种方式添加标注
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 标注层, AMap.LabelsLayer
 ---
 
 # 标注层 (AMap.LabelsLayer)

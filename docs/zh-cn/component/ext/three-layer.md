@@ -1,6 +1,10 @@
 ---
 title: ThreeJS的图层
 description: 基于高德地图2.0和threeJS加载Gltf模型，提供基础加载功能，开放threeJS对象用于后续细致操作
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, Gltf, threeJS
 ---
 
 # ThreeJS的图层

@@ -1,5 +1,10 @@
 ---
 title: 矢量瓦片块图层
+description: AMap.MapboxVectorTileLayer 矢量瓦片块图层可以使用标准的 MVT 瓦片服务作为数据源
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 矢量瓦片块图层, AMap.MapboxVectorTileLayer
 ---
 
 # 矢量瓦片块 (AMap.MapboxVectorTileLayer)

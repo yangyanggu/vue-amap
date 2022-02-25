@@ -1,5 +1,10 @@
 ---
 title: WMTS图层
+description: AMap.TileLayer.WMTS 用于加载OGC标准的WMS地图服务的一种图层类，仅支持EPSG3857坐标系统的WMTS图层
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, WMTS图层, AMap.TileLayer.WMTS
 ---
 
 # WMTS (AMap.TileLayer.WMTS)

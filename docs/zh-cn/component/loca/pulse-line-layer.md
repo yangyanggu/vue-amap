@@ -1,5 +1,10 @@
 ---
 title: 轨迹线图层
+description: Loca.PulseLineLayer 轨迹线图层，支持设置轨迹样式和轨迹点
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 轨迹线图层, Loca.PulseLineLayer
 ---
 
 # 轨迹线图层 (Loca.PulseLineLayer)

@@ -1,5 +1,10 @@
 ---
 title: 实时交通图层
+description: AMap.TileLayer.Traffic 实时交通图层类
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 实时交通图层, AMap.TileLayer.Traffic
 ---
 
 # 实时交通图层 (AMap.TileLayer.Traffic)

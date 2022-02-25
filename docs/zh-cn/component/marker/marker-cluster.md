@@ -1,9 +1,14 @@
 ---
 title: 点聚合
+description: AMap.MarkerClusterer 在不同的地图缩放级别对海量的数据点进行聚合展示
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 点聚合, AMap.MarkerClusterer
 ---
 
 # 点聚合 (AMap.MarkerCluster)
-用于展示大量点标记，将点标记按照距离进行聚合，以提高绘制性能。点聚合支持用户自定义样式，以插件形式调用。
+在不同的地图缩放级别对海量的数据点进行聚合展示。目前点聚合插件在点的数量在10万以内时可以保持较好的性能。点聚合支持用户自定义点标记。
 
 ## 基础示例
 

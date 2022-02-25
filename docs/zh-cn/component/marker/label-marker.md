@@ -1,9 +1,15 @@
 ---
-title: 标注
+title: 海量标注
+description: AMap.LabelMarker 可以绘制图标，还可以为图标添加文字信息，且万级以上数据也具有较好性能，配置也更加灵活。支持避让功能
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 海量标注, AMap.LabelMarker
 ---
 
-# 标注 (AMap.LabelMarker)
-标注类
+# 海量标注 (AMap.LabelMarker)
+当需要在地图添加千级以上的点标记时，LabelMarker 是代替 Marker 的更好选择。不同于 MassMarks ，LabelMarker 不仅可以绘制图标，还可以为图标添加文字信息，且万级以上数据也具有较好性能，配置也更加灵活。<br/>
+另外，LabelMarker 之间还支持避让功能，JSAPI 2.0 版本还支持地图标注避让 LabelMarker，可以让您的 marker 更加明显。
 
 ## 基础示例
 

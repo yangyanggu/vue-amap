@@ -1,9 +1,21 @@
 ---
 title: 线图层
+description: Loca.LineLayer 线图层，支持设置描边和虚线
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 线图层, Loca.LineLayer
 ---
 
 # 线图层 (Loca.LineLayer)
 线图层，支持设置描边和虚线。
+
+当绘制高精地图的线出现显示不规则时需要在init事件中调用setCustomCenter方法，将中心点移到面数据的某个点上
+```js
+initPolyline(lineLayer){
+  lineLayer.setCustomCenter(this.lines.features[0].geometry.coordinates[0][0]);
+}
+```
 
 ## 基础示例
 

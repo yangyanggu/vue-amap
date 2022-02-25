@@ -1,9 +1,14 @@
 ---
 title: 海量点
+description: AMap.MassMarks 展示数量为十万以内的点并有较好的性能表现
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 海量点标记, AMap.MassMarks
 ---
 
-# 海量点 (AMap.MassMarks)
-海量点类
+# 海量点标记 (AMap.MassMarks)
+当需要在地图展示数量为十万以内的点并且需要较好的性能表现时，可以使用 AMap.MassMarks 类。AMap.MassMarks 并不是普通的覆盖物，它实际上是由海量点组成的一个地图图层， 目前仅适用于html5浏览器。
 
 ## 基础示例
 

@@ -1,5 +1,10 @@
 ---
 title: 地图类型切换
+description: AMap.MapType地图类型切换插件。用户通过该插件进行地图切换
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 地图类型切换, AMap.MapType
 ---
 # 地图类型切换插件 (AMap.MapType)
 地图类型切换插件。用户通过该插件进行地图切换。

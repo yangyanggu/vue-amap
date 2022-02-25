@@ -1,9 +1,14 @@
 ---
 title: 贝塞尔曲线
+description: AMap.BezierCurve 贝塞尔曲线,支持二次、三次贝赛尔曲线
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, 贝塞尔曲线, AMap.BezierCurve
 ---
 
 # 贝塞尔曲线(AMap.BezierCurve)
-贝塞尔曲线
+贝塞尔曲线,支持二次、三次贝赛尔曲线
 
 ## 基础示例
 
