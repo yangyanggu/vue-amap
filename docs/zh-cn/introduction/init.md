@@ -34,7 +34,7 @@ createApp(App)
 CDN 引入：
 
 ```javascript
-window.VueAmap.initAMapApiLoader({
+window.VueAMap.initAMapApiLoader({
   key: 'YOUR_KEY',
 });
 ```
