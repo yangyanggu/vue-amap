@@ -50,17 +50,37 @@
 
 名称 | 类型 | 说明
 ---|---|---|
-tileSize | Number | 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
+wallColor | Array<String>,String | 楼块侧面颜色，支持 rgba、rgb、十六进制等
+roofColor | Array<String>,String | 楼块顶面颜色，支持 rgba、rgb、十六进制等
+heightFactor | Number | 楼块的高度系数因子，默认为 1，也就是正常高度
 
 ## 动态属性
 支持响应式。
 
 名称 | 类型 | 说明
 ---|---|---|
-zooms | Array | 支持的缩放级别范围，默认范围 [2-30]
+styleOpts | Object(BuildingStyleOptions) | 楼块的围栏和样式设置
+zooms | Array | 图层缩放等级范围，默认 [2, 20]
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
 opacity | Number | 透明度，默认 1
+
+### BuildingStyleOptions
+
+名称 | 类型 | 说明
+---|---|---|
+hideWithoutStyle | Boolean | 是否隐藏围栏之外的楼块
+areas | Array<Area> | 围栏信息数组
+
+#### Area
+
+名称 | 类型 | 说明
+---|---|---|
+rejectTexture | Boolean | 是否屏蔽自定义地图的纹理
+visible | Boolean | 是否可见
+path | Array<Array<number, number>> | 围栏经纬度列表
+color1 | String | 围栏区域内楼块顶面颜色，支持 rgba、rgb、十六进制等
+color2 | String | 围栏区域内楼块侧面颜色，支持 rgba、rgb、十六进制等
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

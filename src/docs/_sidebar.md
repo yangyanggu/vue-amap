@@ -6,7 +6,7 @@
   - [安装](zh-cn/introduction/install)
   - [脚本初始化](zh-cn/introduction/init)
   - [兼容高德原生 SDK](zh-cn/introduction/compatible)
-  - [更新日志](https://gitee.com/guyangyang/vue-amap/blob/master/CHANGELOG.md)
+  - [更新日志](https://gitee.com/guyangyang/vue-amap/blob/vue2/CHANGELOG.md)
   - [捐赠支持](zh-cn/other/donation.md)
 - 地图
   - [地图](zh-cn/base/amap)
