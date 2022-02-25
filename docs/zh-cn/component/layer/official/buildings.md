@@ -22,8 +22,8 @@ examples/layer/official/buildings
 
 名称 | 类型 | 说明
 ---|---|---|
-wallColor | Array<String>,String | 楼块侧面颜色，支持 rgba、rgb、十六进制等
-roofColor | Array<String>,String | 楼块顶面颜色，支持 rgba、rgb、十六进制等
+wallColor | Array,String | 楼块侧面颜色，支持 rgba、rgb、十六进制等
+roofColor | Array,String | 楼块顶面颜色，支持 rgba、rgb、十六进制等
 heightFactor | Number | 楼块的高度系数因子，默认为 1，也就是正常高度
 
 ## 动态属性
@@ -42,7 +42,7 @@ opacity | Number | 透明度，默认 1
 名称 | 类型 | 说明
 ---|---|---|
 hideWithoutStyle | Boolean | 是否隐藏围栏之外的楼块
-areas | Array<Area> | 围栏信息数组
+areas | Array | 围栏信息数组
 
 #### Area
 
@@ -50,7 +50,7 @@ areas | Array<Area> | 围栏信息数组
 ---|---|---|
 rejectTexture | Boolean | 是否屏蔽自定义地图的纹理
 visible | Boolean | 是否可见
-path | Array<Array<number, number>> | 围栏经纬度列表
+path | Array | 围栏经纬度列表
 color1 | String | 围栏区域内楼块顶面颜色，支持 rgba、rgb、十六进制等
 color2 | String | 围栏区域内楼块侧面颜色，支持 rgba、rgb、十六进制等
 
