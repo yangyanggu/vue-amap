@@ -1,5 +1,6 @@
 ### 1.0.6
 * 修复圆等图形无法加载问题
+* 放开lazyAMapApiLoaderInstance，提供原生调用能力
 
 ### 1.0.5
 * 修复ElAmapLayerThree包名错误问题
