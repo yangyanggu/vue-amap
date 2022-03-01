@@ -14,7 +14,6 @@ export default defineComponent({
   },
   data() {
     return {
-      $amapComponent: null as any,
     };
   },
   methods: {
