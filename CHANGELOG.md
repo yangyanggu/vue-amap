@@ -1,3 +1,6 @@
+### 1.0.7
+* 解决控件的position数据校验错误
+
 ### 1.0.6
 * 修复圆等图形无法加载问题
 * 放开lazyAMapApiLoaderInstance，提供原生调用能力
