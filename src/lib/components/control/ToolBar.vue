@@ -7,7 +7,7 @@ export default {
   mixins: [registerMixin],
   props: {
     position: {
-      type: [String, Array]
+      type: [String, Object]
     }, // 控件停靠位置 { top: 5; left: 5; right: 5; bottom: 5 } 或者 'LT': 左上角, 'RT': 右上角, 'LB': 左下角, 'RB': 右下角
     offset: {
       type: Array

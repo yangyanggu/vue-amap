@@ -1,3 +1,6 @@
+###v0.0.21
+* 解决控件的position数据校验错误
+
 ###v0.0.20
 * 开放lazyAMapApiLoaderInstance
 
