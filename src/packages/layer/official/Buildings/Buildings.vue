@@ -33,6 +33,9 @@ export default defineComponent({
     __initComponent(options) {
       this.$amapComponent = new AMap.Buildings(options);
       this.$parentComponent.addLayer(this.$amapComponent);
+      if(this.styleOpts){
+        this.__styleOpts(this.styleOpts);
+      }
     },
     destroyComponent() {
       this.$amapComponent.destroy();
