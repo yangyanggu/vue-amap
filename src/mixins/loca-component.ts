@@ -36,8 +36,6 @@ export default defineComponent({
   data() {
     return {
       source: null as any,
-      $amapComponent: null as any,
-      $parentComponent: null as any,
     };
   },
   methods: {
