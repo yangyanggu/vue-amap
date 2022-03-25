@@ -93,7 +93,7 @@ keyboardEnable | Boolean | 地图是否可通过键盘控制, 默认为true, 方
 doubleClickZoom | Boolean | 地图是否可通过双击鼠标放大地图, 默认为true。此属性可被setStatus/getStatus 方法控制
 scrollWheel | Boolean | 地图是否可通过鼠标滚轮缩放浏览，默认为true。此属性可被setStatus/getStatus 方法控制
 showIndoorMap | Boolean | 是否自动展示室内地图，默认是 false。此属性可被setStatus/getStatus 方法控制
-mapStyle	| String |	设置地图显示样式，目前支持normal（默认样式）、dark（深色样式）、light（浅色样式）、fresh(osm清新风格样式)四种
+mapStyle	| String |	设置地图的显示样式，目前支持两种地图样式： 第一种：自定义地图样式，如 "amap://styles/d6bf8c1d69cea9f5c696185ad4ac4c86" 可前往地图自定义平台定制自己的个性地图样式； 第二种：官方样式模版,如"amap://styles/grey"。 其他模版样式及自定义地图的使用说明见开发指南
 labelRejectMask | Boolean | 文字是否拒绝掩模图层进行掩模
 mask | Array | 为 Map 实例指定掩模的路径，各图层将只显示路径范围内图像，3D视图下有效。 格式为一个经纬度的一维、二维或三维数组。
 
