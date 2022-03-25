@@ -43,6 +43,8 @@ showIndoorMap | Boolean | 是否自动展示室内地图，默认是 false。此
 mapStyle	| String |	设置地图显示样式，目前支持normal（默认样式）、dark（深色样式）、light（浅色样式）、fresh(osm清新风格样式)四种
 labelRejectMask | Boolean | 文字是否拒绝掩模图层进行掩模
 mask | Array | 为 Map 实例指定掩模的路径，各图层将只显示路径范围内图像，3D视图下有效。 格式为一个经纬度的一维、二维或三维数组。
+terrain | Boolean | 是否开启地形，默认false
+
 
 ## Events
 

@@ -129,6 +129,10 @@ export default defineComponent ({
     WebGLParams: {
       type: Object
     },// 额外配置的WebGL参数 eg: preserveDrawingBuffer
+    terrain: {
+      type: Boolean,
+      default: false
+    }, //是否开启地形，默认不开启
   },
 
   data() {

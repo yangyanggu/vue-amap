@@ -7,6 +7,7 @@ import router from './router/index'
 
 initAMapApiLoader({
     key: '747f980f217a31ba68d99301045a3fa7',
+  version: '2.1Beta',
   plugins: ['AMap.3DTilesLayer']
 })
 

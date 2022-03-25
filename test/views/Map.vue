@@ -2,8 +2,11 @@
   <div class="map-container">
     <el-amap
       :show-label="false"
+      view-mode="3D"
+      :pitch="50"
       :center="center"
       :zoom="zoom"
+      :terrain="true"
       @click="clickMap"
       @init="initMap"
       @complete="completeMap"
