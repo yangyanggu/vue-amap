@@ -24,7 +24,7 @@ export default defineComponent({
       Object.keys(this.$attrs).forEach(key => {
         if(eventReg.test(key)){
           const eventKey = convertEventToLowerCase(key);
-          if (filters.indexOf(eventKey) !== -1) filterSet[key] = this.$attrs[key];
+          if (filters.indexOf(eventKey) !== -1) filterSet[eventKey] = this.$attrs[key];
         }
 
       });

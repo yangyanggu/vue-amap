@@ -13,6 +13,7 @@
         :editable="polygon.edit"
         :draggable="polygon.draggable"
         @click="click"
+        @adjust="adjust"
       />
     </el-amap>
     <div class="control-container">
@@ -70,6 +71,9 @@ export default defineComponent({
     click(e) {
       alert('click GeoJSON');
     },
+    adjust(e){
+      console.log('adjust: ', e)
+    }
   }
 })
 </script>
