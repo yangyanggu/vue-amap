@@ -61,6 +61,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
+        this.$parentComponent = this.mapInstance.$amapComponent;
         this.$parentComponent.plugin(['AMap.HawkEye'], () => {
           this.$amapComponent = new AMap.HawkEye(options);
           this.$amapComponent.addTo(this.$parentComponent);

@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      this.$parentComponent = this.locaInstance.$amapComponent;
       this.$amapComponent = new Loca.HeatMapLayer(options);
       this.setSource();
       this.setStyle();

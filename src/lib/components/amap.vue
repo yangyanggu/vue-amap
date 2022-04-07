@@ -6,13 +6,18 @@
 </template>
 <script>
 import guid from '../utils/guid';
-import CONST from '../utils/constant';
 import registerMixin from '../mixins/register-component';
 import {lazyAMapApiLoaderInstance} from '../services/injected-amap-api-instance';
 
 export default {
   name: 'el-amap',
   mixins: [registerMixin],
+  provide() {
+    return {
+      mapInstance: this
+    };
+  },
+  inject: null,
   props: {
     vid: {
       type: String
@@ -175,11 +180,9 @@ export default {
         let mapElement = this.$el.querySelector('.el-vue-amap');
         const elementID = this.vid || guid();
         mapElement.id = elementID;
-        this.$parentComponent = this.$amapComponent = new AMap.Map(elementID, this.convertProps());
-        this.$emit(CONST.AMAP_READY_EVENT, this.$parentComponent);
-        this.$children.forEach(component => {
-          component.$emit(CONST.AMAP_READY_EVENT, this.$parentComponent);
-        });
+        this.$amapComponent = new AMap.Map(elementID, this.convertProps());
+        this.register();
+        this.createChildren();
       }).catch(e => {
         console.warn('init map error: ', e);
       });

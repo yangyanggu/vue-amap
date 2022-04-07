@@ -23,6 +23,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
+        this.$parentComponent = this.mapInstance.$amapComponent;
         this.$parentComponent.plugin(['AMap.ControlBar'], () => {
           this.$amapComponent = new AMap.ControlBar(options);
           this.$amapComponent.addTo(this.$parentComponent);

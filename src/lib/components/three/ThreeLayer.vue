@@ -73,6 +73,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      this.$parentComponent = this.mapInstance.$amapComponent;
       const _this = this;
       this.customCoords = this.$parentComponent.customCoords;
       options.init = function(gl) {

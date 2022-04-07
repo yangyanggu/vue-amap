@@ -76,7 +76,7 @@ import PulseLinkLayer from './components/loca/PulseLinkLayer';
 import ZMarkerLayer from '@/components/loca/ZMarkerLayer';
 
 // managers
-import createCustomComponent from './adapter/custom-adapter';
+import registerMixin from './mixins/register-component';
 
 let components = [
   AMap,
@@ -173,6 +173,6 @@ export default VueAMap;
 
 export {
   initAMapApiLoader,
-  createCustomComponent,
+  registerMixin,
   lazyAMapApiLoaderInstance
 };

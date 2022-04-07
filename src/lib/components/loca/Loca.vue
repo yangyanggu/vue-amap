@@ -3,11 +3,15 @@
 </template>
 <script>
 import registerMixin from '../../mixins/register-component';
-import CONST from '../../utils/constant';
 
 export default {
   name: 'el-amap-loca',
   mixins: [registerMixin],
+  provide() {
+    return {
+      locaInstance: this
+    };
+  },
   props: {
     ambLight: {
       type: Object
@@ -28,6 +32,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      this.$parentComponent = this.mapInstance.$amapComponent;
       this.$amapComponent = new Loca.Container({
         map: this.$parentComponent
       });
@@ -40,9 +45,7 @@ export default {
       if (options.pointLight) {
         this.$amapComponent.pointLight = options.pointLight;
       }
-      this.$children.forEach(component => {
-        component.$emit(CONST.AMAP_READY_EVENT, this.$amapComponent);
-      });
+      this.createChildren();
     },
     destroyComponent() {
       this.$amapComponent.destroy();

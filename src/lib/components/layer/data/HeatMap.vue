@@ -35,6 +35,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
+        this.$parentComponent = this.mapInstance.$amapComponent;
         AMap.plugin(['AMap.HeatMap'], () => {
           delete options.dataSet;
           this.$amapComponent = new AMap.HeatMap(this.$parentComponent, options);

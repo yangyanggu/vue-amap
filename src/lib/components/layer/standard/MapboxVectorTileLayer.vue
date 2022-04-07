@@ -29,6 +29,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
+        this.$parentComponent = this.mapInstance.$amapComponent;
         AMap.plugin(['AMap.MapboxVectorTileLayer'], () => {
           this.$amapComponent = new AMap.MapboxVectorTileLayer(options);
           this.$parentComponent.addLayer(this.$amapComponent);

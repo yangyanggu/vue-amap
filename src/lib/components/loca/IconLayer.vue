@@ -18,6 +18,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      this.$parentComponent = this.locaInstance.$amapComponent;
       this.$amapComponent = new Loca.IconLayer(options);
       this.setSource();
       this.setStyle();

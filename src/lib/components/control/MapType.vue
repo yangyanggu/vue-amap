@@ -23,6 +23,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
+        this.$parentComponent = this.mapInstance.$amapComponent;
         this.$parentComponent.plugin(['AMap.MapType'], () => {
           this.$amapComponent = new AMap.MapType(options);
           this.$amapComponent.addTo(this.$parentComponent);

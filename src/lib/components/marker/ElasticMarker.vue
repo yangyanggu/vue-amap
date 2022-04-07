@@ -54,6 +54,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
+        this.$parentComponent = this.mapInstance.$amapComponent;
         AMap.plugin(['AMap.ElasticMarker'], () => {
           this.$amapComponent = new AMap.ElasticMarker(options);
           this.$parentComponent.add(this.$amapComponent);

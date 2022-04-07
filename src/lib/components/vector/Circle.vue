@@ -93,6 +93,11 @@ export default {
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.Circle(options);
+      if (this.$parent.$amapComponent && (isOverlayGroupInstance(this.$parent.$amapComponent) || isVectorLayerInstance(this.$parent.$amapComponent))) {
+        this.$parentComponent = this.$parent.$amapComponent;
+      } else {
+        this.$parentComponent = this.mapInstance.$amapComponent;
+      }
       if (isMapInstance(this.$parentComponent)) {
         this.$parentComponent.add(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {

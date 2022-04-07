@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      this.$parentComponent = this.mapInstance.$amapComponent;
       let data = options.data;
       delete options.data;
       this.$amapComponent = new AMap.MassMarks(data, options);

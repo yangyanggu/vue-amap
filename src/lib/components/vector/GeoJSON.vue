@@ -47,6 +47,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
+        this.$parentComponent = this.mapInstance.$amapComponent;
         AMap.plugin(['AMap.GeoJSON'], () => {
           if (!options.getMarker) {
             options.getMarker = this.createMarker;

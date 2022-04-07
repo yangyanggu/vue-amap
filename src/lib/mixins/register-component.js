@@ -1,9 +1,16 @@
 import upperCamelCase from 'uppercamelcase';
 import {commonConvertMap} from '../utils/convert-helper';
 import eventHelper from '../utils/event-helper';
-import CONSTANTS from '../utils/constant';
 
 export default {
+  inject: {
+    mapInstance: {
+      default: null
+    },
+    locaInstance: {
+      default: null
+    }
+  },
   props: {
     visible: {
       type: Boolean,
@@ -27,20 +34,31 @@ export default {
             this.setzIndex(value);
           }
         }
-      }
+      },
+      needInitComponents: []
     };
   },
 
   mounted() {
-    this.$parentComponent = this.$parentComponent || this.$parent.$amapComponent;
-    if (this.$parentComponent) {
-      this.register();
+    let name = this.$options.name;
+    if (name.startsWith('el-amap-loca-')) {
+      if (this.locaInstance) {
+        if (this.locaInstance.$amapComponent) {
+          this.register();
+        } else {
+          this.locaInstance.addChildComponent(this);
+        }
+      }
     } else {
-      this.$on(CONSTANTS.AMAP_READY_EVENT, parentComponent => {
-        this.$parentComponent = parentComponent;
-        this.register();
-      });
+      if (this.mapInstance) {
+        if (this.mapInstance.$amapComponent) {
+          this.register();
+        } else {
+          this.mapInstance.addChildComponent(this);
+        }
+      }
     }
+
   },
 
   destroyed() {
@@ -49,9 +67,20 @@ export default {
     this.unwatchFns.forEach(item => item());
     this.unwatchFns = [];
     this.destroyComponent();
+    this.$amapComponent = null;
+    this.$parentComponent = null;
   },
 
   methods: {
+    addChildComponent(component) {
+      this.needInitComponents.push(component);
+    },
+    createChildren() {
+      while (this.needInitComponents.length > 0) {
+        this.needInitComponents[0].register();
+        this.needInitComponents.splice(0, 1);
+      }
+    },
     getHandlerFun(prop) {
       if (this.handlers && this.handlers[prop]) {
         return this.handlers[prop];
@@ -161,9 +190,11 @@ export default {
 
     registerRest(instance) {
       if (!this.$amapComponent && instance) this.$amapComponent = instance;
-      this.registerEvents();
-      this.initProps();
-      this.setPropWatchers();
+      if (this.$amapComponent) {
+        this.registerEvents();
+        this.initProps();
+        this.setPropWatchers();
+      }
       if (this.$listeners.init) {
         this.$emit('init', this.$amapComponent, this);
       }

@@ -3,7 +3,6 @@
 </template>
 <script>
 import registerMixin from '../../../mixins/register-component';
-import CONST from '../../../utils/constant';
 
 export default {
   name: 'el-amap-layer-vector',
@@ -16,11 +15,9 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      this.$parentComponent = this.mapInstance.$amapComponent;
       this.$amapComponent = new AMap.VectorLayer(options);
       this.$parentComponent.add(this.$amapComponent);
-      this.$children.forEach(component => {
-        component.$emit(CONST.AMAP_READY_EVENT, this.$amapComponent);
-      });
     },
     destroyComponent() {
       this.$parentComponent.remove(this.$amapComponent);

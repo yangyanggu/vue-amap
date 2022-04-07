@@ -1,5 +1,6 @@
 <script>
 import registerMixin from '../../mixins/register-component';
+import {isLabelsLayerInstance} from '@/utils/util';
 
 export default {
   name: 'el-amap-label-marker',
@@ -41,6 +42,11 @@ export default {
   },
   methods: {
     __initComponent(options) {
+      if (this.$parent.$amapComponent && isLabelsLayerInstance(this.$parent.$amapComponent)) {
+        this.$parentComponent = this.$parent.$amapComponent;
+      } else {
+        this.$parentComponent = this.mapInstance.$amapComponent;
+      }
       this.$amapComponent = new AMap.LabelMarker(options);
       this.$parentComponent.add(this.$amapComponent);
       // console.log('this.$amapComponent: ', this.$amapComponent);
