@@ -13,7 +13,7 @@ export default defineComponent({
       type: Boolean,
       default: false
     }, // 地图级别切换时，不同级别的图片是否进行混合，如图层的图像内容为部分透明请设置为false
-    param: {
+    params: {
       type: Object
     }, // OGC标准的WMS地图服务的GetMap接口的参数，包括VERSION、LAYERS、STYLES、FORMAT、TRANSPARENT等
     zooms: {
