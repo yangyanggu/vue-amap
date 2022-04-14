@@ -1,3 +1,6 @@
+###v0.0.23
+* 修改WMS和WMTS的params参数名称，保持与官网一致
+
 ###v0.0.22
 * Buildings图层，增加初始化后设置style
 
