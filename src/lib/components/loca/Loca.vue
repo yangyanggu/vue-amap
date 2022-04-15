@@ -9,7 +9,7 @@ export default {
   mixins: [registerMixin],
   provide() {
     return {
-      locaInstance: this
+      parentInstance: this
     };
   },
   props: {
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.mapInstance.$amapComponent;
+      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new Loca.Container({
         map: this.$parentComponent
       });

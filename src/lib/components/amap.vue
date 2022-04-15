@@ -14,7 +14,7 @@ export default {
   mixins: [registerMixin],
   provide() {
     return {
-      mapInstance: this
+      parentInstance: this
     };
   },
   inject: null,
@@ -182,7 +182,6 @@ export default {
         mapElement.id = elementID;
         this.$amapComponent = new AMap.Map(elementID, this.convertProps());
         this.register();
-        this.createChildren();
       }).catch(e => {
         console.warn('init map error: ', e);
       });

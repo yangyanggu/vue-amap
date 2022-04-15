@@ -7,6 +7,11 @@ import registerMixin from '../../../mixins/register-component';
 export default {
   name: 'el-amap-layer-vector',
   mixins: [registerMixin],
+  provide() {
+    return {
+      parentInstance: this
+    };
+  },
   props: {
   },
   data() {
@@ -15,7 +20,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.mapInstance.$amapComponent;
+      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.VectorLayer(options);
       this.$parentComponent.add(this.$amapComponent);
     },

@@ -97,7 +97,7 @@ export default {
       this.$amapComponent = null;
     },
     bindEvents() {
-      let map = this.mapInstance.$amapComponent;
+      let map = this.parentInstance.$amapComponent;
       map.on('click', this.clickMap);
       map.on('mousemove', this.mouseMoveMap);
     },
@@ -110,7 +110,7 @@ export default {
       this.$emit('mousemove', feature, e);
     },
     unBindEvents() {
-      let map = this.mapInstance.$amapComponent;
+      let map = this.parentInstance.$amapComponent;
       map.off('click', this.clickMap);
       map.off('mousemove', this.mouseMoveMap);
     }

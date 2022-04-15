@@ -69,7 +69,7 @@ export default {
         delete options.outputId;
       }
       return new Promise((resolve) => {
-        this.$parentComponent = this.mapInstance.$amapComponent;
+        this.$parentComponent = this.parentInstance.$amapComponent;
         this.$parentComponent.plugin(['AMap.AutoComplete'], () => {
           this.$amapComponent = new AMap.AutoComplete(options);
           resolve();

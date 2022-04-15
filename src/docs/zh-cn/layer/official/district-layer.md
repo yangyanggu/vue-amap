@@ -95,12 +95,12 @@ styles | Object | 为简易行政区图设定各面的填充颜色和描边颜�
 ---|---|---|
 stroke-width | Number, Function | 描边线宽
 zIndex | Number, Function | 图层中每个区域层级，数值越大，层级越高。 默认 0
-coastline-stroke | Array<String>, String, Function | 海岸线颜色，默认 [0.18,0.63,0.94,1]
-nation-stroke | Array<String>, String, Function | 国境线颜色，默认 [0.35,0.35,0.35,1]
-province-stroke | Array<String>, String, Function | 省界颜色，默认 [0.5,0.5,0.5,1]
-city-stroke | Array<String>, String, Function | 城市界，默认 [0.7,0.7,0.7,1]
-county-stroke | Array<String>, String, Function | 区/县界颜色，默认 [0.85,0.85,0.85,1]
-fill | Array<String>, String, Function | 填充色，默认 [1,1,1,1]
+coastline-stroke | ``Array<String>``, String, Function | 海岸线颜色，默认 [0.18,0.63,0.94,1]
+nation-stroke | ``Array<String>``, String, Function | 国境线颜色，默认 [0.35,0.35,0.35,1]
+province-stroke | ``Array<String>``, String, Function | 省界颜色，默认 [0.5,0.5,0.5,1]
+city-stroke | ``Array<String>``, String, Function | 城市界，默认 [0.7,0.7,0.7,1]
+county-stroke | ``Array<String>``, String, Function | 区/县界颜色，默认 [0.85,0.85,0.85,1]
+fill | ``Array<String>``, String, Function | 填充色，默认 [1,1,1,1]
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

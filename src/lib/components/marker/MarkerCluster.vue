@@ -49,7 +49,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
-        this.$parentComponent = this.mapInstance.$amapComponent;
+        this.$parentComponent = this.parentInstance.$amapComponent;
         AMap.plugin(['AMap.MarkerCluster'], () => {
           let points = options.points;
           delete options.points;

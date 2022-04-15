@@ -4,10 +4,7 @@ import eventHelper from '../utils/event-helper';
 
 export default {
   inject: {
-    mapInstance: {
-      default: null
-    },
-    locaInstance: {
+    parentInstance: {
       default: null
     }
   },
@@ -40,25 +37,13 @@ export default {
   },
 
   mounted() {
-    let name = this.$options.name;
-    if (name.startsWith('el-amap-loca-')) {
-      if (this.locaInstance) {
-        if (this.locaInstance.$amapComponent) {
-          this.register();
-        } else {
-          this.locaInstance.addChildComponent(this);
-        }
-      }
-    } else {
-      if (this.mapInstance) {
-        if (this.mapInstance.$amapComponent) {
-          this.register();
-        } else {
-          this.mapInstance.addChildComponent(this);
-        }
+    if (this.parentInstance) {
+      if (this.parentInstance.$amapComponent) {
+        this.register();
+      } else {
+        this.parentInstance.addChildComponent(this);
       }
     }
-
   },
 
   destroyed() {
@@ -194,6 +179,9 @@ export default {
         this.registerEvents();
         this.initProps();
         this.setPropWatchers();
+        this.$nextTick(() => {
+          this.createChildren();
+        });
       }
       if (this.$listeners.init) {
         this.$emit('init', this.$amapComponent, this);

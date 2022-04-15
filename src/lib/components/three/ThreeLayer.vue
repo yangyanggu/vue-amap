@@ -21,10 +21,9 @@ import {OrthographicCamera,
   Vector2,
   Cache
 } from 'three';
-import CONST from '../../utils/constant';
 import {merge} from 'lodash-es';
 import {HDRCubeTextureLoader} from 'three/examples/jsm/loaders/HDRCubeTextureLoader';
-import {clearScene} from '../../utils/threeUtil';
+import {clearScene} from '@/utils/threeUtil';
 
 const lightTypes = {
   AmbientLight: AmbientLight, // 环境光  环境光会均匀的照亮场景中的所有物体
@@ -39,6 +38,11 @@ const mouse = new Vector2();
 export default {
   name: 'el-amap-layer-three',
   mixins: [registerMixin],
+  provide() {
+    return {
+      parentInstance: this
+    };
+  },
   props: {
     lights: {
       type: Array,
@@ -73,74 +77,76 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.mapInstance.$amapComponent;
+      this.$parentComponent = this.parentInstance.$amapComponent;
       const _this = this;
       this.customCoords = this.$parentComponent.customCoords;
-      options.init = function(gl) {
-        // 这里我们的地图模式是 3D，所以创建一个透视相机，相机的参数初始化可以随意设置，因为在 render 函数中，每一帧都需要同步相机参数，因此这里变得不那么重要。
-        // 如果你需要 2D 地图（viewMode: '2D'），那么你需要创建一个正交相机
-        let container = _this.$parentComponent.getContainer();
-        let camera = null;
-        let width = container.offsetWidth;
-        let height = container.offsetHeight;
-        if (_this.$parentComponent.getView().type === '3D') {
-          camera = new PerspectiveCamera(60, width / height, 100, 1 << 30);
-        } else {
-          camera = new OrthographicCamera(width / -2, width / 2, height / 2, height / -2, 1, 1000);
-        }
+      console.log('this.$parentComponent: ', this.$parentComponent);
+      console.log('this.customCoords: ', this.customCoords);
+      return new Promise((resolve) => {
+        options.init = function(gl) {
+          // 这里我们的地图模式是 3D，所以创建一个透视相机，相机的参数初始化可以随意设置，因为在 render 函数中，每一帧都需要同步相机参数，因此这里变得不那么重要。
+          // 如果你需要 2D 地图（viewMode: '2D'），那么你需要创建一个正交相机
+          let container = _this.$parentComponent.getContainer();
+          let camera = null;
+          let width = container.offsetWidth;
+          let height = container.offsetHeight;
+          if (_this.$parentComponent.getView().type === '3D') {
+            camera = new PerspectiveCamera(60, width / height, 100, 1 << 30);
+          } else {
+            camera = new OrthographicCamera(width / -2, width / 2, height / 2, height / -2, 1, 1000);
+          }
 
-        let renderer = new WebGLRenderer({
-          context: gl, // 地图的 gl 上下文
-          alpha: options.alpha,
-          antialias: options.antialias
-          // canvas: gl.canvas,
-        });
+          let renderer = new WebGLRenderer({
+            context: gl, // 地图的 gl 上下文
+            alpha: options.alpha,
+            antialias: options.antialias
+            // canvas: gl.canvas,
+          });
 
-        // 自动清空画布这里必须设置为 false，否则地图底图将无法显示
-        renderer.autoClear = false;
-        let scene = new Scene();
-        _this.camera = camera;
-        _this.renderer = renderer;
-        _this.scene = scene;
-        _this._createLights();
-        _this._createHDR();
-        _this.$children.forEach(component => {
-          component.$emit(CONST.AMAP_READY_EVENT, _this.$amapComponent);
-        });
-        _this._animate();
-        _this._bindEvents();
-      };
-      options.render = function() {
-      // 这里必须执行！！重新设置 three 的 gl 上下文状态。
-        _this.renderer.state.reset();
-        let camera = _this.camera;
-        if (_this.$parentComponent.getView().type === '3D') {
-          let { near, far, fov, up, lookAt, position } = _this.customCoords.getCameraParams();
-          // 2D 地图下使用的正交相机
+          // 自动清空画布这里必须设置为 false，否则地图底图将无法显示
+          renderer.autoClear = false;
+          let scene = new Scene();
+          _this.camera = camera;
+          _this.renderer = renderer;
+          _this.scene = scene;
+          _this._createLights();
+          _this._createHDR();
+          _this._animate();
+          _this._bindEvents();
+          resolve();
+        };
+        options.render = function() {
+          // 这里必须执行！！重新设置 three 的 gl 上下文状态。
+          _this.renderer.state.reset();
+          let camera = _this.camera;
+          if (_this.$parentComponent.getView().type === '3D') {
+            let { near, far, fov, up, lookAt, position } = _this.customCoords.getCameraParams();
+            // 2D 地图下使用的正交相机
 
-          // 这里的顺序不能颠倒，否则可能会出现绘制卡顿的效果。
-          camera.near = near;
-          camera.far = far;
-          camera.fov = fov;
-          camera.position.set(...position);
-          camera.up.set(...up);
-          camera.lookAt(...lookAt);
-          camera.updateProjectionMatrix();
-        } else {
-          let { top, bottom, left, right, position } = _this.customCoords.getCameraParams();
-          // 2D 地图使用的正交相机参数赋值
-          camera.top = top;
-          camera.bottom = bottom;
-          camera.left = left;
-          camera.right = right;
-          camera.position.set(...position);
-          camera.updateProjectionMatrix();
-        }
+            // 这里的顺序不能颠倒，否则可能会出现绘制卡顿的效果。
+            camera.near = near;
+            camera.far = far;
+            camera.fov = fov;
+            camera.position.set(...position);
+            camera.up.set(...up);
+            camera.lookAt(...lookAt);
+            camera.updateProjectionMatrix();
+          } else {
+            let { top, bottom, left, right, position } = _this.customCoords.getCameraParams();
+            // 2D 地图使用的正交相机参数赋值
+            camera.top = top;
+            camera.bottom = bottom;
+            camera.left = left;
+            camera.right = right;
+            camera.position.set(...position);
+            camera.updateProjectionMatrix();
+          }
 
-        _this.renderer.render(_this.scene, camera);
-      };
-      this.$amapComponent = new AMap.GLCustomLayer(options);
-      this.$amapComponent.setMap(this.$parentComponent);
+          _this.renderer.render(_this.scene, camera);
+        };
+        this.$amapComponent = new AMap.GLCustomLayer(options);
+        this.$amapComponent.setMap(this.$parentComponent);
+      });
     },
     destroyComponent() {
       this._unBindEvents();

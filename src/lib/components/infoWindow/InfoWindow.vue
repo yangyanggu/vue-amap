@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.mapInstance.$amapComponent;
+      this.$parentComponent = this.parentInstance.$amapComponent;
       if (this.$slots.default && this.$slots.default.length) {
         options.content = this.tmpVM.$refs.node;
       }

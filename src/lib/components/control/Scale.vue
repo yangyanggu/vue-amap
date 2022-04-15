@@ -20,7 +20,7 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
-        this.$parentComponent = this.mapInstance.$amapComponent;
+        this.$parentComponent = this.parentInstance.$amapComponent;
         this.$parentComponent.plugin(['AMap.Scale'], () => {
           this.$amapComponent = new AMap.Scale(options);
           this.$amapComponent.addTo(this.$parentComponent);

@@ -8,6 +8,11 @@ import {clearGroup} from '../../utils/threeUtil';
 export default {
   name: 'el-amap-three-gltf',
   mixins: [registerMixin],
+  inject: {
+    parentInstance: {
+      default: null
+    }
+  },
   props: {
     url: {
       type: String
@@ -42,13 +47,15 @@ export default {
         angle() {
           _this.setAngle();
         }
-      }
+      },
+      parentInstanceName: 'parentInstance'
     };
   },
   methods: {
     __initComponent(options) {
+      this.$parentComponent = this.parentInstance.$amapComponent;
       return new Promise((resolve) => {
-        let position = this.$parent.convertLngLat(options.position);
+        let position = this.parentInstance.convertLngLat(options.position);
         let loader = new GLTFLoader(); // 读取模型
         loader.load(options.url, (gltf) => {
           let object = gltf.scene;
@@ -57,8 +64,8 @@ export default {
           let animations = gltf.animations;
           let scale = this.scale;
           object.position.set(position[0], position[1], 0);
-          this.$parent.addEnvMap(object);
-          this.$parent.addObject(object);
+          this.parentInstance.addEnvMap(object);
+          this.parentInstance.addObject(object);
           this.$amapComponent = object;
           this.animations = animations;
           object.scale.set(scale, scale, scale);
@@ -74,7 +81,7 @@ export default {
       if (this.linerAnimationFrame) {
         cancelAnimationFrame(this.linerAnimationFrame);
       }
-      this.$parent.removeObject(this.$amapComponent);
+      this.parentInstance.removeObject(this.$amapComponent);
       if (this.$amapComponent) {
         this.$amapComponent.$vue = null;
         clearGroup(this.$amapComponent);

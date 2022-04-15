@@ -7,6 +7,11 @@ import registerMixin from '../../../mixins/register-component';
 export default {
   name: 'el-amap-layer-labels',
   mixins: [registerMixin],
+  provide() {
+    return {
+      parentInstance: this
+    };
+  },
   props: {
     zooms: {
       type: Array
@@ -27,7 +32,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.mapInstance.$amapComponent;
+      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.LabelsLayer(options);
       this.$parentComponent.add(this.$amapComponent);
     },

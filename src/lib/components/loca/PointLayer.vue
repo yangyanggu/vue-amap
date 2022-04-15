@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.locaInstance.$amapComponent;
+      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new Loca.PointLayer(options);
       this.setSource();
       this.setStyle();

@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.locaInstance.$amapComponent;
+      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new Loca.GridLayer(options);
       this.setSource();
       this.setStyle();
