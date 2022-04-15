@@ -47,8 +47,7 @@ export default {
         angle() {
           _this.setAngle();
         }
-      },
-      parentInstanceName: 'parentInstance'
+      }
     };
   },
   methods: {

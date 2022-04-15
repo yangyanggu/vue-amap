@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "0.1.0-beta",
+  "version": "0.1.0",
   "description": "vue amap for amap2.0",
   "keywords": [
     "vue",

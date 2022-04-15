@@ -75,4 +75,6 @@
   - [ZMarker图层](zh-cn/loca/z-marker-layer.md)
 - 扩展
   - [搜索](zh-cn/ext/search-box.md)
+  - [自定义组件](zh-cn/ext/custom-component.md)
+  - [包装组件](zh-cn/ext/folder-component.md)
 - [FAQ](zh-cn/faq.md)

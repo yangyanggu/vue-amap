@@ -77,4 +77,6 @@ version | `String` | `2.0` | 指定要加载的 JSAPI 的版本，缺省时默�
 plugins | `Array` | `` | 需要使用的的插件列表，如比例尺'AMap.Scale'等 [插件列表](https://lbs.amap.com/api/jsapi-v2/guide/abc/plugins) |
 AMapUI | `Object` | `{ 'version': '1.1', 'plugins': []}` | UI的参数配置 [示例](https://lbs.amap.com/api/amap-ui/intro) |
 Loca | `Object` | `{version: '2.0.0'}` | Loca 版本 |
+serviceHost | String | '' | ``0.1.0版本新增``，代理服务器域名或ip地址，新版本密钥必须配置代理服务器或者安全密钥，优先使用该配置[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load)
+securityJsCode | String | '' | ``0.1.0版本新增``，静态安全密钥(不安全，建议开发环境用),新版本密钥必须配置代理服务器或者安全密钥，[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load)
 

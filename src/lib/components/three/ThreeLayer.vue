@@ -80,8 +80,8 @@ export default {
       this.$parentComponent = this.parentInstance.$amapComponent;
       const _this = this;
       this.customCoords = this.$parentComponent.customCoords;
-      console.log('this.$parentComponent: ', this.$parentComponent);
-      console.log('this.customCoords: ', this.customCoords);
+      let center = this.$parentComponent.getCenter();
+      this.customCoords.lngLatsToCoords([center.toArray()]);// 强制先处理一次经纬度，解决不初始化的话会导致后续转换失败
       return new Promise((resolve) => {
         options.init = function(gl) {
           // 这里我们的地图模式是 3D，所以创建一个透视相机，相机的参数初始化可以随意设置，因为在 render 函数中，每一帧都需要同步相机参数，因此这里变得不那么重要。
