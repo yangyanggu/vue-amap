@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new Loca.PrismLayer(options);
       this.setSource();
       this.setStyle();

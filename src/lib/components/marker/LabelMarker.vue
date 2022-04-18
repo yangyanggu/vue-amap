@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.LabelMarker(options);
       this.$parentComponent.add(this.$amapComponent);
       // console.log('this.$amapComponent: ', this.$amapComponent);

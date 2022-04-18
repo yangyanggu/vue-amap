@@ -52,7 +52,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       return new Promise((resolve) => {
         let position = this.parentInstance.convertLngLat(options.position);
         let loader = new GLTFLoader(); // 读取模型

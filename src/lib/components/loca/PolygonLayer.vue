@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new Loca.PolygonLayer(options);
       this.setSource();
       this.setStyle();

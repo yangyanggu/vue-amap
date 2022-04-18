@@ -77,7 +77,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       const _this = this;
       this.customCoords = this.$parentComponent.customCoords;
       let center = this.$parentComponent.getCenter();

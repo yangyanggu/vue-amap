@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.TileLayer.Flexible(options);
       this.$amapComponent.setMap(this.$parentComponent);
     },

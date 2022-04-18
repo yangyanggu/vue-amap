@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.LabelsLayer(options);
       this.$parentComponent.add(this.$amapComponent);
     },

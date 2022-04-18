@@ -168,6 +168,9 @@ export default {
     },
 
     register() {
+      if (this.parentInstance && !this.$parentComponent) {
+        this.$parentComponent = this.parentInstance.$amapComponent;
+      }
       const res = this.__initComponent && this.__initComponent(this.convertProps());
       if (res && res.then) res.then((instance) => this.registerRest(instance)); // promise
       else this.registerRest(res);

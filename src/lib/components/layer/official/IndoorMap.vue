@@ -29,7 +29,6 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
-        this.$parentComponent = this.parentInstance.$amapComponent;
         AMap.plugin(['AMap.IndoorMap'], () => {
           this.$amapComponent = new AMap.IndoorMap(options);
           let layers = this.$parentComponent.getLayers();

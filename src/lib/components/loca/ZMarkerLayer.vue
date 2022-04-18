@@ -18,7 +18,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new Loca.ZMarkerLayer(options);
       this.setSource();
       this.setStyle();

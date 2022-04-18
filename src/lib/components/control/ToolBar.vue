@@ -20,7 +20,6 @@ export default {
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
-        this.$parentComponent = this.parentInstance.$amapComponent;
         this.$parentComponent.plugin(['AMap.ToolBar'], () => {
           this.$amapComponent = new AMap.ToolBar(options);
           this.$amapComponent.addTo(this.$parentComponent);

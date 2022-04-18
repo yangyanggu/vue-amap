@@ -127,11 +127,6 @@ export default {
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.BezierCurve(options);
-      if (this.$parent.$amapComponent && (isOverlayGroupInstance(this.$parent.$amapComponent) || isVectorLayerInstance(this.$parent.$amapComponent))) {
-        this.$parentComponent = this.$parent.$amapComponent;
-      } else {
-        this.$parentComponent = this.parentInstance.$amapComponent;
-      }
       if (isMapInstance(this.$parentComponent)) {
         this.$parentComponent.add(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {

@@ -79,7 +79,6 @@ export default {
         options.content = this.tmpVM.$refs.node;
       }
       this.$amapComponent = new AMap.Marker(options);
-      this.$parentComponent = this.parentInstance.$amapComponent;
       if (isMapInstance(this.$parentComponent)) {
         this.$parentComponent.add(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {

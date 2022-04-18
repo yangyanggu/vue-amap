@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       let canvas = options.canvas;
       delete options.canvas;
       this.$amapComponent = new AMap.CustomLayer(canvas, options);

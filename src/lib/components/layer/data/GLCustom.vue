@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.GLCustomLayer(options);
       this.$amapComponent.setMap(this.$parentComponent);
     },

@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.CanvasLayer(options);
       this.$parentComponent.addLayer(this.$amapComponent);
     },

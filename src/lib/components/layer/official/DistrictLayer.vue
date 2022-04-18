@@ -44,7 +44,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       if (this.type === 'World') {
         this.$amapComponent = new AMap.DistrictLayer.World(options);
       } else if (this.type === 'Country') {

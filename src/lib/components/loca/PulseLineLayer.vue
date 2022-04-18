@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new Loca.PulseLineLayer(options);
       this.setSource();
       this.setStyle();

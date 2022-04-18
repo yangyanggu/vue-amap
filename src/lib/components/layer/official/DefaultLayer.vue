@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = AMap.createDefaultLayer(options);
       this.$parentComponent.add(this.$amapComponent);
     }

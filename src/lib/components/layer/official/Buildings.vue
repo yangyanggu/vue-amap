@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.Buildings(options);
       this.$parentComponent.addLayer(this.$amapComponent);
       if (this.styleOpts) {
