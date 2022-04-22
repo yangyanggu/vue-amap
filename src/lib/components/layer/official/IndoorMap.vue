@@ -52,6 +52,7 @@ export default {
         this.$parentComponent.setLayers(layers);
       }
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   }
 };

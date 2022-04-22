@@ -64,6 +64,7 @@ export default {
     destroyComponent() {
       this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   },
   render() {

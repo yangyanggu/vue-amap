@@ -34,6 +34,7 @@ export default {
     destroyComponent() {
       this.$parentComponent.removeLayer(this.$amapComponent);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   }
 };

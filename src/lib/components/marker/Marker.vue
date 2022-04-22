@@ -92,6 +92,7 @@ export default {
         this.$parentComponent.removeOverlay(this.$amapComponent);
       }
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   },
   render() {

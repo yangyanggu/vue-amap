@@ -84,6 +84,7 @@ export default {
         this.$amapComponent.$vue = null;
         clearGroup(this.$amapComponent);
         this.$amapComponent = null;
+        this.$parentComponent = null;
       }
     },
     setPosition() {

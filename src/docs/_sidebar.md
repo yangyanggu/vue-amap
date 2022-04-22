@@ -17,6 +17,8 @@
   - [地图控制插件](zh-cn/control/control-bar.md)
   - [地图类型切换](zh-cn/control/map-type.md)
   - [鹰眼控件](zh-cn/control/hawk-eye.md)
+  - [POI搜索](zh-cn/control/search-box.md)
+  - [定位](zh-cn/control/geolocation.md)
 - 高德官方图层
   - [默认图层](zh-cn/layer/official/default-layer.md)
   - [切片图层](zh-cn/layer/official/tile-layer.md)
@@ -74,7 +76,6 @@
   - [连接飞线图层](zh-cn/loca/pulse-link-layer.md)
   - [ZMarker图层](zh-cn/loca/z-marker-layer.md)
 - 扩展
-  - [搜索](zh-cn/ext/search-box.md)
   - [自定义组件](zh-cn/ext/custom-component.md)
   - [包装组件](zh-cn/ext/folder-component.md)
 - [FAQ](zh-cn/faq.md)

@@ -95,6 +95,7 @@ export default {
       }
       this.$amapComponent.destroy();
       this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     bindEvents() {
       let map = this.parentInstance.$amapComponent;

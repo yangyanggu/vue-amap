@@ -165,6 +165,7 @@ export default {
       this.renderer.dispose();
       this.renderer = null;
       this.$amapComponent = null;
+      this.$parentComponent = null;
       Cache.clear();
     },
     convertLngLat(lnglat) {

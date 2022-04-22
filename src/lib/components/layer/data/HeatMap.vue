@@ -48,6 +48,7 @@ export default {
     destroyComponent() {
       this.$amapComponent.setMap(null);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   }
 };

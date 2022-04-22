@@ -123,6 +123,7 @@ export default {
         this.$parentComponent.remove(this.$amapComponent);
       }
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   }
 };

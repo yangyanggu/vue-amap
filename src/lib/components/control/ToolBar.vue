@@ -31,6 +31,8 @@ export default {
     destroyComponent() {
       if (this.$amapComponent && this.$parentComponent) {
         this.$amapComponent.remove();
+        this.$amapComponent = null;
+        this.$parentComponent = null;
       }
     }
   }

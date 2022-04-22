@@ -58,6 +58,7 @@ import ControlBar from './components/control/ControlBar';
 import MapType from './components/control/MapType';
 import HawkEye from './components/control/HawkEye';
 import SearchBox from '@/components/ext/SearchBox';
+import Geolocation from '@/components/control/Geolocation';
 
 // Loca 导入
 import Loca from './components/loca/Loca';
@@ -123,6 +124,7 @@ let components = [
   MapType,
   HawkEye,
   SearchBox,
+  Geolocation,
 
   Loca,
   PointLayer,
