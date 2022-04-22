@@ -18,6 +18,7 @@
       <el-amap-control-scale />
       <el-amap-control-tool-bar />
       <el-amap-search-box @select="selectSearch" />
+      <el-amap-control-geolocation @complete="getLocation" />
     </el-amap>
     <div class="control-container">
       <el-button @click="changeCenter">
@@ -33,19 +34,22 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import ElAmapSearchBox from "@vue-map/packages/ext/SearchBox/SearchBox.vue";
+import ElAmapControlGeolocation from "@vue-map/packages/control/Geolocation/Geolocation.vue";
 import ElAmap from '../../src/packages/amap/amap.vue'
 import ElAmapControlControlBar from "../../src/packages/control/ControlBar/ControlBar.vue";
 import ElAmapControlHawkEye from "../../src/packages/control/HawkEye/HawkEye.vue";
 import ElAmapControlMapType from "../../src/packages/control/MapType/MapType.vue";
 import ElAmapControlScale from "../../src/packages/control/Scale/Scale.vue";
 import ElAmapControlToolBar from "../../src/packages/control/ToolBar/ToolBar.vue";
+import ElAmapGeolocation from "../../src/packages/control/Geolocation";
 
 export default defineComponent({
   name: "Map",
   components: {
+    ElAmapControlGeolocation,
     ElAmapSearchBox,
     ElAmapControlToolBar,
-    ElAmapControlScale, ElAmapControlMapType, ElAmapControlHawkEye, ElAmapControlControlBar, ElAmap},
+    ElAmapControlScale, ElAmapControlMapType, ElAmapControlHawkEye, ElAmapControlControlBar, ElAmap,ElAmapGeolocation},
   data(){
     return {
       center: [120,31],
@@ -76,6 +80,9 @@ export default defineComponent({
     },
     selectSearch(e){
       console.log('search: ', e);
+    },
+    getLocation(e){
+      console.log('getLocation: ', e);
     }
   }
 })

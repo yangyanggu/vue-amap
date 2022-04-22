@@ -1,5 +1,5 @@
 ---
-title: 搜索
+title: POI搜索
 description: AMap.AutoComplete用于进行 POI 搜索联想与数据查询的相关类型,提供默认的功能
 head:
   - - meta

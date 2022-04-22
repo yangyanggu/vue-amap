@@ -29,7 +29,9 @@ export default [
       '/zh-cn/component/control/tool-bar.md',
       '/zh-cn/component/control/control-bar.md',
       '/zh-cn/component/control/map-type.md',
-      '/zh-cn/component/control/hawk-eye.md'
+      '/zh-cn/component/control/hawk-eye.md',
+      '/zh-cn/component/control/search-box.md',
+      '/zh-cn/component/control/geolocation.md'
     ],
   },
   {
@@ -117,7 +119,6 @@ export default [
   {
     text: '扩展',
     children: [
-      '/zh-cn/component/ext/search-box.md',
       '/zh-cn/component/ext/three-layer.md',
       '/zh-cn/component/ext/three-gltf.md',
     ],

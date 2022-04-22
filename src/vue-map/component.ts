@@ -55,6 +55,7 @@ import {ElAmapRectangle} from '@vue-map/packages/vector/Rectangle'
 import {ElAmapLayerTiles3d} from '@vue-map/packages/layer/data/Tiles3D'
 import {ElAmapLayerThree} from '@vue-map/packages/ext/ThreeLayer'
 import {ElAmapThreeGltf} from '@vue-map/packages/ext/ThreeGltf'
+import {ElAmapControlGeolocation} from '@vue-map/packages/control/Geolocation'
 
 import type { Plugin } from 'vue'
 
@@ -115,5 +116,6 @@ export default [
   ElAmapRectangle,
   ElAmapLayerTiles3d,
   ElAmapLayerThree,
-  ElAmapThreeGltf
+  ElAmapThreeGltf,
+  ElAmapControlGeolocation
 ] as Plugin[]
