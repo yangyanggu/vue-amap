@@ -41,6 +41,7 @@ export default defineComponent({
       this.$amapComponent.destroy();
       this.$parentComponent.removeLayer(this.$amapComponent);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     __styleOpts(value) {
       this.$amapComponent.setStyle(value);

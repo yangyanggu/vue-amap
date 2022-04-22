@@ -32,6 +32,7 @@ export default defineComponent({
     destroyComponent() {
       this.$parentComponent.removeLayer(this.$amapComponent);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     __url(value) {
       this.$amapComponent.setImageUrl(value);

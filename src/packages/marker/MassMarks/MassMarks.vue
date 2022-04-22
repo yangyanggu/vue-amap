@@ -40,6 +40,7 @@ export default defineComponent({
       this.$amapComponent.clear();
       this.$amapComponent.setMap(null);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   },
   render() {

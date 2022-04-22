@@ -1,3 +1,8 @@
+###v1.1.0
+* 重要革新，地图组件现在支持包装，可以将多个组件封装到一个新的组件里
+* 新特性，现在提供用于自定义组件的能力了，提供了registerMixin
+* initAMapApiLoader增加securityJsCode和serviceHost，用于适应新版本的key
+
 ### 1.0.12
 * 修改WMS和WMTS的params参数名称，保持与官网一致
 

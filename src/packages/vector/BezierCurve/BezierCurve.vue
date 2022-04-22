@@ -109,7 +109,6 @@ export default defineComponent({
       if (this.$amapComponent.editor) {
         this.$amapComponent.editor.close();
       }
-      this.$amapComponent.destroy();
       if (isMapInstance(this.$parentComponent)) {
         this.$parentComponent.remove(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
@@ -117,7 +116,9 @@ export default defineComponent({
       } else if (isVectorLayerInstance(this.$parentComponent)) {
         this.$parentComponent.remove(this.$amapComponent);
       }
+      this.$amapComponent.destroy();
       this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     __zIndex(value) {
       if(this.$amapComponent){

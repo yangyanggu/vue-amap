@@ -5,6 +5,11 @@ import {convertEventToLowerCase, eventReg} from "../utils/util";
 import type {WatchStopHandle, ComponentPublicInstance} from "vue";
 
 export default defineComponent({
+  inject: {
+    parentInstance: {
+      default: null
+    }
+  },
   inheritAttrs: false,
   props: {
     visible: {
@@ -29,11 +34,12 @@ export default defineComponent({
     this.$parentComponent = null as any;
   },
   mounted() {
-    this.$parentComponent = this.$parentComponent || (this.$parent as any).$amapComponent;
-    if (this.$parentComponent) {
-      this.register();
-    }else{
-      this.lazyRegister();
+    if (this.parentInstance) {
+      if (this.parentInstance.$amapComponent) {
+        this.register();
+      } else {
+        this.parentInstance.addChildComponent(this);
+      }
     }
   },
 
@@ -146,12 +152,14 @@ export default defineComponent({
     },
     createChildren(){
       while (this.needInitComponents.length > 0){
-        this.needInitComponents[0].$parentComponent = this.$amapComponent;
         this.needInitComponents[0].register();
         this.needInitComponents.splice(0, 1);
       }
     },
     register() {
+      if(this.parentInstance && !this.$parentComponent){
+        this.$parentComponent = this.parentInstance.$amapComponent;
+      }
       const res = this['__initComponent'] && this['__initComponent'](this.convertProps());
       if (res && res.then) res.then((instance) => this.registerRest(instance)); // promise
       else this.registerRest(res);
@@ -163,7 +171,9 @@ export default defineComponent({
       this.initProps();
       this.setPropWatchers();
       this.$emit('init', this.$amapComponent, this);
-      this.createChildren();
+      this.$nextTick(() => {
+        this.createChildren();
+      });
     },
 
     // helper method

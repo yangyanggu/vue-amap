@@ -72,6 +72,7 @@ export default defineComponent({
       }
       this.$amapComponent.destroy();
       this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     bindEvents() {
       if(this.$parent){

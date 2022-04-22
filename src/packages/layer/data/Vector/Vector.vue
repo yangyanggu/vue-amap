@@ -8,6 +8,11 @@ import registerMixin from '../../../../mixins/register-component';
 export default defineComponent({
   name: 'ElAmapLayerVector',
   mixins: [registerMixin],
+  provide() {
+    return {
+      parentInstance: this
+    };
+  },
   props: {
   },
   data() {
@@ -22,6 +27,7 @@ export default defineComponent({
     destroyComponent() {
       this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   }
 });

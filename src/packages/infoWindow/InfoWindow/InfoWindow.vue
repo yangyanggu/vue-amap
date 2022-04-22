@@ -72,6 +72,15 @@ export default defineComponent({
         this.$amapComponent.open(this.$parentComponent, this.position);
       }
     },
+    destroyComponent() {
+      if(this.$amapComponent){
+        if(this.$amapComponent.getIsOpen()){
+          this.$amapComponent.close();
+        }
+        this.$amapComponent = null;
+        this.$parentComponent = null;
+      }
+    },
     __position(position){
       if (this.visible) {
         this.$amapComponent.open(this.$parentComponent, position);

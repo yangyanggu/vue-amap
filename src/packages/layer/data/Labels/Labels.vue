@@ -8,6 +8,11 @@ import registerMixin from '../../../../mixins/register-component';
 export default defineComponent({
   name: 'ElAmapLayerLabels',
   mixins: [registerMixin],
+  provide() {
+    return {
+      parentInstance: this
+    };
+  },
   props: {
     zooms: {
       type: Array
@@ -39,6 +44,7 @@ export default defineComponent({
     destroyComponent() {
       this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   }
 });

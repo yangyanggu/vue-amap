@@ -19,6 +19,7 @@
           :position="p"
           :scale="[10,10,10]"
           :rotation="rotation"
+          :visible="visible"
           @init="init"
         />
       </el-amap-layer-three>
@@ -61,7 +62,7 @@ export default defineComponent({
     initMap(map){
       console.log('init map: ', map);
       const positions = [] as any;
-      for(let i=0;i<10000;i++){
+      for(let i=0;i<10;i++){
         const lng = 116.306206 + Math.random() * 0.01;
         const lat = 39.975468 + Math.random() * 0.01;
         positions.push([lng, lat]);

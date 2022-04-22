@@ -48,6 +48,7 @@ export default defineComponent({
         this.$parentComponent.setLayers(layers);
       }
       this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     __hideFloorBar(flag) {
       flag === false ? this.$amapComponent.hideFloorBar() : this.$amapComponent.showFloorBar();

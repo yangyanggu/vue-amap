@@ -8,6 +8,11 @@ import registerMixin from '../../../mixins/register-component';
 export default defineComponent({
   name: 'ElAmapLoca',
   mixins: [registerMixin],
+  provide() {
+    return {
+      parentInstance: this
+    };
+  },
   props: {
     ambLight: {
       type: Object

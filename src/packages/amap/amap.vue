@@ -13,7 +13,11 @@ import {lazyAMapApiLoaderInstance} from '../../services/injected-amap-api-instan
 export default defineComponent ({
   name: 'ElAmap',
   mixins: [registerMixin],
-
+  provide() {
+    return {
+      parentInstance: this
+    };
+  },
   props: {
     vid: {
       type: String
@@ -160,9 +164,8 @@ export default defineComponent ({
         const elementID = this.vid || guid();
         mapElement.id = elementID;
         this.$nextTick(() => {
-          this.$parentComponent = this.$amapComponent = new AMap.Map(elementID, this.convertProps());
+          this.$amapComponent = new AMap.Map(elementID, this.convertProps());
           this.register();
-          this.createChildren();
         })
       }).catch(e => {
         console.warn('init map error: ', e);

@@ -8,5 +8,6 @@ declare module '@vue/runtime-core' {
     camera ?: any,
     scene ?: any,
     customCoords ?: any
+    parentInstance ?: any
   }
 }

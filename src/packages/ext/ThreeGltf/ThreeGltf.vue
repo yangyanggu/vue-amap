@@ -33,7 +33,7 @@ export default defineComponent({
   methods: {
     __initComponent(options) {
       return new Promise((resolve) => {
-        const position = this.$parent.convertLngLat(options.position);
+        const position = this.parentInstance.convertLngLat(options.position);
         const loader = new GLTFLoader(); // 读取模型
         loader.load(options.url, (gltf) => {
           const object = gltf.scene;
@@ -48,8 +48,8 @@ export default defineComponent({
             scaleArray = scale;
           }
           object.position.set(position[0], position[1], 0);
-          this.$parent.addEnvMap(object);
-          this.$parent.addObject(object);
+          this.parentInstance.addEnvMap(object);
+          this.parentInstance.addObject(object);
           this.$amapComponent = object;
           this.animations = animations;
           object.scale.set(...scaleArray);
@@ -65,15 +65,16 @@ export default defineComponent({
       if (this.linerAnimationFrame) {
         cancelAnimationFrame(this.linerAnimationFrame);
       }
-      this.$parent.removeObject(this.$amapComponent);
+      this.parentInstance.removeObject(this.$amapComponent);
       if (this.$amapComponent) {
         this.$amapComponent.$vue = null;
         clearGroup(this.$amapComponent);
         this.$amapComponent = null;
+        this.$parentComponent = null;
       }
     },
     setPosition() {
-      const position = this.$parent.convertLngLat(this.position);
+      const position = this.parentInstance.convertLngLat(this.position);
       this.$amapComponent.position.setX(position[0]);
       this.$amapComponent.position.setY(position[1]);
       this._refresh();

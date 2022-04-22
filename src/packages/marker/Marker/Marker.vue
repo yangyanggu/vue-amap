@@ -93,6 +93,7 @@ export default defineComponent({
         this.$parentComponent.removeOverlay(this.$amapComponent);
       }
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   }
 });

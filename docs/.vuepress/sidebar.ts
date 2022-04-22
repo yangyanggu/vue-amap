@@ -9,6 +9,13 @@ export default [
     ],
   },
   {
+    text: '自定义',
+    children: [
+      '/zh-cn/custom/custom-component.md',
+      '/zh-cn/custom/folder-component.md'
+    ]
+  },
+  {
     text: '地图',
     children: [
       '/zh-cn/base/amap.md',

@@ -35,6 +35,7 @@ export default defineComponent({
       this.$amapComponent.destroy();
       this.$amapComponent.setMap(null);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     }
   },
   render(){

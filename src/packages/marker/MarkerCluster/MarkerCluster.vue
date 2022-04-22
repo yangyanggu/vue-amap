@@ -52,8 +52,10 @@ export default defineComponent({
       });
     },
     destroyComponent() {
+      this.$amapComponent.setData([])
       this.$amapComponent.setMap(null);
       this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     __points(value) {
       if (this.$amapComponent) {
