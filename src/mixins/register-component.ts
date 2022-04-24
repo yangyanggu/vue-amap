@@ -142,7 +142,7 @@ export default defineComponent({
     },
 
     lazyRegister(){
-      const $parent = this.$parent as (ComponentPublicInstance & customComponent);
+      const $parent = this.parentInstance as (ComponentPublicInstance & customComponent);
       if($parent && $parent.addChildComponent){
         $parent.addChildComponent(this);
       }

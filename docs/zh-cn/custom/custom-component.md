@@ -8,7 +8,7 @@ head:
 ---
 
 # 自定义地图组件
-``1.1.0版本``开始支持自定义地图组件，通过加载``registerMixin``实现自己的组件
+``1.1.2版本``开始支持自定义地图组件，通过加载``registerMixin``实现自己的组件
 
 ## 使用方法
 首先需要导入 ``registerMixin``，再methods中创建一个__initComponent方法，该方法是子组件被创建时调用，可以使用``parentInstance.$amapComponent``获取到上级组件的实例对象
@@ -24,12 +24,14 @@ head:
 
 <script>
 import {registerMixin} from "@vuemap/vue-amap";
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: "test",
   mixins: [registerMixin],
   methods: {
     __initComponent(){
+      console.log('this.parentInstance: ', this.parentInstance);
       let map = this.parentInstance.$amapComponent;
       let position = this.parentInstance.$amapComponent.getCenter();
       let marker = new AMap.Marker({
@@ -38,13 +40,8 @@ export default {
       map.add(marker);
     }
   }
-}
+})
 </script>
-
-<style scoped>
-
-</style>
-
 ```
 地图加载代码
 ```vue
@@ -53,19 +50,18 @@ export default {
     <el-amap :center="[116.335036, 39.900082]" :zoom="8">
       <test />
     </el-amap>
-    <test-root />
   </div>
 </template>
 
 <script>
-import test from './components/test'
-
-export default {
+import test from './components/test.vue'
+import {defineComponent} from "vue";
+export default defineComponent({
   name: 'App',
   components: {
     test
-  }
-}
+  },
+})
 </script>
 
 <style>
@@ -73,7 +69,6 @@ export default {
   height: 600px;
 }
 </style>
-
 ```
 
 ### parentInstance的说明

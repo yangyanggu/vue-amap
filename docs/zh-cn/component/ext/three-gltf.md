@@ -23,7 +23,7 @@ examples/ext/three-gltf
 名称 | 类型 | 说明
 ---|---|---|
 url  | String | 模型地址,只支持gltf
-scale | Number | 缩放大小
+scale | Number,Array | 缩放大小,可以传入number那么X Y Z都会以该值缩放，也可以传入数组[x,y,z]将按该顺序缩放
 
 ## 动态属性
 支持响应式。

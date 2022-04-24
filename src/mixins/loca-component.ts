@@ -75,8 +75,8 @@ export default defineComponent({
       this.$parentComponent = null;
     },
     bindEvents() {
-      if(this.$parent){
-        const map = (this.$parent as any).getMap();
+      if(this.parentInstance){
+        const map = this.parentInstance.getMap();
         map.on('click', this.clickMap);
         map.on('mousemove', this.mouseMoveMap);
       }
@@ -90,8 +90,8 @@ export default defineComponent({
       this.$emit('mousemove', feature, e);
     },
     unBindEvents() {
-      if(this.$parent){
-        const map = (this.$parent as any).getMap();
+      if(this.parentInstance){
+        const map = this.parentInstance.getMap();
         map.off('click', this.clickMap);
         map.off('mousemove', this.mouseMoveMap);
       }
