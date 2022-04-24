@@ -8,6 +8,9 @@
   - [兼容高德原生 SDK](zh-cn/introduction/compatible)
   - [更新日志](https://gitee.com/guyangyang/vue-amap/blob/vue2/CHANGELOG.md)
   - [捐赠支持](zh-cn/other/donation.md)
+- 自定义npm
+  - [自定义组件](zh-cn/ext/custom-component.md)
+  - [包装组件](zh-cn/ext/folder-component.md)
 - 地图
   - [地图](zh-cn/base/amap)
   - [获取地图实例](zh-cn/base/get-bmap-instance.md)
@@ -76,6 +79,5 @@
   - [连接飞线图层](zh-cn/loca/pulse-link-layer.md)
   - [ZMarker图层](zh-cn/loca/z-marker-layer.md)
 - 扩展
-  - [自定义组件](zh-cn/ext/custom-component.md)
-  - [包装组件](zh-cn/ext/folder-component.md)
+  
 - [FAQ](zh-cn/faq.md)

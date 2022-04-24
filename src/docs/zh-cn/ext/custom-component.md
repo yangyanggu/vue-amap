@@ -44,7 +44,6 @@ export default {
     <el-amap :center="[116.335036, 39.900082]" :zoom="8">
       <test />
     </el-amap>
-    <test-root />
   </div>
 </template>
 
