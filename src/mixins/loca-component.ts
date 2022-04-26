@@ -35,7 +35,6 @@ export default defineComponent({
   emits: ['mousemove', 'click'],
   data() {
     return {
-      source: null as any,
     };
   },
   methods: {

@@ -9,5 +9,6 @@ declare module '@vue/runtime-core' {
     scene ?: any,
     customCoords ?: any
     parentInstance ?: any
+    source ?: any
   }
 }
