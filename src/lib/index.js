@@ -38,6 +38,7 @@ import Text from './components/marker/Text';
 import ElasticMarker from './components/marker/ElasticMarker';
 import MarkerCluster from './components/marker/MarkerCluster';
 import MassMarks from './components/marker/MassMarks';
+import CircleMarker from './components/marker/CircleMarker';
 
 // 信息窗体
 import InfoWindow from './components/infoWindow/InfoWindow';
@@ -107,6 +108,7 @@ let components = [
   ElasticMarker,
   MarkerCluster,
   MassMarks,
+  CircleMarker,
 
   InfoWindow,
 

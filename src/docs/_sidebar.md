@@ -49,6 +49,7 @@
   - [GLTF](zh-cn/threejs/gltf.md)
 - 点标记
   - [点标记](zh-cn/marker/marker.md)
+  - [圆形标记](zh-cn/marker/circle-marker.md)
   - [标注](zh-cn/marker/label-marker.md)
   - [文本](zh-cn/marker/text.md)
   - [灵活点标记](zh-cn/marker/elastic-marker.md)
