@@ -1,3 +1,6 @@
+###v0.1.2
+* 增加圆形标记 [PR](https://gitee.com/guyangyang/vue-amap/pulls/1)
+
 ###v0.1.1
 * 增加定位组件
 * 优化内存释放
