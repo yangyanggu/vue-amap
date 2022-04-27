@@ -104,9 +104,8 @@ export default {
     return null;
   },
   destroyed() {
-    this.tmpVM.$destroy();
-    if (this.$customContent && this.$customContent.$destroy) {
-      this.$customContent.$destroy();
+    if (this.tmpVM) {
+      this.tmpVM.$destroy();
     }
   }
 };

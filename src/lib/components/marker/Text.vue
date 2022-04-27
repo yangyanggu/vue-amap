@@ -73,8 +73,6 @@ export default {
   },
   render() {
     return null;
-  },
-  destroyed() {
   }
 };
 </script>

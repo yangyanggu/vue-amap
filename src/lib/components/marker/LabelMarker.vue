@@ -52,8 +52,6 @@ export default {
     }
   },
   render() {
-  },
-  destroyed() {
   }
 };
 </script>

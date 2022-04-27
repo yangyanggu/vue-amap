@@ -87,6 +87,9 @@ export default {
       }
     },
     destroyComponent() {
+      if (!this.$amapComponent) {
+        return;
+      }
       this.unBindEvents();
       this.$parentComponent.remove(this.$amapComponent);
       if (this.source) {
@@ -112,8 +115,10 @@ export default {
     },
     unBindEvents() {
       let map = this.parentInstance.$amapComponent;
-      map.off('click', this.clickMap);
-      map.off('mousemove', this.mouseMoveMap);
+      if (map) {
+        map.off('click', this.clickMap);
+        map.off('mousemove', this.mouseMoveMap);
+      }
     }
   }
 };
