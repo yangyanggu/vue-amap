@@ -1,9 +1,11 @@
 import Vue from 'vue';
+import {createAppDom} from '../../util/dom';
 
 describe('AMap.Map', function() {
 
   describe('#init-instance', function() {
     it('should init amap instance', (done) => {
+      createAppDom();
       (new Vue({
         template: `
         <div :style="{height:'100px'}">
@@ -25,7 +27,7 @@ describe('AMap.Map', function() {
             done();
           }
         }
-      })).$mount();
+      })).$mount('#app');
     });
   });
 
