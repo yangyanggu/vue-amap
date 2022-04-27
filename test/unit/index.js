@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import VueAMap from 'vue-amap';
-import { initAMap } from './utils';
+import VueAMap from '../../src/lib/index';
+VueAMap.initAMapApiLoader({
+  key: '747f980f217a31ba68d99301045a3fa7'
+});
 Vue.use(VueAMap);
-initAMap();
-
 Vue.config.productionTip = false;
 
 // require all test files (files that ends with .spec.js)
@@ -13,5 +13,5 @@ testsContext.keys().forEach(testsContext);
 // require all src files except main.js for coverage.
 // you can also change this to match only the subset of files that
 // you want coverage for.
-const srcContext = require.context('vue-amap', true, /^\.\/(?!main(\.js)?$)/);
-srcContext.keys().forEach(srcContext);
+// const srcContext = require.context('vue-amap', true, /^\.\/(?!main(\.js)?$)/);
+// srcContext.keys().forEach(srcContext);
