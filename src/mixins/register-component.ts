@@ -43,7 +43,7 @@ export default defineComponent({
     }
   },
 
-  unmounted() {
+  beforeUnmount() {
     if (!this.$amapComponent) return;
     this.unregisterEvents();
     this.unwatchFns.forEach(item => item());
