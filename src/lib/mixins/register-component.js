@@ -46,7 +46,7 @@ export default {
     }
   },
 
-  destroyed() {
+  beforeDestroy() {
     if (!this.$amapComponent) return;
     this.unregisterEvents();
     this.unwatchFns.forEach(item => item());

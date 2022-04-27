@@ -124,10 +124,6 @@ export default {
   beforeCreate() {
   },
 
-  destroyed() {
-    this.$parentComponent && this.$parentComponent.destroy();
-  },
-
   computed: {
   },
 
