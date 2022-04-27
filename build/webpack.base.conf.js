@@ -31,6 +31,7 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.join(__dirname, '../src/lib'),
       'src': path.resolve(__dirname, '../src'),
+      '@vuemap/vue-amap': path.join(__dirname, '../src/lib'),
     },
     modules: [resolve('src'), "node_modules"]
   },

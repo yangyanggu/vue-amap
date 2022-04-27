@@ -101,9 +101,11 @@ export default {
       this.$parentComponent = null;
     },
     bindEvents() {
-      let map = this.parentInstance.$amapComponent;
-      map.on('click', this.clickMap);
-      map.on('mousemove', this.mouseMoveMap);
+      let map = this.parentInstance.getMap();
+      if (map) {
+        map.on('click', this.clickMap);
+        map.on('mousemove', this.mouseMoveMap);
+      }
     },
     clickMap(e) {
       let feature = this.$amapComponent.queryFeature(e.pixel.toArray());
@@ -114,7 +116,7 @@ export default {
       this.$emit('mousemove', feature, e);
     },
     unBindEvents() {
-      let map = this.parentInstance.$amapComponent;
+      let map = this.parentInstance.getMap();
       if (map) {
         map.off('click', this.clickMap);
         map.off('mousemove', this.mouseMoveMap);
