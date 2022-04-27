@@ -1,3 +1,6 @@
+###v0.1.3
+* 解决loca更新后销毁地图报错问题
+
 ###v0.1.2
 * 增加圆形标记 [PR](https://gitee.com/guyangyang/vue-amap/pulls/1)
 
