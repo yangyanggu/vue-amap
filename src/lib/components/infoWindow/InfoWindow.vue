@@ -70,8 +70,9 @@ export default {
     }).$mount();
   },
   destroyed() {
-    this.$amapComponent.close();
-    this.tmpVM.$destroy();
+    if (this.tmpVM) {
+      this.tmpVM.$destroy();
+    }
   },
   methods: {
     __initComponent(options) {
