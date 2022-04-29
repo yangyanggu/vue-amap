@@ -46,6 +46,14 @@
 </script>
 
 
+## 静态属性
+仅且可以初始化配置，不支持响应式。
+
+名称 | 类型 | 说明
+---|---|---|
+bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上 （自v1.3 新增）默认值：false
+cursor | String | 指定鼠标悬停时的鼠标样式，自定义cursor，IE仅支持cur/ani/ico格式，Opera不支持自定义cursor
+
 ## 动态属性
 支持响应式。
 
@@ -55,12 +63,12 @@ center | Array | 圆心位置
 visible | Boolean | 是否隐藏
 radius | Number | 圆点半径，单位:px
 zIndex | Number | 层叠顺序默认zIndex:10
-bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上 （自v1.3 新增）默认值：false
 strokeColor | String | 线条颜色，使用16进制颜色代码赋值。默认值为#006600
 strokeOpacity | String | 轮廓线透明度，取值范围0,1，0表示完全透明，1表示不透明。默认为0.9
 strokeWeight | Number | 轮廓线宽度
 fillColor | String | 圆形填充颜色,使用16进制颜色代码赋值。默认值为#006600
 fillOpacity | String | 圆形填充透明度，取值范围0,1，0表示完全透明，1表示不透明。默认为0.9
+draggable | Boolean | 设置多边形是否可拖拽移动，默认为false
 extData | Object | 用户自定义属性，支持JavaScript API任意数据类型，如Circle的id等
 
 ## ref 可用方法
@@ -75,6 +83,7 @@ $$getInstance() | [AMap.CircleMarker](http://lbs.amap.com/api/javascript-api/ref
 
 事件 | 参数 | 说明
 ---|---|---|
+init | AMap.CircleMarker | `AMap.CircleMarker`实例
 click | MapsEvent | 鼠标左键单击事件
 dblclick | MapsEvent | 鼠标左键双击事件
 rightclick | MapsEvent | 鼠标右键单击事件

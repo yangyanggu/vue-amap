@@ -9,9 +9,6 @@ export default {
   name: 'el-amap-circle-marker',
   mixins: [registerMixin],
   props: {
-    vid: {
-      type: String
-    },
     zIndex: {
       type: Number
     },
@@ -21,10 +18,13 @@ export default {
     },
     center: {
       type: Array,
-      $type: 'LngLat'
+      required: true
     },
     bubble: {
       type: Boolean
+    },
+    cursor: {
+      type: String
     },
     radius: {
       type: Number
@@ -44,6 +44,10 @@ export default {
     fillOpacity: {
       type: Number
     },
+    draggable: {
+      type: Boolean,
+      default: false
+    },
     extData: {
       type: Object
     }
@@ -52,7 +56,33 @@ export default {
   data() {
     return {
       converters: {},
-      handlers: {}
+      handlers: {
+        strokeColor(value) {
+          this.setOptions({
+            strokeColor: value
+          });
+        },
+        strokeOpacity(value) {
+          this.setOptions({
+            strokeOpacity: value
+          });
+        },
+        strokeWeight(value) {
+          this.setOptions({
+            strokeWeight: value
+          });
+        },
+        fillColor(value) {
+          this.setOptions({
+            fillColor: value
+          });
+        },
+        fillOpacity(value) {
+          this.setOptions({
+            fillOpacity: value
+          });
+        }
+      }
     };
   },
 
