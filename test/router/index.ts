@@ -36,6 +36,7 @@ import Polyline from "../views/vector/Polyline.vue";
 import Rectangle from "../views/vector/Rectangle.vue";
 import Tiles3D from "../views/layer/Tiles3D.vue";
 import Gltf from '../views/ext/Gltf.vue'
+import CircleMarker from "../views/marker/CircleMarker.vue";
 
 const routes = [
   {path: '/', component: Map},
@@ -75,6 +76,7 @@ const routes = [
   {path: '/vector/rectangle', component: Rectangle},
   {path: '/layer/tiles3D', component: Tiles3D},
   {path: '/ext/gltf', component: Gltf},
+  {path: '/marker/circle', component: CircleMarker},
 ]
 
 export default createRouter({

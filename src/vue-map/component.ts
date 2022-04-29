@@ -56,6 +56,7 @@ import {ElAmapLayerTiles3d} from '@vue-map/packages/layer/data/Tiles3D'
 import {ElAmapLayerThree} from '@vue-map/packages/ext/ThreeLayer'
 import {ElAmapThreeGltf} from '@vue-map/packages/ext/ThreeGltf'
 import {ElAmapControlGeolocation} from '@vue-map/packages/control/Geolocation'
+import {ElAmapCircleMarker} from '@vue-map/packages/marker/CircleMarker'
 
 import type { Plugin } from 'vue'
 
@@ -117,5 +118,6 @@ export default [
   ElAmapLayerTiles3d,
   ElAmapLayerThree,
   ElAmapThreeGltf,
-  ElAmapControlGeolocation
+  ElAmapControlGeolocation,
+  ElAmapCircleMarker
 ] as Plugin[]

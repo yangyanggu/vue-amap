@@ -115,6 +115,9 @@ export default defineComponent({
           path: '/marker/text',
           name: 'marker文本'
         },{
+          path: '/marker/circle',
+          name: 'marker圆'
+        },{
           path: '/vector/text',
           name: 'vector贝塞尔曲线'
         },{
