@@ -23,6 +23,7 @@ head:
 
 * 确保 `@vuemap/vue-amap` 的导入名不是 `AMap`，推荐 `import VueAMap from '@vuemap/vue-amap'` 避免和高德全局的 `AMap` 冲突。
 * 若 `eslint` 报错 `AMap is undefined` 之类的错误。请将 `AMap` 配置到 `.eslintrc` 的 `globals` 中。
+* 若 `ts` 提示 `Cannot find name 'AMap'. Did you mean 'map'` ,那么需要将 `AMap` 配置到自己的.d.ts文件中
 
 ### 地图示例
 ::: demo

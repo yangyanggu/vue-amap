@@ -95,12 +95,12 @@ export default defineConfig({
     vue(),
     AutoImport({
       resolvers: [ElementPlusResolver({
-        exclude: /^ElAmap[A-Z]*!/
+        exclude: /^ElAmap[A-Z]*/
       }),VueAmapResolver()],
     }),
     Components({
       resolvers: [ElementPlusResolver({
-        exclude: /^ElAmap[A-Z]*!/
+        exclude: /^ElAmap[A-Z]*/
       }),VueAmapResolver()],
     }),
   ]
