@@ -28,7 +28,7 @@
     "lib/packages/**/*",
     "es/packages/**/*"
   ],
-  "repository": "git@gitee.com:guyangyang/vue-amap-vue3.git",
+  "repository": "https://github.com/yangyanggu/vue-amap.git",
   "author": "guyangyang <407042815@qq.com>",
   "license": "MIT",
   "bugs": {
