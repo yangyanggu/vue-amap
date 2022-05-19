@@ -68,7 +68,7 @@
     "vue": "3.2.33",
     "vue-router": "^4.0.12",
     "components-helper": "^1.0.5",
-    "ts-morph": "13.0.2",
+    "ts-morph": "14.0.0",
     "fs-extra": "10.0.0",
     "fast-glob": "3.2.7"
   },

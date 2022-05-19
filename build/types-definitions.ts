@@ -11,7 +11,7 @@ import { buildOutput,pkgRoot, projRoot, vmRoot } from './utils/paths'
 import { excludeFiles, pathRewriter } from './utils/pkg'
 import type { SourceFile } from 'ts-morph'
 
-const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json')
+const TSCONFIG_PATH = path.resolve(projRoot,'build', 'config' ,'tsconfig.json')
 const outDir = path.resolve(buildOutput, 'types')
 
 /**
@@ -28,7 +28,7 @@ export const generateTypesDefinitions = async () => {
       },
     },
     tsConfigFilePath: TSCONFIG_PATH,
-    skipAddingFilesFromTsConfig: true,
+    skipAddingFilesFromTsConfig: false,
   })
 
   const filePaths = excludeFiles(

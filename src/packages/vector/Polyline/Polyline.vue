@@ -45,7 +45,7 @@ export default defineComponent({
     extData: null,
     strokeStyle: {
       type: String,
-      validator(value) {
+      validator(value:string) {
         // 这个值必须匹配下列字符串中的一个
         return ['solid', 'dashed'].indexOf(value) !== -1;
       }

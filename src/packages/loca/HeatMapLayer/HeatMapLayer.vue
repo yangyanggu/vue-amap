@@ -37,7 +37,7 @@ export default defineComponent({
         min: null,
         unit: 'px',
         difference: false
-      } as styleOptions;
+      };
       const style = Object.assign({}, defaultStyleValue, this['defaultStyleValue']);
       const defaultLayerStyle = {
         radius: (index, feature) => {

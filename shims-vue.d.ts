@@ -10,5 +10,7 @@ declare module '@vue/runtime-core' {
     customCoords ?: any
     parentInstance ?: any
     source ?: any
+    lights ?: any
+    hdr ?: any
   }
 }
