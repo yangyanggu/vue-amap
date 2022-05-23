@@ -4,7 +4,10 @@
   "description": "vue amap for amap2.0",
   "keywords": [
     "vue",
-    "amap"
+    "amap",
+    "vue3",
+    "map",
+    "高德"
   ],
   "main": "./dist/index.js",
   "sideEffects": [
