@@ -43,7 +43,8 @@ export default defineComponent({
       // console.log('this.$amapComponent: ', this.$amapComponent);
     },
     destroyComponent() {
-      this.$parentComponent.remove(this.$amapComponent);
+      // this.$amapComponent.remove();
+      // this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

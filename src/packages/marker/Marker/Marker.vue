@@ -87,11 +87,13 @@ export default defineComponent({
       }
     },
     destroyComponent() {
-      if (isMapInstance(this.$parentComponent)) {
-        this.$parentComponent.remove(this.$amapComponent);
+      this.$amapComponent.setMap(null);
+      /*if (isMapInstance(this.$parentComponent)) {
+        this.$amapComponent.setMap(null);
+        // this.$parentComponent.remove(this.$amapComponent);
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
         this.$parentComponent.removeOverlay(this.$amapComponent);
-      }
+      }*/
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

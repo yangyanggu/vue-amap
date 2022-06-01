@@ -67,7 +67,8 @@ export default defineComponent({
       this.$parentComponent.add(this.$amapComponent);
     },
     destroyComponent() {
-      this.$parentComponent.remove(this.$amapComponent);
+      this.$amapComponent.setMap(null);
+      // this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

@@ -52,7 +52,7 @@ export default defineComponent({
       });
     },
     destroyComponent() {
-      this.$amapComponent.setData([])
+      // this.$amapComponent.setData([])
       this.$amapComponent.setMap(null);
       this.$amapComponent = null;
       this.$parentComponent = null;

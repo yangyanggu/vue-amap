@@ -65,7 +65,7 @@ export default defineComponent({
       if (this.linerAnimationFrame) {
         cancelAnimationFrame(this.linerAnimationFrame);
       }
-      this.parentInstance.removeObject(this.$amapComponent);
+      // this.parentInstance.removeObject(this.$amapComponent);
       if (this.$amapComponent) {
         this.$amapComponent.$vue = null;
         clearGroup(this.$amapComponent);

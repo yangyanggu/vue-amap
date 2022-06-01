@@ -76,7 +76,7 @@ export default defineComponent({
       return new AMap.Polygon(options);
     },
     destroyComponent() {
-      this.$parentComponent.remove(this.$amapComponent);
+      // this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
       this.$parentComponent = null;
     },
