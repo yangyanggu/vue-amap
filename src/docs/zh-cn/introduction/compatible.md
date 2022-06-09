@@ -14,6 +14,7 @@
 
 * 确保 `vue-amap` 的导入名不是 `AMap`，推荐 `import VueAMap from '@vuemap/vue-amap'` 避免和高德全局的 `AMap` 冲突。
 * 若 `eslint` 报错 `AMap is undefined` 之类的错误。请将 `AMap` 配置到 `.eslintrc` 的 `globals` 中。
+* 使用原生开发时需要注意通过`new AMap.xxxx`出来的对象不能放入vue的data中管理，会导致地图异常
 
 <vuep template="#example"></vuep>
 
