@@ -104,7 +104,7 @@ importers:
   docs:
     specifiers:
       '@types/markdown-it': 12.2.3
-      '@vuemap/vue-amap': 1.1.3
+      '@vuemap/vue-amap': 1.1.4
       '@vuepress/plugin-register-components': v2.0.0-beta.38
       '@vuepress/plugin-search': v2.0.0-beta.38
       '@vueuse/core': 7.2.2
@@ -116,7 +116,7 @@ importers:
       sitemap: ^7.0.0
       vuepress: 2.0.0-beta.38
     dependencies:
-      '@vuemap/vue-amap': 1.1.3
+      '@vuemap/vue-amap': 1.1.4
       '@vueuse/core': 7.2.2
       clipboard-copy: 4.0.1
     devDependencies:
@@ -976,8 +976,8 @@ packages:
     resolution: {integrity: sha512-UBc1Pg1T3yZ97vsA2ueER0F6GbJebLHYlEi4ou1H5YL4KWvMOOWwpYo9/QpWq93wxKG6Wo13IY74Hcn/f7c7Bg==}
     dev: true
 
-  /@vuemap/vue-amap/1.1.3:
-    resolution: {integrity: sha512-OS1D0S3M9Mv4FgzkfhupwB+bkEyMMi2EOyZwdI1RtGzq02OmNiLhasM3TUbpWKF0qEKAGipn/lL3aVOFVcX/xw==}
+  /@vuemap/vue-amap/1.1.4:
+    resolution: {integrity: sha512-OSuVOu51Zy4L5nGY8oviXpOMHqCZMexA2FF6rVbLoD2/sqZFCyUbLmizbtlb/qwcp6h1lviXguJrEaDdfanUEw==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
@@ -1938,7 +1938,7 @@ packages:
     dev: true
 
   /camelcase/1.2.1:
-    resolution: {integrity: sha1-m7UwTS4LVmmLLHWLCKPqqdqlijk=}
+    resolution: {integrity: sha512-wzLkDa4K/mzI1OSITC+DUyjgIl/ETNHE9QvYgy6J6Jvqyyz4C0Xfd+lQhb19sX2jMpZV4IssUn0VDVmglV+s4g==}
     engines: {node: '>=0.10.0'}
     dev: false
 
@@ -4424,7 +4424,7 @@ packages:
     dev: true
 
   /isexe/2.0.0:
-    resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=}
+    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
   /isobject/2.1.0:
@@ -5531,7 +5531,7 @@ packages:
     dev: true
 
   /path-name/1.0.0:
-    resolution: {integrity: sha1-jKBjpj3nmC36lXYO2v/RAhRJTyQ=}
+    resolution: {integrity: sha512-/dcAb5vMXH0f51yvMuSUqFpxUcA8JelbRmE5mW/p4CUJxrNgK24IkstnV7ENtg2IDGBOu6izKTG6eilbnbNKWQ==}
     dev: true
 
   /path-parse/1.0.7:

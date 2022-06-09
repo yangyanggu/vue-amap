@@ -40,5 +40,9 @@ export default [
   {
     text: 'github',
     link: 'https://github.com/yangyanggu/vue-amap/'
+  },
+  {
+    text: 'gitee企业版购买',
+    link: 'https://gitee.com/enterprises?invite_code=Z2l0ZWUtNDkxNjM5'
   }
 ]
