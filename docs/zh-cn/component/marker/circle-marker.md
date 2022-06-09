@@ -65,7 +65,7 @@ mouseup | MapsEvent | 鼠标在点标记上按下后抬起时触发事件
 dragstart | MapsEvent | 开始拖拽点标记时触发事件
 dragging | MapsEvent | 鼠标拖拽移动点标记时触发事件
 dragend | MapsEvent | 点标记拖拽移动结束触发事件
-moving | Object | 点标记在执行moveTo，moveAlong动画时触发事件，Object对象的格式是{passedPath:Array.<LngLat>}。其中passedPath为Marker对象在moveAlong或者moveTo过程中已经走过的路径。
+moving | Object | 点标记在执行moveTo，moveAlong动画时触发事件，Object对象的格式是{passedPath:`Array<LngLat>`}。其中passedPath为Marker对象在moveAlong或者moveTo过程中已经走过的路径。
 moveend | |点标记执行moveTo动画结束时触发事件，也可以由moveAlong方法触发
 movealong | |点标记执行moveAlong动画一次后触发事件
 touchstart | MapsEvent | 触摸开始时触发事件，仅适用移动设备
