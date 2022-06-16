@@ -44,7 +44,11 @@ export default defineUserConfig<DefaultThemeOptions>({
     registerPlugin,
     ['@vuepress/register-components'],
     [sitemapPlugin],
-    ['@vuepress/plugin-search']
+    ['@vuepress/plugin-docsearch', {
+      apiKey: '45d05a8e842f2a0869d1fe5b60c67d7f',
+      indexName: 'vue-amap-guyixi',
+      appId: 'BSHGEQA36W'
+    }]
   ],
   bundlerConfig: {
     viteOptions: {

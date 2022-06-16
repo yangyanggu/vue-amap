@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "12.2.3",
-    "@vuepress/plugin-search": "v2.0.0-beta.38",
+    "@vuepress/plugin-docsearch": "v2.0.0-beta.38",
     "@vuepress/plugin-register-components": "v2.0.0-beta.38",
     "escape-html": "1.0.3",
     "markdown-it": "12.3.0",
