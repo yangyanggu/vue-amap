@@ -1,6 +1,6 @@
 version: '1.0'
 name: pipeline-20220623
-displayName: pipeline-20220623
+displayName: DEV文档
 triggers:
   trigger: manual
   push:
@@ -19,16 +19,32 @@ stages:
         displayName: Nodejs 构建
         nodeVersion: 16.14.2
         commands:
-          - npm install && rm -rf ./dist && npm run build
+          - npm install && npm run "docs:build"
         artifacts:
-          - name: BUILD_ARTIFACT
+          - name: DOCS
             path:
-              - ./dist
+              - ./docs/.vuepress/dist
         caches:
           - ~/.npm
           - ~/.yarn
         strategy:
           retry: '0'
+      - step: deploy@agent
+        name: deploy_agent
+        displayName: 主机部署
+        hostGroupID: aliyun
+        deployArtifact:
+          - source: build
+            name: dist
+            target: /opt/test
+            dependArtifact: DOCS
+        script: |-
+          # 请在此输入部署脚本，如启动Java应用如下
+          # nohup java -jar test.jar > nohup.out &
+           echo 'Hello Gitee!'
+        strategy:
+          retry: '0'
+        dependsOn: build_nodejs
 permissions:
   - role: admin
     members: []
