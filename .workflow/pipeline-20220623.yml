@@ -25,8 +25,7 @@ stages:
             path:
               - ./docs/.vuepress/dist
         caches:
-          - ~/.npm
-          - ~/.yarn
+          - ./.pnpm
         strategy:
           retry: '0'
       - step: deploy@agent
