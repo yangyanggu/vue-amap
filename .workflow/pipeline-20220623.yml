@@ -35,13 +35,16 @@ stages:
         hostGroupID: aliyun
         deployArtifact:
           - source: build
-            name: dist
-            target: /opt/test
+            name: amap3
+            target: /opt/giteeDownload
             dependArtifact: DOCS
         script: |-
           # 请在此输入部署脚本，如启动Java应用如下
           # nohup java -jar test.jar > nohup.out &
-           echo 'Hello Gitee!'
+          tar -zxvf amap3.tar.gz &
+          cd amap3 &
+          rm -rf /opt/docs/vue3/vue-amap/* &
+          cp -r * /opt/docs/vue3/vue-amap/
         strategy:
           retry: '0'
         dependsOn: build_nodejs
