@@ -44,7 +44,7 @@ stages:
           tar -zxvf amap3.tar.gz &
           cd amap3 &
           rm -rf /opt/docs/vue3/vue-amap/* &
-          cp -r * /opt/docs/vue3/vue-amap/
+          cp -r ./* /opt/docs/vue3/vue-amap/
         strategy:
           retry: '0'
         dependsOn: build_nodejs
