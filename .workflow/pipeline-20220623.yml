@@ -1,0 +1,34 @@
+version: '1.0'
+name: pipeline-20220623
+displayName: pipeline-20220623
+triggers:
+  trigger: manual
+  push:
+    branches:
+      prefix:
+        - ''
+stages:
+  - name: stage-20cbbf31
+    displayName: 未命名
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: build@nodejs
+        name: build_nodejs
+        displayName: Nodejs 构建
+        nodeVersion: 16.14.2
+        commands:
+          - npm install && rm -rf ./dist && npm run build
+        artifacts:
+          - name: BUILD_ARTIFACT
+            path:
+              - ./dist
+        caches:
+          - ~/.npm
+          - ~/.yarn
+        strategy:
+          retry: '0'
+permissions:
+  - role: admin
+    members: []
