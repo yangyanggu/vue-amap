@@ -36,13 +36,13 @@ stages:
         deployArtifact:
           - source: build
             name: dist
-            target: /opt/giteeDownload/amap3
+            target: /opt/giteeDownload/
             dependArtifact: DOCS
         script: |-
-          cd /opt/giteeDownload/amap3
+          cd /opt/giteeDownload/
           tar -zxvf dist.tar.gz
           rm -rf /opt/docs/vue3/vue-amap/* 
-          cp -r /opt/giteeDownload/amap3/dist/* /opt/docs/vue3/vue-amap/
+          cp -r /opt/giteeDownload/dist/* /opt/docs/vue3/vue-amap/
         strategy:
           retry: '0'
         dependsOn: build_nodejs
