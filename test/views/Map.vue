@@ -17,7 +17,11 @@
       <el-amap-control-map-type />
       <el-amap-control-scale />
       <el-amap-control-tool-bar />
-      <el-amap-search-box @select="selectSearch" />
+      <el-amap-search-box
+        input-id="search"
+        :input-custom="true"
+        @select="selectSearch"
+      />
       <el-amap-control-geolocation @complete="getLocation" />
     </el-amap>
     <div class="control-container">
@@ -27,6 +31,7 @@
       <el-button @click="changeEyeOpen">
         鹰眼显隐
       </el-button>
+      <input id="search">
     </div>
   </div>
 </template>

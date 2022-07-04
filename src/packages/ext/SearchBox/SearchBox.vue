@@ -1,9 +1,10 @@
 <template>
   <div
-    v-show="visible"
+    v-show="visible && !inputCustom"
     class="el-vue-search-box-container"
   >
     <input
+      v-if="!inputCustom"
       :id="saveInputId"
       type="text"
     >
@@ -33,6 +34,10 @@ export default defineComponent({
     inputId: {
       type: String
     },//输入框的ID
+    inputCustom: {
+      type: Boolean,
+      default: false
+    }, //是否自定义input，自定义的时候将使用用户的inputId
     outputId: {
       type: String
     },//可选参数，指定一个现有的div的id或者元素，作为展示提示结果的容器，当指定了input的时候有效，缺省的时候将自动创建一个显示结果面板

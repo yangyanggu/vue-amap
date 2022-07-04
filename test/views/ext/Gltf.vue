@@ -76,7 +76,7 @@ export default defineComponent({
       console.log('init layer: ', layer);
     },
     init(object, $vue){
-      // $vue.$$startAnimations();
+      $vue.$$startAnimations();
     },
   }
 })

@@ -8,6 +8,12 @@ export default defineComponent({
     sourceData: {
       type: Object
     },
+    geoBufferSource: {
+      type: [ArrayBuffer, String],
+      default() {
+        return null;
+      }
+    },
     layerStyle: {
       type: Object
     },
@@ -43,7 +49,17 @@ export default defineComponent({
         this.source.destroy();
         this.source = null;
       }
-      if (this['sourceUrl']) {
+      if (this['geoBufferSource']) {
+        if(typeof this['geoBufferSource'] === 'string'){
+          this.source = new Loca.GeoBufferSource({
+            url: this['geoBufferSource']
+          });
+        }else{
+          this.source = new Loca.GeoBufferSource({
+            data: this['geoBufferSource']
+          });
+        }
+      }if (this['sourceUrl']) {
         this.source = new Loca.GeoJSONSource({
           url: this['sourceUrl']
         });
@@ -69,7 +85,6 @@ export default defineComponent({
         this.source.destroy();
         this.source = null;
       }
-      this.$amapComponent.destroy();
       this.$amapComponent = null;
       this.$parentComponent = null;
     },

@@ -44,7 +44,7 @@ importers:
       rollup-plugin-vue: 6.0.0
       sass: ^1.45.0
       sucrase: ^3.20.3
-      three: 0.117.1
+      three: 0.141.0
       ts-morph: 14.0.0
       typescript: ^4.5.4
       uppercamelcase: ^1.1.0
@@ -58,7 +58,7 @@ importers:
       '@vue-map/packages': link:src/packages
       '@vue-map/services': link:src/services
       lodash-es: 4.17.21
-      three: 0.117.1
+      three: 0.141.0
       uppercamelcase: 1.1.0
     devDependencies:
       '@pnpm/find-workspace-packages': 3.1.28_@pnpm+logger@4.0.0
@@ -6784,6 +6784,10 @@ packages:
 
   /three/0.117.1:
     resolution: {integrity: sha512-t4zeJhlNzUIj9+ub0l6nICVimSuRTZJOqvk3Rmlu+YGdTOJ49Wna8p7aumpkXJakJfITiybfpYE1XN1o1Z34UQ==}
+    dev: false
+
+  /three/0.141.0:
+    resolution: {integrity: sha512-JaSDAPWuk4RTzG5BYRQm8YZbERUxTfTDVouWgHMisS2to4E5fotMS9F2zPFNOIJyEFTTQDDKPpsgZVThKU3pXA==}
     dev: false
 
   /through2-filter/3.0.0:
