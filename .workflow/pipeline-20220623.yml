@@ -1,0 +1,51 @@
+version: '1.0'
+name: pipeline-20220623
+displayName: DEV文档
+triggers:
+  trigger: manual
+  push:
+    branches:
+      prefix:
+        - ''
+stages:
+  - name: stage-20cbbf31
+    displayName: 上传vue3文档
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: build@nodejs
+        name: build_nodejs
+        displayName: Nodejs 构建
+        nodeVersion: 16.14.2
+        commands:
+          - npm install -g pnpm && pnpm i && pnpm run "docs:build"
+        artifacts:
+          - name: DOCS
+            path:
+              - ./docs/.vuepress/dist
+        caches:
+          - ./.pnpm-store
+          - ./.npm
+        strategy:
+          retry: '0'
+      - step: deploy@agent
+        name: deploy_agent
+        displayName: 主机部署
+        hostGroupID: aliyun
+        deployArtifact:
+          - source: build
+            name: dist
+            target: /opt/giteeDownload/
+            dependArtifact: DOCS
+        script: |-
+          cd /opt/giteeDownload/
+          tar -zxvf dist.tar.gz
+          rm -rf /opt/docs/vue3/vue-amap/* 
+          cp -r /opt/giteeDownload/dist/* /opt/docs/vue3/vue-amap/
+        strategy:
+          retry: '0'
+        dependsOn: build_nodejs
+permissions:
+  - role: admin
+    members: []
