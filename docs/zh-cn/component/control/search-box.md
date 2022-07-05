@@ -27,6 +27,7 @@ outputId | String | 可选参数，指定一个现有的div的id或者元素，�
 outPutDirAuto | Boolean | 默认为true，表示是否在input位于页面较下方的时候自动将输入面板显示在input上方以避免被遮挡
 closeResultOnScroll | Boolean | 页面滚动时关闭搜索结果列表，默认 true
 lang | String | 设置检索语言类型，默认中文 'zh_cn'
+inputCustom | Boolean | 是否自定义input，自定义的时候将使用用户的inputId，默认 false
 
 ## 动态属性
 
