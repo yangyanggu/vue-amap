@@ -132,6 +132,11 @@ export default defineComponent({
         this.setSource();
       });
     },
+    __geoBufferSource(){
+      this.$nextTick(() => {
+        this.setSource();
+      });
+    },
     __visible(flag) {
       if (this.$amapComponent.show && this.$amapComponent.hide) {
         flag === false ? this.$amapComponent.hide(this['visibleDuration']) : this.$amapComponent.show(this['visibleDuration']);
