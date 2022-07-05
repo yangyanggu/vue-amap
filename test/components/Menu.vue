@@ -64,6 +64,9 @@ export default defineComponent({
           path: '/loca/heatmap',
           name: 'loca热力图'
         },{
+          path: '/loca/heatmapbuffer',
+          name: 'loca热力图BUFFER'
+        },{
           path: '/loca/hexagon',
           name: 'loca蜂窝网格图'
         },{

@@ -57,7 +57,10 @@ declare module '@vue/runtime-core' {
     ElAmapRectangle: typeof import('@vuemap/vue-amap')['ElAmapRectangle'],
     ElAmapLayerTiles3d: typeof import('@vuemap/vue-amap')['ElAmapLayerTiles3d'],
     ElAmapLayerThree: typeof import('@vuemap/vue-amap')['ElAmapLayerThree'],
-    ElAmapThreeGltf: typeof import('@vuemap/vue-amap')['ElAmapThreeGltf']
+    ElAmapThreeGltf: typeof import('@vuemap/vue-amap')['ElAmapThreeGltf'],
+    ElAmapLocaAmbientLight: typeof import('@vuemap/vue-amap')['ElAmapLocaAmbientLight'],
+    ElAmapLocaDirectionalLight: typeof import('@vuemap/vue-amap')['ElAmapLocaDirectionalLight'],
+    ElAmapLocaPointLight: typeof import('@vuemap/vue-amap')['ElAmapLocaPointLight']
   }
 }
 

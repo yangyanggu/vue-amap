@@ -20,7 +20,15 @@ export default defineComponent({
     hasSide: {
       type: Boolean,
       default: true
-    }, // 当面有厚度的时候，有没有侧面和底面
+    }, // 当面有厚度的时候，有没有侧面
+    hasBottom: {
+      type: Boolean,
+      default: false
+    },//当面有厚度的时候，有没有底面。
+    blockHide: {
+      type: Boolean,
+      default: true
+    },//是否开启被遮挡的面隐藏，默认开启，如果关闭，在有透明度的时候，会显示出被遮挡的面。
     depth: {
       type: Boolean,
       default: true
@@ -81,7 +89,7 @@ export default defineComponent({
       this.$amapComponent.setStyle(layerStyle);
     }
   },
-  render(){
+  render() {
     return null;
   }
 });

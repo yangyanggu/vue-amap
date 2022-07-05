@@ -1,9 +1,11 @@
 ### v1.1.5
 * threejs版本升级到0.141.0
-* 所有loca图层移除调用自身的销毁方法，只保留loca的销毁
+* 所有loca图层销毁时增加判断父组件是否销毁
 * searchbox组件增加inputCustom属性，用于自定义input框
 * loca所有图层增加geoBufferSource字段，对应Loca.GeoBufferSource的数据源
 * Loca.PolygonLayer图层增加新版本适配
+* Loca增加三个光源组件
+* Gltf组件增加停止动画方法
 
 ### v1.1.4
 * 增加CircleMarker组件

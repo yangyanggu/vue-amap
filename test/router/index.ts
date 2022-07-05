@@ -37,6 +37,7 @@ import Rectangle from "../views/vector/Rectangle.vue";
 import Tiles3D from "../views/layer/Tiles3D.vue";
 import Gltf from '../views/ext/Gltf.vue'
 import CircleMarker from "../views/marker/CircleMarker.vue";
+import HeatMapBuffer from "../views/loca/HeatMapBuffer.vue";
 
 const routes = [
   {path: '/', component: Map},
@@ -50,6 +51,7 @@ const routes = [
   {path: '/layer/standard', component: Standard},
   {path: '/loca/grid', component: Grid},
   {path: '/loca/heatmap', component: HeatMap},
+  {path: '/loca/heatmapbuffer', component: HeatMapBuffer},
   {path: '/loca/hexagon', component: Hexagon},
   {path: '/loca/icon', component: Icon},
   {path: '/loca/line', component: Line},

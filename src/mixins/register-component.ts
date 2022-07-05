@@ -27,6 +27,7 @@ export default defineComponent({
       unwatchFns: [] as WatchStopHandle[],
       propsRedirect: {},
       converters: {},
+      isDestroy: false
     };
   },
   created() {
@@ -49,6 +50,7 @@ export default defineComponent({
     this.unwatchFns.forEach(item => item());
     this.unwatchFns = [];
     this.destroyComponent();
+    this.isDestroy = true;
   },
 
   methods: {

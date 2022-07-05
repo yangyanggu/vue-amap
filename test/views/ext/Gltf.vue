@@ -22,11 +22,26 @@
           :visible="visible"
           @init="init"
         />
+        <el-amap-three-gltf
+          ref="animation"
+          url="/gltf/sgyj_point_animation.gltf"
+          :position="center"
+          :scale="[10,10,10]"
+          :rotation="rotation"
+          :visible="visible"
+          @init="init"
+        />
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
       <el-button @click="changeVisible">
         {{ visible ? '隐藏' : '显示' }}
+      </el-button>
+      <el-button @click="stop">
+        停止动画
+      </el-button>
+      <el-button @click="start">
+        开始动画
       </el-button>
     </div>
   </div>
@@ -78,6 +93,12 @@ export default defineComponent({
     init(object, $vue){
       $vue.$$startAnimations();
     },
+    stop(){
+      this.$refs.animation.$$stopAnimations();
+    },
+    start(){
+      this.$refs.animation.$$startAnimations();
+    }
   }
 })
 </script>

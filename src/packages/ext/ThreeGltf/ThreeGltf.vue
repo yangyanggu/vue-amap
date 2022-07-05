@@ -1,6 +1,6 @@
 <script>
 import {defineComponent} from "vue";
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {AnimationMixer, Clock} from 'three';
 import registerMixin from '../../../mixins/register-component';
 import {clearGroup} from '../../../utils/threeUtil';
@@ -133,6 +133,9 @@ export default defineComponent({
           this._refresh();
         });
       }
+    },
+    $$stopAnimations() {
+      cancelAnimationFrame(this.linerAnimationFrame);
     },
     __position(){
       this.setPosition();

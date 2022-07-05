@@ -57,6 +57,9 @@ import {ElAmapLayerThree} from '@vue-map/packages/ext/ThreeLayer'
 import {ElAmapThreeGltf} from '@vue-map/packages/ext/ThreeGltf'
 import {ElAmapControlGeolocation} from '@vue-map/packages/control/Geolocation'
 import {ElAmapCircleMarker} from '@vue-map/packages/marker/CircleMarker'
+import {ElAmapLocaAmbientLight} from '@vue-map/packages/loca/AmbientLight'
+import {ElAmapLocaDirectionalLight} from '@vue-map/packages/loca/DirectionalLight'
+import {ElAmapLocaPointLight} from '@vue-map/packages/loca/PointLight'
 
 import type { Plugin } from 'vue'
 
@@ -119,5 +122,8 @@ export default [
   ElAmapLayerThree,
   ElAmapThreeGltf,
   ElAmapControlGeolocation,
-  ElAmapCircleMarker
+  ElAmapCircleMarker,
+  ElAmapLocaAmbientLight,
+  ElAmapLocaDirectionalLight,
+  ElAmapLocaPointLight
 ] as Plugin[]

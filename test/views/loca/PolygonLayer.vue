@@ -10,7 +10,21 @@
       @init="initMap"
     >
       <el-amap-loca>
+        <el-amap-loca-ambient-light color="#fff" />
+        <el-amap-loca-directional-light
+          :position="[0,-1,0]"
+          :target="[0,0,0]"
+          color="rgb(255,255,255)"
+          :intensity="0.5"
+        />
+        <el-amap-loca-point-light
+          :position="[center[0], center[1], 1000]"
+          :distance="0"
+          :intensity="5"
+          color="#fff"
+        />
         <el-amap-loca-polygon
+          v-if="create"
           :visible="visible"
           :source-url="sourceUrl"
           :layer-style="layerStyle"
@@ -22,6 +36,9 @@
       <el-button @click="changeVisible">
         {{ visible ? '隐藏' : '显示' }}
       </el-button>
+      <el-button @click="changeCreate">
+        {{ create ? '销毁图层' : '创建图层' }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -31,6 +48,9 @@ import {defineComponent} from "vue";
 import ElAmap from '@vue-map/packages/amap/amap.vue'
 import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
 import ElAmapLocaPolygon from "@vue-map/packages/loca/PolygonLayer/PolygonLayer.vue";
+import ElAmapLocaAmbientLight from "@vue-map/packages/loca/AmbientLight/AmbientLight.vue";
+import ElAmapLocaDirectionalLight from "@vue-map/packages/loca/DirectionalLight/DirectionalLight.vue";
+import ElAmapLocaPointLight from "@vue-map/packages/loca/PointLight/PointLight.vue";
 
 const colors = ['#FFF8B4', '#D3F299', '#9FE084', '#5ACA70', '#00AF53', '#00873A', '#006B31', '#004835', '#003829'].reverse();
 const height = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000];
@@ -38,6 +58,9 @@ const height = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000];
 export default defineComponent({
   name: "Map",
   components: {
+    ElAmapLocaPointLight,
+    ElAmapLocaDirectionalLight,
+    ElAmapLocaAmbientLight,
     ElAmapLocaPolygon,
     ElAmapLoca,
     ElAmap
@@ -47,6 +70,7 @@ export default defineComponent({
       center: [120.109233,30.246411],
       zoom: 11,
       pitch: 55,
+      create: true,
       visible: true,
       sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/hz_gn.json',
       layerStyle: {
@@ -113,6 +137,9 @@ export default defineComponent({
     },
     changeVisible() {
       this.visible = !this.visible;
+    },
+    changeCreate() {
+      this.create = !this.create;
     },
   }
 })

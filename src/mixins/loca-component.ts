@@ -59,7 +59,7 @@ export default defineComponent({
             data: this['geoBufferSource']
           });
         }
-      }if (this['sourceUrl']) {
+      }else if (this['sourceUrl']) {
         this.source = new Loca.GeoJSONSource({
           url: this['sourceUrl']
         });
@@ -80,7 +80,10 @@ export default defineComponent({
     },
     destroyComponent() {
       this.unBindEvents();
-      this.$parentComponent.remove(this.$amapComponent);
+      if(!this.parentInstance.isDestroy){
+        this.$parentComponent.remove(this.$amapComponent);
+        this.$amapComponent.destroy();
+      }
       if (this.source) {
         this.source.destroy();
         this.source = null;

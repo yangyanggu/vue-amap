@@ -23,9 +23,9 @@ import {
   Cache
 } from 'three';
 import {merge} from 'lodash-es';
-import {HDRCubeTextureLoader} from 'three/examples/jsm/loaders/HDRCubeTextureLoader';
+import {HDRCubeTextureLoader} from 'three/examples/jsm/loaders/HDRCubeTextureLoader.js';
 import registerMixin from '../../../mixins/register-component';
-import {clearScene} from '../../../utils/threeUtil';
+import {clearScene} from '../../../utils/threeUtil.js';
 
 const lightTypes = {
   AmbientLight, // 环境光  环境光会均匀的照亮场景中的所有物体
