@@ -29,6 +29,7 @@ hasSide | Boolean | 当面有厚度的时候，有没有侧面和底面 default 
 depth | Boolean | 是否开启深度检测，开启后可能会影响zIndex  default true
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
 defaultStyleValue | Object | 默认样式，可以查看下面属性说明
+geoBufferSource | ArrayBuffer, String | protocol-buffers(PBF) 格式的数据源，能够大幅压缩数据体积，有效减少数据传输时间。目前仅支持基于 mapbox/geobuf 的 GeoJSON PBF 实现
 
 ## 动态属性
 支持响应式。

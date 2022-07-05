@@ -104,6 +104,7 @@ importers:
   docs:
     specifiers:
       '@types/markdown-it': 12.2.3
+      '@vuemap/vue-amap': 1.1.5
       '@vuepress/plugin-docsearch': v2.0.0-beta.38
       '@vuepress/plugin-register-components': v2.0.0-beta.38
       '@vueuse/core': 7.2.2
@@ -115,6 +116,7 @@ importers:
       sitemap: ^7.0.0
       vuepress: 2.0.0-beta.38
     dependencies:
+      '@vuemap/vue-amap': 1.1.5
       '@vueuse/core': 7.2.2
       clipboard-copy: 4.0.1
     devDependencies:
@@ -1117,6 +1119,18 @@ packages:
   /@vue/shared/3.2.33:
     resolution: {integrity: sha512-UBc1Pg1T3yZ97vsA2ueER0F6GbJebLHYlEi4ou1H5YL4KWvMOOWwpYo9/QpWq93wxKG6Wo13IY74Hcn/f7c7Bg==}
     dev: true
+
+  /@vuemap/vue-amap/1.1.5:
+    resolution: {integrity: sha512-SHOXnPs8dKEctpI4qaO/UtLew7lu3+sFbZx4EkFCka31v0phSBVEWteHSNaSa2M+tGaALOoCpX5CpUoIFVdnqQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@amap/amap-jsapi-loader': 1.0.1
+      '@tweenjs/tween.js': 18.6.4
+      lodash-es: 4.17.21
+      three: 0.117.1
+      uppercamelcase: 1.1.0
+    dev: false
 
   /@vuepress/bundler-vite/2.0.0-beta.38:
     resolution: {integrity: sha512-CoFwtheF7v7iYuDrGwlLGoKoc91YgK+NpXolaq4UjfWhhqOdkfHjCz4oEj3EPl0cwm/8qs3V7JwVzqtIW8ovRg==}
@@ -6767,6 +6781,10 @@ packages:
     dependencies:
       any-promise: 1.3.0
     dev: true
+
+  /three/0.117.1:
+    resolution: {integrity: sha512-t4zeJhlNzUIj9+ub0l6nICVimSuRTZJOqvk3Rmlu+YGdTOJ49Wna8p7aumpkXJakJfITiybfpYE1XN1o1Z34UQ==}
+    dev: false
 
   /three/0.141.0:
     resolution: {integrity: sha512-JaSDAPWuk4RTzG5BYRQm8YZbERUxTfTDVouWgHMisS2to4E5fotMS9F2zPFNOIJyEFTTQDDKPpsgZVThKU3pXA==}

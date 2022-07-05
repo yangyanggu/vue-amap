@@ -60,6 +60,8 @@ cullface | String | 剔除背面/前面的面（选择剔除将会提升性能�
 acceptLight | Boolean | 面是否接受光照，光照信息在 loca 对象中配置 default true
 shininess | Number | 立体网格的粗糙度，值越高，说明表面越粗糙。default 30
 hasSide | Boolean | 当面有厚度的时候，有没有侧面和底面 default true
+hasBottom | Boolean | 当面有厚度的时候，有没有底面 default false
+blockHide | Boolean | 是否开启被遮挡的面隐藏，默认开启，如果关闭，在有透明度的时候，会显示出被遮挡的面 default true
 depth | Boolean | 是否开启深度检测，开启后可能会影响zIndex  default true
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
 defaultStyleValue | Object | 默认样式，可以查看下面属性说明
@@ -77,6 +79,7 @@ layerStyle | Object | 图层样式
 zooms | Array | 图层缩放等级范围，默认[2,20]
 opacity | Number | 图层整体透明度，默认 1
 visibleDuration | Number | 图层显隐时候过渡的时间，默认为0
+geoBufferSource | ArrayBuffer, String | protocol-buffers(PBF) 格式的数据源，能够大幅压缩数据体积，有效减少数据传输时间。目前仅支持基于 mapbox/geobuf 的 GeoJSON PBF 实现
 
 ### layerStyle参数
 

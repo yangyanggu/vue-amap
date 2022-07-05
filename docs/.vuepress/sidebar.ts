@@ -101,6 +101,9 @@ export default [
   {
     text: 'Loca可视化',
     children: [
+      '/zh-cn/component/loca/ambient-light.md',
+      '/zh-cn/component/loca/directional-light.md',
+      '/zh-cn/component/loca/point-light.md',
       '/zh-cn/component/loca/point-layer.md',
       '/zh-cn/component/loca/icon-layer.md',
       '/zh-cn/component/loca/prism-layer.md',

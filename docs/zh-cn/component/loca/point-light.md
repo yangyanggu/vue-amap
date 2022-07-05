@@ -1,21 +1,39 @@
 ---
-title: AmapLocaPointLight
+title: 点光
+description: 点光，对于可以接受光照的图层（PolygonLayer 等）会增加点光的影响
+head:
+  - - meta
+    - name: keywords
+      content: amap, 高德地图, vue3.0, loca, 点光, Loca.PointLight
 ---
 
-# AmapLocaPointLight
+# 点光 (Loca.PointLight)
 点光，对于可以接受光照的图层（PolygonLayer 等）会增加点光的影响。点光源通常用来突出展示场景中的某些物体。 它的位置和平行光不太一样，x和y是地图上的经纬度位置，z是高度米，比如北京上空一万米的位置放一个点光源：position: [116.39079, 39.90624, 10000]。 光照的distance代表光能照射的最远距离是多少
 
-## Attributes
+## 基础示例
 
-Attribute | Type | Description
+::: demo
+examples/loca/point-light
+:::
+
+## 静态属性
+
+名称 | 类型 | 说明
 ---|---|---|
 color | String | 点光颜色
 intensity | Number | 光照强度
-position | Array<Number> | 点光位置
+position | `Array<Number>` | 点光位置
 distance | Number | 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失
 
-## Events
+## ref 可用方法
+提供无副作用的同步帮助方法
 
-Event Name | Parameters | Description
+函数 | 返回 | 说明
+---|---|---|
+$$getInstance() | Loca.PointLight | 获取实例
+
+## 事件
+
+事件 | 参数 | 说明
 ---|---|---|
 init | Loca.PointLight | 实例
