@@ -40,15 +40,15 @@ stages:
         hostGroupID: aliyun
         deployArtifact:
           - source: build
-            name: dist
+            name: docs
             target: /opt/giteeDownload/
             dependArtifact: BUILD_ARTIFACT
         script: |-
           cd /opt/giteeDownload/
-          rm -rf dist
-          tar -zxvf dist.tar.gz
+          rm -rf docs
+          tar -zxvf docs.tar.gz
           rm -rf /opt/docs/vue-amap/* 
-          cp -r /opt/giteeDownload/dist/* /opt/docs/vue-amap/
+          cp -r /opt/giteeDownload/docs/* /opt/docs/vue-amap/
         strategy:
           retry: '0'
 permissions:
