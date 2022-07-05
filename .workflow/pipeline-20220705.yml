@@ -45,6 +45,7 @@ stages:
             dependArtifact: BUILD_ARTIFACT
         script: |-
           cd /opt/giteeDownload/
+          rm -rf dist
           tar -zxvf dist.tar.gz
           rm -rf /opt/docs/vue-amap/* 
           cp -r /opt/giteeDownload/dist/* /opt/docs/vue-amap/
