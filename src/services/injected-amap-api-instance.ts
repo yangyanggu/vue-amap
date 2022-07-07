@@ -12,13 +12,23 @@ interface AMapLoaderOptions {
     version?: string; // AMapUI 缺省 1.1
     plugins?: string[]; // 需要加载的 AMapUI ui插件
   };
-  serviceHost ?: string,
+  serviceHost ?: string
   securityJsCode ?: string
+  offline ?: boolean //是否离线部署
 }
 
 export const initAMapApiLoader = (config : AMapLoaderOptions) => {
   if (lazyAMapApiLoaderInstance) return;
-  if (!lazyAMapApiLoaderInstance) lazyAMapApiLoaderInstance = AMapAPILoader(config);
+  if (!lazyAMapApiLoaderInstance){
+    if(config.offline){
+      lazyAMapApiLoaderInstance = new Promise(resolve => {
+        console.log('@vuemap/vue-amap离线部署')
+        resolve((window as any).AMap);
+      });
+    }else{
+      lazyAMapApiLoaderInstance = AMapAPILoader(config);
+    }
+  }
   lazyAMapApiLoaderInstance.then();
 };
 export {lazyAMapApiLoaderInstance};

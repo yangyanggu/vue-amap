@@ -116,8 +116,6 @@ export default defineComponent({
     __layerStyle(style) {
       this.$nextTick(() => {
         if (this['$amapComponent'].setStyle) {
-          this['$amapComponent'].setStyle();
-        } else {
           this['$amapComponent'].setStyle(style);
         }
       });
