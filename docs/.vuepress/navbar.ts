@@ -34,15 +34,20 @@ export default [
     link: 'https://gitee.com/guyangyang/vue-amap/blob/dev/CHANGELOG.md'
   },
   {
-    text: 'gitee',
-    link: 'https://gitee.com/guyangyang/vue-amap'
+    text: '源码',
+    children: [
+      {
+        text: 'github',
+        link: 'https://github.com/yangyanggu/vue-amap/'
+      },
+      {
+        text: 'gitee',
+        link: 'https://gitee.com/guyangyang/vue-amap'
+      },
+    ]
   },
   {
-    text: 'github',
-    link: 'https://github.com/yangyanggu/vue-amap/'
-  },
-  {
-    text: 'gitee企业版购买',
+    text: 'gitee企业版购买(推广)',
     link: 'https://gitee.com/enterprises?invite_code=Z2l0ZWUtNDkxNjM5'
   }
 ]

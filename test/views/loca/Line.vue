@@ -21,6 +21,9 @@
       <el-button @click="changeVisible">
         {{ visible ? '隐藏' : '显示' }}
       </el-button>
+      <el-button @click="changeStyle">
+        切换样式
+      </el-button>
     </div>
   </div>
 </template>
@@ -73,6 +76,24 @@ export default defineComponent({
     changeVisible() {
       this.visible = !this.visible;
     },
+    changeStyle(){
+      this.layerStyle = {
+        color (index, prop) {
+          const i = index % colors.length;
+          return colors[i];
+        },
+        lineWidth: (index, prop) => {
+          const i = index % colors.length;
+          return i * 0.5 + 2;
+        },
+        altitude (index, feature) {
+          const i = index % colors.length;
+          return 100 * i;
+        },
+        // dashArray: [10, 5, 10, 0],
+        dashArray: [10, 0, 10, 0],
+      }
+    }
   }
 })
 </script>

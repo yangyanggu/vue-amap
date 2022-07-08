@@ -1,9 +1,7 @@
 import {resolve} from 'path'
+import {registerComponentsPlugin} from "@vuepress/plugin-register-components";
 import {vpRoot} from '../utils/paths'
 
-export default [
-  '@vuepress/register-components',
-  {
-    componentsDir: resolve(vpRoot, 'components'),
-  },
-] as any
+export default registerComponentsPlugin({
+  componentsDir: resolve(vpRoot, 'components'),
+});

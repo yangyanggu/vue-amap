@@ -19,9 +19,9 @@
     </el-amap>
   </div>
   <div class="toolbar">
-    <el-button @click="changeVisible">
+    <button @click="changeVisible">
       {{ visible ? '隐藏' : '显示' }}
-    </el-button>
+    </button>
   </div>
 </template>
 

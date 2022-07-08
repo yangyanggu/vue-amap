@@ -1,13 +1,14 @@
 import {defineUserConfig} from 'vuepress'
+import {docsearchPlugin} from "@vuepress/plugin-docsearch";
 import Navbar from './navbar'
 import Sidebar from './sidebar'
 import registerPlugin from "./plugin/registerPlugin";
 import {containerPlugin} from './plugin/demoPlugin'
 import {sitemapPlugin} from './plugin/sitemapPlugin'
-import type {DefaultThemeOptions} from 'vuepress'
+import {localTheme} from "./theme";
 
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig({
   // 站点配置
   lang: 'zh-CN',
   title: '@vuemap/vue-amap',
@@ -26,8 +27,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   ],
 
   // 主题和它的配置
-  theme: '@vuepress/theme-default',
-  themeConfig: {
+  theme: localTheme({
     logo: 'https://vuejs.org/images/logo.png',
     docsDir: 'docs',
     editLink: false,
@@ -37,24 +37,15 @@ export default defineUserConfig<DefaultThemeOptions>({
     warning: '警告',
     navbar: Navbar,
     sidebar: Sidebar,
-
-  },
+  }),
   plugins: [
-    [containerPlugin],
+    containerPlugin(),
     registerPlugin,
-    ['@vuepress/register-components'],
-    [sitemapPlugin],
-    ['@vuepress/plugin-docsearch', {
+    sitemapPlugin(),
+    docsearchPlugin({
       apiKey: '45d05a8e842f2a0869d1fe5b60c67d7f',
       indexName: 'vue-amap-guyixi',
       appId: 'BSHGEQA36W'
-    }]
+    })
   ],
-  bundlerConfig: {
-    viteOptions: {
-      optimizeDeps: {
-        // include: ['@vuemap/vue-amap']
-      }
-    }
-  }
 })

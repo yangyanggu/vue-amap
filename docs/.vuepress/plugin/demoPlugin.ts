@@ -36,7 +36,7 @@ export type MarkdownItContainerRenderFunction = (
  */
 export type ContainerPluginOptions = MarkdownItContainerOptions
 
-export const containerPlugin: Plugin<ContainerPluginOptions> = () => {
+export const containerPlugin = ():Plugin => {
   const pluginObj: PluginObject = {
     name: 'demo-plugin',
     multiple: true,

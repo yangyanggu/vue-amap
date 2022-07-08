@@ -9,7 +9,8 @@ initAMapApiLoader({
   key: 'd9c8c39b15d50bf97df34dcfa5873196',
   securityJsCode: '24b033df5f41c948aff9d26cb7d59133',
   version: '2.0.4.5',
-  plugins: ['AMap.3DTilesLayer']
+  plugins: ['AMap.3DTilesLayer'],
+  // offline: true
 })
 
 createApp(App)

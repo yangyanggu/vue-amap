@@ -7,7 +7,7 @@ import type {Plugin, PluginObject} from '@vuepress/core'
 
 import type {LinkItem} from 'sitemap'
 
-export const sitemapPlugin: Plugin = () => {
+export const sitemapPlugin = (): Plugin => {
   const pluginObj: PluginObject = {
     name: 'sitemap-plugin',
     multiple: true,

@@ -1,4 +1,8 @@
 ### v1.1.5
+* 解决loca图层修改样式后报错问题
+* 加载地图JS时增加offline参数用于离线部署
+
+### v1.1.5
 * threejs版本升级到0.141.0
 * 所有loca图层销毁时增加判断父组件是否销毁
 * searchbox组件增加inputCustom属性，用于自定义input框
