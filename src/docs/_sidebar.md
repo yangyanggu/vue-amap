@@ -1,4 +1,6 @@
-[![Fork me on Gitee](https://gitee.com/guyangyang/vue-amap/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-amap)
+[![Fork me on Gitee](https://gitee.com/guyangyang/vue-amap/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-amap)<br/>
+[![npm package](https://img.shields.io/npm/v/@vuemap/vue-amap.svg)](https://www.npmjs.org/package/@vuemap/vue-amap)
+[![npm package](https://img.shields.io/static/v1?label=更新日期&message=2022-07-10&color=green)](https://www.npmjs.org/package/@vuemap/vue-amap)
 - 友情链接
   - [vue-bmap-gl](https://docs.guyixi.cn/vue-bmap-gl/)
   - [vue-mapvgl](https://docs.guyixi.cn/vue-mapvgl/)
@@ -66,6 +68,9 @@
   - [矩形](zh-cn/vector/rectangle.md)
   - [GeoJSON](zh-cn/vector/geojson.md)
 - Loca可视化
+  - [环境光](zh-cn/loca/ambient-light.md)
+  - [平行光](zh-cn/loca/directional-light.md)
+  - [点光](zh-cn/loca/point-light.md)
   - [圆点图层](zh-cn/loca/point-layer.md)
   - [图标图层](zh-cn/loca/icon-layer.md)
   - [棱柱图层](zh-cn/loca/prism-layer.md)

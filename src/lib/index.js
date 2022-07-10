@@ -75,7 +75,10 @@ import GridLayer from './components/loca/GridLayer';
 import ScatterLayer from './components/loca/ScatterLayer';
 import PulseLineLayer from './components/loca/PulseLineLayer';
 import PulseLinkLayer from './components/loca/PulseLinkLayer';
-import ZMarkerLayer from '@/components/loca/ZMarkerLayer';
+import ZMarkerLayer from './components/loca/ZMarkerLayer';
+import AmbientLight from './components/loca/AmbientLight';
+import DirectionalLight from './components/loca/DirectionalLight';
+import PointLight from './components/loca/PointLight';
 
 // managers
 import registerMixin from './mixins/register-component';
@@ -141,7 +144,10 @@ let components = [
   ScatterLayer,
   PulseLineLayer,
   PulseLinkLayer,
-  ZMarkerLayer
+  ZMarkerLayer,
+  AmbientLight,
+  DirectionalLight,
+  PointLight
 ];
 
 let VueAMap = {

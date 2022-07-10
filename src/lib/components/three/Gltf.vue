@@ -147,6 +147,9 @@ export default {
           this._refresh();
         });
       }
+    },
+    $$stopAnimations() {
+      cancelAnimationFrame(this.linerAnimationFrame);
     }
   }
 };

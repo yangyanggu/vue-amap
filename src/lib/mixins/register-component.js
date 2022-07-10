@@ -32,7 +32,8 @@ export default {
           }
         }
       },
-      needInitComponents: []
+      needInitComponents: [],
+      isDestroy: false
     };
   },
 
@@ -54,6 +55,7 @@ export default {
     this.destroyComponent();
     this.$amapComponent = null;
     this.$parentComponent = null;
+    this.isDestroy = true;
   },
 
   methods: {

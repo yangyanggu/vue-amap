@@ -79,4 +79,5 @@ AMapUI | `Object` | `{ 'version': '1.1', 'plugins': []}` | UI的参数配置 [�
 Loca | `Object` | `{version: '2.0.0'}` | Loca 版本 |
 serviceHost | String | '' | ``0.1.0版本新增``，代理服务器域名或ip地址，新版本密钥必须配置代理服务器或者安全密钥，优先使用该配置[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load)
 securityJsCode | String | '' | ``0.1.0版本新增``，静态安全密钥(不安全，建议开发环境用),新版本密钥必须配置代理服务器或者安全密钥，[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load)
+offline | `Boolean` | `false`              | ``0.1.7版本新增``是否离线部署，默认false，当设置为true时将不加载JS API，需要自己在html里加载所需要的JS API和loca，主要用于局域网使用     
 

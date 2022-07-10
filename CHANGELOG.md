@@ -1,5 +1,13 @@
 ### v0.1.7
 * 调整CircleMarker组件参数和文档
+* threejs版本升级到0.141.0
+* searchbox组件增加inputCustom属性，用于自定义input框
+* loca所有图层增加geoBufferSource字段，对应Loca.GeoBufferSource的数据源
+* Loca.PolygonLayer图层增加新版本适配
+* Loca增加三个光源组件
+* Gltf组件增加停止动画方法
+* 解决loca图层修改样式后报错问题
+* 加载地图JS时增加offline参数用于离线部署
 
 ### v0.1.6
 * 解决loca事件失效问题

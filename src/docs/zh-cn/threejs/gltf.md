@@ -133,6 +133,7 @@ angle | Number | 模型绕Y轴旋转角度，该参数主要用于车辆模型�
 ---|---|---|
 $$getInstance() | Object3D | 获取实例
 $$startAnimations |   | 开始动画，当模型自带动画时，调用该方法将触发动画
+$$stopAnimations |   | 停止动画
 
 ## 事件
 

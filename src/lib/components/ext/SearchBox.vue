@@ -1,6 +1,6 @@
 <template>
-  <div class="el-vue-search-box-container" v-show="visible">
-      <input :id="saveInputId" type="text" />
+  <div class="el-vue-search-box-container" v-show="visible && !inputCustom">
+      <input v-if="!inputCustom" :id="saveInputId" type="text" />
   </div>
 </template>
 <script>
@@ -36,7 +36,11 @@ export default {
     },
     lang: {
       type: String
-    }
+    },
+    inputCustom: {
+      type: Boolean,
+      default: false
+    } // 是否自定义input，自定义的时候将使用用户的inputId
   },
   data() {
     const _this = this;

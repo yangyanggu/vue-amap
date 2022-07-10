@@ -6,6 +6,12 @@ export default {
     sourceData: {
       type: Object
     },
+    geoBufferSource: {
+      type: [ArrayBuffer, String],
+      default() {
+        return null;
+      }
+    },
     layerStyle: {
       type: Object
     },
@@ -37,9 +43,7 @@ export default {
         layerStyle(style) {
           _this.$nextTick(() => {
             if (_this.setStyle) {
-              _this.setStyle();
-            } else {
-              this.setStyle(style);
+              _this.setStyle(style);
             }
           });
         },
@@ -67,7 +71,17 @@ export default {
         this.source.destroy();
         this.source = null;
       }
-      if (this.sourceUrl) {
+      if (this.geoBufferSource) {
+        if (typeof this.geoBufferSource === 'string') {
+          this.source = new Loca.GeoBufferSource({
+            url: this.geoBufferSource
+          });
+        } else {
+          this.source = new Loca.GeoBufferSource({
+            data: this.geoBufferSource
+          });
+        }
+      } else if (this.sourceUrl) {
         this.source = new Loca.GeoJSONSource({
           url: this.sourceUrl
         });
@@ -91,12 +105,14 @@ export default {
         return;
       }
       this.unBindEvents();
-      this.$parentComponent.remove(this.$amapComponent);
+      if (!this.parentInstance.isDestroy) {
+        this.$parentComponent.remove(this.$amapComponent);
+        this.$amapComponent.destroy();
+      }
       if (this.source) {
         this.source.destroy();
         this.source = null;
       }
-      this.$amapComponent.destroy();
       this.$amapComponent = null;
       this.$parentComponent = null;
     },

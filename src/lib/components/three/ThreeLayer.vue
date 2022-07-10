@@ -159,7 +159,7 @@ export default {
       }
       this.customCoords = null;
       clearScene(this.scene);
-      this.scene.dispose();
+      // this.scene.dispose();
       this.scene = null;
       this.camera = null;
       this.renderer.dispose();

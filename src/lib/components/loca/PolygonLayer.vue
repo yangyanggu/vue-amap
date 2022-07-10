@@ -20,6 +20,14 @@ export default {
     hasSide: {
       type: Boolean
     }, // 当面有厚度的时候，有没有侧面和底面
+    hasBottom: {
+      type: Boolean,
+      default: false
+    }, // 当面有厚度的时候，有没有底面。
+    blockHide: {
+      type: Boolean,
+      default: true
+    }, // 是否开启被遮挡的面隐藏，默认开启，如果关闭，在有透明度的时候，会显示出被遮挡的面。
     depth: {
       type: Boolean
     }// 是否开启深度检测，开启后可能会影响zIndex
