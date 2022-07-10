@@ -1,0 +1,56 @@
+version: '1.0'
+name: pipeline-20220705
+displayName: vue2分支
+triggers:
+  trigger: manual
+  push:
+    branches:
+      prefix:
+        - ''
+stages:
+  - name: stage-999eb397
+    displayName: 编译文档
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: build@nodejs
+        name: build_nodejs
+        displayName: Nodejs 构建
+        nodeVersion: 14.16.0
+        commands:
+          - npm install && npm run build
+        artifacts:
+          - name: BUILD_ARTIFACT
+            path:
+              - ./docs
+        caches:
+          - ~/.npm
+        strategy:
+          retry: '0'
+  - name: stage-26a16c1a
+    displayName: 上传文档
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: deploy@agent
+        name: deploy_agent
+        displayName: 主机部署
+        hostGroupID: aliyun
+        deployArtifact:
+          - source: build
+            name: docs
+            target: /opt/giteeDownload/
+            dependArtifact: BUILD_ARTIFACT
+        script: |-
+          cd /opt/giteeDownload/
+          rm -rf docs
+          tar -zxvf docs.tar.gz
+          rm -rf /opt/docs/vue-amap/* 
+          cp -r /opt/giteeDownload/docs/* /opt/docs/vue-amap/
+        strategy:
+          retry: '0'
+permissions:
+  - role: admin
+    members: []
