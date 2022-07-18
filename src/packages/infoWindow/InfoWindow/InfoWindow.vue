@@ -71,8 +71,22 @@ export default defineComponent({
       if (this.visible !== false) {
         this.$amapComponent.open(this.$parentComponent, this.position);
       }
+      if(!this.content && this.$amapComponent){
+        // 观察器的配置（需要观察什么变动）
+        const config = { attributes: true, childList: true, subtree: true };
+        // 创建一个观察器实例并传入回调函数
+        const observer = new MutationObserver(() => {
+          this.$amapComponent.setContent(this.$refs.info);
+        });
+        observer.observe(this.$refs.info as Node, config);
+        this.observer = observer;
+      }
     },
     destroyComponent() {
+      if(this.observer){
+        this.observer.disconnect();
+        this.observer = null;
+      }
       if(this.$amapComponent){
         if(this.$amapComponent.getIsOpen()){
           this.$amapComponent.close();

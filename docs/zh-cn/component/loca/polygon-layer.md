@@ -59,7 +59,7 @@ examples/loca/polygon
 cullface | String | 剔除背面/前面的面（选择剔除将会提升性能），可选：back/front/none，back是剔除背面的面，front是剔除前面的面，none是不进行剔除。default 'back'
 acceptLight | Boolean | 面是否接受光照，光照信息在 loca 对象中配置 default true
 shininess | Number | 立体网格的粗糙度，值越高，说明表面越粗糙。default 30
-hasSide | Boolean | 当面有厚度的时候，有没有侧面和底面 default true
+hasSide | Boolean | 当面有厚度的时候，有没有侧面 default true
 hasBottom | Boolean | 当面有厚度的时候，有没有底面 default false
 blockHide | Boolean | 是否开启被遮挡的面隐藏，默认开启，如果关闭，在有透明度的时候，会显示出被遮挡的面 default true
 depth | Boolean | 是否开启深度检测，开启后可能会影响zIndex  default true

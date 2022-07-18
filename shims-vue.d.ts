@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { ComponentCustomProperties } from 'vue'
 
 declare module '@vue/runtime-core' {
@@ -12,5 +13,6 @@ declare module '@vue/runtime-core' {
     source ?: any
     lights ?: any
     hdr ?: any
+    observer ?: MutationObserver | null
   }
 }

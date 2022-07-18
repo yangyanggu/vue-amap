@@ -14,8 +14,11 @@
         @init="markerInit"
         @click="clickMarker"
       >
-        <div style="padding: 5px 10px;white-space: nowrap;background: blue;color: #fff;">
-          测试content
+        <div
+          :class="[createClass]"
+          style="padding: 5px 10px;white-space: nowrap;background: blue;color: #fff;"
+        >
+          {{ text }}
         </div>
       </el-amap-marker>
       <el-amap-marker
@@ -38,6 +41,9 @@
       </el-button>
       <el-button @click="changeDraggable">
         {{ componentMarker.draggable ? '禁止标记移动' : '允许标记移动' }}
+      </el-button>
+      <el-button @click="changeText">
+        更换marker内容
       </el-button>
     </div>
   </div>
@@ -72,6 +78,7 @@ export default defineComponent({
         position: [121.5283285, 31.21315058],
         content: 'hello world'
       },
+      text: '测试content'
     }
   },
   methods: {
@@ -104,6 +111,12 @@ export default defineComponent({
     },
     clickArrayMarker(marker){
       alert(`点击了标号,标号ID： ${marker.id}`)
+    },
+    changeText(){
+      this.text = `测试content${ new Date().toLocaleString()}`
+    },
+    createClass(){
+      return 'test b';
     }
   }
 })

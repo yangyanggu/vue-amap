@@ -13,7 +13,7 @@
         v-model:visible="visible"
         :position="center"
       >
-        <div>hello world</div>
+        <div>{{ text }}</div>
       </el-amap-info-window>
     </el-amap>
     <div class="control-container">
@@ -22,6 +22,9 @@
       </el-button>
       <el-button @click="changeVisible">
         显隐
+      </el-button>
+      <el-button @click="changeText">
+        更新内容
       </el-button>
     </div>
   </div>
@@ -41,7 +44,8 @@ export default defineComponent({
     return {
       center: [120,31],
       zoom: 16,
-      visible: true
+      visible: true,
+      text: 'hello world'
     }
   },
   methods: {
@@ -64,6 +68,9 @@ export default defineComponent({
     },
     changeVisible(){
       this.visible = !this.visible;
+    },
+    changeText(){
+      this.text = `MutationObserver ${ new Date().toLocaleString()}`
     }
   }
 })

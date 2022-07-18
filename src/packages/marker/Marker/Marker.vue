@@ -68,11 +68,11 @@ export default defineComponent({
       },
     };
   },
-  updated() {
+  /*updated() {
     if(this.withSlot && this.$amapComponent){
       this.$amapComponent.setContent(this.$refs.content);
     }
-  },
+  },*/
   methods: {
     __initComponent(options) {
       if (this.$slots.default && this.$slots.default().length > 0) {
@@ -85,8 +85,22 @@ export default defineComponent({
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
         this.$parentComponent.addOverlay(this.$amapComponent);
       }
+      if(this.withSlot){
+        // 观察器的配置（需要观察什么变动）
+        const config = { attributes: true, childList: true, subtree: true };
+        // 创建一个观察器实例并传入回调函数
+        const observer = new MutationObserver(() => {
+          this.$amapComponent.setContent(this.$refs.content);
+        });
+        observer.observe(this.$refs.content as Node, config);
+        this.observer = observer;
+      }
     },
     destroyComponent() {
+      if(this.observer){
+        this.observer.disconnect();
+        this.observer = null;
+      }
       this.$amapComponent.setMap(null);
       /*if (isMapInstance(this.$parentComponent)) {
         this.$amapComponent.setMap(null);
