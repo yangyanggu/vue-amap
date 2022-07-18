@@ -66,7 +66,7 @@ district | String | 所属区域
 location | String | 位置
 type | String | 类型
 
-### 常见文件
+### 常见问题
 1、搜索框中输入内容，但没有可选的下拉框出现
 ```text
 原因：
