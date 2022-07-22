@@ -36,6 +36,10 @@ export default defineComponent({
           name: 'Canvas图层'
         },
         {
+          path: '/layer/video',
+          name: 'Video图层'
+        },
+        {
           path: '/layer/custom',
           name: '自定义图层'
         },{

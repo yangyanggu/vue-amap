@@ -71,7 +71,13 @@ export default defineComponent({
     antialias: {
       type: Boolean,
       default: false
-    }// 是否执行抗锯齿。默认为false
+    },// 是否执行抗锯齿。默认为false
+    customCoordsCenter: {
+      type: Array,
+      default(){
+        return null
+      }
+    }
   },
   data() {
     return {
@@ -81,8 +87,8 @@ export default defineComponent({
   methods: {
     __initComponent(options) {
       this.customCoords = this.$parentComponent.customCoords;
-      const center = this.$parentComponent.getCenter();
-      this.customCoords.lngLatsToCoords([center.toArray()]);// 强制先处理一次经纬度，解决不初始化的话会导致后续转换失败
+      const center = this.customCoordsCenter || this.$parentComponent.getCenter().toArray();
+      this.customCoords.lngLatsToCoords([center]);// 强制先处理一次经纬度，解决不初始化的话会导致后续转换失败
       const _this = this;
       return new Promise<void>((resolve) => {
         options.init = (gl) => {
@@ -118,7 +124,8 @@ export default defineComponent({
         };
         options.render = () => {
           // 这里必须执行！！重新设置 three 的 gl 上下文状态。
-          _this.renderer.state.reset();
+          _this.renderer.resetState();
+          _this.customCoords.setCenter(center);
           const camera = _this.camera;
           // 2D 地图下使用的正交相机
           if (_this.$parentComponent.getView().type === '3D') {

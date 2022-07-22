@@ -38,11 +38,13 @@ import Tiles3D from "../views/layer/Tiles3D.vue";
 import Gltf from '../views/ext/Gltf.vue'
 import CircleMarker from "../views/marker/CircleMarker.vue";
 import HeatMapBuffer from "../views/loca/HeatMapBuffer.vue";
+import VideoLayer from '../views/layer/Video.vue'
 
 const routes = [
   {path: '/', component: Map},
   {path: '/infoWindow', component: InfoWindow},
   {path: '/layer/canvas', component: Canvas},
+  {path: '/layer/video', component: VideoLayer},
   {path: '/layer/custom', component: Custom},
   {path: '/layer/flexible', component: Flexible},
   {path: '/layer/heatMap', component: HeatMap},

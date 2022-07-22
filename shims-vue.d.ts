@@ -1,6 +1,8 @@
 // eslint-disable-next-line
 import { ComponentCustomProperties } from 'vue'
 
+export {}
+
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties{
     $amapComponent ?: any,
@@ -14,5 +16,6 @@ declare module '@vue/runtime-core' {
     lights ?: any
     hdr ?: any
     observer ?: MutationObserver | null
+    customCoordsCenter ?: any
   }
 }

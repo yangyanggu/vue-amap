@@ -60,6 +60,7 @@ import {ElAmapCircleMarker} from '@vue-map/packages/marker/CircleMarker'
 import {ElAmapLocaAmbientLight} from '@vue-map/packages/loca/AmbientLight'
 import {ElAmapLocaDirectionalLight} from '@vue-map/packages/loca/DirectionalLight'
 import {ElAmapLocaPointLight} from '@vue-map/packages/loca/PointLight'
+import {ElAmapLayerVideo} from "@vue-map/packages/layer/data/Video";
 
 import type { Plugin } from 'vue'
 
@@ -125,5 +126,6 @@ export default [
   ElAmapCircleMarker,
   ElAmapLocaAmbientLight,
   ElAmapLocaDirectionalLight,
-  ElAmapLocaPointLight
+  ElAmapLocaPointLight,
+  ElAmapLayerVideo
 ] as Plugin[]
