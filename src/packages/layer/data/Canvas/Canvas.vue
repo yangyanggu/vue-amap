@@ -10,7 +10,7 @@ export default defineComponent({
       required: true,
       type: Object
     }, // Canvas DOM 对象
-    zoom: {
+    zooms: {
       type: Array
     }, // 支持的缩放级别范围，默认范围 [2-30]
     bounds: {

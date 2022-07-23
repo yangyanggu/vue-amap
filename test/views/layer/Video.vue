@@ -9,6 +9,8 @@
     >
       <el-amap-layer-video
         :url="url"
+        :opacity="0.4"
+        :visible="visible"
         :bounds="bounds"
       />
     </el-amap>
@@ -29,24 +31,25 @@ export default defineComponent({
   name: "Map",
   components: {
     ElAmapLayerVideo,
-    ElAmap},
-  data(){
+    ElAmap
+  },
+  data() {
     return {
       center: [116.33719, 39.942384],
-      bounds: [116.327911, 39.939229,116.342659, 39.946275],
+      bounds: [116.327911, 39.939229, 116.342659, 39.946275],
       zoom: 16,
-      url: '/video.mp4',
+      url: '/test.mp4',
       visible: true,
     }
   },
   methods: {
-    clickMap(e){
+    clickMap(e) {
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap(map) {
       console.log('init map: ', map);
     },
-    changeVisible(){
+    changeVisible() {
       this.visible = !this.visible;
     },
   }
@@ -54,12 +57,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.map-container{
+.map-container {
   width: 100%;
   height: 100%;
   position: relative;
 }
-.control-container{
+
+.control-container {
   position: absolute;
   padding: 24px;
   background: #ffffff;

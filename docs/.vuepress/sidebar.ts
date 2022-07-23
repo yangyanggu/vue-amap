@@ -65,6 +65,7 @@ export default [
       '/zh-cn/component/layer/data/flexible.md',
       '/zh-cn/component/layer/data/image.md',
       '/zh-cn/component/layer/data/canvas.md',
+      '/zh-cn/component/layer/data/video.md',
       '/zh-cn/component/layer/data/gl-custom.md',
       '/zh-cn/component/layer/data/tiles3d.md'
     ],
