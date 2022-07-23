@@ -48,5 +48,5 @@ $$pause | void           | 暂停视频
 
 事件 | 参数         | 说明
 ---|------------|---|
-init | VideoLayer | 实例初始化结束
+init | [VideoLayer](https://github.com/yangyanggu/vue-amap/blob/dev/src/packages/layer/data/Video/VideoLayer.ts) | 实例初始化结束
 
