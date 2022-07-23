@@ -12,7 +12,7 @@
       @init="initMap"
     >
       <el-amap-layer-three>
-        <el-amap-three-gltf
+        <!--        <el-amap-three-gltf
           v-for="(p,index) in positions"
           :key="index"
           url="/gltf/sgyj_point_animation.gltf"
@@ -21,7 +21,7 @@
           :rotation="rotation"
           :visible="visible"
           @init="init"
-        />
+        />-->
         <el-amap-three-gltf
           ref="animation"
           url="/gltf/sgyj_point_animation.gltf"
@@ -30,6 +30,7 @@
           :rotation="rotation"
           :visible="visible"
           @init="init"
+          @click="clickGltf"
         />
       </el-amap-layer-three>
     </el-amap>
@@ -92,6 +93,9 @@ export default defineComponent({
     },
     init(object, $vue){
       $vue.$$startAnimations();
+    },
+    clickGltf(e){
+      console.log(' click gltf: ', e);
     },
     stop(){
       this.$refs.animation.$$stopAnimations();
