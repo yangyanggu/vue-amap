@@ -4,7 +4,7 @@ title: AmapLayerThree
 
 # AmapLayerThree
 ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含lights（灯光）、hdr。
-可以通过获取scene来自定义添加模型，由于高德限制，threejs的版本必须使用0.117.1版本。
+可以通过获取scene来自定义添加模型。
 
 
 ## Attributes

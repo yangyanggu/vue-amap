@@ -5,6 +5,8 @@
 import {defineComponent} from "vue";
 import registerMixin from '../../../mixins/register-component';
 import ThreeLayer from "./ThreeLayer";
+import type {HDROptions, LightOption} from './Type'
+import type {PropType} from "vue";
 
 export default defineComponent({
   name: 'ElAmapLayerThree',
@@ -16,16 +18,16 @@ export default defineComponent({
   },
   props: {
     lights: {
-      type: Array,
+      type: Array as PropType<LightOption[]>,
       default() {
         return [];
       }
     }, // 灯光数组
     hdr: {
-      type: Object
+      type: Object as PropType<HDROptions>
     },
     zooms: {
-      type: Array,
+      type: Array as PropType<number[]>,
       default() {
         return [2, 20];
       }
@@ -42,15 +44,14 @@ export default defineComponent({
       default: false
     },// 是否执行抗锯齿。默认为false
     customCoordsCenter: {
-      type: Array,
-      default(){
+      type: Array as PropType<number[]>,
+      default() {
         return null
       }
     }
   },
   data() {
     return {
-      frameTimer: null as any,
     };
   },
   methods: {

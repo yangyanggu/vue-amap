@@ -70,7 +70,8 @@
     "components-helper": "^1.0.5",
     "ts-morph": "14.0.0",
     "fs-extra": "10.0.0",
-    "fast-glob": "3.2.7"
+    "fast-glob": "3.2.7",
+    "@turf/turf": "^6.5.0"
   },
   "peerDependencies": {
     "vue": "^3.2.0"

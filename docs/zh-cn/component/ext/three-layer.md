@@ -9,7 +9,7 @@ head:
 
 # ThreeJS的图层
 ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含lights（灯光）、hdr。
-可以通过获取scene来自定义添加模型，由于高德限制，threejs的版本必须使用0.117.1版本。
+可以通过获取scene来自定义添加模型。
 
 ## 基础示例
 
@@ -85,7 +85,7 @@ $$refresh |   | 刷新图层
 
 ## 事件
 
-事件 | 参数 | 说明
----|---|---|
-init | AMap.CustomLayer | 实例初始化结束
+事件 | 参数             | 说明
+---|----------------|---|
+init | [ThreeLayer]() | 实例初始化结束
 

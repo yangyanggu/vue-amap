@@ -20,6 +20,7 @@ import {
 import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader";
 import {clearScene} from "../../../utils/threeUtil";
+import type {HDROptions, LightOption} from "./Type";
 
 interface Options {
   lights?: LightOption[] // 灯光数组
@@ -30,28 +31,6 @@ interface Options {
   antialias?: boolean //是否执行抗锯齿。默认为false
   customCoordsCenter?: number[] // 默认gl自定义图层渲染的中心点
 
-}
-
-interface LightOption {
-  type: string
-  args: any[]
-  position?: {
-    x: number
-    y: number
-    z: number
-  }
-  lookAt?: {
-    x: number
-    y: number
-    z: number
-  }
-
-}
-
-interface HDROptions {
-  urls: string[]
-  path: string
-  exposure: number
 }
 
 class ThreeLayer {
@@ -161,7 +140,11 @@ class ThreeLayer {
     })
   }
 
-  animate(){
+  setUpdate(){
+    this.needsUpdate = true;
+  }
+
+  animate() {
     if (this.needsUpdate) {
       this.refreshMap();
       this.needsUpdate = false;
@@ -171,7 +154,7 @@ class ThreeLayer {
     });
   }
 
-  refreshMap(){
+  refreshMap() {
     if (this.map) {
       this.map.render();
     }
@@ -202,7 +185,8 @@ class ThreeLayer {
       });
     }
   }
-  createHDR(hdr: HDROptions | undefined){
+
+  createHDR(hdr: HDROptions | undefined) {
     if (!hdr) {
       return;
     }
@@ -230,6 +214,7 @@ class ThreeLayer {
         this.refreshMap();
       }) as any;
   }
+
   addEnvMap(object) {
     const envMap = this.envMap;
     if (!envMap || !object) {
@@ -247,14 +232,14 @@ class ThreeLayer {
     }
   }
 
-  bindEvents(){
+  bindEvents() {
     this.clickFun = bind(this._clickEvent, this);
     this.hoverFun = bind(this._hoverEvent, this);
     this.map.on('click', this.clickFun);
     this.map.on('mousemove', this.hoverFun);
   }
 
-  ubBindEvents(){
+  ubBindEvents() {
     this.map.off('click', this.clickFun);
     this.map.off('mousemove', this.hoverFun);
   }
@@ -265,6 +250,7 @@ class ThreeLayer {
       group.$vue.$emit('click', group);
     }
   }
+
   _hoverEvent(e) {
     const group = this._intersectGltf(e) as any;
     if (group) {
@@ -282,6 +268,7 @@ class ThreeLayer {
       });
     }
   }
+
   _intersectGltf(e) {
     const client = this.map.getContainer();
     // 通过鼠标点击位置,计算出 raycaster 所需点的位置,以屏幕为中心点,范围 -1 到 1
@@ -299,7 +286,7 @@ class ThreeLayer {
     const length = intersects.length;
     if (length > 0) {
       let group = null;
-      for (let i = 0;i < length;i++) {
+      for (let i = 0; i < length; i++) {
         const object = intersects[i];
         group = this._getGroup(object.object);
         if (group !== null) {
@@ -324,21 +311,23 @@ class ThreeLayer {
     ]);
     return data[0];
   }
+
   // 往场景中添加对象
   addObject(object) {
     this.scene.add(object);
     this.refreshMap();
   }
+
   // 从场景中移除对象
   removeObject(object) {
     this.scene.remove(object);
   }
 
-  getScene(){
+  getScene() {
     return this.scene
   }
 
-  getRender(){
+  getRender() {
     return this.renderer;
   }
 

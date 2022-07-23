@@ -1,5 +1,8 @@
 ### v1.1.8
 * 增加视频图层
+* 重构ThreeLayer图层
+* 重构Gltf图层
+* Gltf图层增加移动动画和高度属性
 
 ### v1.1.7
 * 解决marker和infoWindow的使用slot时会因为父组件数据更新而不停刷新的问题

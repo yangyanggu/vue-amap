@@ -11,7 +11,7 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-layer-three>
+      <el-amap-layer-three :lights="lights">
         <!--        <el-amap-three-gltf
           v-for="(p,index) in positions"
           :key="index"
@@ -28,9 +28,19 @@
           :position="center"
           :scale="[10,10,10]"
           :rotation="rotation"
+          :height="1000"
           :visible="visible"
           @init="init"
           @click="clickGltf"
+        />
+        <el-amap-three-gltf
+          url="/gltf/car2.gltf"
+          :position="carPosition"
+          :scale="[10,10,10]"
+          :angle="carAngle"
+          :rotation="rotation"
+          :move-animation="moveAnimation"
+          @init="initCar"
         />
       </el-amap-layer-three>
     </el-amap>
@@ -44,6 +54,12 @@
       <el-button @click="start">
         开始动画
       </el-button>
+      <el-button @click="stopCar">
+        停止车辆
+      </el-button>
+      <el-button @click="startCar">
+        移动车辆
+      </el-button>
     </div>
   </div>
 </template>
@@ -53,6 +69,7 @@ import {defineComponent} from "vue";
 import ElAmap from '@vue-map/packages/amap/amap.vue'
 import ElAmapLayerThree from "@vue-map/packages/ext/ThreeLayer/ThreeLayer.vue";
 import ElAmapThreeGltf from "@vue-map/packages/ext/ThreeGltf/ThreeGltf.vue";
+import {bearing} from "@turf/turf";
 
 export default defineComponent({
   name: "Map",
@@ -69,6 +86,14 @@ export default defineComponent({
       positions: [],
       angle: 90,
       rotation: {x:90, y:0, z:0},
+      carPosition: [116.306206, 39.975468],
+      carInterval: -1 as any,
+      moveAnimation: {duration: 1000,smooth: true},
+      carAngle: 90,
+      lights: [{
+        type: 'AmbientLight',
+        args: []
+      }]
     }
   },
   methods: {
@@ -98,10 +123,26 @@ export default defineComponent({
       console.log(' click gltf: ', e);
     },
     stop(){
-      this.$refs.animation.$$stopAnimations();
+      (this.$refs.animation as any).$$stopAnimations();
     },
     start(){
-      this.$refs.animation.$$startAnimations();
+      (this.$refs.animation as any).$$startAnimations();
+    },
+    initCar(){
+      this.startCar();
+    },
+    startCar(){
+      this.carInterval = setInterval(() => {
+        const lng = this.carPosition[0] + Math.random() * 0.001;
+        const lat = this.carPosition[1] + Math.random() * 0.001;
+        const newPosition = [lng, lat];
+        const angle = bearing(this.carPosition, newPosition) + 90
+        this.carPosition = newPosition;
+        this.carAngle = angle;
+      }, 1000)
+    },
+    stopCar(){
+      clearInterval(this.carInterval);
     }
   }
 })
