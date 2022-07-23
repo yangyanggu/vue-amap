@@ -23,18 +23,18 @@ examples/ext/three-gltf
 名称 | 类型 | 说明
 ---|---|---|
 url  | String | 模型地址,只支持gltf
-scale | Number,Array | 缩放大小,可以传入number那么X Y Z都会以该值缩放，也可以传入数组[x,y,z]将按该顺序缩放
 
 ## 动态属性
 支持响应式。
 
 名称 | 类型                                         | 说明
 ---|--------------------------------------------|---|
+scale | Number,Array | 缩放大小,可以传入number那么X Y Z都会以该值缩放，也可以传入数组[x,y,z]将按该顺序缩放
 position | Array                                      | 车辆位置经纬度
 visible | Boolean                                    | 是否显示，默认 true
-rotation | Object                                     | 旋转角度,通过该参数调整模型方向
+rotation | Object {x:number,y: number, z: number}     | 旋转角度,通过该参数调整模型方向
 angle | Number                                     | 模型绕Y轴旋转角度，该参数主要用于车辆模型的位置调整
-height | Number | 模型高度
+height | Number                                     | 模型高度
 moveAnimation | Object {duration: number, smooth: boolean} | 是否开启移动动画，开启动画后position和angle都会以线性改变
 
 ## ref 可用方法

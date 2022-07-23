@@ -39,6 +39,7 @@ import Gltf from '../views/ext/Gltf.vue'
 import CircleMarker from "../views/marker/CircleMarker.vue";
 import HeatMapBuffer from "../views/loca/HeatMapBuffer.vue";
 import VideoLayer from '../views/layer/Video.vue'
+import LaserLayer from '../views/loca/Laser.vue'
 
 const routes = [
   {path: '/', component: Map},
@@ -81,6 +82,7 @@ const routes = [
   {path: '/layer/tiles3D', component: Tiles3D},
   {path: '/ext/gltf', component: Gltf},
   {path: '/marker/circle', component: CircleMarker},
+  {path: '/loca/laser', component: LaserLayer},
 ]
 
 export default createRouter({

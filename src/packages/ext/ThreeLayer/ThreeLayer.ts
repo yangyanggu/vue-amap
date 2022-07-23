@@ -18,7 +18,7 @@ import {
   Cache
 } from 'three';
 import {merge, bind} from "lodash-es";
-import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader";
+import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
 import {clearScene} from "../../../utils/threeUtil";
 import type {HDROptions, LightOption} from "./Type";
 

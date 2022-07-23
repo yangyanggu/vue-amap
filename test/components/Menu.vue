@@ -104,6 +104,9 @@ export default defineComponent({
           path: '/loca/zmarker',
           name: 'loca垂直于大地表面的 Marker 图层'
         },{
+          path: '/loca/laser',
+          name: 'loca激光图层'
+        },{
           path: '/marker/elasticMarker',
           name: 'marker灵活点标记'
         },{

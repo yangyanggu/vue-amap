@@ -21,12 +21,27 @@
           :visible="visible"
           @init="init"
         />
+        <el-amap-three-gltf
+          url="/gltf/car2.gltf"
+          :position="carPosition"
+          :scale="[10,10,10]"
+          :rotation="rotation"
+          :move-animation="moveAnimation"
+          :angle="carAngle"
+          @init="initCar"
+        />
       </el-amap-layer-three>
     </el-amap>
   </div>
   <div class="toolbar">
     <button @click="switchVisible()">
       {{ visible? '隐藏' : '显示' }}
+    </button>
+    <button @click="stopCar()">
+      停止移动
+    </button>
+    <button @click="startCar()">
+      继续移动
     </button>
   </div>
 </template>
@@ -45,6 +60,9 @@ export default defineComponent({
       visible: true,
       position: [121.59996, 31.197646],
       rotation: {x:90, y:0, z:0},
+      carPosition: [121.59996, 31.197646],
+      moveAnimation: {duration: 1000,smooth: true},
+      carAngle: 90,
       lights: [
         {
           type: 'DirectionalLight', // 灯光类型， 可选值见下面的字典
@@ -64,6 +82,7 @@ export default defineComponent({
         urls: [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ],
         path: '/hdr/'
       },
+      carInterval: -1
     };
   },
 
@@ -76,6 +95,22 @@ export default defineComponent({
       console.log('gltf object: ', object);
       console.log('gltf $vue: ', $vue);
     },
+    initCar(){
+      this.startCar();
+    },
+    startCar(){
+      this.carInterval = setInterval(() => {
+        const lng = this.carPosition[0] + Math.random() * 0.0001;
+        const lat = this.carPosition[1] + Math.random() * 0.0001;
+        const newPosition = [lng, lat];
+        const angle = Math.random() * 360
+        this.carPosition = newPosition;
+        this.carAngle = angle;
+      }, 1000)
+    },
+    stopCar(){
+      clearInterval(this.carInterval);
+    }
   }
 });
 </script>

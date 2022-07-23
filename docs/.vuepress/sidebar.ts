@@ -117,7 +117,8 @@ export default [
       '/zh-cn/component/loca/scatter-layer.md',
       '/zh-cn/component/loca/pulse-line-layer.md',
       '/zh-cn/component/loca/pulse-link-layer.md',
-      '/zh-cn/component/loca/z-marker-layer.md'
+      '/zh-cn/component/loca/z-marker-layer.md',
+      '/zh-cn/component/loca/laser-layer.md'
     ],
   },
   {

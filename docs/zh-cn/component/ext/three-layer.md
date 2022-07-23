@@ -87,5 +87,5 @@ $$refresh |   | 刷新图层
 
 事件 | 参数             | 说明
 ---|----------------|---|
-init | [ThreeLayer]() | 实例初始化结束
+init | [ThreeLayer](https://github.com/yangyanggu/vue-amap/blob/dev/src/packages/ext/ThreeLayer/ThreeLayer.ts) | 实例初始化结束
 
