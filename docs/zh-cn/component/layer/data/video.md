@@ -38,11 +38,11 @@ opacity | Number             | 透明度，默认 1
 ## ref 可用方法
 提供无副作用的同步帮助方法
 
-函数 | 返回         | 说明
----|------------|---|
-$$getInstance() | VideoLayer | 获取实例
-$$play | void       | 继续播放视频
-$$pause | void | 暂停视频
+函数 | 返回             | 说明
+---|----------------|---|
+$$getInstance() | [VideoLayer](https://github.com/yangyanggu/vue-amap/blob/dev/src/packages/layer/data/Video/VideoLayer.ts) | 获取实例
+$$play | void           | 继续播放视频
+$$pause | void           | 暂停视频
 
 ## 事件
 
