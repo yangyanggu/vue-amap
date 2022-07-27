@@ -6,14 +6,13 @@
     loop
     autoplay
     crossOrigin="anonymous"
-    playsinline
   >
     <source
       v-for="item in videoUrlList"
       :key="item"
       :src="item"
       type="video/mp4"
-    />
+    >
   </video>
 </template>
 <script lang="ts">

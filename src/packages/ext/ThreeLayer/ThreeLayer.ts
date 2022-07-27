@@ -64,6 +64,9 @@ class ThreeLayer {
     this.mouse = new Vector2();
     this.customCoords = map.customCoords;
     this.center = options.customCoordsCenter || map.getCenter().toArray();
+    this.customCoords.lngLatsToCoords([
+      this.center
+    ])
     this.options = options;
     this.map = map;
   }

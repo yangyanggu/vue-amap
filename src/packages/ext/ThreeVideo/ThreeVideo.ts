@@ -1,4 +1,4 @@
-import {Group, VideoTexture, CanvasTexture, PlaneGeometry, MeshPhongMaterial, Mesh} from 'three';
+import {Group, VideoTexture, CanvasTexture, PlaneGeometry, MeshPhongMaterial, Mesh, DoubleSide} from 'three';
 import {clearGroup} from '../../../utils/threeUtil';
 import type {MoveAnimation, Vec, Offset} from './Type'
 
@@ -24,7 +24,7 @@ class ThreeVideo {
   video?: HTMLVideoElement
   group?: any
   canvasTexture?: any
-  canvasFrame = -1
+  videoFrame = -1
 
   constructor(layer: any) {
     this.layer = layer;
@@ -33,6 +33,7 @@ class ThreeVideo {
   init(options: Options, $vue: any) {
     this.video = options.video;
     this.object = new Group();
+    this.object.isCustomGroup = true;
     this.object.$vue = $vue;
 
     return new Promise<void>((resolve) => {
@@ -40,23 +41,21 @@ class ThreeVideo {
       this.video?.addEventListener('canplaythrough', () => {
         this.video?.play();
         const texture = new VideoTexture( this.video );
-        const geometry = new PlaneGeometry(this.video?.videoWidth, this.video?.videoHeight); //矩形平面
+        const geometry = new PlaneGeometry(options.videoWidth || this.video?.videoWidth, options.videoHeight || this.video?.videoHeight); //矩形平面
         const material = new MeshPhongMaterial({
           map: texture, // 设置纹理贴图
+          side: DoubleSide
         }); //材质对象Material
         const mesh = new Mesh(geometry, material); //网格模型对象Mesh
         mesh.renderOrder = 1;
         this.object.add(mesh);
-        this.object.lookAt({
-          x: -1,
-          y:0,
-          z: 0
-        })
         this.setPosition(options.position);
+        this.setRotation(options.rotation);
         this.setScale(options.scale);
         this.setHeight(options.height)
         this.addBgCanvas(options.canvas)
         this.layer.addObject(this.object);
+        this.videoAnimate();
         resolve()
       })
 
@@ -72,24 +71,29 @@ class ThreeVideo {
     const geometry = new PlaneGeometry(canvas.width, canvas.height); //矩形平面
     const material = new MeshPhongMaterial({
       map: texture, // 设置纹理贴图
+      side: DoubleSide,
+      transparent: true
     }); //材质对象Material
     const mesh = new Mesh(geometry, material); //网格模型对象Mesh
     mesh.renderOrder = 0;
+    mesh.translateX(-2)
     this.object.add(mesh);
     this.canvasTexture = texture;
   }
 
-  canvasTextureAnimate(){
-    this.canvasFrame = requestAnimationFrame(() => {
-      this.canvasTextureAnimate();
+  videoAnimate(){
+    this.videoFrame = requestAnimationFrame(() => {
+      this.videoAnimate();
     })
-    this.canvasTexture.needsUpdate = true;
+    if(this.canvasTexture){
+      this.canvasTexture.needsUpdate = true;
+    }
     this.refresh()
   }
 
   cancelCanvasTextureAnimate(){
-    if(this.canvasFrame > 0) {
-      cancelAnimationFrame(this.canvasFrame);
+    if(this.videoFrame > 0) {
+      cancelAnimationFrame(this.videoFrame);
     }
   }
 
@@ -105,11 +109,20 @@ class ThreeVideo {
 
   setPosition(position) {
     const positionConvert = this.layer.convertLngLat(position);
-    this.object.position.setX(positionConvert);
-    this.object.position.setY(positionConvert);
+    this.object.position.setX(positionConvert[0]);
+    this.object.position.setY(positionConvert[1]);
     this.refresh();
   }
 
+  setRotation(rotation: Vec | undefined) {
+    if (rotation) {
+      const x = Math.PI / 180 * (rotation.x || 0);
+      const y = Math.PI / 180 * (rotation.y || 0);
+      const z = Math.PI / 180 * (rotation.z || 0);
+      this.object.rotation.set(x, y, z);
+      this.refresh();
+    }
+  }
 
   setHeight(height) {
     if (height !== undefined) {

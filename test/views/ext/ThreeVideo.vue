@@ -12,17 +12,18 @@
       @init="initMap"
     >
       <el-amap-layer-three :lights="lights">
-        <!--        <el-amap-three-gltf
-          v-for="(p,index) in positions"
-          :key="index"
-          url="/gltf/sgyj_point_animation.gltf"
-          :position="p"
-          :scale="[10,10,10]"
+        <el-amap-three-video
+          v-if="canvas"
+          video="/test.mp4"
+          :video-width="480"
+          :video-height="270"
+          :canvas="canvas"
+          :position="center"
+          :scale="1"
+          :height="200"
           :rotation="rotation"
-          :visible="visible"
           @init="init"
-        />-->
-        <el-amap-three-video video="/test.mp4" :position="center"></el-amap-three-video>
+        />
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
@@ -56,7 +57,9 @@ export default defineComponent({
       lights: [{
         type: 'AmbientLight',
         args: []
-      }]
+      }],
+      canvas: null as any,
+      context: null as any,
     }
   },
   methods: {
@@ -65,6 +68,16 @@ export default defineComponent({
     },
     initMap(map){
       console.log('init map: ', map);
+      const canvas = document.createElement('canvas') as any;
+      canvas.width = canvas.height = 512;
+
+      const context = canvas.getContext('2d');
+      context.fillStyle = 'rgb(0,100,255)';
+      context.strokeStyle = 'white';
+      context.globalAlpha = 1;
+      context.lineWidth = 2;
+      this.canvas = canvas;
+      this.context = context;
     },
     changeVisible(){
       this.visible = !this.visible;
@@ -72,7 +85,27 @@ export default defineComponent({
     initLayer(layer){
       console.log('init layer: ', layer);
     },
-    init(object, $vue){
+    init(){
+      let radius = 0;
+      const draw = () => {
+        this.context.clearRect(0, 0, 512, 512);
+        this.context.globalAlpha = (this.context.globalAlpha - 0.01 + 1) % 1;
+        if(radius > 256){
+          radius = 20
+        }else{
+          radius += 1
+        }
+
+        this.context.beginPath();
+        this.context.arc(256, 256, radius, 0, 2 * Math.PI);
+        this.context.fill();
+        this.context.stroke();
+
+        requestAnimationFrame(() => {
+          draw()
+        });
+      };
+      draw();
     },
     clickGltf(e){
       console.log(' click gltf: ', e);
