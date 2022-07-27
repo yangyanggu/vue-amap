@@ -154,6 +154,9 @@ export default defineComponent({
         },{
           path: '/ext/gltf',
           name: 'ThreeJS Gltf示例'
+        },{
+          path: '/ext/threeVideo',
+          name: 'ThreeJS 视频'
         }
       ]
     }
