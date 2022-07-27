@@ -38,7 +38,6 @@ class ThreeVideo {
     return new Promise<void>((resolve) => {
       this.video?.load()
       this.video?.addEventListener('canplaythrough', () => {
-        console.log('video is ready')
         this.video?.play();
         const texture = new VideoTexture( this.video );
         const geometry = new PlaneGeometry(this.video?.videoWidth, this.video?.videoHeight); //矩形平面

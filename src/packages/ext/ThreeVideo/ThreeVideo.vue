@@ -4,6 +4,7 @@
     style="display: none;"
     muted
     loop
+    autoplay
     crossOrigin="anonymous"
     playsinline
   >
@@ -11,7 +12,8 @@
       v-for="item in videoUrlList"
       :key="item"
       :src="item"
-    >
+      type="video/mp4"
+    />
   </video>
 </template>
 <script lang="ts">
