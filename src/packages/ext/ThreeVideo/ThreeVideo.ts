@@ -7,6 +7,7 @@ interface Options {
   videoOffset: Offset // 视频X Y的偏移
   videoWidth: number // 视频宽度，默认为实际的视频宽度
   videoHeight: number // 视频高度，默认为实际的视频高度
+  videoTranslate: Vec // 视频偏移量
   canvas: HTMLCanvasElement // 背景canvas图层
   position: number[] // 模型的经纬度
   height?: number  // 高度，模型的离地高度
@@ -22,6 +23,7 @@ class ThreeVideo {
   animations: any // 模型的动画
   layer: any // threejs的图层对象
   video?: HTMLVideoElement
+  videoMesh: any
   group?: any
   canvasTexture?: any
   videoFrame = -1
@@ -44,18 +46,22 @@ class ThreeVideo {
         const geometry = new PlaneGeometry(options.videoWidth || this.video?.videoWidth, options.videoHeight || this.video?.videoHeight); //矩形平面
         const material = new MeshPhongMaterial({
           map: texture, // 设置纹理贴图
-          side: DoubleSide
+          side: DoubleSide,
+          transparent: true,
+          depthTest: true
         }); //材质对象Material
         const mesh = new Mesh(geometry, material); //网格模型对象Mesh
-        mesh.renderOrder = 1;
+        mesh.renderOrder = 0;
+        this.videoMesh = mesh;
         this.object.add(mesh);
+        this.setVideoTranslate(options.videoTranslate);
         this.setPosition(options.position);
         this.setRotation(options.rotation);
         this.setScale(options.scale);
         this.setHeight(options.height)
-        this.addBgCanvas(options.canvas)
         this.layer.addObject(this.object);
         this.videoAnimate();
+        this.addBgCanvas(options.canvas)
         resolve()
       })
 
@@ -72,11 +78,11 @@ class ThreeVideo {
     const material = new MeshPhongMaterial({
       map: texture, // 设置纹理贴图
       side: DoubleSide,
-      transparent: true
+      transparent: true,
+      depthTest: false
     }); //材质对象Material
     const mesh = new Mesh(geometry, material); //网格模型对象Mesh
-    mesh.renderOrder = 0;
-    mesh.translateX(-2)
+    mesh.renderOrder = 1;
     this.object.add(mesh);
     this.canvasTexture = texture;
   }
@@ -120,6 +126,14 @@ class ThreeVideo {
       const y = Math.PI / 180 * (rotation.y || 0);
       const z = Math.PI / 180 * (rotation.z || 0);
       this.object.rotation.set(x, y, z);
+      this.refresh();
+    }
+  }
+  setVideoTranslate(translate: Vec) {
+    if (translate) {
+      this.videoMesh.translateX(translate.x)
+      this.videoMesh.translateY(translate.y)
+      this.videoMesh.translateZ(translate.z)
       this.refresh();
     }
   }

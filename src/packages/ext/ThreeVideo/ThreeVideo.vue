@@ -36,6 +36,16 @@ export default defineComponent({
     videoWidth: {
       type: Number
     }, // 视频宽度
+    videoTranslate: {
+      type: Object as PropType<Vec>,
+      default(){
+        return {
+          x:0,
+          y:0,
+          z:0
+        }
+      }
+    },
     videoHeight: {
       type: Number
     }, // 视频高度
@@ -62,7 +72,8 @@ export default defineComponent({
       default: 0
     },
     opacity: {
-      type: Number
+      type: Number,
+      default: 1
     }, // 透明度，默认 1
     alwaysFront: {
       type: Boolean,
