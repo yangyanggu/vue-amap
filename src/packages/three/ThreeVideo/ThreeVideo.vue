@@ -19,7 +19,7 @@
 import {defineComponent} from "vue";
 import registerMixin from '../../../mixins/register-component';
 import ThreeVideo from "./ThreeVideo";
-import type {Vec, Offset} from "./Type";
+import type {Vec} from "./Type";
 import type{PropType} from "vue";
 
 export default defineComponent({

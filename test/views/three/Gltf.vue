@@ -11,7 +11,16 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-layer-three :lights="lights">
+      <el-amap-layer-three>
+        <el-amap-three-light-ambient
+          color="rgb(255,255,255)"
+          :intensity="0.6"
+        />
+        <el-amap-three-light-directional
+          color="rgb(255,0,255)"
+          :intensity="1"
+          :position="{x:0, y:1, z:0}"
+        />
         <!--        <el-amap-three-gltf
           v-for="(p,index) in positions"
           :key="index"
@@ -69,6 +78,8 @@ import {defineComponent} from "vue";
 import ElAmap from '@vue-map/packages/amap/amap.vue'
 import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
 import ElAmapThreeGltf from "@vue-map/packages/three/ThreeGltf/ThreeGltf.vue";
+import ElAmapThreeLightAmbient from "@vue-map/packages/three/ThreeLightAmbient/ThreeLightAmbient.vue";
+import ElAmapThreeLightDirectional from "@vue-map/packages/three/ThreeLightDirectional/ThreeLightDirectional.vue";
 import {bearing} from "@turf/turf";
 
 export default defineComponent({
@@ -76,6 +87,8 @@ export default defineComponent({
   components: {
     ElAmapThreeGltf,
     ElAmapLayerThree,
+    ElAmapThreeLightAmbient,
+    ElAmapThreeLightDirectional,
     ElAmap},
   data(){
     return {

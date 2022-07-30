@@ -63,6 +63,8 @@ import {ElAmapLocaPointLight} from '@vue-map/packages/loca/PointLight'
 import {ElAmapLayerVideo} from "@vue-map/packages/layer/data/Video"
 import {ElAmapLocaLaser} from "@vue-map/packages/loca/LaserLayer"
 import {ElAmapThreeVideo} from "@vue-map/packages/three/ThreeVideo";
+import {ElAmapThreeLightAmbient} from '@vue-map/packages/three/ThreeLightAmbient'
+import {ElAmapThreeLightDirectional} from '@vue-map/packages/three/ThreeLightDirectional'
 
 import type { Plugin } from 'vue'
 
@@ -131,5 +133,7 @@ export default [
   ElAmapLocaPointLight,
   ElAmapLayerVideo,
   ElAmapLocaLaser,
-  ElAmapThreeVideo
+  ElAmapThreeVideo,
+  ElAmapThreeLightAmbient,
+  ElAmapThreeLightDirectional
 ] as Plugin[]

@@ -10,9 +10,17 @@
       :features="['bg','road']"
     >
       <el-amap-layer-three
-        :lights="lights"
         :hdr="hdrOptions"
       >
+        <el-amap-three-light-ambient
+          color="rgb(255,255,255)"
+          :intensity="0.6"
+        />
+        <el-amap-three-light-directional
+          color="rgb(255,0,255)"
+          :intensity="1"
+          :position="{x:0, y:1, z:0}"
+        />
         <el-amap-three-gltf
           url="/gltf/sgyj_point_animation.gltf"
           :position="position"
@@ -63,21 +71,6 @@ export default defineComponent({
       carPosition: [121.59996, 31.197646],
       moveAnimation: {duration: 1000,smooth: true},
       carAngle: 90,
-      lights: [
-        {
-          type: 'DirectionalLight', // 灯光类型， 可选值见下面的字典
-          args: [0xffffff, 1], // 灯光初始化时需要的参数，具体参数顺序可以查看threejs官网灯光的说明。 采用 ...args 的方式进行初始化
-          position: {
-            x: 1000,
-            y: -100,
-            z: 900
-          }, // 光源的位置
-        },
-        {
-          type: 'AmbientLight', // 灯光类型， 可选值见下面的字典
-          args: [0xffffff, 0.3], // 灯光初始化时需要的参数，具体参数顺序可以查看threejs官网灯光的说明。 采用 ...args 的方式进行初始化
-        }
-      ],
       hdrOptions: {
         urls: [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ],
         path: '/hdr/'

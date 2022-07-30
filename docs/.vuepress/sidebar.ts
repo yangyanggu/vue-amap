@@ -127,6 +127,7 @@ export default [
       '/zh-cn/component/three/three-layer.md',
       '/zh-cn/component/three/three-gltf.md',
       '/zh-cn/component/three/three-video.md',
+      '/zh-cn/component/three/three-light-ambient.md',
     ],
   }
 ]
