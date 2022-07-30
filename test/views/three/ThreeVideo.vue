@@ -14,15 +14,18 @@
       <el-amap-layer-three :lights="lights">
         <el-amap-three-video
           v-if="canvas"
-          video="/test.mp4"
-          :video-width="480"
-          :video-height="246"
+          :visible="visible"
+          :video="video"
+          :video-width="videoOption.width"
+          :video-height="videoOption.height"
           :video-translate="translate"
           :canvas="canvas"
           :position="center"
-          :scale="1"
-          :height="200"
+          :scale="scale"
+          :altitude="altitude"
           :rotation="rotation"
+          :opacity="opacity"
+          :always-front="alwaysFront"
           @init="init"
         />
       </el-amap-layer-three>
@@ -38,8 +41,8 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerThree from "@vue-map/packages/ext/ThreeLayer/ThreeLayer.vue";
-import ElAmapThreeVideo from "@vue-map/packages/ext/ThreeVideo/ThreeVideo.vue";
+import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
+import ElAmapThreeVideo from "@vue-map/packages/three/ThreeVideo/ThreeVideo.vue";
 
 export default defineComponent({
   name: "Map",
@@ -64,6 +67,15 @@ export default defineComponent({
         y: 70,
         z: 0
       },
+      scale: 0.5,
+      altitude: 500,
+      video: '/test.mp4',
+      opacity: 0.5,
+      videoOption: {
+        width: 480,
+        height: 246
+      },
+      alwaysFront: true,
       canvas: null as any,
       context: null as any,
     }
@@ -75,8 +87,8 @@ export default defineComponent({
     initMap(map){
       console.log('init map: ', map);
       const canvas = document.createElement('canvas') as any;
-      canvas.width = 600;
-      canvas.height = 487;
+      canvas.width = 512;
+      canvas.height = 512;
       const context = canvas.getContext('2d');
       this.canvas = canvas;
       this.context = context;

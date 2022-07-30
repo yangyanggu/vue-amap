@@ -357,6 +357,10 @@ class ThreeLayer {
     this.mouse = null;
   }
 
+  getMap(){
+    return this.layer.getMap();
+  }
+
 }
 
 export default ThreeLayer

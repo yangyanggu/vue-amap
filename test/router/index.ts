@@ -35,12 +35,12 @@ import Polygon from "../views/vector/Polygon.vue";
 import Polyline from "../views/vector/Polyline.vue";
 import Rectangle from "../views/vector/Rectangle.vue";
 import Tiles3D from "../views/layer/Tiles3D.vue";
-import Gltf from '../views/ext/Gltf.vue'
+import Gltf from '../views/three/Gltf.vue'
 import CircleMarker from "../views/marker/CircleMarker.vue";
 import HeatMapBuffer from "../views/loca/HeatMapBuffer.vue";
 import VideoLayer from '../views/layer/Video.vue'
 import LaserLayer from '../views/loca/Laser.vue'
-import ThreeVideo from "../views/ext/ThreeVideo.vue";
+import ThreeVideo from "../views/three/ThreeVideo.vue";
 
 const routes = [
   {path: '/', component: Map},
@@ -81,8 +81,8 @@ const routes = [
   {path: '/vector/polyline', component: Polyline},
   {path: '/vector/rectangle', component: Rectangle},
   {path: '/layer/tiles3D', component: Tiles3D},
-  {path: '/ext/gltf', component: Gltf},
-  {path: '/ext/threeVideo', component: ThreeVideo},
+  {path: '/three/gltf', component: Gltf},
+  {path: '/three/threeVideo', component: ThreeVideo},
   {path: '/marker/circle', component: CircleMarker},
   {path: '/loca/laser', component: LaserLayer},
 ]

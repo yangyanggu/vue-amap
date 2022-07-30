@@ -30,12 +30,6 @@ export default defineComponent({
       type: [String, Array, HTMLVideoElement],
       required: true
     },
-    videoOffset: {
-      type: Object as PropType<Offset>
-    }, // 视频偏移
-    videoWidth: {
-      type: Number
-    }, // 视频宽度
     videoTranslate: {
       type: Object as PropType<Vec>,
       default(){
@@ -46,6 +40,9 @@ export default defineComponent({
         }
       }
     },
+    videoWidth: {
+      type: Number
+    }, // 视频宽度
     videoHeight: {
       type: Number
     }, // 视频高度
@@ -56,7 +53,7 @@ export default defineComponent({
       type: Array as PropType<number[]>,
       required: true
     },
-    height: {
+    altitude: {
       type: Number,
       default: 0
     },
@@ -108,13 +105,16 @@ export default defineComponent({
       })
     },
     destroyComponent() {
+      if(!this.parentInstance.isDestroy){
+        this.$amapComponent.remove();
+      }
       this.$amapComponent.destroy()
     },
-    $$star() {
-      this.$amapComponent.startAnimations();
+    $$start() {
+      this.$amapComponent.start();
     },
-    $$stop() {
-      this.$amapComponent.stopAnimations();
+    $$pause() {
+      this.$amapComponent.pause();
     }
   }
 });

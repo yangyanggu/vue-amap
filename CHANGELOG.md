@@ -1,3 +1,6 @@
+### v1.1.9
+* 增加ThreeVideo图层
+
 ### v1.1.8
 * 增加视频图层
 * 重构ThreeLayer图层

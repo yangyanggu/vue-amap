@@ -44,6 +44,9 @@ export default defineComponent({
       return this.$amapComponent.init(options, this);
     },
     destroyComponent() {
+      if(!this.parentInstance.isDestroy){
+        this.$amapComponent.remove();
+      }
       this.$amapComponent.destroy()
     },
     $$startAnimations() {

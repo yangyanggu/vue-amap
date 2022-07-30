@@ -67,8 +67,8 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerThree from "@vue-map/packages/ext/ThreeLayer/ThreeLayer.vue";
-import ElAmapThreeGltf from "@vue-map/packages/ext/ThreeGltf/ThreeGltf.vue";
+import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
+import ElAmapThreeGltf from "@vue-map/packages/three/ThreeGltf/ThreeGltf.vue";
 import {bearing} from "@turf/turf";
 
 export default defineComponent({

@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmapSearchBox from "@vue-map/packages/ext/SearchBox/SearchBox.vue";
+import ElAmapSearchBox from "@vue-map/packages/control/SearchBox/SearchBox.vue";
 import ElAmapControlGeolocation from "@vue-map/packages/control/Geolocation/Geolocation.vue";
 import ElAmap from '../../src/packages/amap/amap.vue'
 import ElAmapControlControlBar from "../../src/packages/control/ControlBar/ControlBar.vue";

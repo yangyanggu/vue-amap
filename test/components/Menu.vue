@@ -152,10 +152,10 @@ export default defineComponent({
           path: '/layer/tiles3D',
           name: '3DTiles图层'
         },{
-          path: '/ext/gltf',
+          path: '/three/gltf',
           name: 'ThreeJS Gltf示例'
         },{
-          path: '/ext/threeVideo',
+          path: '/three/threeVideo',
           name: 'ThreeJS 视频'
         }
       ]

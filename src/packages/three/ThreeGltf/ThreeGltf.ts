@@ -242,6 +242,12 @@ class ThreeGltf {
     cancelAnimationFrame(this.linerAnimationFrame);
   }
 
+  remove(){
+    if (this.object) {
+      this.layer.removeObject(this.object)
+    }
+  }
+
   destroy() {
     this.stopAnimations();
     this._stopAngleAnimation();

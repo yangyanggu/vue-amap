@@ -4,7 +4,7 @@ import {ElAmapControlHawkEye} from '@vue-map/packages/control/HawkEye'
 import {ElAmapControlMapType} from '@vue-map/packages/control/MapType'
 import {ElAmapControlScale} from '@vue-map/packages/control/Scale'
 import {ElAmapControlToolBar} from '@vue-map/packages/control/ToolBar'
-import {ElAmapSearchBox} from '@vue-map/packages/ext/SearchBox'
+import {ElAmapSearchBox} from '@vue-map/packages/control/SearchBox'
 import {ElAmapInfoWindow} from '@vue-map/packages/infoWindow/InfoWindow'
 import {ElAmapLayerCanvas} from '@vue-map/packages/layer/data/Canvas'
 import {ElAmapLayerCustom} from '@vue-map/packages/layer/data/Custom'
@@ -53,8 +53,8 @@ import {ElAmapPolygon} from '@vue-map/packages/vector/Polygon'
 import {ElAmapPolyline} from '@vue-map/packages/vector/Polyline'
 import {ElAmapRectangle} from '@vue-map/packages/vector/Rectangle'
 import {ElAmapLayerTiles3d} from '@vue-map/packages/layer/data/Tiles3D'
-import {ElAmapLayerThree} from '@vue-map/packages/ext/ThreeLayer'
-import {ElAmapThreeGltf} from '@vue-map/packages/ext/ThreeGltf'
+import {ElAmapLayerThree} from '@vue-map/packages/three/ThreeLayer'
+import {ElAmapThreeGltf} from '@vue-map/packages/three/ThreeGltf'
 import {ElAmapControlGeolocation} from '@vue-map/packages/control/Geolocation'
 import {ElAmapCircleMarker} from '@vue-map/packages/marker/CircleMarker'
 import {ElAmapLocaAmbientLight} from '@vue-map/packages/loca/AmbientLight'
@@ -62,7 +62,7 @@ import {ElAmapLocaDirectionalLight} from '@vue-map/packages/loca/DirectionalLigh
 import {ElAmapLocaPointLight} from '@vue-map/packages/loca/PointLight'
 import {ElAmapLayerVideo} from "@vue-map/packages/layer/data/Video"
 import {ElAmapLocaLaser} from "@vue-map/packages/loca/LaserLayer"
-import {ElAmapThreeVideo} from "@vue-map/packages/ext/ThreeVideo";
+import {ElAmapThreeVideo} from "@vue-map/packages/three/ThreeVideo";
 
 import type { Plugin } from 'vue'
 
