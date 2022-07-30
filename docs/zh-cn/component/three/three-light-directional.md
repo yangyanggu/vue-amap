@@ -22,7 +22,7 @@ examples/three/three-gltf
 
 名称 | 类型                                         | 说明
 ---|--------------------------------------------|---|
-color | String                                     | 环境光颜色，可以是rgba，或者red之类的
+color | String                                     | 环境光颜色，可以是rgba，或者red之类的,默认#ffffff
 intensity | Number                              | 光照的强度。缺省值为 1
 position | {x:number,y:number,z:number} | 灯光位置
 target | Object3D | 物体，配置后，平行光将跟着物体

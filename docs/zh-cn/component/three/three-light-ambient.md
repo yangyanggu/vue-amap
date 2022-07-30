@@ -22,7 +22,7 @@ examples/three/three-gltf
 
 名称 | 类型                                         | 说明
 ---|--------------------------------------------|---|
-color | String                                     | 环境光颜色，可以是rgba，或者red之类的
+color | String                                     | 环境光颜色，可以是rgba，或者red之类的,默认#ffffff
 intensity | Number                              | 光照的强度。缺省值为 1
 
 ## ref 可用方法

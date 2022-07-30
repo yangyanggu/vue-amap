@@ -22,7 +22,7 @@ examples/three/three-gltf
 
 名称 | 类型                                         | 说明
 ---|--------------------------------------------|---|
-color | String                                     | 环境光颜色，可以是rgba，或者red之类的
+color | String                                     | 环境光颜色，可以是rgba，或者red之类的,默认#ffffff
 intensity | Number                              | 光照的强度。缺省值为 1
 distance | Number                              |  这个距离表示从光源到光照强度为0的位置。 当设置为0时，光永远不会消失(距离无穷大)。缺省值 0
 decay | Number                              | 沿着光照距离的衰退量。缺省值 1

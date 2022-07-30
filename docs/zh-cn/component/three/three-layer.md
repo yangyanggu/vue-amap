@@ -22,7 +22,7 @@ examples/three/three-gltf
 
 名称 | 类型 | 说明
 ---|---|---|
-lights  | Array | 配置灯光数据，具体参数见下面
+lights  | Array | 配置灯光数据，具体参数见下面`已废弃，请使用灯光组件，更适合后续灯光控制`
 hdr | Object | HDR功能配置，具体参数见下面
 alpha | Boolean | canvas是否包含alpha (透明度)。默认为 false
 antialias | Boolean | 是否执行抗锯齿。默认为false
