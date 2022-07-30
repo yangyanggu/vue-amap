@@ -129,7 +129,9 @@ export default [
       '/zh-cn/component/three/three-video.md',
       '/zh-cn/component/three/three-light-ambient.md',
       '/zh-cn/component/three/three-light-directional.md',
-      '/zh-cn/component/three/three-light-hemisphere.md'
+      '/zh-cn/component/three/three-light-hemisphere.md',
+      '/zh-cn/component/three/three-light-point.md',
+      '/zh-cn/component/three/three-light-spot.md'
     ],
   }
 ]

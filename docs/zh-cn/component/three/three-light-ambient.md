@@ -7,7 +7,7 @@ head:
       content: amap, 高德地图, vue3.0, AmbientLight, threeJS
 ---
 
-# GLTF
+# 环境光
 环境光会均匀的照亮场景中的所有物体
 
 ## 基础示例

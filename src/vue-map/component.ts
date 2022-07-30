@@ -66,6 +66,8 @@ import {ElAmapThreeVideo} from "@vue-map/packages/three/ThreeVideo";
 import {ElAmapThreeLightAmbient} from '@vue-map/packages/three/ThreeLightAmbient'
 import {ElAmapThreeLightDirectional} from '@vue-map/packages/three/ThreeLightDirectional'
 import {ElAmapThreeLightHemisphere} from '@vue-map/packages/three/ThreeLightHemisphere'
+import {ElAmapThreeLightPoint} from '@vue-map/packages/three/ThreeLightPoint'
+import {ElAmapThreeLightSpot} from '@vue-map/packages/three/ThreeLightSpot'
 
 import type { Plugin } from 'vue'
 
@@ -137,5 +139,7 @@ export default [
   ElAmapThreeVideo,
   ElAmapThreeLightAmbient,
   ElAmapThreeLightDirectional,
-  ElAmapThreeLightHemisphere
+  ElAmapThreeLightHemisphere,
+  ElAmapThreeLightPoint,
+  ElAmapThreeLightSpot
 ] as Plugin[]

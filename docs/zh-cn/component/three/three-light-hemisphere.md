@@ -7,7 +7,7 @@ head:
       content: amap, 高德地图, vue3.0, HemisphereLight, threeJS
 ---
 
-# GLTF
+# 半球光
 光源直接放置于场景之上，光照颜色从天空光线颜色渐变到地面光线颜色。
 
 ## 基础示例

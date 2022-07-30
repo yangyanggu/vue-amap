@@ -26,6 +26,8 @@
           :intensity="1"
           :position="{x:1, y:0, z:0}"
         />
+        <el-amap-three-light-point :position="{x:116.106206, y:39.975468, z: 100 }" />
+        <el-amap-three-light-spot :position="{x:0, y:1, z:0}" />
         <!--        <el-amap-three-gltf
           v-for="(p,index) in positions"
           :key="index"
@@ -86,6 +88,8 @@ import ElAmapThreeGltf from "@vue-map/packages/three/ThreeGltf/ThreeGltf.vue";
 import ElAmapThreeLightAmbient from "@vue-map/packages/three/ThreeLightAmbient/ThreeLightAmbient.vue";
 import ElAmapThreeLightDirectional from "@vue-map/packages/three/ThreeLightDirectional/ThreeLightDirectional.vue";
 import ElAmapThreeLightHemisphere from "@vue-map/packages/three/ThreeLightHemisphere/ThreeLightHemisphere.vue";
+import ElAmapThreeLightPoint from "@vue-map/packages/three/ThreeLightPoint/ThreeLightPoint.vue";
+import ElAmapThreeLightSpot from "@vue-map/packages/three/ThreeLightSpot/ThreeLightSpot.vue";
 import {bearing} from "@turf/turf";
 
 export default defineComponent({
@@ -96,6 +100,8 @@ export default defineComponent({
     ElAmapThreeLightAmbient,
     ElAmapThreeLightDirectional,
     ElAmapThreeLightHemisphere,
+    ElAmapThreeLightPoint,
+    ElAmapThreeLightSpot,
     ElAmap},
   data(){
     return {
