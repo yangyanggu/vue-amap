@@ -21,6 +21,11 @@
           :intensity="1"
           :position="{x:0, y:1, z:0}"
         />
+        <el-amap-three-light-hemisphere
+          color="blue"
+          :intensity="1"
+          :position="{x:1, y:0, z:0}"
+        />
         <!--        <el-amap-three-gltf
           v-for="(p,index) in positions"
           :key="index"
@@ -80,6 +85,7 @@ import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue"
 import ElAmapThreeGltf from "@vue-map/packages/three/ThreeGltf/ThreeGltf.vue";
 import ElAmapThreeLightAmbient from "@vue-map/packages/three/ThreeLightAmbient/ThreeLightAmbient.vue";
 import ElAmapThreeLightDirectional from "@vue-map/packages/three/ThreeLightDirectional/ThreeLightDirectional.vue";
+import ElAmapThreeLightHemisphere from "@vue-map/packages/three/ThreeLightHemisphere/ThreeLightHemisphere.vue";
 import {bearing} from "@turf/turf";
 
 export default defineComponent({
@@ -89,6 +95,7 @@ export default defineComponent({
     ElAmapLayerThree,
     ElAmapThreeLightAmbient,
     ElAmapThreeLightDirectional,
+    ElAmapThreeLightHemisphere,
     ElAmap},
   data(){
     return {

@@ -65,6 +65,7 @@ import {ElAmapLocaLaser} from "@vue-map/packages/loca/LaserLayer"
 import {ElAmapThreeVideo} from "@vue-map/packages/three/ThreeVideo";
 import {ElAmapThreeLightAmbient} from '@vue-map/packages/three/ThreeLightAmbient'
 import {ElAmapThreeLightDirectional} from '@vue-map/packages/three/ThreeLightDirectional'
+import {ElAmapThreeLightHemisphere} from '@vue-map/packages/three/ThreeLightHemisphere'
 
 import type { Plugin } from 'vue'
 
@@ -135,5 +136,6 @@ export default [
   ElAmapLocaLaser,
   ElAmapThreeVideo,
   ElAmapThreeLightAmbient,
-  ElAmapThreeLightDirectional
+  ElAmapThreeLightDirectional,
+  ElAmapThreeLightHemisphere
 ] as Plugin[]

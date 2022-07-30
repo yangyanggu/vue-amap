@@ -21,6 +21,11 @@
           :intensity="1"
           :position="{x:0, y:1, z:0}"
         />
+        <el-amap-three-light-hemisphere
+          color="blue"
+          :intensity="1"
+          :position="{x:1, y:0, z:0}"
+        />
         <el-amap-three-gltf
           url="/gltf/sgyj_point_animation.gltf"
           :position="position"

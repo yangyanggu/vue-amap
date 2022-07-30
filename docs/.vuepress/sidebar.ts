@@ -128,6 +128,8 @@ export default [
       '/zh-cn/component/three/three-gltf.md',
       '/zh-cn/component/three/three-video.md',
       '/zh-cn/component/three/three-light-ambient.md',
+      '/zh-cn/component/three/three-light-directional.md',
+      '/zh-cn/component/three/three-light-hemisphere.md'
     ],
   }
 ]
