@@ -13,7 +13,7 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
 ## 基础示例
 
 ::: demo
-examples/ext/three-gltf
+examples/three/three-gltf
 :::
 
 

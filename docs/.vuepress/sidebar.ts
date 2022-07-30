@@ -122,10 +122,11 @@ export default [
     ],
   },
   {
-    text: '扩展',
+    text: 'ThreeJS扩展',
     children: [
-      '/zh-cn/component/ext/three-layer.md',
-      '/zh-cn/component/ext/three-gltf.md',
+      '/zh-cn/component/three/three-layer.md',
+      '/zh-cn/component/three/three-gltf.md',
+      '/zh-cn/component/three/three-video.md',
     ],
   }
 ]

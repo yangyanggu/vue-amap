@@ -3,7 +3,7 @@ title: AmapThreeVideo
 ---
 
 # AmapThreeVideo
-ThreeJS的视频实现，支持任意旋转，支持三位展示。
+ThreeJS的视频实现，支持任意旋转，支持三维展示。
 
 ## Attributes
 

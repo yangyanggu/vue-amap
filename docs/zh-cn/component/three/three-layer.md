@@ -14,7 +14,7 @@ ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含l
 ## 基础示例
 
 ::: demo
-examples/ext/three-gltf
+examples/three/three-gltf
 :::
 
 ## 静态属性

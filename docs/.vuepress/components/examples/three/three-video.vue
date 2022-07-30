@@ -1,5 +1,5 @@
 <template>
-  <div class="map-container">
+  <div class="map-page-container">
     <el-amap
       :show-label="false"
       :center="center"
@@ -30,30 +30,25 @@
         />
       </el-amap-layer-three>
     </el-amap>
-    <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? '隐藏' : '显示' }}
-      </el-button>
-      <el-button @click="changeDestroy">
-        {{ videoDestroy ? '销毁' : '创建' }}
-      </el-button>
-    </div>
+  </div>
+  <div class="toolbar">
+    <button @click="changeVisible">
+      {{ visible ? '隐藏' : '显示' }}
+    </button>
+    <button @click="changeDestroy">
+      {{ videoDestroy ? '销毁' : '创建' }}
+    </button>
   </div>
 </template>
 
+<style>
+</style>
+
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
-import ElAmapThreeVideo from "@vue-map/packages/three/ThreeVideo/ThreeVideo.vue";
 
 export default defineComponent({
-  name: "Map",
-  components: {
-    ElAmapThreeVideo,
-    ElAmapLayerThree,
-    ElAmap},
-  data(){
+  data() {
     return {
       videoDestroy: true,
       center: [116.306206, 39.975468],
@@ -82,8 +77,9 @@ export default defineComponent({
       alwaysFront: true,
       canvas: null as any,
       context: null as any,
-    }
+    };
   },
+
   methods: {
     clickMap(e){
       console.log('click map: ', e);
@@ -114,22 +110,5 @@ export default defineComponent({
       }
     }
   }
-})
+});
 </script>
-
-<style scoped>
-.map-container{
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-.control-container{
-  position: absolute;
-  padding: 24px;
-  background: #ffffff;
-  z-index: 2;
-  bottom: 40px;
-  left: 150px;
-  right: 150px;
-}
-</style>

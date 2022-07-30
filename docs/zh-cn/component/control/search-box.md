@@ -13,7 +13,7 @@ head:
 ## 基础示例
 
 ::: demo
-examples/ext/search-box
+examples/control/search-box
 :::
 
 ## 静态属性
