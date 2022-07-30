@@ -13,7 +13,7 @@
     >
       <el-amap-layer-three :lights="lights">
         <el-amap-three-video
-          v-if="canvas"
+          v-if="canvas && videoDestroy"
           :visible="visible"
           :video="video"
           :video-width="videoOption.width"
@@ -34,6 +34,9 @@
       <el-button @click="changeVisible">
         {{ visible ? '隐藏' : '显示' }}
       </el-button>
+      <el-button @click="changeDestroy">
+        {{ videoDestroy ? '销毁' : '创建' }}
+      </el-button>
     </div>
   </div>
 </template>
@@ -52,6 +55,7 @@ export default defineComponent({
     ElAmap},
   data(){
     return {
+      videoDestroy: true,
       center: [116.306206, 39.975468],
       zoom: 16,
       visible: true,
@@ -95,6 +99,9 @@ export default defineComponent({
     },
     changeVisible(){
       this.visible = !this.visible;
+    },
+    changeDestroy(){
+      this.videoDestroy = !this.videoDestroy;
     },
     initLayer(layer){
       console.log('init layer: ', layer);
