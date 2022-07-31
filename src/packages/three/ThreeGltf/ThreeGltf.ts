@@ -40,7 +40,7 @@ class ThreeGltf {
         object.isCustomGroup = true;
         object.$vue = $vue;
         const animations = gltf.animations;
-        this.layer.addEnvMap(object);
+        // this.layer.addEnvMap(object);
         this.layer.addObject(object);
         this.object = object;
         this.animations = animations;
