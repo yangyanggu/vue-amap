@@ -17,5 +17,5 @@ export interface LightOption {
 export interface HDROptions {
   urls: string[]
   path: string
-  exposure: number
+  exposure?: number // 光亮程度
 }

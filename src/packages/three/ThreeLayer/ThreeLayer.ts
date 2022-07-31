@@ -204,9 +204,9 @@ class ThreeLayer {
     render.outputEncoding = sRGBEncoding;
     render.toneMappingExposure = options.exposure;
     const hdrUrls = options.urls;
-    const pmremGenerator = new PMREMGenerator(render);
+    let pmremGenerator = new PMREMGenerator(render);
     pmremGenerator.compileCubemapShader();
-    const hdrCubeMap = new HDRCubeTextureLoader().setDataType(UnsignedByteType)
+    const hdrCubeMap = new HDRCubeTextureLoader()
       .setPath(options.path)
       .load(hdrUrls, () => {
         const hdrCubeRenderTarget = pmremGenerator.fromCubemap(hdrCubeMap);
@@ -214,12 +214,15 @@ class ThreeLayer {
         hdrCubeMap.needsUpdate = true;
         this.envMap = hdrCubeRenderTarget ? hdrCubeRenderTarget.texture : null;
         this.addEnvMap(this.scene);
+        pmremGenerator.dispose();
+        pmremGenerator = null;
         this.refreshMap();
       }) as any;
   }
 
   addEnvMap(object) {
-    const envMap = this.envMap;
+    this.scene.environment = this.envMap;
+    /*const envMap = this.envMap;
     if (!envMap || !object) {
       return;
     }
@@ -232,7 +235,7 @@ class ThreeLayer {
       object.children.forEach(o => {
         this.addEnvMap(o);
       });
-    }
+    }*/
   }
 
   bindEvents() {
