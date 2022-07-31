@@ -82,7 +82,7 @@ class ThreeLayer {
           const container = map.getContainer();
           const width = container.offsetWidth;
           const height = container.offsetHeight;
-          let camera = null as any;
+          let camera;
           if (map.getView().type === '3D') {
             camera = new PerspectiveCamera(60, width / height, 100, 1 << 30);
           } else {
@@ -116,7 +116,6 @@ class ThreeLayer {
           if (map.getView().type === '3D') {
             const {near, far, fov, up, lookAt, position} = this.customCoords.getCameraParams();
             // 2D 地图下使用的正交相机
-
             // 这里的顺序不能颠倒，否则可能会出现绘制卡顿的效果。
             camera.near = near;
             camera.far = far;
@@ -136,6 +135,7 @@ class ThreeLayer {
             camera.updateProjectionMatrix();
           }
           this.renderer.render(this.scene, camera);
+          this.renderer.resetState();
         }
       }
       this.layer = new AMap.GLCustomLayer(layerOptions);
@@ -302,6 +302,9 @@ class ThreeLayer {
   }
 
   _getGroup(object) {
+    if(!object){
+      return null;
+    }
     if (object.isCustomGroup) {
       return object;
     }
