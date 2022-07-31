@@ -46,7 +46,8 @@
     "@tweenjs/tween.js": "^18.6.4",
     "lodash-es": "^4.17.21",
     "three": "0.142.0",
-    "uppercamelcase": "^1.1.0"
+    "uppercamelcase": "^1.1.0",
+    "color": "^4.2.3"
   },
   "devDependencies": {
   },

@@ -11,10 +11,10 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-layer-three>
+      <el-amap-layer-three :hdr="hdrOptions">
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
-          :intensity="0.6"
+          :intensity="1"
         />
         <el-amap-three-light-directional
           color="rgb(255,0,255)"
@@ -119,7 +119,11 @@ export default defineComponent({
       lights: [{
         type: 'AmbientLight',
         args: []
-      }]
+      }],
+      hdrOptions: {
+        urls: [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ],
+        path: './hdr/'
+      }
     }
   },
   methods: {

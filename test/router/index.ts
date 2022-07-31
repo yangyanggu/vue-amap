@@ -41,6 +41,7 @@ import HeatMapBuffer from "../views/loca/HeatMapBuffer.vue";
 import VideoLayer from '../views/layer/Video.vue'
 import LaserLayer from '../views/loca/Laser.vue'
 import ThreeVideo from "../views/three/ThreeVideo.vue";
+import ThreePolygon from '../views/three/Polygon.vue'
 
 const routes = [
   {path: '/', component: Map},
@@ -83,6 +84,7 @@ const routes = [
   {path: '/layer/tiles3D', component: Tiles3D},
   {path: '/three/gltf', component: Gltf},
   {path: '/three/threeVideo', component: ThreeVideo},
+  {path: '/three/polygon', component: ThreePolygon},
   {path: '/marker/circle', component: CircleMarker},
   {path: '/loca/laser', component: LaserLayer},
 ]

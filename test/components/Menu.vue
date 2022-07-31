@@ -157,6 +157,9 @@ export default defineComponent({
         },{
           path: '/three/threeVideo',
           name: 'ThreeJS 视频'
+        },{
+          path: '/three/polygon',
+          name: 'ThreeJS面图层'
         }
       ]
     }

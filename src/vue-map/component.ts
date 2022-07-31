@@ -68,6 +68,7 @@ import {ElAmapThreeLightDirectional} from '@vue-map/packages/three/ThreeLightDir
 import {ElAmapThreeLightHemisphere} from '@vue-map/packages/three/ThreeLightHemisphere'
 import {ElAmapThreeLightPoint} from '@vue-map/packages/three/ThreeLightPoint'
 import {ElAmapThreeLightSpot} from '@vue-map/packages/three/ThreeLightSpot'
+import {ElAmapThreePolygon} from '@vue-map/packages/three/ThreePolygon'
 
 import type { Plugin } from 'vue'
 
@@ -141,5 +142,6 @@ export default [
   ElAmapThreeLightDirectional,
   ElAmapThreeLightHemisphere,
   ElAmapThreeLightPoint,
-  ElAmapThreeLightSpot
+  ElAmapThreeLightSpot,
+  ElAmapThreePolygon
 ] as Plugin[]
