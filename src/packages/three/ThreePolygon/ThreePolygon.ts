@@ -26,7 +26,6 @@ class ThreePolygon {
     this.object = new Group();
     this.layer.addObject(this.object);
     this.init(options);
-    return this;
   }
 
   init(options: Options) {

@@ -18,7 +18,6 @@ class ThreeLightDirectional {
     this.object = light;
     this.setPosition(options.position);
     layer.addObject(light);
-    return light;
   }
 
   setColor(color: string) {

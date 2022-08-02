@@ -24,6 +24,7 @@
           :depth-test="true"
           :height="1500"
         />
+        <el-amap-three-pass-circle :position="center" />
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
@@ -40,6 +41,7 @@ import ElAmap from '@vue-map/packages/amap/amap.vue'
 import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
 import ElAmapThreePolygon from "@vue-map/packages/three/ThreePolygon/ThreePolygon.vue";
 import ElAmapThreeLightAmbient from "@vue-map/packages/three/ThreeLightAmbient/ThreeLightAmbient.vue";
+import ElAmapThreePassCircle from "@vue-map/packages/three/ThreePassCircle/ThreePassCircle.vue";
 
 export default defineComponent({
   name: "Map",
@@ -47,6 +49,7 @@ export default defineComponent({
     ElAmapThreePolygon,
     ElAmapLayerThree,
     ElAmapThreeLightAmbient,
+    ElAmapThreePassCircle,
     ElAmap},
   data(){
     return {

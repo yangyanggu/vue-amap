@@ -14,7 +14,6 @@ class ThreeLightAmbient {
     const light = new AmbientLight(this.getColorHex(options.color), options.intensity);
     this.object = light;
     layer.addObject(light);
-    return light;
   }
 
   setColor(color: string) {

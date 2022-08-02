@@ -11,15 +11,17 @@ import {
   SpotLight,
   PMREMGenerator,
   sRGBEncoding,
-  UnsignedByteType,
   LinearFilter,
   Raycaster,
   Vector2,
-  Cache
+  Cache,
+  AxesHelper
 } from 'three';
 import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import {clearScene} from "../../../utils/threeUtil";
+import { RenderPass } from './RenderPass.js';
 import type {HDROptions, LightOption} from "./Type";
 
 interface Options {
@@ -58,6 +60,10 @@ class ThreeLayer {
   envMap: any; // HDR的环境贴图
   clickFun: any;
   hoverFun: any;
+  effectComposer: any
+  renderPass: any
+  passNum = 0
+  passList = [] as any[]
 
   constructor(options: Options, map: any) {
     this.raycaster = new Raycaster();
@@ -94,6 +100,7 @@ class ThreeLayer {
             antialias: options.antialias
             // canvas: gl.canvas,
           });
+          renderer.setSize(width, height);
 
           // 自动清空画布这里必须设置为 false，否则地图底图将无法显示
           renderer.autoClear = false;
@@ -101,6 +108,9 @@ class ThreeLayer {
           this.camera = camera;
           this.renderer = renderer;
           this.scene = scene;
+          const axesHelper = new AxesHelper( 10000 );
+          scene.add( axesHelper );
+          this.createEffect();
           this.createLights(this.options.lights || []);
           this.createHDR(this.options.hdr);
           this.animate();
@@ -134,13 +144,46 @@ class ThreeLayer {
             camera.position.set(...position);
             camera.updateProjectionMatrix();
           }
-          this.renderer.render(this.scene, camera);
+          this.camera = camera;
+          if(this.passNum > 0){
+            this.passList.forEach( pass => {
+              if(pass.setCamera){
+                pass.setCamera(camera);
+              }
+            })
+            this.effectComposer.render()
+          }else{
+            this.renderer.render(this.scene, camera);
+          }
           this.renderer.resetState();
         }
       }
       this.layer = new AMap.GLCustomLayer(layerOptions);
       this.layer.setMap(map);
     })
+  }
+
+  createEffect() {
+    const size = this.renderer.getSize( new Vector2() );
+    this.effectComposer = new EffectComposer( this.renderer );
+    const renderPass = new RenderPass( this.scene, this.camera );
+    this.renderPass = renderPass;
+    this.effectComposer.addPass(renderPass);
+  }
+
+  addPass(pass: any){
+    this.effectComposer.addPass(pass);
+    this.passNum++;
+    this.passList.push(pass);
+  }
+
+  removePass(pass: any){
+    const index = this.passList.indexOf( pass );
+    if ( index !== - 1 ) {
+      this.passList.splice( index, 1 );
+    }
+    this.effectComposer.removePass(pass);
+    this.passNum--;
   }
 
   setUpdate(){
@@ -334,6 +377,10 @@ class ThreeLayer {
 
   getScene() {
     return this.scene
+  }
+
+  getCamera() {
+    return this.camera;
   }
 
   getRender() {
