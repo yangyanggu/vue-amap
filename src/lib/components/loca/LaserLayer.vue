@@ -26,7 +26,6 @@ export default {
       this.setSource();
       this.setStyle();
       this.$parentComponent.add(this.$amapComponent);
-      console.log('this.$amapComponent: ', this.$amapComponent)
       this.initComplete();
     },
     setStyle() {
