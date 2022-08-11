@@ -116,7 +116,8 @@ export default {
         };
         options.render = function() {
           // 这里必须执行！！重新设置 three 的 gl 上下文状态。
-          _this.renderer.state.reset();
+          _this.renderer.resetState();
+          _this.customCoords.setCenter(center.toArray());
           let camera = _this.camera;
           if (_this.$parentComponent.getView().type === '3D') {
             let { near, far, fov, up, lookAt, position } = _this.customCoords.getCameraParams();
@@ -142,6 +143,7 @@ export default {
           }
 
           _this.renderer.render(_this.scene, camera);
+          _this.renderer.resetState();
         };
         this.$amapComponent = new AMap.GLCustomLayer(options);
         this.$amapComponent.setMap(this.$parentComponent);

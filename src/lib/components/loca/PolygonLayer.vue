@@ -30,7 +30,10 @@ export default {
     }, // 是否开启被遮挡的面隐藏，默认开启，如果关闭，在有透明度的时候，会显示出被遮挡的面。
     depth: {
       type: Boolean
-    }// 是否开启深度检测，开启后可能会影响zIndex
+    }, // 是否开启深度检测，开启后可能会影响zIndex
+    labelsLayerOptions: {
+      type: Object
+    } // 文字标注图层配置，配置同 AMap.LabelsLayer
   },
   data() {
     return {
@@ -52,10 +55,13 @@ export default {
         topColor: '#fff',
         sideTopColor: '#fff',
         sideBottomColor: '#fff',
+        bottomColor: '#fff',
         altitude: 0,
         height: 0,
         texture: null,
-        textureSize: [20, 3]
+        textureSize: [20, 3],
+        label: undefined,
+        labelAltitude: 0
       };
       let style = Object.assign({}, defaultStyleValue, this.defaultStyleValue);
       let defaultLayerStyle = {
@@ -71,6 +77,10 @@ export default {
           feature.properties = feature.properties || {};
           return feature.properties.sideBottomColor === undefined ? style.sideBottomColor : feature.properties.sideBottomColor;
         },
+        bottomColor: (index, feature) => {
+          feature.properties = feature.properties || {};
+          return feature.properties.bottomColor === undefined ? style.bottomColor : feature.properties.bottomColor;
+        },
         altitude: (index, feature) => {
           feature.properties = feature.properties || {};
           return feature.properties.altitude === undefined ? style.altitude : feature.properties.altitude;
@@ -83,6 +93,14 @@ export default {
         textureSize: (index, feature) => {
           feature.properties = feature.properties || {};
           return feature.properties.textureSize === undefined ? style.textureSize : feature.properties.textureSize;
+        },
+        label: (index, feature) => {
+          feature.properties = feature.properties || {};
+          return feature.properties.label === undefined ? style.label : feature.properties.label;
+        },
+        labelAltitude: (index, feature) => {
+          feature.properties = feature.properties || {};
+          return feature.properties.labelAltitude === undefined ? style.labelAltitude : feature.properties.labelAltitude;
         }
       };
       let layerStyle = Object.assign({}, defaultLayerStyle, this.layerStyle);

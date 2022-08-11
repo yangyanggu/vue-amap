@@ -84,6 +84,7 @@
   - [轨迹线图层](zh-cn/loca/pulse-line-layer.md)
   - [连接飞线图层](zh-cn/loca/pulse-link-layer.md)
   - [ZMarker图层](zh-cn/loca/z-marker-layer.md)
+  - [激光图层](zh-cn/loca/laser-layer.md)
 - 扩展
   
 - [FAQ](zh-cn/faq.md)

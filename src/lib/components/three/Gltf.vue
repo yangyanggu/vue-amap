@@ -29,6 +29,9 @@ export default {
     },
     angle: {
       type: Number
+    },
+    height: {
+      type: Number
     }
   },
   data() {
@@ -46,6 +49,9 @@ export default {
         },
         angle() {
           _this.setAngle();
+        },
+        height() {
+          _this.setHeight();
         }
       }
     };
@@ -69,6 +75,7 @@ export default {
           object.scale.set(scale, scale, scale);
           this.setRotation();
           this.setAngle();
+          this.setHeight();
           this.setVisible();
           this._refresh();
           resolve();
@@ -108,6 +115,12 @@ export default {
         let z = this.$amapComponent.rotation.z;
         let y = Math.PI / 180 * this.angle;
         this.$amapComponent.rotation.set(x, y, z);
+        this._refresh();
+      }
+    },
+    setHeight() {
+      if (this.height !== undefined) {
+        this.$amapComponent.position.setZ(this.height);
         this._refresh();
       }
     },

@@ -79,6 +79,7 @@ import ZMarkerLayer from './components/loca/ZMarkerLayer';
 import AmbientLight from './components/loca/AmbientLight';
 import DirectionalLight from './components/loca/DirectionalLight';
 import PointLight from './components/loca/PointLight';
+import LaserLayer from './components/loca/LaserLayer';
 
 // managers
 import registerMixin from './mixins/register-component';
@@ -147,7 +148,8 @@ let components = [
   ZMarkerLayer,
   AmbientLight,
   DirectionalLight,
-  PointLight
+  PointLight,
+  LaserLayer
 ];
 
 let VueAMap = {
