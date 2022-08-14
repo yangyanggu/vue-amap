@@ -9,7 +9,11 @@ export default defineComponent({
   name: 'ElAmapThreePolygon',
   mixins: [registerMixin],
   props: {
-    sideColor: {
+    sideTopColor: {
+      type: String,
+      default: '#ffffff'
+    },// 侧面顶部颜色
+    sideBottomColor: {
       type: String,
       default: '#ffffff'
     },// 侧面颜色
