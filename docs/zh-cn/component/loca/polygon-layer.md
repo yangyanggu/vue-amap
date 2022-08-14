@@ -92,10 +92,13 @@ layerStyle参数覆盖所有默认值
 topColor | String, Function | 棱柱的顶面颜色值。default '#fff'
 sideTopColor | String, Function | 棱柱的侧面顶部颜色值。default '#fff'
 sideBottomColor | String, Function | 棱柱的侧面底部颜色值。default '#fff'
+bottomColor | String, Function | 棱柱的底部颜色值。default '#fff'
 altitude  | Number, Function | 海拔高度，代表棱柱的离地高度。支持动画过渡效果。 default 0
 height  | Number, Function | 棱柱的高度。单位是 unit 的值。支持动画过渡效果。default 100
 texture  | Canvas, URL, Image, Base64 | 带有高度的时候，侧面的贴图纹理，目前仅支持侧面。如果需要纹理在侧面重复贴图，需要图片的宽高是 2 的 n 次方像素值。比如：256x256，64x1024
 textureSize  | Array[Number,Number], Function | 一个纹理图片覆盖的大小，[宽度, 高度]，单位是米，默认是宽 20 米，高 3 米贴一张纹理，会重复贴图。default [20,3]
+label | Object, Function | 面中心位置的文字标注，配置同 [AMap.LabelMarker](https://lbs.amap.com/api/jsapi-v2/documentation#labelmarker)
+labelAltitude | Number, Function | 文字标注相对于顶面的海拔高度。单位：米。default 0
 
 ### defaultStyleValue参数
 
@@ -108,10 +111,13 @@ defaultStyleValue提供默认参数，但会被geojson的properties属性中的�
 topColor | String | 棱柱的顶面颜色值。default '#fff'
 sideTopColor | String | 棱柱的侧面顶部颜色值。default '#fff'
 sideBottomColor | String | 棱柱的侧面底部颜色值。default '#fff'
+bottomColor | String | 棱柱的底部颜色值。default '#fff'
 altitude  | Number | 海拔高度，代表棱柱的离地高度。支持动画过渡效果。 default 0
 height  | Number | 棱柱的高度。单位是 unit 的值。支持动画过渡效果。default 100
 texture  | Canvas, URL, Image, Base64 | 带有高度的时候，侧面的贴图纹理，目前仅支持侧面。如果需要纹理在侧面重复贴图，需要图片的宽高是 2 的 n 次方像素值。比如：256x256，64x1024
 textureSize  | Array[Number,Number] | 一个纹理图片覆盖的大小，[宽度, 高度]，单位是米，默认是宽 20 米，高 3 米贴一张纹理，会重复贴图。default [20,3]
+label | Object | 面中心位置的文字标注，默认undefined, 配置同 [AMap.LabelMarker](https://lbs.amap.com/api/jsapi-v2/documentation#labelmarker)
+labelAltitude | Number | 文字标注相对于顶面的海拔高度。单位：米。default 0
 
 ### style说明
 所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取geojson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>

@@ -22,13 +22,14 @@ examples/three/three-polygon
 
 名称 | 类型 | 说明
 ---|---|---|
-sideColor  | String | 侧面颜色, 默认 #ffffff
+sideTopColor  | String | 侧面顶部颜色, 默认 #ffffff
+sideBottomColor  | String | 侧面底部颜色,当顶部和底部颜色不一致时渐变 默认 #ffffff
 sideTexture | String | 侧面贴图图片地址，侧面优先使用该属性,默认空 ，图片宽高必须是2的n次方，推荐使用512*512
 topColor | String | 顶部颜色, 默认 #ffffff
 bottomColor | String | 底部颜色, 默认 #ffffff
 height | Number | 楼层高度，优先读取geojson数据中properties中的height，默认 30
-depthTest | Boolean | 是否进行深度检测， 默认 true
-source | Object | geojson数据
+depthTest | Boolean | 是否进行深度检测，侧面使用颜色时推荐false，使用贴图时使用true 默认 false
+source | Object | geojson数据，支持挖孔面
 
 ## 动态属性
 支持响应式。

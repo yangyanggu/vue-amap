@@ -55,7 +55,9 @@ export default defineComponent({
         altitude: 0,
         height: 0,
         texture: null,
-        textureSize: [20, 3]
+        textureSize: [20, 3],
+        label: undefined,
+        labelAltitude: 0
       };
       const style = Object.assign({}, defaultStyleValue, this['defaultStyleValue']);
       const defaultLayerStyle = {
@@ -83,6 +85,14 @@ export default defineComponent({
         textureSize: (index, feature) => {
           feature.properties = feature.properties || {};
           return feature.properties.textureSize === undefined ? style.textureSize : feature.properties.textureSize;
+        },
+        label: (index, feature) => {
+          feature.properties = feature.properties || {};
+          return feature.properties.label === undefined ? style.label : feature.properties.label;
+        },
+        labelAltitude: (index, feature) => {
+          feature.properties = feature.properties || {};
+          return feature.properties.labelAltitude === undefined ? style.labelAltitude : feature.properties.labelAltitude;
         }
       };
       const layerStyle = Object.assign({}, defaultLayerStyle, this['layerStyle']);

@@ -85,7 +85,9 @@ class ThreeVideo {
   unBindAlwaysFront(){
     if(this.rotateFun){
       const map = this.layer.getMap();
-      map.off('rotatechange', this.rotateFun)
+      if(map){
+        map.off('rotatechange', this.rotateFun)
+      }
     }
   }
 
@@ -220,6 +222,7 @@ class ThreeVideo {
   remove(){
     if (this.object) {
       this.layer.removeObject(this.object)
+      this.unBindAlwaysFront()
     }
   }
 
