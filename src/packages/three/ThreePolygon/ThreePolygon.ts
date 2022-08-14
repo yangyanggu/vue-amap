@@ -1,8 +1,9 @@
 import {Group, Shape, ExtrudeGeometry, MeshLambertMaterial,
   Mesh, TextureLoader, DoubleSide, RepeatWrapping, Vector2,
-  Vector4, Path, ShaderMaterial, Color} from 'three';
+  Vector4, Path, ShaderMaterial, Color,UniformsUtils, UniformsLib} from 'three';
 import {getRgbNumber, getAlpha} from "../../../utils/colorUtil";
 import {clearGroup} from "../../../utils/threeUtil";
+import {vertex, fragment} from './meshlambert.glsl'
 import type {Polygon} from "./Type";
 
 interface Options {
@@ -108,40 +109,31 @@ class ThreePolygon {
         const bottomColor = new Color();
         bottomColor.setHex(getRgbNumber(options.sideBottomColor));
         const bottomColorVector4 = new Vector4(bottomColor.r, bottomColor.g, bottomColor.b, getAlpha(options.sideBottomColor))
+        const uniforms = UniformsUtils.merge( [
+          UniformsLib.common,
+          UniformsLib.specularmap,
+          UniformsLib.envmap,
+          UniformsLib.aomap,
+          UniformsLib.lightmap,
+          UniformsLib.emissivemap,
+          UniformsLib.fog,
+          UniformsLib.lights,
+          {
+            emissive: { value: new Color( '#000' ) },
+            "topColorVector4": {value: bottomColorVector4},
+            "bottomColorVector4": {value: topColorVector4},
+            "height": {value: height},
+          }
+
+        ] )
         sideMaterial = new ShaderMaterial({
           depthTest: options.depthTest,
           side: DoubleSide,
           transparent: true,
-          lights: false,
-          uniforms: {
-            "topColorVector4": {value: topColorVector4},
-            "bottomColorVector4": {value: bottomColorVector4},
-            "height": {value: height},
-          },
-          vertexShader:
-            `
-                varying vec3 v_position;
-                
-                void main() {
-                    v_position = position;
-					          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-				        }`,
-          fragmentShader:
-            `
-                #include <packing>
-                uniform float height;
-                uniform vec4 topColorVector4;
-                uniform vec4 bottomColorVector4;
-                varying vec3 v_position;
-                void main() {
-                    vec4 diff = bottomColorVector4 - topColorVector4;
-                    vec4 percent = diff/height;
-                    float x = topColorVector4.x + percent.x*v_position.z;
-                    float y = topColorVector4.y + percent.y*v_position.z;
-                    float z = topColorVector4.z + percent.z*v_position.z;
-                    float r = topColorVector4.r + percent.r*v_position.z;
-                    gl_FragColor = vec4(x,y,z,r);
-                }`
+          lights: true,
+          uniforms,
+          vertexShader: vertex,
+          fragmentShader: fragment
         })
       }
       materialList.push(sideMaterial);
@@ -165,7 +157,6 @@ class ThreePolygon {
     const topExtrudeGeometry = new ExtrudeGeometry(shape, {
       depth: 0
     })
-    console.log('getRgbNumber(options.topColor): ', getRgbNumber(options.topColor))
     const topMaterial = new MeshLambertMaterial({
       depthTest: options.depthTest,
       transparent: true,
