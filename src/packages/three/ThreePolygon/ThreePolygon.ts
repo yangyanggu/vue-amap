@@ -1,4 +1,4 @@
-import {Group, Shape, ExtrudeGeometry, MeshLambertMaterial, Mesh, TextureLoader, DoubleSide, RepeatWrapping } from 'three';
+import {Group, Shape, ExtrudeGeometry, MeshLambertMaterial, Mesh, TextureLoader, DoubleSide, RepeatWrapping, Vector2, Path } from 'three';
 import {getRgbNumber, getAlpha} from "../../../utils/colorUtil";
 import {clearGroup} from "../../../utils/threeUtil";
 import type {Polygon} from "./Type";
@@ -31,10 +31,10 @@ class ThreePolygon {
   init(options: Options) {
     options.source.features.forEach( feature => {
       if(feature.geometry.type === 'Polygon'){
-        this.createMesh(feature.geometry.coordinates, feature.properties, options);
+        this.createMesh(feature.geometry.coordinates, feature.properties as Properties, options);
       }else if(feature.geometry.type === 'MultiPolygon'){
         feature.geometry.coordinates.forEach( cood => {
-          this.createMesh(cood, feature.properties, options);
+          this.createMesh(cood, feature.properties as Properties, options);
         })
       }
     })
@@ -45,15 +45,26 @@ class ThreePolygon {
     if(paths.length === 0){
       return
     }
+    properties = properties || {}
     const height = properties.height !== undefined ? properties.height : options.height;
     const path = paths[0];
-    const shape = new Shape();
-    const firstPoint = this.convertLngLat(path[0]);
-    shape.moveTo(firstPoint[0], firstPoint[1]);
-    for(let i=1;i<path.length;i++){
+    const outPolygonArray: Vector2[] = []
+    const holesArray: Path[] = [];
+    for(let i=0;i<path.length;i++){
       const point = this.convertLngLat(path[i]);
-      shape.lineTo(point[0], point[1]);
+      outPolygonArray.push(new Vector2(point[0], point[1]))
     }
+    for(let i=1;i<paths.length;i++){
+      const inPolygonPath = paths[i];
+      const array:Vector2[] = [];
+      for(let j=0;j<inPolygonPath.length;j++){
+        const inPoint = this.convertLngLat(inPolygonPath[j]);
+        array.push(new Vector2(inPoint[0], inPoint[1]))
+      }
+      holesArray.push(new Path(array));
+    }
+    const shape = new Shape(outPolygonArray);
+    shape.holes = holesArray;
     const extrudeGeometry = new ExtrudeGeometry(shape, {
       depth: height,
       bevelEnabled: false,
