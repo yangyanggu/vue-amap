@@ -13,7 +13,6 @@ import {lazyAMapApiLoaderInstance} from '../../services/injected-amap-api-instan
 export default defineComponent ({
   name: 'ElAmap',
   mixins: [registerMixin],
-  emits: ['update:zoom', 'update:center', 'update:rotation', 'update:pitch'],
   provide() {
     return {
       parentInstance: this
@@ -139,6 +138,7 @@ export default defineComponent ({
       default: false
     }, //是否开启地形，默认不开启
   },
+  emits: ['update:zoom', 'update:center', 'update:rotation', 'update:pitch'],
 
   data() {
     return {

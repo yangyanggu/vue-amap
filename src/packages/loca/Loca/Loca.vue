@@ -29,6 +29,10 @@ export default defineComponent({
       converters: {},
     };
   },
+  unmounted() {
+    this.$amapComponent = null;
+    this.$parentComponent = null;
+  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new Loca.Container({
