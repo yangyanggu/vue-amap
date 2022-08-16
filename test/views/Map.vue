@@ -1,11 +1,12 @@
 <template>
   <div class="map-container">
     <el-amap
+      v-model:zoom="zoom"
+      v-model:rotation="rotation"
+      v-model:center="center"
+      v-model:pitch="pitch"
       :show-label="false"
       view-mode="3D"
-      :pitch="50"
-      :center="center"
-      :zoom="zoom"
       :terrain="true"
       @click="clickMap"
       @init="initMap"
@@ -59,6 +60,8 @@ export default defineComponent({
     return {
       center: [120,31],
       zoom: 16,
+      pitch: 50,
+      rotation: 0,
       eyeOpen: true,
     }
   },

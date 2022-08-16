@@ -3,6 +3,8 @@
 * threeJS增加环境光、平行光、半球光、点光源、聚光灯
 * threeJS解决HDR失效问题，HDR更改为全局生效
 * three增加面图层，用于生成建筑
+* map地图center、rotation、pitch、zoom支持v-model
+* 解决部分组件销毁时没有从地图上移出问题
 
 ### v1.1.8
 * 增加视频图层

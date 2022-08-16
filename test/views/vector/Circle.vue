@@ -8,6 +8,7 @@
       @init="initMap"
     >
       <el-amap-circle
+        v-if="created"
         :center="circleCenter"
         :radius="radius"
         :visible="visible"
@@ -31,6 +32,9 @@
       </el-button>
       <el-button @click="changeEditable">
         {{ edit ? '停止编辑' : '开始编辑' }}
+      </el-button>
+      <el-button @click="createOrDestroy">
+        {{ created ? '销毁' : '创建' }}
       </el-button>
     </div>
   </div>
@@ -60,7 +64,8 @@ export default defineComponent({
       layer: {
         circleCenter: [121.5283285, 31.21615044],
         radius: 500,
-      }
+      },
+      created: true
     }
   },
   methods: {
@@ -82,6 +87,9 @@ export default defineComponent({
     click(e) {
       alert('click Circle');
     },
+    createOrDestroy() {
+      this.created = !this.created;
+    }
   }
 })
 </script>

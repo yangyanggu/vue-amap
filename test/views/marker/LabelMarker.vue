@@ -9,6 +9,7 @@
     >
       <el-amap-layer-labels>
         <el-amap-label-marker
+          v-if="created"
           :visible="labelOptions.visible"
           :position="labelOptions.position"
           :text="labelOptions.text"
@@ -22,6 +23,9 @@
       </el-button>
       <el-button @click="changeVisible">
         显隐
+      </el-button>
+      <el-button @click="createOrDestroy">
+        {{ created ? '销毁' : '创建' }}
       </el-button>
     </div>
   </div>
@@ -66,8 +70,9 @@ export default defineComponent({
           size: [25, 34],
           clipOrigin: [459, 92],
           clipSize: [50, 68]
-        }
-      }
+        },
+      },
+      created: true
     }
   },
   methods: {
@@ -88,6 +93,9 @@ export default defineComponent({
     markerInit(e){
       console.log('marker init: ', e);
     },
+    createOrDestroy() {
+      this.created = !this.created;
+    }
   }
 })
 </script>
