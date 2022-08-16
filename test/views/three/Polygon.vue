@@ -4,6 +4,7 @@
       :center="center"
       :zoom="zoom"
       view-mode="3D"
+      :show-building-block="false"
       :pitch="60"
       @click="clickMap"
       @init="initMap"
@@ -11,16 +12,26 @@
       <el-amap-layer-three>
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
-          :intensity="0.6"
+          :intensity="1"
         />
-        <el-amap-three-polygon
+        <!--        <el-amap-three-polygon
           v-if="source"
           :visible="visible"
           :source="source"
           side-texture="./img/qiang.jpeg"
           top-color="rgba(255,0,0,0)"
-          bottom-color="rgba(255,0,0,0.2)"
-          side-color="rgba(255,255,0,0.6)"
+          bottom-color="rgba(255,0,0,0.4)"
+          :depth-test="true"
+          :height="1500"
+        />-->
+        <el-amap-three-polygon
+          v-if="source"
+          :visible="visible"
+          :source="source"
+          top-color="rgba(255,255,255,1)"
+          bottom-color="rgba(255,255,255,1)"
+          side-top-color="rgba(255,0,0,0.2)"
+          side-bottom-color="rgba(0,255,0,0.8)"
           :depth-test="true"
           :height="1500"
         />
@@ -53,16 +64,19 @@ export default defineComponent({
     ElAmap},
   data(){
     return {
-      center: [120.109233,30.246411],
-      zoom: 14,
+      center: [116.45916, 39.917359],
+      zoom: 16,
       visible: true,
       source: null
     }
   },
   mounted() {
-    fetch('https://a.amap.com/Loca/static/loca-v2/demos/mock_data/hz_gn.json')
+    fetch('https://a.amap.com/Loca/static/loca-v2/demos/mock_data/guomao.geojson')
         .then(res => res.json())
         .then(res => {
+          res.features.forEach( v => {
+            v.properties.height = v.properties.h
+          })
           this.source = res;
         })
   },

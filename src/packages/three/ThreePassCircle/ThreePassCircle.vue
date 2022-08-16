@@ -4,7 +4,7 @@ import registerMixin from '../../../mixins/register-component';
 import ThreePassCircle from "./ThreePassCircle";
 
 export default defineComponent({
-  name: 'ElAmapThreeLightAmbient',
+  name: 'ElAmapThreePassCircle',
   mixins: [registerMixin],
   props: {
     color: {

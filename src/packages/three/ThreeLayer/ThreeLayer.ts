@@ -21,7 +21,7 @@ import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import {clearScene} from "../../../utils/threeUtil";
-import { RenderPass } from './RenderPass.js';
+import { ThreeRenderPass } from './ThreeRenderPass.js';
 import type {HDROptions, LightOption} from "./Type";
 
 interface Options {
@@ -166,7 +166,8 @@ class ThreeLayer {
   createEffect() {
     const size = this.renderer.getSize( new Vector2() );
     this.effectComposer = new EffectComposer( this.renderer );
-    const renderPass = new RenderPass( this.scene, this.camera );
+    this.effectComposer.setSize( size.x, size.y );
+    const renderPass = new ThreeRenderPass( this.scene, this.camera );
     this.renderPass = renderPass;
     this.effectComposer.addPass(renderPass);
   }
@@ -411,7 +412,10 @@ class ThreeLayer {
   }
 
   getMap(){
-    return this.layer.getMap();
+    if(this.layer){
+      return this.layer.getMap();
+    }
+    return null;
   }
 
 }

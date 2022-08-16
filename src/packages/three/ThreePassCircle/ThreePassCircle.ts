@@ -64,7 +64,9 @@ class ThreePassCircle {
   destroy() {
     this.stop();
     if (this.object) {
-      this.shaderMaterial.dispose();
+      if(this.object.dispose){
+        this.object.dispose()
+      }
       this.object = null;
       this.layer = null;
     }

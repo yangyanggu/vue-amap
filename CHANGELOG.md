@@ -5,6 +5,7 @@
 * three增加面图层，用于生成建筑
 * map地图center、rotation、pitch、zoom支持v-model
 * 解决部分组件销毁时没有从地图上移出问题
+* 完善Loca面图层
 
 ### v1.1.8
 * 增加视频图层
