@@ -11,16 +11,16 @@
       <el-amap-layer-three>
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
-          :intensity="0.6"
+          :intensity="1"
         />
         <el-amap-three-polygon
           v-if="source"
           :visible="visible"
           :source="source"
-          side-texture="./images/qiang.jpeg"
           top-color="rgba(255,0,0,0)"
           bottom-color="rgba(255,0,0,0.2)"
-          side-color="rgba(255,255,0,0.6)"
+          side-top-color="rgba(255,255,0,0.1)"
+          side-bottom-color="rgba(255,255,0,0.9)"
           :depth-test="true"
           :height="1500"
         />
@@ -44,7 +44,7 @@ export default defineComponent({
   data() {
     return {
       center: [120.109233,30.246411],
-      zoom: 14,
+      zoom: 12,
       visible: true,
       source: null
     };

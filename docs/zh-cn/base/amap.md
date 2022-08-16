@@ -53,11 +53,11 @@ terrain | Boolean | 是否开启地形，默认false。当前只有版本 2.1Bet
 
 名称 | 类型 | 说明
 ---|---|---|
-center | Array | 初始中心经纬度
-zoom | Number | 地图显示的缩放级别，可以设置为浮点数；若center与level未赋值，地图初始化默认显示用户所在城市范围。
+center | Array | 初始中心经纬度`1.1.10开始支持v-model`
+zoom | Number | 地图显示的缩放级别，可以设置为浮点数；若center与level未赋值，地图初始化默认显示用户所在城市范围。`1.1.10开始支持v-model`
 zooms | Array | 图显示的缩放级别范围, 默认为 [2, 20] ，取值范围 [2 ~ 30]
-rotation | Number | 地图顺时针旋转角度，取值范围 [0-360] ，默认值：0
-pitch | Number | 俯仰角度，默认 0，最大值根据地图当前 zoom 级别不断增大，2D地图下无效 。
+rotation | Number | 地图顺时针旋转角度，取值范围 [0-360] ，默认值：0`1.1.10开始支持v-model`
+pitch | Number | 俯仰角度，默认 0，最大值根据地图当前 zoom 级别不断增大，2D地图下无效 。`1.1.10支持开始v-model`
 features | Array | 设置地图上显示的元素种类, 支持'bg'（地图背景）、'point'（POI点）、'road'（道路）、'building'（建筑物），默认值：['bg','point','road','building']
 layers | Array | 地图图层数组，数组可以是图层 中的一个或多个，默认为普通二维地图。 当叠加多个 图层 时，普通二维地图需通过实例化一个TileLayer类实现。 如果你希望创建一个默认底图图层，使用 AMap.createDefaultLayer()
 resizeEnable | Boolean | 是否监控地图容器尺寸变化，默认值为false。此属性可被 setStatus/getStatus 方法控制

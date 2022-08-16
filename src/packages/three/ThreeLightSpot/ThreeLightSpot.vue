@@ -6,7 +6,7 @@ import type { PropType} from "vue";
 import type {Vec} from "./Type";
 
 export default defineComponent({
-  name: 'ElAmapThreeLightPoint',
+  name: 'ElAmapThreeLightSpot',
   mixins: [registerMixin],
   props: {
     color: {
