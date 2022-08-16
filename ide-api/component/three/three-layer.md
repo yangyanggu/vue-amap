@@ -19,6 +19,7 @@ zooms | Array | 支持的缩放级别范围，默认范围 [2-20]
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：120
 opacity | Number | 透明度，默认 1
+axesHelper | Boolean | 是否开启debug的箭头，默认false
 
 
 ## Events

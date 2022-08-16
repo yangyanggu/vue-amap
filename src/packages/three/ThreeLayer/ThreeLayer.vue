@@ -48,6 +48,10 @@ export default defineComponent({
       default() {
         return null
       }
+    },
+    axesHelper: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

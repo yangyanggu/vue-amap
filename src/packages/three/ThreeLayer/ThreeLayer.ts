@@ -32,6 +32,7 @@ interface Options {
   alpha?: boolean // canvas是否包含alpha (透明度)。默认为 false
   antialias?: boolean //是否执行抗锯齿。默认为false
   customCoordsCenter?: number[] // 默认gl自定义图层渲染的中心点
+  axesHelper: boolean // 是否开启箭头，用于debug，默认不开启
 
 }
 
@@ -108,8 +109,10 @@ class ThreeLayer {
           this.camera = camera;
           this.renderer = renderer;
           this.scene = scene;
-          const axesHelper = new AxesHelper( 10000 );
-          scene.add( axesHelper );
+          if(options.axesHelper){
+            const axesHelper = new AxesHelper( 10000 );
+            scene.add( axesHelper );
+          }
           this.createEffect();
           this.createLights(this.options.lights || []);
           this.createHDR(this.options.hdr);

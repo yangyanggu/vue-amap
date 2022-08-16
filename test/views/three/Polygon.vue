@@ -9,7 +9,7 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-layer-three>
+      <el-amap-layer-three :axes-helper="true">
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
           :intensity="1"
@@ -35,7 +35,7 @@
           :depth-test="true"
           :height="1500"
         />
-        <el-amap-three-pass-circle :position="center" />
+        <!--        <el-amap-three-pass-circle :position="center" />-->
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
