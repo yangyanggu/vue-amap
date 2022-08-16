@@ -12,6 +12,10 @@ head:
 
 ## 基础示例
 
+::: warning
+地图(el-amap)外围容器必须设定高度，不然初始化地图失败
+:::
+
 ### 普通示例
 ::: demo
 examples/amap/basic

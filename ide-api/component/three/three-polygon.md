@@ -9,7 +9,8 @@ ThreeJS的面图层，支持侧面贴图，主要用于生成建筑
 
 Attribute | Type   | Description
 ---|--------|---|
-sideColor  | String | 侧面颜色, 默认 #ffffff
+sideTopColor  | String | 侧面顶部颜色, 默认 #ffffff
+sideBottomColor  | String | 侧面底部颜色, 默认 #ffffff
 sideTexture | String | 侧面贴图图片地址，侧面优先使用该属性,默认空
 topColor | String | 顶部颜色, 默认 #ffffff
 bottomColor | String | 底部颜色, 默认 #ffffff

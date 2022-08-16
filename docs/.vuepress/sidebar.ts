@@ -6,6 +6,7 @@ export default [
       '/zh-cn/introduction/init.md',
       '/zh-cn/introduction/compatible.md',
       '/zh-cn/other/donation.md',
+      '/zh-cn/introduction/faq.md'
     ],
   },
   {

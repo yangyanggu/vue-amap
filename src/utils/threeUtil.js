@@ -9,10 +9,10 @@ export function clearGroup(group) {
     if (mesh.geometry) {
       mesh.geometry.dispose(); // 删除几何体
     }
-    if (mesh.material) {
+    if (mesh.material && mesh.material.dispose) {
       mesh.material.dispose(); // 删除材质
     }
-    if (mesh.material.texture) {
+    if (mesh.material.texture && mesh.material.texture.dispose) {
       mesh.material.texture.dispose();
     }
   };

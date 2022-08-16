@@ -4,20 +4,22 @@ export interface Vec {
   z: number
 }
 
+interface PolygonFeature {
+  type: string
+  geometry: {
+    type: string,
+    coordinates: any []
+  }
+  properties?: {
+    [key: string]: any
+  }
+}
+
 export interface Polygon {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": string,
-        "coordinates": any []
-      },
-      "properties": {
-        [key: string]: any
-      }
-    }
-  ]
+  type: string
+  features: PolygonFeature[]
+  properties?: any
+  [key: string]: any
 }
 
 export interface MoveAnimation {

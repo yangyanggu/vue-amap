@@ -23,7 +23,6 @@ class ThreeLightSpot {
     this.setPosition(options.position);
     this.setTarget(options.target);
     layer.addObject(light);
-    return light;
   }
 
   setColor(color: string) {
