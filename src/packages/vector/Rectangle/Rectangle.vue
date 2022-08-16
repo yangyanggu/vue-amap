@@ -86,7 +86,9 @@ export default defineComponent({
     },
     destroyComponent() {
       if (this.$amapComponent.editor) {
-        this.$amapComponent.editor.close();
+        if(!this.parentInstance.isDestroy){
+          this.$amapComponent.editor.close();
+        }
         this.$amapComponent.editor = null;
       }
       if(!this.parentInstance.isDestroy){
@@ -147,6 +149,9 @@ export default defineComponent({
         flag === true ? this.$amapComponent.editor.open() : this.$amapComponent.editor.close();
       });
     },
+  },
+  render(){
+    return null;
   }
 });
 </script>
