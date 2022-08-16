@@ -32,7 +32,9 @@ export default defineComponent({
       this.$parentComponent.addLayer(this.$amapComponent);
     },
     destroyComponent() {
-      this.$parentComponent.removeLayer(this.$amapComponent);
+      if(!this.parentInstance.isDestroy){
+        this.$parentComponent.removeLayer(this.$amapComponent);
+      }
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

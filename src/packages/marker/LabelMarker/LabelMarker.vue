@@ -45,6 +45,9 @@ export default defineComponent({
     destroyComponent() {
       // this.$amapComponent.remove();
       // this.$parentComponent.remove(this.$amapComponent);
+      if(!this.parentInstance.isDestroy){
+        this.$parentComponent.remove(this.$amapComponent);
+      }
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

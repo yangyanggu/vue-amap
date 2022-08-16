@@ -62,6 +62,9 @@ export default defineComponent({
     },
     destroyComponent() {
       // this.$parentComponent.remove(this.$amapComponent);
+      if(!this.parentInstance.isDestroy){
+        this.$parentComponent.remove(this.$amapComponent);
+      }
       this.$amapComponent = null;
     },
     __strokeColor(value) {

@@ -2,6 +2,7 @@
 import {defineComponent} from "vue";
 import {merge} from 'lodash-es';
 import registerMixin from '../../../mixins/register-component';
+import {isMapInstance, isOverlayGroupInstance, isVectorLayerInstance} from "../../../utils/util";
 
 export default defineComponent({
   name: 'ElAmapGeojson',
@@ -76,7 +77,9 @@ export default defineComponent({
       return new AMap.Polygon(options);
     },
     destroyComponent() {
-      // this.$parentComponent.remove(this.$amapComponent);
+      if(!this.parentInstance.isDestroy){
+        this.$parentComponent.remove(this.$amapComponent);
+      }
       this.$amapComponent = null;
       this.$parentComponent = null;
     },

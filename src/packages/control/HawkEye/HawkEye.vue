@@ -69,7 +69,9 @@ export default defineComponent({
     },
     destroyComponent() {
       if (this.$amapComponent && this.$parentComponent) {
-        this.$parentComponent.removeControl(this.$amapComponent);
+        if(!this.parentInstance.isDestroy){
+          this.$parentComponent.removeControl(this.$amapComponent);
+        }
         this.$amapComponent = null;
         this.$parentComponent = null;
       }

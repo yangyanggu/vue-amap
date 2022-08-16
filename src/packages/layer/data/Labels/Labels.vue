@@ -42,7 +42,9 @@ export default defineComponent({
       this.$amapComponent.add(markers);
     },
     destroyComponent() {
-      this.$parentComponent.remove(this.$amapComponent);
+      if(!this.parentInstance.isDestroy){
+        this.$parentComponent.removeLayer(this.$amapComponent);
+      }
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

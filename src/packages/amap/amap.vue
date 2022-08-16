@@ -13,6 +13,7 @@ import {lazyAMapApiLoaderInstance} from '../../services/injected-amap-api-instan
 export default defineComponent ({
   name: 'ElAmap',
   mixins: [registerMixin],
+  emits: ['update:zoom', 'update:center', 'update:rotation', 'update:pitch'],
   provide() {
     return {
       parentInstance: this
@@ -166,10 +167,31 @@ export default defineComponent ({
         this.$nextTick(() => {
           this.$amapComponent = new AMap.Map(elementID, this.convertProps());
           this.register();
+          this.bindModel();
         })
       }).catch(e => {
         console.warn('init map error: ', e);
       });
+    },
+    bindModel(){
+      this.$amapComponent.on('zoomchange',() => {
+        this.$emit('update:zoom', this.$amapComponent.getZoom());
+      })
+      this.$amapComponent.on('rotatechange',() => {
+        this.$emit('update:rotation', this.$amapComponent.getRotation());
+        this.$emit('update:pitch', this.$amapComponent.getPitch());
+      })
+      this.$amapComponent.on('dragging',() => {
+        this.$emit('update:center', this.getCenter());
+        this.$emit('update:pitch', this.$amapComponent.getPitch());
+      })
+      this.$amapComponent.on('touchmove',() => {
+        this.$emit('update:center', this.getCenter());
+      })
+    },
+    getCenter(){
+      const center = this.$amapComponent.getCenter();
+      return [center.lng, center.lat];
     },
     __dragEnable(flag){
       if(this.$amapComponent){

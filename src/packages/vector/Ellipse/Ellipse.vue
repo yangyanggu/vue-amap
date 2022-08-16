@@ -85,15 +85,18 @@ export default defineComponent({
     },
     destroyComponent() {
       if (this.$amapComponent.editor) {
+        this.$amapComponent.editor.close();
         this.$amapComponent.editor = null;
       }
-      /*if (isMapInstance(this.$parentComponent)) {
-        this.$parentComponent.remove(this.$amapComponent);
-      } else if (isOverlayGroupInstance(this.$parentComponent)) {
-        this.$parentComponent.removeOverlay(this.$amapComponent);
-      } else if (isVectorLayerInstance(this.$parentComponent)) {
-        this.$parentComponent.remove(this.$amapComponent);
-      }*/
+      if(!this.parentInstance.isDestroy){
+        if (isMapInstance(this.$parentComponent)) {
+          this.$parentComponent.remove(this.$amapComponent);
+        } else if (isOverlayGroupInstance(this.$parentComponent)) {
+          this.$parentComponent.removeOverlay(this.$amapComponent);
+        } else if (isVectorLayerInstance(this.$parentComponent)) {
+          this.$parentComponent.remove(this.$amapComponent);
+        }
+      }
       this.$amapComponent.destroy();
       this.$amapComponent = null;
       this.$parentComponent = null;
