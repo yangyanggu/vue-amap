@@ -42,6 +42,7 @@ import VideoLayer from '../views/layer/Video.vue'
 import LaserLayer from '../views/loca/Laser.vue'
 import ThreeVideo from "../views/three/ThreeVideo.vue";
 import ThreePolygon from '../views/three/Polygon.vue'
+import MouseTool from "../views/util/MouseTool.vue";
 
 const routes = [
   {path: '/', component: Map},
@@ -87,6 +88,7 @@ const routes = [
   {path: '/three/polygon', component: ThreePolygon},
   {path: '/marker/circle', component: CircleMarker},
   {path: '/loca/laser', component: LaserLayer},
+  {path: '/util/mouseTool', component: MouseTool},
 ]
 
 export default createRouter({

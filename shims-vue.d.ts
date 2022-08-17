@@ -1,9 +1,6 @@
-// eslint-disable-next-line
-import { ComponentCustomProperties } from 'vue'
-
 export {}
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   interface ComponentCustomProperties{
     $amapComponent ?: any,
     $parentComponent ?: any

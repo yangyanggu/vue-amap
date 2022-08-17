@@ -160,6 +160,9 @@ export default defineComponent({
         },{
           path: '/three/polygon',
           name: 'ThreeJS面图层'
+        },{
+          path: '/util/mouseTool',
+          name: '鼠标工具插件'
         }
       ]
     }

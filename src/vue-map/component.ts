@@ -69,6 +69,7 @@ import {ElAmapThreeLightHemisphere} from '@vue-map/packages/three/ThreeLightHemi
 import {ElAmapThreeLightPoint} from '@vue-map/packages/three/ThreeLightPoint'
 import {ElAmapThreeLightSpot} from '@vue-map/packages/three/ThreeLightSpot'
 import {ElAmapThreePolygon} from '@vue-map/packages/three/ThreePolygon'
+import {ElAmapMouseTool} from '@vue-map/packages/util/MouseTool'
 
 import type { Plugin } from 'vue'
 
@@ -143,5 +144,6 @@ export default [
   ElAmapThreeLightHemisphere,
   ElAmapThreeLightPoint,
   ElAmapThreeLightSpot,
-  ElAmapThreePolygon
+  ElAmapThreePolygon,
+  ElAmapMouseTool
 ] as Plugin[]

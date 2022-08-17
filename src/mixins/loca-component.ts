@@ -49,23 +49,23 @@ export default defineComponent({
         this.source.destroy();
         this.source = null;
       }
-      if (this['geoBufferSource']) {
-        if(typeof this['geoBufferSource'] === 'string'){
+      if (this.geoBufferSource) {
+        if(typeof this.geoBufferSource === 'string'){
           this.source = new Loca.GeoBufferSource({
-            url: this['geoBufferSource']
+            url: this.geoBufferSource
           });
         }else{
           this.source = new Loca.GeoBufferSource({
-            data: this['geoBufferSource']
+            data: this.geoBufferSource
           });
         }
-      }else if (this['sourceUrl']) {
+      }else if (this.sourceUrl) {
         this.source = new Loca.GeoJSONSource({
-          url: this['sourceUrl']
+          url: this.sourceUrl
         });
-      } else if (this['sourceData']) {
+      } else if (this.sourceData) {
         this.source = new Loca.GeoJSONSource({
-          data: this['sourceData']
+          data: this.sourceData
         });
       } else {
         this.source = new Loca.GeoJSONSource({
@@ -99,11 +99,11 @@ export default defineComponent({
       }
     },
     clickMap(e) {
-      const feature = this['$amapComponent'].queryFeature(e.pixel.toArray());
+      const feature = this.$amapComponent.queryFeature(e.pixel.toArray());
       this.$emit('click', feature, e);
     },
     mouseMoveMap(e) {
-      const feature = this['$amapComponent'].queryFeature(e.pixel.toArray());
+      const feature = this.$amapComponent.queryFeature(e.pixel.toArray());
       this.$emit('mousemove', feature, e);
     },
     unBindEvents() {
@@ -115,8 +115,8 @@ export default defineComponent({
     },
     __layerStyle(style) {
       this.$nextTick(() => {
-        if (this['$amapComponent'].setStyle) {
-          this['$amapComponent'].setStyle(style);
+        if (this.$amapComponent.setStyle) {
+          this.$amapComponent.setStyle(style);
         }
       });
     },
@@ -137,7 +137,7 @@ export default defineComponent({
     },
     __visible(flag) {
       if (this.$amapComponent.show && this.$amapComponent.hide) {
-        flag === false ? this.$amapComponent.hide(this['visibleDuration']) : this.$amapComponent.show(this['visibleDuration']);
+        flag === false ? this.$amapComponent.hide(this.visibleDuration) : this.$amapComponent.show(this.visibleDuration);
       }
     }
   }
