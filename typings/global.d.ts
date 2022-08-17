@@ -60,7 +60,17 @@ declare module '@vue/runtime-core' {
     ElAmapThreeGltf: typeof import('@vuemap/vue-amap')['ElAmapThreeGltf'],
     ElAmapLocaAmbientLight: typeof import('@vuemap/vue-amap')['ElAmapLocaAmbientLight'],
     ElAmapLocaDirectionalLight: typeof import('@vuemap/vue-amap')['ElAmapLocaDirectionalLight'],
-    ElAmapLocaPointLight: typeof import('@vuemap/vue-amap')['ElAmapLocaPointLight']
+    ElAmapLocaPointLight: typeof import('@vuemap/vue-amap')['ElAmapLocaPointLight'],
+    ElAmapLocaLaser: typeof import('@vuemap/vue-amap')['ElAmapLocaLaser'],
+    ElAmapThreeLightAmbient: typeof import('@vuemap/vue-amap')['ElAmapThreeLightAmbient'],
+    ElAmapThreeLightDirectional: typeof import('@vuemap/vue-amap')['ElAmapThreeLightDirectional'],
+    ElAmapThreeLightHemisphere: typeof import('@vuemap/vue-amap')['ElAmapThreeLightHemisphere'],
+    ElAmapThreeLightPoint: typeof import('@vuemap/vue-amap')['ElAmapThreeLightPoint'],
+    ElAmapThreeLightSpot: typeof import('@vuemap/vue-amap')['ElAmapThreeLightSpot'],
+    ElAmapThreePolygon: typeof import('@vuemap/vue-amap')['ElAmapThreePolygon'],
+    ElAmapThreeVideo: typeof import('@vuemap/vue-amap')['ElAmapThreeVideo'],
+    ElAmapLayerVideo: typeof import('@vuemap/vue-amap')['ElAmapLayerVideo'],
+    ElAmapMouseTool: typeof import('@vuemap/vue-amap')['ElAmapMouseTool']
   }
 }
 

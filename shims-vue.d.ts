@@ -14,5 +14,6 @@ declare module 'vue' {
     hdr ?: any
     observer ?: MutationObserver | null
     customCoordsCenter ?: any
+    $text ?: any
   }
 }

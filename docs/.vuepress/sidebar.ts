@@ -101,6 +101,12 @@ export default [
     ],
   },
   {
+    text: '工具',
+    children: [
+      '/zh-cn/component/util/mouse-tool.md',
+    ],
+  },
+  {
     text: 'Loca可视化',
     children: [
       '/zh-cn/component/loca/ambient-light.md',

@@ -8,11 +8,16 @@
       @init="initMap"
     >
       <el-amap-mouse-tool
+        v-if="created"
         :type="type"
+        :auto-clear="true"
         @draw="draw"
       />
     </el-amap>
     <div class="control-container">
+      <el-button @click="created = !created">
+        {{ created ? '销毁' : '创建' }}
+      </el-button>
       <el-button @click="changeMarker('marker')">
         绘制标号
       </el-button>
@@ -59,7 +64,8 @@ export default defineComponent({
       center: [121.5273285, 31.21515044],
       zoom: 16,
       markers: null,
-      type: 'marker'
+      type: 'marker',
+      created: true
     }
   },
   methods: {
@@ -69,8 +75,8 @@ export default defineComponent({
     initMap(map){
       console.log('init map: ', map);
     },
-    draw(e){
-      console.log('e : ', e)
+    draw(e, target){
+      console.log('绘制完成 : ', e, target)
     },
     changeMarker(type: string){
       this.type = type;
