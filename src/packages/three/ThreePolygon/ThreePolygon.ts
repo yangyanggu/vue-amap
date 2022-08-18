@@ -24,12 +24,42 @@ interface Properties {
 class ThreePolygon {
   object: any // Group
   layer: any // threejs的图层对象
+  bottomMaterial: MeshLambertMaterial //底部材质
+  topMaterial: MeshLambertMaterial // 顶部材质
+  sideImgMaterial: MeshLambertMaterial // 侧面贴图材质
 
   constructor(layer: any, options: Options) {
     this.layer = layer;
     this.object = new Group();
+    this.createGlobalMaterial(options);
     this.layer.addObject(this.object);
     this.init(options);
+  }
+
+  createGlobalMaterial(options: Options){
+    if(options.sideTexture){
+      const sideTexture = new TextureLoader().load(options.sideTexture);
+      sideTexture.wrapS = sideTexture.wrapT = RepeatWrapping;
+      sideTexture.offset.set(0, 0.5);
+      sideTexture.repeat.set(0.1,0.1);
+      this.sideImgMaterial = new MeshLambertMaterial({
+        depthTest: options.depthTest,
+        map: sideTexture,
+        side: DoubleSide
+      })
+    }
+    this.bottomMaterial = new MeshLambertMaterial({
+      depthTest: options.depthTest,
+      transparent: true,
+      color: getRgbNumber(options.bottomColor),
+      opacity: getAlpha(options.bottomColor),
+    })
+    this.topMaterial = new MeshLambertMaterial({
+      depthTest: options.depthTest,
+      transparent: true,
+      color: getRgbNumber(options.topColor),
+      opacity: getAlpha(options.topColor)
+    })
   }
 
   init(options: Options) {
@@ -86,15 +116,7 @@ class ThreePolygon {
       // 生成侧面
       let sideMaterial;
       if(options.sideTexture){
-        const sideTexture = new TextureLoader().load(options.sideTexture);
-        sideTexture.wrapS = sideTexture.wrapT = RepeatWrapping;
-        sideTexture.offset.set(0, 0.5);
-        sideTexture.repeat.set(0.01,0.01);
-        sideMaterial = new MeshLambertMaterial({
-          depthTest: options.depthTest,
-          map: sideTexture,
-          side: DoubleSide
-        })
+        sideMaterial = this.sideImgMaterial;
       }else{
         /*sideMaterial = new MeshLambertMaterial({
           depthTest: options.depthTest,
@@ -142,13 +164,7 @@ class ThreePolygon {
       const bottomExtrudeGeometry = new ExtrudeGeometry(shape, {
         depth: 0
       })
-      const bottomSideMaterial = new MeshLambertMaterial({
-        depthTest: options.depthTest,
-        transparent: true,
-        color: getRgbNumber(options.bottomColor),
-        opacity: getAlpha(options.bottomColor),
-      })
-      const bottomMesh = new Mesh(bottomExtrudeGeometry, bottomSideMaterial);
+      const bottomMesh = new Mesh(bottomExtrudeGeometry, this.bottomMaterial);
       this.object.add(bottomMesh);
       const sideMesh = new Mesh(sideExtrudeGeometry, materialList);
       this.object.add(sideMesh);
@@ -157,13 +173,7 @@ class ThreePolygon {
     const topExtrudeGeometry = new ExtrudeGeometry(shape, {
       depth: 0
     })
-    const topMaterial = new MeshLambertMaterial({
-      depthTest: options.depthTest,
-      transparent: true,
-      color: getRgbNumber(options.topColor),
-      opacity: getAlpha(options.topColor)
-    })
-    const topMesh = new Mesh(topExtrudeGeometry, topMaterial);
+    const topMesh = new Mesh(topExtrudeGeometry, this.topMaterial);
     topMesh.translateZ(height);
     this.object.add(topMesh);
   }
@@ -195,6 +205,18 @@ class ThreePolygon {
   destroy() {
     if (this.object) {
       clearGroup(this.object);
+      if(this.bottomMaterial){
+        this.bottomMaterial.dispose();
+        this.bottomMaterial = null;
+      }
+      if(this.topMaterial){
+        this.topMaterial.dispose();
+        this.topMaterial = null;
+      }
+      if(this.sideImgMaterial){
+        this.sideImgMaterial.dispose();
+        this.sideImgMaterial = null
+      }
       this.object = null;
       this.layer = null;
     }

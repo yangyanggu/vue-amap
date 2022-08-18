@@ -14,7 +14,7 @@
           color="rgb(255,255,255)"
           :intensity="1"
         />
-        <!--        <el-amap-three-polygon
+        <el-amap-three-polygon
           v-if="source"
           :visible="visible"
           :source="source"
@@ -23,8 +23,8 @@
           bottom-color="rgba(255,0,0,0.4)"
           :depth-test="true"
           :height="1500"
-        />-->
-        <el-amap-three-polygon
+        />
+        <!--        <el-amap-three-polygon
           v-if="source"
           :visible="visible"
           :source="source"
@@ -34,7 +34,7 @@
           side-bottom-color="rgba(0,255,0,0.8)"
           :depth-test="true"
           :height="1500"
-        />
+        />-->
         <!--        <el-amap-three-pass-circle :position="center" />-->
       </el-amap-layer-three>
     </el-amap>
