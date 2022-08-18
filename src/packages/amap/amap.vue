@@ -167,13 +167,13 @@ export default defineComponent ({
         this.$nextTick(() => {
           this.$amapComponent = new AMap.Map(elementID, this.convertProps());
           this.register();
-          this.bindModel();
+          this.bindModelEvents();
         })
       }).catch(e => {
         console.warn('init map error: ', e);
       });
     },
-    bindModel(){
+    bindModelEvents(){
       this.$amapComponent.on('zoomchange',() => {
         this.$emit('update:zoom', this.$amapComponent.getZoom());
       })

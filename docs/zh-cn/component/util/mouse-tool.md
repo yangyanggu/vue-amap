@@ -7,7 +7,7 @@ head:
       content: amap, 高德地图, vue3.0, 鼠标工具插件, AMap.MouseTool
 ---
 
-# 点标记 (AMap.Marker)
+# 鼠标工具插件 (AMap.MouseTool)
 鼠标工具插件。通过该插件，可进行鼠标画标记点、线、多边形、矩形、圆、距离量测、面积量测、拉框放大、拉框缩小等功能。
 
 ## 基础示例
@@ -33,7 +33,7 @@ textOptions | Object | 提示信息的配置属性，信息使用`AMap.Text`实�
 名称 | 类型                       | 说明
 ---|--------------------------|---|
 type | String                   | 工具类型。`marker(点标记)`, `circle(圆)`, `rectangle(矩形)`, `polyline(折线)`, `polygon(多边形)`, `measureArea(面积计算)`, `rule(距离计算)`, `rectZoomIn(框选放大)`, `rectZoomOut(框选缩小)`
-drawOptions | Object                   | 绘制的图形样式，根据需要绘制的对象来传递不同的参数。<br/>[点标记](https://lbs.amap.com/api/jsapi-v2/documentation#marker)<br/>[圆](https://lbs.amap.com/api/jsapi-v2/documentation#circle)<br/>[圆](https://lbs.amap.com/api/jsapi-v2/documentation#circle)<br/>[矩形](https://lbs.amap.com/api/jsapi-v2/documentation#rectangle)<br/>[折线](https://lbs.amap.com/api/jsapi-v2/documentation#polyline)<br/>[多边形](https://lbs.amap.com/api/jsapi-v2/documentation#polygon)<br/>[面积计算](https://lbs.amap.com/api/jsapi-v2/documentation#polygon)<br/>[距离计算](https://lbs.amap.com/api/jsapi-v2/documentation#polyline)
+drawOptions | Object                   | 绘制的图形样式，根据需要绘制的对象来传递不同的参数。<br/>注意：必须先修改drawOptions参数再修改type才会在切换type时切换样式<br/>[点标记](https://lbs.amap.com/api/jsapi-v2/documentation#marker)<br/>[圆](https://lbs.amap.com/api/jsapi-v2/documentation#circle)<br/>[圆](https://lbs.amap.com/api/jsapi-v2/documentation#circle)<br/>[矩形](https://lbs.amap.com/api/jsapi-v2/documentation#rectangle)<br/>[折线](https://lbs.amap.com/api/jsapi-v2/documentation#polyline)<br/>[多边形](https://lbs.amap.com/api/jsapi-v2/documentation#polygon)<br/>[面积计算](https://lbs.amap.com/api/jsapi-v2/documentation#polygon)<br/>[距离计算](https://lbs.amap.com/api/jsapi-v2/documentation#polyline)
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

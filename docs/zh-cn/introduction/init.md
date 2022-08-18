@@ -152,13 +152,13 @@ window.VueAMap.lazyAMapApiLoaderInstance.then(() => {
 
 ## 参数
 
-参数名  | 类型        | 默认值                  | 描述                                                                                                               |
---- |-----------|----------------------|------------------------------------------------------------------------------------------------------------------|
-key | `String`  | ``                   | 高德 Key                                                                                                           |
-version | `String`  | `2.0`                | 指定要加载的 JSAPI 的版本，缺省时默认为 2.0                                                                                      
-plugins | `Array`   | ``                   | 需要使用的的插件列表，如比例尺'AMap.Scale'等 [插件列表](https://lbs.amap.com/api/jsapi-v2/guide/abc/plugins)                         |
-AMapUI | `Object`  | ``                   | UI的参数配置 [示例](https://lbs.amap.com/api/amap-ui/intro)                                                             |
-Loca | `Object`  | `{version: '2.0.0'}` | Loca 版本                                                                                                          |
-serviceHost | String    | ''                   | ``1.1.0版本新增``，代理服务器域名或ip地址，新版本密钥必须配置代理服务器或者安全密钥，优先使用该配置，[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load) 
-securityJsCode | String    | ''                   | ``1.1.0版本新增``，静态安全密钥(不安全，建议开发环境用),新版本密钥必须配置代理服务器或者安全密钥，[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load)  
-offline | `Boolean` | `false`              | ``1.1.5版本新增``是否离线部署，默认false，当设置为true时将不加载JS API，需要自己在html里加载所需要的JS API和loca，主要用于局域网使用                            |
+参数名  | 类型                                 | 默认值                  | 描述                                                                                                               |
+--- |------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------|
+key | `String`                           | ``                   | 高德 Key                                                                                                           |
+version | `String`                           | `2.0`                | 指定要加载的 JSAPI 的版本，缺省时默认为 2.0                                                                                      
+plugins | `Array`                            | ``                   | 需要使用的的插件列表，如比例尺'AMap.Scale'等 [插件列表](https://lbs.amap.com/api/jsapi-v2/guide/abc/plugins)                         |
+AMapUI | `Object({version:1.1,plugins:[]})` | ``                   | UI的参数配置 [示例](https://lbs.amap.com/api/amap-ui/intro)，version默认就是1.1，plugins是需要加载的插件，可以看示例连接                      |
+Loca | `Object`                           | `{version: '2.0.0'}` | Loca 版本                                                                                                          |
+serviceHost | String                             | ''                   | ``1.1.0版本新增``，代理服务器域名或ip地址，新版本密钥必须配置代理服务器或者安全密钥，优先使用该配置，[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load) 
+securityJsCode | String                             | ''                   | ``1.1.0版本新增``，静态安全密钥(不安全，建议开发环境用),新版本密钥必须配置代理服务器或者安全密钥，[参考网址](https://lbs.amap.com/api/jsapi-v2/guide/abc/load)  
+offline | `Boolean`                          | `false`              | ``1.1.5版本新增``是否离线部署，默认false，当设置为true时将不加载JS API，需要自己在html里加载所需要的JS API和loca，主要用于局域网使用                            |

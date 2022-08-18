@@ -8,7 +8,7 @@
       @init="initMap"
     >
       <el-amap-marker
-        :position="componentMarker.position"
+        v-model:position="componentMarker.position"
         :visible="componentMarker.visible"
         :draggable="componentMarker.draggable"
         @init="markerInit"

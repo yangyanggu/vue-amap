@@ -61,6 +61,7 @@ export default defineComponent({
     }, // 添加文本标注
     extData: null
   },
+  emits: ['update:position'],
   data() {
     return {
       withSlot: false,
@@ -95,6 +96,19 @@ export default defineComponent({
         observer.observe(this.$refs.content as Node, config);
         this.observer = observer;
       }
+      this.bindModelEvents();
+    },
+    bindModelEvents(){
+      this.$amapComponent.on('dragend',() => {
+        this.emitPosition();
+      });
+      this.$amapComponent.on('touchend',() => {
+        this.emitPosition();
+      });
+    },
+    emitPosition(){
+      const position = this.$amapComponent.getPosition();
+      this.$emit('update:position', position.toArray());
     },
     destroyComponent() {
       if(this.observer){

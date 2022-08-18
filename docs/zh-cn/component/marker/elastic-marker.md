@@ -33,7 +33,7 @@ zooms | Array | 点标记显示的层级范围，超过范围不显示。默认�
 ---|---|---|
 visible | Boolean | 点标记是否可见，默认为true。
 zIndex | Number | 点标记的叠加顺序。地图上存在多个点标记叠加时，通过该属性使级别较高的点标记在上层显示
-position | Array | 点标记在地图上显示的位置
+position | Array | 点标记在地图上显示的位置`支持v-model`
 offset | Array | 点标记显示位置偏移量，默认值为 [0,0] 。Marker指定position后，默认以marker左上角位置为基准点（若设置了anchor，则以anchor设置位置为基准点），对准所给定的position位置，若需使marker指定位置对准在position处，需根据marker的尺寸设置一定的偏移量。
 draggable | Boolean | 设置点标记是否可拖拽移动，默认为false。
 cursor | String | 指定鼠标悬停时的鼠，默认值：'pointer'

@@ -44,8 +44,12 @@ export default defineComponent({
     styles: {
       type: Array
     }, // 多个不同样式的数组
-    extData: null
+    extData: {
+      type: Object,
+      default: () => null
+    }
   },
+  emits: ['update:position'],
   data() {
     return {
       converters: {
@@ -58,9 +62,22 @@ export default defineComponent({
         AMap.plugin(['AMap.ElasticMarker'], () => {
           this.$amapComponent = new AMap.ElasticMarker(options);
           this.$parentComponent.add(this.$amapComponent);
+          this.bindModelEvents();
           resolve();
         });
       });
+    },
+    bindModelEvents(){
+      this.$amapComponent.on('dragend',() => {
+        this.emitPosition();
+      });
+      this.$amapComponent.on('touchend',() => {
+        this.emitPosition();
+      });
+    },
+    emitPosition(){
+      const position = this.$amapComponent.getPosition();
+      this.$emit('update:position', position.toArray());
     },
     destroyComponent() {
       // this.$parentComponent.remove(this.$amapComponent);

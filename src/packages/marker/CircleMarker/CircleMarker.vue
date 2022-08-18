@@ -47,6 +47,8 @@ export default defineComponent({
     }
   },
 
+  emits: ['update:center'],
+
   data() {
     return {
       converters: {},
@@ -59,6 +61,19 @@ export default defineComponent({
       this.$parentComponent = this.parentInstance.$amapComponent;
       this.$amapComponent = new AMap.CircleMarker(options);
       this.$parentComponent.add(this.$amapComponent);
+      this.bindModelEvents();
+    },
+    bindModelEvents(){
+      this.$amapComponent.on('dragend',() => {
+        this.emitPosition();
+      });
+      this.$amapComponent.on('touchend',() => {
+        this.emitPosition();
+      });
+    },
+    emitPosition(){
+      const center = this.$amapComponent.getCenter();
+      this.$emit('update:center', center.toArray());
     },
     destroyComponent() {
       // this.$parentComponent.remove(this.$amapComponent);

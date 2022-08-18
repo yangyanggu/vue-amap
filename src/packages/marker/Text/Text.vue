@@ -52,6 +52,7 @@ export default defineComponent({
     }, // 设置文本样式，Object同css样式表，如:{'background-color':'red'}
     extData: null
   },
+  emits: ['update:position'],
   data() {
     return {
       propsRedirect: {
@@ -65,6 +66,19 @@ export default defineComponent({
     __initComponent(options) {
       this.$amapComponent = new AMap.Text(options);
       this.$parentComponent.add(this.$amapComponent);
+      this.bindModelEvents();
+    },
+    bindModelEvents(){
+      this.$amapComponent.on('dragend',() => {
+        this.emitPosition();
+      });
+      this.$amapComponent.on('touchend',() => {
+        this.emitPosition();
+      });
+    },
+    emitPosition(){
+      const position = this.$amapComponent.getPosition();
+      this.$emit('update:position', position.toArray());
     },
     destroyComponent() {
       this.$amapComponent.setMap(null);

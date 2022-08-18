@@ -8,8 +8,8 @@
       @init="initMap"
     >
       <el-amap-circle-marker
+        v-model:center="circleCenter"
         :visible="visible"
-        :center="circleCenter"
         :radius="radius"
         :draggable="draggable"
         @click="click"

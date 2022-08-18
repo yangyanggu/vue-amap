@@ -8,7 +8,7 @@
       @init="initMap"
     >
       <el-amap-text
-        :position="componentText.position"
+        v-model:position="componentText.position"
         :text-style="{color: 'red'}"
         :visible="componentText.visible"
         :text="componentText.text"
