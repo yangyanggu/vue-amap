@@ -42,7 +42,10 @@ export default defineComponent({
       type: Boolean,
       default: false
     }, // 设置多边形是否可拖拽移动，默认为false
-    extData: null,
+    extData: {
+      type: Object,
+      default: () => null
+    },
     strokeStyle: {
       type: String,
       validator(value : string) {
@@ -76,6 +79,7 @@ export default defineComponent({
       default: false
     }// 是否延路径显示白色方向箭头,默认false。建议折线宽度大于6时使用
   },
+  emits: ['update:path'],
   data() {
     return {
       converters: {},
@@ -91,6 +95,15 @@ export default defineComponent({
       } else if (isVectorLayerInstance(this.$parentComponent)) {
         this.$parentComponent.add(this.$amapComponent);
       }
+      this.bindModelEvents();
+    },
+    bindModelEvents(){
+      this.$amapComponent.on('dragend',() => {
+        this.emitModel(this.$amapComponent);
+      });
+      this.$amapComponent.on('touchend',() => {
+        this.emitModel(this.$amapComponent);
+      });
     },
     createEditor() {
       return new Promise<void>((resolve) => {
@@ -100,10 +113,31 @@ export default defineComponent({
           AMap.plugin(['AMap.BezierCurveEditor'], () => {
             this.$amapComponent.editor = new AMap.BezierCurveEditor(this.$parentComponent, this.$amapComponent, this.editOptions);
             this.setEditorEvents();
+            this.bindEditorModelEvents();
             resolve();
           });
         }
       });
+    },
+    bindEditorModelEvents(){
+      this.$amapComponent.editor.on('addnode',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('adjust',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('removenode',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('add',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('end',(e) => {
+        this.emitModel(e.target);
+      });
+    },
+    emitModel(target){
+      this.$emit('update:path', target.getPath())
     },
     destroyComponent() {
       if (this.$amapComponent.editor) {

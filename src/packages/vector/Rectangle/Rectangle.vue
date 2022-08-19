@@ -39,7 +39,10 @@ export default defineComponent({
       type: Boolean,
       default: false
     }, // 设置多边形是否可拖拽移动，默认为false
-    extData: null,
+    extData: {
+      type: Object,
+      default: () => null
+    },
     strokeStyle: {
       type: String,
       validator(value : string) {
@@ -51,6 +54,7 @@ export default defineComponent({
       type: Array
     }// 勾勒形状轮廓的虚线和间隙的样式，此属性在strokeStyle 为dashed 时有效， 此属性在ie9+浏览器有效 取值： 实线： [0,0,0] 虚线： [10,10] ， [10,10] 表示10个像素的实线和10个像素的空白（如此反复）组成的虚线 点画线： [10,2,10] ， [10,2,10] 表示10个像素的实线和2个像素的空白 + 10个像素的实线和10个像素的空白 （如此反复）组成的虚线
   },
+  emits: ['update:bounds'],
   data() {
     return {
       converters: {
@@ -70,6 +74,15 @@ export default defineComponent({
       } else if (isVectorLayerInstance(this.$parentComponent)) {
         this.$parentComponent.add(this.$amapComponent);
       }
+      this.bindModelEvents();
+    },
+    bindModelEvents(){
+      this.$amapComponent.on('dragend',() => {
+        this.emitModel(this.$amapComponent);
+      });
+      this.$amapComponent.on('touchend',() => {
+        this.emitModel(this.$amapComponent);
+      });
     },
     createEditor() {
       return new Promise<void>((resolve) => {
@@ -79,10 +92,35 @@ export default defineComponent({
           AMap.plugin(['AMap.RectangleEditor'], () => {
             this.$amapComponent.editor = new AMap.RectangleEditor(this.$parentComponent, this.$amapComponent, this.editOptions);
             this.setEditorEvents();
+            this.bindEditorModelEvents();
             resolve();
           });
         }
       });
+    },
+    bindEditorModelEvents(){
+      this.$amapComponent.editor.on('addnode',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('adjust',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('move',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('add',(e) => {
+        this.emitModel(e.target);
+      });
+      this.$amapComponent.editor.on('end',(e) => {
+        this.emitModel(e.target);
+      });
+    },
+    emitModel(target){
+      const bounds = target.getBounds();
+      const southWest = bounds.getSouthWest();
+      const northEast = bounds.getNorthEast();
+      const paths = [southWest.toArray(), northEast.toArray()]
+      this.$emit('update:bounds', paths);
     },
     destroyComponent() {
       if (this.$amapComponent.editor) {

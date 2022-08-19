@@ -8,7 +8,7 @@
       @init="initMap"
     >
       <el-amap-rectangle
-        :bounds="path"
+        v-model:bounds="path"
         :visible="visible"
         :editable="edit"
         :draggable="draggable"

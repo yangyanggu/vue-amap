@@ -9,8 +9,8 @@
     >
       <el-amap-circle
         v-if="created"
-        :center="circleCenter"
-        :radius="radius"
+        v-model:center="circleCenter"
+        v-model:radius="radius"
         :visible="visible"
         :editable="edit"
         :draggable="draggable"

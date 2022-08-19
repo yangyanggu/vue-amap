@@ -30,7 +30,7 @@ editOptions | Object | [设置编辑参数参数](https://a.amap.com/jsapi/stati
 
 名称 | 类型 | 说明
 ---|---|---|
-bounds | Array| 矩形的范围, Array[Array[lng, lat]]
+bounds | Array| `1.1.10开始支持v-model`矩形的范围, Array[Array[lng, lat]]
 visible | Boolean | 是否可见
 editable | Boolean | 多边形当前是否可编辑 (启动编辑时需要关闭 draggable，不然会导致图形被移走，但操作点还在原位)
 zIndex | Number | 多边形覆盖物的叠加顺序。地图上存在多个多边形覆盖物叠加时，通过该属性使级别较高的多边形覆盖物在上层显示默认zIndex：10

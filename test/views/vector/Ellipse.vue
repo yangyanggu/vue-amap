@@ -8,8 +8,8 @@
       @init="initMap"
     >
       <el-amap-ellipse
-        :center="circleCenter"
-        :radius="radius"
+        v-model:center="circleCenter"
+        v-model:radius="radius"
         :visible="visible"
         :editable="edit"
         :draggable="draggable"

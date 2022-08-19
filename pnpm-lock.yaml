@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@amap/amap-jsapi-loader': ^1.0.1
+      '@amap/amap-jsapi-types': 0.0.8
       '@pnpm/find-workspace-packages': 3.1.28
       '@pnpm/logger': 4.0.0
       '@pnpm/types': 7.6.0
@@ -55,6 +56,7 @@ importers:
       vue-router: ^4.0.12
     dependencies:
       '@amap/amap-jsapi-loader': 1.0.1
+      '@amap/amap-jsapi-types': 0.0.8
       '@tweenjs/tween.js': 18.6.4
       '@vue-map/mixins': link:src/mixins
       '@vue-map/packages': link:src/packages
@@ -247,6 +249,10 @@ packages:
 
   /@amap/amap-jsapi-loader/1.0.1:
     resolution: {integrity: sha512-nPyLKt7Ow/ThHLkSvn2etQlUzqxmTVgK7bIgwdBRTg2HK5668oN7xVxkaiRe3YZEzGzfV2XgH5Jmu2T73ljejw==}
+    dev: false
+
+  /@amap/amap-jsapi-types/0.0.8:
+    resolution: {integrity: sha512-q0FyZDIJcXjsMLGc3oS9rjfJsErOvt9rcp6AgzY4k14vo7bBhdq4eKwoSdVp/pYjR/rfaKBns5v10ycZOFwf/A==}
     dev: false
 
   /@babel/code-frame/7.16.7:

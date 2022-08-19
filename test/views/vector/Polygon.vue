@@ -8,7 +8,7 @@
       @init="initMap"
     >
       <el-amap-polygon
-        :path="polygon.path"
+        v-model:path="polygon.path"
         :visible="polygon.visible"
         :editable="polygon.edit"
         :draggable="polygon.draggable"

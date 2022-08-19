@@ -83,7 +83,7 @@ export function loadScript(url, callback){
   if(!url){
     throw new Error('请传入url');
   }
-  let script = document.createElement('script');
+  const script = document.createElement('script');
   script.type = 'text/javascript';
   script.async = true;
   script.defer = true;
@@ -94,4 +94,11 @@ export function loadScript(url, callback){
       callback();
     });
   }
+}
+
+export function convertLnglat(lnglat){
+  if(Array.isArray(lnglat)){
+    return lnglat.map(convertLnglat);
+  }
+  return lnglat.toArray();
 }

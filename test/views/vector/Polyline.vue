@@ -8,10 +8,10 @@
       @init="initMap"
     >
       <el-amap-polyline
+        v-model:path="polyline.path"
         :editable="polyline.editable"
         :visible="polyline.visible"
         :draggable="polyline.draggable"
-        :path="polyline.path"
         @click="click"
       />
     </el-amap>

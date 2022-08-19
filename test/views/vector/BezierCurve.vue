@@ -8,11 +8,11 @@
       @init="initMap"
     >
       <el-amap-bezier-curve
+        v-model:path="polyline.path"
         :editable="polyline.editable"
         :visible="polyline.visible"
         :stroke-weight="6"
         :draggable="polyline.draggable"
-        :path="polyline.path"
         @click="click"
       />
     </el-amap>
