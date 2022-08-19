@@ -34,7 +34,7 @@ editOptions | Object | [设置编辑参数参数](https://a.amap.com/jsapi/stati
 ---|---|---|
 visible | Boolean | 是否可见
 editable | Boolean | 折线当前是否可编辑
-path | Array | `1.1.10开始支持v-model`polyline 路径，支持 lineString 和 MultiLineString
+path | Array | `1.1.11开始支持v-model`polyline 路径，支持 lineString 和 MultiLineString
 zIndex | Number | 折线覆盖物的叠加顺序。默认叠加顺序，先添加的线在底层，后添加的线在上层。通过该属性可调整叠加顺序，使级别较高的折线覆盖物在上层显示。默认zIndex：10
 strokeColor | String | 线条颜色，使用16进制颜色代码赋值。默认值为#006600
 strokeOpacity | Number | 线条透明度，取值范围[0,1]，0表示完全透明，1表示不透明。默认为0.9

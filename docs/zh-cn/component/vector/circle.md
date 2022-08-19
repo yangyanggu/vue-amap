@@ -30,8 +30,8 @@ editOptions | Object | [设置编辑参数参数](https://a.amap.com/jsapi/stati
 
 名称 | 类型 | 说明
 ---|---|---|
-center | Array| `1.1.10开始支持v-model`圆心位置
-radius | Number | `1.1.10开始支持v-model`圆半径，单位:米
+center | Array| `1.1.11开始支持v-model`圆心位置
+radius | Number | `1.1.11开始支持v-model`圆半径，单位:米
 visible | Boolean | 是否可见
 editable | Boolean | 多边形当前是否可编辑 (启动编辑时需要关闭 draggable，不然会导致图形被移走，但操作点还在原位)
 zIndex | Number | 多边形覆盖物的叠加顺序。地图上存在多个多边形覆盖物叠加时，通过该属性使级别较高的多边形覆盖物在上层显示默认zIndex：10

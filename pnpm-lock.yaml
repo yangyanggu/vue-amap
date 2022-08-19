@@ -5,7 +5,6 @@ importers:
   .:
     specifiers:
       '@amap/amap-jsapi-loader': ^1.0.1
-      '@amap/amap-jsapi-types': 0.0.8
       '@pnpm/find-workspace-packages': 3.1.28
       '@pnpm/logger': 4.0.0
       '@pnpm/types': 7.6.0
@@ -56,7 +55,6 @@ importers:
       vue-router: ^4.0.12
     dependencies:
       '@amap/amap-jsapi-loader': 1.0.1
-      '@amap/amap-jsapi-types': 0.0.8
       '@tweenjs/tween.js': 18.6.4
       '@vue-map/mixins': link:src/mixins
       '@vue-map/packages': link:src/packages
@@ -110,7 +108,7 @@ importers:
   docs:
     specifiers:
       '@types/markdown-it': 12.2.3
-      '@vuemap/vue-amap': 1.1.10
+      '@vuemap/vue-amap': 1.1.11
       '@vuepress/plugin-docsearch': v2.0.0-beta.48
       '@vuepress/plugin-register-components': v2.0.0-beta.48
       '@vueuse/core': 7.2.2
@@ -122,7 +120,7 @@ importers:
       sitemap: ^7.0.0
       vuepress: 2.0.0-beta.48
     dependencies:
-      '@vuemap/vue-amap': 1.1.10
+      '@vuemap/vue-amap': 1.1.11
       '@vueuse/core': 7.2.2
       clipboard-copy: 4.0.1
     devDependencies:
@@ -249,10 +247,6 @@ packages:
 
   /@amap/amap-jsapi-loader/1.0.1:
     resolution: {integrity: sha512-nPyLKt7Ow/ThHLkSvn2etQlUzqxmTVgK7bIgwdBRTg2HK5668oN7xVxkaiRe3YZEzGzfV2XgH5Jmu2T73ljejw==}
-    dev: false
-
-  /@amap/amap-jsapi-types/0.0.8:
-    resolution: {integrity: sha512-q0FyZDIJcXjsMLGc3oS9rjfJsErOvt9rcp6AgzY4k14vo7bBhdq4eKwoSdVp/pYjR/rfaKBns5v10ycZOFwf/A==}
     dev: false
 
   /@babel/code-frame/7.16.7:
@@ -2158,8 +2152,8 @@ packages:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
     dev: true
 
-  /@vuemap/vue-amap/1.1.10:
-    resolution: {integrity: sha512-WBrupT93soxrr905Qa/W4qeOwSy1cc3b3eH8hzmWjP4qS5VZxYroOXoLysd2zAfB3q+L8NdFqc2/LUvnvTjEkA==}
+  /@vuemap/vue-amap/1.1.11:
+    resolution: {integrity: sha512-SGBnl3VdGavw0eXJj7Pm+7ZDtyPE9BByM4goWu+SxZQDRa0WsSYmP1BebtY2u3e3cfvkGyGegWV1c8bvFEZL7A==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:

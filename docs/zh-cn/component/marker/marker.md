@@ -34,7 +34,7 @@ anchor | String, Array | 设置点标记锚点，可选值：'top-left','top-cen
 ---|---|---|
 visible | Boolean | 点标记是否可见，默认为true。
 zIndex | Number | 点标记的叠加顺序。地图上存在多个点标记叠加时，通过该属性使级别较高的点标记在上层显示，默认zIndex：12
-position | Array | 点标记在地图上显示的位置`支持v-model`
+position | Array | 点标记在地图上显示的位置`1.1.11开始支持支持v-model`
 offset | Array | 点标记显示位置偏移量，默认值为 [0,0] 。Marker指定position后，默认以marker左上角位置为基准点（若设置了anchor，则以anchor设置位置为基准点），对准所给定的position位置，若需使marker指定位置对准在position处，需根据marker的尺寸设置一定的偏移量。
 icon | String AMap.Icon | 在点标记中显示的图标。可以传一个图标地址，也可以传Icon对象。有合法的content内容设置时，此属性无效。
 content | String HTMLElement | 点标记显示内容。可以是HTML要素字符串或者HTML DOM对象。content有效时，icon属性将被覆盖。 支持slot

@@ -31,8 +31,8 @@ editOptions | Object | [设置编辑参数参数](https://a.amap.com/jsapi/stati
 
 名称 | 类型 | 说明
 ---|---|---|
-center | Array| `1.1.10开始支持v-model`圆心位置
-radius | Array | `1.1.10开始支持v-model`椭圆的半径，用2个元素的数组表示，单位：米 如： radius: [1000, 2000] 表示横向半径是1000，纵向的半径是2000 默认值： [1000, 1000]
+center | Array| `1.1.11开始支持v-model`圆心位置
+radius | Array | `1.1.11开始支持v-model`椭圆的半径，用2个元素的数组表示，单位：米 如： radius: [1000, 2000] 表示横向半径是1000，纵向的半径是2000 默认值： [1000, 1000]
 visible | Boolean | 是否可见
 editable | Boolean | 多边形当前是否可编辑 (启动编辑时需要关闭 draggable，不然会导致图形被移走，但操作点还在原位)
 zIndex | Number | 多边形覆盖物的叠加顺序。地图上存在多个多边形覆盖物叠加时，通过该属性使级别较高的多边形覆盖物在上层显示默认zIndex：10

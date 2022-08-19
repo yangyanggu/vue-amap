@@ -29,7 +29,7 @@ cursor | String | 指定鼠标悬停时的鼠标样式，自定义cursor，IE仅
 
 名称 | 类型 | 说明
 ---|---|---|
-center | Array | 圆心位置`支持v-model`
+center | Array | 圆心位置`1.1.11开始支持支持v-model`
 visible | Boolean | 是否隐藏
 radius | Number | 圆点半径，单位:px
 zIndex | Number | 层叠顺序默认zIndex:10
