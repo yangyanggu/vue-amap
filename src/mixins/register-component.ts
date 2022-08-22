@@ -18,7 +18,11 @@ export default defineComponent({
     }, // 是否显示，默认 true
     zIndex: {
       type: Number
-    }
+    },
+    reEventWhenUpdate: {
+      type: Boolean,
+      default: false
+    } // 是否在组件更新时重新注册事件，主要用于数组更新时，绑定了事件但事件的对象不会更新问题
   },
   emits: ['init'],
   data() {
@@ -27,7 +31,8 @@ export default defineComponent({
       unwatchFns: [] as WatchStopHandle[],
       propsRedirect: {},
       converters: {},
-      isDestroy: false
+      isDestroy: false,
+      cacheEvents: {}
     };
   },
   created() {
@@ -52,7 +57,16 @@ export default defineComponent({
     this.destroyComponent();
     this.isDestroy = true;
   },
-
+  beforeUpdate() {
+    if(this.reEventWhenUpdate){
+      this.unregisterEvents();
+    }
+  },
+  updated() {
+    if(this.reEventWhenUpdate){
+      this.registerEvents();
+    }
+  },
   methods: {
     getHandlerFun(prop) {
       if (this[`__${prop}`]) {
@@ -90,17 +104,15 @@ export default defineComponent({
         if(eventReg.test(key)){
           const eventKey = convertEventToLowerCase(key);
           eventHelper.addListener(this.$amapComponent, eventKey, $props[key]);
+          this.cacheEvents[eventKey] = $props[key];
         }
       });
     },
 
     unregisterEvents() {
-      const $props = this.$attrs;
-      Object.keys($props).forEach(key => {
-        if(eventReg.test(key)){
-          const eventKey = convertEventToLowerCase(key);
-          eventHelper.removeListener(this.$amapComponent, eventKey, $props[key]);
-        }
+      Object.keys(this.cacheEvents).forEach(eventKey => {
+        eventHelper.removeListener(this.$amapComponent, eventKey, this.cacheEvents[eventKey]);
+        delete this.cacheEvents[eventKey];
       });
     },
 
