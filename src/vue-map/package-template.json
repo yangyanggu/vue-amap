@@ -55,8 +55,8 @@
     "vue": "^3.2.0"
   },
   "vetur": {
-    "tags": "tags.json",
-    "attributes": "attributes.json"
+    "tags": "./tags.json",
+    "attributes": "./attributes.json"
   },
-  "web-types": "web-types.json"
+  "web-types": "./web-types.json"
 }

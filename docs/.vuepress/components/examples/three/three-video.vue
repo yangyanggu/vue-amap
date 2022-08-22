@@ -41,9 +41,6 @@
   </div>
 </template>
 
-<style>
-</style>
-
 <script lang="ts">
 import {defineComponent} from "vue";
 
@@ -52,7 +49,7 @@ export default defineComponent({
     return {
       videoDestroy: true,
       center: [116.306206, 39.975468],
-      zoom: 16,
+      zoom: 15,
       visible: true,
       position: [116.306206, 39.975468],
       angle: 90,
@@ -67,8 +64,8 @@ export default defineComponent({
         z: 0
       },
       scale: 0.5,
-      altitude: 500,
-      video: '/test.mp4',
+      altitude: 200,
+      video: '/video/test.mp4',
       opacity: 0.5,
       videoOption: {
         width: 480,
@@ -104,7 +101,7 @@ export default defineComponent({
     },
     init(){
       const image = new Image();
-      image.src="/screen.jpeg";
+      image.src="/images/screen.jpeg";
       image.onload = () => {
         this.context.drawImage(image, 0, 0)
       }
@@ -112,3 +109,6 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+</style>
