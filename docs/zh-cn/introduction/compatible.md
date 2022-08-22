@@ -11,12 +11,38 @@ head:
 
 ---
 
-`@vuemap/vue-amap` 能够抛开高德原生 SDK 覆盖大多数场景，但对于部分定制化程度较高的场景而言，可能还是需要引入高德原生 SDK 来支持。这章将介绍如何在 @vuemap/vue-amap 中使用高德 SDK。
+`@vuemap/vue-amap` 能够抛开高德原生 SDK 覆盖大多数场景，但对于部分定制化程度较高的场景而言，可能还是需要引入高德原生 SDK 来支持。这章将介绍如何在 `@vuemap/vue-amap` 中使用高德 SDK。
 
+
+## Promise
+
+在**定制化程度较高**的项目中，开发者可能只想通过 vue-amap 引入高德地图，而部分实例化的操作直接基于高德地图的 sdk 完成。这个时候就需要 `lazyAMapApiLoaderInstance`。
+
+NPM 安装：
+
+```javascript
+import VueAMap, {initAMapApiLoader} from '@vuemap/vue-amap';
+import { lazyAMapApiLoaderInstance } from '@vuemap/vue-amap';
+
+initAMapApiLoader({
+  key: 'YOUR_KEY',
+});
+
+createApp(App)
+    .use(VueAMap)
+    .mount('#app')
+
+lazyAMapApiLoaderInstance.then(() => {
+  // your code ...
+  this.map = new AMap.Map('amapContainer', {
+    center: new AMap.LngLat(121.59996, 31.197646)
+  });
+});
+```
 
 ## 实例方式
 
-对于大多数 `vue-amap` 组件，都有 `init` 这个 `event`，参数为高德地图对应组件的实例，通过这样暴露高德实例的方式，开发者能够非常自由地将原生 SDK 和 @vuemap/vue-amap 结合起来使用。
+对于大多数 `@vuemap/vue-amap` 组件，都有 `init` 这个 `event`，参数为高德地图对应组件的实例，通过这样暴露高德实例的方式，开发者能够非常自由地将原生 SDK 和 @vuemap/vue-amap 结合起来使用。
 
 
 *若涉及到高德原生 `AMap` 需要注意的点：*

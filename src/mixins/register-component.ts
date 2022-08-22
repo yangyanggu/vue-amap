@@ -32,7 +32,8 @@ export default defineComponent({
       propsRedirect: {},
       converters: {},
       isDestroy: false,
-      cacheEvents: {}
+      cacheEvents: {},
+      isMounted: false
     };
   },
   created() {
@@ -58,12 +59,12 @@ export default defineComponent({
     this.isDestroy = true;
   },
   beforeUpdate() {
-    if(this.reEventWhenUpdate){
+    if(this.reEventWhenUpdate && this.isMounted && this.$amapComponent){
       this.unregisterEvents();
     }
   },
   updated() {
-    if(this.reEventWhenUpdate){
+    if(this.reEventWhenUpdate && this.isMounted && this.$amapComponent){
       this.registerEvents();
     }
   },
@@ -188,6 +189,7 @@ export default defineComponent({
       this.$nextTick(() => {
         this.createChildren();
       });
+      this.isMounted = true;
     },
 
     // helper method
