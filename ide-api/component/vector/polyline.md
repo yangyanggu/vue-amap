@@ -29,6 +29,7 @@ lineCap | String | 折线两端线帽的绘制样式，默认值为'butt'无头�
 geodesic | Boolean | 是否绘制大地线，默认false
 showDir | Boolean | 是否延路径显示白色方向箭头,默认false。建议折线宽度大于6时使用
 extData | any | 用户自定义属性，支持JavaScript API任意数据类型，如Polygon的id等
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## Events
 

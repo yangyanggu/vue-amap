@@ -24,6 +24,7 @@ borderWidth | String | 缩略图的边框宽度，同CSS，如'2px'
 buttonSize | String | 箭头按钮的像素尺寸，同CSS，如'12px'
 visible | Boolean | 是否显示，默认true
 isOpen | Boolean | 默认是否展开
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 
 ## Events

@@ -17,6 +17,7 @@ polygonOptions | Object | polygon的默认样式。存在getPolygon参数时，�
 getPolygon | Funtion (geojson, lnglats) | 指定线要素的绘制方式，缺省时为Polygon的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
 geo | Object| 要加载的标准GeoJSON对象
 visible | Boolean | 是否可见
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## Events
 

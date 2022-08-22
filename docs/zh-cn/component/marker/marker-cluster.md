@@ -25,6 +25,7 @@ examples/marker/marker-cluster
 renderClusterMarker  | Function | 该方法用来实现聚合点的自定义绘制，由开发者自己实现，API 将在绘制每个聚合点的时候调用这个方法，可以实现聚合点样式的灵活设定，指定了 renderClusterMarker 后 styles 无效。<br/>该函数的入参为一个Object，包含如下属性：<br/>1. count: 当前聚合点下聚合的 Marker 的数量<br/>2. marker: 当前聚合点显示的 Marker
 renderMarker  | Function | 该方法用来实现非聚合点的自定义绘制，由开发者自己实现，API 将在绘制每个非聚合点的时候调用这个方法<br/>该函数的入参为一个Object，包含如下属性：<br/>marker: 非聚合点 Marker 对象
 clusterByZoomChange | Boolean | 地图缩放过程中是否聚合。默认值 false。
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## 动态属性
 支持响应式。

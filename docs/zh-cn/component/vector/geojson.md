@@ -28,6 +28,7 @@ polylineOptions | Object | polyline的默认样式。存在getPolyline参数时�
 getPolyline | Funtion (geojson, lnglats) | 指定线要素的绘制方式，缺省时为Polyline的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
 polygonOptions | Object | polygon的默认样式。存在getPolygon参数时，该属性失效。该属性里的参数会全部带入polygon中，但会被geojson的properties中的属性给覆盖。
 getPolygon | Funtion (geojson, lnglats) | 指定线要素的绘制方式，缺省时为Polygon的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 
 ## 动态属性

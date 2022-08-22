@@ -1,1 +1,1 @@
-export const publishDate = '2022-08-19';
+export const publishDate = '2022-08-22';

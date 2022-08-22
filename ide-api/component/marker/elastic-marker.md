@@ -23,6 +23,7 @@ clickable | Boolean | 点标记是否可点击，默认值: true
 zoomStyleMapping | Object | 表示地图级别与styles中样式的映射，{14:0,15:0,16:1,17:1,}表示14到15级使用styles中的第0个样式，16-17级使用第二个样式
 styles | Array | 多个不同样式的数组。每个style对象有用两个参数 icon 和 label
 extData | any | 用户自定义属 ，支持JavaScript API任意数据类型，如 Marker的id等。可将自定义数据保存在该属性上，方便后续操作使用。
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## Events
 

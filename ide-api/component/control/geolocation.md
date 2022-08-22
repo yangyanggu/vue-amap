@@ -33,6 +33,7 @@ useNative | Boolean	| 是否与高德定位SDK能力结合，需要同时使用�
 getCityWhenFail | Boolean	| 定位失败之后是否返回基本城市定位信息
 needAddress | Boolean	| 是否需要将定位结果进行逆地理编码操作
 extensions | String	| 是否需要详细的逆地理编码信息，默认为'base'只返回基本信息，可选'all'
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 
 ## Events

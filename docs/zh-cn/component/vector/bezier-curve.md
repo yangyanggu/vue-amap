@@ -25,6 +25,7 @@ examples/vector/bezier-curve
 ---|---|---|
 bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上 默认 false
 editOptions | Object | [设置编辑参数参数](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#polylineeditor)
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## 动态属性
 

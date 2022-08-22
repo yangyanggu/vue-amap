@@ -22,6 +22,7 @@ fillColor | String | 多边形填充颜色，使用16进制颜色代码赋值，
 fillOpacity | Float | 多边形填充透明度，取值范围[0,1]，0表示完全透明，1表示不透明。默认为0.5
 draggable | Boolean | 设置多边形是否可拖拽移动，默认为false
 extData | Any | 用户自定义属性，支持JavaScript API任意数据类型，如Polygon的id等
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## Events
 

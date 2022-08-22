@@ -18,6 +18,7 @@ visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
 opacity | Number | 透明度，默认 1
 styles | Object | 为简易行政区图设定各面的填充颜色和描边颜色。 styles各字段的值可以是颜色值，也可以是一个返回颜色值* 的回调函数function。支持的颜色格式有：<br/>1. #RRGGBB，如：'#FFFFFF' <br/>2. rgba()，如：'rgba(255,255,255,1)'<br/> 3. rgb()，如：'rgb(255,255,255)'<br/>4. [r,g,b,a] ，如： [1,1,1,1]<br/>5. ''，代表不赋予颜色
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## Events
 

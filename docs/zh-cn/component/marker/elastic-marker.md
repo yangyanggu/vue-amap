@@ -25,6 +25,7 @@ examples/marker/elastic-marker
 topWhenClick | Boolean | 鼠标点击时marker是否置顶，默认false ，不置顶
 bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上, 默认值：false。
 zooms | Array | 点标记显示的层级范围，超过范围不显示。默认值：zooms: [2, 20]
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## 动态属性
 支持响应式。

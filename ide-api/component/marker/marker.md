@@ -25,6 +25,7 @@ title | String | 鼠标滑过点标记时的文字提示。不设置则鼠标滑
 clickable | Boolean | 点标记是否可点击，默认值: true
 label | {content,offset: [x, y]} | 添加文本标注，content为文本标注的内容，offset为偏移量，为偏移量,如设置了 direction，以 direction 方位为基准点进行偏移。
 extData | any | 用户自定义属 ，支持JavaScript API任意数据类型，如 Marker的id等。可将自定义数据保存在该属性上，方便后续操作使用。
+reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 
 ## Events
 
