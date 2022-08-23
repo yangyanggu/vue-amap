@@ -21,7 +21,7 @@ features:
     details: 接入amap2.0和loca所有常用组件。
   - title: 可自定义
     details: 提供多个接口开发原生对象，方便快速实现自定义功能。
-footer: MIT Licensed | Copyright © 2021-present guyy <a href="https://beian.miit.gov.cn">苏ICP备19020085号-1</a>
+footer: MIT Licensed | Copyright © 2021-present guyy <a href="https://beian.miit.gov.cn">苏ICP备19020085号-1</a> 本网站由<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img style="height:22px;" src="/images/youpaiyun.png" /></a>提供CDN加速/云存储服务
 footerHtml: true
 ---
 
