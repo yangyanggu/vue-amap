@@ -109,6 +109,9 @@ mousedown | MapsEvent | 鼠标按下
 mouseup | MapsEvent | 鼠标抬起
 mouseover | MapsEvent | 鼠标经过
 mouseout | MapsEvent | 鼠标移出
+dragstart | MapsEvent | 开始拖拽标记时触发事件
+dragging | MapsEvent | 鼠标拖拽移动标记时触发事件
+dragend | MapsEvent | 标记拖拽移动结束触发事件
 touchstart | MapsEvent | 触摸开始时触发事件，仅适用移动设备
 touchmove | MapsEvent | 触摸移动进行中时触发事件，仅适用移动设备
 touchend | MapsEvent | 触摸结束时触发事件，仅适用移动设备
