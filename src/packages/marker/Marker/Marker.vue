@@ -101,7 +101,7 @@ export default defineComponent({
       this.bindModelEvents();
     },
     getSlotContent(){
-      return (this.$refs.content as HTMLDivElement).cloneNode(true);
+      return (this.$refs.content as HTMLDivElement);
     },
     bindModelEvents(){
       this.$amapComponent.on('dragend',() => {

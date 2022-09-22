@@ -85,7 +85,7 @@ export default defineComponent({
       }
     },
     getSlotContent(){
-      return (this.$refs.info as HTMLDivElement).cloneNode(true);
+      return (this.$refs.info as HTMLDivElement);
     },
     destroyComponent() {
       if(this.observer){
