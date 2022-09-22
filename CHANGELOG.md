@@ -1,3 +1,6 @@
+### v1.1.15
+* 解决marker自定义slot时事件失效问题
+
 ### v1.1.14
 * 解决某些情况下marker和infowindow更新会报错问题
 
