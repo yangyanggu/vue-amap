@@ -1,6 +1,8 @@
 <template>
-  <div ref="info">
-    <slot />
+  <div style="display: none;">
+    <div ref="info">
+      <slot />
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -62,7 +64,7 @@ export default defineComponent({
   methods: {
     __initComponent(options) {
       if (!options.content) {
-        options.content = this.$refs.info;
+        options.content = this.getSlotContent();
       }
       this.$amapComponent = new AMap.InfoWindow(options);
       this.$amapComponent.on('close', () => {
@@ -76,11 +78,14 @@ export default defineComponent({
         const config = { attributes: true, childList: true, subtree: true };
         // 创建一个观察器实例并传入回调函数
         const observer = new MutationObserver(() => {
-          this.$amapComponent.setContent(this.$refs.info);
+          this.$amapComponent.setContent(this.getSlotContent());
         });
         observer.observe(this.$refs.info as Node, config);
         this.observer = observer;
       }
+    },
+    getSlotContent(){
+      return (this.$refs.info as HTMLDivElement).cloneNode(true);
     },
     destroyComponent() {
       if(this.observer){

@@ -1,3 +1,6 @@
+### v1.1.14
+* 解决某些情况下marker和infowindow更新会报错问题
+
 ### v1.1.12
 * 所有组件增加reEventWhenUpdate属性，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 

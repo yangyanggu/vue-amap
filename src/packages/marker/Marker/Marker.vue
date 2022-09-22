@@ -1,6 +1,8 @@
 <template>
-  <div ref="content">
-    <slot />
+  <div style="display: none;">
+    <div ref="content">
+      <slot />
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -78,7 +80,7 @@ export default defineComponent({
     __initComponent(options) {
       if (this.$slots.default && this.$slots.default().length > 0) {
         this.withSlot = true;
-        options.content = this.$refs.content;
+        options.content = this.getSlotContent();
       }
       this.$amapComponent = new AMap.Marker(options);
       if (isMapInstance(this.$parentComponent)) {
@@ -91,12 +93,15 @@ export default defineComponent({
         const config = { attributes: true, childList: true, subtree: true };
         // 创建一个观察器实例并传入回调函数
         const observer = new MutationObserver(() => {
-          this.$amapComponent.setContent(this.$refs.content);
+          this.$amapComponent.setContent(this.getSlotContent());
         });
         observer.observe(this.$refs.content as Node, config);
         this.observer = observer;
       }
       this.bindModelEvents();
+    },
+    getSlotContent(){
+      return (this.$refs.content as HTMLDivElement).cloneNode(true);
     },
     bindModelEvents(){
       this.$amapComponent.on('dragend',() => {
