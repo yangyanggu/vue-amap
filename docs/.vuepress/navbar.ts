@@ -50,17 +50,25 @@ export default [
     text: '高德官方文档',
     children: [
       {
-        text: 'API文档',
+        text: 'JSAPI文档',
         link: 'https://lbs.amap.com/api/jsapi-v2/documentation'
       },
       {
-        text: '示例地址',
+        text: 'JSAPI示例地址',
         link: 'https://lbs.amap.com/demo/list/jsapi-v2'
+      },
+      {
+        text: 'Loca API文档',
+        link: 'https://lbs.amap.com/api/loca-v2/api'
+      },
+      {
+        text: 'Loca 示例地址',
+        link: 'https://lbs.amap.com/api/loca-v2/demo-overview'
       }
     ]
   },
   {
-    text: 'gitee企业版购买(推广)',
-    link: 'https://gitee.com/enterprises?invite_code=Z2l0ZWUtNDkxNjM5'
+    text: '高德开源插件库',
+    link: 'https://github.com/AMap-Web'
   }
 ]

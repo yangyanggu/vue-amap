@@ -133,12 +133,17 @@ export default [
     children: [
       '/zh-cn/component/three/three-layer.md',
       '/zh-cn/component/three/three-gltf.md',
+      {
+        text: '灯光',
+        children: [
+          '/zh-cn/component/three/three-light-ambient.md',
+          '/zh-cn/component/three/three-light-directional.md',
+          '/zh-cn/component/three/three-light-hemisphere.md',
+          '/zh-cn/component/three/three-light-point.md',
+          '/zh-cn/component/three/three-light-spot.md',
+        ]
+      },
       '/zh-cn/component/three/three-video.md',
-      '/zh-cn/component/three/three-light-ambient.md',
-      '/zh-cn/component/three/three-light-directional.md',
-      '/zh-cn/component/three/three-light-hemisphere.md',
-      '/zh-cn/component/three/three-light-point.md',
-      '/zh-cn/component/three/three-light-spot.md',
       '/zh-cn/component/three/three-polygon.md'
     ],
   }

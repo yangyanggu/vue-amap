@@ -66,3 +66,10 @@ Components({
   include: [/\.vue$/, /\.vue\?vue/, /\.tsx$/, /\.tsx\?tsx/],
 })
 ```
+
+## 地图拖拽卡顿
+
+当出现地图拖拽卡顿时可以从以下几个方向检查
+* 地图的实例map对象是否被vue管理，比如赋值给ref或者reactive
+* 地图上的marker组件是否过多，marker是基于dom实现，当点位太多时会导致拖拽卡顿，比如几百个点
+* loca下的图层是否很多，当图层太多时，可以把不需要事件的图层组件的initEvents属性设置为false，默认情况下每个loca下的组件都会启动事件功能
