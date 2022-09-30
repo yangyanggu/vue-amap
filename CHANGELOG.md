@@ -1,3 +1,9 @@
+### v1.1.16
+* 所有loca图层增加rightclick事件
+* 调整loca图层事件实现方案，当initEvents为true时，只有绑定了事件才会真实的去对map进行事件绑定
+* 解决loca图层存在mousemove事件时，旋转地图卡顿问题
+* loca组件增加事件，支持click、mousemove、rightclick，事件支持返回所有选中的点和只返回最上层的点，默认返回最上层点
+
 ### v1.1.15
 * 解决marker自定义slot时事件失效问题
 

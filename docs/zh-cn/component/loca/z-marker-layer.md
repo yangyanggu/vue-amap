@@ -164,4 +164,4 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
 init | Loca.ZMarkerLayer| 实例
 click | Feature, event | 当点击到标号时返回对应的feature，否则返回undefined
 mousemove | Feature, event | 当鼠标移动滑过标号时返回对应的feature，否则返回undefined
-
+rightclick | Feature, event | 鼠标右击时返回对应的feature，否则返回undefined

@@ -152,3 +152,4 @@ $$getInstance() | Loca.LineLayer | 获取实例
 init | Loca.LineLayer | 实例
 click | Feature, event | 当点击到标号时返回对应的feature，否则返回undefined
 mousemove | Feature, event | 当鼠标移动滑过标号时返回对应的feature，否则返回undefined
+rightclick | Feature, event | 鼠标右击时返回对应的feature，否则返回undefined

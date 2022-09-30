@@ -36,11 +36,25 @@ export default defineComponent({
     visibleDuration: {
       type: Number,
       default: 0
+    },
+    onClick: {
+      type: Function,
+      default: null
+    },
+    onMousemove: {
+      type: Function,
+      default: null
+    },
+    onRightclick: {
+      type: Function,
+      default: null
     }
   },
-  emits: ['mousemove', 'click'],
+  emits: ['mousemove', 'click', 'rightclick' ],
   data() {
     return {
+      isDragging: false,
+      isRotating: false
     };
   },
   methods: {
@@ -74,7 +88,7 @@ export default defineComponent({
       this.$amapComponent.setSource(this.source);
     },
     initComplete() {
-      if (this['initEvents']) {
+      if (this.initEvents) {
         this.bindEvents();
       }
     },
@@ -94,23 +108,68 @@ export default defineComponent({
     bindEvents() {
       if(this.parentInstance){
         const map = this.parentInstance.getMap();
-        map.on('click', this.clickMap);
-        map.on('mousemove', this.mouseMoveMap);
+        const $props = this.$props;
+        if($props.onClick !== null){
+          map.on('click', this.clickMap);
+        }
+        if($props.onMousemove !== null){
+          map.on('mousemove', this.mouseMoveMap);
+          map.on('dragstart', this.dragStart);
+          map.on('dragend', this.dragEnd);
+          map.on('rotatestart', this.rotateStart);
+          map.on('rotateend', this.rotateEnd);
+          map.on('mouseout', this.mouseoutMap)
+        }
+        if($props.onRightclick !== null){
+          map.on('rightclick', this.rightclickMap);
+        }
       }
     },
     clickMap(e) {
-      const feature = this.$amapComponent.queryFeature(e.pixel.toArray());
+      const feature = this._getFeature(e);
       this.$emit('click', feature, e);
     },
+    rightclickMap(e) {
+      const feature = this._getFeature(e);
+      this.$emit('rightclick', feature, e);
+    },
     mouseMoveMap(e) {
-      const feature = this.$amapComponent.queryFeature(e.pixel.toArray());
+      if(this.isDragging || this.isRotating){
+        return;
+      }
+      const feature = this._getFeature(e);
       this.$emit('mousemove', feature, e);
+    },
+    _getFeature(e){
+      return this.$amapComponent.queryFeature(e.pixel.toArray());
+    },
+    dragStart(){
+      this.isDragging = true
+    },
+    dragEnd(){
+      this.isDragging = false
+    },
+    mouseoutMap(){
+      this.isDragging = false;
+      this.isRotating = false;
+    },
+    rotateStart(){
+      this.isRotating = true;
+    },
+    rotateEnd(){
+      this.isRotating = false;
     },
     unBindEvents() {
       if(this.parentInstance){
         const map = this.parentInstance.getMap();
         map.off('click', this.clickMap);
+        map.off('rightclick', this.rightclickMap);
         map.off('mousemove', this.mouseMoveMap);
+        map.off('dragstart', this.dragStart);
+        map.off('dragend', this.dragEnd);
+        map.off('rotatestart', this.rotateStart);
+        map.off('rotateend', this.rotateEnd);
+        map.off('mouseout', this.mouseoutMap)
       }
     },
     __layerStyle(style) {
