@@ -5,10 +5,7 @@
 import {defineComponent} from "vue";
 import registerMixin from '../../../mixins/register-component';
 import type { PropType} from "vue";
-
-interface EventOptions{
-  hitFirst: boolean // 是否只触发第一个选中的数据，默认 true
-}
+import type {EventOptions} from './Type'
 
 export default defineComponent({
   name: 'ElAmapLoca',

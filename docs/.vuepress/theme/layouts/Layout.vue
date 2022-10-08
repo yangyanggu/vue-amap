@@ -1,6 +1,6 @@
 <script setup>
 import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
-import {publishDate} from "../../data/config";
+import {publishDate} from "../../data/config.json";
 const publishUrl = `https://img.shields.io/static/v1?label=更新日期&message=${publishDate}&color=green`
 </script>
 

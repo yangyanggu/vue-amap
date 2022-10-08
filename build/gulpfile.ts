@@ -15,6 +15,7 @@ import {
   vmRoot
 } from './utils/paths'
 import {buildConfig} from './build-info'
+import changeBuildDate from './plugins/changeBuildDate'
 import type {TaskFunction} from 'gulp'
 import type {Module} from './build-info'
 
@@ -76,7 +77,8 @@ export default series(
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
   ),
-  parallel(copyTypesDefinitions, copyFiles)
+  parallel(copyTypesDefinitions, copyFiles),
+  withTaskName('change publish date', () => changeBuildDate())
 )
 
 export * from './types-definitions'
