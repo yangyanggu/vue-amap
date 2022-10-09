@@ -108,7 +108,7 @@ importers:
   docs:
     specifiers:
       '@types/markdown-it': 12.2.3
-      '@vuemap/vue-amap': 1.1.13
+      '@vuemap/vue-amap': 1.1.16
       '@vuepress/plugin-docsearch': v2.0.0-beta.48
       '@vuepress/plugin-register-components': v2.0.0-beta.48
       '@vueuse/core': 7.2.2
@@ -120,7 +120,7 @@ importers:
       sitemap: ^7.0.0
       vuepress: 2.0.0-beta.48
     dependencies:
-      '@vuemap/vue-amap': 1.1.13
+      '@vuemap/vue-amap': 1.1.16
       '@vueuse/core': 7.2.2
       clipboard-copy: 4.0.1
     devDependencies:
@@ -2152,8 +2152,8 @@ packages:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
     dev: true
 
-  /@vuemap/vue-amap/1.1.13:
-    resolution: {integrity: sha512-y5La9t07dED3TuIG/IxIsBz+4XZbdpALvTMK/Jlw9Fi0gs2vDAPEzL+bDuTTjk3A8Y+Rtssyrfb0gCYtck6SqA==}
+  /@vuemap/vue-amap/1.1.16:
+    resolution: {integrity: sha512-PjngB+ABxnjLjHIkbh3sv+odoLEPuiBihGyyR87Zp14/qVP6aDg/6zirCJbpawetc+wpridD7l7N7ZvvnoPzWw==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
@@ -8522,7 +8522,7 @@ packages:
     dev: true
 
   /uppercamelcase/1.1.0:
-    resolution: {integrity: sha1-Mk2YprOvx+iolT4QZBUJsOTiP5c=}
+    resolution: {integrity: sha512-C7YEMvhgrvTEKEEVqA7LXNID/1TvvIwYZqNIKLquS6y/MGSkRQAav9LnTTILlC1RqUM8eTVBOe1U/fnB652PRA==}
     dependencies:
       camelcase: 1.2.1
     dev: false
