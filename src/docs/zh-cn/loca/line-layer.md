@@ -15,7 +15,7 @@
     <div class="amap-page-container">
       <el-amap :zoom="zoom" :center="center":pitch="pitch" view-mode="3D" :show-label="false" class="amap-demo">
         <el-amap-loca>
-          <el-amap-loca-line :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle"></el-amap-loca-line>
+          <el-amap-loca-line :visible="visible" :source-url="sourceUrl" :layer-style="layerStyle" @mousemove="mousemove"></el-amap-loca-line>
         </el-amap-loca>
       </el-amap>
       <div class="toolbar">
@@ -63,6 +63,9 @@
         toggleVisible() {
           this.visible = !this.visible;
         },
+        mousemove(feature){
+          console.log('移动到标号上：', feature)
+        }
       }
     };
   </script>

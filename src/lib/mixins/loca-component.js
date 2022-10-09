@@ -39,6 +39,8 @@ export default {
   data() {
     const _this = this;
     return {
+      isDragging: false,
+      isRotating: false,
       handlers: {
         layerStyle(style) {
           _this.$nextTick(() => {
@@ -119,8 +121,18 @@ export default {
     bindEvents() {
       let map = this.parentInstance.getMap();
       if (map) {
-        map.on('click', this.clickMap);
-        map.on('mousemove', this.mouseMoveMap);
+        const $listeners = this.$listeners;
+        if ($listeners.click) {
+          map.on('click', this.clickMap);
+        }
+        if ($listeners.mousemove) {
+          map.on('mousemove', this.mouseMoveMap);
+          map.on('dragstart', this.dragStart);
+          map.on('dragend', this.dragEnd);
+          map.on('rotatestart', this.rotateStart);
+          map.on('rotateend', this.rotateEnd);
+          map.on('mouseout', this.mouseoutMap);
+        }
       }
     },
     clickMap(e) {
@@ -131,11 +143,32 @@ export default {
       let feature = this.$amapComponent.queryFeature(e.pixel.toArray());
       this.$emit('mousemove', feature, e);
     },
+    dragStart() {
+      this.isDragging = true;
+    },
+    dragEnd() {
+      this.isDragging = false;
+    },
+    mouseoutMap() {
+      this.isDragging = false;
+      this.isRotating = false;
+    },
+    rotateStart() {
+      this.isRotating = true;
+    },
+    rotateEnd() {
+      this.isRotating = false;
+    },
     unBindEvents() {
       let map = this.parentInstance.getMap();
       if (map) {
         map.off('click', this.clickMap);
         map.off('mousemove', this.mouseMoveMap);
+        map.off('dragstart', this.dragStart);
+        map.off('dragend', this.dragEnd);
+        map.off('rotatestart', this.rotateStart);
+        map.off('rotateend', this.rotateEnd);
+        map.off('mouseout', this.mouseoutMap);
       }
     }
   }

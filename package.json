@@ -1,13 +1,14 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "vue amap for amap2.0",
   "keywords": [
     "vue",
     "amap",
     "vue3",
     "map",
-    "高德"
+    "高德",
+    "vue-amap"
   ],
   "main": "./dist/index.js",
   "sideEffects": [

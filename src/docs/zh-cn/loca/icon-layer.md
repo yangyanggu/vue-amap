@@ -11,7 +11,7 @@
     <div class="amap-page-container">
       <el-amap :zoom="zoom" :center="center" :show-label="false" class="amap-demo">
         <el-amap-loca>
-          <el-amap-loca-icon :visible="visible" :source-data="sourceData" @click="clickIcon" :layer-style="layerStyle"></el-amap-loca-icon>
+          <el-amap-loca-icon :visible="visible" :source-data="sourceData" @click="clickIcon" :layer-style="layerStyle" @mousemove="mousemove"></el-amap-loca-icon>
         </el-amap-loca>
       </el-amap>
       <div class="toolbar">
@@ -87,6 +87,9 @@
         },
         clickIcon(feature, e){
           console.log('click: ', feature, e)
+        },
+        mousemove(feature){
+          console.log('移动到标号上：', feature)
         }
       },
     };
