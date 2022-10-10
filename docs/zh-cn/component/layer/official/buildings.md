@@ -39,10 +39,10 @@ opacity | Number | 透明度，默认 1
 
 ### BuildingStyleOptions 楼块的围栏和样式设置
 
-名称 | 类型             | 说明
----|----------------|---|
-hideWithoutStyle | Boolean        | 是否隐藏围栏之外的楼块
-areas | Array\<Arrea\> | 围栏信息数组,围栏信息对象为下面的Area对象
+名称 | 类型            | 说明
+---|---------------|---|
+hideWithoutStyle | Boolean       | 是否隐藏围栏之外的楼块
+areas | Array\<Area\> | 围栏信息数组,围栏信息对象为下面的Area对象
 
 #### Area 围栏信息对象
 
