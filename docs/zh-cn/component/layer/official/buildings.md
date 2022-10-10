@@ -37,20 +37,20 @@ visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：4
 opacity | Number | 透明度，默认 1
 
-### BuildingStyleOptions
+### BuildingStyleOptions 楼块的围栏和样式设置
 
-名称 | 类型 | 说明
----|---|---|
-hideWithoutStyle | Boolean | 是否隐藏围栏之外的楼块
-areas | Array | 围栏信息数组
+名称 | 类型             | 说明
+---|----------------|---|
+hideWithoutStyle | Boolean        | 是否隐藏围栏之外的楼块
+areas | Array\<Arrea\> | 围栏信息数组,围栏信息对象为下面的Area对象
 
-#### Area
+#### Area 围栏信息对象
 
 名称 | 类型 | 说明
 ---|---|---|
 rejectTexture | Boolean | 是否屏蔽自定义地图的纹理
 visible | Boolean | 是否可见
-path | Array | 围栏经纬度列表
+path | Array | 围栏路径的经纬度列表
 color1 | String | 围栏区域内楼块顶面颜色，支持 rgba、rgb、十六进制等
 color2 | String | 围栏区域内楼块侧面颜色，支持 rgba、rgb、十六进制等
 
