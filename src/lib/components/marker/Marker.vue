@@ -1,6 +1,12 @@
+<template>
+  <div style="display: none;">
+    <div ref="content">
+      <slot />
+    </div>
+  </div>
+</template>
 <script>
 import registerMixin from '../../mixins/register-component';
-import Vue from 'vue';
 import {isMapInstance, isOverlayGroupInstance} from '../../utils/util';
 
 export default {
@@ -54,8 +60,7 @@ export default {
   },
   data() {
     return {
-      withSlots: false,
-      tmpVM: null,
+      withSlot: false,
       converters: {
       },
       handlers: {
@@ -63,20 +68,12 @@ export default {
     };
   },
   created() {
-    this.tmpVM = new Vue({
-      data() {
-        return {node: ''};
-      },
-      render(h) {
-        const {node} = this;
-        return h('div', {ref: 'node'}, Array.isArray(node) ? node : [node]);
-      }
-    }).$mount();
   },
   methods: {
     __initComponent(options) {
       if (this.$slots.default && this.$slots.default.length) {
-        options.content = this.tmpVM.$refs.node;
+        this.withSlot = true;
+        options.content = this.getSlotContent();
       }
       this.$amapComponent = new AMap.Marker(options);
       if (isMapInstance(this.$parentComponent)) {
@@ -84,6 +81,9 @@ export default {
       } else if (isOverlayGroupInstance(this.$parentComponent)) {
         this.$parentComponent.addOverlay(this.$amapComponent);
       }
+    },
+    getSlotContent() {
+      return this.$refs.content;
     },
     destroyComponent() {
       if (isMapInstance(this.$parentComponent)) {
@@ -93,19 +93,6 @@ export default {
       }
       this.$amapComponent = null;
       this.$parentComponent = null;
-    }
-  },
-  render() {
-    const slots = this.$slots.default || [];
-    if (slots.length) {
-      this.withSlots = true;
-      this.tmpVM.node = slots;
-    }
-    return null;
-  },
-  destroyed() {
-    if (this.tmpVM) {
-      this.tmpVM.$destroy();
     }
   }
 };

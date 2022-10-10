@@ -1,6 +1,6 @@
 [![Fork me on Gitee](https://gitee.com/guyangyang/vue-amap/widgets/widget_3.svg)](https://gitee.com/guyangyang/vue-amap)<br/>
 [![npm package](https://img.shields.io/npm/v/@vuemap/vue-amap.svg)](https://www.npmjs.org/package/@vuemap/vue-amap)
-[![npm package](https://img.shields.io/static/v1?label=更新日期&message=2022-08-11&color=green)](https://www.npmjs.org/package/@vuemap/vue-amap)
+[![npm package](https://img.shields.io/static/v1?label=更新日期&message=2022-10-10&color=green)](https://www.npmjs.org/package/@vuemap/vue-amap)
 - 友情链接
   - [vue-bmap-gl](https://docs.guyixi.cn/vue-bmap-gl/)
   - [vue-mapvgl](https://docs.guyixi.cn/vue-mapvgl/)

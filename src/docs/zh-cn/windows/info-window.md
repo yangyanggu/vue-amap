@@ -14,13 +14,14 @@
           :position="position"
           :visible.sync="visible">
           <div>
-            <p>测试slot</p>
+            <p>{{text}}</p>
             <button @click="clickButton">点击按钮</button>
           </div>
         </el-amap-info-window>
       </el-amap>
       <button @click="switchWindow()">{{visible ? '隐藏信息窗口' : '显示信息窗口'}}</button>
       <button @click="changePosition()">修改位置</button>
+      <button @click="changeText()">修改内容</button>
     </div>
   </template>
 
@@ -37,7 +38,8 @@
           zoom: 14,
           center: [121.5273285, 31.21515044],
           position: [121.5273285, 31.21515044],
-          visible: true
+          visible: true,
+          text: '测试slot'
         }
       },
 
@@ -54,6 +56,9 @@
         changePosition(){
           let p = this.position;
           this.position = [p[0]+0.001, p[1]+0.001];
+        },
+        changeText(){
+          this.text = new Date().toLocaleString();
         }
       }
     };

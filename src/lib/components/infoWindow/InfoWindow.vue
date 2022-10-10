@@ -1,6 +1,12 @@
+<template>
+  <div style="display: none;">
+    <div ref="info">
+      <slot />
+    </div>
+  </div>
+</template>
 <script>
 import registerMixin from '../../mixins/register-component';
-import Vue from 'vue';
 
 export default {
   name: 'el-amap-info-window',
@@ -37,7 +43,6 @@ export default {
     let self = this;
     return {
       withSlots: false,
-      tmpVM: null,
       converters: {
       },
       handlers: {
@@ -58,26 +63,10 @@ export default {
       }
     };
   },
-  created() {
-    this.tmpVM = new Vue({
-      data() {
-        return {node: ''};
-      },
-      render(h) {
-        const {node} = this;
-        return h('div', {ref: 'node'}, Array.isArray(node) ? node : [node]);
-      }
-    }).$mount();
-  },
-  destroyed() {
-    if (this.tmpVM) {
-      this.tmpVM.$destroy();
-    }
-  },
   methods: {
     __initComponent(options) {
       if (this.$slots.default && this.$slots.default.length) {
-        options.content = this.tmpVM.$refs.node;
+        options.content = this.getSlotContent();
       }
       this.$amapComponent = new AMap.InfoWindow(options);
       this.$amapComponent.on('close', () => {
@@ -86,6 +75,9 @@ export default {
       if (this.visible !== false) {
         this.$amapComponent.open(this.$parentComponent, this.position);
       }
+    },
+    getSlotContent() {
+      return this.$refs.info;
     },
     destroyComponent() {
       if (this.$amapComponent) {
@@ -96,13 +88,6 @@ export default {
         this.$parentComponent = null;
       }
     }
-  },
-  render() {
-    const slots = this.$slots.default || [];
-    if (slots.length) {
-      this.tmpVM.node = slots;
-    }
-    return null;
   }
 };
 </script>
