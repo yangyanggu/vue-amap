@@ -22,7 +22,7 @@ export default defineComponent({
       return new Promise<void>((resolve) => {
         this.$parentComponent.plugin(['AMap.ToolBar'], () => {
           this.$amapComponent = new AMap.ToolBar(options);
-          this.$amapComponent.addTo(this.$parentComponent);
+          this.$parentComponent.addControl(this.$amapComponent);
           resolve();
         });
       });

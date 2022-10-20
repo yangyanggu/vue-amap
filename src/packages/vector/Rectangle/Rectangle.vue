@@ -138,7 +138,9 @@ export default defineComponent({
           this.$parentComponent.remove(this.$amapComponent);
         }
       }
-      this.$amapComponent.destroy();
+      if(this.$amapComponent.destroy){
+        this.$amapComponent.destroy();
+      }
       this.$amapComponent = null;
       this.$parentComponent = null;
     },

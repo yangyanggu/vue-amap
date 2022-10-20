@@ -32,7 +32,7 @@ export default defineComponent({
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.Buildings(options);
-      this.$parentComponent.addLayer(this.$amapComponent);
+      this.$parentComponent.add(this.$amapComponent);
       if(this.styleOpts){
         this.__styleOpts(this.styleOpts);
       }
@@ -40,7 +40,7 @@ export default defineComponent({
     destroyComponent() {
       this.$amapComponent.destroy();
       if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLayer(this.$amapComponent);
+        this.$parentComponent.remove(this.$amapComponent);
       }
       this.$amapComponent = null;
       this.$parentComponent = null;

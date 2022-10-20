@@ -26,7 +26,7 @@ export default defineComponent({
       return new Promise<void>((resolve) => {
         this.$parentComponent.plugin(['AMap.ControlBar'], () => {
           this.$amapComponent = new AMap.ControlBar(options);
-          this.$amapComponent.addTo(this.$parentComponent);
+          this.$parentComponent.addControl(this.$amapComponent);
           resolve();
         });
       });

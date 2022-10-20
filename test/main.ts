@@ -11,8 +11,8 @@ initAMapApiLoader({
   version: '2.0',
   plugins: ['AMap.3DTilesLayer'],
   Loca:{
-    version: '2.0.10'
-  }
+    version: '2.0'
+  },
   // offline: true
 })
 

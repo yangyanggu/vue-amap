@@ -30,11 +30,11 @@ export default defineComponent({
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.TileLayer.WMS(options);
-      this.$parentComponent.addLayer(this.$amapComponent);
+      this.$parentComponent.add(this.$amapComponent);
     },
     destroyComponent() {
       if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLayer(this.$amapComponent);
+        this.$parentComponent.remove(this.$amapComponent);
       }
       this.$amapComponent = null;
       this.$parentComponent = null;

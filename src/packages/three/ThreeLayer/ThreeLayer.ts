@@ -22,6 +22,9 @@ import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoa
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import {clearScene} from "../../../utils/threeUtil";
 import { ThreeRenderPass } from './ThreeRenderPass.js';
+import type { Texture
+, Camera
+} from 'three';
 import type {HDROptions, LightOption} from "./Type";
 
 interface Options {
@@ -41,9 +44,9 @@ class ThreeLayer {
   customCoords: any;
   center: number[]; // 图层显示的中心点，默认是初始化时的地图中心，尽量使用模型的第一个点
   layer: any; // GLCustomLayer图层实例
-  renderer: WebGLRenderer;
-  camera: PerspectiveCamera | OrthographicCamera; // 相机实例
-  scene: Scene; //场景实例
+  renderer?: WebGLRenderer;
+  camera?: PerspectiveCamera | OrthographicCamera; // 相机实例
+  scene?: Scene; //场景实例
   options: Options; //初始化参数
   map: any; // 地图实例
   frameTimer = -1; // 刷新图层的定时器
@@ -56,7 +59,7 @@ class ThreeLayer {
     RectAreaLight, // 平面光光源  平面光光源从一个矩形平面上均匀地发射光线。这种光源可以用来模拟像明亮的窗户或者条状灯光光源
     SpotLight // 聚光灯  光线从一个点沿一个方向射出，随着光线照射的变远，光线圆锥体的尺寸也逐渐增大
   }
-  raycaster: Raycaster // 射线，用于判断点击或者鼠标移动是否碰到物体
+  raycaster: Raycaster | undefined // 射线，用于判断点击或者鼠标移动是否碰到物体
   mouse: Vector2;
   envMap: any; // HDR的环境贴图
   clickFun: any;
@@ -122,9 +125,9 @@ class ThreeLayer {
         },
         render: () => {
           // 这里必须执行！！重新设置 three 的 gl 上下文状态。
-          this.renderer.resetState();
+          this.renderer?.resetState();
           this.customCoords.setCenter(this.center);
-          const camera = this.camera;
+          const camera = this.camera as PerspectiveCamera | OrthographicCamera;
           // 2D 地图下使用的正交相机
           if (map.getView().type === '3D') {
             const {near, far, fov, up, lookAt, position} = this.customCoords.getCameraParams();
@@ -156,9 +159,9 @@ class ThreeLayer {
             })
             this.effectComposer.render()
           }else{
-            this.renderer.render(this.scene, camera);
+            this.renderer?.render(this.scene as Scene, camera);
           }
-          this.renderer.resetState();
+          this.renderer?.resetState();
         }
       }
       this.layer = new AMap.GLCustomLayer(layerOptions);
@@ -246,12 +249,12 @@ class ThreeLayer {
       // roughness: 0.0,
       exposure: 1.0 // 光亮程度
     }, hdr);
-    const render = this.renderer;
+    const render = this.renderer as WebGLRenderer;
     render.physicallyCorrectLights = true;
     render.outputEncoding = sRGBEncoding;
     render.toneMappingExposure = options.exposure;
     const hdrUrls = options.urls;
-    let pmremGenerator = new PMREMGenerator(render);
+    let pmremGenerator: PMREMGenerator = new PMREMGenerator(render);
     pmremGenerator.compileCubemapShader();
     const hdrCubeMap = new HDRCubeTextureLoader()
       .setPath(options.path)
@@ -262,13 +265,13 @@ class ThreeLayer {
         this.envMap = hdrCubeRenderTarget ? hdrCubeRenderTarget.texture : null;
         this.addEnvMap(this.scene);
         pmremGenerator.dispose();
-        pmremGenerator = null;
+        pmremGenerator = null as any;
         this.refreshMap();
       }) as any;
   }
 
   addEnvMap(object) {
-    this.scene.environment = this.envMap;
+    this.scene!.environment = this.envMap as Texture;
     /*const envMap = this.envMap;
     if (!envMap || !object) {
       return;
@@ -312,8 +315,8 @@ class ThreeLayer {
         group.$vue.$emit('mouseover', group);
       }
     } else {
-      const children = this.scene.children;
-      children.forEach(object => {
+      const children = this.scene?.children;
+      children?.forEach((object: any) => {
         if (object.isCustomGroup && object.isHover === true) {
           object.isHover = false;
           object.$vue.$emit('mouseout', object);
@@ -334,10 +337,10 @@ class ThreeLayer {
     this.mouse.x = ((e.originEvent.x + window.pageXOffset - offsetLeft) / getBoundingClientRect.width) * 2 - 1;
     this.mouse.y = -((e.originEvent.y + window.pageYOffset - offsetTop) / getBoundingClientRect.height) * 2 + 1;
     const camera = this.camera;
-    this.raycaster.setFromCamera(this.mouse, camera);
-    const intersects = this.raycaster.intersectObjects([this.scene], true);
-    const length = intersects.length;
-    if (length > 0) {
+    this.raycaster?.setFromCamera(this.mouse, camera as Camera);
+    const intersects = this.raycaster?.intersectObjects([this.scene as Scene], true);
+    const length = intersects?.length;
+    if (length && length > 0) {
       let group = null;
       for (let i = 0; i < length; i++) {
         const object = intersects[i];
@@ -370,13 +373,13 @@ class ThreeLayer {
 
   // 往场景中添加对象
   addObject(object) {
-    this.scene.add(object);
+    this.scene?.add(object);
     this.refreshMap();
   }
 
   // 从场景中移除对象
   removeObject(object) {
-    this.scene.remove(object);
+    this.scene?.remove(object);
   }
 
   getScene() {
@@ -401,17 +404,17 @@ class ThreeLayer {
     }
     this.customCoords = null;
     clearScene(this.scene);
-    this.scene = null;
-    this.camera = null;
-    this.renderer.dispose();
-    this.renderer = null;
+    this.scene = undefined;
+    this.camera = undefined;
+    this.renderer?.dispose();
+    this.renderer = undefined;
     this.layer = null;
     this.map = null;
     Cache.clear();
     this.lightTypes = null as any;
     this.options = null as any;
-    this.raycaster = null;
-    this.mouse = null;
+    this.raycaster = undefined;
+    // this.mouse = undefined;
   }
 
   getMap(){

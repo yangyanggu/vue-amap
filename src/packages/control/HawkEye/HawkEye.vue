@@ -62,7 +62,7 @@ export default defineComponent({
       return new Promise<void>((resolve) => {
         this.$parentComponent.plugin(['AMap.HawkEye'], () => {
           this.$amapComponent = new AMap.HawkEye(options);
-          this.$amapComponent.addTo(this.$parentComponent);
+          this.$parentComponent.addControl(this.$amapComponent);
           resolve();
         });
       });

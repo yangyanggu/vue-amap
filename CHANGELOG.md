@@ -1,3 +1,7 @@
+### v1.1.17
+* 适配JSAPI 1.4.x
+* 升级threejs版本
+
 ### v1.1.16
 * 所有loca图层增加rightclick事件
 * 调整loca图层事件实现方案，当initEvents为true时，只有绑定了事件才会真实的去对map进行事件绑定

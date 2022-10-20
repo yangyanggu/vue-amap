@@ -27,7 +27,7 @@ export default defineComponent({
       return new Promise<void >((resolve) => {
         this.$parentComponent.plugin(['AMap.MapType'], () => {
           this.$amapComponent = new AMap.MapType(options);
-          this.$amapComponent.addTo(this.$parentComponent);
+          this.$parentComponent.addControl(this.$amapComponent);
           resolve();
         });
       });

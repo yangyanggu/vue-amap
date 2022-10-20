@@ -36,7 +36,7 @@ class ThreeGltf {
     return new Promise<void>((resolve) => {
       const loader = new GLTFLoader(); // 读取模型
       loader.load(options.url, (gltf) => {
-        const object = gltf.scene;
+        const object = gltf.scene as any;
         object.isCustomGroup = true;
         object.$vue = $vue;
         const animations = gltf.animations;

@@ -131,6 +131,11 @@ export default defineComponent({
           this.$parentComponent.remove(this.$amapComponent);
         }
       }
+      if(this.$amapComponent.destroy){
+        this.$amapComponent.destroy();
+      }
+      this.$amapComponent = null;
+      this.$parentComponent = null;
     },
     __zIndex(value) {
       if(this.$amapComponent){
