@@ -51,10 +51,10 @@ export default {
       } else if (this.type === 'Province') {
         this.$amapComponent = new AMap.DistrictLayer.Province(options);
       }
-      this.$parentComponent.addLayer(this.$amapComponent);
+      this.$parentComponent.add(this.$amapComponent);
     },
     destroyComponent() {
-      this.$parentComponent.removeLayer(this.$amapComponent);
+      this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

@@ -25,7 +25,7 @@ export default {
       return new Promise((resolve) => {
         this.$parentComponent.plugin(['AMap.MapType'], () => {
           this.$amapComponent = new AMap.MapType(options);
-          this.$amapComponent.addTo(this.$parentComponent);
+          this.$parentComponent.addControl(this.$amapComponent);
           resolve();
         });
 
@@ -33,7 +33,7 @@ export default {
     },
     destroyComponent() {
       if (this.$amapComponent && this.$parentComponent) {
-        this.$amapComponent.remove();
+        this.$parentComponent.removeControl(this.$amapComponent);
         this.$amapComponent = null;
         this.$parentComponent = null;
       }

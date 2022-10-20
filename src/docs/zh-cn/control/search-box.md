@@ -100,3 +100,12 @@ adcode | String | 区域编码
 district | String | 所属区域
 location | String | 位置
 type | String | 类型
+
+
+### 常见问题
+1、搜索框中输入内容，但没有可选的下拉框出现
+```text
+原因：
+一、新版本的key都需要配合安全密钥使用，初始化loader时需要配上安全密钥或安全代理
+二、下拉框的默认zIndex较低，当在弹出框中使用时，结果的下拉框会被盖住。下拉框的class为 amap-sug-result， 因此需要增加 .amap-sug-result{z-index:1000}去处理
+```

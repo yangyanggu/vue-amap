@@ -29,7 +29,7 @@ export default {
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.TileLayer.Traffic(options);
-      this.$parentComponent.addLayer(this.$amapComponent);
+      this.$parentComponent.add(this.$amapComponent);
     },
     stopFresh() {
       if (this.$amapComponent) {
@@ -37,7 +37,7 @@ export default {
       }
     },
     destroyComponent() {
-      this.$parentComponent.removeLayer(this.$amapComponent);
+      this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

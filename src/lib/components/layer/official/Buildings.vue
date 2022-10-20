@@ -37,14 +37,14 @@ export default {
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.Buildings(options);
-      this.$parentComponent.addLayer(this.$amapComponent);
+      this.$parentComponent.add(this.$amapComponent);
       if (this.styleOpts) {
         this.$amapComponent.setStyle(this.styleOpts);
       }
     },
     destroyComponent() {
       this.$amapComponent.destroy();
-      this.$parentComponent.removeLayer(this.$amapComponent);
+      this.$parentComponent.remove(this.$amapComponent);
       this.$amapComponent = null;
       this.$parentComponent = null;
     }

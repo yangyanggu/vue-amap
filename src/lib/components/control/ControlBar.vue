@@ -25,14 +25,14 @@ export default {
       return new Promise((resolve) => {
         this.$parentComponent.plugin(['AMap.ControlBar'], () => {
           this.$amapComponent = new AMap.ControlBar(options);
-          this.$amapComponent.addTo(this.$parentComponent);
+          this.$parentComponent.addControl(this.$amapComponent);
           resolve();
         });
       });
     },
     destroyComponent() {
       if (this.$amapComponent && this.$parentComponent) {
-        this.$amapComponent.remove();
+        this.$parentComponent.removeControl(this.$amapComponent);
         this.$amapComponent = null;
         this.$parentComponent = null;
       }

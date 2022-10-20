@@ -7,7 +7,7 @@ export function isMapInstance(instance) {
   if (!instance) {
     return false;
   }
-  return instance.className === 'AMap.Map';
+  return instance.className === 'AMap.Map' || instance.CLASS_NAME === 'AMap.Map';
 }
 
 /**
@@ -19,7 +19,7 @@ export function isOverlayGroupInstance(instance) {
   if (!instance) {
     return false;
   }
-  return instance.className === 'Overlay.OverlayGroup';
+  return instance.className === 'Overlay.OverlayGroup' || instance.CLASS_NAME === 'Overlay.OverlayGroup';
 }
 
 /**
@@ -31,7 +31,7 @@ export function isIndoorMapInstance(instance) {
   if (!instance) {
     return false;
   }
-  return instance.className === 'AMap.IndoorMap';
+  return instance.className === 'AMap.IndoorMap' || instance.CLASS_NAME === 'AMap.IndoorMap';
 }
 
 /**
@@ -43,7 +43,7 @@ export function isLabelsLayerInstance(instance) {
   if (!instance) {
     return false;
   }
-  return instance.className === 'AMap.LabelsLayer';
+  return instance.className === 'AMap.LabelsLayer' || instance.CLASS_NAME === 'AMap.LabelsLayer';
 }
 
 /**
@@ -55,5 +55,5 @@ export function isVectorLayerInstance(instance) {
   if (!instance) {
     return false;
   }
-  return instance.CLASS_NAME === 'AMap.VectorLayer';
+  return instance.CLASS_NAME === 'AMap.VectorLayer' || instance.CLASS_NAME === 'AMap.VectorLayer';
 }

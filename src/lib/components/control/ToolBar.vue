@@ -22,7 +22,7 @@ export default {
       return new Promise((resolve) => {
         this.$parentComponent.plugin(['AMap.ToolBar'], () => {
           this.$amapComponent = new AMap.ToolBar(options);
-          this.$amapComponent.addTo(this.$parentComponent);
+          this.$parentComponent.addControl(this.$amapComponent);
           resolve();
         });
 
@@ -30,7 +30,7 @@ export default {
     },
     destroyComponent() {
       if (this.$amapComponent && this.$parentComponent) {
-        this.$amapComponent.remove();
+        this.$parentComponent.removeControl(this.$amapComponent);
         this.$amapComponent = null;
         this.$parentComponent = null;
       }
