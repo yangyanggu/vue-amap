@@ -18,6 +18,7 @@ importers:
       '@types/jest': 27.0.2
       '@types/lodash-es': 4.17.5
       '@types/sass': 1.43.1
+      '@types/three': 0.143.0
       '@typescript-eslint/eslint-plugin': 5.6.0
       '@typescript-eslint/parser': 5.6.0
       '@vitejs/plugin-vue': ^2.0.0
@@ -46,7 +47,7 @@ importers:
       rollup-plugin-vue: 6.0.0
       sass: ^1.45.0
       sucrase: ^3.20.3
-      three: 0.142.0
+      three: 0.143.0
       ts-morph: 14.0.0
       typescript: ^4.7.4
       uppercamelcase: ^1.1.0
@@ -61,7 +62,7 @@ importers:
       '@vue-map/services': link:src/services
       color: 4.2.3
       lodash-es: 4.17.21
-      three: 0.142.0
+      three: 0.143.0
       uppercamelcase: 1.1.0
     devDependencies:
       '@pnpm/find-workspace-packages': 3.1.28_@pnpm+logger@4.0.0
@@ -76,6 +77,7 @@ importers:
       '@types/jest': 27.0.2
       '@types/lodash-es': 4.17.5
       '@types/sass': 1.43.1
+      '@types/three': 0.143.0
       '@typescript-eslint/eslint-plugin': 5.6.0_7thcwv7hjzmgy4g5rdjwtkdapq
       '@typescript-eslint/parser': 5.6.0_nqjrzu6d3irzy6zot23swntkzq
       '@vitejs/plugin-vue': 2.3.1_vite@2.9.5+vue@3.2.37
@@ -1906,6 +1908,12 @@ packages:
       '@types/node': 17.0.25
     dev: true
 
+  /@types/three/0.143.0:
+    resolution: {integrity: sha512-c5PonXOt8xk5q4ygmyjOX4Ec+FA7gwfdcMT/PveE9xrJs/0DDcf2lJkWrhEcmvx2ZefQCQBcogABnGqB0P4OsA==}
+    dependencies:
+      '@types/webxr': 0.5.0
+    dev: true
+
   /@types/undertaker-registry/1.0.1:
     resolution: {integrity: sha512-Z4TYuEKn9+RbNVk1Ll2SS4x1JeLHecolIbM/a8gveaHsW0Hr+RQMraZACwTO2VD7JvepgA6UO1A1VrbktQrIbQ==}
     dev: true
@@ -1935,6 +1943,10 @@ packages:
 
   /@types/web-bluetooth/0.0.14:
     resolution: {integrity: sha512-5d2RhCard1nQUC3aHcq/gHzWYO6K0WJmAbjO7mQJgCQKtZpgXxv1rOM6O/dBDhDYYVutk1sciOgNSe+5YyfM8A==}
+    dev: true
+
+  /@types/webxr/0.5.0:
+    resolution: {integrity: sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.6.0_7thcwv7hjzmgy4g5rdjwtkdapq:
@@ -8206,6 +8218,10 @@ packages:
 
   /three/0.142.0:
     resolution: {integrity: sha512-ESjPO+3geFr+ZUfVMpMnF/eVU2uJPOh0e2ZpMFqjNca1wApS9lJb7E4MjwGIczgt9iuKd8PEm6Pfgp2bJ92Xtg==}
+    dev: false
+
+  /three/0.143.0:
+    resolution: {integrity: sha512-oKcAGYHhJ46TGEuHjodo2n6TY2R6lbvrkp+feKZxqsUL/WkH7GKKaeu6RHeyb2Xjfk2dPLRKLsOP0KM2VgT8Zg==}
     dev: false
 
   /through2-filter/3.0.0:
