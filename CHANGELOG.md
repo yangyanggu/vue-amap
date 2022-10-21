@@ -1,6 +1,7 @@
 ### v1.1.17
 * 适配JSAPI 1.4.x
 * 升级threejs版本
+* 增加自定义的3dtiles图层
 
 ### v1.1.16
 * 所有loca图层增加rightclick事件

@@ -197,6 +197,10 @@ class ThreeLayer {
     this.needsUpdate = true;
   }
 
+  update(){
+    this.needsUpdate = true;
+  }
+
   animate() {
     if (this.needsUpdate) {
       this.refreshMap();
@@ -379,6 +383,17 @@ class ThreeLayer {
 
   // 从场景中移除对象
   removeObject(object) {
+    this.scene?.remove(object);
+  }
+
+  // 往场景中添加对象
+  add(object) {
+    this.scene?.add(object);
+    this.refreshMap();
+  }
+
+  // 从场景中移除对象
+  remove(object) {
     this.scene?.remove(object);
   }
 

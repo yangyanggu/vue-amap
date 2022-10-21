@@ -23,14 +23,16 @@
   ],
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
+    "@amap/three-layer": "^0.0.2",
     "@tweenjs/tween.js": "^18.6.4",
-    "lodash-es": "^4.17.21",
-    "three": "0.143.0",
-    "uppercamelcase": "^1.1.0",
-    "color": "^4.2.3",
+    "@vue-map/mixins": "workspace:*",
     "@vue-map/packages": "workspace:*",
     "@vue-map/services": "workspace:*",
-    "@vue-map/mixins": "workspace:*"
+    "@vuemap/layer-3dtiles": "^0.0.2",
+    "color": "^4.2.3",
+    "lodash-es": "^4.17.21",
+    "three": "0.143.0",
+    "uppercamelcase": "^1.1.0"
   },
   "devDependencies": {
     "@pnpm/find-workspace-packages": "3.1.28",
@@ -39,6 +41,8 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "3.0.0",
+    "@turf/turf": "^6.5.0",
+    "@types/fs-extra": "9.0.13",
     "@types/gulp": "4.0.9",
     "@types/jest": "27.0.2",
     "@types/lodash-es": "4.17.5",
@@ -46,9 +50,9 @@
     "@types/three": "0.143.0",
     "@typescript-eslint/eslint-plugin": "5.6.0",
     "@typescript-eslint/parser": "5.6.0",
-    "@types/fs-extra": "9.0.13",
     "@vitejs/plugin-vue": "^2.0.0",
     "@vue/compiler-sfc": "3.2.37",
+    "components-helper": "^1.0.5",
     "element-plus": "^2.1.10",
     "esbuild": "0.14.2",
     "eslint": "8.4.1",
@@ -56,6 +60,8 @@
     "eslint-define-config": "1.2.0",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-vue": "8.7.1",
+    "fast-glob": "3.2.7",
+    "fs-extra": "10.0.0",
     "gulp": "4.0.2",
     "rimraf": "3.0.2",
     "rollup": "^2.61.1",
@@ -65,15 +71,11 @@
     "rollup-plugin-vue": "6.0.0",
     "sass": "^1.45.0",
     "sucrase": "^3.20.3",
+    "ts-morph": "14.0.0",
     "typescript": "^4.7.4",
     "vite": "~2.9.5",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.12",
-    "components-helper": "^1.0.5",
-    "ts-morph": "14.0.0",
-    "fs-extra": "10.0.0",
-    "fast-glob": "3.2.7",
-    "@turf/turf": "^6.5.0"
+    "vue-router": "^4.0.12"
   },
   "peerDependencies": {
     "vue": "^3.2.0"

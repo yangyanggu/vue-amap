@@ -49,7 +49,9 @@
     "lodash-es": "^4.17.21",
     "three": "0.142.0",
     "uppercamelcase": "^1.1.0",
-    "color": "^4.2.3"
+    "color": "^4.2.3",
+    "@amap/three-layer": "^0.0.2",
+    "@vuemap/layer-3dtiles": "^0.0.2"
   },
   "devDependencies": {
   },
