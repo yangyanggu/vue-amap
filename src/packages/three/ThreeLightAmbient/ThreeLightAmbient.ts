@@ -1,4 +1,5 @@
 import {AmbientLight, Color} from 'three';
+import type CustomThreeLayer from '@vue-map/packages/three/ThreeLayer/CustomThreeLayer'
 
 interface Options {
   color: string // 颜色的rgb数值。缺省值为 0xffffff。
@@ -6,18 +7,18 @@ interface Options {
 }
 
 class ThreeLightAmbient {
-  object: any // Light
-  layer: any // threejs的图层对象
+  object: AmbientLight | null // Light
+  layer: CustomThreeLayer | null // threejs的图层对象
 
-  constructor(layer: any, options: Options) {
+  constructor(layer: CustomThreeLayer, options: Options) {
     this.layer = layer;
     const light = new AmbientLight(this.getColorHex(options.color), options.intensity);
     this.object = light;
-    layer.addObject(light);
+    layer.add(light);
   }
 
   setColor(color: string) {
-    this.object.color = this.getColorHex(color);
+    this.object!.color = new Color(color);
     this.refresh();
   }
 
@@ -26,17 +27,17 @@ class ThreeLightAmbient {
   }
 
   setIntensity(intensity: number) {
-    this.object.intensity = intensity;
+    this.object!.intensity = intensity;
     this.refresh();
   }
 
   refresh() {
-    this.layer.setUpdate();
+    this.layer?.update();
   }
 
   remove(){
     if (this.object) {
-      this.layer.removeObject(this.object)
+      this.layer?.remove(this.object)
     }
   }
 

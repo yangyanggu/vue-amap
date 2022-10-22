@@ -2,6 +2,7 @@ import {Group, VideoTexture, CanvasTexture, PlaneGeometry, MeshPhongMaterial, Me
 import {bind} from "lodash-es";
 import {clearGroup} from '../../../utils/threeUtil';
 import type {Vec, Offset} from './Type'
+import type CustomThreeLayer from '@vue-map/packages/three/ThreeLayer/CustomThreeLayer'
 
 interface Options {
   video: HTMLVideoElement //模型下载地址
@@ -22,7 +23,7 @@ interface Options {
 class ThreeVideo {
   object: any // group对象
   animations: any // 模型的动画
-  layer: any // threejs的图层对象
+  layer?: CustomThreeLayer // threejs的图层对象
   video?: HTMLVideoElement
   videoMesh: any //视频
   bgMesh: any //背景
@@ -30,7 +31,7 @@ class ThreeVideo {
   videoFrame = -1
   rotateFun: any
 
-  constructor(layer: any) {
+  constructor(layer: CustomThreeLayer) {
     this.layer = layer;
   }
 
@@ -43,7 +44,7 @@ class ThreeVideo {
     return new Promise<void>((resolve) => {
       this.video?.load()
       this.video?.play();
-      const texture = new VideoTexture( this.video );
+      const texture = new VideoTexture( this.video as HTMLVideoElement );
       const geometry = new PlaneGeometry(options.videoWidth || this.video?.videoWidth, options.videoHeight || this.video?.videoHeight); //矩形平面
       const material = new MeshPhongMaterial({
         map: texture, // 设置纹理贴图
@@ -62,7 +63,7 @@ class ThreeVideo {
       this.setRotation(options.rotation);
       this.setScale(options.scale);
       this.setAltitude(options.altitude)
-      this.layer.addObject(this.object);
+      this.layer?.add(this.object);
       this.videoAnimate();
       this.addBgCanvas(options.canvas)
       this.setAngle(options.angle);
@@ -76,7 +77,7 @@ class ThreeVideo {
 
   bindAlwaysFront(alwaysFront?: boolean){
     if(alwaysFront){
-      const map = this.layer.getMap();
+      const map = this.layer?.getMap();
       this.rotateFun = bind(this._changeMapRotate, this)
       map.on('rotatechange', this.rotateFun)
     }
@@ -84,7 +85,7 @@ class ThreeVideo {
 
   unBindAlwaysFront(){
     if(this.rotateFun){
-      const map = this.layer.getMap();
+      const map = this.layer?.getMap();
       if(map){
         map.off('rotatechange', this.rotateFun)
       }
@@ -92,7 +93,7 @@ class ThreeVideo {
   }
 
   _changeMapRotate(){
-    const map = this.layer.getMap();
+    const map = this.layer?.getMap();
     const rotate = map.getRotation();
     this.setAngle(rotate);
   }
@@ -144,7 +145,7 @@ class ThreeVideo {
   }
 
   setPosition(position) {
-    const positionConvert = this.layer.convertLngLat(position);
+    const positionConvert = this.layer?.convertLngLat(position);
     this.object.position.setX(positionConvert[0]);
     this.object.position.setY(positionConvert[1]);
     this.refresh();
@@ -198,7 +199,7 @@ class ThreeVideo {
   }
 
   refresh() {
-    this.layer.setUpdate();
+    this.layer?.update();
   }
 
   show() {
@@ -221,7 +222,7 @@ class ThreeVideo {
 
   remove(){
     if (this.object) {
-      this.layer.removeObject(this.object)
+      this.layer?.remove(this.object)
       this.unBindAlwaysFront()
     }
   }
@@ -238,7 +239,7 @@ class ThreeVideo {
       this.canvasTexture = undefined;
       this.rotateFun = undefined;
       this.object = null;
-      this.layer = null;
+      this.layer = undefined;
     }
   }
 }

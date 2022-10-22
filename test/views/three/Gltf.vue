@@ -147,6 +147,7 @@ export default defineComponent({
       console.log('init layer: ', layer);
     },
     init(object, $vue){
+      console.log('init gltf: ', object)
       $vue.$$startAnimations();
     },
     clickGltf(e){

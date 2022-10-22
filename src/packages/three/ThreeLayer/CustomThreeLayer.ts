@@ -1,8 +1,4 @@
 import {
-  PerspectiveCamera,
-  OrthographicCamera,
-  WebGLRenderer,
-  Scene,
   AmbientLight,
   DirectionalLight,
   HemisphereLight,
@@ -12,45 +8,30 @@ import {
   PMREMGenerator,
   sRGBEncoding,
   LinearFilter,
-  Raycaster,
   Vector2,
-  Cache,
-  AxesHelper
+  AxesHelper,
+  Raycaster
 } from 'three';
 import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import {clearScene} from "../../../utils/threeUtil";
+import {ThreeLayer} from '@amap/three-layer'
 import { ThreeRenderPass } from './ThreeRenderPass.js';
-import type { Texture
-, Camera
-} from 'three';
+import type { Texture, Camera,
+  WebGLRenderer,
+  Scene} from 'three';
 import type {HDROptions, LightOption} from "./Type";
+import type {ThreeLayerOptions} from '@amap/three-layer'
 
-interface Options {
+interface Options extends ThreeLayerOptions{
   lights?: LightOption[] // 灯光数组
   hdr?: HDROptions // 开启HDR配置
-  zooms?: number[] // 支持的缩放级别范围，默认范围 [2, 20]
-  opacity?: number // 透明度，默认1
-  alpha?: boolean // canvas是否包含alpha (透明度)。默认为 false
-  antialias?: boolean //是否执行抗锯齿。默认为false
-  customCoordsCenter?: number[] // 默认gl自定义图层渲染的中心点
   axesHelper: boolean // 是否开启箭头，用于debug，默认不开启
 
 }
 
-class ThreeLayer {
+class CustomThreeLayer extends ThreeLayer{
 
-  customCoords: any;
-  center: number[]; // 图层显示的中心点，默认是初始化时的地图中心，尽量使用模型的第一个点
-  layer: any; // GLCustomLayer图层实例
-  renderer?: WebGLRenderer;
-  camera?: PerspectiveCamera | OrthographicCamera; // 相机实例
-  scene?: Scene; //场景实例
-  options: Options; //初始化参数
-  map: any; // 地图实例
-  frameTimer = -1; // 刷新图层的定时器
-  needsUpdate = false; //是否需要更新图层，默认false
   lightTypes = {
     AmbientLight, // 环境光  环境光会均匀的照亮场景中的所有物体
     DirectionalLight, // 平行光  平行光是沿着特定方向发射的光
@@ -69,110 +50,29 @@ class ThreeLayer {
   passNum = 0
   passList = [] as any[]
 
-  constructor(options: Options, map: any) {
-    this.raycaster = new Raycaster();
-    this.mouse = new Vector2();
-    this.customCoords = map.customCoords;
-    this.center = options.customCoordsCenter || map.getCenter().toArray();
-    this.customCoords.lngLatsToCoords([
-      this.center
-    ])
-    this.options = options;
-    this.map = map;
-  }
-
-  init() {
-    const map = this.map;
-    const options = this.options;
-    return new Promise<void>((resolve) => {
-      const layerOptions = {
-        init: (gl) => {
-          // 这里我们的地图模式是 3D，所以创建一个透视相机，相机的参数初始化可以随意设置，因为在 render 函数中，每一帧都需要同步相机参数，因此这里变得不那么重要。
-          // 如果你需要 2D 地图（viewMode: '2D'），那么你需要创建一个正交相机
-          const container = map.getContainer();
-          const width = container.offsetWidth;
-          const height = container.offsetHeight;
-          let camera;
-          if (map.getView().type === '3D') {
-            camera = new PerspectiveCamera(60, width / height, 100, 1 << 30);
-          } else {
-            camera = new OrthographicCamera(width / -2, width / 2, height / 2, height / -2, 1, 1000);
-          }
-          const renderer = new WebGLRenderer({
-            context: gl, // 地图的 gl 上下文
-            alpha: options.alpha,
-            antialias: options.antialias
-            // canvas: gl.canvas,
-          });
-          renderer.setSize(width, height);
-
-          // 自动清空画布这里必须设置为 false，否则地图底图将无法显示
-          renderer.autoClear = false;
-          const scene = new Scene();
-          this.camera = camera;
-          this.renderer = renderer;
-          this.scene = scene;
-          if(options.axesHelper){
-            const axesHelper = new AxesHelper( 10000 );
-            scene.add( axesHelper );
-          }
-          this.createEffect();
-          this.createLights(this.options.lights || []);
-          this.createHDR(this.options.hdr);
-          this.animate();
-          this.bindEvents();
-          resolve();
-        },
-        render: () => {
-          // 这里必须执行！！重新设置 three 的 gl 上下文状态。
-          this.renderer?.resetState();
-          this.customCoords.setCenter(this.center);
-          const camera = this.camera as PerspectiveCamera | OrthographicCamera;
-          // 2D 地图下使用的正交相机
-          if (map.getView().type === '3D') {
-            const {near, far, fov, up, lookAt, position} = this.customCoords.getCameraParams();
-            // 2D 地图下使用的正交相机
-            // 这里的顺序不能颠倒，否则可能会出现绘制卡顿的效果。
-            camera.near = near;
-            camera.far = far;
-            camera.fov = fov;
-            camera.position.set(...position);
-            camera.up.set(...up);
-            camera.lookAt(...lookAt);
-            camera.updateProjectionMatrix();
-          } else {
-            const {top, bottom, left, right, position} = this.customCoords.getCameraParams();
-            // 2D 地图使用的正交相机参数赋值
-            camera.top = top;
-            camera.bottom = bottom;
-            camera.left = left;
-            camera.right = right;
-            camera.position.set(...position);
-            camera.updateProjectionMatrix();
-          }
-          this.camera = camera;
-          if(this.passNum > 0){
-            this.passList.forEach( pass => {
-              if(pass.setCamera){
-                pass.setCamera(camera);
-              }
-            })
-            this.effectComposer.render()
-          }else{
-            this.renderer?.render(this.scene as Scene, camera);
-          }
-          this.renderer?.resetState();
-        }
+  constructor(map: any, options: Options, callback: () => void) {
+    options.onInit = (render,scene) => {
+      this.raycaster = new Raycaster();
+      if(options.axesHelper){
+        const axesHelper = new AxesHelper( 10000 );
+        scene.add( axesHelper );
       }
-      this.layer = new AMap.GLCustomLayer(layerOptions);
-      this.layer.setMap(map);
-    })
+      this.createEffect();
+      this.createLights(options.lights || []);
+      this.createHDR(options.hdr);
+      this.bindEvents();
+      if(callback){
+        callback()
+      }
+    }
+    super(map, options)
+    this.mouse = new Vector2();
   }
 
   createEffect() {
-    const size = this.renderer.getSize( new Vector2() );
-    this.effectComposer = new EffectComposer( this.renderer );
-    this.effectComposer.setSize( size.x, size.y );
+    const size = this.renderer?.getSize( new Vector2() );
+    this.effectComposer = new EffectComposer( this.renderer as WebGLRenderer );
+    this.effectComposer.setSize( size?.x, size?.y );
     const renderPass = new ThreeRenderPass( this.scene, this.camera );
     this.renderPass = renderPass;
     this.effectComposer.addPass(renderPass);
@@ -193,30 +93,6 @@ class ThreeLayer {
     this.passNum--;
   }
 
-  setUpdate(){
-    this.needsUpdate = true;
-  }
-
-  update(){
-    this.needsUpdate = true;
-  }
-
-  animate() {
-    if (this.needsUpdate) {
-      this.refreshMap();
-      this.needsUpdate = false;
-    }
-    this.frameTimer = requestAnimationFrame(() => {
-      this.animate();
-    });
-  }
-
-  refreshMap() {
-    if (this.map) {
-      this.map.render();
-    }
-  }
-
   createLights(lights: LightOption[] | undefined) {
     const defaultLightOptions = {
       type: 'DirectionalLight', // 灯光类型， 可选值见下面的字典
@@ -235,7 +111,7 @@ class ThreeLayer {
           if (lookAt) {
             light.lookAt(lookAt.x, lookAt.y, lookAt.z);
           }
-          this.addObject(light);
+          this.add(light);
         } else {
           console.warn('当前设置的灯光类型不存在');
         }
@@ -368,77 +244,19 @@ class ThreeLayer {
     return this._getGroup(object.parent);
   }
 
-  convertLngLat(lnglat) {
-    const data = this.customCoords.lngLatsToCoords([
-      lnglat
-    ]);
-    return data[0];
-  }
-
-  // 往场景中添加对象
-  addObject(object) {
-    this.scene?.add(object);
-    this.refreshMap();
-  }
-
-  // 从场景中移除对象
-  removeObject(object) {
-    this.scene?.remove(object);
-  }
-
-  // 往场景中添加对象
-  add(object) {
-    this.scene?.add(object);
-    this.refreshMap();
-  }
-
-  // 从场景中移除对象
-  remove(object) {
-    this.scene?.remove(object);
-  }
-
-  getScene() {
-    return this.scene
-  }
-
-  getCamera() {
-    return this.camera;
-  }
-
-  getRender() {
-    return this.renderer;
-  }
-
   destroy() {
-    cancelAnimationFrame(this.frameTimer);
     this.ubBindEvents();
-    this.layer.setMap(null);
     if (this.envMap) {
       this.envMap.dispose();
       this.envMap = null;
     }
-    this.customCoords = null;
-    clearScene(this.scene);
-    this.scene = undefined;
-    this.camera = undefined;
-    this.renderer?.dispose();
-    this.renderer = undefined;
-    this.layer = null;
-    this.map = null;
-    Cache.clear();
+    super.destroy();
     this.lightTypes = null as any;
-    this.options = null as any;
     this.raycaster = undefined;
     // this.mouse = undefined;
   }
 
-  getMap(){
-    if(this.layer){
-      return this.layer.getMap();
-    }
-    return null;
-  }
 
 }
 
-export default ThreeLayer
+export default CustomThreeLayer

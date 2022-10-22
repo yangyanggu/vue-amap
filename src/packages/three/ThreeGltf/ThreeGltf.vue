@@ -1,7 +1,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import registerMixin from '../../../mixins/register-component';
-import ThreeGltf from "./ThreeGltf";
+import CustomThreeGltf from "./CustomThreeGltf";
 import type {MoveAnimation, Vec} from "./Type";
 import type{PropType} from "vue";
 
@@ -40,8 +40,12 @@ export default defineComponent({
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new ThreeGltf(this.$parentComponent);
-      return this.$amapComponent.init(options, this);
+      return new Promise<void>(resolve => {
+        this.$amapComponent = new CustomThreeGltf(this.$parentComponent, options, this, () => {
+          resolve()
+        });
+      })
+
     },
     destroyComponent() {
       if(!this.parentInstance.isDestroy){

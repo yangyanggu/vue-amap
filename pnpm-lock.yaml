@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@amap/amap-jsapi-loader': ^1.0.1
-      '@amap/three-layer': ^0.0.2
+      '@amap/three-layer': ^0.0.4
       '@pnpm/find-workspace-packages': 3.1.28
       '@pnpm/logger': 4.0.0
       '@pnpm/types': 7.6.0
@@ -58,12 +58,12 @@ importers:
       vue-router: ^4.0.12
     dependencies:
       '@amap/amap-jsapi-loader': 1.0.1
-      '@amap/three-layer': 0.0.2
+      '@amap/three-layer': 0.0.4
       '@tweenjs/tween.js': 18.6.4
       '@vue-map/mixins': link:src/mixins
       '@vue-map/packages': link:src/packages
       '@vue-map/services': link:src/services
-      '@vuemap/layer-3dtiles': 0.0.2_@amap+three-layer@0.0.2
+      '@vuemap/layer-3dtiles': 0.0.2_@amap+three-layer@0.0.4
       color: 4.2.3
       lodash-es: 4.17.21
       three: 0.143.0
@@ -267,11 +267,12 @@ packages:
     resolution: {integrity: sha512-q0FyZDIJcXjsMLGc3oS9rjfJsErOvt9rcp6AgzY4k14vo7bBhdq4eKwoSdVp/pYjR/rfaKBns5v10ycZOFwf/A==}
     dev: false
 
-  /@amap/three-layer/0.0.2:
-    resolution: {integrity: sha512-Y67uSMXKmxdxCCfEDxCmeASRmIHcZNEcTRdYnsTBlC4kfW+0U5mOzyGWXO2+9DfJMkMTOKGeaHtmvjyBmQDL1w==}
+  /@amap/three-layer/0.0.4:
+    resolution: {integrity: sha512-2/0duAm0jnXHj69jRorszcUy4vQ8y9vL58lqmcCtrXXMgOBr/wZIoXSVvcAdT2jUevfmb12ViXaBMVhHKSLQFQ==}
     engines: {node: '>= 16'}
     dependencies:
       '@amap/amap-jsapi-types': 0.0.8
+      '@types/three': 0.143.0
       three: 0.143.0
     dev: false
 
@@ -1936,7 +1937,6 @@ packages:
     resolution: {integrity: sha512-c5PonXOt8xk5q4ygmyjOX4Ec+FA7gwfdcMT/PveE9xrJs/0DDcf2lJkWrhEcmvx2ZefQCQBcogABnGqB0P4OsA==}
     dependencies:
       '@types/webxr': 0.5.0
-    dev: true
 
   /@types/undertaker-registry/1.0.1:
     resolution: {integrity: sha512-Z4TYuEKn9+RbNVk1Ll2SS4x1JeLHecolIbM/a8gveaHsW0Hr+RQMraZACwTO2VD7JvepgA6UO1A1VrbktQrIbQ==}
@@ -1971,7 +1971,6 @@ packages:
 
   /@types/webxr/0.5.0:
     resolution: {integrity: sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==}
-    dev: true
 
   /@typescript-eslint/eslint-plugin/5.6.0_7thcwv7hjzmgy4g5rdjwtkdapq:
     resolution: {integrity: sha512-MIbeMy5qfLqtgs1hWd088k1hOuRsN9JrHUPwVVKCD99EOUqScd7SrwoZl4Gso05EAP9w1kvLWUVGJOVpRPkDPA==}
@@ -2188,14 +2187,14 @@ packages:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
     dev: true
 
-  /@vuemap/layer-3dtiles/0.0.2_@amap+three-layer@0.0.2:
+  /@vuemap/layer-3dtiles/0.0.2_@amap+three-layer@0.0.4:
     resolution: {integrity: sha512-ehqmKJPj1KHXc5Dz604oVYz5TIKlKaZywL2Hv15O/bXiRQmeZbNkIEoXphFC1LU4ag0diTk2pERJ8JnAJAR5yg==}
     engines: {node: '>= 16'}
     peerDependencies:
       '@amap/three-layer': '>=0.0.2'
     dependencies:
+      '@amap/three-layer': 0.0.4
       3d-tiles-renderer: 0.3.14_three@0.143.0
-      '@amap/three-layer': 0.0.2
       lodash-es: 4.17.21
       three: 0.143.0
     dev: false

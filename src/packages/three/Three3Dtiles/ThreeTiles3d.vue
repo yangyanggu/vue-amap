@@ -60,9 +60,7 @@ export default defineComponent({
       this.$amapComponent = new Layer3DTiles(this.$parentComponent, options);
     },
     destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$amapComponent.destroy();
-      }
+      this.$amapComponent.destroy();
       this.$amapComponent = null;
       this.$parentComponent = null;
     },

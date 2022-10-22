@@ -4,7 +4,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import registerMixin from '../../../mixins/register-component';
-import ThreeLayer from "./ThreeLayer";
+import CustomThreeLayer from "./CustomThreeLayer";
 import type {HDROptions, LightOption} from './Type'
 import type {PropType} from "vue";
 
@@ -60,8 +60,11 @@ export default defineComponent({
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new ThreeLayer(options, this.$parentComponent);
-      return this.$amapComponent.init();
+      return new Promise<void>((resolve) => {
+        this.$amapComponent = new CustomThreeLayer(this.$parentComponent, options, () => {
+          resolve()
+        });
+      })
     },
     destroyComponent() {
       this.$amapComponent.destroy();

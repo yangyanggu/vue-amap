@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
-    "@amap/three-layer": "^0.0.2",
+    "@amap/three-layer": "^0.0.4",
     "@tweenjs/tween.js": "^18.6.4",
     "@vue-map/mixins": "workspace:*",
     "@vue-map/packages": "workspace:*",

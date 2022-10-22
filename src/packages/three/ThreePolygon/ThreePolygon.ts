@@ -5,6 +5,7 @@ import {getRgbNumber, getAlpha} from "../../../utils/colorUtil";
 import {clearGroup} from "../../../utils/threeUtil";
 import {vertex, fragment} from './meshlambert.glsl'
 import type {Polygon} from "./Type";
+import type CustomThreeLayer from '@vue-map/packages/three/ThreeLayer/CustomThreeLayer'
 
 interface Options {
   sideTopColor: string // 侧面顶部颜色。缺省值为 '#ffffff'。
@@ -23,16 +24,16 @@ interface Properties {
 
 class ThreePolygon {
   object: any // Group
-  layer: any // threejs的图层对象
-  bottomMaterial: MeshLambertMaterial //底部材质
-  topMaterial: MeshLambertMaterial // 顶部材质
-  sideImgMaterial: MeshLambertMaterial // 侧面贴图材质
+  layer?: CustomThreeLayer // threejs的图层对象
+  bottomMaterial?: MeshLambertMaterial //底部材质
+  topMaterial?: MeshLambertMaterial // 顶部材质
+  sideImgMaterial?: MeshLambertMaterial // 侧面贴图材质
 
-  constructor(layer: any, options: Options) {
+  constructor(layer: CustomThreeLayer, options: Options) {
     this.layer = layer;
     this.object = new Group();
     this.createGlobalMaterial(options);
-    this.layer.addObject(this.object);
+    this.layer.add(this.object);
     this.init(options);
   }
 
@@ -179,11 +180,11 @@ class ThreePolygon {
   }
 
   convertLngLat(lnglat: number[]) {
-    return this.layer.convertLngLat(lnglat);
+    return this.layer?.convertLngLat(lnglat);
   }
 
   refresh() {
-    this.layer.setUpdate();
+    this.layer?.update();
   }
 
   show() {
@@ -198,7 +199,7 @@ class ThreePolygon {
 
   remove(){
     if (this.object) {
-      this.layer.removeObject(this.object)
+      this.layer?.remove(this.object)
     }
   }
 
@@ -207,18 +208,18 @@ class ThreePolygon {
       clearGroup(this.object);
       if(this.bottomMaterial){
         this.bottomMaterial.dispose();
-        this.bottomMaterial = null;
+        this.bottomMaterial = undefined;
       }
       if(this.topMaterial){
         this.topMaterial.dispose();
-        this.topMaterial = null;
+        this.topMaterial = undefined;
       }
       if(this.sideImgMaterial){
         this.sideImgMaterial.dispose();
-        this.sideImgMaterial = null
+        this.sideImgMaterial = undefined
       }
       this.object = null;
-      this.layer = null;
+      this.layer = undefined;
     }
   }
 }

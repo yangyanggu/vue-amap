@@ -17,6 +17,7 @@
           :intensity="1"
         />
         <el-amap-three-tiles3d
+          v-if="create"
           :visible="visible"
           :debug="true"
           :position="center"
@@ -27,6 +28,9 @@
     <div class="control-container">
       <el-button @click="changeVisible">
         {{ visible ? '隐藏' : '显示' }}
+      </el-button>
+      <el-button @click="changeCreate">
+        {{ create ? '销毁' : '创建' }}
       </el-button>
     </div>
   </div>
@@ -51,6 +55,7 @@ export default defineComponent({
       center: [116.404987, 39.90946],
       zoom: 16,
       visible: true,
+      create: true,
       hdrOptions: {
         urls: [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ],
         path: './hdr/'
@@ -66,6 +71,9 @@ export default defineComponent({
     },
     changeVisible(){
       this.visible = !this.visible;
+    },
+    changeCreate(){
+      this.create = !this.create;
     },
   }
 })
