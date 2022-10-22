@@ -27,7 +27,7 @@ importers:
       '@vue-map/packages': workspace:*
       '@vue-map/services': workspace:*
       '@vue/compiler-sfc': 3.2.37
-      '@vuemap/layer-3dtiles': ^0.0.2
+      '@vuemap/layer-3dtiles': ^0.0.3
       color: ^4.2.3
       components-helper: ^1.0.5
       element-plus: ^2.1.10
@@ -63,7 +63,7 @@ importers:
       '@vue-map/mixins': link:src/mixins
       '@vue-map/packages': link:src/packages
       '@vue-map/services': link:src/services
-      '@vuemap/layer-3dtiles': 0.0.2_@amap+three-layer@0.0.4
+      '@vuemap/layer-3dtiles': 0.0.3_@amap+three-layer@0.0.4
       color: 4.2.3
       lodash-es: 4.17.21
       three: 0.143.0
@@ -2187,8 +2187,8 @@ packages:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
     dev: true
 
-  /@vuemap/layer-3dtiles/0.0.2_@amap+three-layer@0.0.4:
-    resolution: {integrity: sha512-ehqmKJPj1KHXc5Dz604oVYz5TIKlKaZywL2Hv15O/bXiRQmeZbNkIEoXphFC1LU4ag0diTk2pERJ8JnAJAR5yg==}
+  /@vuemap/layer-3dtiles/0.0.3_@amap+three-layer@0.0.4:
+    resolution: {integrity: sha512-3ok0a7WNRBYnFdIev4JG32UTiOGac6YfsLUCyhTyAST0Y+4ZjcGZG5LqTqx4id8371i0BVy9qGwgy3D5ih64vQ==}
     engines: {node: '>= 16'}
     peerDependencies:
       '@amap/three-layer': '>=0.0.2'
