@@ -1,8 +1,5 @@
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
-import {AnimationMixer, Clock} from 'three';
 import {Tween, Easing} from '@tweenjs/tween.js'
 import {ThreeGltf} from '@amap/three-layer'
-import {clearGroup} from '../../../utils/threeUtil';
 import type {GltfOptions} from '@amap/three-layer'
 import type {MoveAnimation, Vec} from './Type'
 
