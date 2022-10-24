@@ -145,7 +145,8 @@ export default [
         ]
       },
       '/zh-cn/component/three/three-video.md',
-      '/zh-cn/component/three/three-polygon.md'
+      '/zh-cn/component/three/three-polygon.md',
+      '/zh-cn/component/three/three-tiles3d.md'
     ],
   }
 ]

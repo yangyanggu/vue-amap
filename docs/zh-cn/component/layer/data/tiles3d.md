@@ -8,7 +8,12 @@ head:
 ---
 
 # 3DTiles图层 (AMap.3DTilesLayer)
+
+::: warning
+不再推荐使用，该官方插件缺少文档和更新，兼容性较差。<br/>推荐使用自定义实现的3dtiles组件，[文档地址](/zh-cn/component/three/three-tiles3d.html)
+:::
 使用 AMap.3DTilesLayer 图层加载渲染标准 3D Tiles 数据，可支持 i3dm、b3dm、pnts 格式。
+
 
 ## 基础示例
 
