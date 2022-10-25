@@ -1,7 +1,11 @@
+### v1.1.18
+* 解决打包之后3dtiles没有放入全局问题
+
 ### v1.1.17
 * 适配JSAPI 1.4.x
 * 升级threejs版本
-* 增加自定义的3dtiles图层
+* 重构threejs相关组件库，改用@amap/three-layer插件提供基础能力
+* 增加自定义的3dtiles图层，使用@vuemap/layer-3dtiles实现
 
 ### v1.1.16
 * 所有loca图层增加rightclick事件

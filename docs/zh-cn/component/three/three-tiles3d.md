@@ -1,20 +1,20 @@
 ---
-title: 开源3dtiles
-description: gltf图层用于加载gltf模型，提供基础的模型加载和修改基础属性的能力
+title: 开源3dtiles方案
+description: 高德地图叠加3dtiles的开源实现方案，基于3d-tiles-renderer实现
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, Gltf, threeJS
+      content: amap, 高德地图, vue3.0, 3dtiles, threeJS
 ---
 
-# 开源3dtiles
-该插件为开源的3dtiles实现方案
+# 开源3dtiles方案
+高德地图叠加3dtiles的开源实现方案，基于3d-tiles-renderer实现
 
 
 ## 基础示例
 
 ::: demo
-examples/three/three-gltf
+examples/three/three-tiles3d
 :::
 
 

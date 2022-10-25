@@ -1,14 +1,14 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "amap vue3",
   "keywords": [
+    "vue-amap",
     "amap",
     "map",
     "vue3",
     "loca",
     "vue",
-    "vue-amap",
     "高德"
   ],
   "exports": {
@@ -37,21 +37,15 @@
     "url": "https://gitee.com/guyangyang/vue-amap/issues"
   },
   "homepage": "https://vue-amap.guyixi.cn",
-  "scripts": {
-    "build": "gulp --require sucrase/register/ts -f build/gulpfile.ts",
-    "dev": "vite",
-    "clean:dist": "rimraf dist",
-    "lint": "eslint src"
-  },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@tweenjs/tween.js": "^18.6.4",
     "lodash-es": "^4.17.21",
-    "three": "0.142.0",
+    "three": "0.143.0",
     "uppercamelcase": "^1.1.0",
     "color": "^4.2.3",
-    "@amap/three-layer": "^0.0.2",
-    "@vuemap/layer-3dtiles": "^0.0.2"
+    "@amap/three-layer": "^0.0.4",
+    "@vuemap/layer-3dtiles": "^0.0.3"
   },
   "devDependencies": {
   },
