@@ -70,7 +70,8 @@ declare module '@vue/runtime-core' {
     ElAmapThreePolygon: typeof import('@vuemap/vue-amap')['ElAmapThreePolygon'],
     ElAmapThreeVideo: typeof import('@vuemap/vue-amap')['ElAmapThreeVideo'],
     ElAmapLayerVideo: typeof import('@vuemap/vue-amap')['ElAmapLayerVideo'],
-    ElAmapMouseTool: typeof import('@vuemap/vue-amap')['ElAmapMouseTool']
+    ElAmapMouseTool: typeof import('@vuemap/vue-amap')['ElAmapMouseTool'],
+    ElAmapThreeTiles3d: typeof import('@vuemap/vue-amap')['ElAmapThreeTiles3d']
   }
 }
 
