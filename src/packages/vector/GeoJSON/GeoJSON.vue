@@ -83,7 +83,7 @@ export default defineComponent({
       this.$amapComponent = null;
       this.$parentComponent = null;
     },
-    __geo(value) {
+    __geoJSON(value) {
       if(this.$amapComponent){
         this.$amapComponent.importData(value);
       }
