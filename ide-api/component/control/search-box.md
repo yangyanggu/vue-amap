@@ -21,6 +21,7 @@ city | String | 输入提示时限定城市。可选值：城市名（中文或�
 citylimit | Boolean | 是否强制限制在设置的城市内搜索,默认值为：false，true：强制限制设定城市，false：不强制限制设定城市
 inputCustom | Boolean | 是否自定义input，自定义的时候将使用用户的inputId，默认 false
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
+placeholder | String | 默认输入框的placeholder属性
 
 ## Events
 

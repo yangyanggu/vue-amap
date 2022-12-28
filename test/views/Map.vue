@@ -21,6 +21,7 @@
       <el-amap-search-box
         input-id="search"
         :input-custom="true"
+        placeholder="请输入地点关键字"
         @select="selectSearch"
       />
       <el-amap-control-geolocation @complete="getLocation" />

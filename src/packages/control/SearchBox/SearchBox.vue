@@ -7,6 +7,7 @@
       v-if="!inputCustom"
       :id="saveInputId"
       type="text"
+      :placeholder="placeholder"
     >
   </div>
 </template>
@@ -51,7 +52,10 @@ export default defineComponent({
     },//页面滚动时关闭搜索结果列表，默认 true
     lang: {
       type: String
-    }//设置检索语言类型，默认中文 'zh_cn'
+    },//设置检索语言类型，默认中文 'zh_cn'
+    placeholder: {
+      type: String
+    }
   },
   data() {
     return {

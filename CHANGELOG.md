@@ -1,3 +1,6 @@
+### v1.1.20
+* searchbox组件增加placeholder属性
+
 ### v1.1.19
 * 解决geojson数据更新无法触发重绘问题
 
