@@ -1,3 +1,6 @@
+### v0.1.12
+* searchbox组件增加placeholder属性
+
 ### v0.1.11
 * 适配1.4.x版本的JS
 
