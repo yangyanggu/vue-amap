@@ -4,6 +4,7 @@ export const vertex = /* glsl */`
 varying vec3 vLightFront;
 varying vec3 vIndirectFront;
 varying vec3 v_position;
+varying vec2 vUv;
 
 #ifdef DOUBLE_SIDED
 	varying vec3 vLightBack;
@@ -25,7 +26,8 @@ varying vec3 v_position;
 #include <clipping_planes_pars_vertex>
 
 void main() {
-  v_position = position;
+    v_position = position;
+    vUv = uv;
 
 	#include <uv_vertex>
 	#include <uv2_vertex>
@@ -56,9 +58,9 @@ void main() {
 export const fragment = /* glsl */`
 uniform vec3 emissive;
 uniform float height;
-uniform vec4 topColorVector4;
-uniform vec4 bottomColorVector4;
+uniform sampler2D texture;
 varying vec3 v_position;
+varying vec2 vUv;
 
 varying vec3 vLightFront;
 varying vec3 vIndirectFront;
@@ -96,13 +98,9 @@ varying vec3 vIndirectFront;
 void main() {
 
 	#include <clipping_planes_fragment>
-  vec4 diff = bottomColorVector4 - topColorVector4;
-  vec4 percent = diff/height;
-  float x = topColorVector4.x + percent.x*v_position.z;
-  float y = topColorVector4.y + percent.y*v_position.z;
-  float z = topColorVector4.z + percent.z*v_position.z;
-  float r = topColorVector4.w + percent.w*v_position.z;
-  vec4 diffuseColor = vec4(x,y,z,r);
+    float percent = v_position.z/height;
+    vec2 point = vec2(0, 2.0*percent - 1.0);
+    vec4 diffuseColor = texture2D(texture, point);
 	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
 	vec3 totalEmissiveRadiance = emissive;
 

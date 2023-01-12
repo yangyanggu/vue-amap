@@ -1,6 +1,8 @@
-import {Group, Shape, ExtrudeGeometry, MeshLambertMaterial,
+import {
+  Group, Shape, ExtrudeGeometry, MeshLambertMaterial,
   Mesh, TextureLoader, DoubleSide, RepeatWrapping, Vector2,
-  Vector4, Path, ShaderMaterial, Color,UniformsUtils, UniformsLib} from 'three';
+  Vector4, Path, ShaderMaterial, Color, UniformsUtils, UniformsLib, CanvasTexture
+} from 'three';
 import {getRgbNumber, getAlpha} from "../../../utils/colorUtil";
 import {clearGroup} from "../../../utils/threeUtil";
 import {vertex, fragment} from './meshlambert.glsl'
@@ -28,6 +30,7 @@ class ThreePolygon {
   bottomMaterial?: MeshLambertMaterial //底部材质
   topMaterial?: MeshLambertMaterial // 顶部材质
   sideImgMaterial?: MeshLambertMaterial // 侧面贴图材质
+  canvasTexture?: CanvasTexture
 
   constructor(layer: CustomThreeLayer, options: Options) {
     this.layer = layer;
@@ -48,6 +51,21 @@ class ThreePolygon {
         map: sideTexture,
         side: DoubleSide
       })
+    }else{
+      const canvas = document.createElement('canvas')
+      canvas.width = 512
+      canvas.height = 512
+      canvas.style.background = 'transparent'
+      const ctx = canvas.getContext('2d')
+      if(ctx){
+        const gradient=ctx.createLinearGradient(0,0,0,512);
+        gradient.addColorStop(0,options.sideTopColor);
+        gradient.addColorStop(1,options.sideBottomColor);
+        ctx.fillStyle=gradient;
+        ctx.fillRect(0,0,512,512);
+      }
+      console.log('canvas: ', canvas.toDataURL())
+      this.canvasTexture = new CanvasTexture(canvas)
     }
     this.bottomMaterial = new MeshLambertMaterial({
       depthTest: options.depthTest,
@@ -108,7 +126,8 @@ class ThreePolygon {
       const sideExtrudeGeometry = new ExtrudeGeometry(shape, {
         depth: height,
         bevelEnabled: false,
-        steps: 1
+        steps: 1,
+        bevelSize: 0
       })
       const hideMaterial = new MeshLambertMaterial({
         visible: false
@@ -126,12 +145,6 @@ class ThreePolygon {
           opacity: getAlpha(options.sideColor),
           side: DoubleSide
         })*/
-        const topColor = new Color();
-        topColor.setHex(getRgbNumber(options.sideTopColor));
-        const topColorVector4 = new Vector4(topColor.r, topColor.g, topColor.b, getAlpha(options.sideTopColor))
-        const bottomColor = new Color();
-        bottomColor.setHex(getRgbNumber(options.sideBottomColor));
-        const bottomColorVector4 = new Vector4(bottomColor.r, bottomColor.g, bottomColor.b, getAlpha(options.sideBottomColor))
         const uniforms = UniformsUtils.merge( [
           UniformsLib.common,
           UniformsLib.specularmap,
@@ -143,14 +156,14 @@ class ThreePolygon {
           UniformsLib.lights,
           {
             emissive: { value: new Color( '#000' ) },
-            "topColorVector4": {value: bottomColorVector4},
-            "bottomColorVector4": {value: topColorVector4},
             "height": {value: height},
+            "texture": {value: this.canvasTexture}
           }
 
         ] )
         sideMaterial = new ShaderMaterial({
           depthTest: options.depthTest,
+          depthWrite: true,
           side: DoubleSide,
           transparent: true,
           lights: true,
@@ -209,6 +222,9 @@ class ThreePolygon {
       if(this.bottomMaterial){
         this.bottomMaterial.dispose();
         this.bottomMaterial = undefined;
+      }
+      if(this.canvasTexture){
+        this.canvasTexture.dispose();
       }
       if(this.topMaterial){
         this.topMaterial.dispose();
