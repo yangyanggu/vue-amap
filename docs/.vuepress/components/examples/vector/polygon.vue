@@ -13,6 +13,9 @@
         :editable="polygon.edit"
         :draggable="polygon.draggable"
         @click="click"
+        @dragstart="dragstart"
+        @dragging="dragging"
+        @dragend="dragend"
       />
     </el-amap>
   </div>
@@ -65,6 +68,15 @@ export default defineComponent({
     click(e) {
       alert('click GeoJSON');
     },
+    dragstart(){
+      console.log('开始移动')
+    },
+    dragging(){
+      console.log('正在移动...')
+    },
+    dragend(){
+      console.log('结束移动')
+    }
   }
 })
 </script>

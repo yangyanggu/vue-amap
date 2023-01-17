@@ -77,6 +77,9 @@ mouseout | MapsEvent | 鼠标移出
 touchstart | MapsEvent | 触摸开始时触发事件，仅适用移动设备
 touchmove | MapsEvent | 触摸移动进行中时触发事件，仅适用移动设备
 touchend | MapsEvent | 触摸结束时触发事件，仅适用移动设备
+dragstart | MapsEvent | 开始拖拽点标记时触发事件
+dragging | MapsEvent | 鼠标拖拽移动点标记时触发事件
+dragend | MapsEvent | 点标记拖拽移动结束触发事件
 addnode |	{target: Polygon, lnglat: Lnglat, pixel: Pixel} | 	编辑状态下，通过鼠标在折线上增加一个节点或在多边形上增加一个顶点时触发此事件
 removenode | {target: Polygon, lnglat: Lnglat, pixel: Pixel} |	编辑状态下，通过鼠标在折线上删除一个节点或在多边形上删除一个顶点时触发此事件
 adjust |	{target: Polygon, lnglat: Lnglat, pixel: Pixel} |	编辑状态下，鼠标调整折线上某个节点或多边形上某个顶点的位置时触发此事件

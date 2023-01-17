@@ -71,7 +71,9 @@ touchmove | MapsEvent | 触摸移动进行中时触发事件，仅适用移动�
 touchend | MapsEvent | 触摸结束时触发事件，仅适用移动设备
 addnode |	{target: Polygon, lnglat: Lnglat, pixel: Pixel} | 	编辑状态下，通过鼠标在折线上增加一个节点或在多边形上增加一个顶点时触发此事件
 removenode | {target: Polygon, lnglat: Lnglat, pixel: Pixel} |	编辑状态下，通过鼠标在折线上删除一个节点或在多边形上删除一个顶点时触发此事件
-move | {target: Polygon, lnglat: Lnglat, pixel: Pixel} | 移动覆盖物时触发此事件
+dragstart | MapsEvent | 开始拖拽点标记时触发事件
+dragging | MapsEvent | 鼠标拖拽移动点标记时触发事件
+dragend | MapsEvent | 点标记拖拽移动结束触发事件
 adjust |	{target: Polygon, lnglat: Lnglat, pixel: Pixel} |	编辑状态下，鼠标调整折线上某个节点或多边形上某个顶点的位置时触发此事件
 add | {target: target} | 创建一个覆盖物之后触发该事件，target即为创建对象。当editor编辑对象为空时，调用open接口，再点击一次屏幕就会创建新的覆盖物对象
 end |	{type,target}	 | 关闭编辑状态，触发该事件，target即为编辑后的折线/多边形对象
