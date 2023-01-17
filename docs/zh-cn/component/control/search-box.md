@@ -17,6 +17,7 @@ head:
 原因：
 一、新版本的key都需要配合安全密钥使用，初始化 initAMapApiLoader 时需要配上安全密钥或安全代理
 二、下拉框的默认zIndex较低，当在弹出框中使用时，结果的下拉框会被盖住。下拉框的class为 amap-sug-result， 因此需要增加 .amap-sug-result{z-index:1000}去处理
+三、搜索接口的调用次数有限制，可以查看network中搜索请求，看是否超过限制
 ```
 :::
 
