@@ -1,3 +1,6 @@
+### v1.1.21
+* 增加区划聚合图层
+
 ### v1.1.20
 * searchbox组件增加placeholder属性
 
