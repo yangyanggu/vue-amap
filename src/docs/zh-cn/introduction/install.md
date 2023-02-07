@@ -7,18 +7,18 @@
 推荐 npm 安装。
 
 ```
-npm install @vuemap/vue-amap --save
+npm install @vuemap/vue-amap@0 --save
 ```
 
 ## CDN
 
-目前可通过 [unpkg.com/@vuemap/vue-amap](https://unpkg.com/@vuemap/vue-amap/dist/index.js) 获取最新版本的资源。
+目前可通过 [https://www.jsdelivr.com/package/npm/@vuemap/vue-amap](https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@0/dist/index.js) 获取Vue2版本最新版本的资源。
 
 ```html
-<script src="https://unpkg.com/@vuemap/vue-amap/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@0/dist/index.js"></script>
 <!--加载自定义threeJS组件-->
-<script src="https://unpkg.com/@vuemap/vue-amap/dist/three.js"></script>
-<script src="https://unpkg.com/@vuemap/vue-amap/dist/style.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@0/dist/three.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@0/dist/style.css"></script>
 ```
 
 ## Hello World
@@ -38,12 +38,12 @@ npm install @vuemap/vue-amap --save
     </div>
   </body>
   <!-- 先引入 Vue -->
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <!-- 引入组件库 -->
-  <script src="https://unpkg.com/@vuemap/vue-amap/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@0/dist/index.js"></script>
   <!--加载自定义threeJS组件-->
-  <script src="https://unpkg.com/@vuemap/vue-amap/dist/three.js"></script>
-  <script src="https://unpkg.com/@vuemap/vue-amap/dist/style.css"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@0/dist/three.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap@0/dist/style.css"></script>
   <script>
     // 初始化高德地图的 key 和插件
     window.VueAMap.initAMapApiLoader({
