@@ -68,7 +68,8 @@ export default [
       '/zh-cn/component/layer/data/canvas.md',
       '/zh-cn/component/layer/data/video.md',
       '/zh-cn/component/layer/data/gl-custom.md',
-      '/zh-cn/component/layer/data/tiles3d.md'
+      '/zh-cn/component/layer/data/tiles3d.md',
+      '/zh-cn/component/layer/data/district-cluster.md'
     ],
   },
   {
