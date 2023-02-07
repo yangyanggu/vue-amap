@@ -44,6 +44,7 @@ import ThreeVideo from "../views/three/ThreeVideo.vue";
 import ThreePolygon from '../views/three/Polygon.vue'
 import MouseTool from "../views/util/MouseTool.vue";
 import ThreeTiles3d from "../views/three/Tiles3d.vue";
+import DistrictCluster from "../views/layer/DistrictCluster.vue";
 
 export const routes = [
   {path: '/',name: '地图', component: Map},
@@ -54,6 +55,7 @@ export const routes = [
   {path: '/layer/flexible',name: '灵活切片图层', component: Flexible},
   {path: '/layer/heatMap',name: '热力图', component: HeatMap},
   {path: '/layer/image',name: '图片图层', component: Image},
+  {path: '/util/districtCluster', name: '区划聚合图层', component: DistrictCluster},
   {path: '/layer/official',name: '官方图层', component: Official},
   {path: '/layer/standard',name: '标准图层', component: Standard},
   {path: '/loca/grid',name: 'loca网格图', component: Grid},
