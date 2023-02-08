@@ -31,8 +31,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapPolyline from "@vue-map/packages/vector/Polyline/Polyline.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapPolyline from "@vuemap/vue-amap/packages/vector/Polyline/Polyline.vue";
 
 export default defineComponent({
   name: "Map",

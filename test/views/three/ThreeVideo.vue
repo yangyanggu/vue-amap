@@ -43,9 +43,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
-import ElAmapThreeVideo from "@vue-map/packages/three/ThreeVideo/ThreeVideo.vue";
+import ElAmapLayerThree from "@vuemap/vue-amap-extra/packages/ThreeLayer/ThreeLayer.vue";
+import ElAmapThreeVideo from "@vuemap/vue-amap-extra/packages/ThreeVideo/ThreeVideo.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

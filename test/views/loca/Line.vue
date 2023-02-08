@@ -30,9 +30,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaLine from "@vue-map/packages/loca/LineLayer/LineLayer.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaLine from "@vuemap/vue-amap-loca/packages/LineLayer/LineLayer.vue";
 const colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
 export default defineComponent({
   name: "Map",

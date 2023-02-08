@@ -82,15 +82,15 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
-import ElAmapThreeGltf from "@vue-map/packages/three/ThreeGltf/ThreeGltf.vue";
-import ElAmapThreeLightAmbient from "@vue-map/packages/three/ThreeLightAmbient/ThreeLightAmbient.vue";
-import ElAmapThreeLightDirectional from "@vue-map/packages/three/ThreeLightDirectional/ThreeLightDirectional.vue";
-import ElAmapThreeLightHemisphere from "@vue-map/packages/three/ThreeLightHemisphere/ThreeLightHemisphere.vue";
-import ElAmapThreeLightPoint from "@vue-map/packages/three/ThreeLightPoint/ThreeLightPoint.vue";
-import ElAmapThreeLightSpot from "@vue-map/packages/three/ThreeLightSpot/ThreeLightSpot.vue";
 import {bearing} from "@turf/turf";
+import ElAmapLayerThree from "@vuemap/vue-amap-extra/packages/ThreeLayer/ThreeLayer.vue";
+import ElAmapThreeGltf from "@vuemap/vue-amap-extra/packages/ThreeGltf/ThreeGltf.vue";
+import ElAmapThreeLightAmbient from "@vuemap/vue-amap-extra/packages/ThreeLightAmbient/ThreeLightAmbient.vue";
+import ElAmapThreeLightDirectional from "@vuemap/vue-amap-extra/packages/ThreeLightDirectional/ThreeLightDirectional.vue";
+import ElAmapThreeLightHemisphere from "@vuemap/vue-amap-extra/packages/ThreeLightHemisphere/ThreeLightHemisphere.vue";
+import ElAmapThreeLightPoint from "@vuemap/vue-amap-extra/packages/ThreeLightPoint/ThreeLightPoint.vue";
+import ElAmapThreeLightSpot from "@vuemap/vue-amap-extra/packages/ThreeLightSpot/ThreeLightSpot.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

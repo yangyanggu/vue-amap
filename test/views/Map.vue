@@ -40,15 +40,15 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmapSearchBox from "@vue-map/packages/control/SearchBox/SearchBox.vue";
-import ElAmapControlGeolocation from "@vue-map/packages/control/Geolocation/Geolocation.vue";
-import ElAmap from '../../src/packages/amap/amap.vue'
-import ElAmapControlControlBar from "../../src/packages/control/ControlBar/ControlBar.vue";
-import ElAmapControlHawkEye from "../../src/packages/control/HawkEye/HawkEye.vue";
-import ElAmapControlMapType from "../../src/packages/control/MapType/MapType.vue";
-import ElAmapControlScale from "../../src/packages/control/Scale/Scale.vue";
-import ElAmapControlToolBar from "../../src/packages/control/ToolBar/ToolBar.vue";
-import ElAmapGeolocation from "../../src/packages/control/Geolocation";
+import ElAmapGeolocation from "@vuemap/vue-amap/packages/control/Geolocation";
+import ElAmapSearchBox from "@vuemap/vue-amap/packages/control/SearchBox/SearchBox.vue";
+import ElAmapControlGeolocation from "@vuemap/vue-amap/packages/control/Geolocation/Geolocation.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapControlControlBar from "@vuemap/vue-amap/packages/control/ControlBar/ControlBar.vue";
+import ElAmapControlHawkEye from "@vuemap/vue-amap/packages/control/HawkEye/HawkEye.vue";
+import ElAmapControlMapType from "@vuemap/vue-amap/packages/control/MapType/MapType.vue";
+import ElAmapControlScale from "@vuemap/vue-amap/packages/control/Scale/Scale.vue";
+import ElAmapControlToolBar from "@vuemap/vue-amap/packages/control/ToolBar/ToolBar.vue";
 
 export default defineComponent({
   name: "Map",
@@ -56,7 +56,7 @@ export default defineComponent({
     ElAmapControlGeolocation,
     ElAmapSearchBox,
     ElAmapControlToolBar,
-    ElAmapControlScale, ElAmapControlMapType, ElAmapControlHawkEye, ElAmapControlControlBar, ElAmap,ElAmapGeolocation},
+    ElAmapControlScale, ElAmapControlMapType, ElAmapControlHawkEye, ElAmapControlControlBar, ElAmap},
   data(){
     return {
       center: [120,31],

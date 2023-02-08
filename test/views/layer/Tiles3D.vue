@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerTiles3d from "@vue-map/packages/layer/data/Tiles3D/Tiles3D.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLayerTiles3d from "@vuemap/vue-amap/packages/layer/data/Tiles3D/Tiles3D.vue";
 
 export default defineComponent({
   name: "Map",

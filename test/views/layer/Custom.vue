@@ -26,8 +26,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmapLayerCustom from "@vue-map/packages/layer/data/Custom/Custom.vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
+import ElAmapLayerCustom from "@vuemap/vue-amap/packages/layer/data/Custom/Custom.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

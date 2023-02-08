@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapCircleMarker from "@vue-map/packages/marker/CircleMarker/CircleMarker.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapCircleMarker from "@vuemap/vue-amap/packages/marker/CircleMarker/CircleMarker.vue";
 
 export default defineComponent({
   name: "Map",

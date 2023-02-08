@@ -51,8 +51,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapMouseTool from "@vue-map/packages/util/MouseTool/MouseTool.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapMouseTool from "@vuemap/vue-amap/packages/util/MouseTool/MouseTool.vue";
 
 export default defineComponent({
   name: "Map",

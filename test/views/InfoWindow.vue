@@ -32,8 +32,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmapInfoWindow from "@vue-map/packages/infoWindow/InfoWindow/InfoWindow.vue";
-import ElAmap from '../../src/packages/amap/amap.vue'
+import ElAmapInfoWindow from "@vuemap/vue-amap/packages/infoWindow/InfoWindow/InfoWindow.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

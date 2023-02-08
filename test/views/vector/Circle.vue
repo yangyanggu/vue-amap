@@ -42,9 +42,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapCircle from "@vue-map/packages/vector/Circle/Circle.vue";
-import ElAmapLayerVector from "@vue-map/packages/layer/data/Vector/Vector.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapCircle from "@vuemap/vue-amap/packages/vector/Circle/Circle.vue";
+import ElAmapLayerVector from "@vuemap/vue-amap/packages/layer/data/Vector/Vector.vue";
 
 export default defineComponent({
   name: "Map",

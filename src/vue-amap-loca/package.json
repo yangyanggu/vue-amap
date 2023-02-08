@@ -1,0 +1,54 @@
+{
+  "name": "@vuemap/vue-amap-loca",
+  "version": "2.0.0",
+  "description": "amap loca for vue3",
+  "keywords": [
+    "vue-amap",
+    "amap",
+    "map",
+    "vue3",
+    "loca",
+    "vue",
+    "高德"
+  ],
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs"
+    },
+    "./es": "./es/index.mjs",
+    "./lib": "./lib/index.js",
+    "./*": "./*"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "style": "dist/style.css",
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js",
+  "sideEffects": [
+    "dist/*",
+    "lib/packages/**/*",
+    "es/packages/**/*"
+  ],
+  "repository": "https://github.com/yangyanggu/vue-amap.git",
+  "author": "guyangyang <407042815@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitee.com/guyangyang/vue-amap/issues"
+  },
+  "homepage": "https://vue-amap.guyixi.cn",
+  "dependencies": {
+    "@vuemap/vue-amap-util": "2.0.0"
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "vue": ">=3.2.0",
+    "@vuemap/vue-amap": ">=2.0.0"
+  },
+  "vetur": {
+    "tags": "./tags.json",
+    "attributes": "./attributes.json"
+  },
+  "web-types": "./web-types.json"
+}

@@ -38,11 +38,11 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 import ElAmapLayerMapboxVectorTile
-  from "@vue-map/packages/layer/standard/MapboxVectorTileLayer/MapboxVectorTileLayer.vue";
-import ElAmapLayerWms from "@vue-map/packages/layer/standard/WMS/WMS.vue";
-import ElAmapLayerWmts from "@vue-map/packages/layer/standard/WMTS/WMTS.vue";
+  from "@vuemap/vue-amap/packages/layer/standard/MapboxVectorTileLayer/MapboxVectorTileLayer.vue";
+import ElAmapLayerWms from "@vuemap/vue-amap/packages/layer/standard/WMS/WMS.vue";
+import ElAmapLayerWmts from "@vuemap/vue-amap/packages/layer/standard/WMTS/WMTS.vue";
 
 const colors = {};
 

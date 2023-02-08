@@ -27,9 +27,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaHexagon from "@vue-map/packages/loca/HexagonLayer/HexagonLayer.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaHexagon from "@vuemap/vue-amap-loca/packages/HexagonLayer/HexagonLayer.vue";
 
 const colors = ['#F4FFB3', '#BFDDA8', '#96CA8D', '#75BA89', '#5EAC86', '#4D9A96', '#3F748F', '#1D3748'].reverse();
 const heights = [100, 200, 300, 900, 1000, 1200, 1500, 3000];

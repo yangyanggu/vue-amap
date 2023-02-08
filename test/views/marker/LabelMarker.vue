@@ -43,9 +43,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLabelMarker from "@vue-map/packages/marker/LabelMarker/LabelMarker.vue";
-import ElAmapLayerLabels from "@vue-map/packages/layer/data/Labels/Labels.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLabelMarker from "@vuemap/vue-amap/packages/marker/LabelMarker/LabelMarker.vue";
+import ElAmapLayerLabels from "@vuemap/vue-amap/packages/layer/data/Labels/Labels.vue";
 
 export default defineComponent({
   name: "Map",

@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapGeojson from "@vue-map/packages/vector/GeoJSON/GeoJSON.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapGeojson from "@vuemap/vue-amap/packages/vector/GeoJSON/GeoJSON.vue";
 import geo from '../../assets/chongqing.json'
 
 export default defineComponent({

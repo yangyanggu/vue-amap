@@ -1,9 +1,0 @@
-{
-  "name": "@vue-map/mixins",
-  "version": "0.0.1",
-  "description": "all mixins are settled here",
-  "peerDependencies": {
-    "vue": "^3.2.0"
-  },
-  "sideEffects": false
-}

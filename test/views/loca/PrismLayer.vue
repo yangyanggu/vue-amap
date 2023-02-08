@@ -28,9 +28,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaPrism from "@vue-map/packages/loca/PrismLayer/PrismLayer.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaPrism from "@vuemap/vue-amap-loca/packages/PrismLayer/PrismLayer.vue";
 
 const topConf = {
   '上海市': 'https://a.amap.com/Loca/static/loca-v2/demos/images/top-one.png',

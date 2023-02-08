@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import Element from 'element-plus'
-import {initAMapApiLoader} from '@vue-map/services'
+import {initAMapApiLoader} from '@vuemap/vue-amap/services/injected-amap-api-instance'
 import App from './App.vue'
 import 'element-plus/dist/index.css'
 import router from './router/index'

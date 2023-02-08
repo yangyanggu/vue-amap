@@ -25,8 +25,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapMassMarks from "@vue-map/packages/marker/MassMarks/MassMarks.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapMassMarks from "@vuemap/vue-amap/packages/marker/MassMarks/MassMarks.vue";
 import City from '../../assets/citys.json';
 
 export default defineComponent({

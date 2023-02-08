@@ -27,9 +27,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLocaGrid from "@vue-map/packages/loca/GridLayer/GridLayer.vue";
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLocaGrid from "@vuemap/vue-amap-loca/packages/GridLayer/GridLayer.vue";
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 
 const colors = ['#FAE200', '#D27E37', '#C53634', '#C12B6E', '#A92E9A', '#67238A', '#211A50', '#18244E'].reverse();
 const heights = [100, 200, 400, 600, 800, 1400, 1800, 4000];

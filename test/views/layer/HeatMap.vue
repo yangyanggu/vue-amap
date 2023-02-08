@@ -22,8 +22,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmapLayerHeatMap from "@vue-map/packages/layer/data/HeatMap/HeatMap.vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
+import ElAmapLayerHeatMap from "@vuemap/vue-amap/packages/layer/data/HeatMap/HeatMap.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

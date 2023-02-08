@@ -38,10 +38,10 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
-import ElAmapThreeTiles3d from "@vue-map/packages/three/Three3Dtiles/ThreeTiles3d.vue";
-import ElAmapThreeLightAmbient from "@vue-map/packages/three/ThreeLightAmbient/ThreeLightAmbient.vue";
+import ElAmapLayerThree from "@vuemap/vue-amap-extra/packages/ThreeLayer/ThreeLayer.vue";
+import ElAmapThreeTiles3d from "@vuemap/vue-amap-extra/packages/Three3Dtiles/ThreeTiles3d.vue";
+import ElAmapThreeLightAmbient from "@vuemap/vue-amap-extra/packages/ThreeLightAmbient/ThreeLightAmbient.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

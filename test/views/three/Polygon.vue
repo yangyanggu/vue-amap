@@ -48,11 +48,11 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerThree from "@vue-map/packages/three/ThreeLayer/ThreeLayer.vue";
-import ElAmapThreePolygon from "@vue-map/packages/three/ThreePolygon/ThreePolygon.vue";
-import ElAmapThreeLightAmbient from "@vue-map/packages/three/ThreeLightAmbient/ThreeLightAmbient.vue";
-import ElAmapThreePassCircle from "@vue-map/packages/three/ThreePassCircle/ThreePassCircle.vue";
+import ElAmapLayerThree from "@vuemap/vue-amap-extra/packages/ThreeLayer/ThreeLayer.vue";
+import ElAmapThreePolygon from "@vuemap/vue-amap-extra/packages/ThreePolygon/ThreePolygon.vue";
+import ElAmapThreeLightAmbient from "@vuemap/vue-amap-extra/packages/ThreeLightAmbient/ThreeLightAmbient.vue";
+import ElAmapThreePassCircle from "@vuemap/vue-amap-extra/packages/ThreePassCircle/ThreePassCircle.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

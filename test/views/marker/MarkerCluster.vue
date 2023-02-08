@@ -24,8 +24,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapMarkerCluster from "@vue-map/packages/marker/MarkerCluster/MarkerCluster.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapMarkerCluster from "@vuemap/vue-amap/packages/marker/MarkerCluster/MarkerCluster.vue";
 import China from '../../assets/china.json';
 
 export default defineComponent({

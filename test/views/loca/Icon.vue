@@ -31,9 +31,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaIcon from "@vue-map/packages/loca/IconLayer/IconLayer.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaIcon from "@vuemap/vue-amap-loca/packages/IconLayer/IconLayer.vue";
 
 const trafficIcons = {
   1: 'https://a.amap.com/Loca/static/loca-v2/demos/images/traffic-control.png',

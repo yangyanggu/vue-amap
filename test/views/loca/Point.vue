@@ -28,9 +28,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaPoint from "@vue-map/packages/loca/PointLayer/PointLayer.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaPoint from "@vuemap/vue-amap-loca/packages/PointLayer/PointLayer.vue";
 
 const colors = [
   'rgba(254,255,198,0.95)',

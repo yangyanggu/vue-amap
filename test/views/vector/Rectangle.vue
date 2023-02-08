@@ -31,8 +31,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapRectangle from "@vue-map/packages/vector/Rectangle/Rectangle.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapRectangle from "@vuemap/vue-amap/packages/vector/Rectangle/Rectangle.vue";
 
 export default defineComponent({
   name: "Map",

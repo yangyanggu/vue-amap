@@ -46,8 +46,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapText from "@vue-map/packages/marker/Text/Text.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapText from "@vuemap/vue-amap/packages/marker/Text/Text.vue";
 
 export default defineComponent({
   name: "Map",

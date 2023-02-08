@@ -55,14 +55,14 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLayerBuildings from "@vue-map/packages/layer/official/Buildings/Buildings.vue";
-import ElAmapLayerDistrict from "@vue-map/packages/layer/official/DistrictLayer/DistrictLayer.vue";
-import ElAmapLayerIndoorMap from "@vue-map/packages/layer/official/IndoorMap/IndoorMap.vue";
-import ElAmapLayerRoadNet from "@vue-map/packages/layer/official/RoadNet/RoadNet.vue";
-import ElAmapLayerSatellite from "@vue-map/packages/layer/official/Satellite/Satellite.vue";
-import ElAmapLayerTile from "@vue-map/packages/layer/official/TileLayer/TileLayer.vue";
-import ElAmapLayerTraffic from "@vue-map/packages/layer/official/Traffic/Traffic.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLayerBuildings from "@vuemap/vue-amap/packages/layer/official/Buildings/Buildings.vue";
+import ElAmapLayerDistrict from "@vuemap/vue-amap/packages/layer/official/DistrictLayer/DistrictLayer.vue";
+import ElAmapLayerIndoorMap from "@vuemap/vue-amap/packages/layer/official/IndoorMap/IndoorMap.vue";
+import ElAmapLayerRoadNet from "@vuemap/vue-amap/packages/layer/official/RoadNet/RoadNet.vue";
+import ElAmapLayerSatellite from "@vuemap/vue-amap/packages/layer/official/Satellite/Satellite.vue";
+import ElAmapLayerTile from "@vuemap/vue-amap/packages/layer/official/TileLayer/TileLayer.vue";
+import ElAmapLayerTraffic from "@vuemap/vue-amap/packages/layer/official/Traffic/Traffic.vue";
 
 const colors = {};
 const getColorByAdcode = function (adcode) {

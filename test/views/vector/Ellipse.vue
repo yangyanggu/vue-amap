@@ -32,8 +32,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapEllipse from "@vue-map/packages/vector/Ellipse/Ellipse.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapEllipse from "@vuemap/vue-amap/packages/vector/Ellipse/Ellipse.vue";
 
 export default defineComponent({
   name: "Map",

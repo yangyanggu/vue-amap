@@ -25,8 +25,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmapLayerDistrictCluster from "@vue-map/packages/layer/data/DistrictCluster/DistrictCluster.vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
+import ElAmapLayerDistrictCluster from "@vuemap/vue-amap/packages/layer/data/DistrictCluster/DistrictCluster.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 
 export default defineComponent({
   name: "Map",

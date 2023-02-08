@@ -1,0 +1,43 @@
+{
+  "name": "@vuemap/vue-amap-util",
+  "version": "2.0.0",
+  "description": "@vuemap/vue-amap的工具库，提供注册组件的通用能力和常用的工具类",
+  "keywords": [
+    "vue-amap",
+    "amap",
+    "map",
+    "vue3",
+    "loca",
+    "vue",
+    "高德"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index-cjs.js",
+      "import": "./dist/index-es.js"
+    },
+    "./es": "./index-es.js",
+    "./lib": "./dist/index-cjs.js",
+    "./*": "./*"
+  },
+  "module": "./dist/index-es.js",
+  "sideEffects": [
+    "dist/*"
+  ],
+  "repository": "https://github.com/yangyanggu/vue-amap.git",
+  "author": "guyangyang <407042815@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitee.com/guyangyang/vue-amap/issues"
+  },
+  "homepage": "https://vue-amap.guyixi.cn",
+  "dependencies": {
+    "uppercamelcase": "^1.1.0",
+    "@vue/shared": "^3.2.37"
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "vue": ">=3.2.0"
+  }
+}

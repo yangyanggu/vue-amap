@@ -28,9 +28,9 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaPulseLink from "@vue-map/packages/loca/PulseLinkLayer/PulseLinkLayer.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaPulseLink from "@vuemap/vue-amap-loca/packages/PulseLinkLayer/PulseLinkLayer.vue";
 
 export default defineComponent({
   name: "Map",

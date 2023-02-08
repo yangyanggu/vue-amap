@@ -45,12 +45,12 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapLoca from "@vue-map/packages/loca/Loca/Loca.vue";
-import ElAmapLocaPolygon from "@vue-map/packages/loca/PolygonLayer/PolygonLayer.vue";
-import ElAmapLocaAmbientLight from "@vue-map/packages/loca/AmbientLight/AmbientLight.vue";
-import ElAmapLocaDirectionalLight from "@vue-map/packages/loca/DirectionalLight/DirectionalLight.vue";
-import ElAmapLocaPointLight from "@vue-map/packages/loca/PointLight/PointLight.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaPolygon from "@vuemap/vue-amap-loca/packages/PolygonLayer/PolygonLayer.vue";
+import ElAmapLocaAmbientLight from "@vuemap/vue-amap-loca/packages/AmbientLight/AmbientLight.vue";
+import ElAmapLocaDirectionalLight from "@vuemap/vue-amap-loca/packages/DirectionalLight/DirectionalLight.vue";
+import ElAmapLocaPointLight from "@vuemap/vue-amap-loca/packages/PointLight/PointLight.vue";
 
 const colors = ['#FFF8B4', '#D3F299', '#9FE084', '#5ACA70', '#00AF53', '#00873A', '#006B31', '#004835', '#003829'].reverse();
 const height = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000];

@@ -32,8 +32,8 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vue-map/packages/amap/amap.vue'
-import ElAmapBezierCurve from "@vue-map/packages/vector/BezierCurve/BezierCurve.vue";
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapBezierCurve from "@vuemap/vue-amap/packages/vector/BezierCurve/BezierCurve.vue";
 
 export default defineComponent({
   name: "Map",
