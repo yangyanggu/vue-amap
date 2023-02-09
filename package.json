@@ -1,6 +1,7 @@
 {
   "private": true,
   "packageManager": "pnpm@6.23.6",
+  "type": "module",
   "workspaces": [
     "src/*",
     "docs"
@@ -9,8 +10,12 @@
     "node": ">= 16"
   },
   "scripts": {
-    "build": "gulp --require sucrase/register/ts -f build/gulpfile.ts",
-    "dev": "vite --host",
+    "build": "pnpm run build:util & pnpm run build:amap",
+    "build:amap": "gulp --require sucrase/register/ts -f build/gulp/amapGulpFile.ts",
+    "build:loca": "gulp --require sucrase/register/ts -f build/gulp/locaGulpFile.ts",
+    "build:extra": "gulp --require sucrase/register/ts -f build/gulp/extraGulpFile.ts",
+    "build:util": "gulp --require sucrase/register/ts -f build/gulp/utilGulpFile.ts",
+    "dev": "pnpm run build:util & vite --host",
     "clean:dist": "rimraf dist",
     "lint": "eslint src",
     "docs:dev": "pnpm run -C docs dev",
@@ -22,18 +27,9 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@amap/amap-jsapi-loader": "^1.0.1",
-    "@amap/three-layer": "^0.0.4",
-    "@tweenjs/tween.js": "^18.6.4",
-    "@vue-map/mixins": "workspace:*",
-    "@vue-map/packages": "workspace:*",
-    "@vue-map/services": "workspace:*",
-    "@vuemap/layer-3dtiles": "^0.0.3",
-    "@vuemap/district-cluster": "^0.0.4",
-    "color": "^4.2.3",
-    "lodash-es": "^4.17.21",
-    "three": "0.143.0",
-    "uppercamelcase": "^1.1.0"
+    "@vuemap/vue-amap": "2.0.0-beta",
+    "@vuemap/vue-amap-loca": "2.0.0-beta",
+    "@vuemap/vue-amap-extra": "2.0.0-beta"
   },
   "devDependencies": {
     "@pnpm/find-workspace-packages": "3.1.28",
@@ -42,6 +38,7 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "3.0.0",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@turf/turf": "^6.5.0",
     "@types/fs-extra": "9.0.13",
     "@types/gulp": "4.0.9",
@@ -51,12 +48,12 @@
     "@types/three": "0.143.0",
     "@typescript-eslint/eslint-plugin": "5.6.0",
     "@typescript-eslint/parser": "5.6.0",
-    "@vitejs/plugin-vue": "^2.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
     "@vue/compiler-sfc": "3.2.37",
     "components-helper": "^1.0.5",
     "element-plus": "^2.1.10",
     "esbuild": "0.14.2",
-    "eslint": "8.4.1",
+    "eslint": "^8.33.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-define-config": "1.2.0",
     "eslint-plugin-import": "2.25.3",
@@ -64,6 +61,7 @@
     "fast-glob": "3.2.7",
     "fs-extra": "10.0.0",
     "gulp": "4.0.2",
+    "magic-string": "^0.27.0",
     "rimraf": "3.0.2",
     "rollup": "^2.61.1",
     "rollup-plugin-esbuild": "4.7.2",
@@ -74,7 +72,7 @@
     "sucrase": "^3.20.3",
     "ts-morph": "14.0.0",
     "typescript": "^4.7.4",
-    "vite": "~2.9.5",
+    "vite": "^4.1.1",
     "vue": "^3.2.37",
     "vue-router": "^4.0.12"
   },

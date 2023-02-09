@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-loca",
-  "version": "2.0.0",
+  "version": "2.0.0-beta",
   "description": "amap loca for vue3",
   "keywords": [
     "vue-amap",
@@ -11,6 +11,7 @@
     "vue",
     "高德"
   ],
+  "files": ["dist", "es","lib","global.d.ts","ide","README.md"],
   "exports": {
     ".": {
       "require": "./lib/index.js",
@@ -44,11 +45,11 @@
   },
   "peerDependencies": {
     "vue": ">=3.2.0",
-    "@vuemap/vue-amap": ">=2.0.0"
+    "@vuemap/vue-amap": ">=2.0.0 || 2.0.0-beta"
   },
   "vetur": {
-    "tags": "./tags.json",
-    "attributes": "./attributes.json"
+    "tags": "./ide/tags.json",
+    "attributes": "./ide/attributes.json"
   },
-  "web-types": "./web-types.json"
+  "web-types": "./ide/web-types.json"
 }

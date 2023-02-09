@@ -2,7 +2,7 @@
 import {defineComponent} from "vue";
 import {registerMixin} from '@vuemap/vue-amap-util';
 import type { PropType} from "vue";
-interface TooltipText {
+export interface TooltipText {
   marker?: string
   circle?: string
   rectangle?: string

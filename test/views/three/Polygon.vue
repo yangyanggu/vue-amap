@@ -60,7 +60,6 @@ export default defineComponent({
     ElAmapThreePolygon,
     ElAmapLayerThree,
     ElAmapThreeLightAmbient,
-    ElAmapThreePassCircle,
     ElAmap},
   data(){
     return {

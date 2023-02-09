@@ -64,7 +64,7 @@ class ThreePolygon {
         ctx.fillStyle=gradient;
         ctx.fillRect(0,0,512,512);
       }
-      console.log('canvas: ', canvas.toDataURL())
+      // console.log('canvas: ', canvas.toDataURL())
       this.canvasTexture = new CanvasTexture(canvas)
     }
     this.bottomMaterial = new MeshLambertMaterial({

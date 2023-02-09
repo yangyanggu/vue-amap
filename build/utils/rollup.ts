@@ -6,12 +6,12 @@ export function writeBundles(bundle: RollupBuild, options: OutputOptions[]) {
   return Promise.all(options.map((option) => bundle.write(option)))
 }
 
-export const generateExternal = async (options: { full: boolean }) => {
+export const generateExternal = async (options: { full: boolean, package: string }) => {
   return (id: string) => {
     const packages: string[] = ['vue']
     if (!options.full) {
       // dependencies
-      packages.push('@vue', ...getPackageDependencies(epPackage))
+      packages.push('@vue', ...getPackageDependencies(options.package))
     }
 
     return [...new Set(packages)].some(

@@ -1,8 +1,6 @@
 import findWorkspacePackages from '@pnpm/find-workspace-packages'
-import { buildConfig } from '../build-info'
 import { EP_PREFIX } from './constants'
-import { pkgRoot, projRoot } from './paths'
-import type { Module } from '../build-info'
+import { srcRoot, projRoot } from './paths'
 
 export const getWorkspacePackages = () => findWorkspacePackages(projRoot)
 export const getPackageManifest = (pkgPath: string) => {
@@ -17,18 +15,10 @@ export const getPackageDependencies = (pkgPath: string): string[] => {
 }
 
 export const excludeFiles = (files: string[]) => {
-  const excludes = ['node_modules', 'test', 'mock', 'gulpfile', 'dist']
+  const excludes = ['node_modules', 'test', 'mock', 'gulpfile', 'dist', 'global.d.ts']
   return files.filter(
     (path) => !excludes.some((exclude) => path.includes(exclude))
   )
-}
-export const pathRewriter = (module: Module) => {
-  const config = buildConfig[module]
-
-  return (id: string) => {
-    id = id.replaceAll(`${EP_PREFIX}/`, `${config.bundle.path}/`)
-    return id
-  }
 }
 
 /**
@@ -42,5 +32,5 @@ export const getDistPackages = async () =>
       !!pkg.name &&
       !!pkg.dir &&
       pkg.name.startsWith(EP_PREFIX) &&
-      pkg.dir.startsWith(pkgRoot)
+      pkg.dir.startsWith(srcRoot)
   )

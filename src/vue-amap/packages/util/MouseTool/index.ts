@@ -1,4 +1,4 @@
-import { withInstall } from '@vue-map/utils/with-install'
+import { withInstall } from '@vuemap/vue-amap-util'
 import MouseTool from './MouseTool.vue'
 
 export const ElAmapMouseTool = withInstall(MouseTool)

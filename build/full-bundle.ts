@@ -1,4 +1,5 @@
 import {resolve} from 'path'
+import {readJSON} from 'fs-extra'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { rollup } from 'rollup'
 import commonjs from '@rollup/plugin-commonjs'
@@ -6,22 +7,25 @@ import vue from 'rollup-plugin-vue'
 import esbuild from 'rollup-plugin-esbuild'
 import replace from '@rollup/plugin-replace'
 import filesize from 'rollup-plugin-filesize'
-import { parallel } from 'gulp'
+import {parallel} from 'gulp'
 import scss from "rollup-plugin-scss";
-import {version} from '../src/vue-map/package-template.json';
-import {vmRoot, buildOutput, epOutput} from './utils/paths'
 import { generateExternal, writeBundles } from './utils/rollup'
 
 import { withTaskName } from './utils/gulp'
 import {MapAlias} from "./plugins/map-alias";
+import RemoveGlobalNamePlugin from './plugins/RemoveGlobalNamePlugin'
+import {buildTsConfigPath} from "./utils/paths";
+import type { TaskFunction} from 'gulp';
 
 
-export const buildFull = (minify: boolean) => async () => {
+export const buildFull = (pkgRoot: string, minify: boolean) => async () => {
+  const packagePath = resolve(pkgRoot, 'package.json')
+  const json = await readJSON(packagePath)
   const bundle = await rollup({
-    input: resolve(vmRoot, 'index.ts'),
+    input: resolve(pkgRoot, 'index.ts'),
     plugins: [
       await MapAlias(),
-      scss({output: resolve(buildOutput, 'style.css')}),
+      scss({output: resolve(pkgRoot, 'dist/style.css')}),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
       }),
@@ -34,6 +38,7 @@ export const buildFull = (minify: boolean) => async () => {
         minify,
         sourceMap: minify,
         target: 'es2018',
+        tsconfig: buildTsConfigPath
       }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
@@ -41,15 +46,16 @@ export const buildFull = (minify: boolean) => async () => {
         // options
         preventAssignment: true,
       }),
+      RemoveGlobalNamePlugin(),
       filesize(),
     ],
-    external: await generateExternal({ full: true }),
+    external: await generateExternal({ full: true, package: packagePath }),
   })
-  const banner = `/*! vue-amap v${version} */\n`
+  const banner = `/*! ${json.name} v${json.version} */\n`
   await writeBundles(bundle, [
     {
       format: 'umd',
-      file: resolve(epOutput, `dist/index${minify ? '.min' : ''}.js`),
+      file: resolve(pkgRoot, `dist/index${minify ? '.min' : ''}.js`),
       exports: 'named',
       name: 'VueAMap',
       globals: {
@@ -61,7 +67,7 @@ export const buildFull = (minify: boolean) => async () => {
     {
       format: 'esm',
       file: resolve(
-        epOutput,
+        pkgRoot,
         `dist/index.es${minify ? '.min' : ''}.js`
       ),
       sourcemap: minify,
@@ -70,7 +76,9 @@ export const buildFull = (minify: boolean) => async () => {
   ])
 }
 
-export const buildFullBundle = parallel(
-  withTaskName('buildFullMinified', buildFull(true)),
-  withTaskName('buildFull', buildFull(false))
-)
+export const getBuildFullBundle = (pkgRoot: string): TaskFunction => {
+  return parallel(
+    withTaskName('buildFullMinified', buildFull(pkgRoot, true)),
+    withTaskName('buildFull', buildFull(pkgRoot, false))
+  )
+}

@@ -6,41 +6,32 @@ import glob from 'fast-glob'
 import { bold } from 'chalk'
 
 import { errorAndExit, green, yellow } from './utils/log'
-import { buildOutput,pkgRoot, projRoot, vmRoot } from './utils/paths'
+import { projRoot } from './utils/paths'
 
-import { excludeFiles, pathRewriter } from './utils/pkg'
+import { excludeFiles } from './utils/pkg'
 import type { SourceFile } from 'ts-morph'
 
 const TSCONFIG_PATH = path.resolve(projRoot,'build', 'config' ,'tsconfig.json')
-const outDir = path.resolve(buildOutput, 'types')
 
 /**
  * fork = require( https://github.com/egoist/vue-dts-gen/blob/main/src/index.ts
  */
-export const generateTypesDefinitions = async () => {
+export const generateTypesDefinitions = async (pkgRoot: string, outDir: string) => {
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
+      declaration: true,
       outDir,
-      baseUrl: projRoot,
-      paths: {
-        '@map/*': ['src/*'],
-      },
+      baseUrl: pkgRoot,
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: false,
   })
 
   const filePaths = excludeFiles(
-    await glob(['**/*.{js,ts,vue}', '!vue-amap/**/*'], {
+    await glob(['**/*.{js,ts,vue}'], {
       cwd: pkgRoot,
       absolute: true,
-      onlyFiles: true,
-    })
-  )
-  const vmPaths = excludeFiles(
-    await glob('**/*.{js,ts,vue}', {
-      cwd: vmRoot,
       onlyFiles: true,
     })
   )
@@ -77,12 +68,6 @@ export const generateTypesDefinitions = async () => {
         sourceFiles.push(sourceFile)
       }
     }),
-    ...vmPaths.map(async (file) => {
-      const content = await fs.readFile(path.resolve(vmRoot, file), 'utf-8')
-      sourceFiles.push(
-        project.createSourceFile(path.resolve(pkgRoot, file), content)
-      )
-    }),
   ])
 
   const diagnostics = project.getPreEmitDiagnostics()
@@ -110,7 +95,8 @@ export const generateTypesDefinitions = async () => {
 
       await fs.writeFile(
         filepath,
-        pathRewriter('esm')(outputFile.getText()),
+        // pathRewriter('esm')(outputFile.getText()),
+        outputFile.getText(),
         'utf8'
       )
 

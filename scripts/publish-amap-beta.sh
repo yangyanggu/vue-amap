@@ -1,10 +1,9 @@
 #!/bin/sh
 
 set -e
+pnpm run build:amap
 
-pnpm run build
-
-cd ../dist/vue-amap
+cd ../src/vue-amap
 npm publish --tag=beta --access public
 cd -
 

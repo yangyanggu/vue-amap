@@ -11,13 +11,13 @@
     "vue",
     "高德"
   ],
+  "types": "./dist/index.d.ts",
+  "files": ["dist","README.md"],
   "exports": {
     ".": {
       "require": "./dist/index-cjs.js",
       "import": "./dist/index-es.js"
     },
-    "./es": "./index-es.js",
-    "./lib": "./dist/index-cjs.js",
     "./*": "./*"
   },
   "module": "./dist/index-es.js",

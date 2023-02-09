@@ -7,15 +7,17 @@ import esbuild from 'rollup-plugin-esbuild'
 import filesize from 'rollup-plugin-filesize'
 import glob from 'fast-glob'
 import scss from "rollup-plugin-scss";
-import {buildOutput, vmRoot, pkgRoot} from './utils/paths'
+import {buildTsConfigPath, vmRoot} from './utils/paths'
 import {generateExternal, writeBundles} from './utils/rollup'
 import { excludeFiles } from './utils/pkg'
 import { reporter } from './plugins/size-reporter'
-import { buildConfigEntries } from './build-info'
+import { getBuildConfigEntries } from './build-info'
 import { MapAlias } from './plugins/map-alias'
 import type { OutputOptions } from 'rollup'
 
-export const buildModules = async () => {
+export const buildModules = async (pkgRoot: string, bundlePath: string) => {
+  const buildConfigEntries = getBuildConfigEntries(pkgRoot,bundlePath)
+  const buildOutput = resolve(pkgRoot, 'dist')
   const input = excludeFiles(
     await glob('**/*.{js,ts,vue}', {
       cwd: pkgRoot,
@@ -36,10 +38,11 @@ export const buildModules = async () => {
       esbuild({
         sourceMap: true,
         target: 'es2018',
+        tsconfig: buildTsConfigPath
       }),
       filesize({ reporter }),
     ],
-    external: await generateExternal({ full: false }),
+    external: await generateExternal({ full: false, package: resolve(pkgRoot, 'package.json') }),
     treeshake: false,
   })
   await writeBundles(
@@ -50,7 +53,7 @@ export const buildModules = async () => {
         dir: config.output.path,
         exports: module === 'cjs' ? 'named' : undefined,
         preserveModules: true,
-        preserveModulesRoot: vmRoot,
+        preserveModulesRoot: pkgRoot,
         sourcemap: true,
         entryFileNames: `[name].${config.ext}`,
       }

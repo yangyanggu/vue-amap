@@ -1,7 +1,9 @@
-import path from 'path'
+import path, {resolve} from 'path'
 import helper from 'components-helper'
+import {mkdir, mkdirSync} from "fs-extra";
 import {getPackageManifest} from './utils/pkg';
-import {apiRoot, epOutput, epPackage} from './utils/paths'
+import {projRoot, apiRoot} from './utils/paths'
+import {withTaskName} from "./utils/gulp";
 import type {TaskFunction} from 'gulp'
 import type {InstallOptions} from 'components-helper/lib/type'
 
@@ -71,25 +73,28 @@ const reAttribute: InstallOptions['reAttribute'] = (value, key) => {
     }
 }
 
-export const buildHelper: TaskFunction = (done) => {
-    const {name, version} = getPackageManifest(epPackage);
-    const entry = path.resolve(apiRoot, '**' ,'*.md').replaceAll(/\\/g, '/');
-    helper({
-        name: name!,
-        version,
-        entry,
-        outDir: epOutput,
-        reComponentName,
-        reDocUrl,
-        reWebTypesSource,
-        reAttribute,
-        props: 'Attributes',
-        propsName: 'Attribute',
-        propsOptions: 'Accepted Values',
-        eventsName: 'Event Name',
-        tableRegExp:
-            '#+\\s+(.*\\s*Attributes|.*\\s*Events|.*\\s*Slots|.*\\s*Directives)\\s*\\n+(\\|?.+\\|.+)\\n\\|?\\s*:?-+:?\\s*\\|.+((\\n\\|?.+\\|.+)+)',
-    })
+export const buildHelper = (pkgRoot: string, outDir: string, type: string): TaskFunction => {
+    return withTaskName('build helper', (done) => {
+        mkdirSync(outDir, {recursive: true})
+        const {name, version} = getPackageManifest(resolve(pkgRoot, 'package.json'));
+        const entry = path.resolve(apiRoot, type , '**' ,'*.md').replaceAll(/\\/g, '/');
+        helper({
+            name: name!,
+            version,
+            entry,
+            outDir,
+            reComponentName,
+            reDocUrl,
+            reWebTypesSource,
+            reAttribute,
+            props: 'Attributes',
+            propsName: 'Attribute',
+            propsOptions: 'Accepted Values',
+            eventsName: 'Event Name',
+            tableRegExp:
+              '#+\\s+(.*\\s*Attributes|.*\\s*Events|.*\\s*Slots|.*\\s*Directives)\\s*\\n+(\\|?.+\\|.+)\\n\\|?\\s*:?-+:?\\s*\\|.+((\\n\\|?.+\\|.+)+)',
+        })
 
-    done()
+        done()
+    })
 }

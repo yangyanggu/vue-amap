@@ -24,3 +24,7 @@ node_modules
 .temp
 .cache
 dist.zip
+_types
+es
+lib
+ide

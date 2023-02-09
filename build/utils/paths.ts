@@ -5,9 +5,9 @@ export const docRoot = resolve(projRoot, 'docs')
 
 export const apiRoot = resolve(projRoot, 'ide-api', 'component')
 
-export const pkgRoot = resolve(projRoot, 'src')
+export const srcRoot = resolve(projRoot, 'src')
 
-export const vmRoot = resolve(pkgRoot, 'vue-map')
+export const vmRoot = resolve(srcRoot, 'vue-map')
 
 export const epPackage = resolve(vmRoot, 'package-template.json');
 
@@ -16,3 +16,6 @@ export const buildOutput = resolve(projRoot, 'dist')
 
 /** dist/vue-amap */
 export const epOutput = resolve(buildOutput, 'vue-amap')
+
+export const buildTsConfigPath = resolve(projRoot, 'build/config/tsconfig.json')
+
