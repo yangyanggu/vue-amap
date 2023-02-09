@@ -1,5 +1,5 @@
 import {resolve} from "path";
-import {copy, remove} from 'fs-extra'
+import {copy, copyFile, remove} from 'fs-extra'
 import {series, parallel} from 'gulp'
 import {run} from '../utils/process'
 import {withTaskName} from '../utils/gulp'
@@ -8,6 +8,7 @@ import {getBuildFullBundle} from "../full-bundle";
 import {buildHelper} from '../helper'
 import {generateTypesDefinitions} from "../types-definitions";
 import {
+  projRoot,
   srcRoot
 } from '../utils/paths'
 // import {buildConfig} from '../build-info'
@@ -58,6 +59,9 @@ const build:TaskFunction = series(
       await generateTypesDefinitions(pkgRoot, typesRoot)
     }),
     buildHelper(pkgRoot, ideRoot, 'vue-amap-loca'),
+    withTaskName('copy license', async () => {
+      await copyFile(resolve(projRoot, 'LICENSE'), resolve(pkgRoot, 'LICENSE'))
+    })
   ),
   parallel(copyTypesDefinitions),
   withTaskName('clean _types', async () => {

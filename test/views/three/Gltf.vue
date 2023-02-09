@@ -11,7 +11,18 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-layer-three :hdr="hdrOptions">
+      <el-amap-loca>
+        <el-amap-loca-line
+          :source-url="sourceUrl"
+          :layer-style="layerStyle"
+        />
+      </el-amap-loca>
+      <el-amap-layer-three
+        :visible="true"
+        :hdr="hdrOptions"
+        :alpha="true"
+        :antialias="true"
+      >
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
           :intensity="1"
@@ -91,7 +102,9 @@ import ElAmapThreeLightHemisphere from "@vuemap/vue-amap-extra/packages/ThreeLig
 import ElAmapThreeLightPoint from "@vuemap/vue-amap-extra/packages/ThreeLightPoint/ThreeLightPoint.vue";
 import ElAmapThreeLightSpot from "@vuemap/vue-amap-extra/packages/ThreeLightSpot/ThreeLightSpot.vue";
 import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
-
+import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
+import ElAmapLocaLine from "@vuemap/vue-amap-loca/packages/LineLayer/LineLayer.vue";
+const colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
 export default defineComponent({
   name: "Map",
   components: {
@@ -102,7 +115,10 @@ export default defineComponent({
     ElAmapThreeLightHemisphere,
     ElAmapThreeLightPoint,
     ElAmapThreeLightSpot,
-    ElAmap},
+    ElAmap,
+    ElAmapLoca,
+    ElAmapLocaLine
+  },
   data(){
     return {
       center: [116.306206, 39.975468],
@@ -123,6 +139,23 @@ export default defineComponent({
       hdrOptions: {
         urls: [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ],
         path: './hdr/'
+      },
+      sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/bj_bus.json',
+      layerStyle: {
+        color (index, prop) {
+          const i = index % colors.length;
+          return colors[i];
+        },
+        lineWidth: (index, prop) => {
+          const i = index % colors.length;
+          return i * 0.1 + 2;
+        },
+        altitude (index, feature) {
+          const i = index % colors.length;
+          return 100 * i;
+        },
+        // dashArray: [10, 5, 10, 0],
+        dashArray: [10, 0, 10, 0],
       }
     }
   },

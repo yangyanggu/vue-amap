@@ -16,7 +16,14 @@ head:
 推荐 npm 安装。
 
 ```
-npm install @vuemap/vue-amap@next --save
+// 安装核心库
+npm install @vuemap/vue-amap --save
+
+// 安装loca库
+npm install @vuemap/vue-amap-loca --save
+
+// 安装扩展库
+npm install @vuemap/vue-amap-extra --save
 ```
 
 ## CDN

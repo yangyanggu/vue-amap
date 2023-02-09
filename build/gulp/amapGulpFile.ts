@@ -61,6 +61,9 @@ const build:TaskFunction = series(
     buildHelper(pkgRoot, ideRoot, 'vue-amap'),
     withTaskName('copy readme', async () => {
       await copyFile(resolve(projRoot, 'README.md'), resolve(pkgRoot, 'README.md'))
+    }),
+    withTaskName('copy license', async () => {
+      await copyFile(resolve(projRoot, 'LICENSE'), resolve(pkgRoot, 'LICENSE'))
     })
   ),
   parallel(copyTypesDefinitions),

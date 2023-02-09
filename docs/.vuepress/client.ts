@@ -13,7 +13,7 @@ export default defineClientConfig({
       va.initAMapApiLoader({
         key: '747f980f217a31ba68d99301045a3fa7',
         Loca: {
-          version: '2.0.10'
+          version: '2.0.0'
         }
       })
     }

@@ -12,7 +12,7 @@ actions:
     link: /zh-cn/introduction/init.html
     type: primary
   - text: 项目简介
-    link: https://gitee.com/guyangyang/vue-amap/tree/dev
+    link: /zh-cn/introduction/introduction.html
     type: secondary
 features:
   - title: Vue 驱动

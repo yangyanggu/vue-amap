@@ -40,7 +40,6 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmapGeolocation from "@vuemap/vue-amap/packages/control/Geolocation";
 import ElAmapSearchBox from "@vuemap/vue-amap/packages/control/SearchBox/SearchBox.vue";
 import ElAmapControlGeolocation from "@vuemap/vue-amap/packages/control/Geolocation/Geolocation.vue";
 import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'

@@ -1,5 +1,5 @@
 import {resolve} from "path";
-import {remove} from 'fs-extra'
+import {copyFile, remove} from 'fs-extra'
 import {series} from 'gulp'
 import { rollup} from "rollup";
 import esbuild from 'rollup-plugin-esbuild'
@@ -74,6 +74,9 @@ const build: TaskFunction = series(
   }),
   withTaskName('build types', async () => {
     await generateTypesDefinitions(pkgRoot, distRoot)
+  }),
+  withTaskName('copy license', async () => {
+    await copyFile(resolve(projRoot, 'LICENSE'), resolve(pkgRoot, 'LICENSE'))
   })
 )
 

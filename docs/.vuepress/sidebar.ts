@@ -2,11 +2,13 @@ export default [
   {
     text: '基础',
     children: [
+      '/zh-cn/introduction/introduction.md',
       '/zh-cn/introduction/install.md',
       '/zh-cn/introduction/init.md',
       '/zh-cn/introduction/compatible.md',
       '/zh-cn/other/donation.md',
-      '/zh-cn/introduction/faq.md'
+      '/zh-cn/introduction/faq.md',
+      '/zh-cn/introduction/v1tov2.md',
     ],
   },
   {
@@ -108,7 +110,7 @@ export default [
     ],
   },
   {
-    text: 'Loca可视化',
+    text: '@vuemap/vue-amap-loca组件',
     children: [
       '/zh-cn/component/loca/loca.md',
       '/zh-cn/component/loca/ambient-light.md',
@@ -131,7 +133,7 @@ export default [
     ],
   },
   {
-    text: 'ThreeJS扩展',
+    text: '@vuemap/vue-amap-extra组件',
     children: [
       '/zh-cn/component/three/three-layer.md',
       '/zh-cn/component/three/three-gltf.md',

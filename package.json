@@ -15,7 +15,7 @@
     "build:loca": "gulp --require sucrase/register/ts -f build/gulp/locaGulpFile.ts",
     "build:extra": "gulp --require sucrase/register/ts -f build/gulp/extraGulpFile.ts",
     "build:util": "gulp --require sucrase/register/ts -f build/gulp/utilGulpFile.ts",
-    "dev": "pnpm run build:util & vite --host",
+    "dev": "vite --host",
     "clean:dist": "rimraf dist",
     "lint": "eslint src",
     "docs:dev": "pnpm run -C docs dev",
