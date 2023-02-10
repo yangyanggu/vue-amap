@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-extra",
-  "version": "2.0.0-beta",
+  "version": "2.0.0",
   "description": "@vuemap/vue-amap扩展库，包含threejs相关图层",
   "keywords": [
     "vue-amap",
@@ -11,7 +11,7 @@
     "高德",
     "threejs"
   ],
-  "files": ["dist", "es","lib","global.d.ts","ide","README.md"],
+  "files": ["dist", "es","lib","global.d.ts","ide","README.md","LICENSE"],
   "exports": {
     ".": {
       "require": "./lib/index.js",
@@ -23,7 +23,6 @@
   },
   "main": "lib/index.js",
   "module": "es/index.mjs",
-  "style": "dist/style.css",
   "unpkg": "dist/index.js",
   "jsdelivr": "dist/index.js",
   "sideEffects": [
