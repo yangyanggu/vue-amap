@@ -51,6 +51,10 @@ import '@vuemap/vue-amap/dist/style.css';
 initAMapApiLoader({
   // 高德的key
   key: 'YOUR_KEY',
+  securityJsCode: 'securityJsCode', // 新版key需要配合安全密钥使用
+  //Loca:{
+  //  version: '2.0.0'
+  //} // 如果需要使用loca组件库，需要加载Loca
 });
 createApp(App).use(VueAmap)
 
@@ -58,9 +62,19 @@ createApp(App).use(VueAmap)
 
 ## 自动导入
 首先你需要安装```unplugin-vue-components``` 、 ```unplugin-auto-import``` 、 ```@vuemap/unplugin-resolver```这三款插件
-```
+
+> 注意，对于使用@vuemap/vue-amap@1版本的来说，```@vuemap/unplugin-resolver```版本必须使用1.x.x版本
+
+### 使用@vuemap/vue-amap@latest 版本
+```shell
 npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver
 ```
+
+### 使用@vuemap/vue-amap@1 版本
+```shell
+npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver@1
+```
+
 然后在main.ts中导入css和进行初始化key
 ```ts
 import App from './App.vue'

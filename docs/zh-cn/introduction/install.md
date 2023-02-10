@@ -28,9 +28,11 @@ npm install @vuemap/vue-amap-extra --save
 
 ## CDN
 
-目前可通过 [unpkg.com/@vuemap/vue-amap](https://unpkg.com/@vuemap/vue-amap@next/dist/index.js) 获取最新版本的资源。
+目前可通过 [https://cdn.jsdelivr.net/npm/@vuemap/vue-amap](https://cdn.jsdelivr.net/npm/@vuemap/vue-amap/dist/index.min.js) 获取最新版本的资源。
 
 ```html
-<script src="https://unpkg.com/@vuemap/vue-amap@next/dist/index.js"></script>
-<script src="https://unpkg.com/@vuemap/vue-amap@next/dist/style.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap/dist/style.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap-loca/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuemap/vue-amap-extra/dist/index.min.js"></script>
 ```

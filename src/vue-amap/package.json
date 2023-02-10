@@ -1,7 +1,7 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "2.0.0-beta",
-  "description": "amap vue3",
+  "version": "2.0.0",
+  "description": "高德地图vue3版本封装",
   "keywords": [
     "vue-amap",
     "amap",
@@ -10,7 +10,7 @@
     "vue",
     "高德"
   ],
-  "files": ["dist", "es","lib","global.d.ts","ide","README.md"],
+  "files": ["dist", "es","lib","global.d.ts","ide","README.md","LICENSE"],
   "exports": {
     ".": {
       "require": "./lib/index.js",
@@ -27,8 +27,8 @@
   "jsdelivr": "dist/index.js",
   "sideEffects": [
     "dist/*",
-    "lib/**/*",
-    "es/**/*"
+    "lib/packages/**/*",
+    "es/packages/**/*"
   ],
   "repository": "https://github.com/yangyanggu/vue-amap.git",
   "author": "guyangyang <407042815@qq.com>",
