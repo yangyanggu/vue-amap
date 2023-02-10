@@ -19,12 +19,13 @@ stages:
         displayName: Nodejs 构建
         nodeVersion: 16.14.2
         commands:
-          - cd docs && npm i -d && npm run build
+          - npm install -g pnpm && pnpm i && pnpm run "docs:build"
         artifacts:
           - name: DOCS
             path:
               - ./docs/.vuepress/dist
         caches:
+          - ./.pnpm-store
           - ./.npm
         strategy:
           retry: '0'
