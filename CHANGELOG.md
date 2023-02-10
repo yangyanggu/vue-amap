@@ -1,3 +1,6 @@
+### v0.1.13
+* 无任何修改，修改包的标签为legacy
+
 ### v0.1.12
 * searchbox组件增加placeholder属性
 

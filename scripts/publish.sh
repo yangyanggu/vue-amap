@@ -2,6 +2,6 @@
 
 cd ..
 
-npm publish --access public
+npm publish --tag=legacy --access public
 
 echo "Publish completed"
