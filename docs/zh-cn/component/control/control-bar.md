@@ -9,6 +9,10 @@ head:
 # 地图控制插件 (AMap.ControlBar)
 组合了旋转、倾斜、复位在内的地图控件
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

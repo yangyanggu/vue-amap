@@ -10,6 +10,10 @@ head:
 # 实时交通图层 (AMap.TileLayer.Traffic)
 实时交通图层类，继承自TileLayer。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

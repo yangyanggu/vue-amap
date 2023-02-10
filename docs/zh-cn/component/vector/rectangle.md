@@ -10,6 +10,10 @@ head:
 # 矩形(AMap.Rectangle)
 AMap.Rectangle 对象为用户提供在地图图面绘制矩形覆盖物的能力。此方法可以通过指定矩形的边界（ AMap.Bounds ）来快速绘制一个矩形覆盖物。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

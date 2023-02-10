@@ -10,6 +10,10 @@ head:
 # 海量点标记 (AMap.MassMarks)
 当需要在地图展示数量为十万以内的点并且需要较好的性能表现时，可以使用 AMap.MassMarks 类。AMap.MassMarks 并不是普通的覆盖物，它实际上是由海量点组成的一个地图图层， 目前仅适用于html5浏览器。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

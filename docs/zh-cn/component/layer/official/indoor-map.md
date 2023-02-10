@@ -10,6 +10,10 @@ head:
 # 室内图层 (AMap.IndoorMap)
 室内图层，用于在适当级别展示室内地图，并提供显示商铺tip、切换楼层等功能。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

@@ -10,6 +10,10 @@ head:
 # 折线(AMap.Polyline)
 构造折线对象，支持 lineString 和 MultiLineString
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

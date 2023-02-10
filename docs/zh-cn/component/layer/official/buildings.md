@@ -10,6 +10,10 @@ head:
 # 建筑楼块3D图层 (AMap.Buildings)
 建筑楼块 3D 图层。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

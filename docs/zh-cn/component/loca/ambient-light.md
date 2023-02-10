@@ -10,6 +10,10 @@ head:
 # 环境光 (Loca.AmbientLight)
 环境光，对于可以接受光照的图层（PolygonLayer 等）会增加环境光的影响。环境光只能有一个，多余的会被忽略
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

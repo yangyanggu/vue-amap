@@ -10,6 +10,10 @@ head:
 # 连接飞线图层 (Loca.PulseLinkLayer)
 连接飞线图层，可以支持弧度，宽度，过渡色等能力。 并且还支持脉冲动画，可以表达数据的朝向。
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

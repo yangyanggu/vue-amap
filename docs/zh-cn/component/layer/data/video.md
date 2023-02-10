@@ -10,6 +10,10 @@ head:
 # Video图层 (VideoLayer)
 Video图层类，用户可以将一个 Video 作为图层添加在地图上，Video图层会随缩放级别而自适应缩放，基于Canvas图层实现。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

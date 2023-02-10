@@ -10,6 +10,10 @@ head:
 # 矢量标记图层 (AMap.VectorLayer)
 矢量标记图层。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

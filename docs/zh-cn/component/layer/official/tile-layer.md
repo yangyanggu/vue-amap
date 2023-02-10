@@ -10,6 +10,10 @@ head:
 # 切片图层 (AMap.TileLayer)
 切片图层类，该类为基础类。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

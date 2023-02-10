@@ -9,6 +9,10 @@ head:
 # 比例尺插件 (AMap.Scale)
 位于地图右下角，用户可控制其显示与隐藏。继承自 AMap.Control
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

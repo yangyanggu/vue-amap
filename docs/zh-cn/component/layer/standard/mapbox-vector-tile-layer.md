@@ -13,6 +13,10 @@ head:
 可以配合[GeoHub-数据中心](https://geohub.amap.com/)发布的矢量瓦片服务。 注意：使用高德数据平台发布服务，由于服务 URL 地址是明文，建议自行做服务代理转发，防止服务 ID 和 Key 明文传输导致数据泄露。
 [相关示例](https://lbs.amap.com/demo/jsapi-v2/example/thirdlayer/mvt-layer)
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

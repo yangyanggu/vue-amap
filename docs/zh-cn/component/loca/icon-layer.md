@@ -10,6 +10,10 @@ head:
 # 图标图层 (Loca.IconLayer)
 图标图层
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

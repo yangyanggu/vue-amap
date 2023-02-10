@@ -10,6 +10,10 @@ head:
 # Loca
 Loca图层的外部容器
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

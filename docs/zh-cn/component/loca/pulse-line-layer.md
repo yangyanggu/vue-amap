@@ -10,6 +10,10 @@ head:
 # 轨迹线图层 (Loca.PulseLineLayer)
 轨迹线图层，支持设置轨迹样式和轨迹点。
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

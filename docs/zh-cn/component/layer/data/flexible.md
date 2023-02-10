@@ -11,6 +11,10 @@ head:
 灵活切片图层，继承自AMap.TileLayer，开发者可通过构造时传入给其传入createTile字段来指定每一个切片的内容<br/>
 [相关示例](https://lbs.amap.com/api/jsapi-v2/example/selflayer/flex-canvas/)
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

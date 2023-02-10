@@ -10,6 +10,10 @@ head:
 # 贝塞尔曲线(AMap.BezierCurve)
 贝塞尔曲线,支持二次、三次贝赛尔曲线
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

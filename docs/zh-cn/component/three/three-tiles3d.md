@@ -10,6 +10,9 @@ head:
 # 开源3dtiles方案
 高德地图叠加3dtiles的开源实现方案，基于3d-tiles-renderer实现
 
+::: tip
+来源 ```@vuemap/vue-amap-extra``` 组件库
+:::
 
 ## 基础示例
 

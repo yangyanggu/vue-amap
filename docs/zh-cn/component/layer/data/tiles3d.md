@@ -14,6 +14,10 @@ head:
 :::
 使用 AMap.3DTilesLayer 图层加载渲染标准 3D Tiles 数据，可支持 i3dm、b3dm、pnts 格式。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 
 ## 基础示例
 

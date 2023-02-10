@@ -12,6 +12,10 @@ head:
 # 3d自定义图层 (AMap.GLCustomLayer)
 3d 自定义图层
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

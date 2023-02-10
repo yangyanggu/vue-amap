@@ -9,6 +9,10 @@ head:
 
 # 圆形标记 (AMap.CirCleMarker)
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

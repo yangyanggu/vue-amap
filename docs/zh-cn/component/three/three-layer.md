@@ -11,6 +11,10 @@ head:
 ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含lights（灯光）、hdr。
 可以通过获取scene来自定义添加模型。
 
+::: tip
+来源 ```@vuemap/vue-amap-extra``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

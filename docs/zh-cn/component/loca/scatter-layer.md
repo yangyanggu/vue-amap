@@ -10,6 +10,10 @@ head:
 # 贴地点图层 (Loca.ScatterLayer)
 大地面上的点，可展示三种类型：颜色圆、图标、动画图标。动画开启需要使用 **loca.animate.start();**
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

@@ -10,6 +10,10 @@ head:
 # 自定义图层 (AMap.CustomLayer)
 自定义图层是一种完全由开发者来指定绘制方法的图层
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

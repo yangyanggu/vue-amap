@@ -10,6 +10,10 @@ head:
 # 链接线图层 (Loca.LinkLayer)
 链接线图层
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

@@ -10,6 +10,10 @@ head:
 # ThreeJS面图层
 基于ThreeJS实现的面图层，支持顶部、底部、侧面颜色配置，侧面可以使用图片进行贴图，实现墙壁效果
 
+::: tip
+来源 ```@vuemap/vue-amap-extra``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

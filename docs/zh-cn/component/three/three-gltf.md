@@ -10,6 +10,10 @@ head:
 # GLTF
 ThreeJS的gltf加载器封装的组件，用于加载gltf模型
 
+::: tip
+来源 ```@vuemap/vue-amap-extra``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

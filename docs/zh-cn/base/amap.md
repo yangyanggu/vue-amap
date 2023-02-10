@@ -10,6 +10,10 @@ head:
 
 地图组件
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: warning

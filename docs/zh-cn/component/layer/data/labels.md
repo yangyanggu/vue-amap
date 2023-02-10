@@ -14,6 +14,10 @@ head:
 2、通过$refs拿到layer的vue实例，再通过`$$add`方法进行添加<br/>
 3、通过`slot`方式进行添加
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

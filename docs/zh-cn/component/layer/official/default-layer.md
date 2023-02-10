@@ -4,6 +4,10 @@ title: 默认图层
 
 # 默认图层 (AMap.createDefaultLayer)
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

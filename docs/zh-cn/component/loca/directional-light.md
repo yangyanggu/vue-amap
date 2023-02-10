@@ -10,6 +10,10 @@ head:
 # 平行光 (Loca.DirectionalLight)
 平行光，对于可以接受光照的图层（PolygonLayer 等）会增加平行光的影响。平行光一般用来模拟太阳的光照。 它的方向由 position 射向 target。position和target的坐标是一个位置加 z 值（单位米）高度决定。比如: [1, 1, 1000] 代表x:1, y:1, 高度1000米。 如果模拟一个从正南方向的平行光，可以设置target: [0,0,0], position: [0,-1,0]
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

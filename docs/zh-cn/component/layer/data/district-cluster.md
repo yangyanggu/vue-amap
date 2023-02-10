@@ -10,6 +10,10 @@ head:
 # 区划聚合图层
 高德地图的区划聚合图层，图层基于AMapUI的区划插件改造实现。[插件文档](https://github.com/yangyanggu/amap-district-cluster)
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

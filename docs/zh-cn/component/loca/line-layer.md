@@ -17,6 +17,10 @@ initPolyline(lineLayer){
 }
 ```
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

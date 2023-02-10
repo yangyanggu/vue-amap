@@ -11,6 +11,10 @@ head:
 用于加载OGC标准的WMS地图服务的一种图层类，仅支持EPSG3857坐标系统的WMS图层。
 [查看 WMS的OGC标准](http://www.opengeospatial.org/standards/wms)
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

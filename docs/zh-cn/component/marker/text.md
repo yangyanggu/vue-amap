@@ -10,6 +10,10 @@ head:
 # 文本 (AMap.Text)
 纯文本标记。文本标记的展示内容为纯文本。继承自 Marker 类，具有 Marker 的大部分属性、方法和事件。
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

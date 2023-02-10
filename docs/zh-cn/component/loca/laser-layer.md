@@ -10,6 +10,10 @@ head:
 # 激光图层 (Loca.LaserLayer)
 激光图层，支持展示点类型数据的激光放射效果。
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

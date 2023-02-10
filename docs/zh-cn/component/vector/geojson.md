@@ -10,6 +10,10 @@ head:
 # GeoJSON(AMap.GeoJSON)
 GeoJSON类，继承自OverLayGroup，可实现GeoJSON对象与OverlayGroup的相互转换
 
+::: tip
+来源 ```@vuemap/vue-amap``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

@@ -10,6 +10,10 @@ head:
 # 热力图 (Loca.HeatMapLayer)
 热力图，支持 3D 和不同颜色设置的聚合点数据显示。并且支持像素单位和米单位的热力聚合。
 
+::: tip
+来源 ```@vuemap/vue-amap-loca``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo

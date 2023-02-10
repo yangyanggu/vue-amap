@@ -11,6 +11,10 @@ head:
 # ThreeVideo
 ThreeJS的视频实现，支持任意旋转，支持三维展示。
 
+::: tip
+来源 ```@vuemap/vue-amap-extra``` 组件库
+:::
+
 ## 基础示例
 
 ::: demo
