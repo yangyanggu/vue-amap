@@ -150,6 +150,14 @@ class CustomThreeLayer extends ThreeLayer{
       }) as any;
   }
 
+  convertLngLat(lnglat: any): any {
+    this.customCoords.setCenter(this.center)
+    const data = this.customCoords.lngLatsToCoords([
+      lnglat
+    ]);
+    return data[0];
+  }
+
   addEnvMap(object) {
     this.scene!.environment = this.envMap as Texture;
     /*const envMap = this.envMap;
