@@ -19,7 +19,7 @@
     "clean:dist": "rimraf dist",
     "lint": "eslint src",
     "docs:dev": "pnpm run -C docs dev",
-    "docs:build": "pnpm run -C docs build"
+    "docs:build": "npm run build:util & npm run build:amap & npm run build:loca & npm run build:extra & pnpm run -C docs build"
   },
   "browserslist": [
     "> 1%",
