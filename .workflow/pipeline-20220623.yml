@@ -19,7 +19,7 @@ stages:
         displayName: Nodejs 构建
         nodeVersion: 16.14.2
         commands:
-          - npm install -g pnpm && pnpm i && pnpm run "docs:build"
+          - cd docs & npm i -d && npm run build
         artifacts:
           - name: DOCS
             path:
@@ -38,14 +38,11 @@ stages:
             name: dist
             target: /opt/giteeDownload/
             dependArtifact: DOCS
-        script: |-
-          cd /opt/giteeDownload/
-          tar -zxvf dist.tar.gz
-          rm -rf /opt/docs/vue3/vue-amap/* 
-          cp -r /opt/giteeDownload/dist/* /opt/docs/vue3/vue-amap/
+        script:
+          - cd /opt/giteeDownload/
+          - tar -zxvf dist.tar.gz
+          - 'rm -rf /opt/docs/vue3/vue-amap/* '
+          - cp -r /opt/giteeDownload/dist/* /opt/docs/vue3/vue-amap/
         strategy:
           retry: '0'
         dependsOn: build_nodejs
-permissions:
-  - role: admin
-    members: []
