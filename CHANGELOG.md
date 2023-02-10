@@ -1,3 +1,7 @@
+### v2.0.0
+* 新版本发布，@vuemap/vue-amap 拆分为三个包```@vuemap/vue-amap```、```@vuemap/vue-amap-loca```、```@vuemap/vue-amap-extra```
+* 升级方式请查看文档
+
 ### v1.1.21
 * 增加区划聚合图层
 

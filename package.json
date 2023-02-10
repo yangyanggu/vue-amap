@@ -27,7 +27,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@vuemap/vue-amap": "2.0.0-beta",
+    "@vuemap/vue-amap": "2.0.0",
     "@vuemap/vue-amap-loca": "2.0.0",
     "@vuemap/vue-amap-extra": "2.0.0"
   },
