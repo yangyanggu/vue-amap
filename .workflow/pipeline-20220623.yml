@@ -19,7 +19,7 @@ stages:
         displayName: Nodejs 构建
         nodeVersion: 16.14.2
         commands:
-          - cd docs & npm i -d && npm run build
+          - cd docs & npm i -g pnpm & pnpm i  & pnpm run build
         artifacts:
           - name: DOCS
             path:
