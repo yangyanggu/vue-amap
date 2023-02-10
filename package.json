@@ -27,9 +27,9 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@vuemap/vue-amap": "2.0.0",
-    "@vuemap/vue-amap-loca": "2.0.0",
-    "@vuemap/vue-amap-extra": "2.0.0"
+    "@vuemap/vue-amap": "workspace:*",
+    "@vuemap/vue-amap-loca": "workspace:*",
+    "@vuemap/vue-amap-extra": "workspace:*"
   },
   "devDependencies": {
     "@pnpm/find-workspace-packages": "3.1.28",
