@@ -31,6 +31,7 @@ bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图�
 zooms | Array | 点标记显示的层级范围，超过范围不显示。默认值：zooms: [2, 20]
 anchor | String, Array | 设置点标记锚点，可选值：'top-left','top-center','top-right', 'middle-left', 'center', 'middle-right', 'bottom-left', 'bottom-center', 'bottom-right'
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

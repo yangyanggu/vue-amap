@@ -38,6 +38,7 @@ bounds | Array, AMap.Bounds | 图片的范围大小经纬度，如果传递数�
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：6
 opacity | Number | 透明度，默认 1
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

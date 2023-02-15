@@ -1,3 +1,6 @@
+### @vuemap/vue-amap-loca v2.0.1
+* 所有组件增加extraOptions属性，用于提供额外的扩展，这样高德地图升级初始化属性可以立即使用
+
 ### @vuemap/vue-amap v2.0.1
 * 所有组件增加extraOptions属性，用于提供额外的扩展，这样高德地图升级初始化属性可以立即使用
 

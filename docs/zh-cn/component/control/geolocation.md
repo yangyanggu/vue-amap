@@ -48,6 +48,7 @@ useNative | Boolean	| 是否与高德定位SDK能力结合，需要同时使用�
 getCityWhenFail | Boolean	| 定位失败之后是否返回基本城市定位信息
 needAddress | Boolean	| 是否需要将定位结果进行逆地理编码操作
 extensions | String	| 是否需要详细的逆地理编码信息，默认为'base'只返回基本信息，可选'all'
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 

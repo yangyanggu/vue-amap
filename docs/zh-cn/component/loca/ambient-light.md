@@ -27,6 +27,7 @@ examples/loca/ambient-light
 ---|---|---|
 color | String | 环境光颜色
 intensity | Number | 环境光强度
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

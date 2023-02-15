@@ -25,6 +25,7 @@ buttonSize | String | 箭头按钮的像素尺寸，同CSS，如'12px'
 visible | Boolean | 是否显示，默认true
 isOpen | Boolean | 默认是否展开
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 
 ## Events

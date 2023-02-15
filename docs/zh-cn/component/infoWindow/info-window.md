@@ -32,6 +32,7 @@ autoMove | Boolean | 是否自动调整窗体到视野内（当信息窗体超�
 avoid  | Boolean | autoMove 为 true 时，自动平移到视野内后的上右下左的避让宽度。默认值： [20, 20, 20, 20]
 closeWhenClickMap | Boolean | 控制是否在鼠标点击地图后关闭信息窗体，默认false，鼠标点击地图后不关闭信息窗体
 offset | Array | 信息窗体显示位置偏移量。默认基准点为信息窗体的底部中心。默认值: [0, 0]
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 

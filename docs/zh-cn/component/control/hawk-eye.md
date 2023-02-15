@@ -37,6 +37,7 @@ borderColor | String | 缩略图的边框颜色，同CSS，如'silver'
 borderRadius | String | 缩略图的边框角度，同CSS，如'5px'
 borderWidth | String | 缩略图的边框宽度，同CSS，如'2px'
 buttonSize | String | 箭头按钮的像素尺寸，同CSS，如'12px'
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 

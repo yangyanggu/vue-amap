@@ -16,6 +16,7 @@ zooms | Array | 点标记显示的层级范围，超过范围不显示。默认�
 cursor | String | 指定鼠标悬停时的鼠，默认值：'pointer'
 styles | Array, Object | 标号样式，可以是Object代表所有点样式一样，也可以是Array，根据各个点的设定来判断选择哪个样式
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## Events
 

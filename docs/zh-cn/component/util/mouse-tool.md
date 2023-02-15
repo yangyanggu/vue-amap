@@ -30,6 +30,7 @@ autoClear | Boolean       | 是否绘制结束后自动清空图层，默认true
 showTooltip | Boolean       | 是否在鼠标旁边显示提示信息, 默认值：默认true。
 tooltipTextMap | Object        | 提示信息的map,主要用于修改tooltip的提示信息，对象的key有：'marker', 'circle', 'rectangle', 'polyline', 'polygon', 'measureArea', 'rule', 'rectZoomIn', 'rectZoomOut'
 textOptions | Object | 提示信息的配置属性，信息使用`AMap.Text`实现，此处对应`AMap.Text`的参数，[参数地址](https://lbs.amap.com/api/jsapi-v2/documentation#text)
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

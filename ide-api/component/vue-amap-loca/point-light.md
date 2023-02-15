@@ -13,6 +13,7 @@ color | String | 点光颜色
 intensity | Number | 光照强度
 position | Array<Number> | 点光位置
 distance | Number | 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## Events
 

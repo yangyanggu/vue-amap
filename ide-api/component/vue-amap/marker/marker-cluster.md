@@ -18,6 +18,7 @@ maxZoom | Number | 最大的聚合级别，大于该级别就不进行相应的�
 averageCenter | Boolean | 聚合点的图标位置是否是所有聚合内点的中心点。默认为 true。数据中如果含有权重值，以权重高的点为中心进行聚合
 styles | Array | 指定聚合后的点标记的图标样式，[查看示例](https://lbs.amap.com/demo/jsapi-v2/example/mass-markers/markerclusterer)，可缺省，缺省时为默认样式<br/>数据元素分别对应聚合量在1-10,11-100,101-1000…的聚合点的样式；<br/>当用户设置聚合样式少于实际叠加的点数，未设置部分按照系统默认样式显示；<br/>单个图标样式包括以下几个属性：<br/>1. {string} url：图标显示图片的url地址（必选）<br/>2. {AMap.Size} size：图标显示图片的大小（必选）<br/>3. {AMap.Pixel} offset：图标定位在地图上的位置相对于图标左上角的偏移值。默认为(0,0),不偏移（可选）<br/>4. {AMap.Pixel} imageOffset：图片相对于可视区域的偏移值，此功能的作用等同CSS中的background-position属性。默认为(0,0)，不偏移（可选）<br/>5. {String} textColor：文字的颜色，默认为"#000000"（可选）<br/>6. {Number} textSize：文字的大小，默认为10（可选）
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## Events
 

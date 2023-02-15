@@ -29,6 +29,7 @@ examples/layer/data/heat-map
 radius  | Number | 热力图中单个点的半径，默认：30，单位：pixel
 gradient  | Object | 热力图的渐变区间，热力图按照设置的颜色及间隔显示热力图，例{0.4:'rgb(0, 255, 255)',0.85:'rgb(100, 0, 255)',},其中 key 表示间隔位置，取值范围： [0,1] ，value 为颜色值。默认：heatmap.js标准配色方案
 config | Object | 3d参数在组件中被重命名为config，参数内容与3d一致。3D热力图属性
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。
