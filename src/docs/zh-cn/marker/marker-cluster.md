@@ -65,6 +65,7 @@
 renderClusterMarker  | Function | 该方法用来实现聚合点的自定义绘制，由开发者自己实现，API 将在绘制每个聚合点的时候调用这个方法，可以实现聚合点样式的灵活设定，指定了 renderClusterMarker 后 styles 无效。<br/>该函数的入参为一个Object，包含如下属性：<br/>1. count: 当前聚合点下聚合的 Marker 的数量<br/>2. marker: 当前聚合点显示的 Marker
 renderMarker  | Function | 该方法用来实现非聚合点的自定义绘制，由开发者自己实现，API 将在绘制每个非聚合点的时候调用这个方法<br/>该函数的入参为一个Object，包含如下属性：<br/>marker: 非聚合点 Marker 对象
 clusterByZoomChange | Boolean | 地图缩放过程中是否聚合。默认值 false。
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

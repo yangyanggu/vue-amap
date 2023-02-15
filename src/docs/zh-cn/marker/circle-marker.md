@@ -53,6 +53,7 @@
 ---|---|---|
 bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上 （自v1.3 新增）默认值：false
 cursor | String | 指定鼠标悬停时的鼠标样式，自定义cursor，IE仅支持cur/ani/ico格式，Opera不支持自定义cursor
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

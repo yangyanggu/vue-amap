@@ -111,6 +111,7 @@
 topWhenClick | Boolean | 鼠标点击时marker是否置顶，默认false ，不置顶
 bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上, 默认值：false。
 zooms | Array | 点标记显示的层级范围，超过范围不显示。默认值：zooms: [2, 20]
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

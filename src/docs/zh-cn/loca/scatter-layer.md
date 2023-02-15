@@ -67,6 +67,7 @@
 ---|---|---|
 initEvents | Boolean | 是否创建事件，自动为loca图层创建click和mousemove事件。 默认 true
 defaultStyleValue | Object | 默认样式，可以查看下面属性说明
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 

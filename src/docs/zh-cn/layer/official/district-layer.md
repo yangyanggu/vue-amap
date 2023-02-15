@@ -76,6 +76,7 @@
 ---|---|---|
 type | String | 类型，可选值：World 世界, Country 国家, Province 省市
 depth | Number | 设定数据的层级深度，depth为0的时候只显示国家面，depth为1的时候显示省级， 当国家为中国时设置depth为2的可以显示市一级
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

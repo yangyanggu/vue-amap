@@ -160,6 +160,7 @@
 ---|---|---|
 init  | Function | 初始化的时候，开发者可以在这个函数参数里面获取 gl 上下文，进行一些初始化的操作。
 render | Function | 绘制函数，初始化完成时候，开发者需要给该图层设定render方法，该方法需要实现图层的绘制，API会在合适的时机自动调用该方法
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

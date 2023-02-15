@@ -53,6 +53,7 @@
 autoRefresh  | Boolean | 是否自动更新数据，默认开启
 tileSize | Number | 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
 interval | Number | 自动更新数据的间隔毫秒数，默认 180ms
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

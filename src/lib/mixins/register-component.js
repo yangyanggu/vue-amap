@@ -15,6 +15,9 @@ export default {
     }, // 是否显示，默认 true
     zIndex: {
       type: Number
+    },
+    extraOptions: {
+      type: Object
     }
   },
   data() {
@@ -79,6 +82,9 @@ export default {
     convertProps() {
       const props = {};
       const {$options: {propsData = {}}, propsRedirect} = this;
+      if (this.extraOptions) {
+        Object.assign(props, this.extraOptions);
+      }
       return Object.keys(propsData).reduce((res, _key) => {
         let key = _key;
         let propsValue = this.convertSignalProp(key, propsData[key]);

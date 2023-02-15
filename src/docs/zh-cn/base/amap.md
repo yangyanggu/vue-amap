@@ -10,7 +10,7 @@
 
   <template>
     <div class="amap-page-container">
-      <el-amap ref="map" map-style="amap://styles/62009be025f187dd3eafe327d2e55b8e" :center="center" :zoom="zoom" view-mode="3D" @init="initMap" @click="clickMap" class="amap-demo">
+      <el-amap ref="map" map-style="amap://styles/62009be025f187dd3eafe327d2e55b8e" :center="center" :zoom="zoom" view-mode="3D" :extra-options="{vectorMapForeign: 'style_zh_cn'}" @init="initMap" @click="clickMap" class="amap-demo">
       </el-amap>
 
       <div class="toolbar">
@@ -68,6 +68,7 @@ WebGLParams | Object | 额外配置的WebGL参数 eg: preserveDrawingBuffer。�
 touchZoom | Boolean | 地图在移动终端上是否可通过多点触控缩放浏览地图，默认为true。关闭手势缩放地图，请设置为false。
 touchZoomCenter | Number | 可缺省，当touchZoomCenter=1的时候，手机端双指缩放的以地图中心为中心，否则默认以双指中间点为中心。默认：1
 showLabel | Boolean | 是否展示地图文字和 POI 信息。默认 true
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 
