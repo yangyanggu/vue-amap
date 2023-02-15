@@ -41,7 +41,7 @@ jobs:
         # The status of the previous build.
         # conclusion: # optional
         # GitHub token
-        token: ${{ github.token }}
+        token: ${{ TOKEN }}
         # Time in milliseconds after which to timeout and cancel the deployment (default: 10 minutes)
         # timeout: # optional, default is 600000
         # Maximum number of status report errors before cancelling a deployment (default: 10)
