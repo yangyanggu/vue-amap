@@ -8,6 +8,7 @@
       :show-label="false"
       view-mode="3D"
       :terrain="true"
+      :extra-options="{vectorMapForeign: 'style_zh_cn'}"
       @click="clickMap"
       @init="initMap"
       @complete="completeMap"

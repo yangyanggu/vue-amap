@@ -136,18 +136,18 @@ importers:
     specifiers:
       '@amap/amap-jsapi-loader': ^1.0.1
       '@vuemap/district-cluster': ^0.0.4
-      '@vuemap/vue-amap-util': 2.0.1
+      '@vuemap/vue-amap-util': 2.0.2
     dependencies:
       '@amap/amap-jsapi-loader': 1.0.1
       '@vuemap/district-cluster': 0.0.4
-      '@vuemap/vue-amap-util': 2.0.1
+      '@vuemap/vue-amap-util': 2.0.2
 
   src/vue-amap-extra:
     specifiers:
       '@amap/three-layer': ^0.0.4
       '@tweenjs/tween.js': ^18.6.4
       '@vuemap/layer-3dtiles': ^0.0.3
-      '@vuemap/vue-amap-util': 2.0.1
+      '@vuemap/vue-amap-util': 2.0.2
       color: ^4.2.3
       lodash-es: ^4.17.21
       three: 0.143.0
@@ -155,16 +155,16 @@ importers:
       '@amap/three-layer': 0.0.4
       '@tweenjs/tween.js': 18.6.4
       '@vuemap/layer-3dtiles': 0.0.3_@amap+three-layer@0.0.4
-      '@vuemap/vue-amap-util': 2.0.1
+      '@vuemap/vue-amap-util': 2.0.2
       color: 4.2.3
       lodash-es: 4.17.21
       three: 0.143.0
 
   src/vue-amap-loca:
     specifiers:
-      '@vuemap/vue-amap-util': 2.0.1
+      '@vuemap/vue-amap-util': 2.0.2
     dependencies:
-      '@vuemap/vue-amap-util': 2.0.1
+      '@vuemap/vue-amap-util': 2.0.2
 
   src/vue-amap-util:
     specifiers:
@@ -2277,6 +2277,15 @@ packages:
 
   /@vuemap/vue-amap-util/2.0.1:
     resolution: {integrity: sha512-0Gu6nfz9es6NlvD/Jwjk94OPaoRDdjYJROT/FL5Tv5x3Ha5R+eCsfbfs1Czaq6syP6KPcoV9JgGISvg/zvyrsg==}
+    peerDependencies:
+      vue: '>=3.2.0'
+    dependencies:
+      '@vue/shared': 3.2.37
+      uppercamelcase: 1.1.0
+    dev: false
+
+  /@vuemap/vue-amap-util/2.0.2:
+    resolution: {integrity: sha512-S9fU+rBf4fgBaATjNiLQ7DClZFK30GwgjpFsK7z6VlQHPysY1ml/ENF1cy1W12BrDlNJZW9+q1gw0ng3MYpzbg==}
     peerDependencies:
       vue: '>=3.2.0'
     dependencies:

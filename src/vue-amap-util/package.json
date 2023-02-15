@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-util",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "@vuemap/vue-amap的工具库，提供注册组件的通用能力和常用的工具类",
   "keywords": [
     "vue-amap",
