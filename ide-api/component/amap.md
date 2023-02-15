@@ -44,6 +44,7 @@ mapStyle	| String |	设置地图显示样式，目前支持normal（默认样式
 labelRejectMask | Boolean | 文字是否拒绝掩模图层进行掩模
 mask | Array | 为 Map 实例指定掩模的路径，各图层将只显示路径范围内图像，3D视图下有效。 格式为一个经纬度的一维、二维或三维数组。
 terrain | Boolean | 是否开启地形，默认false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 
 ## Events

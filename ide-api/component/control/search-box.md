@@ -22,6 +22,7 @@ citylimit | Boolean | 是否强制限制在设置的城市内搜索,默认值为
 inputCustom | Boolean | 是否自定义input，自定义的时候将使用用户的inputId，默认 false
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 placeholder | String | 默认输入框的placeholder属性
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## Events
 

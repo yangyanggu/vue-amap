@@ -22,7 +22,10 @@ export default defineComponent({
     reEventWhenUpdate: {
       type: Boolean,
       default: false
-    } // 是否在组件更新时重新注册事件，主要用于数组更新时，绑定了事件但事件的对象不会更新问题
+    }, // 是否在组件更新时重新注册事件，主要用于数组更新时，绑定了事件但事件的对象不会更新问题
+    extraOptions: {
+      type: Object
+    }
   },
   emits: ['init'],
   data() {
@@ -82,6 +85,9 @@ export default defineComponent({
     convertProps() {
       const props = {};
       const {$props, propsRedirect} = this;
+      if (this.extraOptions) {
+        Object.assign(props, this.extraOptions);
+      }
       return Object.keys($props).reduce((res, _key) => {
         let key = _key;
         const propsValue = this.convertSignalProp(key, $props[key]);

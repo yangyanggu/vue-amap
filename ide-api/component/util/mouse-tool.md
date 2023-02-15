@@ -15,6 +15,7 @@ autoClear | Boolean   | 是否自动清除地图上的绘制的图形，默认tr
 showTooltip | Boolean  | 是否显示提示信息，默认 true
 tooltipTextMap | Object | 是否可见
 textOptions | Object | 提示信息的text的属性
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## Events
 

@@ -5,7 +5,7 @@ set -e
 pnpm run build
 
 cd ../dist/vue-amap
-npm publish --tag=next --access public
+npm publish --access public
 cd -
 
 echo "Publish completed"

@@ -23,6 +23,7 @@ fillOpacity | Float | 多边形填充透明度，取值范围[0,1]，0表示完�
 draggable | Boolean | 设置多边形是否可拖拽移动，默认为false
 extData | Any | 用户自定义属性，支持JavaScript API任意数据类型，如Polygon的id等
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## Events
 
