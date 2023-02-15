@@ -23,6 +23,15 @@ jobs:
       run: |
         pnpm i
         pnpm run docs:build
+    - name: Upload GitHub Pages artifact
+      uses: actions/upload-pages-artifact@v1.0.7
+      with:
+        # Artifact name
+        name: github-pages
+        # Path of the directory containing the static assets.
+        path: docs/.vuepress/dist
+        # Duration after which artifact will expire in days.
+        retention-days: 1
         
   # Deploy job
   deploy:
