@@ -23,6 +23,7 @@ examples/three/three-gltf
 名称 | 类型 | 说明
 ---|---|---|
 url  | String | 模型地址,只支持gltf
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

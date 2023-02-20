@@ -23,6 +23,7 @@ examples/control/map-type
 defaultType | Number | 初始化默认图层类型。 取值为0：默认底图 取值为1：卫星图 默认值：0
 showTraffic  | Boolean | 叠加实时交通图层 默认值：false
 showRoad | Boolean | 叠加路网图层 默认值：false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 

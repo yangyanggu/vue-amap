@@ -26,6 +26,7 @@ examples/layer/data/district-cluster
 | topAdcodes      | number[]                                              | 顶层区划的adcode列表。（[TXT](https://webapi.amap.com/ui/1.0/ui/geo/DistrictExplorer/assets/d_v1/area_tree.txt)，[JSON](https://webapi.amap.com/ui/1.0/ui/geo/DistrictExplorer/assets/d_v1/area_tree.json)）默认为[100000]，即全国范围.假如仅需要展示河北和北京，可以设置为[130000, 110000], |
 | excludedAdcodes | number[]                                              | 需要排除的区划的adcode列表                                                                                                                                                                                                                                       |
 | renderOptions   | RenderOptions                                         | 绘制的引擎的参数，参数列表见[下面](#RenderOptions参数说明)                                                                                                                                                                                                                 |
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ###### RenderOptions参数说明
 | 属性名                                  | 属性类型                                             | 属性描述                                                                                                                                                     |

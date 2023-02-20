@@ -27,6 +27,7 @@ hdr | Object | HDR功能配置，具体参数见下面
 alpha | Boolean | canvas是否包含alpha (透明度)。默认为 false
 antialias | Boolean | 是否执行抗锯齿。默认为false
 axesHelper | Boolean | 是否开启debug的箭头，默认false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。

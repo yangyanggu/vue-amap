@@ -10,6 +10,7 @@ import {localTheme} from "./theme";
 
 export default defineUserConfig({
   // 站点配置
+  base: '/vue-amap/',
   lang: 'zh-CN',
   title: '@vuemap/vue-amap',
   description: '高德地图2.0版本的vue3对应封装',

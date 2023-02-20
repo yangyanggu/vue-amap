@@ -46,6 +46,7 @@ touchZoom | Boolean | 地图在移动终端上是否可通过多点触控缩放�
 touchZoomCenter | Number | 可缺省，当touchZoomCenter=1的时候，手机端双指缩放的以地图中心为中心，否则默认以双指中间点为中心。默认：1
 showLabel | Boolean | 是否展示地图文字和 POI 信息。默认 true
 terrain | Boolean | 是否开启地形，默认false。当前只有版本 2.1Beta支持，需要在初始化时配置version: '2.1Beta'
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 

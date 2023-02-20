@@ -39,6 +39,7 @@ outPutDirAuto | Boolean | 默认为true，表示是否在input位于页面较下
 closeResultOnScroll | Boolean | 页面滚动时关闭搜索结果列表，默认 true
 lang | String | 设置检索语言类型，默认中文 'zh_cn'
 inputCustom | Boolean | 是否自定义input，自定义的时候将使用用户的inputId，默认 false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 

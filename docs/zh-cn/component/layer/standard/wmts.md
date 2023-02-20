@@ -24,6 +24,7 @@ examples/layer/standard/wmts
 名称 | 类型 | 说明
 ---|---|---|
 blend  | Boolean | 地图级别切换时，不同级别的图片是否进行混合，如图层的图像内容为部分透明请设置为false
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## 动态属性
 支持响应式。
