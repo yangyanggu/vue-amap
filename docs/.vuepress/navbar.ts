@@ -26,8 +26,17 @@ export default [
     ]
   },
   {
-    text: 'vue2版本',
-    link: 'https://docs.guyixi.cn/vue-amap/#/'
+    text: '其他版本文档',
+    children: [
+      {
+        text: '1.x',
+        link: 'https://yangyanggu.github.io/vue-amap/'
+      },
+      {
+        text: 'vue2版本',
+        link: 'https://docs.guyixi.cn/vue-amap/#/'
+      }
+    ]
   },
   {
     text: '更新日志',
