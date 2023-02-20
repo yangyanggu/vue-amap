@@ -42,7 +42,7 @@ window.VueAMap.initAMapApiLoader({
 ## 自动导入
 首先你需要安装```unplugin-vue-components``` 、 ```unplugin-auto-import``` 、 ```@vuemap/unplugin-resolver```这三款插件
 ```
-npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver
+npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver@1
 ```
 然后在main.ts中导入css和进行初始化key
 ```ts

@@ -30,12 +30,12 @@
 
 ## 安装
 ```
-npm i -S @vuemap/vue-amap@next
+npm i -S @vuemap/vue-amap@1
 ```
 
 ## 快速上手
 
-引入@vuemap/vue-amap@next
+引入@vuemap/vue-amap@1
 
 ```javascript
 // 引入vue-amap
@@ -54,7 +54,7 @@ createApp(App).use(VueAmap)
 ## 自动导入
 首先你需要安装```unplugin-vue-components``` 、 ```unplugin-auto-import``` 、 ```@vuemap/unplugin-resolver```这三款插件
 ```
-npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver
+npm install -D unplugin-vue-components unplugin-auto-import @vuemap/unplugin-resolver@1
 ```
 然后在main.ts中导入css和进行初始化key
 ```ts
