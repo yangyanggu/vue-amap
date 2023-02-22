@@ -12,11 +12,6 @@ export default defineComponent({
       default: true
     }// 图层中的要素是否具有前后遮盖关系，默认开启
   },
-  data() {
-    return {
-      converters: {},
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new Loca.LaserLayer(options);

@@ -13,12 +13,6 @@ export default defineComponent({
       parentInstance: this
     };
   },
-  props: {
-  },
-  data() {
-    return {
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.VectorLayer(options);

@@ -84,17 +84,13 @@ export default defineComponent({
     },//是否需要将定位结果进行逆地理编码操作
     extensions: {
       type: String,
-      validator(value : string) {
+      validator: (value : string): boolean => {
         // 这个值必须匹配下列字符串中的一个
         return ['base', 'all'].indexOf(value) !== -1;
       }
     },//是否需要详细的逆地理编码信息，默认为'base'只返回基本信息，可选'all'
   },
   emits: ['complete'],
-  data() {
-    return {
-    };
-  },
   methods: {
     __initComponent(options) {
       return new Promise<void>((resolve) => {

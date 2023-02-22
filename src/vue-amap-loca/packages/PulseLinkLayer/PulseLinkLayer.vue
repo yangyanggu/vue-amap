@@ -12,11 +12,6 @@ export default defineComponent({
       default: true
     }
   },
-  data() {
-    return {
-      converters: {},
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new Loca.PulseLinkLayer(options);

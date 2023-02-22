@@ -48,7 +48,7 @@ export default defineComponent({
     },
     strokeStyle: {
       type: String,
-      validator(value : string) {
+      validator: (value : string): boolean => {
         // 这个值必须匹配下列字符串中的一个
         return ['solid', 'dashed'].indexOf(value) !== -1;
       }
@@ -58,14 +58,14 @@ export default defineComponent({
     }, // 勾勒形状轮廓的虚线和间隙的样式，此属性在strokeStyle 为dashed 时有效， 此属性在ie9+浏览器有效 取值： 实线： [0,0,0] 虚线： [10,10] ， [10,10] 表示10个像素的实线和10个像素的空白（如此反复）组成的虚线 点画线： [10,2,10] ， [10,2,10] 表示10个像素的实线和2个像素的空白 + 10个像素的实线和10个像素的空白 （如此反复）组成的虚线
     lineJoin: {
       type: String,
-      validator(value : string) {
+      validator: (value : string): boolean => {
         // 这个值必须匹配下列字符串中的一个
         return ['miter', 'round', 'bevel'].indexOf(value) !== -1;
       }
     }, // 折线拐点的绘制样式，默认值为'miter'尖角，其他可选值：'round'圆角、'bevel'斜角
     lineCap: {
       type: String,
-      validator(value : string) {
+      validator: (value : string): boolean => {
         // 这个值必须匹配下列字符串中的一个
         return ['butt', 'round', 'square'].indexOf(value) !== -1;
       }
@@ -80,11 +80,6 @@ export default defineComponent({
     }// 是否延路径显示白色方向箭头,默认false。建议折线宽度大于6时使用
   },
   emits: ['update:path'],
-  data() {
-    return {
-      converters: {},
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new AMap.BezierCurve(options);

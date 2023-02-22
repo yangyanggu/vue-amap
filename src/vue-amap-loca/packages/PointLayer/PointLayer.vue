@@ -11,11 +11,6 @@ export default defineComponent({
       type: String
     } // 图层里面元素的叠加效果，normal：正常透明度叠加，lighter：叠加后可能更加明亮
   },
-  data() {
-    return {
-      converters: {},
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new Loca.PointLayer(options);

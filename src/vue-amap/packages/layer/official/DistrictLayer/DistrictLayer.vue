@@ -9,7 +9,7 @@ export default defineComponent({
     type: {
       type: String,
       default: 'Country',
-      validator(value : string) {
+      validator: (value : string): boolean => {
         // 这个值必须匹配下列字符串中的一个
         return ['World', 'Country', 'Province'].indexOf(value) !== -1;
       }
@@ -32,10 +32,6 @@ export default defineComponent({
     styles: {
       type: Object
     }// 为简易行政区图设定各面的填充颜色和描边颜色。 styles各字段的值可以是颜色值，也可以是一个返回颜色值* 的回调函数function。
-  },
-  data() {
-    return {
-    };
   },
   methods: {
     __initComponent(options) {

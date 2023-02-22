@@ -13,13 +13,6 @@ export default defineComponent({
       type: Number
     }, // 环境光强度。
   },
-  data() {
-    return {
-      converters: {},
-      handlers: {
-      }
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new Loca.AmbientLight(options);

@@ -5,7 +5,7 @@ export default defineComponent({
   props: {
     editable: {
       type: Boolean,
-      default: undefined
+      default: false
     },
     editOptions: {
       type: Object

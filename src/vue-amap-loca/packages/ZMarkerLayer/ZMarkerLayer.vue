@@ -6,13 +6,6 @@ import locaMixin from '../../mixins/loca-component';
 export default defineComponent({
   name: 'ElAmapLocaZMarker',
   mixins: [registerMixin, locaMixin],
-  props: {
-  },
-  data() {
-    return {
-      converters: {},
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new Loca.ZMarkerLayer(options);

@@ -43,7 +43,7 @@ export default defineComponent({
     },
     strokeStyle: {
       type: String,
-      validator(value : string) {
+      validator: (value : string): boolean => {
         // 这个值必须匹配下列字符串中的一个
         return ['solid', 'dashed'].indexOf(value) !== -1;
       }
@@ -56,7 +56,7 @@ export default defineComponent({
   data() {
     return {
       converters: {
-        bounds(path) {
+        bounds: (path: any): any => {
           return new AMap.Bounds(toLngLat(path[0]), toLngLat(path[1]));
         }
       },

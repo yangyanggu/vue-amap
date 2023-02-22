@@ -22,7 +22,7 @@ export default defineComponent({
       type: String,
       required: true,
       default: 'marker',
-      validator(value: string) {
+      validator: (value: string): boolean => {
         return ['marker', 'circle', 'rectangle', 'polyline', 'polygon', 'measureArea', 'rule', 'rectZoomIn', 'rectZoomOut'].includes(value)
       }
     }, // 类型

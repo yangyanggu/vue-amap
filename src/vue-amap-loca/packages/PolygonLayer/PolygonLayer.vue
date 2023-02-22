@@ -34,11 +34,6 @@ export default defineComponent({
       default: true
     }// 是否开启深度检测，开启后可能会影响zIndex
   },
-  data() {
-    return {
-      converters: {},
-    };
-  },
   methods: {
     __initComponent(options) {
       this.$amapComponent = new Loca.PolygonLayer(options);
