@@ -39,7 +39,7 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@vuemap/vue-amap-util": "2.0.2"
+    "@vuemap/vue-amap-util": "2.0.4"
   },
   "devDependencies": {
   },
