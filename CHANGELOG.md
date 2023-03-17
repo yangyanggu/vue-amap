@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.4
+* 解决依赖的util包问题
+
 ### @vuemap/vue-amap v2.0.3
 * 解决打包生成的.d.ts文件中部分props丢失问题
 
