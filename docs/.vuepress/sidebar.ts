@@ -22,7 +22,8 @@ export default [
     text: '地图',
     children: [
       '/zh-cn/base/amap.md',
-      '/zh-cn/base/get-bmap-instance.md'
+      '/zh-cn/base/get-bmap-instance.md',
+      '/zh-cn/base/plugin.md',
     ],
   },
   {

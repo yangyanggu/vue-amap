@@ -11,9 +11,9 @@
   "dependencies": {
     "@vueuse/core": "7.2.2",
     "clipboard-copy": "4.0.1",
-    "@vuemap/vue-amap": "2.0.1",
-    "@vuemap/vue-amap-loca": "2.0.1",
-    "@vuemap/vue-amap-extra": "2.0.0"
+    "@vuemap/vue-amap": "2.0.4",
+    "@vuemap/vue-amap-loca": "2.0.2",
+    "@vuemap/vue-amap-extra": "2.0.1"
   },
   "devDependencies": {
     "@types/markdown-it": "12.2.3",
