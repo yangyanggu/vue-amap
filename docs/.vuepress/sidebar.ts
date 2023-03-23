@@ -6,6 +6,7 @@ export default [
       '/zh-cn/introduction/install.md',
       '/zh-cn/introduction/init.md',
       '/zh-cn/introduction/compatible.md',
+      '/zh-cn/introduction/ssr.md',
       '/zh-cn/other/donation.md',
       '/zh-cn/introduction/faq.md',
       '/zh-cn/introduction/v1tov2.md',
