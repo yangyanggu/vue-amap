@@ -30,12 +30,12 @@ const build: TaskFunction = series(
       input: resolve(pkgRoot, 'index.ts'),
       output: [
         {
-          file: resolve(pkgRoot, 'dist/index-es.js'),
+          file: resolve(pkgRoot, 'dist/index.mjs'),
           format: 'es',
           sourcemap: true
         },
         {
-          file: resolve(pkgRoot, 'dist/index-cjs.js'),
+          file: resolve(pkgRoot, 'dist/index.js'),
           format: 'cjs',
           sourcemap: true
         }

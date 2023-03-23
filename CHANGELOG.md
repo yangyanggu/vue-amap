@@ -1,3 +1,9 @@
+### @vuemap/vue-amap v2.0.5
+* 升级依赖
+
+### @vuemap/vue-amap-util v2.0.5
+* 解决部分打包工具不支持index-es.js格式
+
 ### @vuemap/vue-amap v2.0.4
 * 解决依赖的util包问题
 

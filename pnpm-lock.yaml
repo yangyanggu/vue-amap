@@ -135,13 +135,13 @@ importers:
   src/vue-amap:
     specifiers:
       '@amap/amap-jsapi-loader': ^1.0.1
-      '@vuemap/district-cluster': ^0.0.4
-      '@vuemap/vue-amap-util': 2.0.4
+      '@vuemap/district-cluster': ^0.0.5
+      '@vuemap/vue-amap-util': 2.0.5
       lodash-es: ^4.17.21
     dependencies:
       '@amap/amap-jsapi-loader': 1.0.1
-      '@vuemap/district-cluster': 0.0.4
-      '@vuemap/vue-amap-util': 2.0.4
+      '@vuemap/district-cluster': 0.0.5
+      '@vuemap/vue-amap-util': 2.0.5
       lodash-es: 4.17.21
 
   src/vue-amap-extra:
@@ -2239,6 +2239,16 @@ packages:
       topojson-client: 3.1.0
     dev: false
 
+  /@vuemap/district-cluster/0.0.5:
+    resolution: {integrity: sha512-F1l48MIdDm5s7uIhFud1agd+EnitYrdfeHQgDXAcY3/LgQZ9VY9tQ9S9+rEBe7AAT3zD3Bhncl4jkawEKwlYyA==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@amap/amap-jsapi-types': 0.0.10
+      '@turf/helpers': 6.5.0
+      '@turf/intersect': 6.5.0
+      topojson-client: 3.1.0
+    dev: false
+
   /@vuemap/layer-3dtiles/0.0.3_@amap+three-layer@0.0.4:
     resolution: {integrity: sha512-3ok0a7WNRBYnFdIev4JG32UTiOGac6YfsLUCyhTyAST0Y+4ZjcGZG5LqTqx4id8371i0BVy9qGwgy3D5ih64vQ==}
     engines: {node: '>= 16'}
@@ -2279,6 +2289,15 @@ packages:
 
   /@vuemap/vue-amap-util/2.0.4:
     resolution: {integrity: sha512-DFRQI3mEUrGJP+GuFzG1ClGhAkVahkT4YjkQM7hSI4Bgu9qGS2u0OAEgnFH4HN4G0fyUTM1KlbBhRVxlpaF+8w==}
+    peerDependencies:
+      vue: '>=3.2.0'
+    dependencies:
+      '@vue/shared': 3.2.37
+      uppercamelcase: 1.1.0
+    dev: false
+
+  /@vuemap/vue-amap-util/2.0.5:
+    resolution: {integrity: sha512-UgA22Yg1wdhymPKP77IGrSOPCIDtMlp+hYyeCDkM5IrjEoqU1DTzBXVN0UhKErVpDK5JdyDeWqd8e/PCVa1Liw==}
     peerDependencies:
       vue: '>=3.2.0'
     dependencies:

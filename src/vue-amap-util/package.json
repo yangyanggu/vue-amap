@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-util",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "@vuemap/vue-amap的工具库，提供注册组件的通用能力和常用的工具类",
   "keywords": [
     "vue-amap",
@@ -11,17 +11,17 @@
     "vue",
     "高德"
   ],
-  "types": "./dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": ["dist","README.md","LICENSE"],
   "exports": {
     ".": {
-      "require": "./dist/index-cjs.js",
-      "import": "./dist/index-es.js"
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
     },
     "./*": "./*"
   },
-  "main": "./dist/index-cjs.js",
-  "module": "./dist/index-es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "sideEffects": [
     "dist/*"
   ],
