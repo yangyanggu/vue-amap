@@ -38,13 +38,13 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@vuemap/vue-amap-util": "2.0.4",
+    "@vuemap/vue-amap-util": "2.0.5",
     "@tweenjs/tween.js": "^18.6.4",
     "lodash-es": "^4.17.21",
     "three": "0.143.0",
     "color": "^4.2.3",
     "@amap/three-layer": "^0.0.4",
-    "@vuemap/layer-3dtiles": "^0.0.3"
+    "@vuemap/layer-3dtiles": "^0.0.4"
   },
   "devDependencies": {
   },
