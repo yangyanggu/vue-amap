@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-loca",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "amap loca for vue3",
   "keywords": [
     "vue-amap",
@@ -11,7 +11,6 @@
     "vue",
     "高德"
   ],
-  "files": ["dist", "es","lib","global.d.ts","ide","README.md", "LICENSE"],
   "exports": {
     ".": {
       "require": "./lib/index.js",
@@ -39,7 +38,7 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@vuemap/vue-amap-util": "2.0.5"
+    "@vuemap/vue-amap-util": "2.0.6"
   },
   "devDependencies": {
   },
@@ -48,8 +47,8 @@
     "@vuemap/vue-amap": ">=2.0.0 || 2.0.0-beta"
   },
   "vetur": {
-    "tags": "./ide/tags.json",
-    "attributes": "./ide/attributes.json"
+    "tags": "./tags.json",
+    "attributes": "./attributes.json"
   },
-  "web-types": "./ide/web-types.json"
+  "web-types": "./web-types.json"
 }

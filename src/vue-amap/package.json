@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "高德地图vue3版本封装",
   "keywords": [
     "vue-amap",
@@ -10,7 +10,6 @@
     "vue",
     "高德"
   ],
-  "files": ["dist", "es","lib","global.d.ts","ide","README.md","LICENSE"],
   "exports": {
     ".": {
       "require": "./lib/index.js",
@@ -38,8 +37,8 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@amap/amap-jsapi-loader": "^1.0.1",
-    "@vuemap/vue-amap-util": "2.0.5",
+    "@vuemap/amap-jsapi-loader": "1.0.3",
+    "@vuemap/vue-amap-util": "2.0.6",
     "@vuemap/district-cluster": "^0.0.5",
     "lodash-es": "^4.17.21"
   },
@@ -49,8 +48,8 @@
     "vue": ">=3.2.0"
   },
   "vetur": {
-    "tags": "./ide/tags.json",
-    "attributes": "./ide/attributes.json"
+    "tags": "./tags.json",
+    "attributes": "./attributes.json"
   },
-  "web-types": "./ide/web-types.json"
+  "web-types": "./web-types.json"
 }

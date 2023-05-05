@@ -23,11 +23,11 @@ const typesRoot = resolve(pkgRoot, '_types')
 
 const distRoot = resolve(pkgRoot, 'dist')
 
-const esRoot = resolve(pkgRoot, 'es')
+const esRoot = resolve(distRoot, 'es')
 
-const libRoot = resolve(pkgRoot, 'lib')
+const libRoot = resolve(distRoot, 'lib')
 
-const ideRoot = resolve(pkgRoot, 'ide')
+const ideRoot = resolve(distRoot)
 
 const bundlePath = '@vuemap/vue-amap-loca'
 
@@ -45,10 +45,7 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
 const build:TaskFunction = series(
   withTaskName('clean', async () => {
     await remove(distRoot)
-    await remove(esRoot)
-    await remove(libRoot)
     await remove(typesRoot)
-    await remove(ideRoot)
   }),
   parallel(
     withTaskName('buildModules', async () => {
@@ -59,8 +56,14 @@ const build:TaskFunction = series(
       await generateTypesDefinitions(pkgRoot, typesRoot)
     }),
     buildHelper(pkgRoot, ideRoot, 'vue-amap-loca'),
+    withTaskName('copy readme', async () => {
+      await copyFile(resolve(pkgRoot, 'README.md'), resolve(distRoot, 'README.md'))
+    }),
     withTaskName('copy license', async () => {
-      await copyFile(resolve(projRoot, 'LICENSE'), resolve(pkgRoot, 'LICENSE'))
+      await copyFile(resolve(projRoot, 'LICENSE'), resolve(distRoot, 'LICENSE'))
+    }),
+    withTaskName('copy package.json', async () => {
+      await copyFile(resolve(pkgRoot, 'package.json'), resolve(distRoot, 'package.json'))
     })
   ),
   parallel(copyTypesDefinitions),

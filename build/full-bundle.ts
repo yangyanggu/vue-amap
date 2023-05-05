@@ -25,7 +25,7 @@ export const buildFull = (pkgRoot: string, minify: boolean) => async () => {
     input: resolve(pkgRoot, 'index.ts'),
     plugins: [
       await MapAlias(),
-      scss({output: resolve(pkgRoot, 'dist/style.css')}),
+      scss({output: resolve(pkgRoot, 'dist/dist/style.css')}),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
       }),
@@ -55,7 +55,7 @@ export const buildFull = (pkgRoot: string, minify: boolean) => async () => {
   await writeBundles(bundle, [
     {
       format: 'umd',
-      file: resolve(pkgRoot, `dist/index${minify ? '.min' : ''}.js`),
+      file: resolve(pkgRoot, `dist/dist/index${minify ? '.min' : ''}.js`),
       exports: 'named',
       name: 'VueAMap',
       globals: {
@@ -68,7 +68,7 @@ export const buildFull = (pkgRoot: string, minify: boolean) => async () => {
       format: 'esm',
       file: resolve(
         pkgRoot,
-        `dist/index.es${minify ? '.min' : ''}.js`
+        `dist/dist/index.es${minify ? '.min' : ''}.js`
       ),
       sourcemap: minify,
       banner

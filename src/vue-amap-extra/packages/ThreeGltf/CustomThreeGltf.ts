@@ -1,6 +1,6 @@
 import {Tween, Easing} from '@tweenjs/tween.js'
-import {ThreeGltf} from '@amap/three-layer'
-import type {GltfOptions} from '@amap/three-layer'
+import {ThreeGltf} from '@vuemap/three-layer'
+import type {GltfOptions} from '@vuemap/three-layer'
 import type {MoveAnimation, Vec} from './Type'
 
 interface Options extends GltfOptions{

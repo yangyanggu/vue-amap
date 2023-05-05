@@ -27,7 +27,7 @@ export const getBuildConfig = (pkgRoot: string, bundlePath: string):Record<Modul
       ext: 'mjs',
       output: {
         name: 'es',
-        path: path.resolve(pkgRoot, 'es'),
+        path: path.resolve(pkgRoot, 'dist','es'),
       },
       bundle: {
         path: `${bundlePath}/es`,
@@ -39,7 +39,7 @@ export const getBuildConfig = (pkgRoot: string, bundlePath: string):Record<Modul
       ext: 'js',
       output: {
         name: 'lib',
-        path: path.resolve(pkgRoot, 'lib'),
+        path: path.resolve(pkgRoot, 'dist','lib'),
       },
       bundle: {
         path: `${bundlePath}/lib`,

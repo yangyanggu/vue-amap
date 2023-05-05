@@ -69,6 +69,13 @@
           :move-animation="moveAnimation"
           @init="initCar"
         />
+        <el-amap-three-gltf
+          ref="animation"
+          url="/gltf/ferrari.glb"
+          :position="center"
+          :scale="[10,10,10]"
+          :config-loader="configLoader"
+        />
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
@@ -104,6 +111,8 @@ import ElAmapThreeLightSpot from "@vuemap/vue-amap-extra/packages/ThreeLightSpot
 import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 import ElAmapLocaLine from "@vuemap/vue-amap-loca/packages/LineLayer/LineLayer.vue";
+import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
+
 const colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
 export default defineComponent({
   name: "Map",
@@ -156,6 +165,11 @@ export default defineComponent({
         },
         // dashArray: [10, 5, 10, 0],
         dashArray: [10, 0, 10, 0],
+      },
+      configLoader: (loader) =>{
+        const dracoLoader = new DRACOLoader()
+        dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.143/examples/js/libs/draco/');
+        loader.setDRACOLoader( dracoLoader );
       }
     }
   },

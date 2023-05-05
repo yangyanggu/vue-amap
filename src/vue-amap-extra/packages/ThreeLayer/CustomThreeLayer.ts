@@ -15,13 +15,13 @@ import {
 import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import {ThreeLayer} from '@amap/three-layer'
+import {ThreeLayer} from '@vuemap/three-layer'
 import { ThreeRenderPass } from './ThreeRenderPass.js';
 import type { Texture, Camera,
   WebGLRenderer,
   Scene} from 'three';
 import type {HDROptions, LightOption} from "./Type";
-import type {ThreeLayerOptions} from '@amap/three-layer'
+import type {ThreeLayerOptions} from '@vuemap/three-layer'
 
 interface Options extends ThreeLayerOptions{
   lights?: LightOption[] // 灯光数组

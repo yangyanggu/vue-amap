@@ -2,7 +2,7 @@
 import {defineComponent} from "vue";
 import {registerMixin} from '@vuemap/vue-amap-util';
 import CustomThreeGltf from "./CustomThreeGltf";
-import type {MoveAnimation, Vec} from "./Type";
+import type {MoveAnimation, Vec, ConfigLoader} from "./Type";
 import type{PropType} from "vue";
 
 export default defineComponent({
@@ -32,7 +32,10 @@ export default defineComponent({
     },
     moveAnimation: {
       type: Object as PropType<MoveAnimation>
-    } //位置移动是否开启动画
+    }, //位置移动是否开启动画
+    configLoader: {
+      type: Function as PropType<ConfigLoader>
+    }
   },
   emits: ['click', 'mousemove', 'mouseover', 'mouseout'],
   data() {

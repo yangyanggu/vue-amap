@@ -67,7 +67,8 @@ const build: TaskFunction = series(
             '.json': 'json',
           },
         }),
-      ]
+      ],
+      external: ['vue']
     }
     const bundle = await rollup(options)
     await Promise.all((options.output as  OutputOptions[]).map(bundle.write));

@@ -17,7 +17,7 @@ import type { OutputOptions } from 'rollup'
 
 export const buildModules = async (pkgRoot: string, bundlePath: string) => {
   const buildConfigEntries = getBuildConfigEntries(pkgRoot,bundlePath)
-  const buildOutput = resolve(pkgRoot, 'dist')
+  const buildOutput = resolve(pkgRoot, 'dist', 'dist')
   const input = excludeFiles(
     await glob('**/*.{js,ts,vue}', {
       cwd: pkgRoot,

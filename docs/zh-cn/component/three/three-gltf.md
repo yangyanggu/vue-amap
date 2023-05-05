@@ -24,9 +24,10 @@ examples/three/three-gltf
 ## 静态属性
 仅且可以初始化配置，不支持响应式。
 
-名称 | 类型 | 说明
----|---|---|
-url  | String | 模型地址,只支持gltf
+| 名称           | 类型       | 说明                    |
+|--------------|----------|-----------------------|
+| url          | String   | 模型地址,只支持gltf          |
+| configLoader | Function | 配置loader，用于添加draco等扩展 |
 
 ## 动态属性
 支持响应式。

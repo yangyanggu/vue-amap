@@ -1,4 +1,4 @@
-import AMapLoader from '@amap/amap-jsapi-loader';
+import AMapLoader from '@vuemap/amap-jsapi-loader';
 import {merge} from 'lodash-es';
 
 const DEFAULT_AMP_CONFIG = {
