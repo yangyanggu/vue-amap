@@ -18,10 +18,10 @@ head:
 
 #### 1. 创建`mapLoadUtil.js`
 ```javascript
-export async function initMapApi(){
-  const amap = await import('@vuemap/vue-amap');
-  amap.initAMapApiLoader({
-    key: 'YOUR_KEY',
+import {initAMapApiLoader} from "@vuemap/vue-amap";
+export function initMapApi(){
+  initAMapApiLoader({
+    key: 'XXXXX',
   })
 }
 ```
@@ -44,26 +44,23 @@ export default defineNuxtConfig({
 })
 ```
 #### 4. 页面加载组件
-由于JSAPI加载采用的异步的方式，因此需要通过变量控制地图的加载。同时组件需要放入`ClientOnly`组件中。
+在`onBeforeMount`中加载JSAPI。同时组件需要放入`ClientOnly`组件中。
 ```vue
 <template>
   <div class="map-container">
     <ClientOnly>
-      <ElAmap v-if="mapAPILoaded"></ElAmap>
+      <ElAmap></ElAmap>
     </ClientOnly>
   </div>
 </template>
 
 <script setup>
 import {initMapApi} from "~/util/mapLoadUtil";
-import {onBeforeMount, ref} from 'vue';
+import {onBeforeMount} from 'vue';
 import {ElAmap} from "@vuemap/vue-amap";
 
-const mapAPILoaded = ref(false)
-
-onBeforeMount(async () => {
-  await initMapApi()
-  mapAPILoaded.value = true
+onBeforeMount(() => {
+  initMapApi()
 })
 </script>
 
