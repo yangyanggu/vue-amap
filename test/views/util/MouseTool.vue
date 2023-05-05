@@ -9,6 +9,7 @@
     >
       <el-amap-mouse-tool
         v-if="created"
+        ref="tool"
         :type="type"
         :auto-clear="true"
         @draw="draw"
@@ -45,6 +46,12 @@
       <el-button @click="changeMarker('rectZoomOut')">
         框选缩小地图
       </el-button>
+      <el-button @click="stopDraw">
+        停止绘画
+      </el-button>
+      <el-button @click="startDraw">
+        开始绘画
+      </el-button>
     </div>
   </div>
 </template>
@@ -80,7 +87,13 @@ export default defineComponent({
     },
     changeMarker(type: string){
       this.type = type;
-    }
+    },
+    startDraw(){
+      (this.$refs.tool as any).$$open()
+    },
+    stopDraw(){
+      (this.$refs.tool as any).$$close()
+    },
   }
 })
 </script>

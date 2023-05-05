@@ -45,6 +45,10 @@ export default defineComponent({
     textOptions: {
       type: Object,
       default: () => null
+    },
+    drawCursor: {
+      type: String,
+      default: 'crosshair'
     }
   },
   emits: ['draw'],
@@ -61,7 +65,8 @@ export default defineComponent({
         rule: '单击地图选择拐点，右击地图完成绘制并计算距离',
         rectZoomIn: '按住鼠标左键拖拽绘制矩形，松开左键放大地图',
         rectZoomOut: '按住鼠标左键拖拽绘制矩形，松开左键放大地图',
-      }
+      },
+      isDrawing: true
     };
   },
   methods: {
@@ -72,16 +77,19 @@ export default defineComponent({
             Object.assign(this.tipTexts, this.tooltipTextMap);
           }
           this.$amapComponent = new AMap.MouseTool(this.$parentComponent);
+          this.preMapCursor = this.$parentComponent.getDefaultCursor();
           this.createTooltip();
           this.__type();
           this.bindEvent();
-          this.preMapCursor = this.$parentComponent.getDefaultCursor();
-          this.$parentComponent.setDefaultCursor('crosshair');
+          this.changeMapCursor();
           resolve();
         });
       });
     },
     __type(){
+      if(!this.isDrawing){
+        return
+      }
       const type = this.type;
       if(this.$amapComponent[type]){
         const options = this.drawOptions || {};
@@ -150,21 +158,42 @@ export default defineComponent({
         }
       })
     },
+    _close(ifClear = true){
+      this.$amapComponent.close(ifClear);
+    },
     $$close(ifClear = true){
+      this.isDrawing = false;
       if(this.$amapComponent){
-        this.$amapComponent.close(ifClear);
+        this._close(ifClear);
+        this.revertMapCursor();
+        if(this.$text){
+          this.$text.hide();
+        }
       }
     },
     $$open(){
+      this.isDrawing = true;
+      this.changeMapCursor();
       this.__type();
+      if(this.$text){
+        this.$text.show();
+      }
     },
     $$clear(){
-      this.$$close(true);
+      this._close(true);
+    },
+    changeMapCursor(){
+      this.$parentComponent.setDefaultCursor(this.drawCursor);
+    },
+    revertMapCursor(){
+      if(this.preMapCursor){
+        this.$parentComponent.setDefaultCursor(this.preMapCursor);
+      }
     },
     destroyComponent() {
       if(!this.parentInstance.isDestroy){
         this.$amapComponent.close(true);
-        this.$parentComponent.setDefaultCursor(this.preMapCursor);
+        this.revertMapCursor();
         if(this.$text){
           this.$parentComponent.off('mousemove', this.getMousePosition);
           this.$parentComponent.remove(this.$text);

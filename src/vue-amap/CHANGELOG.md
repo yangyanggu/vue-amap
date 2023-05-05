@@ -1,4 +1,11 @@
-### @vuemap/vue-amap v2.0.6
+### @vuemap/vue-amap v2.0.9
+*升级区划插件依赖
+
+### @vuemap/vue-amap v2.0.8
+* 解决鼠标工具组件开关时提示信息和cursor优化
+* 适配SSR
+
+### @vuemap/vue-amap v2.0.7
 * 升级依赖解决vite热更新失败问题
 * 更改jsloader
 

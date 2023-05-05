@@ -22,7 +22,7 @@ export default defineComponent({
       type: [String, Object]
     }, // 在点标记中显示的图标。可以传一个图标地址，也可以传Icon对象。有合法的content内容设置时，此属性无效。
     content: {
-      type: [String, HTMLElement]
+      type: [String, typeof HTMLElement === 'undefined' ? Object: HTMLElement]
     }, // 点标记显示内容。可以是HTML要素字符串或者HTML DOM对象。content有效时，icon属性将被覆盖。
     title: {
       type: String
