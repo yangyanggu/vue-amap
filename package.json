@@ -2,10 +2,6 @@
   "private": true,
   "packageManager": "pnpm@6.23.6",
   "type": "module",
-  "workspaces": [
-    "src/*",
-    "docs"
-  ],
   "engines": {
     "node": ">= 16"
   },

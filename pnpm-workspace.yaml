@@ -1,6 +1,7 @@
 #
 packages:
-  - 'src/*'
+  - 'src/**'
+  - '!src/*/dist'
   - docs
   - '!packages/__mocks__'
   - '!**/__tests__/**'
