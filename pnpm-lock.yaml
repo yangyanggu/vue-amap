@@ -199,8 +199,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3
       '@vuemap/district-cluster':
-        specifier: 0.0.7
-        version: 0.0.7
+        specifier: 0.0.8
+        version: 0.0.8
       '@vuemap/vue-amap-util':
         specifier: 2.0.6
         version: 2.0.6(vue@3.2.37)
@@ -2406,6 +2406,16 @@ packages:
 
   /@vuemap/district-cluster@0.0.7:
     resolution: {integrity: sha512-c7RkPnMpwGXaHs7KrjkEAzCRWP4jaQgLvlUAraotYygbOZG6nj5t+0i8RbAsfObk0CYYC47Yb6nes8wVA5HWiQ==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@amap/amap-jsapi-types': 0.0.10
+      '@turf/helpers': 6.5.0
+      '@turf/intersect': 6.5.0
+      topojson-client: 3.1.0
+    dev: false
+
+  /@vuemap/district-cluster@0.0.8:
+    resolution: {integrity: sha512-qm6VzSYbNHwTpuQ4iNn++lLF7Q5T0vqYygsfmiSkxraQhPceMSrFwEV9G+FeIeB9ys74oxj2is8UnUTQIavbkQ==}
     engines: {node: '>= 16'}
     dependencies:
       '@amap/amap-jsapi-types': 0.0.10

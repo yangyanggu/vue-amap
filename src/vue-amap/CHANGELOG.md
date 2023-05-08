@@ -1,5 +1,8 @@
+### @vuemap/vue-amap v2.0.10
+* 升级区划插件依赖
+
 ### @vuemap/vue-amap v2.0.9
-*升级区划插件依赖
+* 升级区划插件依赖
 
 ### @vuemap/vue-amap v2.0.8
 * 解决鼠标工具组件开关时提示信息和cursor优化
