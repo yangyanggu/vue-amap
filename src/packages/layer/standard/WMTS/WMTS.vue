@@ -29,7 +29,7 @@ export default defineComponent({
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new AMap.TileLayer.WMS(options);
+      this.$amapComponent = new AMap.TileLayer.WMTS(options);
       this.$parentComponent.add(this.$amapComponent);
     },
     destroyComponent() {
