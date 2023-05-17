@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     __initComponent(options) {
-      this.$amapComponent = new AMap.TileLayer.WMS(options);
+      this.$amapComponent = new AMap.TileLayer.WMTS(options);
       this.$parentComponent.addLayer(this.$amapComponent);
     },
     destroyComponent() {
