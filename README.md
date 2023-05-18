@@ -56,7 +56,7 @@ initAMapApiLoader({
   //  version: '2.0.0'
   //} // 如果需要使用loca组件库，需要加载Loca
 });
-createApp(App).use(VueAmap)
+createApp(App).use(VueAMap)
 
 ```
 
