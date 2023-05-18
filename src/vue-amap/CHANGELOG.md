@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.12
+* 配置index.d.ts
+
 ### @vuemap/vue-amap v2.0.11
 * 解决WMTS组件对象调用错误问题
 

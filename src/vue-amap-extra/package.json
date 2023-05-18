@@ -13,6 +13,7 @@
   ],
   "exports": {
     ".": {
+      "types": "./es/index.d.ts",
       "require": "./lib/index.js",
       "import": "./es/index.mjs"
     },
@@ -24,6 +25,7 @@
   "module": "es/index.mjs",
   "unpkg": "dist/index.js",
   "jsdelivr": "dist/index.js",
+  "types": "es/index.d.ts",
   "sideEffects": [
     "dist/*",
     "lib/packages/**/*",

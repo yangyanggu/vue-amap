@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "高德地图vue3版本封装",
   "keywords": [
     "vue-amap",
@@ -12,6 +12,7 @@
   ],
   "exports": {
     ".": {
+      "types": "./es/index.d.ts",
       "require": "./lib/index.js",
       "import": "./es/index.mjs"
     },
@@ -24,6 +25,7 @@
   "style": "dist/style.css",
   "unpkg": "dist/index.js",
   "jsdelivr": "dist/index.js",
+  "types": "es/index.d.ts",
   "sideEffects": [
     "dist/*",
     "lib/packages/**/*",

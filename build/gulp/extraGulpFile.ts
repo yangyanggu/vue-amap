@@ -64,6 +64,9 @@ const build:TaskFunction = series(
     }),
     withTaskName('copy package.json', async () => {
       await copyFile(resolve(pkgRoot, 'package.json'), resolve(distRoot, 'package.json'))
+    }),
+    withTaskName('copy global.d.ts', async () => {
+      await copyFile(resolve(pkgRoot, 'global.d.ts'), resolve(distRoot, 'global.d.ts'))
     })
   ),
   parallel(copyTypesDefinitions),
