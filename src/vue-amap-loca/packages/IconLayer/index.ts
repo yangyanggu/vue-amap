@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import IconLayer from './IconLayer.vue'
-
-export const ElAmapLocaIcon = withInstall(IconLayer)
+import type {Plugin, App} from "vue";
+IconLayer.install = (app: App) => {
+  app.component(IconLayer.name, IconLayer)
+  return app
+}
+export const ElAmapLocaIcon = IconLayer as typeof IconLayer & Plugin
 export default ElAmapLocaIcon

@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ThreeLightHemisphere from './ThreeLightHemisphere.vue'
-
-export const ElAmapThreeLightHemisphere = withInstall(ThreeLightHemisphere)
+import type {Plugin, App} from "vue";
+ThreeLightHemisphere.install = (app: App) => {
+  app.component(ThreeLightHemisphere.name, ThreeLightHemisphere)
+  return app
+}
+export const ElAmapThreeLightHemisphere = ThreeLightHemisphere as typeof ThreeLightHemisphere & Plugin
 export default ElAmapThreeLightHemisphere

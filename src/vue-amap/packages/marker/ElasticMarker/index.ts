@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ElasticMarker from './ElasticMarker.vue'
-
-export const ElAmapElasticMarker = withInstall(ElasticMarker)
+import type {Plugin, App} from "vue";
+ElasticMarker.install = (app: App) => {
+  app.component(ElasticMarker.name, ElasticMarker)
+  return app
+}
+export const ElAmapElasticMarker = ElasticMarker as typeof ElasticMarker & Plugin
 export default ElAmapElasticMarker

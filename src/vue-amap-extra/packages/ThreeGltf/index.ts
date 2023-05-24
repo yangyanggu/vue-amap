@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ThreeGltf from './ThreeGltf.vue'
-
-export const ElAmapThreeGltf = withInstall(ThreeGltf)
+import type {Plugin, App} from "vue";
+ThreeGltf.install = (app: App) => {
+  app.component(ThreeGltf.name, ThreeGltf)
+  return app
+}
+export const ElAmapThreeGltf = ThreeGltf as typeof ThreeGltf & Plugin
 export default ElAmapThreeGltf

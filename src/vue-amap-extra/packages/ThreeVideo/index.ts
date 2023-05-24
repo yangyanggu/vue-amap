@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ThreeVideo from './ThreeVideo.vue'
-
-export const ElAmapThreeVideo = withInstall(ThreeVideo)
+import type {Plugin, App} from "vue";
+ThreeVideo.install = (app: App) => {
+  app.component(ThreeVideo.name, ThreeVideo)
+  return app
+}
+export const ElAmapThreeVideo = ThreeVideo as typeof ThreeVideo & Plugin
 export default ElAmapThreeVideo

@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Marker from './Marker.vue'
-
-export const ElAmapMarker = withInstall(Marker)
+import type {Plugin, App} from "vue";
+Marker.install = (app: App) => {
+  app.component(Marker.name, Marker)
+  return app
+}
+export const ElAmapMarker = Marker as typeof Marker & Plugin
 export default ElAmapMarker

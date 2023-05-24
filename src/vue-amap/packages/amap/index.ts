@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Amap from './amap.vue'
-
-export const ElAmap = withInstall(Amap)
+import type {Plugin, App} from "vue";
+Amap.install = (app: App) => {
+  app.component(Amap.name, Amap)
+  return app
+}
+export const ElAmap = Amap as typeof Amap & Plugin
 export default ElAmap

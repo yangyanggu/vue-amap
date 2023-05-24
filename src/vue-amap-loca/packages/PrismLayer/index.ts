@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import PrismLayer from './PrismLayer.vue'
-
-export const ElAmapLocaPrism = withInstall(PrismLayer)
+import type {Plugin, App} from "vue";
+PrismLayer.install = (app: App) => {
+  app.component(PrismLayer.name, PrismLayer)
+  return app
+}
+export const ElAmapLocaPrism = PrismLayer as typeof PrismLayer & Plugin
 export default ElAmapLocaPrism

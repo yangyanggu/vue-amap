@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Rectangle from './Rectangle.vue'
-
-export const ElAmapRectangle = withInstall(Rectangle)
+import type {Plugin, App} from "vue";
+Rectangle.install = (app: App) => {
+  app.component(Rectangle.name, Rectangle)
+  return app
+}
+export const ElAmapRectangle = Rectangle as typeof Rectangle & Plugin
 export default ElAmapRectangle

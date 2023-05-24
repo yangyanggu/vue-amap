@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import GLCustom from './GLCustom.vue'
-
-export const ElAmapLayerGlCustom = withInstall(GLCustom)
+import type {Plugin, App} from "vue";
+GLCustom.install = (app: App) => {
+  app.component(GLCustom.name, GLCustom)
+  return app
+}
+export const ElAmapLayerGlCustom = GLCustom as typeof GLCustom & Plugin
 export default ElAmapLayerGlCustom

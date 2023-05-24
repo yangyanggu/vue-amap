@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Polygon from './Polygon.vue'
-
-export const ElAmapPolygon = withInstall(Polygon)
+import type {Plugin, App} from "vue";
+Polygon.install = (app: App) => {
+  app.component(Polygon.name, Polygon)
+  return app
+}
+export const ElAmapPolygon = Polygon as typeof Polygon & Plugin
 export default ElAmapPolygon

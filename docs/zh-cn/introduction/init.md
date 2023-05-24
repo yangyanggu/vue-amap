@@ -4,7 +4,7 @@ description: 初始化vue-amap组件，提供完整导入和自动按需导入�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 完整导入, 自动导入, ree-shaking
+      content: amap, 高德地图, vue3.0, 完整导入, 自动导入, tree-shaking
 ---
 
 # 初始化
@@ -20,6 +20,8 @@ NPM 安装：
 ```javascript
 import App from './App.vue'
 import VueAMap, {initAMapApiLoader} from '@vuemap/vue-amap';
+// import VueAMapLoca from '@vuemap/vue-amap-loca';
+// import VueAMapExtra from '@vuemap/vue-amap-extra';
 import '@vuemap/vue-amap/dist/style.css'
 initAMapApiLoader({
   key: 'YOUR_KEY',
@@ -31,6 +33,8 @@ initAMapApiLoader({
 
 createApp(App)
     .use(VueAMap)
+  //.use(VueAMapLoca)
+  //.use(VueAMapExtra)
     .mount('#app')
 
 ```
@@ -127,6 +131,14 @@ export default defineConfig({
 
 ```
 
+## Volar兼容
+
+在使用vscode开发时，需要配置global.d.ts才能在按需导入时有对应的typescript提示，`tsconfig.json`配置方式：
+```json
+{
+  "include": ["./node_modules/@vuemap/vue-amap/global.d.ts", "./node_modules/@vuemap/vue-amap-loca/global.d.ts", "./node_modules/@vuemap/vue-amap-extra/global.d.ts"]
+}
+```
 
 ## Promise
 

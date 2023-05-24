@@ -1,3 +1,6 @@
+### @vuemap/vue-amap-loca v2.0.5
+* 解决VSCODE开发时组件类型为any问题
+
 ### @vuemap/vue-amap-loca v2.0.4
 * 升级依赖解决vite热更新失败问题
 

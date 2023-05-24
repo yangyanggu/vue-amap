@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import DirectionalLight from './DirectionalLight.vue'
-
-export const ElAmapLocaDirectionalLight = withInstall(DirectionalLight)
+import type {Plugin, App} from "vue";
+DirectionalLight.install = (app: App) => {
+  app.component(DirectionalLight.name, DirectionalLight)
+  return app
+}
+export const ElAmapLocaDirectionalLight = DirectionalLight as typeof DirectionalLight & Plugin
 export default ElAmapLocaDirectionalLight

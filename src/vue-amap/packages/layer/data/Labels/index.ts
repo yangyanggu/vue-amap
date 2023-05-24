@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Labels from './Labels.vue'
-
-export const ElAmapLayerLabels = withInstall(Labels)
+import type {Plugin, App} from "vue";
+Labels.install = (app: App) => {
+  app.component(Labels.name, Labels)
+  return app
+}
+export const ElAmapLayerLabels = Labels as typeof Labels & Plugin
 export default ElAmapLayerLabels

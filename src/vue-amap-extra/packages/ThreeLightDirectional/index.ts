@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ThreeLightDirectional from './ThreeLightDirectional.vue'
-
-export const ElAmapThreeLightDirectional = withInstall(ThreeLightDirectional)
+import type {Plugin, App} from "vue";
+ThreeLightDirectional.install = (app: App) => {
+  app.component(ThreeLightDirectional.name, ThreeLightDirectional)
+  return app
+}
+export const ElAmapThreeLightDirectional = ThreeLightDirectional as typeof ThreeLightDirectional & Plugin
 export default ElAmapThreeLightDirectional

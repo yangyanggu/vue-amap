@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import GridLayer from './GridLayer.vue'
-
-export const ElAmapLocaGrid = withInstall(GridLayer)
+import type {Plugin, App} from "vue";
+GridLayer.install = (app: App) => {
+  app.component(GridLayer.name, GridLayer)
+  return app
+}
+export const ElAmapLocaGrid = GridLayer as typeof GridLayer & Plugin
 export default ElAmapLocaGrid

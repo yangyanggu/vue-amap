@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import DistrictLayer from './DistrictLayer.vue'
-
-export const ElAmapLayerDistrict = withInstall(DistrictLayer)
+import type {Plugin, App} from "vue";
+DistrictLayer.install = (app: App) => {
+  app.component(DistrictLayer.name, DistrictLayer)
+  return app
+}
+export const ElAmapLayerDistrict = DistrictLayer as typeof DistrictLayer & Plugin
 export default ElAmapLayerDistrict

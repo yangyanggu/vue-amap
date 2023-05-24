@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import RoadNet from './RoadNet.vue'
-
-export const ElAmapLayerRoadNet = withInstall(RoadNet)
+import type {Plugin, App} from "vue";
+RoadNet.install = (app: App) => {
+  app.component(RoadNet.name, RoadNet)
+  return app
+}
+export const ElAmapLayerRoadNet = RoadNet as typeof RoadNet & Plugin
 export default ElAmapLayerRoadNet

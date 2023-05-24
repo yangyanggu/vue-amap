@@ -14,12 +14,12 @@
       <el-amap-layer-wms
         :visible="visible.wms"
         url="https://ahocevar.com/geoserver/wms"
-        :param="params"
+        :params="params"
       />
       <el-amap-layer-wmts
         :visible="visible.wmts"
         url="https://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/WMTS/"
-        :param="params"
+        :params="params"
       />
     </el-amap>
     <div class="control-container">

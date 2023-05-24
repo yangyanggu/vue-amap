@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Buildings from './Buildings.vue'
-
-export const ElAmapLayerBuildings = withInstall(Buildings)
+import type {Plugin, App} from "vue";
+Buildings.install = (app: App) => {
+  app.component(Buildings.name, Buildings)
+  return app
+}
+export const ElAmapLayerBuildings = Buildings as typeof Buildings & Plugin
 export default ElAmapLayerBuildings

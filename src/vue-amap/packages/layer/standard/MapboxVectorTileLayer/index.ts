@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import MapboxVectorTileLayer from './MapboxVectorTileLayer.vue'
-
-export const ElAmapLayerMapboxVectorTile = withInstall(MapboxVectorTileLayer)
+import type {Plugin, App} from "vue";
+MapboxVectorTileLayer.install = (app: App) => {
+  app.component(MapboxVectorTileLayer.name, MapboxVectorTileLayer)
+  return app
+}
+export const ElAmapLayerMapboxVectorTile = MapboxVectorTileLayer as typeof MapboxVectorTileLayer & Plugin
 export default ElAmapLayerMapboxVectorTile

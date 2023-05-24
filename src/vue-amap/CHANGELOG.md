@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.13
+* 解决VSCODE开发时组件类型为any问题
+
 ### @vuemap/vue-amap v2.0.12
 * 配置index.d.ts
 

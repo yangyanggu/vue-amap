@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ToolBar from './ToolBar.vue'
-
-export const ElAmapControlToolBar = withInstall(ToolBar)
+import type {Plugin, App} from "vue";
+ToolBar.install = (app: App) => {
+  app.component(ToolBar.name, ToolBar)
+  return app
+}
+export const ElAmapControlToolBar = ToolBar as typeof ToolBar & Plugin
 export default ElAmapControlToolBar

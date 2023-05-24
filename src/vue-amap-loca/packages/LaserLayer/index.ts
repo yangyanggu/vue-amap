@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import LaserLayer from './LaserLayer.vue'
-
-export const ElAmapLocaLaser = withInstall(LaserLayer)
+import type {Plugin, App} from "vue";
+LaserLayer.install = (app: App) => {
+  app.component(LaserLayer.name, LaserLayer)
+  return app
+}
+export const ElAmapLocaLaser = LaserLayer as typeof LaserLayer & Plugin
 export default ElAmapLocaLaser

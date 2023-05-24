@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import HawkEye from './HawkEye.vue'
-
-export const ElAmapControlHawkEye = withInstall(HawkEye)
+import type {Plugin, App} from "vue";
+HawkEye.install = (app: App) => {
+  app.component(HawkEye.name, HawkEye)
+  return app
+}
+export const ElAmapControlHawkEye = HawkEye as typeof HawkEye & Plugin
 export default ElAmapControlHawkEye

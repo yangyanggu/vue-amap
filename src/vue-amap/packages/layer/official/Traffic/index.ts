@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Traffic from './Traffic.vue'
-
-export const ElAmapLayerTraffic = withInstall(Traffic)
+import type {Plugin, App} from "vue";
+Traffic.install = (app: App) => {
+  app.component(Traffic.name, Traffic)
+  return app
+}
+export const ElAmapLayerTraffic = Traffic as typeof Traffic & Plugin
 export default ElAmapLayerTraffic

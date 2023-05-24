@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Canvas from './Canvas.vue'
-
-export const ElAmapLayerCanvas = withInstall(Canvas)
+import type {Plugin, App} from "vue";
+Canvas.install = (app: App) => {
+  app.component(Canvas.name, Canvas)
+  return app
+}
+export const ElAmapLayerCanvas = Canvas as typeof Canvas & Plugin
 export default ElAmapLayerCanvas

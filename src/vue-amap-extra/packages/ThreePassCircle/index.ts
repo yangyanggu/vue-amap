@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ThreePassCircle from './ThreePassCircle.vue'
-
-export const ElAmapThreePassCircle = withInstall(ThreePassCircle)
+import type {Plugin, App} from "vue";
+ThreePassCircle.install = (app: App) => {
+  app.component(ThreePassCircle.name, ThreePassCircle)
+  return app
+}
+export const ElAmapThreePassCircle = ThreePassCircle as typeof ThreePassCircle & Plugin
 export default ElAmapThreePassCircle

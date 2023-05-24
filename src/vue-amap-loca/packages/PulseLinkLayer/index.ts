@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import PulseLinkLayer from './PulseLinkLayer.vue'
-
-export const ElAmapLocaPulseLink = withInstall(PulseLinkLayer)
+import type {Plugin, App} from "vue";
+PulseLinkLayer.install = (app: App) => {
+  app.component(PulseLinkLayer.name, PulseLinkLayer)
+  return app
+}
+export const ElAmapLocaPulseLink = PulseLinkLayer as typeof PulseLinkLayer & Plugin
 export default ElAmapLocaPulseLink

@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import LinkLayer from './LinkLayer.vue'
-
-export const ElAmapLocaLink = withInstall(LinkLayer)
+import type {Plugin, App} from "vue";
+LinkLayer.install = (app: App) => {
+  app.component(LinkLayer.name, LinkLayer)
+  return app
+}
+export const ElAmapLocaLink = LinkLayer as typeof LinkLayer & Plugin
 export default ElAmapLocaLink

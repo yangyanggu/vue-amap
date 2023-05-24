@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import HexagonLayer from './HexagonLayer.vue'
-
-export const ElAmapLocaHexagon = withInstall(HexagonLayer)
+import type {Plugin, App} from "vue";
+HexagonLayer.install = (app: App) => {
+  app.component(HexagonLayer.name, HexagonLayer)
+  return app
+}
+export const ElAmapLocaHexagon = HexagonLayer as typeof HexagonLayer & Plugin
 export default ElAmapLocaHexagon

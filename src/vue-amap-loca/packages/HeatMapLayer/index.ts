@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import HeatMapLayer from './HeatMapLayer.vue'
-
-export const ElAmapLocaHeatmap = withInstall(HeatMapLayer)
+import type {Plugin, App} from "vue";
+HeatMapLayer.install = (app: App) => {
+  app.component(HeatMapLayer.name, HeatMapLayer)
+  return app
+}
+export const ElAmapLocaHeatmap = HeatMapLayer as typeof HeatMapLayer & Plugin
 export default ElAmapLocaHeatmap

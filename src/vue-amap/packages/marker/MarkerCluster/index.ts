@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import MarkerCluster from './MarkerCluster.vue'
-
-export const ElAmapMarkerCluster = withInstall(MarkerCluster)
+import type {Plugin, App} from "vue";
+MarkerCluster.install = (app: App) => {
+  app.component(MarkerCluster.name, MarkerCluster)
+  return app
+}
+export const ElAmapMarkerCluster = MarkerCluster as typeof MarkerCluster & Plugin
 export default ElAmapMarkerCluster

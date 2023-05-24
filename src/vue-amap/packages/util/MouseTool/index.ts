@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import MouseTool from './MouseTool.vue'
-
-export const ElAmapMouseTool = withInstall(MouseTool)
+import type {Plugin, App} from "vue";
+MouseTool.install = (app: App) => {
+  app.component(MouseTool.name, MouseTool)
+  return app
+}
+export const ElAmapMouseTool = MouseTool as typeof MouseTool & Plugin
 export default ElAmapMouseTool

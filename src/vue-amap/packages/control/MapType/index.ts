@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import MapType from './MapType.vue'
-
-export const ElAmapControlMapType = withInstall(MapType)
+import type {Plugin, App} from "vue";
+MapType.install = (app: App) => {
+  app.component(MapType.name, MapType)
+  return app
+}
+export const ElAmapControlMapType = MapType as typeof MapType & Plugin
 export default ElAmapControlMapType

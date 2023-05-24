@@ -1,4 +1,7 @@
-### @vuemap/vue-amap-util v2.0.2
+### @vuemap/vue-amap-extra v2.0.3
+* 解决VSCODE开发时组件类型为any问题
+
+### @vuemap/vue-amap-extra v2.0.2
 * 升级依赖解决vite热更新失败问题
 
 ### @vuemap/vue-amap-extra v2.0.1

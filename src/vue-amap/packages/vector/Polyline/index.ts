@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Polyline from './Polyline.vue'
-
-export const ElAmapPolyline = withInstall(Polyline)
+import type {Plugin, App} from "vue";
+Polyline.install = (app: App) => {
+  app.component(Polyline.name, Polyline)
+  return app
+}
+export const ElAmapPolyline = Polyline as typeof Polyline & Plugin
 export default ElAmapPolyline

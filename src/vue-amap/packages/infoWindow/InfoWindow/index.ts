@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import InfoWindow from './InfoWindow.vue'
-
-export const ElAmapInfoWindow = withInstall(InfoWindow)
+import type {Plugin, App} from "vue";
+InfoWindow.install = (app: App) => {
+  app.component(InfoWindow.name, InfoWindow)
+  return app
+}
+export const ElAmapInfoWindow = InfoWindow as typeof InfoWindow & Plugin
 export default ElAmapInfoWindow

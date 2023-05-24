@@ -1,5 +1,9 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ControlBar from './ControlBar.vue'
+import type {Plugin, App} from "vue";
+ControlBar.install = (app: App) => {
+  app.component(ControlBar.name, ControlBar)
+  return app
+}
 
-export const ElAmapControlControlBar = withInstall(ControlBar)
+export const ElAmapControlControlBar = ControlBar as typeof ControlBar & Plugin
 export default ElAmapControlControlBar

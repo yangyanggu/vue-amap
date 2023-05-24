@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import GeoJSON from './GeoJSON.vue'
-
-export const ElAmapGeojson = withInstall(GeoJSON)
+import type {Plugin, App} from "vue";
+GeoJSON.install = (app: App) => {
+  app.component(GeoJSON.name, GeoJSON)
+  return app
+}
+export const ElAmapGeojson = GeoJSON as typeof GeoJSON & Plugin
 export default ElAmapGeojson

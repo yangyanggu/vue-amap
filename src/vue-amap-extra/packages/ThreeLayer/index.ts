@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import ThreeLayer from './ThreeLayer.vue'
-
-export const ElAmapLayerThree = withInstall(ThreeLayer)
+import type {Plugin, App} from "vue";
+ThreeLayer.install = (app: App) => {
+  app.component(ThreeLayer.name, ThreeLayer)
+  return app
+}
+export const ElAmapLayerThree = ThreeLayer as typeof ThreeLayer & Plugin
 export default ElAmapLayerThree

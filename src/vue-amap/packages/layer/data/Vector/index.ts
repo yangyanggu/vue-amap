@@ -1,5 +1,8 @@
-import { withInstall } from '@vuemap/vue-amap-util'
 import Vector from './Vector.vue'
-
-export const ElAmapLayerVector = withInstall(Vector)
+import type {Plugin, App} from "vue";
+Vector.install = (app: App) => {
+  app.component(Vector.name, Vector)
+  return app
+}
+export const ElAmapLayerVector = Vector as typeof Vector & Plugin
 export default ElAmapLayerVector
