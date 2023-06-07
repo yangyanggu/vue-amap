@@ -1,3 +1,6 @@
+### @vuemap/vue-amap-extra v2.0.4
+* 解决gltf组件销毁异常问题
+
 ### @vuemap/vue-amap-extra v2.0.3
 * 解决VSCODE开发时组件类型为any问题
 

@@ -154,12 +154,6 @@ class CustomThreeGltf extends ThreeGltf{
     this.moveAnimation = move;
   }
 
-  remove(){
-    if (this.object) {
-      this.layer.removeObject(this.object)
-    }
-  }
-
   destroy() {
     this._stopAngleAnimation();
     this._stopMoveAnimation();

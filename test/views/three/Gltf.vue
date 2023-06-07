@@ -50,6 +50,7 @@
           @init="init"
         />-->
         <el-amap-three-gltf
+          v-if="visible"
           ref="animation"
           url="/gltf/sgyj_point_animation.gltf"
           :position="center"
@@ -170,7 +171,7 @@ export default defineComponent({
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.143/examples/js/libs/draco/');
         loader.setDRACOLoader( dracoLoader );
-      }
+      },
     }
   },
   methods: {
