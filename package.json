@@ -43,7 +43,6 @@
     "@typescript-eslint/parser": "5.6.0",
     "@vue/compiler-sfc": "3.2.37",
     "components-helper": "^1.0.5",
-    "element-plus": "^2.1.10",
     "esbuild": "0.14.2",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "8.3.0",
