@@ -3,5 +3,6 @@ packages:
   - 'src/**'
   - '!src/*/dist'
   - docs
+  - test
   - '!packages/__mocks__'
   - '!**/__tests__/**'

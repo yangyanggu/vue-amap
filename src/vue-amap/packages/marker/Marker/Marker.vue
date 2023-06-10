@@ -8,7 +8,13 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {registerMixin,isMapInstance, isOverlayGroupInstance} from '@vuemap/vue-amap-util';
+import type { PropType} from "vue";
 
+export interface MarkerMoveOptions {
+  duration?: number
+  easing?: (passedTime: number) => number
+  autoRotation?: boolean
+}
 
 export default defineComponent({
   name: 'ElAmapMarker',
@@ -61,7 +67,11 @@ export default defineComponent({
     label: {
       type: Object
     }, // 添加文本标注
-    extData: null
+    extData: null,
+    moveOptions: {
+      type: Object as PropType<MarkerMoveOptions>,
+      default: () => null
+    }
   },
   emits: ['update:position'],
   data() {
@@ -129,6 +139,17 @@ export default defineComponent({
       }*/
       this.$amapComponent = null;
       this.$parentComponent = null;
+    },
+    __position(position) {
+      if(!this.moveOptions){
+        this.$amapComponent.setPosition(position)
+        return
+      }
+      if(this.$parentComponent){
+        this.$parentComponent.plugin('AMap.MoveAnimation', () => {
+          this.$amapComponent.moveTo(position, this.moveOptions)
+        })
+      }
     }
   }
 });

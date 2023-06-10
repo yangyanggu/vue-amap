@@ -11,6 +11,7 @@
         :position="componentMarker.position"
         :visible="componentMarker.visible"
         :draggable="componentMarker.draggable"
+        :move-options="moveOptions"
         @init="markerInit"
         @click="clickMarker"
       >
@@ -67,6 +68,10 @@ export default defineComponent({
         position: [121.5283285, 31.21315058],
         content: 'hello world'
       },
+      moveOptions: {
+        duration: 200,
+        autoRotation: false
+      }
     }
   },
   methods: {
@@ -83,7 +88,7 @@ export default defineComponent({
     },
     changePosition() {
       const position = this.componentMarker.position;
-      this.componentMarker.position = [position[0] + 0.002, position[1] - 0.002];
+      this.componentMarker.position = [position[0] + 0.0002, position[1] - 0.0002];
     },
     changeDraggable() {
       this.componentMarker.draggable = !this.componentMarker.draggable;

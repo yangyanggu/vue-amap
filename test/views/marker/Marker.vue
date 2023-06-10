@@ -11,6 +11,7 @@
         v-model:position="componentMarker.position"
         :visible="componentMarker.visible"
         :draggable="componentMarker.draggable"
+        :move-options="moveOptions"
         @init="markerInit"
         @click="clickMarker"
       >
@@ -95,7 +96,11 @@ export default defineComponent({
         { center: [121.51326838183398, 31.222604897193477], key: '021_GA054' },
         { center: [121.49850341562114, 31.216586683573897], key: '021_GA017' },
         { center: [121.49311169834493, 31.21689267791807], key: '021_GA018' },
-        { center: [121.50443502305552, 31.235724001288325], key: '021_GA049' }]
+        { center: [121.50443502305552, 31.235724001288325], key: '021_GA049' }],
+      moveOptions: {
+        duration: 200,
+        autoRotation: false
+      }
     }
   },
   methods: {

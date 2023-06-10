@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.14
+* Marker组件增加`moveOptions`属性，设置该属性后可以在修改position时自动调用marker的moveTo方法增加动画
+
 ### @vuemap/vue-amap v2.0.13
 * 解决VSCODE开发时组件类型为any问题
 

@@ -1,0 +1,19 @@
+{
+  "name": "@vue-map/test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite --host"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vuemap/vue-amap": "workspace:*",
+    "@vuemap/vue-amap-loca": "workspace:*",
+    "@vuemap/vue-amap-extra": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "~2.9.5",
+    "@vitejs/plugin-vue": "^2.0.0"
+  }
+}
