@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.15
+* 升级`@vuemap/district-cluster`依赖
+
 ### @vuemap/vue-amap v2.0.14
 * Marker组件增加`moveOptions`属性，设置该属性后可以在修改position时自动调用marker的moveTo方法增加动画
 
