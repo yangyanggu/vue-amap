@@ -1,3 +1,6 @@
+### @vuemap/vue-amap-extra v2.0.5
+* 升级@vuemap/layer-3dtiles 解决3dtiles加载报错问题
+
 ### @vuemap/vue-amap-extra v2.0.4
 * 解决gltf组件销毁异常问题
 
