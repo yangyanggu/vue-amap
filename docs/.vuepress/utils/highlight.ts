@@ -2,9 +2,8 @@
 import chalk from 'chalk'
 import escapeHtml from 'escape-html'
 import prism from 'prismjs'
-
+import loadLanguages from 'prismjs/components/index.js'
 // prism is listed as actual dep so it's ok to require
-const loadLanguages = require('prismjs/components/index')
 
 // required to make embedded highlighting work...
 loadLanguages(['markup', 'css', 'javascript'])
