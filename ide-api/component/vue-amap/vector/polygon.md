@@ -6,13 +6,12 @@ title: AmapPolygon
 构造多边形对象
 
 ## Attributes
-仅且可以初始化配置，不支持响应式。
 
 Attribute | Type | Description
 ---|---|---|
 bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上（自v1.3 新增）默认值：false
 editOptions | Object | [设置编辑参数参数](https://a.amap.com/jsapi/static/doc/20210906/index.html?v=2#polygoneditor)
-path | Array| 多边形轮廓线的节点坐标数组。 支持 单个普通多边形({Array })，单个带孔多边形({Array<Array >})，多个带孔多边形({Array<Array<Array >>})
+path | Array| 多边形轮廓线的节点坐标数组。 支持 单个普通多边形(`{Array }`)，单个带孔多边形(`{Array<Array >}`)，多个带孔多边形(`{Array<Array<Array >>}`)
 visible | Boolean | 是否可见
 editable | Boolean | 多边形当前是否可编辑 (启动编辑时需要关闭 draggable，不然会导致图形被移走，但操作点还在原位)
 zIndex | Number | 多边形覆盖物的叠加顺序。地图上存在多个多边形覆盖物叠加时，通过该属性使级别较高的多边形覆盖物在上层显示默认zIndex：10
@@ -26,7 +25,7 @@ strokeStyle | String | 轮廓线样式，实线:solid，虚线:dashed
 strokeDasharray | Array | 勾勒形状轮廓的虚线和间隙的样式，此属性在strokeStyle 为dashed 时有效， 此属性在ie9+浏览器有效 取值： 实线： [0,0,0] 虚线： [10,10] ， [10,10] 表示10个像素的实线和10个像素的空白（如此反复）组成的虚线 点画线： [10,2,10] ， [10,2,10] 表示10个像素的实线和2个像素的空白 + 10个像素的实线和10个像素的空白 （如此反复）组成的虚线
 draggable | Boolean | 设置多边形是否可拖拽移动，默认为false
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
-extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖****
+extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
 ## Events
 

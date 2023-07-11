@@ -7,7 +7,6 @@ title: AmapControlScale
 
 
 ## Attributes
-仅且可以初始化配置，不支持响应式。
 
 Attribute | Type | Description
 ---|---|---|
