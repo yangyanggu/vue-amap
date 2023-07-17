@@ -1,3 +1,6 @@
+### @vuemap/vue-amap-extra v2.0.6
+* 升级@vuemap/layer-3dtiles 支持region包围盒
+
 ### @vuemap/vue-amap-extra v2.0.5
 * 升级@vuemap/layer-3dtiles 解决3dtiles加载报错问题
 

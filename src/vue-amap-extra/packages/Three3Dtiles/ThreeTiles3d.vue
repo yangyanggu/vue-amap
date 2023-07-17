@@ -5,6 +5,7 @@ import {registerMixin} from '@vuemap/vue-amap-util';
 import type {LngLat,Vec} from "./Type";
 
 import type{PropType} from "vue";
+import type {ConfigLoader} from "../ThreeGltf/Type";
 
 export default defineComponent({
   name: 'ElAmapThreeTiles3d',
@@ -18,7 +19,6 @@ export default defineComponent({
     // 位置
     position: {
       type: Object as PropType<LngLat>,
-      required: true
     },
     // 缩放比例
     scale: {
@@ -49,6 +49,13 @@ export default defineComponent({
     debug: {
       type: Boolean,
       default: false
+    },
+    autoFocus: {
+      type: Boolean,
+      default: false
+    },//加载后是否自动将地图中心点移动到模型中心，仅在不传position时生效
+    configLoader: {
+      type: Function as PropType<ConfigLoader>
     }
   },
   data() {
