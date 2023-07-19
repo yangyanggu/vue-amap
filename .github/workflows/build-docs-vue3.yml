@@ -21,7 +21,7 @@ jobs:
 
     - name: Build
       run: |
-        pnpm i
+        pnpm install --no-frozen-lockfile
         pnpm run docs:build
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v1.0.7
