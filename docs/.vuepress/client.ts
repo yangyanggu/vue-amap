@@ -11,7 +11,8 @@ export default defineClientConfig({
       app.use(loca);
       app.use(extra);
       va.initAMapApiLoader({
-        key: '747f980f217a31ba68d99301045a3fa7',
+        key: '131de8dce165c06abe06564c351099f3',
+        securityJsCode: 'e2ef604bb7b4fecdc69bacd5c2400b6f',
         Loca: {
           version: '2.0.0'
         },

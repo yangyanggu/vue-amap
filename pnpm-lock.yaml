@@ -132,14 +132,14 @@ importers:
   docs:
     dependencies:
       '@vuemap/vue-amap':
-        specifier: 2.0.14
-        version: 2.0.14(vue@3.3.4)
+        specifier: 2.0.15
+        version: 2.0.15(vue@3.3.4)
       '@vuemap/vue-amap-extra':
-        specifier: 2.0.5
-        version: 2.0.5(@vuemap/vue-amap@2.0.14)(vue@3.3.4)
+        specifier: 2.0.6
+        version: 2.0.6(@vuemap/vue-amap@2.0.15)(vue@3.3.4)
       '@vuemap/vue-amap-loca':
         specifier: 2.0.5
-        version: 2.0.5(@vuemap/vue-amap@2.0.14)(vue@3.3.4)
+        version: 2.0.5(@vuemap/vue-amap@2.0.15)(vue@3.3.4)
       '@vueuse/core':
         specifier: 10.2.1
         version: 10.2.1(vue@3.3.4)
@@ -3016,16 +3016,6 @@ packages:
       topojson-client: 3.1.0
     dev: false
 
-  /@vuemap/district-cluster@0.0.8:
-    resolution: {integrity: sha512-qm6VzSYbNHwTpuQ4iNn++lLF7Q5T0vqYygsfmiSkxraQhPceMSrFwEV9G+FeIeB9ys74oxj2is8UnUTQIavbkQ==}
-    engines: {node: '>= 16'}
-    dependencies:
-      '@amap/amap-jsapi-types': 0.0.10
-      '@turf/helpers': 6.5.0
-      '@turf/intersect': 6.5.0
-      topojson-client: 3.1.0
-    dev: false
-
   /@vuemap/district-cluster@0.0.9:
     resolution: {integrity: sha512-Ew+3feGbVthSKWLkI1NbzD8p6S/Sp0bQGFHtB0bFgyi8liOu9OnMhqZLhmmiX3lOYElqmEHmVvXTzTtKyKP2lQ==}
     engines: {node: '>= 16'}
@@ -3034,18 +3024,6 @@ packages:
       '@turf/helpers': 6.5.0
       '@turf/intersect': 6.5.0
       topojson-client: 3.1.0
-    dev: false
-
-  /@vuemap/layer-3dtiles@0.0.6(@vuemap/three-layer@0.0.5):
-    resolution: {integrity: sha512-OrMHkbfbsTHsbzWUlGur8tnn0MznhPVG6wLzjQQ2CgJx3OXGpABCfTZp+jkfQUYxtCIIv7YmD1pXb/n4aharQg==}
-    engines: {node: '>= 16'}
-    peerDependencies:
-      '@vuemap/three-layer': '>=0.0.2'
-    dependencies:
-      3d-tiles-renderer: 0.3.20(three@0.143.0)
-      '@vuemap/three-layer': 0.0.5
-      lodash-es: 4.17.21
-      three: 0.143.0
     dev: false
 
   /@vuemap/layer-3dtiles@0.0.7(@vuemap/three-layer@0.0.5):
@@ -3069,16 +3047,16 @@ packages:
       three: 0.143.0
     dev: false
 
-  /@vuemap/vue-amap-extra@2.0.5(@vuemap/vue-amap@2.0.14)(vue@3.3.4):
-    resolution: {integrity: sha512-9tlURvLbXkPDhZR2ArC/kZ1abBzb58elx+ipqAHVexjkrMtEOYV+0A9t4s1GoRKdNvAdAtJNKwtDAKi4YedDQw==}
+  /@vuemap/vue-amap-extra@2.0.6(@vuemap/vue-amap@2.0.15)(vue@3.3.4):
+    resolution: {integrity: sha512-SyUUr/M7RcNAZqoZkC8X7oxaRK++iOCDk1pwNncGWvrUJmUYpooGLdtXpup1IvAbrKUA18Z5DQQxD5z6f66V4A==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
       vue: '>=3.2.0'
     dependencies:
       '@tweenjs/tween.js': 18.6.4
-      '@vuemap/layer-3dtiles': 0.0.6(@vuemap/three-layer@0.0.5)
+      '@vuemap/layer-3dtiles': 0.0.7(@vuemap/three-layer@0.0.5)
       '@vuemap/three-layer': 0.0.5
-      '@vuemap/vue-amap': 2.0.14(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.15(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       color: 4.2.3
       lodash-es: 4.17.21
@@ -3086,13 +3064,13 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.14)(vue@3.3.4):
+  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.15)(vue@3.3.4):
     resolution: {integrity: sha512-2DFjkD2Z79EUIVltuOFSZJY1Rqk0wzeVIRQXpr/G0M9+lZ3I6T2zBuTbOl4mUBqR3SnGuUI1zsLNHYucmjyaWw==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
       vue: '>=3.2.0'
     dependencies:
-      '@vuemap/vue-amap': 2.0.14(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.15(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       vue: 3.3.4
     dev: false
@@ -3115,13 +3093,13 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap@2.0.14(vue@3.3.4):
-    resolution: {integrity: sha512-yzgH80hEgQFX/OoLxu/RpL4CpMZmQh816I1kUFxfDxtiWT8x/sn15tmOP0J5oAtBJoPrwQSUF7YWPmZYv5lHbA==}
+  /@vuemap/vue-amap@2.0.15(vue@3.3.4):
+    resolution: {integrity: sha512-qpokmIOV4OPA9Cv/hM14cUDjW5TlurUPK3C2tvsIF6viRPqhwzQhe2vssk00cm7QWhSY2Ev4PUk9Jc5SDWuVBg==}
     peerDependencies:
       vue: '>=3.2.0'
     dependencies:
       '@vuemap/amap-jsapi-loader': 1.0.3
-      '@vuemap/district-cluster': 0.0.8
+      '@vuemap/district-cluster': 0.0.9
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       lodash-es: 4.17.21
       vue: 3.3.4

@@ -6,8 +6,8 @@ import 'element-plus/dist/index.css'
 import router from './router/index'
 
 initAMapApiLoader({
-  key: 'd9c8c39b15d50bf97df34dcfa5873196',
-  securityJsCode: '24b033df5f41c948aff9d26cb7d59133',
+  key: '65b5d1795f0b85ae604b4bf0a0b046d4',
+  securityJsCode: 'ce237322c0174f586a9156eeb38a546b',
   version: '2.0',
   plugins: ['AMap.3DTilesLayer'],
   Loca:{
