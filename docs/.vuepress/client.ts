@@ -7,7 +7,8 @@ export default defineClientConfig({
       const va = await import('@vuemap/vue-amap');
       app.use(va);
       va.initAMapApiLoader({
-        key: '747f980f217a31ba68d99301045a3fa7',
+        key: '326aa62242d1c6e4f439cd99f14c5ead',
+        securityJsCode: 'b1daa09f7779e34b28f4fd80683a698f',
         Loca: {
           version: '2.0.10'
         }
