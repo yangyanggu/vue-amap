@@ -5,6 +5,7 @@
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/@vuemap/vue-amap/dist/index.min.js?compression=gzip&label=gzip%20size:%20JS)
 [![NPM](https://img.shields.io/npm/l/@vuemap/vue-amap)](https://gitee.com/guyangyang/vue-amap)
 [![star](https://gitee.com/guyangyang/vue-amap/badge/star.svg?theme=dark)](https://gitee.com/guyangyang/vue-amap/stargazers)
+[![GitHub Repo stars](https://img.shields.io/github/stars/yangyanggu/vue-amap)](https://github.com/yangyanggu/vue-amap)
 
 ## 文档
 **[https://vue-amap.guyixi.cn](https://vue-amap.guyixi.cn)**
