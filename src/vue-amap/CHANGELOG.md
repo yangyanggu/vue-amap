@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.16
+* searchbox组件增加防抖功能
+
 ### @vuemap/vue-amap v2.0.15
 * 升级`@vuemap/district-cluster`依赖
 

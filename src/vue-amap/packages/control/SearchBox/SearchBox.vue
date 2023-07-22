@@ -54,7 +54,11 @@ export default defineComponent({
     },//设置检索语言类型，默认中文 'zh_cn'
     placeholder: {
       type: String
-    }
+    },
+    debounce: {
+      type: Number,
+      default: 100
+    } // 手动复写增加防抖
   },
   data() {
     return {
@@ -81,6 +85,13 @@ export default defineComponent({
       }
       return new Promise<void>((resolve) => {
         this.$parentComponent.plugin(['AMap.AutoComplete'], () => {
+          const debounce = this.debounce;
+          AMap.Autocomplete.prototype.onInPut = function (event){
+            clearTimeout(this._inputTimer);
+            this._inputTimer = setTimeout(() => {
+              this.output && this.autoSearch()
+            }, debounce)
+          }
           this.$amapComponent = new AMap.AutoComplete(options);
           resolve();
         });

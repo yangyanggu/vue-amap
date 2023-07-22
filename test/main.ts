@@ -9,7 +9,7 @@ initAMapApiLoader({
   key: '65b5d1795f0b85ae604b4bf0a0b046d4',
   securityJsCode: 'ce237322c0174f586a9156eeb38a546b',
   version: '2.0',
-  plugins: ['AMap.3DTilesLayer'],
+  plugins: ['AMap.3DTilesLayer', 'AMap.AutoComplete'],
   Loca:{
     version: '2.0'
   },
