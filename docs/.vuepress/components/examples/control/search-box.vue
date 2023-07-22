@@ -6,6 +6,7 @@
     >
       <el-amap-search-box
         :visible="visible"
+        :debounce="1000"
         @select="selectPoi"
         @choose="choosePoi"
       />
@@ -17,9 +18,6 @@
     </button>
   </div>
 </template>
-
-<style>
-</style>
 
 <script lang="ts">
 import {defineComponent} from "vue";
@@ -46,3 +44,6 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+</style>
