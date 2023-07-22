@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.17
+* 解决打包后style.css文件目录变更问题
+
 ### @vuemap/vue-amap v2.0.16
 * searchbox组件增加防抖功能
 

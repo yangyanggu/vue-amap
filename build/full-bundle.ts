@@ -25,7 +25,7 @@ export const buildFull = (pkgRoot: string, minify: boolean) => async () => {
     input: resolve(pkgRoot, 'index.ts'),
     plugins: [
       await MapAlias(),
-      scss({output: resolve(pkgRoot, 'dist/dist/style.css')}),
+      scss({fileName: 'style.css'}),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
       }),

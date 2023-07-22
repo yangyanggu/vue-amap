@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "description": "高德地图vue3版本封装",
   "keywords": [
     "vue-amap",
