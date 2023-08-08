@@ -17,7 +17,6 @@
     "types": ["@vuepress/client/types"]
   },
   "include": [
-    "../../amap.d.ts",
-    "../../shims-vue.d.ts"
+    "../../typings",
   ]
 }

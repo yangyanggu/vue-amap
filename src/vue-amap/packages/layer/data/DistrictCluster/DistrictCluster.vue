@@ -1,4 +1,5 @@
 <script lang="ts">
+import './addProcess';
 import {defineComponent} from "vue";
 import {DistrictCluster} from "@vuemap/district-cluster";
 import {registerMixin} from '@vuemap/vue-amap-util';

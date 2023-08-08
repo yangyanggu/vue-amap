@@ -18,8 +18,7 @@
   },
   "include": [
     "src",
-    "amap.d.ts",
-    "shims-vue.d.ts"
+    "typings"
   ],
   "exclude": ["node_modules", "**/__test?__", "**/dist"]
 }
