@@ -15,5 +15,9 @@ declare module '@vue/runtime-core' {
     observer ?: MutationObserver | null
     customCoordsCenter ?: any
     $text ?: any
+    register: any,
+    mapEntity: any,
+    needInitComponents: any,
+    addChildComponent: any
   }
 }

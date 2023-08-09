@@ -132,14 +132,14 @@ importers:
   docs:
     dependencies:
       '@vuemap/vue-amap':
-        specifier: 2.0.17
-        version: 2.0.17(vue@3.3.4)
+        specifier: 2.0.18
+        version: 2.0.18(vue@3.3.4)
       '@vuemap/vue-amap-extra':
         specifier: 2.0.6
-        version: 2.0.6(@vuemap/vue-amap@2.0.17)(vue@3.3.4)
+        version: 2.0.6(@vuemap/vue-amap@2.0.18)(vue@3.3.4)
       '@vuemap/vue-amap-loca':
         specifier: 2.0.5
-        version: 2.0.5(@vuemap/vue-amap@2.0.17)(vue@3.3.4)
+        version: 2.0.5(@vuemap/vue-amap@2.0.18)(vue@3.3.4)
       '@vueuse/core':
         specifier: 10.2.1
         version: 10.2.1(vue@3.3.4)
@@ -186,6 +186,9 @@ importers:
       '@vuemap/amap-jsapi-loader':
         specifier: 1.0.3
         version: 1.0.3
+      '@vuemap/amap-xyz-layer':
+        specifier: 0.0.4
+        version: 0.0.4
       '@vuemap/district-cluster':
         specifier: 0.0.9
         version: 0.0.9
@@ -460,7 +463,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-    dev: true
 
   /@babel/types@7.21.5:
     resolution: {integrity: sha512-m4AfNvVF2mVC/F7fDEdH2El3HzUg9It/XsCxZiOTTA3m3qYfcSVSbTfM6Q9xG+hYDniZssYhlXKKUMD5m8tF4Q==}
@@ -3006,6 +3008,15 @@ packages:
     resolution: {integrity: sha512-GdRWm7IAto18TJLySjm8JehNPlvYW8cNaqqnb1CQHvpr7k3zkGdvCrv+7H/Op1HaLMCt4LQsUjEAkiAqUfqZ7A==}
     dev: false
 
+  /@vuemap/amap-xyz-layer@0.0.4:
+    resolution: {integrity: sha512-dyVJDbUmy6KzYDO5uKCbB0CzEu7VOtQnVDSy8n1ozpcqHffvXKtLsOBgmWncxMdpPvSMEF/PWf5lBFaJi6iwJQ==}
+    engines: {node: '>= 16'}
+    dependencies:
+      earcut: 2.2.4
+      gl-matrix: 3.3.0
+      viewport-mercator-project: 6.2.3
+    dev: false
+
   /@vuemap/district-cluster@0.0.5:
     resolution: {integrity: sha512-F1l48MIdDm5s7uIhFud1agd+EnitYrdfeHQgDXAcY3/LgQZ9VY9tQ9S9+rEBe7AAT3zD3Bhncl4jkawEKwlYyA==}
     engines: {node: '>= 16'}
@@ -3047,7 +3058,7 @@ packages:
       three: 0.143.0
     dev: false
 
-  /@vuemap/vue-amap-extra@2.0.6(@vuemap/vue-amap@2.0.17)(vue@3.3.4):
+  /@vuemap/vue-amap-extra@2.0.6(@vuemap/vue-amap@2.0.18)(vue@3.3.4):
     resolution: {integrity: sha512-SyUUr/M7RcNAZqoZkC8X7oxaRK++iOCDk1pwNncGWvrUJmUYpooGLdtXpup1IvAbrKUA18Z5DQQxD5z6f66V4A==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
@@ -3056,7 +3067,7 @@ packages:
       '@tweenjs/tween.js': 18.6.4
       '@vuemap/layer-3dtiles': 0.0.7(@vuemap/three-layer@0.0.5)
       '@vuemap/three-layer': 0.0.5
-      '@vuemap/vue-amap': 2.0.17(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.18(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       color: 4.2.3
       lodash-es: 4.17.21
@@ -3064,13 +3075,13 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.17)(vue@3.3.4):
+  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.18)(vue@3.3.4):
     resolution: {integrity: sha512-2DFjkD2Z79EUIVltuOFSZJY1Rqk0wzeVIRQXpr/G0M9+lZ3I6T2zBuTbOl4mUBqR3SnGuUI1zsLNHYucmjyaWw==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
       vue: '>=3.2.0'
     dependencies:
-      '@vuemap/vue-amap': 2.0.17(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.18(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       vue: 3.3.4
     dev: false
@@ -3093,12 +3104,13 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap@2.0.17(vue@3.3.4):
-    resolution: {integrity: sha512-nPyWnpQZ2+bmD+CKp237pa7Vs80TCx2v5W1rr0eS/4scbvshMyAoTZdWGKOUMNwfZDR42AW6AQAnq2bPuobQHA==}
+  /@vuemap/vue-amap@2.0.18(vue@3.3.4):
+    resolution: {integrity: sha512-R2RwNXJ6oO5UUK+eqp2oaZs5YB0qcLrWN/6gReCMf873dKjxrIl6e8+tfUldWKIb/TK7D63YGxpbaol6N11COw==}
     peerDependencies:
       vue: '>=3.2.0'
     dependencies:
       '@vuemap/amap-jsapi-loader': 1.0.3
+      '@vuemap/amap-xyz-layer': 0.0.4
       '@vuemap/district-cluster': 0.0.9
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       lodash-es: 4.17.21
@@ -4666,7 +4678,6 @@ packages:
 
   /earcut@2.2.4:
     resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
-    dev: true
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -5645,6 +5656,10 @@ packages:
     resolution: {integrity: sha512-Ln0UQDlxH1BapMu3GPtf7CuYNwRZf2gwCuPqbyG6pB8WfmFpzqcy4xtAaAMUhnNqjMKTiCPZG2oMT3YSx8U2NA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /gl-matrix@3.3.0:
+    resolution: {integrity: sha512-COb7LDz+SXaHtl/h4LeaFcNdJdAQSDeVqjiIihSXNrkWObZLhDI4hIkZC11Aeqp7bcE72clzB0BnDXr2SmslRA==}
+    dev: false
 
   /glob-parent@3.1.0:
     resolution: {integrity: sha512-E8Ak/2+dZY6fnzlR7+ueWvhsH1SjHr4jjss4YS/h4py44jY9MhK/VFdaZJAWDz6BbL21KeteKxFSFpq8OS5gVA==}
@@ -7994,7 +8009,6 @@ packages:
 
   /regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
-    dev: true
 
   /regex-not@1.0.2:
     resolution: {integrity: sha512-J6SDjUgDxQj5NusnOtdFxDwN/+HWykR8GELwctJ7mdqhcyy1xEc4SRFHUXvxTp661YaVKAjfRLZ9cCqS6tn32A==}
@@ -9170,6 +9184,13 @@ packages:
     resolution: {integrity: sha512-jdBB2FrWvQC/pnPtIqcLsMaQgjhdb6B7tk1MMyTKapox+tQZbdRP4uLxu/JY0t7fbfDCUMnuelzEYv5GsxHhdg==}
     engines: {node: '>= 0.10'}
     dev: true
+
+  /viewport-mercator-project@6.2.3:
+    resolution: {integrity: sha512-QQb0/qCLlP4DdfbHHSWVYXpghB2wkLIiiZQnoelOB59mXKQSyZVxjreq1S+gaBJFpcGkWEcyVtre0+2y2DTl/Q==}
+    dependencies:
+      '@babel/runtime': 7.21.5
+      gl-matrix: 3.3.0
+    dev: false
 
   /vinyl-fs@3.0.3:
     resolution: {integrity: sha512-vIu34EkyNyJxmP0jscNzWBSygh7VWhqun6RmqVfXePrOwi9lhvRs//dOaGOTRUQr4tx7/zd26Tk5WeSVZitgng==}

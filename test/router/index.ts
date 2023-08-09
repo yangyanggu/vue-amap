@@ -45,6 +45,7 @@ import ThreePolygon from '../views/three/Polygon.vue'
 import MouseTool from "../views/util/MouseTool.vue";
 import ThreeTiles3d from "../views/three/Tiles3d.vue";
 import DistrictCluster from "../views/layer/DistrictCluster.vue";
+import CustomXyz from "../views/layer/CustomXyz.vue";
 
 export const routes = [
   {path: '/',name: '地图', component: Map},
@@ -58,6 +59,7 @@ export const routes = [
   {path: '/util/districtCluster', name: '区划聚合图层', component: DistrictCluster},
   {path: '/layer/official',name: '官方图层', component: Official},
   {path: '/layer/standard',name: '标准图层', component: Standard},
+  {path: '/layer/customXyz', name: '自定义瓦片图层', component: CustomXyz},
   {path: '/loca/grid',name: 'loca网格图', component: Grid},
   {path: '/loca/heatmap',name: 'loca热力图', component: HeatMap},
   {path: '/loca/heatmapbuffer',name: 'loca热力图BUFFER', component: HeatMapBuffer},

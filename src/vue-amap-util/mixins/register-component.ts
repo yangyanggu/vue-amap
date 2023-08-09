@@ -30,7 +30,7 @@ export default defineComponent({
   emits: ['init'],
   data() {
     return {
-      needInitComponents: [] as (ComponentPublicInstance & customComponent)[],
+      needInitComponents: [] as (ComponentPublicInstance)[],
       unwatchFns: [] as WatchStopHandle[],
       propsRedirect: {},
       converters: {},
@@ -163,12 +163,12 @@ export default defineComponent({
     },
 
     lazyRegister(){
-      const $parent = this.parentInstance as (ComponentPublicInstance & customComponent);
+      const $parent = this.parentInstance as (ComponentPublicInstance);
       if($parent && $parent.addChildComponent){
         $parent.addChildComponent(this);
       }
     },
-    addChildComponent(component : ComponentPublicInstance & customComponent){
+    addChildComponent(component : ComponentPublicInstance){
       this.needInitComponents.push(component);
     },
     createChildren(){

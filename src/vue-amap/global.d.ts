@@ -1,5 +1,7 @@
 // GlobalComponents for Volar
 
+import ElAmapLayerCustomXyz from "./packages/layer/data/CustomXyz";
+
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElAmap: typeof import('@vuemap/vue-amap')['ElAmap'],
@@ -45,7 +47,8 @@ declare module '@vue/runtime-core' {
     ElAmapLayerTiles3d: typeof import('@vuemap/vue-amap')['ElAmapLayerTiles3d'],
     ElAmapLayerVideo: typeof import('@vuemap/vue-amap')['ElAmapLayerVideo'],
     ElAmapMouseTool: typeof import('@vuemap/vue-amap')['ElAmapMouseTool'],
-    ElAmapLayerDistrictCluster: typeof import('@vuemap/vue-amap')['ElAmapLayerDistrictCluster']
+    ElAmapLayerDistrictCluster: typeof import('@vuemap/vue-amap')['ElAmapLayerDistrictCluster'],
+    ElAmapLayerCustomXyz: typeof import('@vuemap/vue-amap')['ElAmapLayerCustomXyz']
   }
 }
 

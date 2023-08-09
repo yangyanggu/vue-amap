@@ -44,6 +44,7 @@ import {ElAmapCircleMarker} from './packages/marker/CircleMarker'
 import {ElAmapLayerVideo} from "./packages/layer/data/Video"
 import {ElAmapMouseTool} from './packages/util/MouseTool'
 import {ElAmapLayerDistrictCluster} from './packages/layer/data/DistrictCluster'
+import {ElAmapLayerCustomXyz} from './packages/layer/data/CustomXyz'
 
 import type { Plugin } from 'vue'
 
@@ -93,5 +94,6 @@ export default [
   ElAmapCircleMarker,
   ElAmapLayerVideo,
   ElAmapMouseTool,
-  ElAmapLayerDistrictCluster
+  ElAmapLayerDistrictCluster,
+  ElAmapLayerCustomXyz
 ] as Plugin[]

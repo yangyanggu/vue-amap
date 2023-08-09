@@ -27,10 +27,10 @@ export function initMapApi(){
 ```
 
 #### 2. 创建Nuxt的`mapLoaded.js`插件
-需要创建插件处理process对象
+需要创建插件处理process对象，从`2.0.18`版本开始不再需要该处理方案
 ```javascript
-if(typeof window !== 'undefined' && window.process){
-  window.process.env = window.process.env || {}
+if(typeof process!== 'undefined'){
+    process.env = process.env || {}
 }
 export default defineNuxtPlugin((nuxtApp) => {
 })
