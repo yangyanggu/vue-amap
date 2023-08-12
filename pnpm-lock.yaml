@@ -132,14 +132,14 @@ importers:
   docs:
     dependencies:
       '@vuemap/vue-amap':
-        specifier: 2.0.18
-        version: 2.0.18(vue@3.3.4)
+        specifier: 2.0.19
+        version: 2.0.19(vue@3.3.4)
       '@vuemap/vue-amap-extra':
         specifier: 2.0.6
-        version: 2.0.6(@vuemap/vue-amap@2.0.18)(vue@3.3.4)
+        version: 2.0.6(@vuemap/vue-amap@2.0.19)(vue@3.3.4)
       '@vuemap/vue-amap-loca':
         specifier: 2.0.5
-        version: 2.0.5(@vuemap/vue-amap@2.0.18)(vue@3.3.4)
+        version: 2.0.5(@vuemap/vue-amap@2.0.19)(vue@3.3.4)
       '@vueuse/core':
         specifier: 10.2.1
         version: 10.2.1(vue@3.3.4)
@@ -187,8 +187,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3
       '@vuemap/amap-xyz-layer':
-        specifier: 0.0.4
-        version: 0.0.4
+        specifier: 0.0.7
+        version: 0.0.7
       '@vuemap/district-cluster':
         specifier: 0.0.9
         version: 0.0.9
@@ -1019,6 +1019,18 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@math.gl/core@3.6.3:
+    resolution: {integrity: sha512-jBABmDkj5uuuE0dTDmwwss7Cup5ZwQ6Qb7h1pgvtkEutTrhkcv8SuItQNXmF45494yIHeoGue08NlyeY6wxq2A==}
+    dependencies:
+      '@babel/runtime': 7.21.5
+      '@math.gl/types': 3.6.3
+      gl-matrix: 3.4.3
+    dev: false
+
+  /@math.gl/types@3.6.3:
+    resolution: {integrity: sha512-3uWLVXHY3jQxsXCr/UCNPSc2BG0hNUljhmOBt9l+lNFDp7zHgm0cK2Tw4kj2XfkJy4TgwZTBGwRDQgWEbLbdTA==}
+    dev: false
 
   /@mdit-vue/plugin-component@0.12.0:
     resolution: {integrity: sha512-LrwV3f0Y6H7b7m/w1Y3bkGuR3HOiBK4QiHHW3HuRMza6MZodDQbj8Baik5/V5GiSg1/ltijS1CymVcycd1EfTw==}
@@ -3008,13 +3020,13 @@ packages:
     resolution: {integrity: sha512-GdRWm7IAto18TJLySjm8JehNPlvYW8cNaqqnb1CQHvpr7k3zkGdvCrv+7H/Op1HaLMCt4LQsUjEAkiAqUfqZ7A==}
     dev: false
 
-  /@vuemap/amap-xyz-layer@0.0.4:
-    resolution: {integrity: sha512-dyVJDbUmy6KzYDO5uKCbB0CzEu7VOtQnVDSy8n1ozpcqHffvXKtLsOBgmWncxMdpPvSMEF/PWf5lBFaJi6iwJQ==}
+  /@vuemap/amap-xyz-layer@0.0.7:
+    resolution: {integrity: sha512-gmme3hjZuADGpdnT/FGE94bN09goJJRayWHGND/1FzOboFMceyfoWs45+beIQFrR6w+0HsjfBssPWCXc+UvIiA==}
     engines: {node: '>= 16'}
     dependencies:
+      '@math.gl/core': 3.6.3
       earcut: 2.2.4
-      gl-matrix: 3.3.0
-      viewport-mercator-project: 6.2.3
+      gl-matrix: 3.4.3
     dev: false
 
   /@vuemap/district-cluster@0.0.5:
@@ -3058,7 +3070,7 @@ packages:
       three: 0.143.0
     dev: false
 
-  /@vuemap/vue-amap-extra@2.0.6(@vuemap/vue-amap@2.0.18)(vue@3.3.4):
+  /@vuemap/vue-amap-extra@2.0.6(@vuemap/vue-amap@2.0.19)(vue@3.3.4):
     resolution: {integrity: sha512-SyUUr/M7RcNAZqoZkC8X7oxaRK++iOCDk1pwNncGWvrUJmUYpooGLdtXpup1IvAbrKUA18Z5DQQxD5z6f66V4A==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
@@ -3067,7 +3079,7 @@ packages:
       '@tweenjs/tween.js': 18.6.4
       '@vuemap/layer-3dtiles': 0.0.7(@vuemap/three-layer@0.0.5)
       '@vuemap/three-layer': 0.0.5
-      '@vuemap/vue-amap': 2.0.18(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.19(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       color: 4.2.3
       lodash-es: 4.17.21
@@ -3075,13 +3087,13 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.18)(vue@3.3.4):
+  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.19)(vue@3.3.4):
     resolution: {integrity: sha512-2DFjkD2Z79EUIVltuOFSZJY1Rqk0wzeVIRQXpr/G0M9+lZ3I6T2zBuTbOl4mUBqR3SnGuUI1zsLNHYucmjyaWw==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
       vue: '>=3.2.0'
     dependencies:
-      '@vuemap/vue-amap': 2.0.18(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.19(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       vue: 3.3.4
     dev: false
@@ -3104,13 +3116,13 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap@2.0.18(vue@3.3.4):
-    resolution: {integrity: sha512-R2RwNXJ6oO5UUK+eqp2oaZs5YB0qcLrWN/6gReCMf873dKjxrIl6e8+tfUldWKIb/TK7D63YGxpbaol6N11COw==}
+  /@vuemap/vue-amap@2.0.19(vue@3.3.4):
+    resolution: {integrity: sha512-DxJhH2Q3bQlHgs5zyy7iXk6Htf1EEjvT1jYGXEAsCbUf/P6aF56S779y/jeLFCHN3lf2699KkWot3rSsvcO5mQ==}
     peerDependencies:
       vue: '>=3.2.0'
     dependencies:
       '@vuemap/amap-jsapi-loader': 1.0.3
-      '@vuemap/amap-xyz-layer': 0.0.4
+      '@vuemap/amap-xyz-layer': 0.0.7
       '@vuemap/district-cluster': 0.0.9
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       lodash-es: 4.17.21
@@ -5657,8 +5669,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /gl-matrix@3.3.0:
-    resolution: {integrity: sha512-COb7LDz+SXaHtl/h4LeaFcNdJdAQSDeVqjiIihSXNrkWObZLhDI4hIkZC11Aeqp7bcE72clzB0BnDXr2SmslRA==}
+  /gl-matrix@3.4.3:
+    resolution: {integrity: sha512-wcCp8vu8FT22BnvKVPjXa/ICBWRq/zjFfdofZy1WSpQZpphblv12/bOQLBC1rMM7SGOFS9ltVmKOHil5+Ml7gA==}
     dev: false
 
   /glob-parent@3.1.0:
@@ -9184,13 +9196,6 @@ packages:
     resolution: {integrity: sha512-jdBB2FrWvQC/pnPtIqcLsMaQgjhdb6B7tk1MMyTKapox+tQZbdRP4uLxu/JY0t7fbfDCUMnuelzEYv5GsxHhdg==}
     engines: {node: '>= 0.10'}
     dev: true
-
-  /viewport-mercator-project@6.2.3:
-    resolution: {integrity: sha512-QQb0/qCLlP4DdfbHHSWVYXpghB2wkLIiiZQnoelOB59mXKQSyZVxjreq1S+gaBJFpcGkWEcyVtre0+2y2DTl/Q==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      gl-matrix: 3.3.0
-    dev: false
 
   /vinyl-fs@3.0.3:
     resolution: {integrity: sha512-vIu34EkyNyJxmP0jscNzWBSygh7VWhqun6RmqVfXePrOwi9lhvRs//dOaGOTRUQr4tx7/zd26Tk5WeSVZitgng==}

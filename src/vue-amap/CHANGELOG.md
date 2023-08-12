@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.19
+* 升级自定义瓦片图层依赖，增加海拔功能，可以配合loca面图层实现凸起的瓦片能力，详情见文档示例
+
 ### @vuemap/vue-amap v2.0.18
 * 解决部分开发环境加载组件后提示`POLYGON_CLIPPING_MAX_QUEUE_SIZE`错误
 * 增加自定义纠偏瓦片图层，该图层支持加载`wgs84` `gcj02` `bd09`三种坐标系瓦片

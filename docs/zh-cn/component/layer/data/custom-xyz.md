@@ -27,12 +27,14 @@ examples/layer/data/custom-xyz
 | 名称           | 类型                           | 说明                                                                                                 |
 |--------------|------------------------------|----------------------------------------------------------------------------------------------------|
 | url          | string                       | 瓦片地址，支持 {s} {x} {y} {z}，示例：`http://webst0{s}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}` |
-| subdomains   | string[]                     | 子域名数组，当url中设置{s}后，该属性必填，例如：`['1','2','3']`                                                           | 
+| subdomains   | string[]                     | 子域名数组，当url中设置{s}后，该属性必填，例如：`['1','2','3']`                                                         | 
 | tileType     | 'xyz' \| 'bd09'              | 瓦片分割类型，默认是`xyz`，xyz代表瓦片是编号是从左上角开始，百度瓦片是由中间开始，所以需要区分普通瓦片还是百度                                        |
 | proj         | 'wgs84' \| 'gcj02' \| 'bd09' | 瓦片使用的坐标系，默认是`gcj02`                                                                                |
 | debug        | boolean                      | 开启debug后瓦片上将显示瓦片编号                                                                                 |
 | cacheSize    | number                       | 瓦片缓存数量，默认-1，不限制缓存瓦片数                                                                               |
 | extraOptions | Object                       | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖                                              |
+| tileMaxZoom  | number                       | 瓦片在服务器的最大层级，当地图zoom超过该层级后直接使用该层级作为做大层级瓦片，默认18                                                      |
+| altitude     | number                       | 加载的瓦片海拔，设置该值后，在3D模式下瓦片将浮空，默认：0                                                                     |
 
 ## 动态属性
 支持响应式。

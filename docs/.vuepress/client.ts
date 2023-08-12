@@ -16,7 +16,7 @@ export default defineClientConfig({
         Loca: {
           version: '2.0.0'
         },
-        plugins: ['AMap.HawkEye']
+        plugins: ['AMap.HawkEye', 'AMap.DistrictSearch']
       })
     }
   }

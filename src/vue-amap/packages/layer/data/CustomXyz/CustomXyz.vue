@@ -51,6 +51,12 @@ export default defineComponent({
     debug: {
       type: Boolean,
       default: false
+    },
+    tileMaxZoom: {
+      type: Number
+    },
+    altitude: {
+      type: Number
     }
   },
   data() {
