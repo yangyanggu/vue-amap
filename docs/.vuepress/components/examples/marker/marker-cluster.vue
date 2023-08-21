@@ -32,7 +32,7 @@ export default defineComponent({
     return {
       center: [104.937478,35.439575],
       zoom: 5,
-      points: Object.freeze(China),
+      points: China,
       visible: true
     }
   },
