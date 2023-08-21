@@ -132,14 +132,14 @@ importers:
   docs:
     dependencies:
       '@vuemap/vue-amap':
-        specifier: 2.0.19
-        version: 2.0.19(vue@3.3.4)
+        specifier: 2.0.20
+        version: 2.0.20(vue@3.3.4)
       '@vuemap/vue-amap-extra':
         specifier: 2.0.6
-        version: 2.0.6(@vuemap/vue-amap@2.0.19)(vue@3.3.4)
+        version: 2.0.6(@vuemap/vue-amap@2.0.20)(vue@3.3.4)
       '@vuemap/vue-amap-loca':
         specifier: 2.0.5
-        version: 2.0.5(@vuemap/vue-amap@2.0.19)(vue@3.3.4)
+        version: 2.0.5(@vuemap/vue-amap@2.0.20)(vue@3.3.4)
       '@vueuse/core':
         specifier: 10.2.1
         version: 10.2.1(vue@3.3.4)
@@ -3070,7 +3070,7 @@ packages:
       three: 0.143.0
     dev: false
 
-  /@vuemap/vue-amap-extra@2.0.6(@vuemap/vue-amap@2.0.19)(vue@3.3.4):
+  /@vuemap/vue-amap-extra@2.0.6(@vuemap/vue-amap@2.0.20)(vue@3.3.4):
     resolution: {integrity: sha512-SyUUr/M7RcNAZqoZkC8X7oxaRK++iOCDk1pwNncGWvrUJmUYpooGLdtXpup1IvAbrKUA18Z5DQQxD5z6f66V4A==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
@@ -3079,7 +3079,7 @@ packages:
       '@tweenjs/tween.js': 18.6.4
       '@vuemap/layer-3dtiles': 0.0.7(@vuemap/three-layer@0.0.5)
       '@vuemap/three-layer': 0.0.5
-      '@vuemap/vue-amap': 2.0.19(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.20(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       color: 4.2.3
       lodash-es: 4.17.21
@@ -3087,13 +3087,13 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.19)(vue@3.3.4):
+  /@vuemap/vue-amap-loca@2.0.5(@vuemap/vue-amap@2.0.20)(vue@3.3.4):
     resolution: {integrity: sha512-2DFjkD2Z79EUIVltuOFSZJY1Rqk0wzeVIRQXpr/G0M9+lZ3I6T2zBuTbOl4mUBqR3SnGuUI1zsLNHYucmjyaWw==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
       vue: '>=3.2.0'
     dependencies:
-      '@vuemap/vue-amap': 2.0.19(vue@3.3.4)
+      '@vuemap/vue-amap': 2.0.20(vue@3.3.4)
       '@vuemap/vue-amap-util': 2.0.6(vue@3.3.4)
       vue: 3.3.4
     dev: false
@@ -3116,8 +3116,8 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vuemap/vue-amap@2.0.19(vue@3.3.4):
-    resolution: {integrity: sha512-DxJhH2Q3bQlHgs5zyy7iXk6Htf1EEjvT1jYGXEAsCbUf/P6aF56S779y/jeLFCHN3lf2699KkWot3rSsvcO5mQ==}
+  /@vuemap/vue-amap@2.0.20(vue@3.3.4):
+    resolution: {integrity: sha512-DKdidpGvrhZFa+xzkpb8bZ9mpaQhFixFmUrZkoF0tWB/7mrm/jKZ9YZiYzLiLxBf+1pWHg97pWkrh06wMUGgmw==}
     peerDependencies:
       vue: '>=3.2.0'
     dependencies:
