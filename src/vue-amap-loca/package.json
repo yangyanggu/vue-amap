@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-loca",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "amap loca for vue3",
   "keywords": [
     "vue-amap",
@@ -40,7 +40,7 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@vuemap/vue-amap-util": "2.0.6"
+    "@vuemap/vue-amap-util": "2.0.7"
   },
   "devDependencies": {
   },

@@ -1,3 +1,6 @@
+### @vuemap/vue-amap-extra v2.0.7
+* 升级@vuemap/vue-amap-util版本，现在组件在给地图传递数据时会取消proxy和ref，防止后续地图使用对象时会触发循环watch，提高加载性能
+
 ### @vuemap/vue-amap-extra v2.0.6
 * 升级@vuemap/layer-3dtiles 支持region包围盒
 

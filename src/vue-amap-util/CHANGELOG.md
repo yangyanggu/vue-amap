@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.7
+* 所有传递给地图对象的数据全部取消proxy和ref处理，避免地图内部修改对象引起对象无限watch
+
 ### @vuemap/vue-amap v2.0.6
 * 解决VITE热更新失效问题
 

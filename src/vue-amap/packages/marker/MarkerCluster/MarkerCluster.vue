@@ -1,5 +1,5 @@
 <script lang="ts">
-import {defineComponent, toRaw} from "vue";
+import {defineComponent} from "vue";
 import {registerMixin} from '@vuemap/vue-amap-util';
 
 export default defineComponent({
@@ -44,7 +44,7 @@ export default defineComponent({
     __initComponent(options) {
       return new Promise<void>((resolve) => {
         AMap.plugin(['AMap.MarkerCluster'], () => {
-          const points = toRaw(options.points);
+          const points = options.points;
           delete options.points;
           this.$amapComponent = new AMap.MarkerCluster(this.$parentComponent, points, options);
           resolve();
@@ -59,7 +59,7 @@ export default defineComponent({
     },
     __points(value) {
       if (this.$amapComponent) {
-        this.$amapComponent.setData(toRaw(value));
+        this.$amapComponent.setData(value);
       }
     }
   },

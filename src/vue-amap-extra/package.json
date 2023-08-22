@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-extra",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "@vuemap/vue-amap扩展库，包含threejs相关图层",
   "keywords": [
     "vue-amap",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@vuemap/vue-amap-util": "2.0.6",
+    "@vuemap/vue-amap-util": "2.0.7",
     "@tweenjs/tween.js": "^18.6.4",
     "lodash-es": "^4.17.21",
     "three": "0.143.0",
