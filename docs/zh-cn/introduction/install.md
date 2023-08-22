@@ -16,7 +16,7 @@ head:
 推荐 npm 安装。
 
 ```
-npm install @vuemap/vue-amap@1 --save
+npm install @vuemap/vue-amap@legacy-vue3 --save
 ```
 
 ## CDN

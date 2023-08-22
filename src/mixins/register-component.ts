@@ -1,4 +1,4 @@
-import {defineComponent} from "vue";
+import {defineComponent, isProxy, toRaw, unref} from "vue";
 import upperCamelCase from 'uppercamelcase';
 import eventHelper from '../utils/event-helper';
 import {convertEventToLowerCase, eventReg} from "../utils/util";
@@ -88,7 +88,7 @@ export default defineComponent({
       if (this.extraOptions) {
         Object.assign(props, this.extraOptions);
       }
-      return Object.keys($props).reduce((res, _key) => {
+      const result = Object.keys($props).reduce((res, _key) => {
         let key = _key;
         const propsValue = this.convertSignalProp(key, $props[key]);
         if (propsValue === undefined) return res;
@@ -96,7 +96,19 @@ export default defineComponent({
         props[key] = propsValue;
         return res;
       }, props);
+      Object.keys(result).forEach(key => {
+        result[key] = this.convertProxyToRaw(result[key]);
+      })
+      return result;
     },
+
+    convertProxyToRaw(value: any){
+      if(isProxy(value)){
+        return toRaw(value);
+      }
+      return unref(value);
+    },
+
 
     convertSignalProp(key, sourceData) {
       if (this.converters && this.converters[key]) {
@@ -140,7 +152,7 @@ export default defineComponent({
         }
         // watch props
         const unwatch = this.$watch(prop, nv => {
-          handleFun.call(this.$amapComponent, this.convertSignalProp(prop, nv));
+          handleFun.call(this.$amapComponent, this.convertProxyToRaw(this.convertSignalProp(prop, nv)));
         }, watchOptions);
 
         // collect watchers for destroyed

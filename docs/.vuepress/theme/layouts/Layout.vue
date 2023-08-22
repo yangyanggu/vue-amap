@@ -12,7 +12,7 @@ const publishUrl = `https://img.shields.io/static/v1?label=更新日期&message=
           href="https://github.com/yangyanggu/vue-amap"
           target="_blank"
         >
-          <img src="https://img.shields.io/npm/v/@vuemap/vue-amap/next">
+          <img src="https://img.shields.io/npm/v/@vuemap/vue-amap/legacy-vue3">
         </a>
         <a
           href="https://github.com/yangyanggu/vue-amap"

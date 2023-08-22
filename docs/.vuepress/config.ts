@@ -7,15 +7,15 @@ import {containerPlugin} from './plugin/demoPlugin'
 import {sitemapPlugin} from './plugin/sitemapPlugin'
 import {localTheme} from "./theme";
 
-
+const basePath = '/vue-amap/'
 export default defineUserConfig({
   // 站点配置
-  base: '/vue-amap/',
+  base: basePath,
   lang: 'zh-CN',
   title: '@vuemap/vue-amap',
   description: '高德地图2.0版本的vue3对应封装',
   head: [
-    ['link', {rel: 'stylesheet', type: 'text/css' ,href: '/css/global.css'}],
+    ['link', {rel: 'stylesheet', type: 'text/css' ,href: `${basePath}css/global.css`}],
     ['script', {}, `var _hmt = _hmt || [];
       (function() {
         var hm = document.createElement("script");

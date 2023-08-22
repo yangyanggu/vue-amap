@@ -172,8 +172,8 @@ importers:
   docs:
     dependencies:
       '@vuemap/vue-amap':
-        specifier: 1.1.23
-        version: 1.1.23(vue@3.2.37)
+        specifier: 1.1.24
+        version: 1.1.24(vue@3.2.37)
       '@vueuse/core':
         specifier: 7.2.2
         version: 7.2.2(vue@3.2.37)
@@ -2294,8 +2294,8 @@ packages:
       three: 0.143.0
     dev: false
 
-  /@vuemap/vue-amap@1.1.23(vue@3.2.37):
-    resolution: {integrity: sha512-jJjD9+rDbfiEgYw8xlCL9nlAcaR+OKJQB87sASmVegUghlqHkc3eNOILUbXYVo1dZxuFtta5VFT5a+wTJGwMJA==}
+  /@vuemap/vue-amap@1.1.24(vue@3.2.37):
+    resolution: {integrity: sha512-DAVrSZjwoRkQD7Eb5u2H1cKWKP/AEx3dil2J/i+iSJmOyCHDF4wJx2/u8S/P2iwO7P251C4Kg9INCb6Co67pkg==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
