@@ -80,6 +80,7 @@ export default {
       const _this = this;
       this.customCoords = this.$parentComponent.customCoords;
       let center = this.$parentComponent.getCenter();
+      this.center = center;
       this.customCoords.lngLatsToCoords([center.toArray()]);// 强制先处理一次经纬度，解决不初始化的话会导致后续转换失败
       return new Promise((resolve) => {
         options.init = function(gl) {
@@ -171,6 +172,7 @@ export default {
       Cache.clear();
     },
     convertLngLat(lnglat) {
+      this.customCoords.setCenter(this.center);
       let data = this.customCoords.lngLatsToCoords([
         lnglat
       ]);
