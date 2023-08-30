@@ -1,3 +1,3 @@
-if(typeof process!== 'undefined'){
-    process.env = process.env || {}
+if(typeof process!== 'undefined' && typeof process.env === 'undefined'){
+    process.env = {}
 }

@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.22
+* 解决@vue/cli脚手架加载组件库启动报错
+
 ### @vuemap/vue-amap v2.0.21
 * 升级@vuemap/vue-amap-util版本，现在组件在给地图传递数据时会取消proxy和ref，防止后续地图使用对象时会触发循环watch，提高加载性能
 
