@@ -91,6 +91,12 @@ export default defineComponent({
     },
     $$refresh() {
       this.$amapComponent.refreshMap();
+    },
+    $$addPass(pass: any) {
+      this.$amapComponent.addPass(pass);
+    },
+    $$removePass(pass: any) {
+      this.$amapComponent.removePass(pass);
     }
   }
 });

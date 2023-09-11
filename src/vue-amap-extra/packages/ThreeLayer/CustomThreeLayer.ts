@@ -45,7 +45,7 @@ class CustomThreeLayer extends ThreeLayer{
   envMap: any; // HDR的环境贴图
   clickFun: any;
   hoverFun: any;
-  effectComposer: any
+  effectComposer?: EffectComposer;
   renderPass: any
   passNum = 0
   passList = [] as any[]
@@ -65,6 +65,13 @@ class CustomThreeLayer extends ThreeLayer{
         callback()
       }
     }
+    options.onRender = (render, scene, camera) => {
+      if(this.passNum > 0){
+        this.effectComposer?.render()
+      }else{
+        this.renderer?.render(this.scene as Scene, camera as Camera);
+      }
+    }
     super(map, options)
     this.mouse = new Vector2();
   }
@@ -72,14 +79,14 @@ class CustomThreeLayer extends ThreeLayer{
   createEffect() {
     const size = this.renderer?.getSize( new Vector2() );
     this.effectComposer = new EffectComposer( this.renderer as WebGLRenderer );
-    this.effectComposer.setSize( size?.x, size?.y );
-    const renderPass = new ThreeRenderPass( this.scene, this.camera );
-    this.renderPass = renderPass;
-    this.effectComposer.addPass(renderPass);
+    this.effectComposer.setSize( size?.x as number, size?.y as number);
+    // const renderPass = new ThreeRenderPass( this.scene, this.camera );
+    // this.renderPass = renderPass;
+    // this.effectComposer.addPass(renderPass);
   }
 
   addPass(pass: any){
-    this.effectComposer.addPass(pass);
+    this.effectComposer?.addPass(pass);
     this.passNum++;
     this.passList.push(pass);
   }
@@ -89,7 +96,7 @@ class CustomThreeLayer extends ThreeLayer{
     if ( index !== - 1 ) {
       this.passList.splice( index, 1 );
     }
-    this.effectComposer.removePass(pass);
+    this.effectComposer?.removePass(pass);
     this.passNum--;
   }
 

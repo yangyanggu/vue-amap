@@ -22,6 +22,7 @@
         :hdr="hdrOptions"
         :alpha="true"
         :antialias="true"
+        @init="initLayer"
       >
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
@@ -113,6 +114,9 @@ import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
 import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 import ElAmapLocaLine from "@vuemap/vue-amap-loca/packages/LineLayer/LineLayer.vue";
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
+import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
 
 const colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
 export default defineComponent({
@@ -192,6 +196,12 @@ export default defineComponent({
       this.visible = !this.visible;
     },
     initLayer(layer){
+      /*const renderPass = new RenderPass( layer.getScene(), layer.getCamera() );
+      layer.addPass( renderPass );
+
+      const effect1 = new ShaderPass( DotScreenShader );
+      effect1.uniforms[ 'scale' ].value = 4;
+      layer.addPass(effect1);*/
       console.log('init layer: ', layer);
     },
     init(object, $vue){

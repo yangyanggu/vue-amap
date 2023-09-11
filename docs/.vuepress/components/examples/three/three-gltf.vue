@@ -11,6 +11,7 @@
     >
       <el-amap-layer-three
         :hdr="hdrOptions"
+        @init="initLayer"
       >
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
@@ -60,11 +61,11 @@
   </div>
 </template>
 
-<style>
-</style>
-
 <script lang="ts">
 import {defineComponent} from "vue";
+import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
 
 export default defineComponent({
   data() {
@@ -88,6 +89,14 @@ export default defineComponent({
   methods: {
     switchVisible() {
       this.visible = !this.visible;
+    },
+    initLayer(layer) {
+      const renderPass = new RenderPass( layer.getScene(), layer.getCamera() );
+      layer.addPass( renderPass );
+
+      const effect1 = new ShaderPass( DotScreenShader );
+      effect1.uniforms[ 'scale' ].value = 4;
+      layer.addPass(effect1);
     },
     init(object, $vue){
       $vue.$$startAnimations();
@@ -113,3 +122,6 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+</style>

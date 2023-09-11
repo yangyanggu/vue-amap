@@ -135,8 +135,8 @@ importers:
         specifier: 2.0.21
         version: 2.0.21(vue@3.3.4)
       '@vuemap/vue-amap-extra':
-        specifier: 2.0.7
-        version: 2.0.7(@vuemap/vue-amap@2.0.21)(vue@3.3.4)
+        specifier: 2.0.8
+        version: 2.0.8(@vuemap/vue-amap@2.0.21)(vue@3.3.4)
       '@vuemap/vue-amap-loca':
         specifier: 2.0.6
         version: 2.0.6(@vuemap/vue-amap@2.0.21)(vue@3.3.4)
@@ -146,6 +146,9 @@ importers:
       clipboard-copy:
         specifier: 4.0.1
         version: 4.0.1
+      three:
+        specifier: 0.143.0
+        version: 0.143.0
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -3070,8 +3073,8 @@ packages:
       three: 0.143.0
     dev: false
 
-  /@vuemap/vue-amap-extra@2.0.7(@vuemap/vue-amap@2.0.21)(vue@3.3.4):
-    resolution: {integrity: sha512-+wagJfVYK2MW1oL3v2yXMQ+xufFi37UGb7wuY7/9p7SabUOM6ol+JZN8qrbibI8o+KMI0r07oL8pAiPGbp71kg==}
+  /@vuemap/vue-amap-extra@2.0.8(@vuemap/vue-amap@2.0.21)(vue@3.3.4):
+    resolution: {integrity: sha512-fKeOLqws4AIDn1w9bc/Axld41hUgvKdQqMBFT7Q8270PQZUZ/E1iCwv32/W7il9xFdFTe50+3pbz2u7Q6PbTIA==}
     peerDependencies:
       '@vuemap/vue-amap': '>=2.0.0 || 2.0.0-beta'
       vue: '>=3.2.0'

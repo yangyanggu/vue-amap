@@ -81,12 +81,14 @@ const lightTypes = {
 ## ref 可用方法
 提供无副作用的同步帮助方法
 
-函数 | 返回 | 说明
----|---|---|
-$$getInstance() | AMap.CustomLayer | 获取实例
-$$getScene | THREE.Scene | 获取场景对象
-$$getRender | WebGLRenderer | 获取WebGLRenderer对象
-$$refresh |   | 刷新图层
+| 函数              | 参数    | 返回               | 说明                |
+|-----------------|-------|------------------|-------------------|
+| $$getInstance() |       | AMap.CustomLayer | 获取实例              |
+| $$getScene      |       | THREE.Scene      | 获取场景对象            |
+| $$getRender     |       | WebGLRenderer    | 获取WebGLRenderer对象 |
+| $$refresh       |       |                  | 刷新图层              |
+| $$addPass       | 后处理实例 |                  | 添加后处理             |
+| $$removePass    | 后处理实例 |                  | 移除后处理             |
 
 ## 事件
 
