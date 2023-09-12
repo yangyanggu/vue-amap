@@ -51,10 +51,10 @@ initAMapApiLoader({
 
 ## 升级@vuemap/unplugin-resolver
 
-如果项目中使用了```@vuemap/unplugin-resolver```来作为自动导入组件，需要将该插件升级到1.x版本
+如果项目中使用了```@vuemap/unplugin-resolver```来作为自动导入组件，需要将该插件升级到2.x版本
 
 ```shell
-npm i @vuemap/unplugin-resolver@1 -D
+npm i @vuemap/unplugin-resolver@2 -D
 ```
 
 ## 修改所有手动导入
