@@ -37,7 +37,7 @@ export default defineComponent({
     }, // 透明度，默认 1
     alpha: {
       type: Boolean,
-      default: false
+      default: true
     }, // canvas是否包含alpha (透明度)。默认为 false
     antialias: {
       type: Boolean,
@@ -50,6 +50,10 @@ export default defineComponent({
       }
     },
     axesHelper: {
+      type: Boolean,
+      default: false
+    },
+    createCanvas: {
       type: Boolean,
       default: false
     }

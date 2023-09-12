@@ -13,13 +13,14 @@ Attribute | Type | Description
 ---|---|---|
 lights  | Array | 配置灯光数据，具体参数见下面
 hdr | Object | HDR功能配置，具体参数见下面
-alpha | Boolean | canvas是否包含alpha (透明度)。默认为 false
+alpha | Boolean | canvas是否包含alpha (透明度)。默认为 true
 antialias | Boolean | 是否执行抗锯齿。默认为false
 zooms | Array | 支持的缩放级别范围，默认范围 [2-20]
 visible | Boolean | 是否显示，默认 true
 zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：120
 opacity | Number | 透明度，默认 1
 axesHelper | Boolean | 是否开启debug的箭头，默认false
+createCanvas | Boolean | 是否创建新的canvas绘制threejs，默认false
 
 
 ## Events

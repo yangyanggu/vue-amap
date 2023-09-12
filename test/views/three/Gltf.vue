@@ -22,6 +22,7 @@
         :hdr="hdrOptions"
         :alpha="true"
         :antialias="true"
+        :create-canvas="true"
         @init="initLayer"
       >
         <el-amap-three-light-ambient
@@ -196,12 +197,13 @@ export default defineComponent({
       this.visible = !this.visible;
     },
     initLayer(layer){
-      /*const renderPass = new RenderPass( layer.getScene(), layer.getCamera() );
+      const renderPass = new RenderPass( layer.getScene(), layer.getCamera());
+      renderPass.clear = true;
       layer.addPass( renderPass );
 
       const effect1 = new ShaderPass( DotScreenShader );
       effect1.uniforms[ 'scale' ].value = 4;
-      layer.addPass(effect1);*/
+      layer.addPass(effect1);
       console.log('init layer: ', layer);
     },
     init(object, $vue){

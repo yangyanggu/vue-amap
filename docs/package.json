@@ -13,7 +13,7 @@
     "clipboard-copy": "4.0.1",
     "@vuemap/vue-amap": "2.0.21",
     "@vuemap/vue-amap-loca": "2.0.6",
-    "@vuemap/vue-amap-extra": "2.0.8",
+    "@vuemap/vue-amap-extra": "2.0.9",
     "three": "0.143.0",
     "vue": "^3.3.4"
   },

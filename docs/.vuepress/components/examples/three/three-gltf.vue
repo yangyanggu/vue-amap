@@ -11,6 +11,7 @@
     >
       <el-amap-layer-three
         :hdr="hdrOptions"
+        :create-canvas="true"
         @init="initLayer"
       >
         <el-amap-three-light-ambient

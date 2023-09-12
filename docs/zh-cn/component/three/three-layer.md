@@ -31,6 +31,7 @@ hdr | Object | HDR功能配置，具体参数见下面
 alpha | Boolean | canvas是否包含alpha (透明度)。默认为 false
 antialias | Boolean | 是否执行抗锯齿。默认为false
 axesHelper | Boolean | 是否开启debug的箭头，默认false
+createCanvas | Boolean | 是否创建新的canvas绘制threejs，默认false
 
 ## 动态属性
 支持响应式。

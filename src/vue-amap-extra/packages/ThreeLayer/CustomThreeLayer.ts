@@ -16,7 +16,6 @@ import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import {ThreeLayer} from '@vuemap/three-layer'
-import { ThreeRenderPass } from './ThreeRenderPass.js';
 import type { Texture, Camera,
   WebGLRenderer,
   Scene} from 'three';
@@ -27,7 +26,6 @@ interface Options extends ThreeLayerOptions{
   lights?: LightOption[] // 灯光数组
   hdr?: HDROptions // 开启HDR配置
   axesHelper: boolean // 是否开启箭头，用于debug，默认不开启
-
 }
 
 class CustomThreeLayer extends ThreeLayer{
@@ -45,6 +43,7 @@ class CustomThreeLayer extends ThreeLayer{
   envMap: any; // HDR的环境贴图
   clickFun: any;
   hoverFun: any;
+  resizeFun: any;
   effectComposer?: EffectComposer;
   renderPass: any
   passNum = 0
@@ -76,10 +75,18 @@ class CustomThreeLayer extends ThreeLayer{
     this.mouse = new Vector2();
   }
 
+  updateEffectComposerSize() {
+    if(this.effectComposer && this.renderer){
+      const size = this.renderer.getSize( new Vector2() );
+      this.effectComposer.setSize( size.x , size.y);
+    }
+  }
+
   createEffect() {
     const size = this.renderer?.getSize( new Vector2() );
     this.effectComposer = new EffectComposer( this.renderer as WebGLRenderer );
     this.effectComposer.setSize( size?.x as number, size?.y as number);
+
     // const renderPass = new ThreeRenderPass( this.scene, this.camera );
     // this.renderPass = renderPass;
     // this.effectComposer.addPass(renderPass);
@@ -186,13 +193,16 @@ class CustomThreeLayer extends ThreeLayer{
   bindEvents() {
     this.clickFun = bind(this._clickEvent, this);
     this.hoverFun = bind(this._hoverEvent, this);
+    this.resizeFun = bind(this.updateEffectComposerSize, this);
     this.map.on('click', this.clickFun);
     this.map.on('mousemove', this.hoverFun);
+    this.map.on('resize', this.resizeFun);
   }
 
   ubBindEvents() {
     this.map.off('click', this.clickFun);
     this.map.off('mousemove', this.hoverFun);
+    this.map.on('off', this.resizeFun);
   }
 
   _clickEvent(e) {
