@@ -1,3 +1,6 @@
+### @vuemap/vue-amap-extra v2.0.10
+* threelayer后处理渲染时增加时间
+
 ### @vuemap/vue-amap-extra v2.0.9
 * threelayer组件alpha参数默认调整为true
 * threelayer组件增加createCanvas属性，支持创建新的canvas绘制threejs，隔离引擎

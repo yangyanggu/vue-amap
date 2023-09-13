@@ -10,7 +10,8 @@ import {
   LinearFilter,
   Vector2,
   AxesHelper,
-  Raycaster
+  Raycaster,
+    Clock
 } from 'three';
 import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
@@ -48,6 +49,7 @@ class CustomThreeLayer extends ThreeLayer{
   renderPass: any
   passNum = 0
   passList = [] as any[]
+  clock = new Clock()
 
   constructor(map: any, options: Options, callback: () => void) {
     options.onInit = (render,scene) => {
@@ -66,7 +68,7 @@ class CustomThreeLayer extends ThreeLayer{
     }
     options.onRender = (render, scene, camera) => {
       if(this.passNum > 0){
-        this.effectComposer?.render()
+        this.effectComposer?.render(this.clock.getDelta())
       }else{
         this.renderer?.render(this.scene as Scene, camera as Camera);
       }
