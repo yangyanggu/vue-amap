@@ -21,6 +21,11 @@ ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含l
 examples/three/three-gltf
 :::
 
+## 自定义模型添加事件
+::: demo
+examples/three/three-layer-event
+:::
+
 ## 静态属性
 仅且可以初始化配置，不支持响应式。
 
@@ -79,6 +84,12 @@ const lightTypes = {
   SpotLight: THREE.SpotLight // 聚光灯  光线从一个点沿一个方向射出，随着光线照射的变远，光线圆锥体的尺寸也逐渐增大
 };
 ```
+
+### ThreeLayer添加事件
+从`2.0.11`版本开始，three-layer组件开始支持常用的鼠标事件，事件系统内对于组件库的组件会直接触发到各自的组件上，
+而开发自定义添加的物体，如果给它的`userData`属性添加一个`acceptEvent`属性，
+那么threeLayer的射线也会将它纳入计算，如同上面的示例中，只要添加了`mesh.userData.acceptEvent = true`那么该物体也会触发事件，便于后续扩展。
+
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

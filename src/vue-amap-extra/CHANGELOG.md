@@ -1,3 +1,9 @@
+### @vuemap/vue-amap-extra v2.0.11
+* 优化three-layer图层渲染机制
+* three-layer图层添加click  mouseover  mouseout事件，优化three事件系统，支持自定义物体也能触发事件
+* three-layer添加webGLRendererParameters用于初始化WebglRenderer时提供额外参数
+* gltf组件添加useModelCache属性，针对同一个gltf可以提供克隆能力，减少内存使用
+
 ### @vuemap/vue-amap-extra v2.0.10
 * threelayer后处理渲染时增加时间
 

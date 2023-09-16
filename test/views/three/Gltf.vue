@@ -25,6 +25,8 @@
         :create-canvas="true"
         @init="initLayer"
         @click="clickLayer"
+        @mouseover="mouseoverLayer"
+        @mouseout="mouseoutLayer"
       >
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
@@ -227,6 +229,12 @@ export default defineComponent({
     },
     clickLayer(group){
       console.log('click layer: ', group);
+    },
+    mouseoverLayer(group){
+      console.log('mouseoverLayer layer: ', group);
+    },
+    mouseoutLayer(group){
+      console.log('mouseoutLayer layer: ', group);
     },
     init(object, $vue){
       console.log('init gltf: ', object)
