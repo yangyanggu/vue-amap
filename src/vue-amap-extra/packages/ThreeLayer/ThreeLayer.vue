@@ -56,6 +56,10 @@ export default defineComponent({
     createCanvas: {
       type: Boolean,
       default: false
+    },
+    preserveDrawingBuffer: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

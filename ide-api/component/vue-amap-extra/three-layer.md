@@ -25,7 +25,10 @@ createCanvas | Boolean | 是否创建新的canvas绘制threejs，默认false
 
 ## Events
 
-Event Name | Parameters | Description
----|---|---|
+Event Name | Parameters       | Description
+---|------------------|---|
 init | AMap.CustomLayer | 实例初始化结束
+click | Object3D         | 点击图层，获取自定义的物体
+mouseover | Object3D | 移动到自定义的物体上
+mouseout | Object3D | 从自定义的物体上移除
 

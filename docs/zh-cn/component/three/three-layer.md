@@ -32,6 +32,7 @@ alpha | Boolean | canvas是否包含alpha (透明度)。默认为 false
 antialias | Boolean | 是否执行抗锯齿。默认为false
 axesHelper | Boolean | 是否开启debug的箭头，默认false
 createCanvas | Boolean | 是否创建新的canvas绘制threejs，默认false
+preserveDrawingBuffer | Boolean | createCanvas为true时可以配置，preserveDrawingBuffer 如果它的值是true,缓冲区将不会被清零,直到被清除或由作者改写将保留它们的值。默认false
 
 ## 动态属性
 支持响应式。
@@ -96,4 +97,7 @@ const lightTypes = {
 事件 | 参数             | 说明
 ---|----------------|---|
 init | [ThreeLayer](https://github.com/yangyanggu/vue-amap/blob/dev/src/packages/ext/ThreeLayer/ThreeLayer.ts) | 实例初始化结束
+click | Object3D         | 点击图层，获取自定义的物体
+mouseover | Object3D | 移动到自定义的物体上
+mouseout | Object3D | 从自定义的物体上移除
 
