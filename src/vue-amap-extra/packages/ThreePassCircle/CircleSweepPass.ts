@@ -9,9 +9,10 @@ import {
   ShaderMaterial,
   Vector2
 } from 'three'
-import {FullScreenQuad} from 'three/examples/jsm/postprocessing/Pass.js'
+import {FullScreenQuad, Pass} from 'three/examples/jsm/postprocessing/Pass.js'
 import type {
   Scene
+, WebGLRenderer
 } from 'three';
 
 import type {CircleOptions} from "./Type";
@@ -19,7 +20,7 @@ import type {CircleOptions} from "./Type";
 /**
  * @author huaqing / https://github.com/2912401452/
  */
-class CircleSweepPass {
+class CircleSweepPass extends Pass{
   scene: Scene
   camera: any
   center: Vector3
@@ -38,9 +39,13 @@ class CircleSweepPass {
   width = 0
   height = 0
 
-  constructor(renderer: any, scene: Scene, camera, options: CircleOptions) {
+  constructor(renderer: WebGLRenderer, scene: Scene, camera, options: CircleOptions) {
     console.log('renderer.extensions.has( \'WEBGL_depth_texture\' )', renderer.extensions.has( 'WEBGL_depth_texture' ))
-
+    super();
+    const size = new Vector2();
+    renderer.getSize(size);
+    this.width  = size.x;
+    this.height = size.y;
     this.scene = scene;
     this.camera = camera;
     options = options ? options : {};
@@ -57,16 +62,16 @@ class CircleSweepPass {
     this.depthTarget.texture.generateMipmaps = false;
     this.depthTarget.stencilBuffer = false;
     this.depthTarget.depthBuffer = true;
-    this.depthTarget.depthTexture = new DepthTexture();
+    this.depthTarget.depthTexture = new DepthTexture(size.x, size.y);
     this.depthTarget.depthTexture.type = UnsignedShortType;
 
-    this.calCameraVectors();
+    const { topLeftVec, topRightVec, bottomLeftVec, bottomRightVec } = this.calCameraVectors()
+    this.topLeftVec = topLeftVec;
+    this.topRightVec = topRightVec;
+    this.bottomLeftVec = bottomLeftVec;
+    this.bottomRightVec = bottomRightVec;
 
-    const { topLeftVec, topRightVec, bottomLeftVec, bottomRightVec } = this.depthMaterial = this.getDepthMaterial();
-    this.depthMaterial.uniforms[ 'topLeftVec' ].value = topLeftVec;
-    this.depthMaterial.uniforms[ 'topRightVec' ].value = topRightVec;
-    this.depthMaterial.uniforms[ 'bottomLeftVec' ].value = bottomLeftVec;
-    this.depthMaterial.uniforms[ 'bottomRightVec' ].value = bottomRightVec;
+    this.depthMaterial = this.getDepthMaterial();
 
     this.depthMaterial.uniforms[ 'fillColor' ].value = this.fillColor;
 
@@ -215,22 +220,25 @@ class CircleSweepPass {
 
                 void main() {
                     float clipZ = readClipZ( depthTexture, vUv );
-										vec4 depthColor = texture2D( depthTexture, vUv);
+                    vec4 depthColor = texture2D( depthTexture, vUv);
                     vec4 diff = texture2D( colorTexture, vUv);
                     vec3 wP = cameraPos + (cameraVec)*abs(clipZ);
 
                     float dis = distance(wP, center);
                     float circleWidth = outerRadius - innerRadius;
                     if(dis < outerRadius && dis > innerRadius) {
-												gl_FragColor = vec4(mix(diff.xyz, fillColor, 0.5), 1.0);
+                        //gl_FragColor = vec4(mix(diff.xyz, fillColor, 0.5), 1.0);
+                        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
                     }else {
                         gl_FragColor = diff;
+                        //gl_FragColor = vec4(0.0, 0.5, 0.0, 1.0);
                     }
-                    if(depthColor.r == 0.0){
-                      gl_FragColor = vec4(1.0, 0,0.0, 1.0);
-                    }else{
-                      gl_FragColor = vec4(0, 1.0,0.0, 1.0);
-                    }
+                    gl_FragColor = vec4(diff.r, 0.0,0.0, 1.0);;
+                    //if(depthColor.r == 0.0){
+                    //  gl_FragColor = vec4(1.0, 0,0.0, 1.0);
+                    //}else{
+                    //  gl_FragColor = vec4(0, 1.0,0.0, 1.0);
+                    //}
                     //gl_FragColor = vec4(depthColor.r, 0.0,0.0, 1.0);
                 }`
     } );

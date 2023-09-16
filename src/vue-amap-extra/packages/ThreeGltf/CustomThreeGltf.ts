@@ -18,8 +18,8 @@ class CustomThreeGltf extends ThreeGltf{
 
   constructor(layer: any, options: Options, $vue: any, callback: () => void) {
     options.onLoaded = (gltf) => {
-      (gltf as any).isCustomGroup = true;
-      (gltf as any).$vue = $vue;
+      gltf.userData.acceptEvent = true;
+      gltf.userData.$vue = $vue;
       this.moveAnimation = options.moveAnimation;
       if(callback){
         callback()

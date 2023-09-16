@@ -1,5 +1,7 @@
-import {Vector3} from 'three';
+import { Vector3} from 'three';
 import {CircleSweepPass} from "./CircleSweepPass";
+import type { WebGLRenderer,Scene} from 'three';
+import type CustomThreeLayer from '../ThreeLayer/CustomThreeLayer'
 
 interface Options {
   color: string // 颜色的rgb数值。缺省值为 0xffffff。
@@ -9,7 +11,7 @@ interface Options {
 
 class ThreePassCircle {
   object: any // Light
-  layer: any // threejs的图层对象
+  layer: CustomThreeLayer // threejs的图层对象
   shaderMaterial: any
   frame = -1
   maxRadius: number
@@ -20,10 +22,10 @@ class ThreePassCircle {
     // const shaderPass = this.createShaderPass(options);
     const center = this.layer.convertLngLat(options.position)
     const vp = new Vector3(center[0], center[1], 0);
-    const shaderPass = new CircleSweepPass(this.layer.getRender(), this.layer.getScene(), this.layer.getCamera(),{
+    const shaderPass = new CircleSweepPass(this.layer.getRender() as WebGLRenderer, this.layer.getScene() as Scene, this.layer.getCamera(),{
       center: vp,
       innerRadius: 0,
-      outerRadius: 0.1
+      outerRadius: 10
     });
     this.object = shaderPass;
     this.layer.addPass(shaderPass);
@@ -37,7 +39,7 @@ class ThreePassCircle {
     }*/
     if(this.object.depthMaterial.uniforms.innerRadius.value > 100) {
       this.object.depthMaterial.uniforms.innerRadius.value = 0
-      this.object.depthMaterial.uniforms.outerRadius.value = 0.1
+      this.object.depthMaterial.uniforms.outerRadius.value = 10
     }
     this.object.depthMaterial.uniforms.innerRadius.value += 0.4
     this.object.depthMaterial.uniforms.outerRadius.value += 0.4
@@ -52,7 +54,7 @@ class ThreePassCircle {
   }
 
   refresh() {
-    this.layer.setUpdate();
+    this.layer.update();
   }
 
   remove(){
@@ -68,7 +70,7 @@ class ThreePassCircle {
         this.object.dispose()
       }
       this.object = null;
-      this.layer = null;
+      this.layer = null as any;
     }
   }
 }

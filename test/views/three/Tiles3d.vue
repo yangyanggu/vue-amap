@@ -11,7 +11,10 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-layer-three :hdr="hdrOptions">
+      <el-amap-layer-three
+        :hdr="hdrOptions"
+        create-canvas
+      >
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
           :intensity="1"
@@ -19,10 +22,11 @@
         <el-amap-three-tiles3d
           v-if="create"
           :visible="visible"
+          :auto-focus="true"
           :debug="true"
-          :position="center"
-          url="https://raw.githubusercontent.com/yangyanggu/layer-3dtiles/master/test/hutong/tileset.json"
+          url="http://localhost/bl/tileset.json"
         />
+        <!--        <el-amap-three-pass-circle :position="center" />-->
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
@@ -42,6 +46,7 @@ import ElAmapLayerThree from "@vuemap/vue-amap-extra/packages/ThreeLayer/ThreeLa
 import ElAmapThreeTiles3d from "@vuemap/vue-amap-extra/packages/Three3Dtiles/ThreeTiles3d.vue";
 import ElAmapThreeLightAmbient from "@vuemap/vue-amap-extra/packages/ThreeLightAmbient/ThreeLightAmbient.vue";
 import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmapThreePassCircle from '@vuemap/vue-amap-extra/packages/ThreePassCircle/ThreePassCircle.vue'
 
 export default defineComponent({
   name: "Map",
@@ -49,10 +54,11 @@ export default defineComponent({
     ElAmapThreeTiles3d,
     ElAmapLayerThree,
     ElAmapThreeLightAmbient,
+    ElAmapThreePassCircle,
     ElAmap},
   data(){
     return {
-      center: [116.404987, 39.90946],
+      center: [113.06802, 22.644058],
       zoom: 16,
       visible: true,
       create: true,

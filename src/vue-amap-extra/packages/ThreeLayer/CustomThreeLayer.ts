@@ -11,7 +11,7 @@ import {
   Vector2,
   AxesHelper,
   Raycaster,
-    Clock
+  Clock
 } from 'three';
 import {merge, bind} from "lodash-es";
 import {HDRCubeTextureLoader} from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
@@ -19,7 +19,8 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import {ThreeLayer} from '@vuemap/three-layer'
 import type { Texture, Camera,
   WebGLRenderer,
-  Scene} from 'three';
+  Scene, Object3D
+} from 'three';
 import type {HDROptions, LightOption} from "./Type";
 import type {ThreeLayerOptions} from '@vuemap/three-layer'
 
@@ -58,6 +59,7 @@ class CustomThreeLayer extends ThreeLayer{
         const axesHelper = new AxesHelper( 10000 );
         scene.add( axesHelper );
       }
+      this.renderer?.setPixelRatio(window.devicePixelRatio);
       this.createEffect();
       this.createLights(options.lights || []);
       this.createHDR(options.hdr);
@@ -166,14 +168,6 @@ class CustomThreeLayer extends ThreeLayer{
       }) as any;
   }
 
-  convertLngLat(lnglat: any): any {
-    this.customCoords.setCenter(this.center)
-    const data = this.customCoords.lngLatsToCoords([
-      lnglat
-    ]);
-    return data[0];
-  }
-
   addEnvMap(object) {
     this.scene!.environment = this.envMap as Texture;
     /*const envMap = this.envMap;
@@ -196,8 +190,13 @@ class CustomThreeLayer extends ThreeLayer{
     this.clickFun = bind(this._clickEvent, this);
     this.hoverFun = bind(this._hoverEvent, this);
     this.resizeFun = bind(this.updateEffectComposerSize, this);
-    this.map.on('click', this.clickFun);
-    this.map.on('mousemove', this.hoverFun);
+    if(this.canvas){
+      this.canvas.addEventListener('click', this.clickFun, false);
+      this.canvas.addEventListener('mousemove', this.hoverFun, false);
+    }else{
+      this.map.on('click', this.clickFun);
+      this.map.on('mousemove', this.hoverFun);
+    }
     this.map.on('resize', this.resizeFun);
   }
 
@@ -207,32 +206,52 @@ class CustomThreeLayer extends ThreeLayer{
     this.map.on('off', this.resizeFun);
   }
 
-  _clickEvent(e) {
-    const group = this._intersectGltf(e) as any;
+  _getOriginEvent(e: any) {
+    if(e.originEvent){
+      return e.originEvent;
+    }
+    return e;
+  }
+
+  _clickEvent(e: any) {
+    e = this._getOriginEvent(e);
+    const group = this._intersectGltf(e);
     if (group) {
-      group.$vue.$emit('click', group);
+      if(group.userData.$vue){
+        group.userData.$vue.$emit('click', group);
+      }
+      this.emit('click', group);
     }
   }
 
-  _hoverEvent(e) {
-    const group = this._intersectGltf(e) as any;
+  _hoverEvent(e: any) {
+    e = this._getOriginEvent(e);
+    const group = this._intersectGltf(e);
     if (group) {
-      if (!group.isHover) {
-        group.isHover = true;
-        group.$vue.$emit('mouseover', group);
+      if (!group.userData.isHover) {
+        group.userData.isHover = true;
+        if(group.userData.$vue){
+          group.userData.$vue.$emit('mouseover', group);
+        }else{
+          this.emit('mouseover', group);
+        }
       }
     } else {
       const children = this.scene?.children;
-      children?.forEach((object: any) => {
-        if (object.isCustomGroup && object.isHover === true) {
-          object.isHover = false;
-          object.$vue.$emit('mouseout', object);
+      children?.forEach((object) => {
+        if (object.userData.acceptEvent && object.userData.isHover === true) {
+          object.userData.isHover = false;
+          if(object.userData.$vue){
+            object.userData.$vue.$emit('mouseout', object);
+          }else{
+            this.emit('mouseout', group);
+          }
         }
       });
     }
   }
 
-  _intersectGltf(e) {
+  _intersectGltf(e: MouseEvent): Object3D | null {
     const client = this.map.getContainer();
     // 通过鼠标点击位置,计算出 raycaster 所需点的位置,以屏幕为中心点,范围 -1 到 1
     const getBoundingClientRect = client.getBoundingClientRect();
@@ -241,14 +260,14 @@ class CustomThreeLayer extends ThreeLayer{
     // clientTop 一个元素顶部边框的宽度
     const offsetTop = getBoundingClientRect.top + window.pageYOffset - client.clientTop;
     const offsetLeft = getBoundingClientRect.left + window.pageXOffset - client.clientLeft;
-    this.mouse.x = ((e.originEvent.x + window.pageXOffset - offsetLeft) / getBoundingClientRect.width) * 2 - 1;
-    this.mouse.y = -((e.originEvent.y + window.pageYOffset - offsetTop) / getBoundingClientRect.height) * 2 + 1;
+    this.mouse.x = ((e.x + window.pageXOffset - offsetLeft) / getBoundingClientRect.width) * 2 - 1;
+    this.mouse.y = -((e.y + window.pageYOffset - offsetTop) / getBoundingClientRect.height) * 2 + 1;
     const camera = this.camera;
     this.raycaster?.setFromCamera(this.mouse, camera as Camera);
     const intersects = this.raycaster?.intersectObjects([this.scene as Scene], true);
     const length = intersects?.length;
     if (length && length > 0) {
-      let group = null;
+      let group: Object3D | null = null;
       for (let i = 0; i < length; i++) {
         const object = intersects[i];
         group = this._getGroup(object.object);
@@ -261,14 +280,14 @@ class CustomThreeLayer extends ThreeLayer{
     return null;
   }
 
-  _getGroup(object) {
+  _getGroup(object: Object3D): Object3D | null {
     if(!object){
       return null;
     }
-    if (object.isCustomGroup) {
+    if (object.userData.acceptEvent) {
       return object;
     }
-    return this._getGroup(object.parent);
+    return this._getGroup(object.parent as Object3D);
   }
 
   destroy() {

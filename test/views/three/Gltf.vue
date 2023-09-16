@@ -24,6 +24,7 @@
         :antialias="true"
         :create-canvas="true"
         @init="initLayer"
+        @click="clickLayer"
       >
         <el-amap-three-light-ambient
           color="rgb(255,255,255)"
@@ -118,6 +119,7 @@ import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
+import {TextureLoader, LinearFilter, MeshPhongMaterial, BoxBufferGeometry, Mesh} from 'three';
 
 const colors = ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'].reverse();
 export default defineComponent({
@@ -205,6 +207,26 @@ export default defineComponent({
       effect1.uniforms[ 'scale' ].value = 4;
       layer.addPass(effect1);
       console.log('init layer: ', layer);
+      const texture = new TextureLoader().load(
+          'https://a.amap.com/jsapi_demos/static/demo-center-v2/three.jpeg'
+      );
+      texture.minFilter = LinearFilter;
+      //  这里可以使用 three 的各种材质
+      const mat = new MeshPhongMaterial({
+        color: 0xfff0f0,
+        depthTest: true,
+        transparent: true,
+        map: texture,
+      });
+      const geo = new BoxBufferGeometry(50, 50, 50);
+      const mesh = new Mesh(geo, mat);
+      mesh.userData.acceptEvent = true;
+      const r = layer.convertLngLat([116.308206, 39.975468])
+      mesh.position.set(r [0], r [1], 500);
+      layer.add(mesh);
+    },
+    clickLayer(group){
+      console.log('click layer: ', group);
     },
     init(object, $vue){
       console.log('init gltf: ', object)
