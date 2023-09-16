@@ -20,6 +20,12 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
 examples/three/three-gltf
 :::
 
+## 使用缓存，生成大量相同模型
+
+::: demo
+examples/three/three-gltf-cache
+:::
+
 
 ## 静态属性
 仅且可以初始化配置，不支持响应式。
