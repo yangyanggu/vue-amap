@@ -17,6 +17,7 @@ rotation | Object                              | 旋转角度,通过该参数调
 angle | Number                              | 模型绕Y轴旋转角度，该参数主要用于车辆模型的位置调整
 moveAnimation | {duration: number, smooth: boolean} | 是否开启移动动画
 configLoader | Function                            | 配置loader，用于添加draco等扩展
+useModelCache | Boolean                             | 是否启用模型缓存，开启后模型批量加载同一个模型地址时只有第一个执行下载，后续模型将直接使用clone能力。默认false |
 
 ## Events
 

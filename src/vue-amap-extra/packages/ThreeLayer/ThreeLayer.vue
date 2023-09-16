@@ -7,6 +7,7 @@ import {registerMixin} from '@vuemap/vue-amap-util';
 import CustomThreeLayer from "./CustomThreeLayer";
 import type {HDROptions, LightOption} from './Type'
 import type {PropType} from "vue";
+import type {WebGLRendererParameters} from 'three';
 
 export default defineComponent({
   name: 'ElAmapLayerThree',
@@ -57,9 +58,11 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    preserveDrawingBuffer: {
-      type: Boolean,
-      default: false
+    webGLRendererParameters: {
+      type: Object as PropType<WebGLRendererParameters>,
+      default() {
+        return undefined
+      }
     }
   },
   data() {

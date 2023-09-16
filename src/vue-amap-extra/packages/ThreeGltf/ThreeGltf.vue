@@ -35,6 +35,10 @@ export default defineComponent({
     }, //位置移动是否开启动画
     configLoader: {
       type: Function as PropType<ConfigLoader>
+    },
+    useModelCache: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['click', 'mousemove', 'mouseover', 'mouseout'],

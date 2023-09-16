@@ -24,10 +24,11 @@ examples/three/three-gltf
 ## 静态属性
 仅且可以初始化配置，不支持响应式。
 
-| 名称           | 类型                   | 说明                    |
-|--------------|----------------------|-----------------------|
-| url          | String               | 模型地址,只支持gltf          |
-| configLoader | Function`(loader: GLTFLoader) => void` | 配置loader，用于添加draco等扩展 |
+| 名称            | 类型                                     | 说明                                                                                  |
+|---------------|----------------------------------------|-------------------------------------------------------------------------------------|
+| url           | String                                 | 模型地址,只支持gltf                                                                        |
+| configLoader  | Function`(loader: GLTFLoader) => void` | 配置loader，用于添加draco等扩展                                                               |
+| useModelCache | Boolean                                | 是否启用模型缓存，开启后模型批量加载同一个模型地址时只有第一个执行下载，后续模型将直接使用clone能力，使用clone将会共用材质，可以减少内存占用。默认false |
 
 ## 动态属性
 支持响应式。

@@ -21,6 +21,7 @@ zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex�
 opacity | Number | 透明度，默认 1
 axesHelper | Boolean | 是否开启debug的箭头，默认false
 createCanvas | Boolean | 是否创建新的canvas绘制threejs，默认false
+webGLRendererParameters | WebGLRendererParameters | 创建WebglRenderer时传递的数据
 
 
 ## Events

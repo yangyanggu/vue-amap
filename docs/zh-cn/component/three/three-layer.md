@@ -32,7 +32,7 @@ alpha | Boolean | canvas是否包含alpha (透明度)。默认为 false
 antialias | Boolean | 是否执行抗锯齿。默认为false
 axesHelper | Boolean | 是否开启debug的箭头，默认false
 createCanvas | Boolean | 是否创建新的canvas绘制threejs，默认false
-preserveDrawingBuffer | Boolean | createCanvas为true时可以配置，preserveDrawingBuffer 如果它的值是true,缓冲区将不会被清零,直到被清除或由作者改写将保留它们的值。默认false
+webGLRendererParameters | WebGLRendererParameters | 创建WebglRenderer时传递的数据，可以传preserveDrawingBuffer
 
 ## 动态属性
 支持响应式。
