@@ -51,6 +51,7 @@ class CustomThreeLayer extends ThreeLayer{
   passNum = 0
   passList = [] as any[]
   clock = new Clock()
+  preHoverGroup = null as Object3D | null;
 
   constructor(map: any, options: Options, callback: () => void) {
     options.onInit = (render,scene) => {
@@ -236,19 +237,18 @@ class CustomThreeLayer extends ThreeLayer{
           this.emit('mouseover', group);
         }
       }
-    } else {
-      const children = this.scene?.children;
-      children?.forEach((object) => {
-        if (object.userData.acceptEvent && object.userData.isHover === true) {
-          object.userData.isHover = false;
-          if(object.userData.$vue){
-            object.userData.$vue.$emit('mouseout', object);
-          }else{
-            this.emit('mouseout', group);
-          }
-        }
-      });
     }
+    if(this.preHoverGroup){
+      if(!group || this.preHoverGroup.uuid !== group.uuid){
+        if(this.preHoverGroup.userData.$vue){
+          this.preHoverGroup.userData.$vue.$emit('mouseout', this.preHoverGroup);
+        }else{
+          this.emit('mouseout', this.preHoverGroup);
+        }
+        this.preHoverGroup.userData.isHover = false;
+      }
+    }
+    this.preHoverGroup = group;
   }
 
   _intersectGltf(e: MouseEvent): Object3D | null {
