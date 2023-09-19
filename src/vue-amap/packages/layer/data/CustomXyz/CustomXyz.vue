@@ -46,7 +46,7 @@ export default defineComponent({
     },
     cacheSize: {
       type: Number,
-      default: -1
+      default: 512
     },
     debug: {
       type: Boolean,

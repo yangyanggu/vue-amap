@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.23
+* 升级@vuemap/amap-xyz-layer版本，提高自定义瓦片纠偏图层性能
+
 ### @vuemap/vue-amap v2.0.22
 * 解决@vue/cli脚手架加载组件库启动报错
 
