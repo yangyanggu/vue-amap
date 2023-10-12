@@ -1,31 +1,5 @@
 export default [
   {
-    text: 'vue-bmap-gl',
-    children: [
-      {
-        text: 'vue3版本',
-        link: 'https://vue-bmap-gl.guyixi.cn'
-      },
-      {
-        text: 'vue2版本',
-        link: 'https://docs.guyixi.cn/vue-bmap-gl/#/'
-      }
-    ]
-  },
-  {
-    text: 'vue-mapvgl',
-    children: [
-      {
-        text: 'vue3版本',
-        link: 'https://vue-mapvgl.guyixi.cn'
-      },
-      {
-        text: 'vue2版本',
-        link: 'https://docs.guyixi.cn/vue-mapvgl/#/'
-      }
-    ]
-  },
-  {
     text: '其他版本文档',
     children: [
       {
