@@ -27,6 +27,9 @@
     "markdown-it-container": "3.0.0",
     "prismjs": "1.25.0",
     "vuepress": "2.0.0-beta.64",
-    "sitemap": "^7.0.0"
+    "sitemap": "^7.0.0",
+    "unplugin-vue-components": "0.25.2",
+    "unplugin-auto-import": "0.16.7",
+    "@vuepress/bundler-vite": "2.0.0-beta.64"
   }
 }

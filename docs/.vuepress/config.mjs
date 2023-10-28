@@ -6,6 +6,11 @@ import registerPlugin from "./plugin/registerPlugin";
 import {containerPlugin} from './plugin/demoPlugin'
 import {sitemapPlugin} from './plugin/sitemapPlugin'
 import {localTheme} from "./theme";
+import { viteBundler } from '@vuepress/bundler-vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
 
 
 export default defineUserConfig({
@@ -48,4 +53,20 @@ export default defineUserConfig({
       appId: 'BSHGEQA36W'
     })
   ],
+  bundler: viteBundler({
+    viteOptions: {
+      plugins: [AutoImport({
+        resolvers: [ElementPlusResolver({
+          exclude: /^ElAmap[A-Z]*/,
+          importStyle: false
+        })],
+      }),
+        Components({
+          resolvers: [ElementPlusResolver({
+            exclude: /^ElAmap[A-Z]*/,
+            importStyle: false
+          })],
+        }),]
+    }
+  })
 })
