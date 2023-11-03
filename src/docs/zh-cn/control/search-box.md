@@ -10,7 +10,7 @@
   <template>
     <div class="amap-page-container">
       <el-amap :center="center" :zoom="zoom" class="amap-demo">
-        <el-amap-search-box :visible="visible" placeholder="请输入关键字" @select="selectPoi" @choose="choosePoi"></el-amap-search-box>
+        <el-amap-search-box :visible="visible" placeholder="请输入关键字" :debounce="1000" @select="selectPoi" @choose="choosePoi"></el-amap-search-box>
       </el-amap>
 
       <div class="toolbar">
@@ -64,6 +64,7 @@ closeResultOnScroll | Boolean | 页面滚动时关闭搜索结果列表，默认
 lang | String | 设置检索语言类型，默认中文 'zh_cn'
 inputCustom | Boolean | 是否自定义input，自定义的时候将使用用户的inputId，默认 false
 extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
+debounce | Number  | 手动加上防抖功能，默认100毫秒
 
 ## 动态属性
 

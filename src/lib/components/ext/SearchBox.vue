@@ -43,7 +43,11 @@ export default {
     }, // 是否自定义input，自定义的时候将使用用户的inputId
     placeholder: {
       type: String
-    }
+    },
+    debounce: {
+      type: Number,
+      default: 100
+    } // 手动复写增加防抖
   },
   data() {
     const _this = this;
@@ -77,6 +81,13 @@ export default {
       }
       return new Promise((resolve) => {
         this.$parentComponent.plugin(['AMap.AutoComplete'], () => {
+          const debounce = this.debounce;
+          AMap.Autocomplete.prototype.onInPut = function() {
+            clearTimeout(this._inputTimer);
+            this._inputTimer = setTimeout(() => {
+              this.output && this.autoSearch();
+            }, debounce);
+          };
           this.$amapComponent = new AMap.AutoComplete(options);
           resolve();
         });
