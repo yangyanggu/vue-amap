@@ -4,7 +4,7 @@ import * as VueAMap from '@vuemap/vue-amap/index'
 import * as VueAMapLoca from '@vuemap/vue-amap-loca/index'
 import * as VueAMapExtra from '@vuemap/vue-amap-extra/index'
 export default defineClientConfig({
-  enhance({app}) {
+  enhance({app, router}) {
     if (!__VUEPRESS_SSR__) {
       app.use(VueAMap);
       app.use(VueAMapLoca);
@@ -18,5 +18,22 @@ export default defineClientConfig({
         plugins: ['AMap.HawkEye', 'AMap.DistrictSearch']
       })
     }
+    /**
+     * 路由切换事件处理
+     */
+    router.beforeEach((to, from, next) => {
+      // console.log("切换路由", to.path, from.path);
+
+      //触发百度的pv统计
+      if (typeof window._hmt != "undefined" && to.path !== from.path) {
+        if (to.fullPath) {
+          window._hmt.push(["_trackPageview", to.fullPath]);
+          // console.log("上报百度统计", to.fullPath);
+        }
+      }
+
+      // continue
+      next();
+    });
   }
 })
