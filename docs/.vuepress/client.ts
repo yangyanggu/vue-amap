@@ -17,23 +17,23 @@ export default defineClientConfig({
         },
         plugins: ['AMap.HawkEye', 'AMap.DistrictSearch']
       })
-    }
-    /**
-     * 路由切换事件处理
-     */
-    router.beforeEach((to, from, next) => {
-      // console.log("切换路由", to.path, from.path);
+      /**
+       * 路由切换事件处理
+       */
+      router.beforeEach((to, from, next) => {
+        // console.log("切换路由", to.path, from.path);
 
-      //触发百度的pv统计
-      if (typeof window._hmt != "undefined" && to.path !== from.path) {
-        if (to.fullPath) {
-          window._hmt.push(["_trackPageview", to.fullPath]);
-          // console.log("上报百度统计", to.fullPath);
+        //触发百度的pv统计
+        if (typeof window._hmt != "undefined" && to.path !== from.path) {
+          if (to.fullPath) {
+            window._hmt.push(["_trackPageview", to.fullPath]);
+            // console.log("上报百度统计", to.fullPath);
+          }
         }
-      }
 
-      // continue
-      next();
-    });
+        // continue
+        next();
+      });
+    }
   }
 })
