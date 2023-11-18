@@ -95,6 +95,9 @@ export const routes = [
   {path: '/three/3dtiles',name: 'ThreeJS 3Dtiles图层', component: ThreeTiles3d},
   {path: '/loca/laser',name: 'loca激光图层', component: LaserLayer},
   {path: '/util/mouseTool', name: '鼠标工具插件', component: MouseTool},
+  {path: '/hooks/citySearch', name: 'CitySearch ', component: () => import('../views/hooks/citySearch.vue')},
+  {path: '/hooks/weather', name: '天气插件 ', component: () => import('../views/hooks/weather.vue')},
+  {path: '/hooks/geolocation', name: '定位插件 ', component: () => import('../views/hooks/geolocation.vue')},
 ]
 
 export default createRouter({

@@ -1,5 +1,6 @@
 ### @vuemap/vue-amap v2.0.24
 * 解决视频图层无法使用跨域视频问题
+* 增加3个hooks，天气、IP定位、普通定位
 
 ### @vuemap/vue-amap v2.0.23
 * 升级@vuemap/amap-xyz-layer版本，提高自定义瓦片纠偏图层性能

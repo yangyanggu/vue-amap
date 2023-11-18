@@ -29,6 +29,14 @@ export default [
     ],
   },
   {
+    text: 'hooks',
+    children: [
+      '/zh-cn/hooks/city-search.md',
+      '/zh-cn/hooks/weather.md',
+      '/zh-cn/hooks/geolocation.md',
+    ],
+  },
+  {
     text: '控件',
     children: [
       '/zh-cn/component/control/scale.md',

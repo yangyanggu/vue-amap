@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "vite --host"
+    "dev": "vite"
   },
   "author": "",
   "license": "MIT",
@@ -13,8 +13,8 @@
     "@vuemap/vue-amap-extra": "workspace:*"
   },
   "devDependencies": {
-    "vite": "~4.3.9",
-    "@vitejs/plugin-vue": "~4.2.3",
-    "element-plus": "^2.1.10"
+    "vite": "~5.0.0",
+    "@vitejs/plugin-vue": "~4.5.0",
+    "element-plus": "^2.4.2"
   }
 }
