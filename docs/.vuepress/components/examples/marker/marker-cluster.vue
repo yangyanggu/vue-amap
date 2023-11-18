@@ -9,7 +9,7 @@
     >
       <el-amap-marker-cluster
         v-if="visible"
-        :points="points"
+        :points="markerPoints"
         @init="markerInit"
         @click="clickMarker"
       />
@@ -25,11 +25,10 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import {ElAmap, ElAmapMarkerCluster} from "@vuemap/vue-amap";
-import China from '../../../assets/china.json';
 
 const center = ref([104.937478, 35.439575]);
 const zoom = ref(5);
-const points = ref(China);
+const markerPoints = ref([]);
 const visible = ref(true);
 
 const clickMap = (e) => {
@@ -37,6 +36,12 @@ const clickMap = (e) => {
 }
 const initMap = (map) => {
   console.log('init map: ', map);
+  fetch('//a.amap.com/jsapi_demos/static/china.js').then(res => res.text()).then(text => {
+    const array = text.split('=');
+    if(array.length === 2){
+      markerPoints.value = JSON.parse(array[1].trim())
+    }
+  })
 }
 const changeVisible = () => {
   visible.value = !visible.value;

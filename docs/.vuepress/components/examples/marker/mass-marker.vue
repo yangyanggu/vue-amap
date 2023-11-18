@@ -26,12 +26,11 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import {ElAmap, ElAmapMassMarks} from "@vuemap/vue-amap";
-import City from '../../../assets/citys.json';
 
 const zoom = ref(5);
 const center = ref([102.342785, 35.312316]);
 
-const points = ref(City);
+const points = ref([]);
 
 const styles = ref([{
   url: 'https://webapi.amap.com/images/mass/mass0.png',
@@ -61,6 +60,12 @@ const clickMap = (e: any) => {
 }
 const initMap = (map: any) => {
   console.log('init map: ', map);
+  fetch('//a.amap.com/jsapi_demos/static/citys.js').then(res => res.text()).then(text => {
+    const array = text.split('=');
+    if(array.length === 2){
+      points.value = JSON.parse(array[1].trim())
+    }
+  })
 }
 
 const markerInit = (e: any) => {

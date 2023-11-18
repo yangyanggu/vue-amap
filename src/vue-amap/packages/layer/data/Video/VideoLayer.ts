@@ -20,6 +20,8 @@ class VideoLayer {
     this.video = video;
     video.src = options.url;
     video.autoplay = true;
+    video.muted = true;
+    video.crossOrigin= "anonymous";
     video.loop = options.loop;
     const layerOptions = {
       ...options,

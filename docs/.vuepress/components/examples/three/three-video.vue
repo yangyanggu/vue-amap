@@ -59,14 +59,14 @@ const translate = ref({
 });
 const scale = ref(0.5);
 const altitude = ref(200);
-const video = ref('/video/test.mp4');
+const video = ref('https:////a.amap.com/jsapi/static/demo/third-user-demo/test.mp4');
 const opacity = ref(0.5);
 const videoOption = ref({
   width: 480,
   height: 246
 });
 const alwaysFront = ref(true);
-let canvas: HTMLCanvasElement = null;
+const canvas = ref<HTMLCanvasElement>(null);
 let context: CanvasRenderingContext2D = null;
 
 const clickMap = (e) => {
@@ -74,10 +74,10 @@ const clickMap = (e) => {
 }
 const initMap = (map) => {
   console.log('init map: ', map);
-  canvas = document.createElement('canvas') as any;
-  canvas.width = 512;
-  canvas.height = 512;
-  context = canvas.getContext('2d');
+  canvas.value = document.createElement('canvas') as any;
+  canvas.value.width = 512;
+  canvas.value.height = 512;
+  context = canvas.value.getContext('2d');
 }
 const changeVisible = () => {
   visible.value = !visible.value;

@@ -8,6 +8,7 @@
       @init="initMap"
     >
       <el-amap-geojson
+        v-if="geoJSON"
         :geo="geoJSON"
         :polygon-options="polygonOptions"
         :visible="visible"
@@ -26,13 +27,12 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import {ElAmap, ElAmapGeojson} from "@vuemap/vue-amap";
-import geo from '../../../assets/chongqing.json'
 
 const zoom = ref(7);
 const center = ref([107.943579, 30.131735]);
 const draggable = ref(false);
 const visible = ref(true);
-const geoJSON = ref(geo);
+const geoJSON = ref(null);
 const polygonOptions = ref({
   strokeColor: 'red',
   fillColor: 'blue'
@@ -42,6 +42,9 @@ const clickMap = (e) => {
 }
 const initMap = (map) => {
   console.log('init map: ', map);
+  fetch('//a.amap.com/jsapi_demos/static/geojson/chongqing.json').then(res => res.json()).then(json => {
+    geoJSON.value = json;
+  })
 }
 const toggleVisible = () => {
   visible.value = !visible.value;

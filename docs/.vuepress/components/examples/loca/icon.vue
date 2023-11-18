@@ -69,27 +69,34 @@ const initMap = (map) => {
 }
 
 const createData = () => {
-  fetch('/json/events.json').then(response => response.json()).then(events => {
-    const _events = events[0].events;
-    const list = _events.map(e => {
-      const ll = e.lngLat.split(',');
-      const arr = [parseFloat(ll[0]), parseFloat(ll[1])]
-      return {
-        "type": "Feature",
-        "properties": {
-          rawData: e
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": arr
+  fetch('//a.amap.com/Loca/static/loca-v2/demos/mock_data/events.js').then(response => response.text()).then(text => {
+    const array = text.split('=');
+    let events = []
+    if(array.length === 2){
+      events = JSON.parse(array[1].trim())
+    }
+    if(events.length > 0){
+      const _events = events[0].events;
+      const list = _events.map(e => {
+        const ll = e.lngLat.split(',');
+        const arr = [parseFloat(ll[0]), parseFloat(ll[1])]
+        return {
+          "type": "Feature",
+          "properties": {
+            rawData: e
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": arr
+          }
         }
-      }
-    })
+      })
 
-    sourceData.value = Object.freeze({
-      "type": "FeatureCollection",
-      "features": list,
-    });
+      sourceData.value = Object.freeze({
+        "type": "FeatureCollection",
+        "features": list,
+      });
+    }
   })
 }
 
