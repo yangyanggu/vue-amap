@@ -34,37 +34,31 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
+import {ElAmapLayerThree, ElAmapThreeLightAmbient, ElAmapThreePolygon} from "@vuemap/vue-amap-extra";
+
+const center = ref([120.109233, 30.246411]);
+const zoom = ref(12);
+const visible = ref(true);
+const source = ref<any>(null);
+
+const clickMap = (e: any) => {
+  console.log('click map: ', e);
+}
+const initMap = (map: any) => {
+  console.log('init map: ', map);
+  fetch('https://a.amap.com/Loca/static/loca-v2/demos/mock_data/hz_gn.json')
+      .then(res => res.json())
+      .then(res => {
+        source.value = res;
+      })
+}
+const changeVisible = () => {
+  visible.value = !visible.value;
+}
+</script>
+
 <style>
 </style>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-
-export default defineComponent({
-  data() {
-    return {
-      center: [120.109233,30.246411],
-      zoom: 12,
-      visible: true,
-      source: null
-    };
-  },
-
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-      fetch('https://a.amap.com/Loca/static/loca-v2/demos/mock_data/hz_gn.json')
-          .then(res => res.json())
-          .then(res => {
-            this.source = res;
-          })
-    },
-    changeVisible(){
-      this.visible = !this.visible;
-    },
-  }
-});
-</script>

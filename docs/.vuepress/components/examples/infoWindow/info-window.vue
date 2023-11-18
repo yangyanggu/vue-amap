@@ -21,44 +21,42 @@
     <button @click="changeVisible">
       显隐
     </button>
+    <button @click="changeCenter">
+      更换中心点
+    </button>
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapInfoWindow} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      center: [120,31],
-      zoom: 16,
-      visible: true
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    completeMap(e){
-      console.log(e);
-    },
-    moveendMap(e){
-      console.log('moveendMap: ', e);
-    },
-    changeCenter(){
-      const lng = this.center[0]+0.01;
-      const lat = this.center[1]+0.01;
-      this.center = [lng, lat];
-    },
-    changeVisible(){
-      this.visible = !this.visible;
-    }
-  }
-})
+const zoom = ref(16);
+const center = ref([120,31]);
+
+const visible = ref(true)
+const changeVisible = () => {
+  visible.value = !visible.value;
+}
+
+const clickMap = (e: any) => {
+  console.log('click map: ', e);
+}
+const initMap = (map: any) => {
+  console.log('init map: ', map);
+}
+const completeMap = (e: any) => {
+  console.log(e);
+}
+const moveendMap = (e: any) => {
+  console.log('moveendMap: ', e);
+}
+const changeCenter = () => {
+  const lng = center.value[0]+0.01;
+  const lat = center.value[1]+0.01;
+  center.value = [lng, lat];
+}
+
 </script>
 
 <style scoped>

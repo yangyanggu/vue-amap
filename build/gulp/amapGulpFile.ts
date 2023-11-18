@@ -2,7 +2,7 @@ import {resolve} from "path";
 import {copy, copyFile, remove} from 'fs-extra'
 import {series, parallel} from 'gulp'
 import {run} from '../utils/process'
-import {withTaskName} from '../utils/gulp'
+import {withTaskName, copyPackageJSON} from '../utils/gulp'
 import {buildModules} from '../buildModules'
 import {getBuildFullBundle} from "../full-bundle";
 import {buildHelper} from '../helper'
@@ -65,7 +65,7 @@ const build:TaskFunction = series(
       await copyFile(resolve(projRoot, 'LICENSE'), resolve(distRoot, 'LICENSE'))
     }),
     withTaskName('copy package.json', async () => {
-      await copyFile(resolve(pkgRoot, 'package.json'), resolve(distRoot, 'package.json'))
+      await copyPackageJSON(resolve(pkgRoot, 'package.json'), resolve(distRoot, 'package.json'))
     }),
     withTaskName('copy global.d.ts', async () => {
       await copyFile(resolve(pkgRoot, 'global.d.ts'), resolve(distRoot, 'global.d.ts'))

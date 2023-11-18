@@ -8,28 +8,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  data() {
-    return {
-      zoom: 12,
-      center: [121.59996, 31.197646]
-    };
-  },
+const zoom = ref(12);
+const center = ref([121.59996, 31.197646]);
 
-  methods: {
-    init(map) {
-      map.plugin('AMap.ToolBar', () => {
-        const toolBar = new AMap.ToolBar();
-        map.addControl(toolBar);
-      })
+const init = (map: any) => {
+  map.plugin('AMap.ToolBar', () => {
+    const toolBar = new AMap.ToolBar();
+    map.addControl(toolBar);
+  })
 
-      console.log('map init: ', map)
-    },
-  }
-})
+  console.log('map init: ', map)
+}
+
 </script>
 
 <style>

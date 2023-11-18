@@ -32,53 +32,47 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref, reactive} from "vue";
+import {ElAmap, ElAmapPolygon} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      zoom: 15,
-      center: [121.5273285, 31.21515044],
-      polygon:{
-        draggable: false,
-        visible: true,
-        edit: true,
-        path: [[121.5273285, 31.21515044], [121.5293285, 31.21515044], [121.5293285, 31.21915044], [121.5273285, 31.21515044]],
-      }
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    toggleVisible(){
-      this.polygon.visible = !this.polygon.visible;
-    },
-    changeEditable() {
-      this.polygon.edit = !this.polygon.edit;
-    },
-    changeDraggable(){
-      this.polygon.draggable = !this.polygon.draggable;
-    },
-    click(e) {
-      alert('click GeoJSON');
-    },
-    dragstart(){
-      console.log('开始移动')
-    },
-    dragging(){
-      console.log('正在移动...')
-    },
-    dragend(){
-      console.log('结束移动')
-    }
-  }
-})
+const zoom = ref(15);
+const center = ref([121.5273285, 31.21515044]);
+const polygon = reactive({
+  draggable: false,
+  visible: true,
+  edit: true,
+  path: [[121.5273285, 31.21515044], [121.5293285, 31.21515044], [121.5293285, 31.21915044], [121.5273285, 31.21515044]],
+});
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const toggleVisible = () => {
+  polygon.visible = !polygon.visible;
+}
+const changeEditable = () => {
+  polygon.edit = !polygon.edit;
+}
+const changeDraggable = () => {
+  polygon.draggable = !polygon.draggable;
+}
+const click = (e) => {
+  alert('click GeoJSON');
+}
+const dragstart = () => {
+  console.log('开始移动')
+}
+const dragging = () => {
+  console.log('正在移动...')
+}
+const dragend = () => {
+  console.log('结束移动')
+}
+
 </script>
 
 <style scoped>

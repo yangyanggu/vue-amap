@@ -1,16 +1,29 @@
 <template>
   <div class="map-page-container">
-    <el-amap ref="map" :min-zoom="10" :max-zoom="22" :center="center" :zoom="zoom" @init="init" @click="click">
-    </el-amap>
+    <el-amap
+      ref="map"
+      :min-zoom="10"
+      :max-zoom="22"
+      :center="center"
+      :zoom="zoom"
+      @init="init"
+      @click="click"
+    />
   </div>
   <div class="toolbar">
-    <button @click="getMap()">获取地图实例</button>
+    <button @click="getMap()">
+      获取地图实例
+    </button>
   </div>
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
 
 export default defineComponent({
+  components: {
+    ElAmap
+  },
   data() {
     return {
       zoom: 16,

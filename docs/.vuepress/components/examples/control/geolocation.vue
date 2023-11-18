@@ -17,28 +17,24 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+import {ref} from "vue";
+
+import {ElAmap, ElAmapControlGeolocation} from "@vuemap/vue-amap";
+
+const zoom = ref(12);
+const center = ref([121.59996, 31.197646]);
+
+const visible = ref(true)
+const switchVisible = () => {
+  visible.value = !visible.value;
+}
+
+const getLocation = (e: any) => {
+  console.log('getLocation: ', e)
+}
+
+</script>
+
 <style>
 </style>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-
-export default defineComponent({
-  data() {
-    return {
-      zoom: 12,
-      center: [121.59996, 31.197646],
-      visible: true
-    };
-  },
-
-  methods: {
-    switchVisible() {
-      this.visible = !this.visible;
-    },
-    getLocation(e) {
-      console.log('getLocation: ', e)
-    }
-  }
-});
-</script>

@@ -44,70 +44,64 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapText} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      center: [121.5273285, 31.21515044],
-      zoom: 16,
-      texts: [
-        {
-          position: [121.5273285, 31.21515044],
-          id: 1,
-          text: '数组1'
-        }
-      ] as any,
-      componentText: {
-        position: [121.5273285, 31.21315058],
-        visible: true,
-        draggable: false,
-        text: '测试Text'
-      },
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    changePosition() {
-      const position = this.componentText.position;
-      this.componentText.position = [position[0] + 0.002, position[1] - 0.002];
-    },
-    changeDraggable() {
-      this.componentText.draggable = !this.componentText.draggable;
-    },
-    toggleVisible() {
-      this.componentText.visible = !this.componentText.visible;
-    },
-    addMarker() {
-      const marker = {
-        position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02],
-        id: new Date().getTime(),
-        text: new Date().getTime()
-      };
-      this.texts.push(marker);
-    },
-    removeMarker() {
-      if (!this.texts.length) return;
-      this.texts.splice(this.texts.length - 1, 1);
-    },
-    initText(e){
-      console.log('marker init: ', e);
-    },
-    clickText(){
-      alert('点击了标号')
-    },
-    clickArrayMarker(marker){
-      alert(`点击了标号,标号ID： ${marker.id}`)
-    }
+const center = ref([121.5273285, 31.21515044]);
+const zoom = ref(16);
+const texts = ref([
+  {
+    position: [121.5273285, 31.21515044],
+    id: 1,
+    text: '数组1'
   }
-})
+]);
+const componentText = ref({
+  position: [121.5273285, 31.21315058],
+  visible: true,
+  draggable: false,
+  text: '测试Text'
+});
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const changePosition = () => {
+  const position = componentText.value.position;
+  componentText.value.position = [position[0] + 0.002, position[1] - 0.002];
+}
+const changeDraggable = () => {
+  componentText.value.draggable = !componentText.value.draggable;
+}
+const toggleVisible = () => {
+  componentText.value.visible = !componentText.value.visible;
+}
+const addMarker = () => {
+  const marker = {
+    position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02],
+    id: new Date().getTime(),
+    text: new Date().getTime()
+  };
+  texts.value.push(marker);
+}
+const removeMarker = () => {
+  if (!texts.value.length) return;
+  texts.value.splice(texts.value.length - 1, 1);
+}
+const initText = (e) => {
+  console.log('marker init: ', e);
+}
+const clickText = () => {
+  alert('点击了标号')
+}
+const clickArrayMarker = (marker) => {
+  alert(`点击了标号,标号ID： ${marker.id}`)
+}
+
 </script>
 
 <style scoped>

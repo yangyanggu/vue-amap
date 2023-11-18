@@ -8,25 +8,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  data() {
-    return {
-      zoom: 12,
-      center: [121.59996, 31.197646]
-    };
-  },
-
-  methods: {
-    init(map) {
-      const eye = new AMap.HawkEye();
-      map.addControl(eye);
-      console.log('map init: ', map)
-    },
-  }
-})
+const zoom = ref(12);
+const center = ref([121.59996, 31.197646]);
+const init = (map: any) => {
+  const eye = new AMap.HawkEye();
+  map.addControl(eye);
+  console.log('map init: ', map)
+}
 </script>
 
 <style>

@@ -19,30 +19,25 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapSearchBox} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  data() {
-    return {
-      zoom: 12,
-      center: [121.59996, 31.197646],
-      visible: true
-    };
-  },
+const zoom = ref(12);
+const center = ref([121.59996, 31.197646]);
 
-  methods: {
-    switchVisible() {
-      this.visible = !this.visible;
-    },
-    selectPoi(e){
-      console.log('selectPoi: ', e);
-    },
-    choosePoi(e){
-      console.log('choosePoi: ', e);
-    }
-  }
-});
+const visible = ref(true)
+const switchVisible = () => {
+  visible.value = !visible.value;
+}
+
+const selectPoi = (e: any) => {
+  console.log('selectPoi: ', e);
+}
+const choosePoi = (e: any) => {
+  console.log('choosePoi: ', e);
+}
+
 </script>
 
 <style>

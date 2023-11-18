@@ -18,27 +18,23 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapLayerVideo} from "@vuemap/vue-amap";
+
+const zoom = ref(15);
+const center = ref([116.33719, 39.942384]);
+
+const bounds = ref([116.327911, 39.939229,116.342659, 39.946275]);
+
+const url = ref('/video/test.mp4');
+
+const visible = ref(true)
+const switchVisible = () => {
+  visible.value = !visible.value;
+}
+
+</script>
+
 <style>
 </style>
-
-<script lang="ts">
-import {defineComponent} from "vue";
-
-export default defineComponent({
-  data() {
-    return {
-      zoom: 15,
-      center: [116.33719, 39.942384],
-      visible: true,
-      bounds: [116.327911, 39.939229,116.342659, 39.946275],
-      url: '/video/test.mp4'
-    };
-  },
-
-  methods: {
-    switchVisible() {
-      this.visible = !this.visible;
-    },
-  }
-});
-</script>

@@ -15,8 +15,12 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
 
 export default defineComponent({
+  components: {
+    ElAmap
+  },
   data() {
     return {
       zoom: 12,

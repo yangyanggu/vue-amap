@@ -26,39 +26,37 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapCircleMarker} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      zoom: 13,
-      center: [121.5273285, 31.21515044],
-      draggable: false,
-      visible: true,
-      circleCenter: [121.5273285, 31.21515044],
-      radius: 500,
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    toggleVisible(){
-      this.visible = !this.visible;
-    },
-    changeDraggable(){
-      this.draggable = !this.draggable;
-    },
-    click(e) {
-      alert('click Circle');
-    },
-  }
-})
+const zoom = ref(13);
+const center = ref([121.5273285, 31.21515044]);
+
+const draggable = ref(false);
+
+const visible = ref(true)
+
+const circleCenter = ref([121.5273285, 31.21515044]);
+const radius = ref(500);
+const toggleVisible = () => {
+  visible.value = !visible.value;
+}
+
+const clickMap = (e: any) => {
+  console.log('click map: ', e);
+}
+const initMap = (map: any) => {
+  console.log('init map: ', map);
+}
+
+const changeDraggable = () => {
+  draggable.value = !draggable.value;
+}
+const click = (e: any) => {
+  alert('click Circle');
+}
+
 </script>
 
 <style scoped>

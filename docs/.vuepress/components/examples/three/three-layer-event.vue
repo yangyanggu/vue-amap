@@ -51,74 +51,78 @@
   </div>
   <div class="toolbar">
     <button @click="switchVisible()">
-      {{ visible? '隐藏' : '显示' }}
+      {{ visible ? '隐藏' : '显示' }}
     </button>
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+
+import {ref} from "vue";
 import {BoxBufferGeometry, LinearFilter, Mesh, MeshPhongMaterial, TextureLoader} from "three";
+import {ElAmap, ElAmapText} from "@vuemap/vue-amap";
+import {
+  ElAmapLayerThree,
+  ElAmapThreeGltf,
+  ElAmapThreeLightAmbient,
+  ElAmapThreeLightDirectional,
+  ElAmapThreeLightHemisphere,
+  ElAmapThreeLightSpot
+} from '@vuemap/vue-amap-extra';
 
-export default defineComponent({
-  components: {},
-  data() {
-    return {
-      zoom: 18,
-      center: [121.59996, 31.197646],
-      visible: true,
-      position: [121.59996, 31.197646],
-      rotation: {x:90, y:0, z:0},
-      hdrOptions: {
-        urls: [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ],
-        path: '/hdr/'
-      },
-      meshPosition: [121.59896, 31.197646],
-      meshVisible: false
-    };
-  },
-
-  methods: {
-    switchVisible() {
-      this.visible = !this.visible;
-    },
-    initLayer(layer) {
-      const texture = new TextureLoader().load(
-          'https://a.amap.com/jsapi_demos/static/demo-center-v2/three.jpeg'
-      );
-      texture.minFilter = LinearFilter;
-      //  这里可以使用 three 的各种材质
-      const mat = new MeshPhongMaterial({
-        color: 0xfff0f0,
-        depthTest: true,
-        transparent: true,
-        map: texture,
-      });
-      const geo = new BoxBufferGeometry(50, 50, 50);
-      const mesh = new Mesh(geo, mat);
-      mesh.userData.acceptEvent = true;
-      const r = layer.convertLngLat(this.meshPosition)
-      mesh.position.set(r [0], r [1], 0);
-      layer.add(mesh);
-    },
-    clickLayer(group){
-      console.log('click layer: ', group);
-    },
-    mouseoverLayer(group){
-      this.meshVisible = true;
-      console.log('mouseoverLayer layer: ', group);
-    },
-    mouseoutLayer(group){
-      this.meshVisible = false;
-      console.log('mouseoutLayer layer: ', group);
-    },
-    init(object, $vue){
-      $vue.$$startAnimations();
-      console.log('gltf object: ', object);
-      console.log('gltf $vue: ', $vue);
-    },
-  }
+const zoom = ref(18);
+const center = ref([121.59996, 31.197646]);
+const visible = ref(true);
+const position = ref([121.59996, 31.197646]);
+const rotation = ref({x: 90, y: 0, z: 0});
+const hdrOptions = ref({
+  urls: ['px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr'],
+  path: '/hdr/'
 });
+const meshPosition = [121.59896, 31.197646];
+
+const switchVisible = () => {
+  visible.value = !visible.value;
+}
+const initLayer = (layer) => {
+  const texture = new TextureLoader().load(
+      'https://a.amap.com/jsapi_demos/static/demo-center-v2/three.jpeg'
+  );
+  texture.minFilter = LinearFilter;
+  //  这里可以使用 three 的各种材质
+  const mat = new MeshPhongMaterial({
+    color: 0xfff0f0,
+    depthTest: true,
+    transparent: true,
+    map: texture,
+  });
+  const geo = new BoxBufferGeometry(50, 50, 50);
+  const mesh = new Mesh(geo, mat);
+  mesh.userData.acceptEvent = true;
+  const r = layer.convertLngLat(meshPosition)
+  mesh.position.set(r [0], r [1], 0);
+  layer.add(mesh);
+}
+const init = (object, $vue) => {
+  $vue.$$startAnimations();
+  console.log('gltf object: ', object);
+  console.log('gltf $vue: ', $vue);
+}
+const clickLayer = (group) => {
+  console.log('click layer: ', group);
+}
+
+const meshVisible = ref(false)
+const mouseoverLayer = (group) => {
+  meshVisible.value = true;
+  console.log('mouseoverLayer layer: ', group);
+}
+const mouseoutLayer = (group) => {
+  meshVisible.value = false;
+  console.log('mouseoutLayer layer: ', group);
+}
+
+
 </script>
 
 <style>

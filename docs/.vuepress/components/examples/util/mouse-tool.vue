@@ -49,35 +49,28 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapMouseTool} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      center: [121.5273285, 31.21515044],
-      zoom: 16,
-      markers: null,
-      type: 'marker',
-      created: true
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    draw(e, target){
-      console.log('绘制完成 : ', e, target)
-    },
-    changeMarker(type: string){
-      this.type = type;
-    }
-  }
-})
+const center = ref([121.5273285, 31.21515044]);
+const zoom = ref(16);
+const type = ref('marker');
+const created = ref(true);
+
+const clickMap = (e: any) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const draw = (e, target) => {
+  console.log('绘制完成 : ', e, target)
+}
+const changeMarker = (newType: string) => {
+  type.value = newType;
+}
+
 </script>
 
 <style scoped>

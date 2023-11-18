@@ -51,7 +51,7 @@
   </div>
   <div class="toolbar">
     <button @click="switchVisible()">
-      {{ visible? '隐藏' : '显示' }}
+      {{ visible ? '隐藏' : '显示' }}
     </button>
     <button @click="stopCar()">
       停止移动
@@ -62,66 +62,67 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
+import {
+  ElAmapLayerThree,
+  ElAmapThreeGltf,
+  ElAmapThreeLightAmbient,
+  ElAmapThreeLightDirectional,
+  ElAmapThreeLightHemisphere,
+  ElAmapThreeLightSpot
+} from '@vuemap/vue-amap-extra';
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
+import {ShaderPass} from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import {DotScreenShader} from 'three/examples/jsm/shaders/DotScreenShader.js';
 
-export default defineComponent({
-  data() {
-    return {
-      zoom: 18,
-      center: [121.59996, 31.197646],
-      visible: true,
-      position: [121.59996, 31.197646],
-      rotation: {x:90, y:0, z:0},
-      carPosition: [121.59996, 31.197646],
-      moveAnimation: {duration: 1000,smooth: true},
-      carAngle: 90,
-      hdrOptions: {
-        urls: [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ],
-        path: '/hdr/'
-      },
-      carInterval: -1
-    };
-  },
-
-  methods: {
-    switchVisible() {
-      this.visible = !this.visible;
-    },
-    initLayer(layer) {
-      const renderPass = new RenderPass( layer.getScene(), layer.getCamera() );
-      layer.addPass( renderPass );
-
-      const effect1 = new ShaderPass( DotScreenShader );
-      effect1.uniforms[ 'scale' ].value = 4;
-      layer.addPass(effect1);
-    },
-    init(object, $vue){
-      $vue.$$startAnimations();
-      console.log('gltf object: ', object);
-      console.log('gltf $vue: ', $vue);
-    },
-    initCar(){
-      this.startCar();
-    },
-    startCar(){
-      this.carInterval = setInterval(() => {
-        const lng = this.carPosition[0] + Math.random() * 0.0001;
-        const lat = this.carPosition[1] + Math.random() * 0.0001;
-        const newPosition = [lng, lat];
-        const angle = Math.random() * 360
-        this.carPosition = newPosition;
-        this.carAngle = angle;
-      }, 1000)
-    },
-    stopCar(){
-      clearInterval(this.carInterval);
-    }
-  }
+const zoom = ref(18);
+const center = ref([121.59996, 31.197646]);
+const visible = ref(true);
+const position = ref([121.59996, 31.197646]);
+const rotation = ref({x: 90, y: 0, z: 0});
+const carPosition = ref([121.59996, 31.197646]);
+const moveAnimation = ref({duration: 1000, smooth: true});
+const carAngle = ref(90);
+const hdrOptions = ref({
+  urls: ['px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr'],
+  path: '/hdr/'
 });
+let carInterval = -1;
+
+const switchVisible = () => {
+  visible.value = !visible.value;
+}
+const initLayer = (layer) => {
+  const renderPass = new RenderPass(layer.getScene(), layer.getCamera());
+  layer.addPass(renderPass);
+
+  const effect1 = new ShaderPass(DotScreenShader);
+  effect1.uniforms['scale'].value = 4;
+  layer.addPass(effect1);
+}
+const init = (object, $vue) => {
+  $vue.$$startAnimations();
+  console.log('gltf object: ', object);
+  console.log('gltf $vue: ', $vue);
+}
+const initCar = () => {
+  startCar();
+}
+const startCar = () => {
+  carInterval = setInterval(() => {
+    const lng = carPosition.value[0] + Math.random() * 0.0001;
+    const lat = carPosition.value[1] + Math.random() * 0.0001;
+    const newPosition = [lng, lat];
+    const angle = Math.random() * 360
+    carPosition.value = newPosition;
+    carAngle.value = angle;
+  }, 1000)
+}
+const stopCar = () => {
+  clearInterval(carInterval);
+}
 </script>
 
 <style>

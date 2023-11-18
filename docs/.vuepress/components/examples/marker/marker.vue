@@ -44,69 +44,65 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapMarker} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      center: [121.5273285, 31.21515044],
-      zoom: 16,
-      markers: [
-        {
-          position: [121.5273285, 31.21515044],
-          id: 1
-        }
-      ],
-      componentMarker: {
-        position: [121.5273285, 31.21315058],
-        visible: true,
-        draggable: false
-      },
-      componentMarker2: {
-        position: [121.5283285, 31.21315058],
-        content: 'hello world'
-      },
-      moveOptions: {
-        duration: 200,
-        autoRotation: false
-      }
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    changeCenter(){
-      const lng = this.center[0]+0.01;
-      const lat = this.center[1]+0.01;
-      this.center = [lng, lat];
-    },
-    changePosition() {
-      const position = this.componentMarker.position;
-      this.componentMarker.position = [position[0] + 0.0002, position[1] - 0.0002];
-    },
-    changeDraggable() {
-      this.componentMarker.draggable = !this.componentMarker.draggable;
-    },
-    toggleVisible() {
-      this.componentMarker.visible = !this.componentMarker.visible;
-    },
-    markerInit(e){
-      console.log('marker init: ', e);
-    },
-    clickMarker(){
-      alert('点击了标号')
-    },
-    clickArrayMarker(marker){
-      alert(`点击了标号,标号ID： ${marker.id}`)
-    }
+const zoom = ref(16);
+const center = ref([121.5273285, 31.21515044]);
+
+const markers = ref([
+  {
+    position: [121.5273285, 31.21515044],
+    id: 1
   }
+])
+
+const componentMarker = ref({
+  position: [121.5273285, 31.21315058],
+  visible: true,
+  draggable: false
+});
+
+const componentMarker2 = ref({
+  position: [121.5283285, 31.21315058],
+  content: 'hello world'
+});
+
+const moveOptions = ref({
+  duration: 200,
+  autoRotation: false
 })
+
+const clickMap = (e: any) => {
+  console.log('click map: ', e);
+}
+const initMap = (map: any) => {
+  console.log('init map: ', map);
+}
+
+const clickMarker = () => {
+  alert('点击了标号');
+}
+
+const changePosition = () => {
+  const position = componentMarker.value.position;
+  componentMarker.value.position = [position[0] + 0.0002, position[1] - 0.0002];
+}
+const changeDraggable = () =>  {
+  componentMarker.value.draggable = !componentMarker.value.draggable;
+}
+const toggleVisible = () =>   {
+  componentMarker.value.visible = !componentMarker.value.visible;
+}
+const markerInit = (e: any) => {
+  console.log('marker init: ', e);
+}
+const clickArrayMarker = (marker: any) => {
+  alert(`点击了标号,标号ID： ${marker.id}`)
+}
+
+
 </script>
 
 <style scoped>

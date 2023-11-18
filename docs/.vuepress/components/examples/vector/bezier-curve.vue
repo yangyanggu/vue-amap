@@ -30,59 +30,52 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref, reactive} from "vue";
+import {ElAmap, ElAmapBezierCurve} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      zoom: 13,
-      center: [116.397637, 39.900001],
-      polyline: {
-        path: [//每个弧线段有两种描述方式
-          [116.37, 39.91],//起点
-          //第一段弧线
-          [116.380298, 39.907771, 116.38, 39.90],//控制点，途经点
-          //第二段弧线
-          [116.385298, 39.907771, 116.40, 39.90],//控制点，途经点//弧线段有两种描述方式1
-          //第三段弧线
-          [//弧线段有两种描述方式2
-            [116.392872, 39.887391],//控制点
-            [116.40772, 39.909252],//控制点
-            [116.41, 39.89]//途经点
-          ],
-          //第四段弧线
-          [116.423857, 39.889498, 116.422312, 39.899639, 116.425273, 39.902273]
-          //控制点，控制点，途经点，每段最多两个控制点
-        ],
-        editable: false,
-        visible: true,
-        draggable: false
-      }
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    changeEditable() {
-      this.polyline.editable = !this.polyline.editable;
-    },
-    toggleVisible(){
-      this.polyline.visible = !this.polyline.visible;
-    },
-    changeDraggable(){
-      this.polyline.draggable = !this.polyline.draggable;
-    },
-    click(e) {
-      alert('click BezierCurve');
-    },
-  }
-})
+const zoom = ref(13);
+const center = ref([116.397637, 39.900001]);
+const polyline = reactive({
+  path: [//每个弧线段有两种描述方式
+    [116.37, 39.91],//起点
+    //第一段弧线
+    [116.380298, 39.907771, 116.38, 39.90],//控制点，途经点
+    //第二段弧线
+    [116.385298, 39.907771, 116.40, 39.90],//控制点，途经点//弧线段有两种描述方式1
+    //第三段弧线
+    [//弧线段有两种描述方式2
+      [116.392872, 39.887391],//控制点
+      [116.40772, 39.909252],//控制点
+      [116.41, 39.89]//途经点
+    ],
+    //第四段弧线
+    [116.423857, 39.889498, 116.422312, 39.899639, 116.425273, 39.902273]
+    //控制点，控制点，途经点，每段最多两个控制点
+  ],
+  editable: false,
+  visible: true,
+  draggable: false,
+});
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const changeEditable = () => {
+  polyline.editable = !polyline.editable;
+}
+const toggleVisible = () => {
+  polyline.visible = !polyline.visible;
+}
+const changeDraggable = () => {
+  polyline.draggable = !polyline.draggable;
+}
+const click = (e) => {
+  alert('click BezierCurve');
+}
 </script>
 
 <style scoped>

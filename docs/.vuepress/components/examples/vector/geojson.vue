@@ -23,40 +23,32 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapGeojson} from "@vuemap/vue-amap";
 import geo from '../../../assets/chongqing.json'
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      zoom: 7,
-      center: [107.943579, 30.131735],
-      draggable: false,
-      visible: true,
-      geoJSON: geo,
-      polygonOptions: {
-        strokeColor: 'red',
-        fillColor: 'blue'
-      }
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    toggleVisible(){
-      this.visible = !this.visible;
-    },
-    click(e) {
-      alert('click GeoJSON');
-    },
-  }
-})
+const zoom = ref(7);
+const center = ref([107.943579, 30.131735]);
+const draggable = ref(false);
+const visible = ref(true);
+const geoJSON = ref(geo);
+const polygonOptions = ref({
+  strokeColor: 'red',
+  fillColor: 'blue'
+});
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const toggleVisible = () => {
+  visible.value = !visible.value;
+}
+const click = (e) => {
+  alert('click GeoJSON');
+}
 </script>
 
 <style scoped>

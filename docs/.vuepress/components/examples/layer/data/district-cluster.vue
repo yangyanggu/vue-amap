@@ -25,51 +25,45 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref, onMounted} from "vue";
+import {ElAmap, ElAmapLayerDistrictCluster} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "DistrictCluster",
-  data(){
-    return {
-      center: [116.306206, 39.975468],
-      zoom: 16,
-      visible: true,
-      getPosition(item) {
-        if (!item) {
-          return null;
-        }
-        const parts = item.split(',');
-        //返回经纬度
-        return [parseFloat(parts[0]), parseFloat(parts[1])];
-      },
-      clusterData: [] as any[]
-    }
-  },
-  mounted() {
-    fetch('https://a.amap.com/amap-ui/static/data/10w.txt').then(res => {
-      return res.text()
-    }).then(csv => {
-      this.clusterData = csv.split('\n');
-    })
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    changeVisible(){
-      this.visible = !this.visible;
-    },
-    initLayer(layer){
-      console.log('聚合图层: ', layer);
-    },
-    clickFeature(e, feature){
-      console.log('点击区划面： ', e, feature)
-    }
+const zoom = ref(15);
+const center = ref([116.33719, 39.942384]);
+const visible = ref(true);
+const changeVisible = () => {
+  visible.value = !visible.value;
+}
+
+const clusterData = ref<any[]>([]);
+const getPosition = (item: any) => {
+  if (!item) {
+    return null;
   }
+  const parts = item.split(',');
+  //返回经纬度
+  return [parseFloat(parts[0]), parseFloat(parts[1])];
+}
+onMounted(() => {
+  fetch('https://a.amap.com/amap-ui/static/data/10w.txt').then(res => {
+    return res.text()
+  }).then(csv => {
+    clusterData.value = csv.split('\n');
+  })
 })
+
+const clickMap = (e: any) => {
+  console.log('click map: ', e);
+}
+const initMap = (map: any) => {
+  console.log('init map: ', map);
+}
+const initLayer = (layer: any) => {
+  console.log('聚合图层: ', layer);
+}
+const clickFeature = (e: any, feature: any) => {
+  console.log('点击区划面： ', e, feature)
+}
 </script>
 

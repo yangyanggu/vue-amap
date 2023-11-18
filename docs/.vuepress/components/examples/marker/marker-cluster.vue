@@ -22,38 +22,31 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapMarkerCluster} from "@vuemap/vue-amap";
 import China from '../../../assets/china.json';
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      center: [104.937478,35.439575],
-      zoom: 5,
-      points: China,
-      visible: true
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    changeVisible(){
-      this.visible = !this.visible;
-    },
-    markerInit(e){
-      console.log('marker init: ', e);
-    },
-    clickMarker(e){
-      console.log('marker click: ', e);
-    }
-  }
-})
+const center = ref([104.937478, 35.439575]);
+const zoom = ref(5);
+const points = ref(China);
+const visible = ref(true);
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const changeVisible = () => {
+  visible.value = !visible.value;
+}
+const markerInit = (e) => {
+  console.log('marker init: ', e);
+}
+const clickMarker = (e) => {
+  console.log('marker click: ', e);
+}
 </script>
 
 <style scoped>

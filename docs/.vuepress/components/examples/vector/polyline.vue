@@ -29,44 +29,36 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref, reactive} from "vue";
+import {ElAmap, ElAmapPolyline} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      zoom: 15,
-      center: [121.5273285, 31.25515044],
-      polyline: {
-        path: [[121.5389385, 31.21515044], [121.5389385, 31.29615044], [121.5273285, 31.21515044]],
-        editable: false,
-        visible: true,
-        draggable: false
-      }
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    toggleVisible(){
-      this.polyline.visible = !this.polyline.visible;
-    },
-    changeEditable() {
-      this.polyline.editable = !this.polyline.editable;
-    },
-    changeDraggable(){
-      this.polyline.draggable = !this.polyline.draggable;
-    },
-    click(e) {
-      alert('click GeoJSON');
-    },
-  }
-})
+const zoom = ref(15);
+const center = ref([121.5273285, 31.25515044]);
+const polyline = reactive({
+  path: [[121.5389385, 31.21515044], [121.5389385, 31.29615044], [121.5273285, 31.21515044]],
+  editable: false,
+  visible: true,
+  draggable: false
+});
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const toggleVisible = () => {
+  polyline.visible = !polyline.visible;
+}
+const changeEditable = () => {
+  polyline.editable = !polyline.editable;
+}
+const changeDraggable = () => {
+  polyline.draggable = !polyline.draggable;
+}
+const click = (e) => {
+  alert('click GeoJSON');
+}
 </script>
 
 <style scoped>

@@ -53,6 +53,7 @@ export default defineUserConfig({
       appId: 'BSHGEQA36W'
     })
   ],
+  shouldPrefetch: false,
   bundler: viteBundler({
     viteOptions: {
       plugins: [AutoImport({
@@ -66,7 +67,10 @@ export default defineUserConfig({
             exclude: /^ElAmap[A-Z]*/,
             importStyle: false
           })],
-        }),]
+        }),],
+      server: {
+        host: '127.0.0.1'
+      }
     }
   })
 })

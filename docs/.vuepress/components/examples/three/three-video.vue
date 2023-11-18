@@ -11,7 +11,8 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-layer-three :lights="lights">
+      <el-amap-layer-three>
+        <el-amap-three-light-ambient />
         <el-amap-three-video
           v-if="canvas && videoDestroy"
           :visible="visible"
@@ -41,73 +42,59 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
+import {ElAmapLayerThree, ElAmapThreeLightAmbient, ElAmapThreeVideo} from "@vuemap/vue-amap-extra";
 
-export default defineComponent({
-  data() {
-    return {
-      videoDestroy: true,
-      center: [116.306206, 39.975468],
-      zoom: 15,
-      visible: true,
-      position: [116.306206, 39.975468],
-      angle: 90,
-      rotation: {x:90, y:0, z:0},
-      lights: [{
-        type: 'AmbientLight',
-        args: []
-      }],
-      translate: {
-        x: 0,
-        y: 70,
-        z: 0
-      },
-      scale: 0.5,
-      altitude: 200,
-      video: '/video/test.mp4',
-      opacity: 0.5,
-      videoOption: {
-        width: 480,
-        height: 246
-      },
-      alwaysFront: true,
-      canvas: null as any,
-      context: null as any,
-    };
-  },
-
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-      const canvas = document.createElement('canvas') as any;
-      canvas.width = 512;
-      canvas.height = 512;
-      const context = canvas.getContext('2d');
-      this.canvas = canvas;
-      this.context = context;
-    },
-    changeVisible(){
-      this.visible = !this.visible;
-    },
-    changeDestroy(){
-      this.videoDestroy = !this.videoDestroy;
-    },
-    initLayer(layer){
-      console.log('init layer: ', layer);
-    },
-    init(){
-      const image = new Image();
-      image.src="/images/screen.jpeg";
-      image.onload = () => {
-        this.context.drawImage(image, 0, 0)
-      }
-    }
-  }
+const videoDestroy = ref(true);
+const center = ref([116.306206, 39.975468]);
+const zoom = ref(15);
+const visible = ref(true);
+const rotation = ref({x: 90, y: 0, z: 0});
+const translate = ref({
+  x: 0,
+  y: 70,
+  z: 0
 });
+const scale = ref(0.5);
+const altitude = ref(200);
+const video = ref('/video/test.mp4');
+const opacity = ref(0.5);
+const videoOption = ref({
+  width: 480,
+  height: 246
+});
+const alwaysFront = ref(true);
+let canvas: HTMLCanvasElement = null;
+let context: CanvasRenderingContext2D = null;
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+  canvas = document.createElement('canvas') as any;
+  canvas.width = 512;
+  canvas.height = 512;
+  context = canvas.getContext('2d');
+}
+const changeVisible = () => {
+  visible.value = !visible.value;
+}
+const changeDestroy = () => {
+  videoDestroy.value = !videoDestroy.value;
+}
+const initLayer = (layer) => {
+  console.log('init layer: ', layer);
+}
+const init = () => {
+  const image = new Image();
+  image.src = "/images/screen.jpeg";
+  image.onload = () => {
+    context?.drawImage(image, 0, 0)
+  }
+}
 </script>
 
 <style>

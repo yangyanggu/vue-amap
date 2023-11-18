@@ -29,42 +29,35 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap, ElAmapRectangle} from "@vuemap/vue-amap";
 
-export default defineComponent({
-  name: "Map",
-  data(){
-    return {
-      zoom: 15,
-      center: [121.5273285, 31.21515044],
-      draggable: false,
-      visible: true,
-      edit: true,
-      path: [[121.5273285, 31.21515044], [121.5293285, 31.21515044]],
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    toggleVisible(){
-      this.visible = !this.visible;
-    },
-    changeEditable() {
-      this.edit = !this.edit;
-    },
-    changeDraggable(){
-      this.draggable = !this.draggable;
-    },
-    click(e) {
-      alert('click GeoJSON');
-    },
-  }
-})
+const zoom = ref(15);
+const center = ref([121.5273285, 31.21515044]);
+const draggable = ref(false);
+const visible = ref(true);
+const edit = ref(true);
+const path = ref([[121.5273285, 31.21515044], [121.5293285, 31.21515044]]);
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+const toggleVisible = () => {
+  visible.value = !visible.value;
+}
+const changeEditable = () => {
+  edit.value = !edit.value;
+}
+const changeDraggable = () => {
+  draggable.value = !draggable.value;
+}
+const click = (e) => {
+  alert('click GeoJSON');
+}
 </script>
 
 <style scoped>

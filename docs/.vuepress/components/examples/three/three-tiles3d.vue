@@ -36,32 +36,29 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
+import {ElAmapLayerThree, ElAmapThreeLightAmbient, ElAmapThreeTiles3d} from "@vuemap/vue-amap-extra";
 
-export default defineComponent({
-  name: "ThreeTiles3D",
-  data(){
-    return {
-      center: [116.404987, 39.90946],
-      zoom: 16,
-      visible: true,
-      create: true,
-    }
-  },
-  methods: {
-    clickMap(e){
-      console.log('click map: ', e);
-    },
-    initMap(map){
-      console.log('init map: ', map);
-    },
-    changeVisible(){
-      this.visible = !this.visible;
-    },
-    changeCreate(){
-      this.create = !this.create;
-    },
-  }
-})
+const zoom = ref(16);
+const center = ref([116.404987, 39.90946]);
+
+const visible = ref(true)
+const changeVisible = () => {
+  visible.value = !visible.value;
+}
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+
+const create = ref(true);
+const changeCreate = () => {
+  create.value = !create.value;
+}
+
 </script>

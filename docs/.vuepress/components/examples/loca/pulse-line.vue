@@ -26,55 +26,53 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
+import {ref} from "vue";
+import {ElAmap} from "@vuemap/vue-amap";
+import {ElAmapLoca, ElAmapLocaPulseLine} from "@vuemap/vue-amap-loca";
 
-export default defineComponent({
-  name: "Map",
-  data() {
-    const headColors = ['#ECFFB1', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968'];
-    const trailColors = [
-      'rgba(255,178,6, 0.2)',
-      'rgba(255,178,6, 0.2)',
-      'rgba(20,105,104, 0.2)',
-      'rgba(20,105,104, 0.2)',
-      'rgba(20,105,104, 0.2)',
-      'rgba(20,105,104, 0.2)',
-      'rgba(20,105,104, 0.2)',
-      'rgba(20,105,104, 0.2)',
-    ];
+const zoom = ref(5);
+const center = ref([109.595668,35.447184]);
+const pitch = ref(55)
 
-    return {
-      center: [109.595668,35.447184],
-      zoom: 5,
-      pitch: 55,
-      visible: true,
-      sourceUrl: 'https://a.amap.com/Loca/static/loca-v2/demos/mock_data/data-line-in.json',
-      layerStyle: {
-        altitude: 0,
-        lineWidth: (_, feature) => feature.properties.lineWidthRatio * 4 + 1,
-        headColor: (_, feature) => headColors[feature.properties.type],
-        trailColor: (_, feature) => trailColors[feature.properties.type],
-        interval: 0.5,
-        duration: 2000,
-      }
-    }
-  },
-  methods: {
-    clickMap(e) {
-      console.log('click map: ', e);
-    },
-    initMap(e) {
-      console.log('init map: ', e);
-    },
-    changeVisible() {
-      this.visible = !this.visible;
-    },
-    initLoca(loca){
-      loca.animate.start();
-    }
-  }
+const sourceUrl = ref('https://a.amap.com/Loca/static/loca-v2/demos/mock_data/data-line-in.json');
+const headColors = ['#ECFFB1', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968', '#146968'];
+const trailColors = [
+  'rgba(255,178,6, 0.2)',
+  'rgba(255,178,6, 0.2)',
+  'rgba(20,105,104, 0.2)',
+  'rgba(20,105,104, 0.2)',
+  'rgba(20,105,104, 0.2)',
+  'rgba(20,105,104, 0.2)',
+  'rgba(20,105,104, 0.2)',
+  'rgba(20,105,104, 0.2)',
+];
+const layerStyle = ref({
+  altitude: 0,
+  lineWidth: (_, feature) => feature.properties.lineWidthRatio * 4 + 1,
+  headColor: (_, feature) => headColors[feature.properties.type],
+  trailColor: (_, feature) => trailColors[feature.properties.type],
+  interval: 0.5,
+  duration: 2000,
 })
+
+
+const visible = ref(true)
+const changeVisible = () => {
+  visible.value = !visible.value;
+}
+
+const clickMap = (e) => {
+  console.log('click map: ', e);
+}
+const initMap = (map) => {
+  console.log('init map: ', map);
+}
+
+const initLoca = (loca: any) => {
+  loca.animate.start();
+}
+
 </script>
 
 <style scoped>
