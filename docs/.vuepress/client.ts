@@ -1,5 +1,5 @@
 import {defineClientConfig} from '@vuepress/client'
-import 'element-plus/theme-chalk/index.css'
+import 'element-plus/theme-chalk/el-message.css'
 import {initAMapApiLoader} from '@vuemap/vue-amap'
 // import VueAMapLoca from '@vuemap/vue-amap-loca/index'
 // import VueAMapExtra from '@vuemap/vue-amap-extra/index'

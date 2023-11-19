@@ -59,13 +59,13 @@ export default defineUserConfig({
       plugins: [AutoImport({
         resolvers: [ElementPlusResolver({
           exclude: /^ElAmap[A-Z]*/,
-          importStyle: false
+          importStyle: "sass"
         })],
       }),
         Components({
           resolvers: [ElementPlusResolver({
             exclude: /^ElAmap[A-Z]*/,
-            importStyle: false
+            importStyle: "sass"
           })],
         }),],
       server: {
