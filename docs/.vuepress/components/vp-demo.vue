@@ -5,6 +5,7 @@ import { useToggle } from '../composables/toggle'
 
 import SourceCodeIcon from './icons/source-code.vue'
 import CopyIcon from './icons/copy-icon.vue'
+import CodepenIcon from './icons/codepen.vue'
 
 import Example from './demo/vp-example.vue'
 import SourceCode from './demo/vp-source-code.vue'
@@ -32,8 +33,10 @@ const props = defineProps({
 
 const vm = getCurrentInstance()
 
+const decodeSource = decodeURIComponent(props.rawSource);
+
 const { copy, isSupported } = useClipboard({
-  source: decodeURIComponent(props.rawSource),
+  source: decodeSource,
   read: false,
 })
 
@@ -54,6 +57,20 @@ const copyCode = async () => {
 }
 
 const demoPath = computed(() => props.path.replaceAll('/', '-'))
+
+function utoa(data: string): string {
+  return btoa(unescape(encodeURIComponent(data)))
+}
+
+const openInPlayground = () => {
+  const originCode = {
+    'App.vue': decodeSource,
+  }
+
+  const encoded = utoa(JSON.stringify(originCode))
+  const link = `https://amap-run.guyixi.cn/#${encoded}`
+  window.open(link);
+}
 </script>
 
 <template>
@@ -65,6 +82,13 @@ const demoPath = computed(() => props.path.replaceAll('/', '-'))
     />
     <div class="example">
       <div class="op-btns">
+        <div
+          class="op-btn"
+          title="在playground中打开"
+          @click="openInPlayground"
+        >
+          <CodepenIcon />
+        </div>
         <div
           class="op-btn"
           title="拷贝代码"
