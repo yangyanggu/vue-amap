@@ -29,6 +29,9 @@ examples/marker/elastic-marker
 topWhenClick | Boolean | 鼠标点击时marker是否置顶，默认false ，不置顶
 bubble | Boolean | 是否将覆盖物的鼠标或touch等事件冒泡到地图上, 默认值：false。
 zooms | Array | 点标记显示的层级范围，超过范围不显示。默认值：zooms: [2, 20]
+offset | Array | 点标记显示位置偏移量，默认值为 [0,0] 。Marker指定position后，默认以marker左上角位置为基准点（若设置了anchor，则以anchor设置位置为基准点），对准所给定的position位置，若需使marker指定位置对准在position处，需根据marker的尺寸设置一定的偏移量。
+zoomStyleMapping | Object | 表示地图级别与styles中样式的映射，{14:0,15:0,16:1,17:1,}表示14到15级使用styles中的第0个样式，16-17级使用第二个样式
+styles | Array | 多个不同样式的数组。每个style对象有用两个参数 icon 和 label
 reEventWhenUpdate | Boolean | 是否在组件更新时重新注册事件，主要用于数组更新时，解决绑定了事件但事件的对象不会更新问题，默认false
 extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
 
@@ -40,13 +43,10 @@ extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始�
 visible | Boolean | 点标记是否可见，默认为true。
 zIndex | Number | 点标记的叠加顺序。地图上存在多个点标记叠加时，通过该属性使级别较高的点标记在上层显示
 position | Array | 点标记在地图上显示的位置`1.1.11开始支持支持v-model`
-offset | Array | 点标记显示位置偏移量，默认值为 [0,0] 。Marker指定position后，默认以marker左上角位置为基准点（若设置了anchor，则以anchor设置位置为基准点），对准所给定的position位置，若需使marker指定位置对准在position处，需根据marker的尺寸设置一定的偏移量。
 draggable | Boolean | 设置点标记是否可拖拽移动，默认为false。
 cursor | String | 指定鼠标悬停时的鼠，默认值：'pointer'
 title | String | 鼠标滑过点标记时的文字提示。不设置则鼠标滑过点标无文字提示。
 clickable | Boolean | 点标记是否可点击，默认值: true
-zoomStyleMapping | Object | 表示地图级别与styles中样式的映射，{14:0,15:0,16:1,17:1,}表示14到15级使用styles中的第0个样式，16-17级使用第二个样式
-styles | Array | 多个不同样式的数组。每个style对象有用两个参数 icon 和 label
 extData | any | 用户自定义属 ，支持JavaScript API任意数据类型，如 Marker的id等。可将自定义数据保存在该属性上，方便后续操作使用。
 
 ### styles.icon参数说明
