@@ -51,7 +51,16 @@ export default [
     ]
   },
   {
-    text: '高德开源插件库',
-    link: 'https://github.com/AMap-Web'
-  }
+    text: '博客技巧专栏',
+    children: [
+      {
+        text: '掘金',
+        link: 'https://juejin.cn/column/7132417130024140837'
+      },
+      {
+        text: 'CSDN',
+        link: 'https://blog.csdn.net/u010974711/category_12369765.html'
+      },
+    ]
+  },
 ]
