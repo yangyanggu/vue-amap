@@ -63,13 +63,13 @@ extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始�
 ## 动态属性
 支持响应式。
 
-名称 | 类型 | 说明
----|---|---|
-zooms | Array | 支持的缩放级别范围，默认范围 [3-20]
+名称 | 类型      | 说明
+---|---------|---|
+zooms | Array   | 支持的缩放级别范围，默认范围 [3-20]
 visible | Boolean | 是否显示，默认 true
-zIndex | Number | 图层叠加的顺序值，1 表示最底层。默认 zIndex：130
-opacity | Number | 透明度，默认 1
-dataSet | Object | 热力图数据集 {data: points, max: 100}
+zIndex | Number  | 图层叠加的顺序值，1 表示最底层。默认 zIndex：130
+opacity | Array   | 热力图透明度区间数组，取值范围 [0,1] ，0表示完全透明，1表示不透明，默认： [0,1]
+dataSet | Object  | 热力图数据集 {data: points, max: 100}
 
 ### config参数
 名称 | 类型 | 说明
