@@ -13,7 +13,8 @@
     "lib": ["ES2018", "DOM"],
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["@types/node"]
   },
   "include": [
     "typings/*.d.ts",

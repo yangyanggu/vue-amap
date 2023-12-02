@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.0.25
+* 升级@vuemap/district-cluster依赖
+
 ### @vuemap/vue-amap v2.0.24
 * 解决视频图层无法使用跨域视频问题
 * 增加3个hooks，天气、IP定位、普通定位
