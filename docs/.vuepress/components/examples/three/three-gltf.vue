@@ -30,7 +30,7 @@
         />
         <el-amap-three-light-spot :position="{x:0, y:1, z:0}" />
         <el-amap-three-gltf
-          url="/gltf/sgyj_point_animation.gltf"
+          :url="baseUrl + '/gltf/sgyj_point_animation.gltf'"
           :position="position"
           :scale="[10,10,10]"
           :rotation="rotation"
@@ -38,7 +38,7 @@
           @init="init"
         />
         <el-amap-three-gltf
-          url="/gltf/car2.gltf"
+          :url="baseUrl + '/gltf/car2.gltf'"
           :position="carPosition"
           :scale="[10,10,10]"
           :rotation="rotation"
@@ -77,6 +77,8 @@ import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {ShaderPass} from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import {DotScreenShader} from 'three/examples/jsm/shaders/DotScreenShader.js';
 
+const baseUrl = import.meta.env.VITE_ASSERT_BASE_URL;
+
 const zoom = ref(18);
 const center = ref([121.59996, 31.197646]);
 const visible = ref(true);
@@ -87,7 +89,7 @@ const moveAnimation = ref({duration: 1000, smooth: true});
 const carAngle = ref(90);
 const hdrOptions = ref({
   urls: ['px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr'],
-  path: '/hdr/'
+  path: `${baseUrl}/hdr/`
 });
 let carInterval = -1;
 

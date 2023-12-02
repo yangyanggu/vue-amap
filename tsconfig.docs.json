@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "types": ["@vuepress/client/types"]
+  },
+  "include": ["docs/**/*.ts", "docs/**/*.vue","docs/.vuepress/**/*.ts", "docs/.vuepress/**/*.vue", "typings/**/*.d.ts"],
+  "exclude": ["node_modules", "**/__test?__", "**/dist", "**/.cache", "**/.temp"]
+}

@@ -11,7 +11,7 @@ import { projRoot } from './utils/paths'
 import { excludeFiles } from './utils/pkg'
 import type { SourceFile } from 'ts-morph'
 
-const TSCONFIG_PATH = path.resolve(projRoot,'build', 'config' ,'tsconfig.json')
+const TSCONFIG_PATH = path.resolve(projRoot,'tsconfig.build.json')
 
 /**
  * fork = require( https://github.com/egoist/vue-dts-gen/blob/main/src/index.ts

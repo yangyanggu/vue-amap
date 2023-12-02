@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "module": "CommonJS",
+    "target": "ESNext",
+    "lib": ["ESNext","DOM"]
+  },
+  "include": [
+    "test/**/*.ts",
+    "test/**/*.vue",
+    "typings"
+  ]
+}

@@ -3,19 +3,19 @@
     "allowJs": true,
     "strict": true,
     "module": "ES6",
-    "target": "ESNext",
+    "target": "ES2018",
     "noImplicitAny": false,
-    "declaration": true,
+    "declaration": false,
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ES2018", "DOM"],
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "types": ["@vuepress/client/types"]
+    "resolveJsonModule": true
   },
-  "include": ["**/*.ts", "../typings"],
-  "exclude": ["node_modules", "**/__test?__", "**/dist"]
+  "include": [
+    "typings/*.d.ts",
+  ]
 }

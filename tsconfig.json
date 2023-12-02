@@ -1,24 +1,9 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "strict": true,
-    "module": "ES6",
-    "target": "ESNext",
-    "noImplicitAny": false,
-    "declaration": true,
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "lib": ["ESNext", "DOM"],
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "types": ["@vuepress/client/types"]
-  },
-  "include": [
-    "src",
-    "typings"
-  ],
-  "exclude": ["node_modules", "**/__test?__", "**/dist"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.docs.json" },
+    { "path": "./tsconfig.base.json" },
+    { "path": "./tsconfig.test.json" },
+    { "path": "./tsconfig.build.config.json" }
+  ]
 }

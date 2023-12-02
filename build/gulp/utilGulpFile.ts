@@ -45,7 +45,7 @@ const build: TaskFunction = series(
       // 不参与打包
       plugins: [
         typescript({
-          tsconfig: resolve(projRoot,'build/config/tsconfig.json')
+          tsconfig: resolve(projRoot,'/tsconfig.build.json')
         }),
         nodeResolve({
           extensions: ['.mjs', '.js', '.json', '.ts'],
@@ -59,7 +59,7 @@ const build: TaskFunction = series(
           target: 'es2017', // default, or 'es20XX', 'esnext'
           jsx: 'transform', // default, or 'preserve'
           // Like @rollup/plugin-replace
-          tsconfig: 'tsconfig.json', // default
+          tsconfig: resolve(projRoot,'/tsconfig.build.json'), // default
           // Add extra loaders
           loaders: {
             // Add .json files support

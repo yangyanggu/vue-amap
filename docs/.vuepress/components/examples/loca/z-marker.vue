@@ -30,12 +30,12 @@
 import {ref} from "vue";
 import {ElAmap} from "@vuemap/vue-amap";
 import {ElAmapLoca, ElAmapLocaZMarker} from "@vuemap/vue-amap-loca";
-
+const baseUrl = import.meta.env.VITE_ASSERT_BASE_URL;
 const zoom = ref(16);
 const center = ref([116.597005,39.914388]);
 const pitch = ref(55)
 
-const sourceUrl = ref('/json/zmarker.json');
+const sourceUrl = ref(`${baseUrl}/json/zmarker.json`);
 const layerStyle = ref({
   unit: 'meter',
   content: (index, feat) => {

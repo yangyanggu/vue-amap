@@ -19,7 +19,7 @@
         <el-amap-three-gltf
           v-for="item in positions"
           :key="item.id"
-          url="/gltf/sgyj_point_animation.gltf"
+          :url="baseUrl + '/gltf/sgyj_point_animation.gltf'"
           :position="item.lnglat"
           :use-model-cache="true"
           :scale="[10,10,10]"
@@ -39,13 +39,17 @@ import {
   ElAmapThreeLightAmbient,
 } from '@vuemap/vue-amap-extra';
 
+type PositionType = {lnglat: number[], id: string}[]
+
 const zoom = ref(18);
 const center = ref([121.59996, 31.197646]);
 const rotation = ref({x: 90, y: 0, z: 0});
-const positions = ref([]);
+const positions = ref<PositionType>([]);
+
+const baseUrl = import.meta.env.VITE_ASSERT_BASE_URL;
 
 onBeforeMount(() => {
-  const array = [];
+  const array: PositionType = [];
   const position = [121.59996, 31.197646];
   for (let i = 0; i < 1000; i++) {
     const lnglat = [position[0] + Math.random() * 0.01, position[1] + Math.random() * 0.01];

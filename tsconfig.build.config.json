@@ -1,9 +1,10 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "composite": true,
     "module": "CommonJS",
     "target": "ESNext",
     "lib": ["ESNext"]
   },
-  "include": ["**/*.ts"]
+  "include": ["build/**/*.ts"]
 }

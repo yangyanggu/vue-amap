@@ -41,10 +41,15 @@ export const containerPlugin = ():Plugin => {
     name: 'demo-plugin',
     multiple: true,
   }
-
+  const domain = 'https://vue-amap.guyixi.cn/'
   // if `render` option is not specified
   // use `before` and `after` to generate render function
   // use markdown-it-container
+  pluginObj.define = (app) => {
+    return {
+      'import.meta.env.VITE_ASSERT_BASE_URL': app.env.isDev ? '' : domain
+    }
+  }
   pluginObj.extendsMarkdown = (md, app) => {
 
     md.use(mdContainer, 'demo', {
@@ -66,7 +71,8 @@ export const containerPlugin = ():Plugin => {
             )
           }
           if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
-
+          const baseUrl = app.env.isDev ? '' : domain
+          source = source.replace('import.meta.env.VITE_ASSERT_BASE_URL', JSON.stringify(baseUrl));
           return `<vp-demo source="${encodeURIComponent(
             highlight(source, 'vue')
           )}" path="${sourceFile}" raw-source="${encodeURIComponent(

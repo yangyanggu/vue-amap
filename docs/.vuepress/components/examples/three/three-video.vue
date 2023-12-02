@@ -47,6 +47,8 @@ import {ref} from "vue";
 import {ElAmap} from "@vuemap/vue-amap";
 import {ElAmapLayerThree, ElAmapThreeLightAmbient, ElAmapThreeVideo} from "@vuemap/vue-amap-extra";
 
+const baseUrl = import.meta.env.VITE_ASSERT_BASE_URL;
+
 const videoDestroy = ref(true);
 const center = ref([116.306206, 39.975468]);
 const zoom = ref(15);
@@ -66,8 +68,8 @@ const videoOption = ref({
   height: 246
 });
 const alwaysFront = ref(true);
-const canvas = ref<HTMLCanvasElement>(null);
-let context: CanvasRenderingContext2D = null;
+const canvas = ref<HTMLCanvasElement>();
+let context: CanvasRenderingContext2D;
 
 const clickMap = (e) => {
   console.log('click map: ', e);
@@ -75,9 +77,9 @@ const clickMap = (e) => {
 const initMap = (map) => {
   console.log('init map: ', map);
   canvas.value = document.createElement('canvas') as any;
-  canvas.value.width = 512;
-  canvas.value.height = 512;
-  context = canvas.value.getContext('2d');
+  canvas.value!.width = 512;
+  canvas.value!.height = 512;
+  context = canvas.value?.getContext('2d') as CanvasRenderingContext2D;
 }
 const changeVisible = () => {
   visible.value = !visible.value;
@@ -90,7 +92,7 @@ const initLayer = (layer) => {
 }
 const init = () => {
   const image = new Image();
-  image.src = "/images/screen.jpeg";
+  image.src = `${baseUrl}/images/screen.jpeg`;
   image.onload = () => {
     context?.drawImage(image, 0, 0)
   }

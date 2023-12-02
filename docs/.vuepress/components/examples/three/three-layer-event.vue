@@ -39,7 +39,7 @@
         />
         <el-amap-three-light-spot :position="{x:0, y:1, z:0}" />
         <el-amap-three-gltf
-          url="/gltf/sgyj_point_animation.gltf"
+          :url="baseUrl + '/gltf/sgyj_point_animation.gltf'"
           :position="position"
           :scale="[10,10,10]"
           :rotation="rotation"
@@ -70,6 +70,8 @@ import {
   ElAmapThreeLightSpot
 } from '@vuemap/vue-amap-extra';
 
+const baseUrl = import.meta.env.VITE_ASSERT_BASE_URL;
+
 const zoom = ref(18);
 const center = ref([121.59996, 31.197646]);
 const visible = ref(true);
@@ -77,7 +79,7 @@ const position = ref([121.59996, 31.197646]);
 const rotation = ref({x: 90, y: 0, z: 0});
 const hdrOptions = ref({
   urls: ['px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr'],
-  path: '/hdr/'
+  path: `${baseUrl}/hdr/`
 });
 const meshPosition = [121.59896, 31.197646];
 

@@ -17,5 +17,5 @@ export const buildOutput = resolve(projRoot, 'dist')
 /** dist/vue-amap */
 export const epOutput = resolve(buildOutput, 'vue-amap')
 
-export const buildTsConfigPath = resolve(projRoot, 'build/config/tsconfig.json')
+export const buildTsConfigPath = resolve(projRoot, 'tsconfig.build.json')
 
