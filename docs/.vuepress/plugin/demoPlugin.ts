@@ -70,6 +70,10 @@ export const containerPlugin = ():Plugin => {
               'utf-8'
             )
           }
+          let importJSONStr = '';
+          if(sourceFileToken.children.length > 2){
+            importJSONStr = sourceFileToken.children?.[2].content ?? '';
+          }
           if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
           const baseUrl = app.env.isDev ? '' : domain
           source = source.replace('import.meta.env.VITE_ASSERT_BASE_URL', JSON.stringify(baseUrl));
@@ -77,7 +81,7 @@ export const containerPlugin = ():Plugin => {
             highlight(source, 'vue')
           )}" path="${sourceFile}" raw-source="${encodeURIComponent(
             source
-          )}" description="${encodeURIComponent(localMd.render(description))}">`
+          )}" description="${encodeURIComponent(localMd.render(description))}" import-json="${encodeURIComponent(importJSONStr)}">`
         } else {
           return '</vp-demo>'
         }

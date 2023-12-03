@@ -19,11 +19,13 @@ ThreeJS图层，基于AMap.GLCustomLayer，增加通用的配置，目前包含l
 
 ::: demo
 examples/three/three-gltf
+{"imports":{"three":"https://fastly.jsdelivr.net/npm/three@0.143.0/build/three.module.js","@types/three":"https://fastly.jsdelivr.net/npm/@types/three@0.141.0/index.d.ts","three/examples/jsm/postprocessing/RenderPass.js":"https://fastly.jsdelivr.net/npm/three@0.143.0/examples/jsm/postprocessing/RenderPass.js","three/examples/jsm/postprocessing/ShaderPass.js":"https://fastly.jsdelivr.net/npm/three@0.143.0/examples/jsm/postprocessing/ShaderPass.js","three/examples/jsm/shaders/DotScreenShader.js":"https://fastly.jsdelivr.net/npm/three@0.143.0/examples/jsm/shaders/DotScreenShader.js"}}
 :::
 
 ## 自定义模型添加事件
 ::: demo
 examples/three/three-layer-event
+{"imports":{"three":"https://fastly.jsdelivr.net/npm/three@0.143.0/build/three.module.js","@types/three":"https://fastly.jsdelivr.net/npm/@types/three@0.141.0/index.d.ts"}}
 :::
 
 ## 静态属性

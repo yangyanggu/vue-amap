@@ -29,6 +29,9 @@ const props = defineProps({
   description: {
     type: String,
   },
+  importJson: {
+    type: String
+  }
 })
 
 const vm = getCurrentInstance()
@@ -42,7 +45,7 @@ const { copy, isSupported } = useClipboard({
 
 const [sourceVisible, setSourceVisible] = useToggle()
 
-const decodedDescription = computed(() => decodeURIComponent(props.description))
+const decodedDescription = computed(() => decodeURIComponent(props.description as string))
 
 const copyCode = async () => {
   if (!isSupported) {
@@ -51,7 +54,7 @@ const copyCode = async () => {
   try {
     await copy()
     alert('复制成功')
-  } catch (e: Error) {
+  } catch (e: any) {
     alert(e.message)
   }
 }
@@ -63,10 +66,13 @@ function utoa(data: string): string {
 }
 
 const openInPlayground = () => {
-  const originCode = {
+  const originCode: Record<string, string> = {
     'App.vue': decodeSource,
   }
-
+  
+  if(props.importJson){
+    originCode['import-map.json'] = decodeURIComponent(props.importJson)
+  }
   const encoded = utoa(JSON.stringify(originCode))
   const link = `https://amap-run.guyixi.cn/#${encoded}`
   window.open(link);
