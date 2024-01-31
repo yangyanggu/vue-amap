@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance, convertLnglat} from '@vuemap/vue-amap-util';
+import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance, convertLnglat} from '@vuemap/vue-amap';
 import editorMixin from '../../../mixins/editor-component';
 
 
@@ -107,7 +107,7 @@ export default defineComponent({
     },
     emitModel(target){
       const paths = target.getPath();
-      const pathArray = paths.map(convertLnglat)
+      const pathArray = paths.map(convertLnglat);
       this.$emit('update:path', pathArray);
     },
     destroyComponent() {

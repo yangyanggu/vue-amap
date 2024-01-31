@@ -13,7 +13,8 @@
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin, guid} from '@vuemap/vue-amap-util';
+import {registerMixin} from '../../../mixins';
+import {guid} from '../../../utils';
 export default defineComponent({
   name: 'ElAmapSearchBox',
   mixins: [registerMixin],
@@ -89,9 +90,9 @@ export default defineComponent({
           AMap.Autocomplete.prototype.onInPut = function (event){
             clearTimeout(this._inputTimer);
             this._inputTimer = setTimeout(() => {
-              this.output && this.autoSearch()
-            }, debounce)
-          }
+              this.output && this.autoSearch();
+            }, debounce);
+          };
           this.$amapComponent = new AMap.AutoComplete(options);
           resolve();
         });

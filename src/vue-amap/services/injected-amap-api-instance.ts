@@ -32,3 +32,4 @@ export const initAMapApiLoader = (config : AMapLoaderOptions) => {
   lazyAMapApiLoaderInstance.then();
 };
 export {lazyAMapApiLoaderInstance};
+export {resetJsApi} from './amap-api-loader'

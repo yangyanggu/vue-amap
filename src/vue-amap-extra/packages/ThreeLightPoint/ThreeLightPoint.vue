@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import ThreeLightPoint from "./ThreeLightPoint";
 import type { PropType} from "vue";
 import type {Vec} from "./Type";
@@ -41,7 +41,7 @@ export default defineComponent({
       if(!this.parentInstance.isDestroy){
         this.$amapComponent.remove();
       }
-      this.$amapComponent.destroy()
+      this.$amapComponent.destroy();
     },
   },
   render() {

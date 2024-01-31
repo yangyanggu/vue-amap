@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "2.0.24",
+  "version": "2.1.0",
   "description": "高德地图vue3版本封装",
   "keywords": [
     "vue-amap",
@@ -39,8 +39,8 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@vuemap/amap-jsapi-loader": "1.0.3",
-    "@vuemap/vue-amap-util": "2.0.7",
+    "@amap/amap-jsapi-types": "^0.0.13",
+    "@vuemap/amap-jsapi-loader": "1.0.4",
     "@vuemap/district-cluster": "0.0.9",
     "@vuemap/amap-xyz-layer": "0.0.10",
     "lodash-es": "^4.17.21"
@@ -48,7 +48,7 @@
   "devDependencies": {
   },
   "peerDependencies": {
-    "vue": ">=3.2.0"
+    "vue": "3"
   },
   "vetur": {
     "tags": "./tags.json",

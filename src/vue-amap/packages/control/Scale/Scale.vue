@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '../../../mixins';
 
 export default defineComponent({
   name: 'ElAmapControlScale',

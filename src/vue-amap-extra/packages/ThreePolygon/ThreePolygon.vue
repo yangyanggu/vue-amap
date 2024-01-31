@@ -1,8 +1,8 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import ThreePolygon from "./ThreePolygon";
-import type {Polygon} from './Type'
+import type {Polygon} from './Type';
 import type {PropType} from "vue";
 
 export default defineComponent({
@@ -52,7 +52,7 @@ export default defineComponent({
       if(!this.parentInstance.isDestroy){
         this.$amapComponent.remove();
       }
-      this.$amapComponent.destroy()
+      this.$amapComponent.destroy();
     },
   },
   render() {

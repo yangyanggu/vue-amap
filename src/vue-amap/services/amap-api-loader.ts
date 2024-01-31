@@ -25,3 +25,5 @@ export default function(config : any = {}) {
   }
   return AMapLoader.load(config);
 }
+
+export const resetJsApi = AMapLoader.reset;

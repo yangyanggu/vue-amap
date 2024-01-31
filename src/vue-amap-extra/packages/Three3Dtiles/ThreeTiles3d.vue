@@ -1,7 +1,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {Layer3DTiles} from "@vuemap/layer-3dtiles";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import type {LngLat,Vec} from "./Type";
 
 import type{PropType} from "vue";

@@ -1,8 +1,8 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {CustomXyzLayer} from "@vuemap/amap-xyz-layer";
-import {registerMixin} from '@vuemap/vue-amap-util';
-import type { PropType } from 'vue'
+import {registerMixin} from '@vuemap/vue-amap';
+import type { PropType } from 'vue';
 
 export default defineComponent({
   name: 'ElAmapLayerCustomXyz',

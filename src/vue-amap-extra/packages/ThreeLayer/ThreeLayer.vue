@@ -3,9 +3,9 @@
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import CustomThreeLayer from "./CustomThreeLayer";
-import type {HDROptions, LightOption} from './Type'
+import type {HDROptions, LightOption} from './Type';
 import type {PropType} from "vue";
 import type {WebGLRendererParameters} from 'three';
 
@@ -47,7 +47,7 @@ export default defineComponent({
     customCoordsCenter: {
       type: Array as PropType<number[]>,
       default() {
-        return null
+        return null;
       }
     },
     axesHelper: {
@@ -61,7 +61,7 @@ export default defineComponent({
     webGLRendererParameters: {
       type: Object as PropType<WebGLRendererParameters>,
       default() {
-        return undefined
+        return undefined;
       }
     }
   },
@@ -73,9 +73,9 @@ export default defineComponent({
     __initComponent(options) {
       return new Promise<void>((resolve) => {
         this.$amapComponent = new CustomThreeLayer(this.$parentComponent, options, () => {
-          resolve()
+          resolve();
         });
-      })
+      });
     },
     destroyComponent() {
       this.$amapComponent.destroy();

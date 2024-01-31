@@ -1,5 +1,5 @@
 import {defineComponent} from "vue";
-import {convertEventToLowerCase, eventReg, eventHelper} from "@vuemap/vue-amap-util";
+import {convertEventToLowerCase, eventReg,bindInstanceEvent} from "@vuemap/vue-amap";
 
 export default defineComponent({
   props: {
@@ -28,7 +28,7 @@ export default defineComponent({
 
       });
       Object.keys(filterSet).forEach(key => {
-        eventHelper.addListener(this.$amapComponent.editor, key, filterSet[key]);
+        bindInstanceEvent(this.$amapComponent.editor, key, filterSet[key]);
       });
     }
   }

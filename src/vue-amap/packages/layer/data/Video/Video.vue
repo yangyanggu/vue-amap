@@ -7,8 +7,8 @@
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
-import VideoLayer from './VideoLayer'
+import {registerMixin} from '@vuemap/vue-amap';
+import VideoLayer from './VideoLayer';
 
 export default defineComponent({
   name: 'ElAmapLayerVideo',

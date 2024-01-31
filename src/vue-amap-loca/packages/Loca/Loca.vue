@@ -3,9 +3,9 @@
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import type { PropType} from "vue";
-import type {EventOptions} from './Type'
+import type {EventOptions} from './Type';
 
 export default defineComponent({
   name: 'ElAmapLoca',
@@ -86,7 +86,7 @@ export default defineComponent({
           map.on('dragend', this.dragEnd);
           map.on('rotatestart', this.rotateStart);
           map.on('rotateend', this.rotateEnd);
-          map.on('mouseout', this.mouseoutMap)
+          map.on('mouseout', this.mouseoutMap);
         }
         if($props.onRightclick !== null){
           map.on('rightclick', this.rightclickMap);
@@ -115,12 +115,12 @@ export default defineComponent({
         this.$amapComponent.layers.forEach(( v => {
           layers.push(v);
         }));
-        layers.sort((a,b) => b.zIndex - a.zIndex)
+        layers.sort((a,b) => b.zIndex - a.zIndex);
         const layerLen = layers.length;
         for(let i=0;i<layerLen;i++){
           const temp = layers[i].queryFeature(e.pixel.toArray());
           if(temp){
-            features.push(temp)
+            features.push(temp);
             if(this.hitFirst){
               break;
             }
@@ -131,10 +131,10 @@ export default defineComponent({
       return features;
     },
     dragStart(){
-      this.isDragging = true
+      this.isDragging = true;
     },
     dragEnd(){
-      this.isDragging = false
+      this.isDragging = false;
     },
     mouseoutMap(){
       this.isDragging = false;
@@ -156,7 +156,7 @@ export default defineComponent({
         map.off('dragend', this.dragEnd);
         map.off('rotatestart', this.rotateStart);
         map.off('rotateend', this.rotateEnd);
-        map.off('mouseout', this.mouseoutMap)
+        map.off('mouseout', this.mouseoutMap);
       }
     },
     destroyComponent() {

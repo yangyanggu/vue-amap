@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '../../../mixins';
 export default defineComponent({
   name: 'ElAmapControlGeolocation',
   mixins: [registerMixin],
@@ -99,7 +99,7 @@ export default defineComponent({
           this.$parentComponent.addControl(this.$amapComponent);
           this.$amapComponent.on('complete', (e) => {
             this.$emit('complete', e);
-          })
+          });
           resolve();
         });
       });

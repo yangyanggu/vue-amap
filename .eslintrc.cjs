@@ -45,6 +45,8 @@ module.exports = {
   ],
   rules: {
     // js/ts
+    'semi': ['error', 'always'],
+    'space-before-function-paren': ["error", "always"],
     'no-console': ['warn', { allow: ['error'] }],
     'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
     camelcase: ['error', { properties: 'never' }],

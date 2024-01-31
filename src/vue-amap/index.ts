@@ -1,7 +1,9 @@
-import installer from './defaults'
+import installer from './defaults';
+import '@amap/amap-jsapi-types';
 export * from './services';
-export * from './packages'
-export { makeInstaller, registerMixin } from '@vuemap/vue-amap-util'
-export { default } from './defaults'
+export * from './packages';
+export * from './mixins';
+export { default } from './defaults';
 export * from './hooks';
-export const install = installer.install
+export * from './utils';
+export const install = installer.install;

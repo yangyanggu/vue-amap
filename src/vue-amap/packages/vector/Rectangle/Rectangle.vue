@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance,toLngLat} from '@vuemap/vue-amap-util';
+import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance,toLngLat} from '@vuemap/vue-amap';
 import editorMixin from '../../../mixins/editor-component';
 
 export default defineComponent({
@@ -117,7 +117,7 @@ export default defineComponent({
       const bounds = target.getBounds();
       const southWest = bounds.getSouthWest();
       const northEast = bounds.getNorthEast();
-      const paths = [southWest.toArray(), northEast.toArray()]
+      const paths = [southWest.toArray(), northEast.toArray()];
       this.$emit('update:bounds', paths);
     },
     destroyComponent() {

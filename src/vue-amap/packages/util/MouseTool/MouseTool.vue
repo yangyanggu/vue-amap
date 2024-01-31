@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import type { PropType} from "vue";
 export interface TooltipText {
   marker?: string
@@ -23,7 +23,7 @@ export default defineComponent({
       required: true,
       default: 'marker',
       validator: (value: string): boolean => {
-        return ['marker', 'circle', 'rectangle', 'polyline', 'polygon', 'measureArea', 'rule', 'rectZoomIn', 'rectZoomOut'].includes(value)
+        return ['marker', 'circle', 'rectangle', 'polyline', 'polygon', 'measureArea', 'rule', 'rectZoomIn', 'rectZoomOut'].includes(value);
       }
     }, // 类型
     drawOptions: {
@@ -88,7 +88,7 @@ export default defineComponent({
     },
     __type(){
       if(!this.isDrawing){
-        return
+        return;
       }
       const type = this.type;
       if(this.$amapComponent[type]){
@@ -103,15 +103,15 @@ export default defineComponent({
         textOptions.anchor = 'top-left';
         textOptions.clickable= false;
         textOptions.bubble = true;
-        textOptions.offset = [10, 10]
+        textOptions.offset = [10, 10];
         this.$text = new AMap.Text(textOptions);
         this.$parentComponent.add(this.$text);
-        this.$parentComponent.on('mousemove',this.getMousePosition)
+        this.$parentComponent.on('mousemove',this.getMousePosition);
       }
     },
     getMousePosition(e){
       const lnglat = e.lnglat;
-      this.$text.setPosition([lnglat.lng, lnglat.lat])
+      this.$text.setPosition([lnglat.lng, lnglat.lat]);
     },
     setText(content: string){
       if(this.$text){
@@ -128,18 +128,18 @@ export default defineComponent({
           emitData = {
             center: e.obj.getCenter().toArray(),
             radius: e.obj.getRadius()
-          }
+          };
         } else if (type === 'rectangle'){
           const bounds = e.obj.getBounds();
           const southWest = bounds.getSouthWest();
           const northEast = bounds.getNorthEast();
-          emitData = [southWest.toArray(), northEast.toArray()]
+          emitData = [southWest.toArray(), northEast.toArray()];
         } else if (type === 'polyline'){
           const path = e.obj.getPath();
-          emitData = path.map(v => v.toArray())
+          emitData = path.map(v => v.toArray());
         } else if (type === 'polygon'){
           const path = e.obj.getPath();
-          emitData = path.map(v => v.toArray())
+          emitData = path.map(v => v.toArray());
         } else if (type === 'measureArea'){
           const path = e.obj.getPath().map(v => v.toArray());
           emitData = AMap.GeometryUtil.ringArea(path);
@@ -147,16 +147,16 @@ export default defineComponent({
           const path = e.obj.getPath().map(v => v.toArray());
           emitData = AMap.GeometryUtil.distanceOfLine(path);
         } else if (type === 'rectZoomIn'){
-          emitData = true
+          emitData = true;
         } else if (type === 'rectZoomOut'){
-          emitData = true
+          emitData = true;
         }
-        this.$emit('draw', emitData, e.obj)
+        this.$emit('draw', emitData, e.obj);
         if(this.autoClear){
           this.$$clear();
           this.__type();
         }
-      })
+      });
     },
     _close(ifClear = true){
       this.$amapComponent.close(ifClear);

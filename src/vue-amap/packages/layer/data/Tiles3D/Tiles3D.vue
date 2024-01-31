@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin,loadScript} from '@vuemap/vue-amap-util';
+import {registerMixin,loadScript} from '@vuemap/vue-amap';
 
 
 export default defineComponent({
@@ -36,8 +36,8 @@ export default defineComponent({
               loadScript(options.threeGltfLoader, () => {
                 this.createLayer(options);
                 resolve();
-              })
-            })
+              });
+            });
           }else{
             this.createLayer(options);
             resolve();
@@ -53,14 +53,14 @@ export default defineComponent({
     createLayer(options){
       let layerStyle = {};
       if(options.layerStyle){
-        layerStyle = JSON.parse(JSON.stringify(options.layerStyle))
+        layerStyle = JSON.parse(JSON.stringify(options.layerStyle));
       }
       this.$amapComponent = new AMap['3DTilesLayer']({
         map: this.$parentComponent,
         url: options.url, // 3d Tiles 入口文件
         style: layerStyle
       });
-      console.log(this.$amapComponent)
+      console.log(this.$amapComponent);
     }
   },
   render(){

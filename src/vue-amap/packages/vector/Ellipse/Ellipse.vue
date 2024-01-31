@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance} from '@vuemap/vue-amap-util';
+import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance} from '@vuemap/vue-amap';
 import editorMixin from '../../../mixins/editor-component';
 
 

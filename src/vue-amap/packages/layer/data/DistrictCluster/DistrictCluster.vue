@@ -2,9 +2,9 @@
 import './addProcess';
 import {defineComponent} from "vue";
 import {DistrictCluster} from "@vuemap/district-cluster";
-import {registerMixin} from '@vuemap/vue-amap-util';
-import type { PropType } from 'vue'
-import type { RenderOptions } from '@vuemap/district-cluster'
+import {registerMixin} from '@vuemap/vue-amap';
+import type { PropType } from 'vue';
+import type { RenderOptions } from '@vuemap/district-cluster';
 type GetPosition = (dataItem: any, dataIndex: number) => [number, number]
 
 export default defineComponent({
@@ -38,7 +38,7 @@ export default defineComponent({
   },
   methods: {
     __initComponent(options) {
-      options.map = this.$parentComponent
+      options.map = this.$parentComponent;
       this.$amapComponent = new DistrictCluster(options);
     },
     destroyComponent() {

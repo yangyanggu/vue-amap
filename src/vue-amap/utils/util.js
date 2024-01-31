@@ -102,3 +102,14 @@ export function convertLnglat(lnglat){
   }
   return lnglat.toArray();
 }
+
+/**
+ * 将字符串的第一个字符调整为大写
+ * @param prop
+ */
+export function upperCamelCase(prop){
+  if(!prop){
+    return prop;
+  }
+  return prop.charAt(0).toUpperCase() + prop.slice(1);
+}

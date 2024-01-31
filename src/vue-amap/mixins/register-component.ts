@@ -1,7 +1,5 @@
 import {defineComponent, isProxy, toRaw, unref} from "vue";
-import upperCamelCase from 'uppercamelcase';
-import eventHelper from '../utils/event-helper';
-import {convertEventToLowerCase, eventReg} from "../utils/util";
+import {convertEventToLowerCase, eventReg, upperCamelCase, bindInstanceEvent, removeInstanceEvent} from "../utils";
 import type {WatchStopHandle, ComponentPublicInstance} from "vue";
 
 export default defineComponent({
@@ -30,7 +28,7 @@ export default defineComponent({
   emits: ['init'],
   data() {
     return {
-      needInitComponents: [] as (ComponentPublicInstance)[],
+      needInitComponents: [] as (() => void)[],
       unwatchFns: [] as WatchStopHandle[],
       propsRedirect: {},
       converters: {},
@@ -48,7 +46,7 @@ export default defineComponent({
       if (this.parentInstance.$amapComponent) {
         this.register();
       } else {
-        this.parentInstance.addChildComponent(this);
+        this.parentInstance.addChildComponent(this.register);
       }
     }
   },
@@ -86,7 +84,7 @@ export default defineComponent({
       const props = {};
       const {$props, propsRedirect} = this;
       if(this.extraOptions){
-        Object.assign(props, this.extraOptions)
+        Object.assign(props, this.extraOptions);
       }
       const result = Object.keys($props).reduce((res, _key) => {
         let key = _key;
@@ -98,7 +96,7 @@ export default defineComponent({
       }, props);
       Object.keys(result).forEach(key => {
         result[key] = this.convertProxyToRaw(result[key]);
-      })
+      });
       return result;
     },
 
@@ -121,7 +119,7 @@ export default defineComponent({
       Object.keys($props).forEach(key => {
         if(eventReg.test(key)){
           const eventKey = convertEventToLowerCase(key);
-          eventHelper.addListener(this.$amapComponent, eventKey, $props[key]);
+          bindInstanceEvent(this.$amapComponent, eventKey, $props[key]);
           this.cacheEvents[eventKey] = $props[key];
         }
       });
@@ -129,7 +127,7 @@ export default defineComponent({
 
     unregisterEvents() {
       Object.keys(this.cacheEvents).forEach(eventKey => {
-        eventHelper.removeListener(this.$amapComponent, eventKey, this.cacheEvents[eventKey]);
+        removeInstanceEvent(this.$amapComponent, eventKey, this.cacheEvents[eventKey]);
         delete this.cacheEvents[eventKey];
       });
     },
@@ -179,12 +177,12 @@ export default defineComponent({
         $parent.addChildComponent(this);
       }
     },
-    addChildComponent(component : ComponentPublicInstance){
+    addChildComponent(component : () => void){
       this.needInitComponents.push(component);
     },
     createChildren(){
       while (this.needInitComponents.length > 0){
-        this.needInitComponents[0].register();
+        this.needInitComponents[0]();
         this.needInitComponents.splice(0, 1);
       }
     },

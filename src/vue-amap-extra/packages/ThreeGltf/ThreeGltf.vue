@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import CustomThreeGltf from "./CustomThreeGltf";
 import type {MoveAnimation, Vec, ConfigLoader} from "./Type";
 import type{PropType} from "vue";
@@ -49,16 +49,16 @@ export default defineComponent({
     __initComponent(options) {
       return new Promise<void>(resolve => {
         this.$amapComponent = new CustomThreeGltf(this.$parentComponent, options, this, () => {
-          resolve()
+          resolve();
         });
-      })
+      });
 
     },
     destroyComponent() {
       if(!this.parentInstance.isDestroy){
         this.$amapComponent.remove();
       }
-      this.$amapComponent.destroy()
+      this.$amapComponent.destroy();
     },
     $$startAnimations() {
       this.$amapComponent.startAnimations();

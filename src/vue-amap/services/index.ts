@@ -1,1 +1,1 @@
-export {initAMapApiLoader, lazyAMapApiLoaderInstance} from './injected-amap-api-instance'
+export {initAMapApiLoader, lazyAMapApiLoaderInstance, resetJsApi} from './injected-amap-api-instance'

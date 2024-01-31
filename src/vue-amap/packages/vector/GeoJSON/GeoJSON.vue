@@ -1,7 +1,7 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import {merge} from 'lodash-es';
-import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance} from '@vuemap/vue-amap-util';
+import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance} from '@vuemap/vue-amap';
 
 
 export default defineComponent({

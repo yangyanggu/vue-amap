@@ -1,6 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin,isIndoorMapInstance} from '@vuemap/vue-amap-util';
+import {registerMixin,isIndoorMapInstance} from '@vuemap/vue-amap';
 
 
 export default defineComponent({

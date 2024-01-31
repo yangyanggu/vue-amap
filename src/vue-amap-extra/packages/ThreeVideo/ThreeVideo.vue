@@ -17,7 +17,7 @@
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap-util';
+import {registerMixin} from '@vuemap/vue-amap';
 import ThreeVideo from "./ThreeVideo";
 import type {Vec} from "./Type";
 import type{PropType} from "vue";
@@ -37,7 +37,7 @@ export default defineComponent({
           x:0,
           y:0,
           z:0
-        }
+        };
       }
     },
     videoWidth: {
@@ -92,23 +92,23 @@ export default defineComponent({
         this.videoUrlList = options.video;
       }
       if(this.videoUrlList.length > 0){
-        options.video = this.$refs.video
+        options.video = this.$refs.video;
       }
       this.$amapComponent = new ThreeVideo(this.$parentComponent);
       return new Promise<void>((resolve) => {
         this.$nextTick(() => {
           this.$amapComponent.init(options, this).then(() => {
-            resolve()
+            resolve();
           });
-        })
+        });
 
-      })
+      });
     },
     destroyComponent() {
       if(!this.parentInstance.isDestroy){
         this.$amapComponent.remove();
       }
-      this.$amapComponent.destroy()
+      this.$amapComponent.destroy();
     },
     $$start() {
       this.$amapComponent.start();

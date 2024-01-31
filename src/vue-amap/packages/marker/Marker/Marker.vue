@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
-import {registerMixin,isMapInstance, isOverlayGroupInstance} from '@vuemap/vue-amap-util';
+import {registerMixin,isMapInstance, isOverlayGroupInstance} from '@vuemap/vue-amap';
 import type { PropType} from "vue";
 
 export interface MarkerMoveOptions {
@@ -142,13 +142,13 @@ export default defineComponent({
     },
     __position(position) {
       if(!this.moveOptions){
-        this.$amapComponent.setPosition(position)
-        return
+        this.$amapComponent.setPosition(position);
+        return;
       }
       if(this.$parentComponent){
         this.$parentComponent.plugin('AMap.MoveAnimation', () => {
-          this.$amapComponent.moveTo(position, this.moveOptions)
-        })
+          this.$amapComponent.moveTo(position, this.moveOptions);
+        });
       }
     }
   }
