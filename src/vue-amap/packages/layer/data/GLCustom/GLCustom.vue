@@ -24,7 +24,7 @@ defineProps(buildProps({
   opacity: {
     type: Number
   } // 透明度，默认 1
-});
+}));
 const emits = defineEmits(['init']);
 
 let $amapComponent: AMap.GLCustomLayer;
@@ -40,7 +40,7 @@ const {$$getInstance} = useRegister<AMap.GLCustomLayer, AMap.Map>((options, pare
   emits,
   destroyComponent () {
     if ($amapComponent) {
-      $amapComponent.setMap(null)
+      $amapComponent.setMap(null);
       $amapComponent = null as any;
     }
   },

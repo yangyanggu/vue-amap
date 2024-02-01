@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapLabelMarker from "@vuemap/vue-amap/packages/marker/LabelMarker/LabelMarker.vue";
 import ElAmapLayerLabels from "@vuemap/vue-amap/packages/layer/data/Labels/Labels.vue";
 
@@ -53,13 +53,13 @@ export default defineComponent({
     ElAmapLayerLabels,
     ElAmapLabelMarker,
     ElAmap},
-  data(){
+  data (){
     return {
       center: [121.5495395, 31.21515044],
       zoom: 16,
       labelOptions: {
         visible: true,
-        position: [121.5495395, 31.21515044],
+        position: [121.5498395, 31.21515044],
         text: {
           content: '测试content',
           direction: 'right',
@@ -85,12 +85,12 @@ export default defineComponent({
       labels: [] as any[],
       created: true,
       timer: null as any
-    }
+    };
   },
-  beforeUnmount() {
-    clearInterval(this.timer)
+  beforeUnmount () {
+    clearInterval(this.timer);
   },
-  mounted() {
+  mounted () {
     this.timer = setInterval(() => {
       this.labels = [{
         id:1,
@@ -143,37 +143,37 @@ export default defineComponent({
             clipSize: [50, 68]
           },
         }*/];
-    },1000)
+    },1000);
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    changeCenter(){
+    changeCenter (){
       const lng = this.center[0]+0.01;
       const lat = this.center[1]+0.01;
       this.center = [lng, lat];
     },
-    changeVisible(){
+    changeVisible (){
       this.labelOptions.visible = !this.labelOptions.visible;
     },
-    markerInit(e){
+    markerInit (e){
 
       console.log('marker init: ', e);
     },
-    createOrDestroy() {
+    createOrDestroy () {
       this.created = !this.created;
     },
-    clickMarker(item){
-      console.log('item: ', item)
-      console.log('labels[0]: ', this.labels[0])
-      console.log('是否相等: ', item === this.labels[0])
+    clickMarker (item){
+      console.log('item: ', item);
+      console.log('labels[0]: ', this.labels[0]);
+      console.log('是否相等: ', item === this.labels[0]);
     }
   }
-})
+});
 </script>
 
 <style scoped>
