@@ -43,7 +43,7 @@
 import {defineComponent} from "vue";
 import ElAmapSearchBox from "@vuemap/vue-amap/packages/control/SearchBox/SearchBox.vue";
 import ElAmapControlGeolocation from "@vuemap/vue-amap/packages/control/Geolocation/Geolocation.vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapControlControlBar from "@vuemap/vue-amap/packages/control/ControlBar/ControlBar.vue";
 import ElAmapControlHawkEye from "@vuemap/vue-amap/packages/control/HawkEye/HawkEye.vue";
 import ElAmapControlMapType from "@vuemap/vue-amap/packages/control/MapType/MapType.vue";
@@ -57,44 +57,44 @@ export default defineComponent({
     ElAmapSearchBox,
     ElAmapControlToolBar,
     ElAmapControlScale, ElAmapControlMapType, ElAmapControlHawkEye, ElAmapControlControlBar, ElAmap},
-  data(){
+  data (){
     return {
       center: [120,31],
       zoom: 16,
       pitch: 50,
       rotation: 0,
       eyeOpen: true,
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    completeMap(e){
+    completeMap (e){
       console.log(e);
     },
-    moveendMap(e){
+    moveendMap (e){
       console.log('moveendMap: ', e);
     },
-    changeCenter(){
+    changeCenter (){
       const lng = this.center[0]+0.01;
       const lat = this.center[1]+0.01;
       this.center = [lng, lat];
     },
-    changeEyeOpen(){
+    changeEyeOpen (){
       this.eyeOpen = !this.eyeOpen;
     },
-    selectSearch(e){
+    selectSearch (e){
       console.log('search: ', e);
     },
-    getLocation(e){
+    getLocation (e){
       console.log('getLocation: ', e);
     }
   }
-})
+});
 </script>
 
 <style scoped>

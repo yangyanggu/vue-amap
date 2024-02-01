@@ -31,6 +31,7 @@ export interface ILocaProps extends ComponentObjectPropsOptions{
 const commonProps: ICommonProps = {
   visible: {
     type: Boolean,
+    default: true
   },
   zIndex: {
     type: Number,
@@ -49,7 +50,7 @@ const commonProps: ICommonProps = {
  * @param props
  */
 export const buildProps = <Props extends ComponentObjectPropsOptions = ComponentObjectPropsOptions>(props: Props): Props & ICommonProps => {
-  return Object.assign(commonProps, props);
+  return Object.assign({}, commonProps, props);
 };
 
 /**

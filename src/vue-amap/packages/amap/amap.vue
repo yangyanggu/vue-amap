@@ -46,7 +46,7 @@ const pitch = defineModel<number>('pitch');
 // // 初始中心经纬度
 const center = defineModel<[number, number]>('center');
 
-const {$$getInstance} = useRegister((parentComponent, options) => {
+const {$$getInstance} = useRegister((options) => {
   return new Promise<AMap.Map>((resolve, reject) => {
     if(!lazyAMapApiLoaderInstance){
      reject(new Error('请初始化initAMapApiLoader'));

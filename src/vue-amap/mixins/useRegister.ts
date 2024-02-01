@@ -10,7 +10,7 @@ import {
   nextTick
 } from 'vue';
 import {convertEventToLowerCase, eventReg, upperCamelCase, bindInstanceEvent, removeInstanceEvent} from "../utils";
-import type {ComponentInternalInstance, InjectionKey, WatchStopHandle} from 'vue';
+import type {ComponentInternalInstance, WatchStopHandle} from 'vue';
 
 export type TRegisterFn = () => void
 export interface IProvideType{
@@ -43,7 +43,7 @@ interface TInitComponentProps {
 
 export const provideKey = 'parentInstance';
 
-export const useRegister = <T>(_init: (parentComponent: any, options: any) => Promise<T>, params: TInitComponentProps) => {
+export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D) => Promise<T>, params: TInitComponentProps) => {
   const componentInstance = getCurrentInstance() as ComponentInternalInstance;
   const {props, attrs} = componentInstance;
   const parentInstance = inject<IProvideType | undefined>(provideKey, undefined);
@@ -97,7 +97,7 @@ export const useRegister = <T>(_init: (parentComponent: any, options: any) => Pr
       $parentComponent = parentInstance.$amapComponent;
     }
     const options = convertProps();
-    _init($parentComponent, options).then(mapInstance => {
+    _init(options, $parentComponent).then(mapInstance => {
       $amapComponent = mapInstance;
       registerEvents();
       initProps();
@@ -138,9 +138,12 @@ export const useRegister = <T>(_init: (parentComponent: any, options: any) => Pr
       return res;
     }, props);
     Object.keys(result).forEach(key => {
-      result[key] = convertProxyToRaw(result[key]);
+      const value = convertProxyToRaw(result[key]);
+      if(value !== undefined){
+        propsCache[key] = value;
+      }
     });
-    return result;
+    return propsCache;
   };
   
   const converters = params.converts || {};
