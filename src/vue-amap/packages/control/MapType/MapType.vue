@@ -28,7 +28,7 @@ const emits = defineEmits(['init']);
 
 let $amapComponent: AMap.MapType;
 
-const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.MapType, AMap.Map>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<AMap.MapType, AMap.Map>((options, parentComponent) => {
   return new Promise<AMap.MapType>((resolve) => {
     parentComponent.plugin(['AMap.MapType'], () => {
       $amapComponent = new AMap.MapType(options);
@@ -40,9 +40,9 @@ const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.MapTy
 }, {
   emits,
   destroyComponent () {
-    if ($amapComponent && $parentComponent) {
+    if ($amapComponent && parentInstance?.$amapComponent) {
       if(!parentInstance?.isDestroy){
-        $parentComponent.removeControl($amapComponent);
+        parentInstance?.$amapComponent.removeControl($amapComponent);
       }
       $amapComponent = null as any;
     }

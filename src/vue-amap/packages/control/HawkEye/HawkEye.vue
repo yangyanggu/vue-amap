@@ -14,7 +14,7 @@ const emits = defineEmits(['init']);
 
 let $amapComponent: AMap.HawkEye;
 
-const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.HawkEye, AMap.Map>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<AMap.HawkEye, AMap.Map>((options, parentComponent) => {
   return new Promise<AMap.HawkEye>((resolve) => {
     parentComponent.plugin(['AMap.HawkEye'], () => {
       $amapComponent = new AMap.HawkEye(options);
@@ -31,9 +31,9 @@ const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.HawkE
     }
   },
   destroyComponent () {
-    if ($amapComponent && $parentComponent) {
+    if ($amapComponent && parentInstance?.$amapComponent) {
       if(!parentInstance?.isDestroy){
-        $parentComponent.removeControl($amapComponent);
+        parentInstance?.$amapComponent.removeControl($amapComponent);
       }
       $amapComponent = null as any;
     }

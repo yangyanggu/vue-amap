@@ -51,7 +51,6 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
 
   let isMounted = false;
   let $amapComponent: T;
-  let $parentComponent: any;
   
   onMounted(() => {
     if(parentInstance){
@@ -93,11 +92,8 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
   });
   
   const register = () => {
-    if(parentInstance && !$parentComponent){
-      $parentComponent = parentInstance.$amapComponent;
-    }
     const options = convertProps();
-    _init(options, $parentComponent).then(mapInstance => {
+    _init(options, parentInstance?.$amapComponent).then(mapInstance => {
       $amapComponent = mapInstance;
       registerEvents();
       initProps();
@@ -263,7 +259,6 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
   return {
     $$getInstance,
     parentInstance,
-    $parentComponent,
     isMounted
   };
 };

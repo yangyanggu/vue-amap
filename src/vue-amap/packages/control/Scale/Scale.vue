@@ -23,7 +23,7 @@ const emits = defineEmits(['init']);
 
 let $amapComponent: AMap.Scale;
 
-const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.Scale, AMap.Map>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<AMap.Scale, AMap.Map>((options, parentComponent) => {
   return new Promise<AMap.Scale>((resolve) => {
     parentComponent.plugin(['AMap.Scale'], () => {
       $amapComponent = new AMap.Scale(options);
@@ -35,9 +35,9 @@ const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.Scale
 }, {
   emits,
   destroyComponent () {
-    if ($amapComponent && $parentComponent) {
+    if ($amapComponent && parentInstance?.$amapComponent) {
       if(!parentInstance?.isDestroy){
-        $parentComponent.removeControl($amapComponent);
+        parentInstance?.$amapComponent.removeControl($amapComponent);
       }
       $amapComponent = null as any;
     }

@@ -1,31 +1,39 @@
 import type {ComponentObjectPropsOptions, Prop, PropType} from "vue";
+
+export type IPropData = Record<string, unknown>
+export interface IPropOptions<T = any> {
+  type?: PropType<T> | true | null;
+  required?: boolean;
+  default?: any;
+  validator?(value: unknown, props: IPropData): boolean;
+}
 export interface ICommonProps extends ComponentObjectPropsOptions{
   // 是否显隐
-  visible: Prop<boolean>
+  visible: IPropOptions<boolean>
   // 层级
-  zIndex: Prop<number>
+  zIndex: IPropOptions<number>
   // 是否在更新组件后重新注册事件
-  reEventWhenUpdate: Prop<boolean>
+  reEventWhenUpdate: IPropOptions<boolean>
   // 额外参数，用于在初始化组件时提供prop中未定义的属性
-  extraOptions: Prop<any>,
+  extraOptions: IPropOptions,
 }
 export interface ILocaProps extends ComponentObjectPropsOptions{
   // 
-  sourceUrl: Prop<string>
+  sourceUrl: IPropOptions<string>
   // 
-  sourceData: Prop<object>
+  sourceData: IPropOptions<object>
   // 
-  geoBufferSource: Prop<any>
+  geoBufferSource: IPropOptions
   // 
-  layerStyle: Prop<object>
-  defaultStyleValue: Prop<object>
-  zooms: Prop<object>
-  opacity: Prop<number>
-  initEvents: Prop<boolean>
-  visibleDuration: Prop<number>
-  onClick:  Prop<(e: any) => void>
-  onMousemove:  Prop<(e: any) => void>
-  onRightclick:  Prop<(e: any) => void>
+  layerStyle: IPropOptions<object>
+  defaultStyleValue: IPropOptions<object>
+  zooms: IPropOptions<object>
+  opacity: IPropOptions<number>
+  initEvents: IPropOptions<boolean>
+  visibleDuration: IPropOptions<number>
+  onClick:  IPropOptions<(e: any) => void>
+  onMousemove:  IPropOptions<(e: any) => void>
+  onRightclick:  IPropOptions<(e: any) => void>
 }
 
 const commonProps: ICommonProps = {

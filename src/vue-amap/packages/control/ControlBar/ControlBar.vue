@@ -30,7 +30,7 @@ const emits = defineEmits(['init']);
 
 let $amapComponent: AMap.ControlBar;
 
-const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.ControlBar, AMap.Map>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<AMap.ControlBar, AMap.Map>((options, parentComponent) => {
   return new Promise<AMap.ControlBar>((resolve) => {
     parentComponent.plugin(['AMap.ControlBar'], () => {
       $amapComponent = new AMap.ControlBar(options);
@@ -42,9 +42,9 @@ const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.Contr
 }, {
   emits,
   destroyComponent () {
-    if ($amapComponent && $parentComponent) {
+    if ($amapComponent && parentInstance?.$amapComponent) {
       if(!parentInstance?.isDestroy){
-        $parentComponent.removeControl($amapComponent);
+        parentInstance?.$amapComponent.removeControl($amapComponent);
       }
       $amapComponent = null as any;
     }

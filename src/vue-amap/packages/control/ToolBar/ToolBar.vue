@@ -23,7 +23,7 @@ const emits = defineEmits(['init']);
 
 let $amapComponent: AMap.ToolBar;
 
-const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.ToolBar, AMap.Map>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<AMap.ToolBar, AMap.Map>((options, parentComponent) => {
   return new Promise<AMap.ToolBar>((resolve) => {
     parentComponent.plugin(['AMap.ToolBar'], () => {
       $amapComponent = new AMap.ToolBar(options);
@@ -35,9 +35,9 @@ const {$$getInstance, $parentComponent, parentInstance} = useRegister<AMap.ToolB
 }, {
   emits,
   destroyComponent () {
-    if ($amapComponent && $parentComponent) {
+    if ($amapComponent && parentInstance?.$amapComponent) {
       if(!parentInstance?.isDestroy){
-        $parentComponent.removeControl($amapComponent);
+        parentInstance?.$amapComponent.removeControl($amapComponent);
       }
       $amapComponent = null as any;
     }
