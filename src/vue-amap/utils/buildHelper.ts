@@ -1,5 +1,5 @@
 import type {ComponentObjectPropsOptions, Prop, PropType} from "vue";
-interface ICommonProps extends ComponentObjectPropsOptions{
+export interface ICommonProps extends ComponentObjectPropsOptions{
   // 是否显隐
   visible: Prop<boolean>
   // 层级
@@ -9,7 +9,7 @@ interface ICommonProps extends ComponentObjectPropsOptions{
   // 额外参数，用于在初始化组件时提供prop中未定义的属性
   extraOptions: Prop<any>,
 }
-interface ILocaProps extends ComponentObjectPropsOptions{
+export interface ILocaProps extends ComponentObjectPropsOptions{
   // 
   sourceUrl: Prop<string>
   // 
@@ -66,7 +66,7 @@ export const buildLocaProps = <Props extends ComponentObjectPropsOptions>(props:
     },
     geoBufferSource: {
       type: [ArrayBuffer, String],
-      default() {
+      default () {
         return null;
       }
     },
@@ -75,7 +75,7 @@ export const buildLocaProps = <Props extends ComponentObjectPropsOptions>(props:
     },
     defaultStyleValue: {
       type: Object,
-      default() {
+      default () {
         return {};
       }
     },
