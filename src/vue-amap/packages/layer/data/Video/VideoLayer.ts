@@ -15,7 +15,7 @@ class VideoLayer {
   canPlay = false;
   frame = -1;
 
-  constructor(options: VideoOption, video: HTMLVideoElement) {
+  constructor (options: VideoOption, video: HTMLVideoElement) {
     const canvas = document.createElement('canvas');
     this.video = video;
     video.src = options.url;
@@ -23,10 +23,10 @@ class VideoLayer {
     video.muted = true;
     video.crossOrigin= "anonymous";
     video.loop = options.loop;
-    const layerOptions = {
+    const layerOptions: any = {
       ...options,
       canvas
-    }
+    };
     this.canvas = canvas;
     this.context = canvas.getContext('2d') as CanvasRenderingContext2D;
     this.layer = new AMap.CanvasLayer(layerOptions);
@@ -34,11 +34,11 @@ class VideoLayer {
     this.load();
   }
 
-  getLayer() {
+  getLayer () {
     return this.layer;
   }
 
-  initVideoEvents() {
+  initVideoEvents () {
     this.video?.addEventListener('canplaythrough', () => {
       if (this.canvas) {
         this.canvas.width = this.video?.videoWidth as number;
@@ -46,46 +46,46 @@ class VideoLayer {
       }
       this.canPlay = true;
       this.play();
-    })
+    });
   }
 
-  load() {
-    this.video?.load()
+  load () {
+    this.video?.load();
   }
 
-  play() {
+  play () {
     if (this.canPlay) {
       this.video?.play();
-      this.stopRender()
-      this.render()
+      this.stopRender();
+      this.render();
     }
   }
 
-  pause() {
+  pause () {
     this.stopRender();
     this.video?.pause();
   }
 
-  stopRender() {
+  stopRender () {
     if (this.frame) {
       cancelAnimationFrame(this.frame);
     }
   }
 
-  render() {
+  render () {
     this.frame = window.requestAnimationFrame(() => {
-      this.render()
-    })
+      this.render();
+    });
     if (this.video?.paused) {
       this.video?.play();
     } else {
-      this.context?.clearRect(0, 0, this.canvas?.width as number, this.canvas?.height as number)
-      this.context?.drawImage(this.video as any, 0, 0, this.canvas?.width as number, this.canvas?.height as number)  //绘制视频
+      this.context?.clearRect(0, 0, this.canvas?.width as number, this.canvas?.height as number);
+      this.context?.drawImage(this.video as any, 0, 0, this.canvas?.width as number, this.canvas?.height as number);  //绘制视频
       this.layer.reFresh();
     }
   }
 
-  destroy() {
+  destroy () {
     this.stopRender();
     if (this.video) {
       this.video.pause();
@@ -93,38 +93,38 @@ class VideoLayer {
     this.video = null;
   }
 
-  setUrl(url: string) {
+  setUrl (url: string) {
     this.stopRender();
     this.canPlay = false;
     if (this.video) {
       this.video.src = url;
-      this.load()
+      this.load();
     }
   }
 
-  setZooms(zooms) {
+  setZooms (zooms) {
     this.getLayer().setZoom(zooms);
   }
 
-  setOpacity(opacity) {
+  setOpacity (opacity) {
     this.getLayer().setOpacity(opacity);
   }
 
-  setBounds(bounds) {
+  setBounds (bounds) {
     this.getLayer().setBounds(bounds);
   }
 
-  setzIndex(zIndex) {
+  setzIndex (zIndex) {
     this.getLayer().setzIndex(zIndex);
   }
 
-  show() {
+  show () {
     this.getLayer().show();
   }
 
-  hide() {
+  hide () {
     this.getLayer().hide();
   }
 }
 
-export default VideoLayer
+export default VideoLayer;

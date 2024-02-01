@@ -9,6 +9,7 @@
     >
       <el-amap-layer-canvas
         v-if="canvas"
+        :visible="visible"
         :canvas="canvas"
         :bounds="bounds"
         @init="initLayer"
@@ -25,14 +26,14 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import ElAmapLayerCanvas from "@vuemap/vue-amap/packages/layer/data/Canvas/Canvas.vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 
 export default defineComponent({
   name: "Map",
   components: {
     ElAmapLayerCanvas,
     ElAmap},
-  data(){
+  data (){
     return {
       center: [116.33719, 39.942384],
       bounds: [116.327911, 39.939229,116.342659, 39.946275],
@@ -40,13 +41,13 @@ export default defineComponent({
       canvas: null as any,
       context: null as any,
       visible: true,
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
       const canvas = document.createElement('canvas') as any;
       canvas.width = canvas.height = 200;
@@ -59,10 +60,10 @@ export default defineComponent({
       this.canvas = canvas;
       this.context = context;
     },
-    changeVisible(){
+    changeVisible (){
       this.visible = !this.visible;
     },
-    initLayer(layer){
+    initLayer (layer){
       let radious = 0;
       const draw = () => {
         this.context.clearRect(0, 0, 200, 200);
@@ -82,7 +83,7 @@ export default defineComponent({
       draw();
     }
   }
-})
+});
 </script>
 
 <style scoped>

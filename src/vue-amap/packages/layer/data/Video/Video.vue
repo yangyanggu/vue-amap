@@ -1,60 +1,74 @@
 <template>
   <video
-    ref="video"
+    ref="videoRef"
     style="display: none;"
     muted
   />
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<script setup lang="ts">
+import {defineOptions, ref} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
 import VideoLayer from './VideoLayer';
+import type {PropType} from 'vue';
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerVideo',
-  mixins: [registerMixin],
-  props: {
-    url: {
-      required: true,
-      type: String
-    }, // 视频地址
-    zooms: {
-      type: Array
-    }, // 支持的缩放级别范围，默认范围 [2-30]
-    bounds: {
-      type: [Array, Object]
-    }, // 图片的范围大小经纬度，如果传递数字数组类型: [minlng,minlat,maxlng,maxlat] 或 AMap.Bounds
-    opacity: {
-      type: Number
-    } // 透明度，默认 1
-  },
-  data() {
-    return {
-      handlers: {}
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new VideoLayer(options, this.$refs.video as HTMLVideoElement);
-      this.$parentComponent.addLayer(this.$amapComponent.getLayer());
-    },
-    destroyComponent() {
-      this.$amapComponent.destroy();
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLayer(this.$amapComponent);
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  url: {
+    required: true,
+    type: String
+  }, // 视频地址
+  zooms: {
+    type: Array
+  }, // 支持的缩放级别范围，默认范围 [2-30]
+  bounds: {
+    type: [Array, Object]
+  }, // 图片的范围大小经纬度，如果传递数字数组类型: [minlng,minlat,maxlng,maxlat] 或 AMap.Bounds
+  opacity: {
+    type: Number
+  } // 透明度，默认 1
+}));
+const emits = defineEmits(['init']);
+
+const videoRef = ref<HTMLVideoElement>();
+
+let $amapComponent: VideoLayer;
+
+const {$$getInstance, parentInstance} = useRegister<VideoLayer, AMap.Map>((options, parentComponent) => {
+  return new Promise<VideoLayer>((resolve) => {
+    $amapComponent = new VideoLayer(options, videoRef.value as HTMLVideoElement);
+    parentComponent.addLayer($amapComponent.getLayer());
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        $amapComponent.destroy();
+        parentInstance?.$amapComponent.removeLayer($amapComponent.getLayer());
       }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
-    },
-    $$play() {
-      this.$amapComponent.play();
-    },
-    $$pause() {
-      this.$amapComponent.pause();
+      $amapComponent = null as any;
     }
   },
-  render() {
-    return null;
-  }
 });
+
+const $$play = () => {
+  $amapComponent.play();
+};
+const $$pause = () => {
+  $amapComponent.pause();
+};
+
+defineExpose({
+  $$getInstance,
+  $$play,
+  $$pause
+});
+
 </script>
