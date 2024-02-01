@@ -20,6 +20,8 @@
       <el-amap-control-scale />
       <el-amap-control-tool-bar />
       <el-amap-search-box
+        input-id="search"
+        :input-custom="true"
         placeholder="请输入地点关键字"
         @select="selectSearch"
       />
@@ -32,6 +34,7 @@
       <el-button @click="changeEyeOpen">
         鹰眼显隐
       </el-button>
+      <input id="search">
     </div>
   </div>
 </template>
