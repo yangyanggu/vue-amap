@@ -1,4 +1,4 @@
-import type {ComponentObjectPropsOptions, Prop, PropType} from "vue";
+import type {ComponentObjectPropsOptions, PropType} from "vue";
 
 export type IPropData = Record<string, unknown>
 export interface IPropOptions<T = any> {

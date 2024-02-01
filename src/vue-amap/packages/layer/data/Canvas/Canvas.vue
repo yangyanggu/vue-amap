@@ -1,46 +1,57 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '../../../../mixins';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
+import type {PropType} from 'vue';
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerCanvas',
-  mixins: [registerMixin],
-  props: {
-    canvas: {
-      required: true,
-      type: Object
-    }, // Canvas DOM 对象
-    zooms: {
-      type: Array
-    }, // 支持的缩放级别范围，默认范围 [2-30]
-    bounds: {
-      type: [Array, Object]
-    }, // 图片的范围大小经纬度，如果传递数字数组类型: [minlng,minlat,maxlng,maxlat] 或 AMap.Bounds
-    opacity: {
-      type: Number
-    } // 透明度，默认 1
-  },
-  data() {
-    return {
-      handlers: {
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  canvas: {
+    required: true,
+    type: Object as PropType<HTMLCanvasElement>
+  }, // Canvas DOM 对象
+  zooms: {
+    type: Array
+  }, // 支持的缩放级别范围，默认范围 [2-30]
+  bounds: {
+    type: [Array, Object]
+  }, // 图片的范围大小经纬度，如果传递数字数组类型: [minlng,minlat,maxlng,maxlat] 或 AMap.Bounds
+  opacity: {
+    type: Number
+  } // 透明度，默认 1
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: AMap.CanvasLayer;
+
+const {$$getInstance, parentInstance} = useRegister<AMap.CanvasLayer, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.CanvasLayer>((resolve) => {
+    $amapComponent = new AMap.CanvasLayer(options);
+    parentComponent.addLayer($amapComponent);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.removeLayer($amapComponent);
       }
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new AMap.CanvasLayer(options);
-      this.$parentComponent.addLayer(this.$amapComponent);
-    },
-    destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLayer(this.$amapComponent);
-      }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
+      $amapComponent = null as any;
     }
   },
-  render(){
-    return null;
-  }
 });
+
+defineExpose({
+  $$getInstance
+});
+
 </script>
