@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {defineOptions, ref, defineModel, nextTick, provide, onBeforeUnmount} from 'vue';
+import {defineOptions, ref, nextTick, provide, onBeforeUnmount} from 'vue';
 import {useRegister, provideKey} from "../../mixins";
 import guid from "../../utils/guid";
 import {lazyAMapApiLoaderInstance} from "../../services";
@@ -33,18 +33,10 @@ provide(provideKey, provideData);
 
 const props = defineProps(propsType);
 
-const emits = defineEmits(['init']);
+const emits = defineEmits(['init','update:zoom', 'update:center', 'update:rotation', 'update:pitch']);
 
 const mapDomId = ref<string>(props.vid as string || guid());
 let $amapComponent: AMap.Map;
-// 地图显示的缩放级别，可以设置为浮点数；若center与level未赋值，地图初始化默认显示用户所在城市范围。
-const zoom = defineModel<number>('zoom');
-// 地图顺时针旋转角度，取值范围 [0-360] ，默认值：0
-const rotation = defineModel<number>('rotation');
-// 俯仰角度，默认 0，最大值根据地图当前 zoom 级别不断增大，2D地图下无效 。
-const pitch = defineModel<number>('pitch');
-// // 初始中心经纬度
-const center = defineModel<[number, number]>('center');
 
 const {$$getInstance} = useRegister((options) => {
   return new Promise<AMap.Map>((resolve, reject) => {
@@ -119,18 +111,18 @@ const {$$getInstance} = useRegister((options) => {
 });
 const bindModelEvents = () => {
   $amapComponent.on('zoomchange',() => {
-    zoom.value = $amapComponent.getZoom();
+    emits('update:zoom', $amapComponent.getZoom());
   });
   $amapComponent.on('rotatechange',() => {
-    rotation.value = $amapComponent.getRotation();
-    pitch.value = $amapComponent.getPitch();
+    emits('update:rotation', $amapComponent.getRotation());
+    emits('update:pitch', $amapComponent.getPitch());
   });
   $amapComponent.on('dragging',() => {
-    center.value = getCenter();
-    pitch.value = $amapComponent.getPitch();
+    emits('update:center', getCenter());
+    emits('update:pitch', $amapComponent.getPitch());
   });
   $amapComponent.on('touchmove',() => {
-    center.value = getCenter();
+    emits('update:center', getCenter());
   });
 };
 const getCenter = (): [number, number] => {

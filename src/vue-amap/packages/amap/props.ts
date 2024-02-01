@@ -4,6 +4,18 @@ export const propsType = buildProps({
   vid: {
     type: String
   }, // 地图ID
+  center: {
+    type: Array
+  }, // 初始中心经纬度
+  zoom: {
+    type: Number
+  }, // 地图显示的缩放级别，可以设置为浮点数；若center与level未赋值，地图初始化默认显示用户所在城市范围。
+  rotation: {
+    type: Number
+  }, // 地图顺时针旋转角度，取值范围 [0-360] ，默认值：0
+  pitch: {
+    type: Number
+  }, // 俯仰角度，默认 0，最大值根据地图当前 zoom 级别不断增大，2D地图下无效 。
   viewMode: {
     type: String
   }, // 地图视图模式, 默认为‘2D’，可选’3D’，选择‘3D’会显示 3D 地图效果。
