@@ -1,47 +1,62 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
+import type {PropType} from 'vue';
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerImage',
-  mixins: [registerMixin],
-  props: {
-    url: {
-      type: String,
-      required: true
-    }, // 图片地址链接
-    zoom: {
-      type: Array
-    }, // 支持的缩放级别范围，默认范围 [2-30]
-    bounds: {
-      type: [Array, Object]
-    }, // 图片的范围大小经纬度，如果传递数字数组类型: [minlng,minlat,maxlng,maxlat] 或 AMap.Bounds
-    opacity: {
-      type: Number
-    } // 透明度，默认 1
-  },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new AMap.ImageLayer(options);
-      this.$parentComponent.addLayer(this.$amapComponent);
-    },
-    destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLayer(this.$amapComponent);
-      }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
-    },
-    __url(value) {
-      this.$amapComponent.setImageUrl(value);
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  url: {
+    type: String,
+    required: true
+  }, // 图片地址链接
+  zoom: {
+    type: Array
+  }, // 支持的缩放级别范围，默认范围 [2-30]
+  bounds: {
+    type: [Array, Object]
+  }, // 图片的范围大小经纬度，如果传递数字数组类型: [minlng,minlat,maxlng,maxlat] 或 AMap.Bounds
+  opacity: {
+    type: Number
+  } // 透明度，默认 1
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: AMap.ImageLayer;
+
+const {$$getInstance, parentInstance} = useRegister<AMap.ImageLayer, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.ImageLayer>((resolve) => {
+    $amapComponent = new AMap.ImageLayer(options);
+    parentComponent.addLayer($amapComponent);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  watchRedirectFn: {
+    __url (value: string) {
+      $amapComponent.setImageUrl(value);
     }
   },
-  render(){
-    return null;
-  }
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.removeLayer($amapComponent);
+      }
+      $amapComponent = null as any;
+    }
+  },
 });
+
+defineExpose({
+  $$getInstance
+});
+
 </script>
