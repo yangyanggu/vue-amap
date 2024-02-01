@@ -6,3 +6,5 @@ SearchBox.install = (app: App) => {
 };
 export const ElAmapSearchBox = SearchBox as typeof SearchBox & Plugin;
 export default ElAmapSearchBox;
+
+export type ElAmapSearchBoxInstance = InstanceType<typeof ElAmapSearchBox>

@@ -7,104 +7,68 @@
       v-if="!inputCustom"
       :id="saveInputId"
       type="text"
-      :placeholder="placeholder"
+      :placeholder="placeholder as string"
     >
   </div>
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '../../../mixins';
+<script setup lang="ts">
+import {defineOptions, ref} from 'vue';
+import {useRegister} from "../../../mixins";
 import {guid} from '../../../utils';
-export default defineComponent({
+import {propsTypes} from './props';
+
+defineOptions({
   name: 'ElAmapSearchBox',
-  mixins: [registerMixin],
-  props: {
-    type: {
-      type: String
-    },//输入提示时限定POI类型，多个类型用“|”分隔，目前只支持Poi类型编码如“050000” 默认值：所有类别
-    city: {
-      type: String
-    },//输入提示时限定城市。可选值：城市名（中文或中文全拼）、citycode、adcode；默认值：“全国”
-    datatype: {
-      type: String
-    },//返回的数据类型。可选值：all-返回所有数据类型、poi-返回POI数据类型、bus-返回公交站点数据类型、busline-返回公交线路数据类型目前暂时不支持多种类型
-    citylimit: {
-      type: Boolean,
-      default: false
-    },//返回的数据类型。可选值：all-返回所有数据类型、poi-返回POI数据类型、bus-返回公交站点数据类型、busline-返回公交线路数据类型目前暂时不支持多种类型
-    inputId: {
-      type: String
-    },//输入框的ID
-    inputCustom: {
-      type: Boolean,
-      default: false
-    }, //是否自定义input，自定义的时候将使用用户的inputId
-    outputId: {
-      type: String
-    },//可选参数，指定一个现有的div的id或者元素，作为展示提示结果的容器，当指定了input的时候有效，缺省的时候将自动创建一个显示结果面板
-    outPutDirAuto: {
-      type: Boolean,
-      default: true
-    },//默认为true，表示是否在input位于页面较下方的时候自动将输入面板显示在input上方以避免被遮挡
-    closeResultOnScroll: {
-      type: Boolean,
-      default: true
-    },//页面滚动时关闭搜索结果列表，默认 true
-    lang: {
-      type: String
-    },//设置检索语言类型，默认中文 'zh_cn'
-    placeholder: {
-      type: String
+  inheritAttrs: false
+});
+const props = defineProps(propsTypes);
+const emits = defineEmits(['init']);
+
+const saveInputId = ref<string>(guid());
+const saveVisible = ref<boolean>(true);
+let $amapComponent: AMap.AutoComplete;
+
+const {$$getInstance} = useRegister<AMap.AutoComplete, AMap.Map>((options, parentComponent) => {
+  if (options.inputId) {
+    saveInputId.value = options.inputId;
+    delete options.inputId;
+  }
+  if(options.visible){
+    saveVisible.value = options.visible;
+  }
+  options.input = saveInputId.value;
+  if (options.outputId) {
+    options.output = options.outputId;
+    delete options.outputId;
+  }
+  return new Promise<AMap.Autocomplete>((resolve) => {
+    parentComponent.plugin(['AMap.AutoComplete'], () => {
+      const debounce = props.debounce as number;
+      AMap.Autocomplete.prototype.onInPut = function (){
+        clearTimeout(this._inputTimer);
+        this._inputTimer = setTimeout(() => {
+          this.output && this.autoSearch();
+        }, debounce);
+      };
+      $amapComponent = new AMap.AutoComplete(options);
+      resolve($amapComponent);
+    });
+  });
+
+}, {
+  emits,
+  watchRedirectFn: {
+    __visible (flag: boolean) {
+      saveVisible.value = flag;
     },
-    debounce: {
-      type: Number,
-      default: 100
-    } // 手动复写增加防抖
-  },
-  data() {
-    return {
-      saveInputId: '',
-      saveVisible: true,
-    };
-  },
-  created() {
-    this.saveInputId = guid();
-  },
-  methods: {
-    __initComponent(options) {
-      if (options.inputId) {
-        this.saveInputId = options.inputId;
-        delete options.inputId;
-      }
-      if(options.visible){
-        this.saveVisible = options.visible;
-      }
-      options.input = this.saveInputId;
-      if (options.outputId) {
-        options.output = options.outputId;
-        delete options.outputId;
-      }
-      return new Promise<void>((resolve) => {
-        this.$parentComponent.plugin(['AMap.AutoComplete'], () => {
-          const debounce = this.debounce;
-          AMap.Autocomplete.prototype.onInPut = function (event){
-            clearTimeout(this._inputTimer);
-            this._inputTimer = setTimeout(() => {
-              this.output && this.autoSearch();
-            }, debounce);
-          };
-          this.$amapComponent = new AMap.AutoComplete(options);
-          resolve();
-        });
-      });
-    },
-    __visible(flag) {
-      this.saveVisible = flag;
-    },
-    __citylimit(flag) {
-      this.$amapComponent.setCityLimit(flag);
+    __citylimit (flag: boolean) {
+      $amapComponent.setCityLimit(flag);
     }
   }
+});
+
+defineExpose({
+  $$getInstance
 });
 </script>
 <style lang="scss">
