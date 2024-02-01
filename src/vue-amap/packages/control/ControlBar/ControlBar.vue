@@ -1,4 +1,6 @@
-<template />
+<template>
+  <div />
+</template>
 <script setup lang="ts">
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../mixins";
