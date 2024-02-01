@@ -1,70 +1,78 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin,loadScript} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
+import {loadScript} from "../../../../utils";
 
-
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerTiles3d',
-  mixins: [registerMixin],
-  props: {
-    url: {
-      type: String,
-      required: true
-    },
-    threeScriptUrl: {
-      type: String,
-      default: '//a.amap.com/jsapi_demos/static/data3d/lib/three.117.js'
-    },
-    threeGltfLoader: {
-      type: String,
-      default: '//a.amap.com/jsapi_demos/static/data3d/lib/GLTFLoader.117.min.js'
-    },
-    layerStyle: {
-      type: Object
-    }
-  },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      return new Promise<void>((resolve) => {
-        this.$parentComponent.plugin(['AMap.3DTilesLayer'], () => {
-          if(!window['THREE']){
-            loadScript(options.threeScriptUrl, () => {
-              loadScript(options.threeGltfLoader, () => {
-                this.createLayer(options);
-                resolve();
-              });
-            });
-          }else{
-            this.createLayer(options);
-            resolve();
-          }
-        });
-      });
-    },
-    destroyComponent() {
-      // this.$parentComponent.remove(this.$amapComponent);
-      this.$amapComponent = null;
-      this.$parentComponent = null;
-    },
-    createLayer(options){
-      let layerStyle = {};
-      if(options.layerStyle){
-        layerStyle = JSON.parse(JSON.stringify(options.layerStyle));
-      }
-      this.$amapComponent = new AMap['3DTilesLayer']({
-        map: this.$parentComponent,
-        url: options.url, // 3d Tiles 入口文件
-        style: layerStyle
-      });
-      console.log(this.$amapComponent);
-    }
-  },
-  render(){
-    return null;
-  }
+  inheritAttrs: false
 });
+
+defineProps(buildProps({
+  url: {
+    type: String,
+    required: true
+  },
+  threeScriptUrl: {
+    type: String,
+    default: '//a.amap.com/jsapi_demos/static/data3d/lib/three.117.js'
+  },
+  threeGltfLoader: {
+    type: String,
+    default: '//a.amap.com/jsapi_demos/static/data3d/lib/GLTFLoader.117.min.js'
+  },
+  layerStyle: {
+    type: Object
+  }
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: any;
+
+const {$$getInstance, parentInstance} = useRegister<any, AMap.Map>((options, parentComponent) => {
+  return new Promise<any>((resolve) => {
+    parentComponent.plugin(['AMap.3DTilesLayer'], () => {
+      if(!window['THREE']){
+        loadScript(options.threeScriptUrl, () => {
+          loadScript(options.threeGltfLoader, () => {
+            createLayer(options);
+            resolve($amapComponent);
+          });
+        });
+      }else{
+        createLayer(options);
+        resolve($amapComponent);
+      }
+    });
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent) {
+      $amapComponent = null as any;
+    }
+  },
+});
+
+const createLayer = (options: any) => {
+  let layerStyle: any = {};
+  if(options.layerStyle){
+    layerStyle = JSON.parse(JSON.stringify(options.layerStyle));
+  }
+  $amapComponent = new AMap['3DTilesLayer']({
+    map: parentInstance?.$amapComponent,
+    url: options.url, // 3d Tiles 入口文件
+    style: layerStyle
+  });
+};
+
+defineExpose({
+  $$getInstance
+});
+
 </script>
