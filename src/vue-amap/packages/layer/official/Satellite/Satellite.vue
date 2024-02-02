@@ -1,41 +1,52 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerSatellite',
-  mixins: [registerMixin],
-  props: {
-    zooms: {
-      type: Array
-    }, // 支持的缩放级别范围，默认范围 [2-30]
-    opacity: {
-      type: Number
-    }, // 透明度，默认 1
-    tileSize: {
-      type: Number
-    }// 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
-  },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new AMap.TileLayer.Satellite(options);
-      this.$parentComponent.add(this.$amapComponent);
-    },
-    destroyComponent() {
-      this.$amapComponent.destroy();
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.remove(this.$amapComponent);
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  zooms: {
+    type: Array
+  }, // 支持的缩放级别范围，默认范围 [2-30]
+  opacity: {
+    type: Number
+  }, // 透明度，默认 1
+  tileSize: {
+    type: Number
+  }// 切片大小，取值： 256，表示切片大小为256 256， 128，表示切片大小为128 128， 64，表示切片大小为64*64。默认值为256
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: AMap.TileLayer;
+
+const {$$getInstance, parentInstance} = useRegister<AMap.TileLayer, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.TileLayer>((resolve) => {
+    $amapComponent = new AMap.TileLayer.Satellite(options);
+    parentComponent.add($amapComponent);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.remove($amapComponent);
       }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
+      $amapComponent = null as any;
     }
   },
-  render(){
-    return null;
-  }
 });
+
+defineExpose({
+  $$getInstance
+});
+
 </script>

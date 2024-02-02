@@ -5,8 +5,7 @@
 import {defineOptions, provide} from 'vue';
 import { provideKey, useRegister} from "../../../../mixins";
 import {buildProps} from "../../../../utils/buildHelper";
-import type {type IProvideType, type TRegisterFn} from "../../../../mixins";
-import type {PropType} from 'vue';
+import type {IProvideType, TRegisterFn} from "../../../../mixins";
 
 defineOptions({
   name: 'ElAmapLayerVector',

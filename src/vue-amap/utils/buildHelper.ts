@@ -1,3 +1,4 @@
+import type {ExtractPropTypes} from "@vue/runtime-core";
 import type {ComponentObjectPropsOptions, PropType} from "vue";
 
 export type IPropData = Record<string, unknown>
@@ -7,7 +8,7 @@ export interface IPropOptions<T = any> {
   default?: any;
   validator?(value: unknown, props: IPropData): boolean;
 }
-export interface ICommonProps extends ComponentObjectPropsOptions{
+export interface ICommonProps{
   // 是否显隐
   visible: IPropOptions<boolean>
   // 层级
@@ -17,7 +18,7 @@ export interface ICommonProps extends ComponentObjectPropsOptions{
   // 额外参数，用于在初始化组件时提供prop中未定义的属性
   extraOptions: IPropOptions,
 }
-export interface ILocaProps extends ComponentObjectPropsOptions{
+export interface ILocaProps{
   // 
   sourceUrl: IPropOptions<string>
   // 
@@ -57,7 +58,9 @@ const commonProps: ICommonProps = {
  * 合并生成基础的属性
  * @param props
  */
-export const buildProps = <Props extends ComponentObjectPropsOptions = ComponentObjectPropsOptions>(props: Props): Props & ICommonProps => {
+export const buildProps = <Props extends ComponentObjectPropsOptions >(props: Props): Props & {
+  [K  in keyof ICommonProps]: ICommonProps[K]
+} => {
   return Object.assign({}, commonProps, props);
 };
 

@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapText from "@vuemap/vue-amap/packages/marker/Text/Text.vue";
 
 export default defineComponent({
@@ -54,7 +54,7 @@ export default defineComponent({
   components: {
     ElAmapText,
     ElAmap},
-  data(){
+  data (){
     return {
       center: [121.5273285, 31.21515044],
       zoom: 16,
@@ -71,48 +71,50 @@ export default defineComponent({
         draggable: false,
         text: '测试Text'
       },
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    changePosition() {
+    changePosition () {
       const position = this.componentText.position;
       this.componentText.position = [position[0] + 0.002, position[1] - 0.002];
     },
-    changeDraggable() {
+    changeDraggable () {
       this.componentText.draggable = !this.componentText.draggable;
     },
-    toggleVisible() {
+    toggleVisible () {
       this.componentText.visible = !this.componentText.visible;
     },
-    addMarker() {
-      const marker = {
-        position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02],
-        id: new Date().getTime(),
-        text: `${new Date().getTime()  }`
-      };
-      this.texts.push(marker);
+    addMarker () {
+      for(let i=0;i<200;i++){
+        const marker = {
+          position: [121.5273285 + (Math.random() - 0.5) * 0.02, 31.21515044 + (Math.random() - 0.5) * 0.02],
+          id: new Date().getTime(),
+          text: `${new Date().getTime()  }`
+        };
+        this.texts.push(marker);
+      }
+      
     },
-    removeMarker() {
-      if (!this.texts.length) return;
-      this.texts.splice(this.texts.length - 1, 1);
+    removeMarker () {
+      this.texts = [];
     },
-    initText(e){
+    initText (e){
       console.log('marker init: ', e);
     },
-    clickText(){
-      alert('点击了标号')
+    clickText (){
+      alert('点击了标号');
     },
-    clickArrayMarker(marker){
-      alert(`点击了标号,标号ID： ${marker.id}`)
+    clickArrayMarker (marker){
+      alert(`点击了标号,标号ID： ${marker.id}`);
     }
   }
-})
+});
 </script>
 
 <style scoped>

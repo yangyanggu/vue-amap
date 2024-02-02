@@ -1,52 +1,60 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
+import type {PropType} from 'vue';
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerMapboxVectorTile',
-  mixins: [registerMixin],
-  props: {
-    url: {
-      type: String
-    }, // MVT 数据的链接地址
-    zooms: {
-      type: Array
-    }, // 支持的缩放级别范围，默认范围 [2,22]
-    dataZooms: {
-      type: Array
-    }, // 瓦片数据等级范围，超过范围会使用最大/最小等级的数据，默认 [2,18]
-    opacity: {
-      type: Number
-    }, // 透明度，默认 1
-    styles: {
-      type: Object
-    } // 样式
-  },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      return new Promise<void>((resolve) => {
-        AMap.plugin(['AMap.MapboxVectorTileLayer'], () => {
-          this.$amapComponent = new AMap.MapboxVectorTileLayer(options);
-          this.$parentComponent.addLayer(this.$amapComponent);
-          resolve();
-        });
-      });
+  inheritAttrs: false
+});
 
-    },
-    destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLayer(this.$amapComponent);
+defineProps(buildProps({
+  url: {
+    type: String
+  }, // MVT 数据的链接地址
+  zooms: {
+    type: Array
+  }, // 支持的缩放级别范围，默认范围 [2,22]
+  dataZooms: {
+    type: Array
+  }, // 瓦片数据等级范围，超过范围会使用最大/最小等级的数据，默认 [2,18]
+  opacity: {
+    type: Number
+  }, // 透明度，默认 1
+  styles: {
+    type: Object
+  } // 样式
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: AMap.MapboxVectorTileLayer;
+
+const {$$getInstance, parentInstance} = useRegister<AMap.MapboxVectorTileLayer, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.MapboxVectorTileLayer>((resolve) => {
+    AMap.plugin(['AMap.MapboxVectorTileLayer'], () => {
+      $amapComponent = new AMap.MapboxVectorTileLayer(options);
+      parentComponent.addLayer($amapComponent);
+      resolve($amapComponent);
+    });
+  });
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.removeLayer($amapComponent);
       }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
+      $amapComponent = null as any;
     }
   },
-  render(){
-    return null;
-  }
 });
+
+defineExpose({
+  $$getInstance
+});
+
 </script>

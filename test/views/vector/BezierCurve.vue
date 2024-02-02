@@ -8,6 +8,7 @@
       @init="initMap"
     >
       <el-amap-bezier-curve
+        v-if="polyline.created"
         v-model:path="polyline.path"
         :editable="polyline.editable"
         :visible="polyline.visible"
@@ -17,6 +18,9 @@
       />
     </el-amap>
     <div class="control-container">
+      <el-button @click="toggleCreated">
+        {{ polyline.created ? '销毁' : '创建' }}
+      </el-button>
       <el-button @click="toggleVisible">
         {{ polyline.visible ? '隐藏标记' : '显示标记' }}
       </el-button>
@@ -32,7 +36,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapBezierCurve from "@vuemap/vue-amap/packages/vector/BezierCurve/BezierCurve.vue";
 
 export default defineComponent({
@@ -40,7 +44,7 @@ export default defineComponent({
   components: {
     ElAmapBezierCurve,
     ElAmap},
-  data(){
+  data (){
     return {
       zoom: 13,
       center: [116.397637, 39.900001],
@@ -63,31 +67,35 @@ export default defineComponent({
         ],
         editable: false,
         visible: true,
-        draggable: false
+        draggable: false,
+        created: true
       }
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    changeEditable() {
+    changeEditable () {
       this.polyline.editable = !this.polyline.editable;
     },
-    toggleVisible(){
+    toggleCreated (){
+      this.polyline.created = !this.polyline.created;
+    },
+    toggleVisible (){
       this.polyline.visible = !this.polyline.visible;
     },
-    changeDraggable(){
+    changeDraggable (){
       this.polyline.draggable = !this.polyline.draggable;
     },
-    click(e) {
+    click (e) {
       alert('click BezierCurve');
     },
   }
-})
+});
 </script>
 
 <style scoped>

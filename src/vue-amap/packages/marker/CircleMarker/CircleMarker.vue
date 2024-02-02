@@ -1,115 +1,123 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../mixins";
+import {buildProps} from "../../../utils/buildHelper";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapCircleMarker',
-  mixins: [registerMixin],
-  props: {
-    zIndex: {
-      type: Number
-    },
-    center: {
-      type: Array,
-      required: true
-    },
-    bubble: {
-      type: Boolean,
-      default: false
-    },
-    cursor: {
-      type: String
-    },
-    radius: {
-      type: Number
-    },
-    strokeColor: {
-      type: String
-    },
-    strokeOpacity: {
-      type: Number
-    },
-    strokeWeight: {
-      type: Number
-    },
-    fillColor: {
-      type: String
-    },
-    fillOpacity: {
-      type: Number
-    },
-    draggable: {
-      type: Boolean,
-      default: false
-    },
-    extData: {
-      type: Object
-    }
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  zIndex: {
+    type: Number
   },
-
-  emits: ['update:center'],
-
-  data() {
-    return {
-      converters: {},
-      handlers: {}
-    };
+  center: {
+    type: Array,
+    required: true
   },
+  bubble: {
+    type: Boolean,
+    default: false
+  },
+  cursor: {
+    type: String
+  },
+  radius: {
+    type: Number
+  },
+  strokeColor: {
+    type: String
+  },
+  strokeOpacity: {
+    type: Number
+  },
+  strokeWeight: {
+    type: Number
+  },
+  fillColor: {
+    type: String
+  },
+  fillOpacity: {
+    type: Number
+  },
+  draggable: {
+    type: Boolean,
+    default: false
+  },
+  extData: {
+    type: Object
+  }
+}));
+const emits = defineEmits(['init','update:center']);
 
-  methods: {
-    __initComponent(options) {
-      this.$parentComponent = this.parentInstance.$amapComponent;
-      this.$amapComponent = new AMap.CircleMarker(options);
-      this.$parentComponent.add(this.$amapComponent);
-      this.bindModelEvents();
-    },
-    bindModelEvents(){
-      this.$amapComponent.on('dragend',() => {
-        this.emitPosition();
-      });
-      this.$amapComponent.on('touchend',() => {
-        this.emitPosition();
-      });
-    },
-    emitPosition(){
-      const center = this.$amapComponent.getCenter();
-      this.$emit('update:center', center.toArray());
-    },
-    destroyComponent() {
-      // this.$parentComponent.remove(this.$amapComponent);
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.remove(this.$amapComponent);
-      }
-      this.$amapComponent = null;
-    },
-    __strokeColor(value) {
-      this.$amapComponent.setOptions({
+let $amapComponent: AMap.CircleMarker;
+
+const {$$getInstance, parentInstance} = useRegister<AMap.CircleMarker, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.CircleMarker>((resolve) => {
+    $amapComponent = new AMap.CircleMarker(options);
+    parentComponent.add($amapComponent);
+    bindModelEvents();
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  watchRedirectFn: {
+    __strokeColor (value: string) {
+      $amapComponent.setOptions({
         strokeColor: value
       });
     },
-    __strokeOpacity(value) {
-      this.$amapComponent.setOptions({
+    __strokeOpacity (value: number) {
+      $amapComponent.setOptions({
         strokeOpacity: value
       });
     },
-    __strokeWeight(value) {
-      this.$amapComponent.setOptions({
+    __strokeWeight (value: number) {
+      $amapComponent.setOptions({
         strokeWeight: value
       });
     },
-    __fillColor(value) {
-      this.$amapComponent.setOptions({
+    __fillColor (value: string) {
+      $amapComponent.setOptions({
         fillColor: value
       });
     },
-    __fillOpacity(value) {
-      this.$amapComponent.setOptions({
+    __fillOpacity (value: number) {
+      $amapComponent.setOptions({
         fillOpacity: value
       });
     }
   },
-  render() {
-    return null;
-  }
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.remove($amapComponent);
+      }
+      $amapComponent = null as any;
+    }
+  },
 });
+
+const bindModelEvents = () => {
+  $amapComponent.on('dragend',() => {
+    emitPosition();
+  });
+  $amapComponent.on('touchend',() => {
+    emitPosition();
+  });
+};
+const emitPosition = () => {
+  const center = $amapComponent.getCenter();
+  emits('update:center', center.toArray());
+};
+
+defineExpose({
+  $$getInstance
+});
+
 </script>

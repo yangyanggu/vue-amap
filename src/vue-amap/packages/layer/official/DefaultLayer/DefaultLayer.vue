@@ -1,30 +1,49 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerDefault',
-  mixins: [registerMixin],
-  props: {
-    zoom: {
-      type: Array
-    },
-    opacity: {
-      type: Number
-    }
-  },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = AMap.createDefaultLayer(options);
-      this.$parentComponent.add(this.$amapComponent);
-    }
-  },
-  render(){
-    return null;
-  }
+  inheritAttrs: false
 });
+
+defineProps(buildProps({
+  zoom: {
+    type: Array
+  },
+  opacity: {
+    type: Number
+  }
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: any;
+
+const {$$getInstance, parentInstance} = useRegister<any, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.CanvasLayer>((resolve) => {
+    $amapComponent = AMap.createDefaultLayer(options);
+    parentComponent.add($amapComponent);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.remove($amapComponent);
+      }
+      $amapComponent = null as any;
+    }
+  },
+});
+
+defineExpose({
+  $$getInstance
+});
+
 </script>

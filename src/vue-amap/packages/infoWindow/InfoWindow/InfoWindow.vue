@@ -29,7 +29,6 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
     $amapComponent.on('close', () => {
       emits('update:visible', false);
     });
-    console.log('parentComponent:" ', parentComponent);
     if (props.visible) {
       $amapComponent.open(parentComponent, props.position as [number, number]);
     }

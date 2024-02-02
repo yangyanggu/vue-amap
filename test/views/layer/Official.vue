@@ -4,6 +4,7 @@
       :show-label="false"
       :center="center"
       :zoom="zoom"
+      view-mode="3D"
       @click="clickMap"
       @init="initMap"
     >
@@ -55,7 +56,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapLayerBuildings from "@vuemap/vue-amap/packages/layer/official/Buildings/Buildings.vue";
 import ElAmapLayerDistrict from "@vuemap/vue-amap/packages/layer/official/DistrictLayer/DistrictLayer.vue";
 import ElAmapLayerIndoorMap from "@vuemap/vue-amap/packages/layer/official/IndoorMap/IndoorMap.vue";
@@ -85,7 +86,7 @@ export default defineComponent({
     ElAmapLayerDistrict,
     ElAmapLayerBuildings,
     ElAmap},
-  data(){
+  data (){
     return {
       center: [116.33719, 39.942384],
       bounds: [116.327911, 39.939229,116.342659, 39.946275],
@@ -115,49 +116,49 @@ export default defineComponent({
         'city-stroke': 'white', // 中国地级市边界
         'county-stroke': 'rgba(255,255,255,0.5)' // 中国区县边界
       }
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    changeVisibleBuildings(){
+    changeVisibleBuildings (){
       this.visible.buildings = !this.visible.buildings;
     },
-    changeVisibleDistrict(){
+    changeVisibleDistrict (){
       if(this.visible.district){
         this.center = [118.763563,32.061377];
         this.zoom = 6;
       }
       this.visible.district = !this.visible.district;
     },
-    changeVisibleIndoor(){
+    changeVisibleIndoor (){
       if(this.visible.indoor){
         this.center = [121.5273285, 31.21515044];
         this.zoom = 14;
       }
       this.visible.indoor = !this.visible.indoor;
     },
-    changeVisibleRoad(){
+    changeVisibleRoad (){
       this.visible.road = !this.visible.road;
     },
-    changeVisibleSatellite(){
+    changeVisibleSatellite (){
       this.visible.satellite = !this.visible.satellite;
     },
-    changeVisibleTile(){
+    changeVisibleTile (){
       this.visible.tile = !this.visible.tile;
     },
-    changeVisibleTraffic(){
+    changeVisibleTraffic (){
       this.visible.traffic = !this.visible.traffic;
     },
-    initIndoorLayer(layer){
+    initIndoorLayer (layer){
       layer.showIndoorMap('B000A9VHIG');
     }
   }
-})
+});
 </script>
 
 <style scoped>

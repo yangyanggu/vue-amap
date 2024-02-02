@@ -1,56 +1,69 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister} from "../../../../mixins";
+import {buildProps} from "../../../../utils/buildHelper";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerBuildings',
-  mixins: [registerMixin],
-  props: {
-    wallColor: {
-      type: [String, Array]
-    }, // 楼块侧面颜色，支持 rgba、rgb、十六进制等
-    roofColor: {
-      type: [String, Array]
-    }, // 楼块顶面颜色，支持 rgba、rgb、十六进制等
-    heightFactor: {
-      type: Number
-    }, // 楼块的高度系数因子，默认为 1，也就是正常高度
-    styleOpts: {
-      type: Object
-    }, // 楼块的围栏和样式设置
-    zooms: {
-      type: Array
-    }, // 支持的缩放级别范围，默认范围 [2-30]
-    opacity: {
-      type: Number
-    } // 透明度，默认 1
-  },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new AMap.Buildings(options);
-      this.$parentComponent.add(this.$amapComponent);
-      if(this.styleOpts){
-        this.__styleOpts(this.styleOpts);
-      }
-    },
-    destroyComponent() {
-      this.$amapComponent.destroy();
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.remove(this.$amapComponent);
-      }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
-    },
-    __styleOpts(value) {
-      this.$amapComponent.setStyle(value);
+  inheritAttrs: false
+});
+
+const props = defineProps(buildProps({
+  wallColor: {
+    type: [String, Array]
+  }, // 楼块侧面颜色，支持 rgba、rgb、十六进制等
+  roofColor: {
+    type: [String, Array]
+  }, // 楼块顶面颜色，支持 rgba、rgb、十六进制等
+  heightFactor: {
+    type: Number
+  }, // 楼块的高度系数因子，默认为 1，也就是正常高度
+  styleOpts: {
+    type: Object
+  }, // 楼块的围栏和样式设置
+  zooms: {
+    type: Array
+  }, // 支持的缩放级别范围，默认范围 [2-30]
+  opacity: {
+    type: Number
+  } // 透明度，默认 1
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: AMap.Buildings;
+
+const {$$getInstance, parentInstance} = useRegister<AMap.Buildings, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.Buildings>((resolve) => {
+    $amapComponent = new AMap.Buildings(options);
+    parentComponent.add($amapComponent);
+    if(props.styleOpts){
+      $amapComponent.setStyle(props.styleOpts);
+    }
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  watchRedirectFn: {
+    __styleOpts (value: any) {
+      $amapComponent.setStyle(value);
     }
   },
-  render(){
-    return null;
-  }
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.remove($amapComponent);
+      }
+      $amapComponent = null as any;
+    }
+  },
 });
+
+defineExpose({
+  $$getInstance
+});
+
 </script>

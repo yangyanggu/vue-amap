@@ -44,9 +44,9 @@ interface TInitComponentProps {
 export const provideKey = 'parentInstance';
 
 export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D) => Promise<T>, params: TInitComponentProps) => {
-  const componentInstance = getCurrentInstance() as ComponentInternalInstance;
-  const {props, attrs} = componentInstance;
-  const parentInstance = inject<IProvideType | undefined>(provideKey, undefined);
+  let componentInstance = getCurrentInstance() as ComponentInternalInstance;
+  let {props, attrs} = componentInstance;
+  let parentInstance = inject<IProvideType | undefined>(provideKey, undefined);
   const emits = params.emits;
 
   let isMounted = false;
@@ -77,6 +77,11 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
     if(params.provideData){
       params.provideData.isDestroy = true;
     }
+    parentInstance = undefined;
+    props = undefined as any;
+    attrs = undefined as any;
+    componentInstance = undefined as any;
+    $amapComponent = undefined as any;
   });
   
   onBeforeUpdate(() => {
@@ -200,7 +205,7 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
   const stopWatchers = () => {
     unwatchFns.forEach(fn => fn());
     unwatchFns = [];
-    watchRedirectFn = {};
+    watchRedirectFn = undefined as any;
   };
 
   const getHandlerFun = (prop: string) => {
