@@ -132,7 +132,7 @@ export interface GeolocationOptions {
  * 定位插件hook，提供常用的基于浏览器定位的方法，和基于城市定位的方法
  * @param {GeolocationOptions} [options] 定位插件参数
  */
-export function useGeolocation(options?: GeolocationOptions) {
+export function useGeolocation (options?: GeolocationOptions) {
     return new Promise<GeolocationPromise>((resolve) => {
         AMap.plugin('AMap.Geolocation', function () {
             const geolocation = new AMap.Geolocation(options);
@@ -145,10 +145,10 @@ export function useGeolocation(options?: GeolocationOptions) {
                             reject({
                                 status,
                                 result
-                            })
+                            });
                         }
-                    })
-                })
+                    });
+                });
             };
             const getCityInfo = () => {
                 return new Promise<CurrentPositionResult>((resolve, reject) => {
@@ -159,15 +159,15 @@ export function useGeolocation(options?: GeolocationOptions) {
                             reject({
                                 status,
                                 result
-                            })
+                            });
                         }
-                    })
-                })
-            }
+                    });
+                });
+            };
             resolve({
                 getCurrentPosition,
                 getCityInfo
-            })
-        })
-    })
+            });
+        });
+    });
 }

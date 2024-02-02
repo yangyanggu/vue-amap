@@ -12,7 +12,7 @@ const DEFAULT_AMP_CONFIG = {
   securityJsCode: ''
 };
 
-export default function(config : any = {}) {
+export default function (config : any = {}) {
   config = merge({}, DEFAULT_AMP_CONFIG, config);
   if (config.serviceHost) {
     (window as any)._AMapSecurityConfig = {

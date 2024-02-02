@@ -22,7 +22,7 @@ export const initAMapApiLoader = (config : AMapLoaderOptions) => {
   if (!lazyAMapApiLoaderInstance){
     if(config.offline){
       lazyAMapApiLoaderInstance = new Promise(resolve => {
-        console.log('@vuemap/vue-amap离线部署')
+        console.log('@vuemap/vue-amap离线部署');
         resolve((window as any).AMap);
       });
     }else{
@@ -32,4 +32,4 @@ export const initAMapApiLoader = (config : AMapLoaderOptions) => {
   lazyAMapApiLoaderInstance.then();
 };
 export {lazyAMapApiLoaderInstance};
-export {resetJsApi} from './amap-api-loader'
+export {resetJsApi} from './amap-api-loader';

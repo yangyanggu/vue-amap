@@ -35,10 +35,10 @@ export interface CitySearchLocalCityResult {
 /**
  * IP定位插件hook，用于进行粗略的基于IP定位
  */
-export function useCitySearch() {
+export function useCitySearch () {
     return new Promise<CitySearchPromise>((resolve) => {
         AMap.plugin('AMap.CitySearch', function () {
-            const citySearch = new AMap.CitySearch()
+            const citySearch = new AMap.CitySearch();
             const getLocalCity = () => {
                 return new Promise<CitySearchLocalCityResult>((resolve, reject) => {
                     citySearch.getLocalCity(function (status, result) {
@@ -48,14 +48,14 @@ export function useCitySearch() {
                             reject({
                                 status,
                                 result
-                            })
+                            });
                         }
-                    })
-                })
-            }
+                    });
+                });
+            };
             resolve({
                 getLocalCity
-            })
-        })
-    })
+            });
+        });
+    });
 }

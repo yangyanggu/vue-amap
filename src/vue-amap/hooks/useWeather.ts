@@ -130,10 +130,10 @@ export interface WeatherForecastResult{
 /**
  * 天气插件hook，返回天气插件里的方法，全部Promise处理
  */
-export function useWeather() {
+export function useWeather () {
     return new Promise<WeatherPromise>((resolve) => {
         AMap.plugin('AMap.Weather', function () {
-            const weather = new AMap.Weather()
+            const weather = new AMap.Weather();
             /**
              * 查询实时天气信息。
              * 
@@ -147,11 +147,11 @@ export function useWeather() {
                         } else {
                             reject({
                                 result
-                            })
+                            });
                         }
-                    })
-                })
-            }
+                    });
+                });
+            };
             /**
              * 查询四天预报天气，包括查询当天天气信息
              * @param  {string} city 城市名称或者区域编码（如：“杭州市”/“330100”）
@@ -164,15 +164,15 @@ export function useWeather() {
                         } else {
                             reject({
                                 result
-                            })
+                            });
                         }
-                    })
-                })
-            }
+                    });
+                });
+            };
             resolve({
                 getLive,
                 getForecast
-            })
-        })
-    })
+            });
+        });
+    });
 }
