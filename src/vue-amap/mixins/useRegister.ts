@@ -130,18 +130,14 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
     if(props.extraOptions){
       Object.assign(propsCache, props.extraOptions);
     }
-    const result = Object.keys(props).reduce((res, _key) => {
+    Object.keys(props).forEach(_key => {
       let key = _key;
       const propsValue = convertSignalProp(key, props[key]);
-      if (propsValue === undefined) return res;
-      if (propsRedirect && propsRedirect[_key]) key = propsRedirect[key];
-      props[key] = propsValue;
-      return res;
-    }, props);
-    Object.keys(result).forEach(key => {
-      const value = convertProxyToRaw(result[key]);
-      if(value !== undefined){
-        propsCache[key] = value;
+      if (propsValue !== undefined){
+        if (propsRedirect && propsRedirect[_key]){
+          key = propsRedirect[key];
+        }
+        propsCache[key] = propsValue;
       }
     });
     return propsCache;
