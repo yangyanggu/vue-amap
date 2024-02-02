@@ -1,96 +1,114 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {merge} from 'lodash-es';
-import {registerMixin,isMapInstance, isOverlayGroupInstance, isVectorLayerInstance} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {merge} from "lodash-es";
+import {useRegister} from "../../../mixins";
+import {buildProps} from "../../../utils/buildHelper";
+import type { PropType} from 'vue';
 
-
-export default defineComponent({
+defineOptions({
   name: 'ElAmapGeojson',
-  mixins: [registerMixin],
-  props: {
-    geo: {
-      type: Object,
-      required: true
-    }, // 要加载的标准GeoJSON对象
-    markerOptions: {
-      type: Object
-    }, // marker的默认样式
-    getMarker: {
-      type: Function
-    }, // 指定点要素的绘制方式，缺省时为Marker的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
-    polylineOptions: {
-      type: Object
-    }, // polyline的默认样式
-    getPolyline: {
-      type: Function
-    }, // 指定线要素的绘制方式，缺省时为Polyline的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
-    polygonOptions: {
-      type: Object
-    }, // polygon的默认样式
-    getPolygon: {
-      type: Function
-    } // 指定面要素的绘制方式，缺省时为Polygon的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
+  inheritAttrs: false
+});
+
+const props = defineProps(buildProps({
+  // 要加载的标准GeoJSON对象
+  geo: {
+    type: Object,
+    required: true
   },
-  data() {
-    return {
-      propsRedirect: {
-        geo: 'geoJSON'
-      },
-      converters: {},
-    };
+  // marker的默认样式
+  markerOptions: {
+    type: Object as PropType<AMap.MarkerOptions>
   },
-  methods: {
-    __initComponent(options) {
-      return new Promise<void>((resolve) => {
-        AMap.plugin(['AMap.GeoJSON'], () => {
-          if (!options.getMarker) {
-            options.getMarker = this.createMarker;
-          }
-          if (!options.getPolyline) {
-            options.getPolyline = this.createPolyline;
-          }
-          if (!options.getPolygon) {
-            options.getPolygon = this.createPolygon;
-          }
-          this.$amapComponent = new AMap.GeoJSON(options);
-          this.$parentComponent.add(this.$amapComponent);
-          resolve();
-        });
-      });
-    },
-    createMarker(geojson, lnglat) {
-      let options = this.markerOptions || {};
-      options = merge({}, options, geojson.properties);
-      options.position = lnglat;
-      return new AMap.Marker(options);
-    },
-    createPolyline(geojson, lnglat) {
-      let options = this.polylineOptions || {};
-      options = merge({}, options, geojson.properties);
-      options.path = lnglat;
-      return new AMap.Polyline(options);
-    },
-    createPolygon(geojson, lnglat) {
-      let options = this.polygonOptions || {};
-      options = merge({}, options, geojson.properties);
-      options.path = lnglat;
-      return new AMap.Polygon(options);
-    },
-    destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.remove(this.$amapComponent);
+  // 指定点要素的绘制方式，缺省时为Marker的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
+  getMarker: {
+    type: Function
+  },
+  // polyline的默认样式
+  polylineOptions: {
+    type: Object as PropType<AMap.PolylineOptions>
+  },
+  // 指定线要素的绘制方式，缺省时为Polyline的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
+  getPolyline: {
+    type: Function
+  },
+  // polygon的默认样式
+  polygonOptions: {
+    type: Object as PropType<AMap.PolygonOptions>
+  },
+  // 指定面要素的绘制方式，缺省时为Polygon的默认样式。geojson为当前要素对应的GeoJSON对象，lnglats为对应的线的路径
+  getPolygon: {
+    type: Function
+  } 
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: AMap.GeoJSON;
+
+const {$$getInstance, parentInstance} = useRegister<AMap.GeoJSON, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.GeoJSON>((resolve) => {
+    AMap.plugin(['AMap.GeoJSON'], () => {
+      if (!options.getMarker) {
+        options.getMarker = createMarker;
       }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
-    },
-    __geoJSON(value) {
-      if(this.$amapComponent){
-        this.$amapComponent.importData(value);
+      if (!options.getPolyline) {
+        options.getPolyline = createPolyline;
+      }
+      if (!options.getPolygon) {
+        options.getPolygon = createPolygon;
+      }
+      $amapComponent = new AMap.GeoJSON(options);
+      parentComponent.add($amapComponent);
+      resolve($amapComponent);
+    });
+  });
+
+}, {
+  emits,
+  propsRedirect: {
+    geo: 'geoJSON'
+  },
+  watchRedirectFn: {
+    __geoJSON (value) {
+      if($amapComponent){
+        $amapComponent.importData(value);
       }
     }
   },
-  render(){
-    return null;
-  }
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance?.isDestroy){
+        parentInstance?.$amapComponent.remove($amapComponent);
+      }
+      $amapComponent = null as any;
+    }
+  },
 });
+
+const createMarker = (geojson: any, lnglat: [number, number]) => {
+  let options = props.markerOptions || {};
+  options = merge({}, options, geojson.properties);
+  options.position = lnglat;
+  return new AMap.Marker(options);
+};
+const createPolyline = (geojson: any, lnglat: any) => {
+  let options = props.polylineOptions || {};
+  options = merge({}, options, geojson.properties);
+  options.path = lnglat;
+  return new AMap.Polyline(options);
+};
+const createPolygon = (geojson: any, lnglat: any) => {
+  let options = props.polygonOptions || {};
+  options = merge({}, options, geojson.properties);
+  options.path = lnglat;
+  return new AMap.Polygon(options);
+};
+
+defineExpose({
+  $$getInstance
+});
+
 </script>
