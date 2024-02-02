@@ -113,9 +113,9 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
   
   // 初始化属性
   const initProps = () => {
-    const props = ['editable', 'visible', 'zooms'];
+    const propsList = ['editable', 'visible', 'zooms'];
 
-    props.forEach(propStr => {
+    propsList.forEach(propStr => {
       if (props[propStr] !== undefined) {
         const handleFun = getHandlerFun(propStr);
         handleFun && handleFun.call($amapComponent, convertProxyToRaw(convertSignalProp(propStr, props[propStr])));

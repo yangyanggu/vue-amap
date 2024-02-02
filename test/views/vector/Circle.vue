@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapCircle from "@vuemap/vue-amap/packages/vector/Circle/Circle.vue";
 import ElAmapLayerVector from "@vuemap/vue-amap/packages/layer/data/Vector/Vector.vue";
 
@@ -52,7 +52,7 @@ export default defineComponent({
     ElAmapLayerVector,
     ElAmapCircle,
     ElAmap},
-  data(){
+  data (){
     return {
       zoom: 13,
       center: [121.5273285, 31.21515044],
@@ -66,32 +66,32 @@ export default defineComponent({
         radius: 500,
       },
       created: true
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    changeEditable() {
+    changeEditable () {
       this.edit = !this.edit;
     },
-    toggleVisible(){
+    toggleVisible (){
       this.visible = !this.visible;
     },
-    changeDraggable(){
+    changeDraggable (){
       this.draggable = !this.draggable;
     },
-    click(e) {
+    click (e) {
       alert('click Circle');
     },
-    createOrDestroy() {
+    createOrDestroy () {
       this.created = !this.created;
     }
   }
-})
+});
 </script>
 
 <style scoped>
