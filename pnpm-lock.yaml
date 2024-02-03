@@ -234,10 +234,10 @@ importers:
         version: 18.6.4
       '@vuemap/layer-3dtiles':
         specifier: 0.0.7
-        version: 0.0.7(@vuemap/three-layer@0.0.10)
+        version: 0.0.7(@vuemap/three-layer@0.0.11)
       '@vuemap/three-layer':
-        specifier: 0.0.10
-        version: 0.0.10
+        specifier: 0.0.11
+        version: 0.0.11
       '@vuemap/vue-amap':
         specifier: workspace:* || >=2.1.0
         version: link:../vue-amap
@@ -433,10 +433,6 @@ packages:
       '@algolia/logger-common': 4.22.1
       '@algolia/requester-common': 4.22.1
     dev: true
-
-  /@amap/amap-jsapi-types@0.0.8:
-    resolution: {integrity: sha512-q0FyZDIJcXjsMLGc3oS9rjfJsErOvt9rcp6AgzY4k14vo7bBhdq4eKwoSdVp/pYjR/rfaKBns5v10ycZOFwf/A==}
-    dev: false
 
   /@antfu/utils@0.7.7:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
@@ -3216,23 +3212,22 @@ packages:
       topojson-client: 3.1.0
     dev: false
 
-  /@vuemap/layer-3dtiles@0.0.7(@vuemap/three-layer@0.0.10):
+  /@vuemap/layer-3dtiles@0.0.7(@vuemap/three-layer@0.0.11):
     resolution: {integrity: sha512-af7aLaowepOjQkE2h8HHz5sozXlTKFrCeb3vkzP0qvwERFDnb1dIQJA3Zku25a+TB6UeEFDzn6ATIVbq0BNWIg==}
     engines: {node: '>= 16'}
     peerDependencies:
       '@vuemap/three-layer': '>=0.0.2'
     dependencies:
       3d-tiles-renderer: 0.3.20(three@0.143.0)
-      '@vuemap/three-layer': 0.0.10
+      '@vuemap/three-layer': 0.0.11
       lodash-es: 4.17.21
       three: 0.143.0
     dev: false
 
-  /@vuemap/three-layer@0.0.10:
-    resolution: {integrity: sha512-w2sIvhzTBa+/SYfl87Z7K/+HVeRPkff/d9RPBwkE1IwxswlwYLq4/P7x+tK+PVFfipMSyAJEcRPyHigFqMljoA==}
+  /@vuemap/three-layer@0.0.11:
+    resolution: {integrity: sha512-Z0yaUSvRU1/+7T4gpqxexmcMphimgp5ddOtWELGlE/oxt6fIMTmBKrOswj392GRnECW2sW0UEbHTVLPyYbEzGA==}
     engines: {node: '>= 16'}
     dependencies:
-      '@amap/amap-jsapi-types': 0.0.8
       '@types/three': 0.143.0
       three: 0.143.0
     dev: false

@@ -11,7 +11,7 @@ export const generateExternal = async (options: { full: boolean, package: string
     const packages: string[] = ['vue', '@vuemap/amap-jsapi-types'];
     if (!options.full) {
       // dependencies
-      packages.push('@vue', ...getPackageDependencies(options.package));
+      packages.push('@vue', '@vuemap/vue-amap', ...getPackageDependencies(options.package));
     }
 
     return [...new Set(packages)].some(

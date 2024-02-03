@@ -1,114 +1,139 @@
 <template>
   <slot />
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister, buildProps} from "@vuemap/vue-amap";
 import CustomThreeLayer from "./CustomThreeLayer";
-import type {HDROptions, LightOption} from './Type';
-import type {PropType} from "vue";
-import type {WebGLRendererParameters} from 'three';
+import type {TRegisterFn, IProvideType} from "@vuemap/vue-amap";
+import type {PropType} from 'vue';
+import type {HDROptions, LightOption} from "./Type";
+import type {WebGLRendererParameters} from "three";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLayerThree',
-  mixins: [registerMixin],
-  provide() {
-    return {
-      parentInstance: this
-    };
+  inheritAttrs: false
+});
+
+const needInitComponents: TRegisterFn[] = [];
+const provideData:IProvideType = {
+  $amapComponent: undefined,
+  addChildComponent (cb){
+    needInitComponents.push(cb);
   },
-  props: {
-    lights: {
-      type: Array as PropType<LightOption[]>,
-      default() {
-        return [];
-      }
-    }, // 灯光数组
-    hdr: {
-      type: Object as PropType<HDROptions>
-    },
-    zooms: {
-      type: Array as PropType<number[]>,
-      default() {
-        return [2, 20];
-      }
-    }, // 支持的缩放级别范围，默认范围 [2, 20]
-    opacity: {
-      type: Number
-    }, // 透明度，默认 1
-    alpha: {
-      type: Boolean,
-      default: true
-    }, // canvas是否包含alpha (透明度)。默认为 false
-    antialias: {
-      type: Boolean,
-      default: false
-    },// 是否执行抗锯齿。默认为false
-    customCoordsCenter: {
-      type: Array as PropType<number[]>,
-      default() {
-        return null;
-      }
-    },
-    axesHelper: {
-      type: Boolean,
-      default: false
-    },
-    createCanvas: {
-      type: Boolean,
-      default: false
-    },
-    webGLRendererParameters: {
-      type: Object as PropType<WebGLRendererParameters>,
-      default() {
-        return undefined;
-      }
+  isDestroy: false
+};
+
+defineProps(buildProps({
+  lights: {
+    type: Array as PropType<LightOption[]>,
+    default () {
+      return [];
+    }
+  }, // 灯光数组
+  hdr: {
+    type: Object as PropType<HDROptions>
+  },
+  zooms: {
+    type: Array as PropType<number[]>,
+    default () {
+      return [2, 20];
+    }
+  }, // 支持的缩放级别范围，默认范围 [2, 20]
+  opacity: {
+    type: Number
+  }, // 透明度，默认 1
+  alpha: {
+    type: Boolean,
+    default: true
+  }, // canvas是否包含alpha (透明度)。默认为 false
+  antialias: {
+    type: Boolean,
+    default: false
+  },// 是否执行抗锯齿。默认为false
+  customCoordsCenter: {
+    type: Array as PropType<number[]>,
+    default () {
+      return null;
     }
   },
-  data() {
-    return {
-    };
+  axesHelper: {
+    type: Boolean,
+    default: false
   },
-  methods: {
-    __initComponent(options) {
-      return new Promise<void>((resolve) => {
-        this.$amapComponent = new CustomThreeLayer(this.$parentComponent, options, () => {
-          resolve();
-        });
-      });
-    },
-    destroyComponent() {
-      this.$amapComponent.destroy();
-      this.$amapComponent = null;
-      this.$parentComponent = null;
-    },
-    convertLngLat(lnglat) {
-      return this.$amapComponent.convertLngLat(lnglat);
-    },
-    addObject(object) {
-      this.$amapComponent.addObject(object);
-    },
-    removeObject(object) {
-      this.$amapComponent.removeObject(object);
-    },
-    addEnvMap(obj) {
-      this.$amapComponent.addEnvMap(obj);
-    },
-    $$getScene() {
-      return this.$amapComponent.getScene();
-    },
-    $$getRender() {
-      return this.$amapComponent.getRender();
-    },
-    $$refresh() {
-      this.$amapComponent.refreshMap();
-    },
-    $$addPass(pass: any) {
-      this.$amapComponent.addPass(pass);
-    },
-    $$removePass(pass: any) {
-      this.$amapComponent.removePass(pass);
+  createCanvas: {
+    type: Boolean,
+    default: false
+  },
+  webGLRendererParameters: {
+    type: Object as PropType<WebGLRendererParameters>,
+    default () {
+      return undefined;
     }
   }
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: CustomThreeLayer;
+
+const {$$getInstance, parentInstance} = useRegister<CustomThreeLayer, any>((options, parentComponent) => {
+  return new Promise<CustomThreeLayer>((resolve) => {
+    $amapComponent = new CustomThreeLayer(parentComponent, options, () => {
+      resolve($amapComponent);
+    });
+  });
+
+}, {
+  emits,
+  provideData,
+  needInitComponents,
+  destroyComponent () {
+    if ($amapComponent) {
+      $amapComponent.destroy();
+      $amapComponent = null as any;
+    }
+  },
 });
+
+const convertLngLat = (lnglat: any) => {
+  return $amapComponent.convertLngLat(lnglat);
+};
+const addObject = (object: any) => {
+  $amapComponent.add(object);
+};
+const removeObject = (object: any) => {
+  $amapComponent.remove(object);
+};
+const addEnvMap = (obj: any) => {
+  $amapComponent.addEnvMap(obj);
+};
+const $$getScene = () => {
+  return $amapComponent.getScene();
+};
+const $$getRender = () => {
+  return $amapComponent.getRender();
+};
+const $$refresh = () => {
+  $amapComponent.refreshMap();
+};
+const $$addPass = (pass: any) => {
+  $amapComponent.addPass(pass);
+};
+const $$removePass = (pass: any) => {
+  $amapComponent.removePass(pass);
+};
+
+defineExpose({
+  $$getInstance,
+  convertLngLat,
+  addObject,
+  removeObject,
+  addEnvMap,
+  $$getScene,
+  $$getRender,
+  $$refresh,
+  $$addPass,
+  $$removePass
+});
+
 </script>
