@@ -2,7 +2,7 @@
   <div />
 </template>
 <script setup lang="ts">
-import {defineOptions, getCurrentInstance} from 'vue';
+import {defineOptions} from 'vue';
 import {useRegister, buildProps} from "@vuemap/vue-amap";
 import ThreeLightAmbient from "./ThreeLightAmbient";
 
