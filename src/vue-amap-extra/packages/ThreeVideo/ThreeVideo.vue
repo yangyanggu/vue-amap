@@ -1,6 +1,6 @@
 <template>
   <video
-    ref="video"
+    ref="videoRef"
     style="display: none;"
     muted
     loop
@@ -15,107 +15,121 @@
     >
   </video>
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<script setup lang="ts">
+import {defineOptions, ref, nextTick} from 'vue';
+import {useRegister, buildProps} from "@vuemap/vue-amap";
 import ThreeVideo from "./ThreeVideo";
 import type {Vec} from "./Type";
 import type{PropType} from "vue";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapThreeVideo',
-  mixins: [registerMixin],
-  props: {
-    video: {
-      type: [String, Array, HTMLVideoElement],
-      required: true
-    },
-    videoTranslate: {
-      type: Object as PropType<Vec>,
-      default(){
-        return {
-          x:0,
-          y:0,
-          z:0
-        };
-      }
-    },
-    videoWidth: {
-      type: Number
-    }, // 视频宽度
-    videoHeight: {
-      type: Number
-    }, // 视频高度
-    canvas: {
-      type: Object as PropType<HTMLCanvasElement>
-    },
-    position: {
-      type: Array as PropType<number[]>,
-      required: true
-    },
-    altitude: {
-      type: Number,
-      default: 0
-    },
-    rotation: {
-      type: Object as PropType<Vec>
-    },
-    scale: {
-      type: [Number, Array],
-      default: 1
-    },
-    angle: {
-      type: Number,
-      default: 0
-    },
-    opacity: {
-      type: Number,
-      default: 1
-    }, // 透明度，默认 1
-    alwaysFront: {
-      type: Boolean,
-      default: false
-    } //是否一直面朝屏幕
-  },
-  emits: ['click', 'mousemove', 'mouseover', 'mouseout'],
-  data() {
-    return {
-      videoUrlList: [] as string[]
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      const urlType = Object.prototype.toString.call(options.video);
-      if(urlType === '[object String]'){
-        this.videoUrlList = [options.video as string];
-      }else if(urlType === '[object Array]'){
-        this.videoUrlList = options.video;
-      }
-      if(this.videoUrlList.length > 0){
-        options.video = this.$refs.video;
-      }
-      this.$amapComponent = new ThreeVideo(this.$parentComponent);
-      return new Promise<void>((resolve) => {
-        this.$nextTick(() => {
-          this.$amapComponent.init(options, this).then(() => {
-            resolve();
-          });
-        });
-
-      });
-    },
-    destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$amapComponent.remove();
-      }
-      this.$amapComponent.destroy();
-    },
-    $$start() {
-      this.$amapComponent.start();
-    },
-    $$pause() {
-      this.$amapComponent.pause();
-    }
-  }
+  inheritAttrs: false
 });
+
+defineProps(buildProps({
+  video: {
+    type: [String, Array, HTMLVideoElement],
+    required: true
+  },
+  videoTranslate: {
+    type: Object as PropType<Vec>,
+    default (){
+      return {
+        x:0,
+        y:0,
+        z:0
+      };
+    }
+  },
+  videoWidth: {
+    type: Number
+  }, // 视频宽度
+  videoHeight: {
+    type: Number
+  }, // 视频高度
+  canvas: {
+    type: Object as PropType<HTMLCanvasElement>
+  },
+  position: {
+    type: Array as PropType<number[]>,
+    required: true
+  },
+  altitude: {
+    type: Number,
+    default: 0
+  },
+  rotation: {
+    type: Object as PropType<Vec>
+  },
+  scale: {
+    type: [Number, Array],
+    default: 1
+  },
+  angle: {
+    type: Number,
+    default: 0
+  },
+  opacity: {
+    type: Number,
+    default: 1
+  }, // 透明度，默认 1
+  alwaysFront: {
+    type: Boolean,
+    default: false
+  } //是否一直面朝屏幕
+}));
+const emits = defineEmits(['init', 'click', 'mousemove', 'mouseover', 'mouseout']);
+
+let $amapComponent: ThreeVideo;
+
+let videoUrlList: string[] = [];
+const videoRef = ref<HTMLVideoElement>();
+
+const {$$getInstance, parentInstance} = useRegister<ThreeVideo, any>((options, parentComponent) => {
+  const urlType = Object.prototype.toString.call(options.video);
+  if(urlType === '[object String]'){
+    videoUrlList = [options.video as string];
+  }else if(urlType === '[object Array]'){
+    videoUrlList = options.video;
+  }
+  if(videoUrlList.length > 0){
+    options.video = videoRef.value;
+  }
+  $amapComponent = new ThreeVideo(parentComponent);
+  return new Promise<ThreeVideo>((resolve) => {
+    nextTick(() => {
+      $amapComponent.init(options, this).then(() => {
+        resolve($amapComponent);
+      });
+    });
+
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance.isDestroy){
+        $amapComponent.remove();
+      }
+      $amapComponent.destroy();
+      $amapComponent = null as any;
+    }
+  },
+});
+
+const $$start = () => {
+  $amapComponent.start();
+};
+const $$pause = () => {
+  $amapComponent.pause();
+};
+
+defineExpose({
+  $$getInstance,
+  $$start,
+  $$pause
+});
+
 </script>
