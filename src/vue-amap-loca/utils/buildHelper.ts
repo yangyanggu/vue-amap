@@ -80,3 +80,5 @@ export const buildLocaProps = <Props extends ComponentObjectPropsOptions>(props:
     },
   } as ILocaProps, props);
 };
+
+export const commonEmitNames = ['init', 'mousemove', 'click', 'rightclick' ];

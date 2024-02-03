@@ -1,33 +1,50 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister, buildProps} from "@vuemap/vue-amap";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLocaAmbientLight',
-  mixins: [registerMixin],
-  props: {
-    color: {
-      type: String
-    }, // 环境光颜色。
-    intensity: {
-      type: Number
-    }, // 环境光强度。
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  // 环境光颜色。
+  color: {
+    type: String
   },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new Loca.AmbientLight(options);
-      this.$parentComponent.addLight(this.$amapComponent);
-    },
-    destroyComponent(){
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLight(this.$amapComponent);
+  // 环境光强度。
+  intensity: {
+    type: Number
+  }, 
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: any;
+
+const {$$getInstance, parentInstance} = useRegister<any, any>((options, parentComponent) => {
+  return new Promise<any>((resolve) => {
+    $amapComponent = new Loca.AmbientLight(options);
+    parentComponent.addLight($amapComponent);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance.isDestroy){
+        parentInstance.$amapComponent.removeLight($amapComponent);
       }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
+      $amapComponent = null;
     }
   },
-  render(){
-    return null;
-  }
 });
+
+defineExpose({
+  $$getInstance,
+});
+
 </script>

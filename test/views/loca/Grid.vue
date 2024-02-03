@@ -14,6 +14,7 @@
           :visible="visible"
           :source-url="sourceUrl"
           :layer-style="layerStyle"
+          @click="clickLayer"
         />
       </el-amap-loca>
     </el-amap>
@@ -27,7 +28,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapLocaGrid from "@vuemap/vue-amap-loca/packages/GridLayer/GridLayer.vue";
 import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 
@@ -41,7 +42,7 @@ export default defineComponent({
     ElAmapLocaGrid,
     ElAmap
   },
-  data() {
+  data () {
     return {
       center: [114.341232, 30.567523],
       zoom: 11,
@@ -53,7 +54,7 @@ export default defineComponent({
         radius: 66,
         gap: 0,
         altitude: 100,
-        height(index, feature) {
+        height (index, feature) {
           const ranks = feature.coordinates && feature.coordinates.length || 0;
           return ranks < 5 ?
               heights[0] : ranks < 10 ?
@@ -64,7 +65,7 @@ export default defineComponent({
                                   heights[5] : ranks < 100 ?
                                       heights[6] : heights[7];
         },
-        topColor(index, feature) {
+        topColor (index, feature) {
           const ranks = feature.coordinates && feature.coordinates.length || 0;
           return ranks < 5 ?
               colors[0] : ranks < 10 ?
@@ -75,7 +76,7 @@ export default defineComponent({
                                   colors[5] : ranks < 100 ?
                                       colors[6] : colors[7];
         },
-        sideTopColor(index, feature) {
+        sideTopColor (index, feature) {
           const ranks = feature.coordinates && feature.coordinates.length || 0;
           return ranks < 5 ?
               colors[0] : ranks < 10 ?
@@ -86,7 +87,7 @@ export default defineComponent({
                                   colors[5] : ranks < 100 ?
                                       colors[6] : colors[7];
         },
-        sideBottomColor(index, feature) {
+        sideBottomColor (index, feature) {
           const ranks = feature.coordinates && feature.coordinates.length || 0;
           return ranks < 5 ?
               colors[0] : ranks < 10 ?
@@ -98,20 +99,23 @@ export default defineComponent({
                                       colors[6] : colors[7];
         }
       }
-    }
+    };
   },
   methods: {
-    clickMap(e) {
+    clickMap (e) {
       console.log('click map: ', e);
     },
-    initMap(map) {
+    initMap (map) {
       console.log('init map: ', map);
     },
-    changeVisible() {
+    changeVisible () {
       this.visible = !this.visible;
     },
+    clickLayer (e){
+      console.log('clickLayer: ', e);
+    }
   }
-})
+});
 </script>
 
 <style scoped>

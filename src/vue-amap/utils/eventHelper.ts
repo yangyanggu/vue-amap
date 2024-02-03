@@ -4,7 +4,7 @@
  * @param eventName
  * @param handler
  */
-export function bindInstanceEvent(instance: any, eventName: string, handler: any){
+export function bindInstanceEvent (instance: any, eventName: string, handler: any){
   if(!instance || !instance.on){
     return;
   }
@@ -17,7 +17,7 @@ export function bindInstanceEvent(instance: any, eventName: string, handler: any
  * @param eventName
  * @param handler
  */
-export function removeInstanceEvent(instance: any, eventName: string, handler: any){
+export function removeInstanceEvent (instance: any, eventName: string, handler: any){
   if(!instance || !instance.off){
     return;
   }

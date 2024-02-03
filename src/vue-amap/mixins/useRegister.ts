@@ -22,6 +22,7 @@ export interface IProvideType{
   addChildComponent: (cb: TRegisterFn) => void
   // 父组件是否已经销毁
   isDestroy: boolean
+  [key : string]: any
 }
 
 
@@ -103,8 +104,10 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
       registerEvents();
       initProps();
       setPropWatchers();
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       Object.assign(componentInstance.ctx, componentInstance.exposed);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       emits('init', $amapComponent, componentInstance.ctx);
       nextTick(() => {

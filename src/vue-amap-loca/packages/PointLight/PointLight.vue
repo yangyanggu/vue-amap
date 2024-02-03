@@ -1,47 +1,55 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister, buildProps} from "@vuemap/vue-amap";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapLocaPointLight',
-  mixins: [registerMixin],
-  props: {
-    color: {
-      type: String
-    }, // 点光颜色。
-    intensity: {
-      type: Number
-    }, // 光照强度。
-    position: {
-      type: Array,
-      required: true
-    }, // 点光位置
-    distance: {
-      type: Number
-    }, // 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失
-  },
-  data() {
-    return {
-      converters: {},
-      handlers: {
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  color: {
+    type: String
+  }, // 点光颜色。
+  intensity: {
+    type: Number
+  }, // 光照强度。
+  position: {
+    type: Array,
+    required: true
+  }, // 点光位置
+  distance: {
+    type: Number
+  }, // 距离表示从光源到光照强度为 0 的位置，0 就是光不会消失
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: any;
+
+const {$$getInstance, parentInstance} = useRegister<any, any>((options, parentComponent) => {
+  return new Promise<any>((resolve) => {
+    $amapComponent = new Loca.PointLight(options);
+    parentComponent.addLight($amapComponent);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance.isDestroy){
+        parentInstance.$amapComponent.removeLight($amapComponent);
       }
-    };
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new Loca.PointLight(options);
-      this.$parentComponent.addLight(this.$amapComponent);
-    },
-    destroyComponent(){
-      if(!this.parentInstance.isDestroy){
-        this.$parentComponent.removeLight(this.$amapComponent);
-      }
-      this.$amapComponent = null;
-      this.$parentComponent = null;
+      $amapComponent = null;
     }
   },
-  render(){
-    return null;
-  }
 });
+
+defineExpose({
+  $$getInstance,
+});
+
 </script>
