@@ -1,37 +1,51 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions, getCurrentInstance} from 'vue';
+import {useRegister, buildProps} from "@vuemap/vue-amap";
 import ThreeLightAmbient from "./ThreeLightAmbient";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapThreeLightAmbient',
-  mixins: [registerMixin],
-  props: {
-    color: {
-      type: String,
-      default: '#ffffff'
-    },
-    intensity: {
-      type: Number,
-      default: 1
-    },
-  },
-  data() {
-    return {};
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new ThreeLightAmbient(this.$parentComponent, options);
-    },
-    destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$amapComponent.remove();
-      }
-      this.$amapComponent.destroy();
-    },
-  },
-  render() {
-    return null;
-  }
+  inheritAttrs: false
 });
+
+defineProps(buildProps({
+  color: {
+    type: String,
+    default: '#ffffff'
+  },
+  intensity: {
+    type: Number,
+    default: 1
+  },
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: ThreeLightAmbient;
+
+const {$$getInstance, parentInstance} = useRegister<ThreeLightAmbient, any>((options, parentComponent) => {
+  return new Promise<ThreeLightAmbient>((resolve) => {
+    $amapComponent = new ThreeLightAmbient(parentComponent, options);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance.isDestroy){
+        $amapComponent.remove();
+      }
+      $amapComponent.destroy();
+      $amapComponent = null as any;
+    }
+  },
+});
+
+defineExpose({
+  $$getInstance,
+});
+
 </script>
