@@ -1,4 +1,4 @@
-import { makeInstaller } from '@vuemap/vue-amap-util'
-import Components from './component'
+import { makeInstaller } from '@vuemap/vue-amap';
+import Components from './component';
 
-export default makeInstaller([...Components])
+export default makeInstaller([...Components]);

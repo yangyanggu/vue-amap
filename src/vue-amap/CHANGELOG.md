@@ -1,3 +1,8 @@
+### @vuemap/vue-amap v2.1.0
+* 所有组件更新为组合式API
+* 完善所有AMap下ts类型
+* 增加坐标系转化功能
+
 ### @vuemap/vue-amap v2.0.25
 * 升级@vuemap/district-cluster依赖
 

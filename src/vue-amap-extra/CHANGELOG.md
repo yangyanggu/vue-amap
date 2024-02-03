@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.0
+* 所有组件更新为组合式API
+
 ### @vuemap/vue-amap-extra v2.0.11
 * 优化three-layer图层渲染机制
 * three-layer图层添加click  mouseover  mouseout事件，优化three事件系统，支持自定义物体也能触发事件

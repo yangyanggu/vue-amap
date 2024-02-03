@@ -8,7 +8,6 @@ import {buildLocaProps, commonEmitNames} from "../../utils/buildHelper";
 import type { TRegisterFn} from "@vuemap/vue-amap";
 import type {PropType} from 'vue';
 import type {EventOptions} from "./Type";
-import type {ILocaProvideType} from '../../mixins/useLoca';
 
 defineOptions({
   name: 'ElAmapLoca',

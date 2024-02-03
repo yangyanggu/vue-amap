@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.0
+* 所有组件更新为组合式API
+
 ### @vuemap/vue-amap-loca v2.0.6
 * 升级@vuemap/vue-amap-util版本，现在组件在给地图传递数据时会取消proxy和ref，防止后续地图使用对象时会触发循环watch，提高加载性能
 
