@@ -5,7 +5,7 @@
 import {defineOptions} from 'vue';
 import {merge} from "lodash-es";
 import {useRegister} from "../../../mixins";
-import {buildProps} from "../../../utils/buildHelper";
+import {buildProps} from "../../../utils";
 import type { PropType} from 'vue';
 
 defineOptions({

@@ -1,7 +1,5 @@
 // GlobalComponents for Volar
 
-import ElAmapLayerCustomXyz from "./packages/layer/data/CustomXyz";
-
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElAmap: typeof import('@vuemap/vue-amap')['ElAmap'],
@@ -52,4 +50,4 @@ declare module '@vue/runtime-core' {
   }
 }
 
-export {}
+export {};

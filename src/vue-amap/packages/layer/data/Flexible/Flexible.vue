@@ -31,10 +31,10 @@ defineProps(buildProps({
 }));
 const emits = defineEmits(['init']);
 
-let $amapComponent: AMap.TileLayer.Flexible;
+let $amapComponent: AMap.TileLayer;
 
-const {$$getInstance, parentInstance} = useRegister<AMap.TileLayer.Flexible, AMap.Map>((options, parentComponent) => {
-  return new Promise<AMap.TileLayer.Flexible>((resolve) => {
+const {$$getInstance, parentInstance} = useRegister<AMap.TileLayer, AMap.Map>((options, parentComponent) => {
+  return new Promise<AMap.TileLayer>((resolve) => {
     $amapComponent = new AMap.TileLayer.Flexible(options);
     $amapComponent.setMap(parentComponent);
     resolve($amapComponent);

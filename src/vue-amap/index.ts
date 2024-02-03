@@ -1,5 +1,5 @@
 import installer from './defaults';
-import '@amap/amap-jsapi-types';
+import '@vuemap/amap-jsapi-types';
 export * from './services';
 export * from './packages';
 export * from './mixins';

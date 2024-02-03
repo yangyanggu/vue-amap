@@ -208,12 +208,12 @@ importers:
 
   src/vue-amap:
     dependencies:
-      '@amap/amap-jsapi-types':
-        specifier: ^0.0.13
-        version: 0.0.13
       '@vuemap/amap-jsapi-loader':
         specifier: 1.0.4
         version: 1.0.4
+      '@vuemap/amap-jsapi-types':
+        specifier: ^0.0.15
+        version: 0.0.15
       '@vuemap/amap-xyz-layer':
         specifier: 0.0.10
         version: 0.0.10
@@ -436,10 +436,6 @@ packages:
 
   /@amap/amap-jsapi-types@0.0.10:
     resolution: {integrity: sha512-znvqLGPBy9NRCr1/3650o9vL1aYl/f1YK0+UGn8lBUvHJXND6uMDJGJsl43cEYglw9/tblwIRxjm4pIotOvSCQ==}
-    dev: false
-
-  /@amap/amap-jsapi-types@0.0.13:
-    resolution: {integrity: sha512-hwp36URjQT9vDTmoUPYph3SEAiOvoUB+PGK0jZeZamgvaxew7rgc1XZWL/HphyMfRAqKwIYsAvXm9v8DTSjjzA==}
     dev: false
 
   /@amap/amap-jsapi-types@0.0.8:
@@ -3195,6 +3191,10 @@ packages:
 
   /@vuemap/amap-jsapi-loader@1.0.4:
     resolution: {integrity: sha512-s5fFHrsNkjYMovEmUJ5S23jpDtElTanDN2HdCt/amOD245a8wWVcTPjl06YEHXtxf6Ewm+z29wQByOCn209Hxg==}
+    dev: false
+
+  /@vuemap/amap-jsapi-types@0.0.15:
+    resolution: {integrity: sha512-GMVf5tol5vuA/jB0JRfFmA9vA3nD57VLILxlKUdjl1Zk6tQqELiMawZfFLwIEyU1Ylw3agCgb6m7phNGno4crw==}
     dev: false
 
   /@vuemap/amap-xyz-layer@0.0.10:

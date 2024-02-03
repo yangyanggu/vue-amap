@@ -39,7 +39,7 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
-    "@amap/amap-jsapi-types": "^0.0.13",
+    "@vuemap/amap-jsapi-types": "^0.0.15",
     "@vuemap/amap-jsapi-loader": "1.0.4",
     "@vuemap/district-cluster": "0.0.9",
     "@vuemap/amap-xyz-layer": "0.0.10",

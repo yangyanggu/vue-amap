@@ -4,8 +4,8 @@
 <script setup lang="ts">
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../../mixins";
-import {buildProps} from "../../../../utils/buildHelper";
-import type {PropType} from 'vue';
+import {buildProps} from "../../../../utils";
+import type { PropType} from 'vue';
 
 defineOptions({
   name: 'ElAmapLayerMapboxVectorTile',
@@ -26,7 +26,7 @@ defineProps(buildProps({
     type: Number
   }, // 透明度，默认 1
   styles: {
-    type: Object
+    type: Object as PropType<AMap.MapboxVectorTileLayerStyles>
   } // 样式
 }));
 const emits = defineEmits(['init']);

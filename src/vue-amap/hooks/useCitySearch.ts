@@ -1,35 +1,5 @@
 export interface CitySearchPromise {
-    getLocalCity: () => Promise<CitySearchLocalCityResult>
-}
-
-/**
- * CitySearch插件getLocalCity方法返回的正确数据
- */
-export interface CitySearchLocalCityResult {
-    /**
-     * 区域编码
-     */
-    adcode: string;
-    /**
-     * 城市的矩形边界
-     */
-    bounds: any;
-    /**
-     * 城市名称
-     */
-    city: string;
-    /**
-     * 请求是否正确
-     */
-    info: string;
-    /**
-     * 省份名称
-     */
-    province: string;
-    /**
-     * 矩形边界经纬度
-     */
-    rectangle: string;
+    getLocalCity: () => Promise<AMap.CitySearchLocalCityResult>
 }
 
 /**
@@ -40,7 +10,7 @@ export function useCitySearch () {
         AMap.plugin('AMap.CitySearch', function () {
             const citySearch = new AMap.CitySearch();
             const getLocalCity = () => {
-                return new Promise<CitySearchLocalCityResult>((resolve, reject) => {
+                return new Promise<AMap.CitySearchLocalCityResult>((resolve, reject) => {
                     citySearch.getLocalCity(function (status, result) {
                         if (status === 'complete' && result.info === 'OK') {
                             resolve(result);

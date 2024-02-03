@@ -4,7 +4,7 @@
 <script setup lang="ts">
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../../mixins";
-import {buildProps} from "../../../../utils/buildHelper";
+import {buildProps} from "../../../../utils";
 import type {PropType} from 'vue';
 
 defineOptions({
@@ -29,7 +29,7 @@ const props = defineProps(buildProps({
     type: Object
   }, // 3D热力图属性
   dataSet: {
-    type: Object
+    type: Object as PropType<AMap.HeatMapDataSet>
   }// 热力图数据集
 }));
 const emits = defineEmits(['init']);
@@ -37,7 +37,7 @@ const emits = defineEmits(['init']);
 let $amapComponent: AMap.HeatMap;
 
 const {$$getInstance, parentInstance} = useRegister<AMap.HeatMap, AMap.Map>((options, parentComponent) => {
-  return new Promise<AMap.CanvasLayer>((resolve) => {
+  return new Promise<AMap.HeatMap>((resolve) => {
     AMap.plugin(['AMap.HeatMap'], () => {
       delete options.dataSet;
       $amapComponent = new AMap.HeatMap(parentComponent, options);
@@ -53,9 +53,10 @@ const {$$getInstance, parentInstance} = useRegister<AMap.HeatMap, AMap.Map>((opt
   destroyComponent () {
     if ($amapComponent && parentInstance?.$amapComponent) {
       $amapComponent.setDataSet({
-        data: []
+        data: [],
+        max: 0
       });
-      $amapComponent.setMap(null);
+      $amapComponent.setMap(null as any);
       $amapComponent = null as any;
     }
   },

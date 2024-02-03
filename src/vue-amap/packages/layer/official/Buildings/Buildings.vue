@@ -4,7 +4,8 @@
 <script setup lang="ts">
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../../mixins";
-import {buildProps} from "../../../../utils/buildHelper";
+import {buildProps} from "../../../../utils";
+import type { PropType} from 'vue';
 
 defineOptions({
   name: 'ElAmapLayerBuildings',
@@ -22,7 +23,7 @@ const props = defineProps(buildProps({
     type: Number
   }, // 楼块的高度系数因子，默认为 1，也就是正常高度
   styleOpts: {
-    type: Object
+    type: Object as PropType<AMap.BuildingStyleOptions>
   }, // 楼块的围栏和样式设置
   zooms: {
     type: Array

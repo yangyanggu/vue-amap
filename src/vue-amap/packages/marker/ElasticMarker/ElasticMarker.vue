@@ -4,7 +4,7 @@
 <script setup lang="ts">
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../mixins";
-import {buildProps} from "../../../utils/buildHelper";
+import {buildProps} from "../../../utils";
 
 defineOptions({
   name: 'ElAmapElasticMarker',
@@ -91,7 +91,7 @@ const bindModelEvents = () => {
 };
 const emitPosition = () => {
   const position = $amapComponent.getPosition();
-  emits('update:position', position.toArray());
+  emits('update:position', position?.toArray());
 };
 
 defineExpose({

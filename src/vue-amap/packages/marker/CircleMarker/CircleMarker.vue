@@ -4,7 +4,7 @@
 <script setup lang="ts">
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../mixins";
-import {buildProps} from "../../../utils/buildHelper";
+import {buildProps} from "../../../utils";
 
 defineOptions({
   name: 'ElAmapCircleMarker',

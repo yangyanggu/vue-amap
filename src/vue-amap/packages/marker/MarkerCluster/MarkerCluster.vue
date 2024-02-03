@@ -4,7 +4,8 @@
 <script setup lang="ts">
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../mixins";
-import {buildProps} from "../../../utils/buildHelper";
+import {buildProps} from "../../../utils";
+import type { PropType} from 'vue';
 
 defineOptions({
   name: 'ElAmapMarkerCluster',
@@ -13,7 +14,7 @@ defineOptions({
 
 defineProps(buildProps({
   points: {
-    type: Array,
+    type: Object as PropType<AMap.MarkerClusterData>,
     required: true
   }, // 需要进行聚合显示的点数据
   gridSize: {
@@ -57,7 +58,7 @@ const {$$getInstance, parentInstance} = useRegister<AMap.MarkerCluster, AMap.Map
 }, {
   emits,
   watchRedirectFn: {
-    __points (value: any) {
+    __points (value: AMap.MarkerClusterData) {
       if ($amapComponent) {
         $amapComponent.setData(value);
       }
@@ -65,24 +66,11 @@ const {$$getInstance, parentInstance} = useRegister<AMap.MarkerCluster, AMap.Map
   },
   destroyComponent () {
     if ($amapComponent && parentInstance?.$amapComponent) {
-      $amapComponent.setMap(null);
+      $amapComponent.setMap(null as any);
       $amapComponent = null as any;
     }
   },
 });
-
-const bindModelEvents = () => {
-  $amapComponent.on('dragend',() => {
-    emitPosition();
-  });
-  $amapComponent.on('touchend',() => {
-    emitPosition();
-  });
-};
-const emitPosition = () => {
-  const center = $amapComponent.getCenter();
-  emits('update:center', center.toArray());
-};
 
 defineExpose({
   $$getInstance
