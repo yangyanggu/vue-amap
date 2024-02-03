@@ -83,17 +83,17 @@ const emits = defineEmits(['init', 'click', 'mousemove', 'mouseover', 'mouseout'
 
 let $amapComponent: ThreeVideo;
 
-let videoUrlList: string[] = [];
+const videoUrlList = ref<string[]>([]);
 const videoRef = ref<HTMLVideoElement>();
 
 const {$$getInstance, parentInstance} = useRegister<ThreeVideo, any>((options, parentComponent) => {
   const urlType = Object.prototype.toString.call(options.video);
   if(urlType === '[object String]'){
-    videoUrlList = [options.video as string];
+    videoUrlList.value = [options.video as string];
   }else if(urlType === '[object Array]'){
-    videoUrlList = options.video;
+    videoUrlList.value = options.video;
   }
-  if(videoUrlList.length > 0){
+  if(videoUrlList.value.length > 0){
     options.video = videoRef.value;
   }
   $amapComponent = new ThreeVideo(parentComponent);

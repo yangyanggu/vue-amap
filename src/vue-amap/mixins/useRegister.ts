@@ -103,7 +103,10 @@ export const useRegister = <T, D = any>(_init: (options: any, parentComponent: D
       registerEvents();
       initProps();
       setPropWatchers();
-      emits('init', $amapComponent, componentInstance);
+      // @ts-ignore
+      Object.assign(componentInstance.ctx, componentInstance.exposed);
+      // @ts-ignore
+      emits('init', $amapComponent, componentInstance.ctx);
       nextTick(() => {
         createChildren();
       }).then();

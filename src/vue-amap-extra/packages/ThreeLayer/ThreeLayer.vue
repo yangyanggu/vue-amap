@@ -2,8 +2,8 @@
   <slot />
 </template>
 <script setup lang="ts">
-import {defineOptions} from 'vue';
-import {useRegister, buildProps} from "@vuemap/vue-amap";
+import {defineOptions, provide} from 'vue';
+import {useRegister, buildProps, provideKey} from "@vuemap/vue-amap";
 import CustomThreeLayer from "./CustomThreeLayer";
 import type {TRegisterFn, IProvideType} from "@vuemap/vue-amap";
 import type {PropType} from 'vue';
@@ -23,6 +23,8 @@ const provideData:IProvideType = {
   },
   isDestroy: false
 };
+
+provide(provideKey, provideData);
 
 defineProps(buildProps({
   lights: {
@@ -79,6 +81,7 @@ let $amapComponent: CustomThreeLayer;
 const {$$getInstance, parentInstance} = useRegister<CustomThreeLayer, any>((options, parentComponent) => {
   return new Promise<CustomThreeLayer>((resolve) => {
     $amapComponent = new CustomThreeLayer(parentComponent, options, () => {
+      provideData.$amapComponent = $amapComponent;
       resolve($amapComponent);
     });
   });

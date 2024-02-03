@@ -6,7 +6,7 @@ import {defineOptions, getCurrentInstance} from 'vue';
 import {useRegister, buildProps} from "@vuemap/vue-amap";
 import CustomThreeGltf from "./CustomThreeGltf";
 import type {MoveAnimation, Vec, ConfigLoader} from "./Type";
-import type{PropType} from "vue";
+import type{PropType, ComponentInternalInstance} from "vue";
 
 defineOptions({
   name: 'ElAmapThreeGltf',
@@ -54,7 +54,11 @@ const currentInstance = getCurrentInstance();
 
 const {$$getInstance, parentInstance} = useRegister<CustomThreeGltf, any>((options, parentComponent) => {
   return new Promise<CustomThreeGltf>((resolve) => {
-    $amapComponent = new CustomThreeGltf(parentComponent, options,currentInstance, () => {
+    // currentInstance.$$startAnimations = $$startAnimations;
+    // currentInstance.$$stopAnimations = $$stopAnimations;
+    // Object.assign( currentInstance.ctx, currentInstance.exposed);
+    // @ts-ignore
+    $amapComponent = new CustomThreeGltf(parentComponent, options, currentInstance.ctx, () => {
       resolve($amapComponent);
     });
   });
