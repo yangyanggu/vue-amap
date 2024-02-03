@@ -14,9 +14,10 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": ["@types/node"]
+    "types": ["@types/node", "@vuemap/amap-jsapi-types"]
   },
+  "files": ["./node_modules/@vuemap/amap-jsapi-types/index.d.ts"],
   "include": [
-    "typings/*.d.ts",
+    "typings/*.d.ts"
   ]
 }

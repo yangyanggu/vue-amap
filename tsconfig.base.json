@@ -16,9 +16,10 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
+  "files": ["./node_modules/@vuemap/amap-jsapi-types/index.d.ts"],
   "include": [
     "src",
     "typings"
   ],
-  "exclude": ["node_modules", "**/__test?__", "**/dist"],
+  "exclude": ["node_modules", "**/__test?__", "**/dist"]
 }

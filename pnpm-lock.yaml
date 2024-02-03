@@ -212,14 +212,14 @@ importers:
         specifier: 1.0.4
         version: 1.0.4
       '@vuemap/amap-jsapi-types':
-        specifier: ^0.0.15
-        version: 0.0.15
+        specifier: ^0.0.17
+        version: 0.0.17
       '@vuemap/amap-xyz-layer':
         specifier: 0.0.10
         version: 0.0.10
       '@vuemap/district-cluster':
-        specifier: 0.0.9
-        version: 0.0.9
+        specifier: 0.0.11
+        version: 0.0.11
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -433,10 +433,6 @@ packages:
       '@algolia/logger-common': 4.22.1
       '@algolia/requester-common': 4.22.1
     dev: true
-
-  /@amap/amap-jsapi-types@0.0.10:
-    resolution: {integrity: sha512-znvqLGPBy9NRCr1/3650o9vL1aYl/f1YK0+UGn8lBUvHJXND6uMDJGJsl43cEYglw9/tblwIRxjm4pIotOvSCQ==}
-    dev: false
 
   /@amap/amap-jsapi-types@0.0.8:
     resolution: {integrity: sha512-q0FyZDIJcXjsMLGc3oS9rjfJsErOvt9rcp6AgzY4k14vo7bBhdq4eKwoSdVp/pYjR/rfaKBns5v10ycZOFwf/A==}
@@ -3193,8 +3189,12 @@ packages:
     resolution: {integrity: sha512-s5fFHrsNkjYMovEmUJ5S23jpDtElTanDN2HdCt/amOD245a8wWVcTPjl06YEHXtxf6Ewm+z29wQByOCn209Hxg==}
     dev: false
 
-  /@vuemap/amap-jsapi-types@0.0.15:
-    resolution: {integrity: sha512-GMVf5tol5vuA/jB0JRfFmA9vA3nD57VLILxlKUdjl1Zk6tQqELiMawZfFLwIEyU1Ylw3agCgb6m7phNGno4crw==}
+  /@vuemap/amap-jsapi-types@0.0.16:
+    resolution: {integrity: sha512-1B1H2IS8sT2RDubbpEY+K8j11Gb7PZY5Bo0cszRkF8Nw+9HNqpbUNeqkQ6+rxLkwIedcSkOsFDy/IyzXCUXqVw==}
+    dev: false
+
+  /@vuemap/amap-jsapi-types@0.0.17:
+    resolution: {integrity: sha512-FHI8OMWxJWbgyuQ0tKclvurQIVHRexMIYAOwZ/z9+G7aHHK5EFhKM13siLczNNAgXdJ2dctPEghCdlhcByl3Ag==}
     dev: false
 
   /@vuemap/amap-xyz-layer@0.0.10:
@@ -3206,13 +3206,13 @@ packages:
       gl-matrix: 3.4.3
     dev: false
 
-  /@vuemap/district-cluster@0.0.9:
-    resolution: {integrity: sha512-Ew+3feGbVthSKWLkI1NbzD8p6S/Sp0bQGFHtB0bFgyi8liOu9OnMhqZLhmmiX3lOYElqmEHmVvXTzTtKyKP2lQ==}
+  /@vuemap/district-cluster@0.0.11:
+    resolution: {integrity: sha512-SY01gFe8uhP5FKjzyTe0x2yL2K5VmwD5UKlEUU4e09UUZphXCj2Ci7iunX0L29nWINkBjdfxu8dXzhIcx9T3ug==}
     engines: {node: '>= 16'}
     dependencies:
-      '@amap/amap-jsapi-types': 0.0.10
       '@turf/helpers': 6.5.0
       '@turf/intersect': 6.5.0
+      '@vuemap/amap-jsapi-types': 0.0.16
       topojson-client: 3.1.0
     dev: false
 
