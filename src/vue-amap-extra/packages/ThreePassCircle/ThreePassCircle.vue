@@ -1,41 +1,55 @@
-<script lang="ts">
-import {defineComponent} from "vue";
-import {registerMixin} from '@vuemap/vue-amap';
+<template>
+  <div />
+</template>
+<script setup lang="ts">
+import {defineOptions} from 'vue';
+import {useRegister, buildProps} from "@vuemap/vue-amap";
 import ThreePassCircle from "./ThreePassCircle";
 
-export default defineComponent({
+defineOptions({
   name: 'ElAmapThreePassCircle',
-  mixins: [registerMixin],
-  props: {
-    color: {
-      type: String,
-      default: '#ffffff'
-    },
-    position: {
-      type: Array,
-      required: true
-    },
-    maxRadius: {
-      type: Number,
-      default: 200
+  inheritAttrs: false
+});
+
+defineProps(buildProps({
+  color: {
+    type: String,
+    default: '#ffffff'
+  },
+  position: {
+    type: Array,
+    required: true
+  },
+  maxRadius: {
+    type: Number,
+    default: 200
+  }
+}));
+const emits = defineEmits(['init']);
+
+let $amapComponent: ThreePassCircle;
+
+const {$$getInstance, parentInstance} = useRegister<ThreePassCircle, any>((options, parentComponent) => {
+  return new Promise<ThreePassCircle>((resolve) => {
+    $amapComponent = new ThreePassCircle(parentComponent, options);
+    resolve($amapComponent);
+  });
+
+}, {
+  emits,
+  destroyComponent () {
+    if ($amapComponent && parentInstance?.$amapComponent) {
+      if(!parentInstance.isDestroy){
+        $amapComponent.remove();
+      }
+      $amapComponent.destroy();
+      $amapComponent = null as any;
     }
   },
-  data() {
-    return {};
-  },
-  methods: {
-    __initComponent(options) {
-      this.$amapComponent = new ThreePassCircle(this.$parentComponent, options);
-    },
-    destroyComponent() {
-      if(!this.parentInstance.isDestroy){
-        this.$amapComponent.remove();
-      }
-      this.$amapComponent.destroy();
-    },
-  },
-  render() {
-    return null;
-  }
 });
+
+defineExpose({
+  $$getInstance,
+});
+
 </script>
