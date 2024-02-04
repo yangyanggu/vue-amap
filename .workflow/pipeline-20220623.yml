@@ -19,7 +19,7 @@ stages:
         displayName: Nodejs 构建
         nodeVersion: 16.14.2
         commands:
-          - npm install -g pnpm && pnpm i && pnpm run "docs:build"
+          - npm install -g pnpm --registry https://registry.npmmirror.com && pnpm i && pnpm run "docs:build"
         artifacts:
           - name: DOCS
             path:
