@@ -11,6 +11,7 @@ export default [
       '/zh-cn/introduction/faq.md',
       '/zh-cn/introduction/v1tov2.md',
       '/zh-cn/introduction/offline-jsapi.md',
+      '/zh-cn/introduction/api.md',
     ],
   },
   {
@@ -164,4 +165,4 @@ export default [
       '/zh-cn/component/three/three-tiles3d.md'
     ],
   }
-]
+];
