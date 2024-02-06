@@ -132,6 +132,9 @@ const getCenter = (): [number, number] => {
 
 onBeforeUnmount(() => {
   if ($amapComponent) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    $amapComponent.clearEvents();
     $amapComponent.destroy();
     $amapComponent = null as any;
   }

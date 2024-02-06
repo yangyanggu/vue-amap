@@ -15,14 +15,16 @@ const emits = defineEmits(['init', 'complete']);
 
 let $amapComponent: AMap.Geolocation;
 
+const emitComplete = (e: any) => {
+  emits('complete', e);
+};
+
 const {$$getInstance, parentInstance} = useRegister<AMap.Geolocation, AMap.Map>((options, parentComponent) => {
   return new Promise<AMap.Geolocation>((resolve) => {
     parentComponent.plugin(['AMap.Geolocation'], () => {
       $amapComponent = new AMap.Geolocation(options);
       parentComponent.addControl($amapComponent);
-      $amapComponent.on('complete', (e) => {
-        emits('complete', e);
-      });
+      $amapComponent.on('complete', emitComplete);
       resolve($amapComponent);
     });
   });
@@ -30,6 +32,7 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Geolocation, AMap.Map>(
 }, {
   emits,
   destroyComponent () {
+    $amapComponent.off('complete', emitComplete);
     if ($amapComponent && parentInstance?.$amapComponent) {
       if(!parentInstance?.isDestroy){
         parentInstance?.$amapComponent.removeControl($amapComponent);

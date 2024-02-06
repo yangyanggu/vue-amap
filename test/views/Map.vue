@@ -1,6 +1,7 @@
 <template>
   <div class="map-container">
     <el-amap
+      v-if="created"
       v-model:zoom="zoom"
       v-model:rotation="rotation"
       v-model:center="center"
@@ -28,6 +29,9 @@
       <el-amap-control-geolocation @complete="getLocation" />
     </el-amap>
     <div class="control-container">
+      <el-button @click="created = !created">
+        {{ created? '销毁' : '创建' }}
+      </el-button>
       <el-button @click="changeCenter">
         更换中心点
       </el-button>
@@ -64,6 +68,7 @@ export default defineComponent({
       pitch: 50,
       rotation: 0,
       eyeOpen: true,
+      created: false,
     };
   },
   methods: {

@@ -27,6 +27,7 @@ const emits = defineEmits(['init']);
 const saveInputId = ref<string>(guid());
 const saveVisible = ref<boolean>(true);
 let $amapComponent: AMap.Autocomplete;
+let preInput: any;
 
 const {$$getInstance} = useRegister<AMap.Autocomplete, AMap.Map>((options, parentComponent) => {
   if (options.inputId) {
@@ -45,6 +46,7 @@ const {$$getInstance} = useRegister<AMap.Autocomplete, AMap.Map>((options, paren
   return new Promise<AMap.Autocomplete>((resolve) => {
     parentComponent.plugin(['AMap.AutoComplete'], () => {
       const debounce = props.debounce as number;
+      preInput = AMap.Autocomplete.prototype.onInPut;
       AMap.Autocomplete.prototype.onInPut = function (){
         clearTimeout(_inputTimer);
         _inputTimer = setTimeout(() => {
@@ -65,7 +67,12 @@ const {$$getInstance} = useRegister<AMap.Autocomplete, AMap.Map>((options, paren
     __citylimit (flag: boolean) {
       $amapComponent.setCityLimit(flag);
     }
-  }
+  },
+  destroyComponent () {
+      if(preInput && AMap.Autocomplete){
+        AMap.Autocomplete.prototype.onInPut = preInput;
+      }
+  },
 });
 
 defineExpose({
