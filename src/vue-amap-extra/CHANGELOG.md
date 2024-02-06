@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.1
+* 解决gltf组件事件报错问题
+
 ### @vuemap/vue-amap v2.1.0
 * 所有组件更新为组合式API
 

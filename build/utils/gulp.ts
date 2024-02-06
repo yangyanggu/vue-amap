@@ -6,6 +6,7 @@ export const withTaskName = (name: string, fn: TaskFunction): TaskFunction =>
 
 export const copyPackageJSON = async (sourceFile: string, destFile: string) => {
     const packageJSON  = await import(sourceFile);
+    delete packageJSON.default;
     packageJSON['exports']['.']['import'] = './es/index.mjs';
     if(packageJSON['peerDependencies']['@vuemap/vue-amap']){
       packageJSON['peerDependencies']['@vuemap/vue-amap'] = '>=2.1.0';

@@ -60,7 +60,6 @@ const {$$getInstance, parentInstance} = useRegister<CustomThreeGltf, any>((optio
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     $amapComponent = new CustomThreeGltf(parentComponent, options, {
-      ...(currentInstance?.ctx || {}),
       $emit: emits,
       ...(currentInstance?.exposed || {})
     }, () => {

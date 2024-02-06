@@ -5,7 +5,7 @@
 import {defineOptions, provide} from 'vue';
 import {provideKey, useRegister} from "@vuemap/vue-amap";
 import {buildLocaProps, commonEmitNames} from "../../utils/buildHelper";
-import type { TRegisterFn} from "@vuemap/vue-amap";
+import type { TRegisterFn, IProvideType} from "@vuemap/vue-amap";
 import type {PropType} from 'vue';
 import type {EventOptions} from "./Type";
 
@@ -15,7 +15,7 @@ defineOptions({
 });
 
 const needInitComponents: TRegisterFn[] = [];
-const provideData:ILocaProvideType = {
+const provideData:IProvideType = {
   $amapComponent: undefined,
   addChildComponent (cb){
     needInitComponents.push(cb);
@@ -91,6 +91,9 @@ const {$$getInstance, parentInstance} = useRegister<any, AMap.Map>((options, par
   destroyComponent () {
     if ($amapComponent) {
       unBindEvents();
+      if($amapComponent.animate && $amapComponent.animate.stop){
+        $amapComponent.animate.stop();
+      }
       $amapComponent.destroy();
       $amapComponent = null as any;
     }

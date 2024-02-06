@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap-extra",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "@vuemap/vue-amap扩展库，包含threejs相关图层",
   "keywords": [
     "vue-amap",
@@ -50,7 +50,7 @@
   },
   "peerDependencies": {
     "vue": "3",
-    "@vuemap/vue-amap": "workspace:* || >=2.1.0"
+    "@vuemap/vue-amap": "workspace:*"
   },
   "vetur": {
     "tags": "./tags.json",

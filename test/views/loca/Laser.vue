@@ -1,6 +1,7 @@
 <template>
   <div class="map-container">
     <el-amap
+      v-if="created"
       view-mode="3D"
       :pitch="pitch"
       :show-label="false"
@@ -20,6 +21,9 @@
       </el-amap-loca>
     </el-amap>
     <div class="control-container">
+      <el-button @click="created = !created">
+        {{ created ? '销毁' : '创建' }}
+      </el-button>
       <el-button @click="changeVisible">
         {{ visible ? '隐藏' : '显示' }}
       </el-button>
@@ -29,7 +33,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 import ElAmapLocaLaser from "@vuemap/vue-amap-loca/packages/LaserLayer/LaserLayer.vue";
 
@@ -51,8 +55,9 @@ export default defineComponent({
     ElAmapLoca,
     ElAmap
   },
-  data() {
+  data () {
     return {
+      created: false,
       center: [105.601, 35.32],
       zoom: 4.8,
       pitch: 55,
@@ -68,26 +73,26 @@ export default defineComponent({
         duration: 4000
       },
       duration: 500
-    }
+    };
   },
   methods: {
-    clickMap(e) {
+    clickMap (e) {
       console.log('click map: ', e);
     },
-    initMap(map) {
+    initMap (map) {
       console.log('init map: ', map);
     },
-    changeVisible() {
+    changeVisible () {
       this.visible = !this.visible;
     },
-    initLoca(loca){
+    initLoca (loca){
       loca.animate.start();
     },
-    initLayer(e){
+    initLayer (e){
       console.log('init layer: ', e);
     }
   }
-})
+});
 </script>
 
 <style scoped>

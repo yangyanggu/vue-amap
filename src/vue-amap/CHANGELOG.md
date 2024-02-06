@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.1
+* 解决部分组件无法释放内存问题
+
 ### @vuemap/vue-amap v2.1.0
 * 所有组件更新为组合式API
 * 完善所有AMap下ts类型

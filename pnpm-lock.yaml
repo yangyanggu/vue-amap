@@ -242,7 +242,7 @@ importers:
         specifier: 0.0.11
         version: 0.0.11
       '@vuemap/vue-amap':
-        specifier: workspace:* || >=2.1.0
+        specifier: workspace:*
         version: link:../vue-amap
       color:
         specifier: ^4.2.3
