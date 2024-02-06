@@ -57,8 +57,13 @@ const {$$getInstance, parentInstance} = useRegister<CustomThreeGltf, any>((optio
     // currentInstance.$$startAnimations = $$startAnimations;
     // currentInstance.$$stopAnimations = $$stopAnimations;
     // Object.assign( currentInstance.ctx, currentInstance.exposed);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    $amapComponent = new CustomThreeGltf(parentComponent, options, currentInstance.ctx, () => {
+    $amapComponent = new CustomThreeGltf(parentComponent, options, {
+      ...(currentInstance?.ctx || {}),
+      $emit: emits,
+      ...(currentInstance?.exposed || {})
+    }, () => {
       resolve($amapComponent);
     });
   });
