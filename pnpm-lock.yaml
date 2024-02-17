@@ -259,6 +259,9 @@ importers:
 
   src/vue-amap-loca:
     dependencies:
+      '@vuemap/amap-loca-types':
+        specifier: ^0.0.2
+        version: 0.0.2
       '@vuemap/vue-amap':
         specifier: workspace:* || >=2.1.0
         version: link:../vue-amap
@@ -2578,6 +2581,10 @@ packages:
       '@types/node': 18.19.1
     dev: true
 
+  /@types/geojson@7946.0.14:
+    resolution: {integrity: sha512-WCfD5Ht3ZesJUsONdhvm84dmzWOiOzOAqOncN0++w0lBw1o8OuDNJF2McvvCef/yBqb/HYRahp1BYtODFQ8bRg==}
+    dev: false
+
   /@types/geojson@7946.0.8:
     resolution: {integrity: sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==}
     dev: true
@@ -2987,6 +2994,13 @@ packages:
 
   /@vuemap/amap-jsapi-types@0.0.17:
     resolution: {integrity: sha512-FHI8OMWxJWbgyuQ0tKclvurQIVHRexMIYAOwZ/z9+G7aHHK5EFhKM13siLczNNAgXdJ2dctPEghCdlhcByl3Ag==}
+    dev: false
+
+  /@vuemap/amap-loca-types@0.0.2:
+    resolution: {integrity: sha512-jALrE7ugdmItyCIyaO8rPfEa1Zg1KBDGAnqn0jJf8WTzhBbUxsEBXN1WLTkUxTCwZVMOpxE1218uX7LiDT+JPw==}
+    dependencies:
+      '@types/geojson': 7946.0.14
+      '@vuemap/amap-jsapi-types': 0.0.17
     dev: false
 
   /@vuemap/amap-xyz-layer@0.0.10:

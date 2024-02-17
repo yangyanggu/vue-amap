@@ -29,7 +29,7 @@ const emits = defineEmits(['init']);
 
 let $amapComponent: any;
 
-const {$$getInstance, parentInstance} = useRegister<any, any>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<Loca.PointLight, Loca.Container>((options, parentComponent) => {
   return new Promise<any>((resolve) => {
     $amapComponent = new Loca.PointLight(options);
     parentComponent.addLight($amapComponent);

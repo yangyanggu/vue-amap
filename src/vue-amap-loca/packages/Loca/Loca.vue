@@ -64,7 +64,7 @@ let isDragging = false;
 let isRotating = false;
 let hitFirst = true;
 
-const {$$getInstance, parentInstance} = useRegister<any, AMap.Map>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<Loca.Container, AMap.Map>((options, parentComponent) => {
   return new Promise<any>((resolve) => {
     $amapComponent = new Loca.Container({
       map: parentComponent

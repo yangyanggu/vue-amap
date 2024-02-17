@@ -21,7 +21,7 @@ let $amapComponent: any;
 let _destroyComponent: () => void;
 let _setSource: () => void;
 
-const {$$getInstance, parentInstance} = useRegister<any, any>((options) => {
+const {$$getInstance, parentInstance} = useRegister<Loca.LineLayer, Loca.Container>((options) => {
   return new Promise<any>((resolve) => {
     $amapComponent = new Loca.LineLayer(options);
     const useResult = useLocaEvents({

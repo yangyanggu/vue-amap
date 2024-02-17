@@ -1,5 +1,6 @@
 ### @vuemap/vue-amap v2.1.1
 * 销毁loca时增加关闭动画操作
+* 增加loca的types文件
 
 ### @vuemap/vue-amap v2.1.0
 * 所有组件更新为组合式API

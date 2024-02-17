@@ -40,6 +40,7 @@
   },
   "homepage": "https://vue-amap.guyixi.cn",
   "dependencies": {
+    "@vuemap/amap-loca-types": "^0.0.2"
   },
   "devDependencies": {
   },

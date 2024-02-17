@@ -25,7 +25,7 @@ let $amapComponent: any;
 let _destroyComponent: () => void;
 let _setSource: () => void;
 
-const {$$getInstance, parentInstance} = useRegister<any, any>((options) => {
+const {$$getInstance, parentInstance} = useRegister<Loca.HeatMapLayer, Loca.Container>((options) => {
   return new Promise<any>((resolve) => {
     $amapComponent = new Loca.HeatMapLayer(options);
     const useResult = useLocaEvents({
@@ -66,7 +66,7 @@ const {$$getInstance, parentInstance} = useRegister<any, any>((options) => {
           difference: style.difference
         };
         const layerStyle = Object.assign({}, defaultLayerStyle, props.layerStyle);
-        $amapComponent.setStyle(layerStyle);
+        $amapComponent.setStyle(layerStyle as any);
       },
     });
     _destroyComponent = useResult._destroyComponent;
@@ -89,7 +89,7 @@ const {$$getInstance, parentInstance} = useRegister<any, any>((options) => {
     if(_destroyComponent){
       _destroyComponent();
     }
-    $amapComponent = null;
+    $amapComponent = null as any;
   },
 });
 

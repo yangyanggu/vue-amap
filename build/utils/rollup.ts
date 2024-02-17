@@ -8,7 +8,7 @@ export function writeBundles (bundle: RollupBuild, options: OutputOptions[]) {
 
 export const generateExternal = async (options: { full: boolean, package: string }) => {
   return (id: string) => {
-    const packages: string[] = ['vue', '@vuemap/amap-jsapi-types'];
+    const packages: string[] = ['vue', '@vuemap/amap-jsapi-types', '@vuemap/amap-loca-types'];
     if (!options.full) {
       // dependencies
       packages.push('@vue', '@vuemap/vue-amap', ...getPackageDependencies(options.package));

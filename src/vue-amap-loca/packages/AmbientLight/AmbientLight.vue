@@ -24,7 +24,7 @@ const emits = defineEmits(['init']);
 
 let $amapComponent: any;
 
-const {$$getInstance, parentInstance} = useRegister<any, any>((options, parentComponent) => {
+const {$$getInstance, parentInstance} = useRegister<Loca.AmbientLight, Loca.Container>((options, parentComponent) => {
   return new Promise<any>((resolve) => {
     $amapComponent = new Loca.AmbientLight(options);
     parentComponent.addLight($amapComponent);
@@ -38,7 +38,7 @@ const {$$getInstance, parentInstance} = useRegister<any, any>((options, parentCo
       if(!parentInstance.isDestroy){
         parentInstance.$amapComponent.removeLight($amapComponent);
       }
-      $amapComponent = null;
+      $amapComponent = null as any;
     }
   },
 });
