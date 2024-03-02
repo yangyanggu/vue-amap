@@ -12,6 +12,7 @@ export default [
       '/zh-cn/introduction/v1tov2.md',
       '/zh-cn/introduction/offline-jsapi.md',
       '/zh-cn/introduction/api.md',
+      '/zh-cn/introduction/typescript.md',
     ],
   },
   {

@@ -6,11 +6,9 @@
     "node": ">= 16"
   },
   "scripts": {
-    "build": "pnpm run build:util & pnpm run build:amap",
     "build:amap": "gulp --require sucrase/register/ts -f build/gulp/amapGulpFile.ts",
     "build:loca": "gulp --require sucrase/register/ts -f build/gulp/locaGulpFile.ts",
     "build:extra": "gulp --require sucrase/register/ts -f build/gulp/extraGulpFile.ts",
-    "build:util": "gulp --require sucrase/register/ts -f build/gulp/utilGulpFile.ts",
     "dev": "pnpm run -C test dev",
     "clean:dist": "rimraf dist",
     "lint": "eslint src",

@@ -47,7 +47,7 @@ import {gcj02_To_bd09} from '@vuemap/vue-amap'
 
 ```
 
-## 内置组件TS实例
+## 内置组件TS实例  <Badge text="2.1.0+" />
 在使用组合式API和TS进行开发时，经常会使用到组件实例进行一些特殊的处理，组件库对于所有的组件都提供了对应的实例对象的TS类。
 ```ts
 import {ref} from 'vue'
