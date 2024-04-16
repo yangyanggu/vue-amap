@@ -1,8 +1,8 @@
 
 # @vuemap/vue-amap
 [![npm (tag)](https://img.shields.io/npm/v/@vuemap/vue-amap)](https://www.npmjs.org/package/@vuemap/vue-amap)
-[![NPM downloads](http://img.shields.io/npm/dm/@vuemap/vue-amap.svg)](https://npmjs.org/package/@vuemap/vue-amap)
-![JS gzip size](http://img.badgesize.io/https://unpkg.com/@vuemap/vue-amap/dist/index.min.js?compression=gzip&label=gzip%20size:%20JS)
+[![NPM downloads](https://img.shields.io/npm/dm/@vuemap/vue-amap.svg)](https://npmjs.org/package/@vuemap/vue-amap)
+![JS gzip size](https://img.shields.io/bundlephobia/minzip/%40vuemap/vue-amap/latest)
 [![NPM](https://img.shields.io/npm/l/@vuemap/vue-amap)](https://gitee.com/guyangyang/vue-amap)
 [![star](https://gitee.com/guyangyang/vue-amap/badge/star.svg?theme=dark)](https://gitee.com/guyangyang/vue-amap/stargazers)
 [![GitHub Repo stars](https://img.shields.io/github/stars/yangyanggu/vue-amap)](https://github.com/yangyanggu/vue-amap)
