@@ -14,7 +14,7 @@ jobs:
         version: 7.27.0
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'pnpm'
@@ -24,7 +24,7 @@ jobs:
         pnpm i
         pnpm run docs:build
     - name: Upload GitHub Pages artifact
-      uses: actions/upload-pages-artifact@v1.0.7
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         # Artifact name
         name: github-pages
@@ -53,5 +53,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
         
