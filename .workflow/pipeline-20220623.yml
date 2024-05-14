@@ -17,7 +17,7 @@ stages:
       - step: build@nodejs
         name: build_nodejs
         displayName: Nodejs 构建
-        nodeVersion: 16.14.2
+        nodeVersion: 18.16.0
         commands:
           - npm install -g pnpm --registry https://registry.npmmirror.com && pnpm i --registry https://registry.npmmirror.com && pnpm run "docs:build"
         artifacts:
