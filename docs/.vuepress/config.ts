@@ -6,7 +6,7 @@ import {containerPlugin} from './plugin/demoPlugin'
 import {sitemapPlugin} from './plugin/sitemapPlugin'
 import {localTheme} from "./theme";
 
-const basePath = '/vue-amap/'
+const basePath = '/'
 export default defineUserConfig({
   // 站点配置
   base: basePath,
