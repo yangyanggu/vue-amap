@@ -4,7 +4,7 @@ export default [
     children: [
       {
         text: '1.x',
-        link: 'https://yangyanggu.github.io/vue-amap/'
+        link: 'https://v1.vue-amap.guyixi.cn/'
       },
       {
         text: 'vue2版本',
