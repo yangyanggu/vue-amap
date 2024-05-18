@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.2
+* 升级@vuemap/amap-xyz-layer依赖，解决自定义瓦片纠偏图层出现黑线问题
+
 ### @vuemap/vue-amap v2.1.1
 * 解决部分组件无法释放内存问题
 
