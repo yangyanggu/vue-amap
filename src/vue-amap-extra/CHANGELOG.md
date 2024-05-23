@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.2
+* 升级@vuemap/three-layer 解决地图调整大小后三维模型变形问题
+
 ### @vuemap/vue-amap v2.1.1
 * 解决gltf组件事件报错问题
 
