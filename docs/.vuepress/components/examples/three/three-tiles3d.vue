@@ -20,8 +20,8 @@
           v-if="create"
           :visible="visible"
           :debug="true"
-          :position="center"
-          url="https://raw.githubusercontent.com/yangyanggu/layer-3dtiles/master/test/hutong/tileset.json"
+          auto-focus
+          :url="url"
         />
       </el-amap-layer-three>
     </el-amap>
@@ -44,21 +44,24 @@ import {ElAmapLayerThree, ElAmapThreeLightAmbient, ElAmapThreeTiles3d} from "@vu
 const zoom = ref(16);
 const center = ref([116.404987, 39.90946]);
 
-const visible = ref(true)
+const url = 'https://raw.githubusercontent.com/yangyanggu/layer-3dtiles/master/test/hutong/tileset.json';
+// const url = 'https://myserver.guyixi.cn:10081/bl/tileset.json';
+
+const visible = ref(true);
 const changeVisible = () => {
   visible.value = !visible.value;
-}
+};
 
 const clickMap = (e) => {
   console.log('click map: ', e);
-}
+};
 const initMap = (map) => {
   console.log('init map: ', map);
-}
+};
 
 const create = ref(true);
 const changeCreate = () => {
   create.value = !create.value;
-}
+};
 
 </script>
