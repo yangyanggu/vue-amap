@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.3
+* 合入[Gltf增加popup](https://gitee.com/guyangyang/vue-amap/pulls/5)
+
 ### @vuemap/vue-amap v2.1.2
 * 升级@vuemap/three-layer 解决地图调整大小后三维模型变形问题
 
