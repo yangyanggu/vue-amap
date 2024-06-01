@@ -1,7 +1,7 @@
-import {Tween, Easing} from '@tweenjs/tween.js'
-import {ThreeGltf} from '@vuemap/three-layer'
-import type {GltfOptions} from '@vuemap/three-layer'
-import type {MoveAnimation, Vec} from './Type'
+import {Tween, Easing} from '@tweenjs/tween.js';
+import {ThreeGltf} from '@vuemap/three-layer';
+import type {GltfOptions} from '@vuemap/three-layer';
+import type {MoveAnimation, Vec} from './Type';
 
 interface Options extends GltfOptions{
   moveAnimation?: MoveAnimation  // 位置移动是否开启动画，开启后将会以参数中的duration进行插帧移动
@@ -16,19 +16,19 @@ class CustomThreeGltf extends ThreeGltf{
   preAngleTween?: Tween<any>;
   angleFrame = -1;
 
-  constructor(layer: any, options: Options, $vue: any, callback: () => void) {
+  constructor (layer: any, options: Options, $vue: any, callback: () => void) {
     options.onLoaded = (gltf) => {
       gltf.userData.acceptEvent = true;
       gltf.userData.$vue = $vue;
-      this.moveAnimation = options.moveAnimation;
       if(callback){
-        callback()
+        callback();
       }
-    }
-    super(layer, options)
+    };
+    super(layer, options);
+    this.moveAnimation = options.moveAnimation;
   }
 
-  setScale(scale: number | number[] | Vec) {
+  setScale (scale: number | number[] | Vec) {
     let scaleArray: number[];
     if (typeof scale === 'number') {
       scaleArray = [scale, scale, scale];
@@ -38,7 +38,7 @@ class CustomThreeGltf extends ThreeGltf{
     this.object.scale.set(...scaleArray);
   }
 
-  setPosition(position) {
+  setPosition (position) {
     const positionConvert = this.layer.convertLngLat(position);
     if (!this.moveAnimation || !this.moveAnimation.smooth) {
       this._updatePosition(positionConvert);
@@ -53,9 +53,9 @@ class CustomThreeGltf extends ThreeGltf{
     }
   }
 
-  _updatePositionTween(newPosition: number[]) {
+  _updatePositionTween (newPosition: number[]) {
     if (!this.prePosition) {
-      return
+      return;
     }
     if (this.prePositionTween) {
       this.prePositionTween.end();
@@ -71,29 +71,29 @@ class CustomThreeGltf extends ThreeGltf{
       y: newPosition[1]
     }).duration(duration).easing(Easing.Linear.None).onUpdate(() => {
       this._updatePosition([preObj.x, preObj.y]);
-    }).start()
+    }).start();
     this._moveAnimate();
     this.prePosition = newPosition;
   }
 
-  _moveAnimate() {
+  _moveAnimate () {
     this.prePositionTween?.update();
     this.moveFrame = requestAnimationFrame(() => {
       this._moveAnimate();
-    })
+    });
   }
 
-  _stopMoveAnimation() {
+  _stopMoveAnimation () {
     cancelAnimationFrame(this.moveFrame);
   }
 
-  _updatePosition(position) {
+  _updatePosition (position) {
     this.object.position.setX(position[0]);
     this.object.position.setY(position[1]);
     this.refresh();
   }
 
-  setAngle(angle: number) {
+  setAngle (angle: number) {
     if (!this.moveAnimation || !this.moveAnimation.smooth) {
       this._updateAngle(angle);
       this.preAngle = angle;
@@ -107,7 +107,7 @@ class CustomThreeGltf extends ThreeGltf{
     }
   }
 
-  _updateAngle(angle){
+  _updateAngle (angle){
     const x = this.object.rotation.x;
     const z = this.object.rotation.z;
     const y = Math.PI / 180 * angle;
@@ -115,9 +115,9 @@ class CustomThreeGltf extends ThreeGltf{
     this.refresh();
   }
 
-  _updateAngleTween(angle){
+  _updateAngleTween (angle){
     if (this.preAngle === undefined) {
-      return
+      return;
     }
     if (this.preAngleTween) {
       this.preAngleTween.end();
@@ -133,28 +133,28 @@ class CustomThreeGltf extends ThreeGltf{
       this._updateAngle(preObj.angle);
     }).onComplete(() => {
       this._stopAngleAnimation();
-    }).start()
+    }).start();
     this._angleAnimate();
     this.preAngle = angle;
   }
 
-  _angleAnimate() {
+  _angleAnimate () {
     this.preAngleTween?.update();
     this.angleFrame = requestAnimationFrame(() => {
       this._angleAnimate();
-    })
+    });
   }
 
-  _stopAngleAnimation() {
+  _stopAngleAnimation () {
     cancelAnimationFrame(this.angleFrame);
   }
 
 
-  setMoveAnimation(move){
+  setMoveAnimation (move){
     this.moveAnimation = move;
   }
 
-  destroy() {
+  destroy () {
     this._stopAngleAnimation();
     this._stopMoveAnimation();
     this.prePosition = undefined;
@@ -168,4 +168,4 @@ class CustomThreeGltf extends ThreeGltf{
   }
 }
 
-export default CustomThreeGltf
+export default CustomThreeGltf;

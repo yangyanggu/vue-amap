@@ -8,10 +8,10 @@
 <script setup lang="ts">
 import { defineOptions, getCurrentInstance, ref, watch } from "vue";
 import { useRegister, buildProps } from "@vuemap/vue-amap";
+import { CSS2DObject } from "../ThreeLayer/CSS2DRenderer";
 import CustomThreeGltf from "./CustomThreeGltf";
 import type { MoveAnimation, Vec, ConfigLoader } from "./Type";
 import type { PropType, ComponentInternalInstance } from "vue";
-import { CSS2DObject } from "../ThreeLayer/CSS2DRenderer";
 const popupRef = ref<HTMLDivElement>();
 
 defineOptions({
@@ -101,7 +101,7 @@ const { $$getInstance, parentInstance } = useRegister<CustomThreeGltf, any>(
   },
   {
     emits,
-    destroyComponent() {
+    destroyComponent () {
       if ($amapComponent && parentInstance?.$amapComponent) {
         if (!parentInstance.isDestroy) {
           $amapComponent.remove();
@@ -116,7 +116,7 @@ const { $$getInstance, parentInstance } = useRegister<CustomThreeGltf, any>(
 
 const addPopup = (instance: CustomThreeGltf) => {
   const cssRender = instance.layer?.cssRenderer;
-  if (cssRender == undefined) return;
+  if (cssRender == undefined || !props.showPopup) return;
   const element = popupRef.value as HTMLDivElement;
   const css2dObject = new CSS2DObject(element);
   css2dObject.center.set(0.5, 1);
@@ -142,7 +142,11 @@ defineExpose({
 watch(
   () => props.showPopup,
   (val) => {
-    if (popup) popup.visible = val;
+    if(val && !popup){
+      addPopup($amapComponent);
+      return;
+    }
+    popup.visible = val;
   }
 );
 
