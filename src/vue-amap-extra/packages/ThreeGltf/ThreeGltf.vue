@@ -68,7 +68,7 @@ const props = defineProps(
       default: 0,
     },
     popupScale: {
-      //三维弹窗的缩放比例
+      //三维弹窗的缩放比例(只有在threelayer的cssRenderType为3D时生效)
       type: [Number, Array<Number>],
       default: 1,
     },
@@ -178,6 +178,16 @@ watch(
     if (popup) {
       const changeVal = (val || 0) - (old || 0);
       popup.translateY(changeVal || 0);
+    }
+  }
+);
+
+watch(
+  () => props.popupScale,
+  (val) => {
+    if (popup && val) {
+      const scales = typeof val === "number" ? [val, val, val] : val;
+      popup.scale.set(scales[0], scales[1], scales[2]);
     }
   }
 );

@@ -43,6 +43,7 @@ export const routes = [
   {path: '/vector/rectangle',name: 'vector矩形', component: () => import('../views/vector/Rectangle.vue')},
   {path: '/layer/tiles3D',name: '3DTiles图层', component: () => import('../views/layer/Tiles3D.vue')},
   {path: '/three/gltf',name: 'ThreeJS Gltf示例', component: () => import('../views/three/Gltf.vue')},
+  {path: '/three/gltf_popup',name: 'ThreeJS Gltf示例(Popup)', component: () => import('../views/three/Gltf_Popup.vue')},
   {path: '/three/threeVideo',name: 'ThreeJS 视频', component: () => import('../views/three/ThreeVideo.vue')},
   {path: '/three/polygon',name: 'ThreeJS面图层', component: () => import('../views/three/Polygon.vue')},
   {path: '/three/3dtiles',name: 'ThreeJS 3Dtiles图层', component: () => import('../views/three/Tiles3d.vue')},

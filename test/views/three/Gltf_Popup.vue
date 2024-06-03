@@ -11,9 +11,6 @@
       @click="clickMap"
       @init="initMap"
     >
-      <el-amap-loca>
-        <el-amap-loca-line :source-url="sourceUrl" :layer-style="layerStyle" />
-      </el-amap-loca>
       <el-amap-layer-three
         :visible="true"
         :hdr="hdrOptions"
@@ -24,6 +21,7 @@
         @click="clickLayer"
         @mouseover="mouseoverLayer"
         @mouseout="mouseoutLayer"
+        css-render-type="3D"
       >
         <el-amap-three-light-ambient color="rgb(255,255,255)" :intensity="1" />
         <el-amap-three-light-directional
@@ -40,16 +38,6 @@
           :position="{ x: 116.106206, y: 39.975468, z: 100 }"
         />
         <el-amap-three-light-spot :position="{ x: 0, y: 1, z: 0 }" />
-        <!--        <el-amap-three-gltf
-          v-for="(p,index) in positions"
-          :key="index"
-          url="/gltf/sgyj_point_animation.gltf"
-          :position="p"
-          :scale="[10,10,10]"
-          :rotation="rotation"
-          :visible="visible"
-          @init="init"
-        />-->
         <el-amap-three-gltf
           v-if="visible"
           ref="animation"
@@ -69,16 +57,68 @@
           :angle="carAngle"
           :rotation="rotation"
           :move-animation="moveAnimation"
+          :show-popup="true"
+          :popup-height="2"
+          :popup-scale=[0.1,0.1,0.1]
           @init="initCar"
         >
+        <div
+            style="
+              padding:20px;
+              background: #2196f3d6;
+              color: #fff;
+              text-align: center;
+              vertical-align: middle;
+            "
+          >
+            测试GLTF信息弹窗(CSS3DRenderer)
+          </div>
         </el-amap-three-gltf>
+      </el-amap-layer-three>
+
+      <el-amap-layer-three
+        :visible="true"
+        :hdr="hdrOptions"
+        :alpha="true"
+        :antialias="true"
+        css-render-type="2D"
+      >
+        <el-amap-three-light-ambient color="rgb(255,255,255)" :intensity="1" />
+        <el-amap-three-light-directional
+          color="rgb(255,0,255)"
+          :intensity="1"
+          :position="{ x: 0, y: 1, z: 0 }"
+        />
+        <el-amap-three-light-hemisphere
+          color="blue"
+          :intensity="1"
+          :position="{ x: 1, y: 0, z: 0 }"
+        />
+        <el-amap-three-light-point
+          :position="{ x: 116.106206, y: 39.975468, z: 100 }"
+        />
+        <el-amap-three-light-spot :position="{ x: 0, y: 1, z: 0 }" />
         <el-amap-three-gltf
           ref="animation"
-          url="/gltf/ferrari.glb"
+          url="/gltf/car2.gltf"
           :position="center"
           :scale="[10, 10, 10]"
-          :config-loader="configLoader"
-        />
+          :rotation="rotation"
+          :show-popup="true"
+          :popup-height="6"
+        >
+        <div
+            style="
+              padding:20px;
+              background: #f44336bd;
+              color: #fff;
+              text-align: center;
+              vertical-align: middle;
+            "
+          >
+            测试GLTF信息弹窗(CSS2DRenderer)
+          </div>
+        </el-amap-three-gltf>
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
@@ -107,16 +147,6 @@ import ElAmap from "@vuemap/vue-amap/packages/amap/amap.vue";
 import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 import ElAmapLocaLine from "@vuemap/vue-amap-loca/packages/LineLayer/LineLayer.vue";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
-import { DotScreenShader } from "three/examples/jsm/shaders/DotScreenShader.js";
-import {
-  TextureLoader,
-  LinearFilter,
-  MeshPhongMaterial,
-  BoxBufferGeometry,
-  Mesh,
-} from "three";
 
 const colors = [
   "#f7fcf5",
@@ -166,24 +196,6 @@ export default defineComponent({
         urls: ["px.hdr", "nx.hdr", "py.hdr", "ny.hdr", "pz.hdr", "nz.hdr"],
         path: "./hdr/",
       },
-      sourceUrl:
-        "https://a.amap.com/Loca/static/loca-v2/demos/mock_data/bj_bus.json",
-      layerStyle: {
-        color(index, prop) {
-          const i = index % colors.length;
-          return colors[i];
-        },
-        lineWidth: (index, prop) => {
-          const i = index % colors.length;
-          return i * 0.1 + 2;
-        },
-        altitude(index, feature) {
-          const i = index % colors.length;
-          return 100 * i;
-        },
-        // dashArray: [10, 5, 10, 0],
-        dashArray: [10, 0, 10, 0],
-      },
       configLoader: (loader) => {
         const dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath(
@@ -210,32 +222,7 @@ export default defineComponent({
     changeVisible() {
       this.visible = !this.visible;
     },
-    initLayer(layer) {
-      const renderPass = new RenderPass(layer.getScene(), layer.getCamera());
-      renderPass.clear = true;
-      layer.addPass(renderPass);
-      const effect1 = new ShaderPass(DotScreenShader);
-      effect1.uniforms["scale"].value = 4;
-      layer.addPass(effect1);
-      console.log("init layer: ", layer);
-      const texture = new TextureLoader().load(
-        "https://a.amap.com/jsapi_demos/static/demo-center-v2/three.jpeg"
-      );
-      texture.minFilter = LinearFilter;
-      //  这里可以使用 three 的各种材质
-      const mat = new MeshPhongMaterial({
-        color: 0xfff0f0,
-        depthTest: true,
-        transparent: true,
-        map: texture,
-      });
-      const geo = new BoxBufferGeometry(50, 50, 50);
-      const mesh = new Mesh(geo, mat);
-      mesh.userData.acceptEvent = true;
-      const r = layer.convertLngLat([116.308206, 39.975468]);
-      mesh.position.set(r[0], r[1], 500);
-      layer.add(mesh);
-    },
+    initLayer(layer) {},
     clickLayer(group) {
       console.log("click layer: ", group);
     },
