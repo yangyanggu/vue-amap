@@ -21,12 +21,13 @@ import type { Texture, Camera, WebGLRenderer, Scene, Object3D } from "three";
 import type { HDROptions, LightOption } from "./Type";
 import type { ThreeLayerOptions } from "@vuemap/three-layer";
 import { CSS2DRenderer } from "./CSS2DRenderer";
+import { CSS3DRenderer } from "./CSS3DRenderer";
 
 interface Options extends ThreeLayerOptions {
   lights?: LightOption[]; // 灯光数组
   hdr?: HDROptions; // 开启HDR配置
   axesHelper: boolean; // 是否开启箭头，用于debug，默认不开启
-  createCssRender?: boolean; //是否创建CssRender
+  cssRenderType?: "2D" | "3D"; //CSSRender类型,未赋值时不创建
 }
 
 class CustomThreeLayer extends ThreeLayer {
@@ -50,7 +51,8 @@ class CustomThreeLayer extends ThreeLayer {
   passList = [] as any[];
   clock = new Clock();
   preHoverGroup = null as Object3D | null;
-  cssRenderer = null as CSS2DRenderer | null;
+  cssRenderer = null as CSS2DRenderer | CSS3DRenderer | null;
+  cssRenderType = undefined as "2D" | "3D" | undefined;
 
   constructor(map: any, options: Options, callback: () => void) {
     options.onInit = (render, scene) => {
@@ -60,7 +62,8 @@ class CustomThreeLayer extends ThreeLayer {
         scene.add(axesHelper);
       }
       this.renderer?.setPixelRatio(window.devicePixelRatio);
-      if (options.createCssRender) this.creatCssRender(map);
+      if (options.cssRenderType)
+        this.creatCssRender(map, options.cssRenderType);
       this.createEffect();
       this.createLights(options.lights || []);
       this.createHDR(options.hdr);
@@ -99,13 +102,17 @@ class CustomThreeLayer extends ThreeLayer {
     // this.effectComposer.addPass(renderPass);
   }
 
-  creatCssRender(map: any) {
-    const element = map.getContainer().querySelector(".amap-markers");
-    this.cssRenderer = new CSS2DRenderer();
-    this.cssRenderer.domElement.style.position = "absolute";
-    this.cssRenderer.domElement.style.left = "0";
-    this.cssRenderer.domElement.style.top = "0";
-    element.appendChild(this.cssRenderer.domElement);
+  creatCssRender(map: any, type: "2D" | "3D") {
+    this.cssRenderType = type;
+    if (type == "2D") this.cssRenderer = new CSS2DRenderer();
+    else if (type == "3D") this.cssRenderer = new CSS3DRenderer();
+    if (this.cssRenderer) {
+      this.cssRenderer.domElement.style.position = "absolute";
+      this.cssRenderer.domElement.style.left = "0";
+      this.cssRenderer.domElement.style.top = "0";
+      const element = map.getContainer().querySelector(".amap-markers");
+      element.appendChild(this.cssRenderer.domElement);
+    }
   }
 
   addPass(pass: any) {

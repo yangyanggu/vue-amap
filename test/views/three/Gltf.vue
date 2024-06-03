@@ -20,7 +20,7 @@
         :alpha="true"
         :antialias="true"
         :create-canvas="false"
-        :create-css-render="true"
+        css-render-type="3D"
         @init="initLayer"
         @click="clickLayer"
         @mouseover="mouseoverLayer"
@@ -71,7 +71,8 @@
           :rotation="rotation"
           :move-animation="moveAnimation"
           :show-popup="true"
-          :popup-height="1"
+          :popup-height="2"
+          :popupScale="0.1"
           @init="initCar"
         >
           <div
@@ -229,7 +230,6 @@ export default defineComponent({
       // const renderPass = new RenderPass(layer.getScene(), layer.getCamera());
       // renderPass.clear = true;
       // layer.addPass(renderPass);
-
       // const effect1 = new ShaderPass(DotScreenShader);
       // effect1.uniforms["scale"].value = 4;
       // layer.addPass(effect1);

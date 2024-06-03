@@ -74,9 +74,9 @@ defineProps(
         return undefined;
       },
     },
-    createCssRender: {
-      type: Boolean,
-      default: false,
+    cssRenderType: {
+      type: String as PropType<"2D" | "3D" | undefined>,
+      default: undefined,
     },
   })
 );

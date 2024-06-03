@@ -1,7 +1,12 @@
 <template>
   <div style="display: none">
-    <div ref="popupRef">
-      <slot />
+    <div style="width: 0; height: 0; position: relative" ref="popupRef">
+      <div
+        class="content-container"
+        style="transform: translate(-50%, -100%); position: absolute"
+      >
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -12,6 +17,7 @@ import CustomThreeGltf from "./CustomThreeGltf";
 import type { MoveAnimation, Vec, ConfigLoader } from "./Type";
 import type { PropType, ComponentInternalInstance } from "vue";
 import { CSS2DObject } from "../ThreeLayer/CSS2DRenderer";
+import { CSS3DObject } from "../ThreeLayer/CSS3DRenderer";
 const popupRef = ref<HTMLDivElement>();
 
 defineOptions({
@@ -61,6 +67,11 @@ const props = defineProps(
       type: Number,
       default: 0,
     },
+    popupScale: {
+      //三维弹窗的缩放比例
+      type: [Number, Array<Number>],
+      default: 1,
+    },
   })
 );
 const emits = defineEmits([
@@ -73,7 +84,7 @@ const emits = defineEmits([
 
 let $amapComponent: CustomThreeGltf;
 
-let popup: CSS2DObject;
+let popup: CSS2DObject | CSS3DObject;
 
 const currentInstance = getCurrentInstance();
 
@@ -115,15 +126,30 @@ const { $$getInstance, parentInstance } = useRegister<CustomThreeGltf, any>(
 );
 
 const addPopup = (instance: CustomThreeGltf) => {
-  const cssRender = instance.layer?.cssRenderer;
-  if (cssRender == undefined) return;
+  const cssRenderType = instance?.layer?.cssRenderType;
+  if (cssRenderType === undefined) return;
+  const cssRender = instance?.layer?.cssRenderer;
+  if (cssRender === undefined) return;
   const element = popupRef.value as HTMLDivElement;
-  const css2dObject = new CSS2DObject(element);
-  css2dObject.center.set(0.5, 1);
-  css2dObject.translateY(props.popupHeight || 0);
-  popup = css2dObject;
-  popup.visible = props.showPopup;
-  instance.object.add(popup);
+  if (cssRenderType === "2D") {
+    const css2dObject = new CSS2DObject(element);
+    css2dObject.center.set(0.5, 1);
+    css2dObject.translateY(props.popupHeight || 0);
+    popup = css2dObject;
+    popup.visible = props.showPopup;
+    instance.object.add(popup);
+  } else if (cssRenderType === "3D") {
+    const scales =
+      typeof props.popupScale === "number"
+        ? [props.popupScale, props.popupScale, props.popupScale]
+        : props.popupScale;
+    const css3DObject = new CSS3DObject(element);
+    css3DObject.translateY(props.popupHeight || 0);
+    css3DObject.scale.set(scales[0], scales[1], scales[2]);
+    popup = css3DObject;
+    popup.visible = props.showPopup;
+    instance.object.add(popup);
+  }
 };
 
 const $$startAnimations = () => {
