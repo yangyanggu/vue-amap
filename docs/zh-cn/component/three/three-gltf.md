@@ -20,6 +20,12 @@ ThreeJS的gltf加载器封装的组件，用于加载gltf模型
 examples/three/three-gltf
 :::
 
+## popup示例
+
+::: demo
+examples/three/three-gltf-popup
+:::
+
 ## 使用缓存，生成大量相同模型
 
 ::: demo
@@ -48,6 +54,9 @@ rotation | Object {x:number,y: number, z: number}     | 旋转角度,通过该�
 angle | Number                                     | 模型绕Y轴旋转角度，该参数主要用于车辆模型的位置调整
 height | Number                                     | 模型高度
 moveAnimation | Object {duration: number, smooth: boolean} | 是否开启移动动画，开启动画后position和angle都会以线性改变
+showPopup | Boolean | 是否显示popup，默认false，如果需要展示popup，需要开启将`el-amap-layer-three`的`create-css-render`属性设置为true
+popupHeight | Number | popup的高度，默认 0
+
 
 ## ref 可用方法
 提供无副作用的同步帮助方法

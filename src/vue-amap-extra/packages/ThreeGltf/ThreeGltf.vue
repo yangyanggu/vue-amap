@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import { defineOptions, getCurrentInstance, ref, watch } from "vue";
 import { useRegister, buildProps } from "@vuemap/vue-amap";
+import { CSS2DObject } from "../ThreeLayer/CSS2DRenderer";
 import CustomThreeGltf from "./CustomThreeGltf";
 import type { MoveAnimation, Vec, ConfigLoader } from "./Type";
 import type { PropType, ComponentInternalInstance } from "vue";
@@ -112,7 +113,7 @@ const { $$getInstance, parentInstance } = useRegister<CustomThreeGltf, any>(
   },
   {
     emits,
-    destroyComponent() {
+    destroyComponent () {
       if ($amapComponent && parentInstance?.$amapComponent) {
         if (!parentInstance.isDestroy) {
           $amapComponent.remove();
@@ -168,7 +169,11 @@ defineExpose({
 watch(
   () => props.showPopup,
   (val) => {
-    if (popup) popup.visible = val;
+    if(val && !popup){
+      addPopup($amapComponent);
+      return;
+    }
+    popup.visible = val;
   }
 );
 
