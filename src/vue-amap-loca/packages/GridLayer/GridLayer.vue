@@ -106,7 +106,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.GridLayer, Loca.Contain
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

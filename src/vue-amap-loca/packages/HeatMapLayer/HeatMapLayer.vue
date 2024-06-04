@@ -82,7 +82,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.HeatMapLayer, Loca.Cont
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

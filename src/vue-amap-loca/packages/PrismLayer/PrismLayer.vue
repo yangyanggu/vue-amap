@@ -103,7 +103,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.PrismLayer, Loca.Contai
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

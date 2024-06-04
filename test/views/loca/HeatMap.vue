@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 import ElAmapLocaHeatmap from "@vuemap/vue-amap-loca/packages/HeatMapLayer/HeatMapLayer.vue";
 
@@ -38,9 +38,9 @@ export default defineComponent({
     ElAmapLoca,
     ElAmap
   },
-  data() {
+  data () {
     return {
-      center: [114.341232, 30.567523],
+      center: [119.986517, 29.954414],
       zoom: 11,
       pitch: 55,
       visible: true,
@@ -67,20 +67,20 @@ export default defineComponent({
         max: 10,  //4.6
         heightBezier: [0, .53, .37, .98],
       }
-    }
+    };
   },
   methods: {
-    clickMap(e) {
+    clickMap (e) {
       console.log('click map: ', e);
     },
-    initMap(map) {
+    initMap (map) {
       console.log('init map: ', map);
     },
-    changeVisible() {
+    changeVisible () {
       this.visible = !this.visible;
     },
   }
-})
+});
 </script>
 
 <style scoped>

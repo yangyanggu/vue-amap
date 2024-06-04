@@ -67,7 +67,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.LinkLayer, Loca.Contain
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

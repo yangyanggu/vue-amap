@@ -101,7 +101,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.HexagonLayer, Loca.Cont
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

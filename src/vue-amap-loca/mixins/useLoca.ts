@@ -4,7 +4,7 @@ import type {IProvideType} from '@vuemap/vue-amap';
 
 interface IUseWatchFnType {
   setSource: () => void
-  $amapComponent: any
+  $amapComponent: () => any
   props: any
 }
 
@@ -17,8 +17,8 @@ export function useWatchFn (options: IUseWatchFnType){
   return {
     __layerStyle (style: any) {
       nextTick(() => {
-        if (options.$amapComponent?.setStyle) {
-          options.$amapComponent.setStyle(style);
+        if (options.$amapComponent()?.setStyle) {
+          options.$amapComponent().setStyle(style);
         }
       }).then();
     },
@@ -38,8 +38,9 @@ export function useWatchFn (options: IUseWatchFnType){
       }).then();
     },
     __visible (flag: boolean) {
-      if (options.$amapComponent?.show && options.$amapComponent?.hide) {
-        !flag ? options.$amapComponent.hide(options.props.visibleDuration) : options.$amapComponent.show(options.props.visibleDuration);
+      const $amapComponent = options.$amapComponent();
+      if ($amapComponent?.show && $amapComponent?.hide) {
+        !flag ? $amapComponent.hide(options.props.visibleDuration) : $amapComponent.show(options.props.visibleDuration);
       }
     }
   };

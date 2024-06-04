@@ -120,7 +120,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.PolygonLayer, Loca.Cont
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

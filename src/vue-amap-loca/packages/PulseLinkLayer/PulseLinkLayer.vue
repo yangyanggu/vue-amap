@@ -105,7 +105,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.PulseLinkLayer, Loca.Co
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

@@ -82,7 +82,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.LineLayer, Loca.Contain
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

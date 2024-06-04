@@ -83,7 +83,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.PointLayer, Loca.Contai
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {

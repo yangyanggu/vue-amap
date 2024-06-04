@@ -90,7 +90,7 @@ const {$$getInstance, parentInstance} = useRegister<Loca.ScatterLayer, Loca.Cont
         _setSource();
       }
     },
-    $amapComponent,
+    $amapComponent: () => $amapComponent,
     props
   }),
   destroyComponent () {
