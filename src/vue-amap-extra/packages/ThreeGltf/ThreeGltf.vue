@@ -72,6 +72,10 @@ const props = defineProps(
       type: [Number, Array<Number>],
       default: 1,
     },
+    popupType:{//信息弹窗类型
+      type:String as PropType<'2D'|'3D'>,
+      default:'2D'
+    }
   })
 );
 const emits = defineEmits([
@@ -126,19 +130,17 @@ const { $$getInstance, parentInstance } = useRegister<CustomThreeGltf, any>(
 );
 
 const addPopup = (instance: CustomThreeGltf) => {
-  const cssRenderType = instance?.layer?.cssRenderType;
-  if (cssRenderType === undefined) return;
-  const cssRender = instance?.layer?.cssRenderer;
-  if (cssRender === undefined) return;
   const element = popupRef.value as HTMLDivElement;
-  if (cssRenderType === "2D") {
+  const content = element.querySelector('.content-container');
+  debugger;
+  if (props.popupType === "2D") {
     const css2dObject = new CSS2DObject(element);
     css2dObject.center.set(0.5, 1);
     css2dObject.translateY(props.popupHeight || 0);
     popup = css2dObject;
     popup.visible = props.showPopup;
     instance.object.add(popup);
-  } else if (cssRenderType === "3D") {
+  } else if (props.popupType === "3D") {
     const scales =
       typeof props.popupScale === "number"
         ? [props.popupScale, props.popupScale, props.popupScale]

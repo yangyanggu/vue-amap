@@ -21,7 +21,7 @@
         @click="clickLayer"
         @mouseover="mouseoverLayer"
         @mouseout="mouseoutLayer"
-        css-render-type="3D"
+        :create-css-render="true"
       >
         <el-amap-three-light-ambient color="rgb(255,255,255)" :intensity="1" />
         <el-amap-three-light-directional
@@ -60,6 +60,7 @@
           :show-popup="true"
           :popup-height="2"
           :popup-scale=[0.1,0.1,0.1]
+          popup-type="3D"
           @init="initCar"
         >
         <div
@@ -74,30 +75,7 @@
             测试GLTF信息弹窗(CSS3DRenderer)
           </div>
         </el-amap-three-gltf>
-      </el-amap-layer-three>
 
-      <el-amap-layer-three
-        :visible="true"
-        :hdr="hdrOptions"
-        :alpha="true"
-        :antialias="true"
-        css-render-type="2D"
-      >
-        <el-amap-three-light-ambient color="rgb(255,255,255)" :intensity="1" />
-        <el-amap-three-light-directional
-          color="rgb(255,0,255)"
-          :intensity="1"
-          :position="{ x: 0, y: 1, z: 0 }"
-        />
-        <el-amap-three-light-hemisphere
-          color="blue"
-          :intensity="1"
-          :position="{ x: 1, y: 0, z: 0 }"
-        />
-        <el-amap-three-light-point
-          :position="{ x: 116.106206, y: 39.975468, z: 100 }"
-        />
-        <el-amap-three-light-spot :position="{ x: 0, y: 1, z: 0 }" />
         <el-amap-three-gltf
           ref="animation"
           url="/gltf/car2.gltf"
