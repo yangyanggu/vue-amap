@@ -12,7 +12,10 @@
       @init="initMap"
     >
       <el-amap-loca>
-        <el-amap-loca-line :source-url="sourceUrl" :layer-style="layerStyle" />
+        <el-amap-loca-line
+          :source-url="sourceUrl"
+          :layer-style="layerStyle"
+        />
       </el-amap-loca>
       <el-amap-layer-three
         :visible="true"
@@ -25,7 +28,10 @@
         @mouseover="mouseoverLayer"
         @mouseout="mouseoutLayer"
       >
-        <el-amap-three-light-ambient color="rgb(255,255,255)" :intensity="1" />
+        <el-amap-three-light-ambient
+          color="rgb(255,255,255)"
+          :intensity="1"
+        />
         <el-amap-three-light-directional
           color="rgb(255,0,255)"
           :intensity="1"
@@ -85,10 +91,24 @@
       <el-button @click="changeVisible">
         {{ visible ? "隐藏" : "显示" }}
       </el-button>
-      <el-button @click="stop"> 停止动画 </el-button>
-      <el-button @click="start"> 开始动画 </el-button>
-      <el-button @click="stopCar"> 停止车辆 </el-button>
-      <el-button @click="startCar"> 移动车辆 </el-button>
+      <el-button @click="changePopupVisible">
+        {{ popupVisible ? "隐藏popup" : "显示popup" }}
+      </el-button>
+      <el-button @click="addPopupHeight">
+        增加popup高度
+      </el-button>
+      <el-button @click="stop">
+        停止动画
+      </el-button>
+      <el-button @click="start">
+        开始动画
+      </el-button>
+      <el-button @click="stopCar">
+        停止车辆
+      </el-button>
+      <el-button @click="startCar">
+        移动车辆
+      </el-button>
     </div>
   </div>
 </template>
@@ -143,7 +163,7 @@ export default defineComponent({
     ElAmapLoca,
     ElAmapLocaLine,
   },
-  data() {
+  data () {
     return {
       center: [116.306206, 39.975468],
       zoom: 16,
@@ -169,7 +189,7 @@ export default defineComponent({
       sourceUrl:
         "https://a.amap.com/Loca/static/loca-v2/demos/mock_data/bj_bus.json",
       layerStyle: {
-        color(index, prop) {
+        color (index, prop) {
           const i = index % colors.length;
           return colors[i];
         },
@@ -177,7 +197,7 @@ export default defineComponent({
           const i = index % colors.length;
           return i * 0.1 + 2;
         },
-        altitude(index, feature) {
+        altitude (index, feature) {
           const i = index % colors.length;
           return 100 * i;
         },
@@ -191,13 +211,15 @@ export default defineComponent({
         );
         loader.setDRACOLoader(dracoLoader);
       },
+      popupVisible: false,
+      popupHeight:0
     };
   },
   methods: {
-    clickMap(e) {
+    clickMap (e) {
       console.log("click map: ", e);
     },
-    initMap(map) {
+    initMap (map) {
       console.log("init map: ", map);
       const positions = [] as any;
       for (let i = 0; i < 10; i++) {
@@ -207,7 +229,7 @@ export default defineComponent({
       }
       this.positions = positions;
     },
-    changeVisible() {
+    changeVisible () {
       this.visible = !this.visible;
     },
     initLayer(layer) {
@@ -236,32 +258,32 @@ export default defineComponent({
       mesh.position.set(r[0], r[1], 500);
       layer.add(mesh);
     },
-    clickLayer(group) {
+    clickLayer (group) {
       console.log("click layer: ", group);
     },
-    mouseoverLayer(group) {
+    mouseoverLayer (group) {
       console.log("mouseoverLayer layer: ", group);
     },
-    mouseoutLayer(group) {
+    mouseoutLayer (group) {
       console.log("mouseoutLayer layer: ", group);
     },
-    init(object, $vue) {
+    init (object, $vue) {
       console.log("init gltf: ", object);
       $vue.$$startAnimations();
     },
-    clickGltf(e) {
+    clickGltf (e) {
       console.log(" click gltf: ", e);
     },
-    stop() {
+    stop () {
       (this.$refs.animation as any).$$stopAnimations();
     },
-    start() {
+    start () {
       (this.$refs.animation as any).$$startAnimations();
     },
-    initCar() {
+    initCar () {
       this.startCar();
     },
-    startCar() {
+    startCar () {
       this.carInterval = setInterval(() => {
         const lng = this.carPosition[0] + Math.random() * 0.001;
         const lat = this.carPosition[1] + Math.random() * 0.001;
@@ -271,7 +293,7 @@ export default defineComponent({
         this.carAngle = angle;
       }, 1000);
     },
-    stopCar() {
+    stopCar () {
       clearInterval(this.carInterval);
     },
   },
