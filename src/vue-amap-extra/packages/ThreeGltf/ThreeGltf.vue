@@ -13,7 +13,6 @@
 <script setup lang="ts">
 import { defineOptions, getCurrentInstance, ref, watch } from "vue";
 import { useRegister, buildProps } from "@vuemap/vue-amap";
-import { CSS2DObject } from "../ThreeLayer/CSS2DRenderer";
 import CustomThreeGltf from "./CustomThreeGltf";
 import type { MoveAnimation, Vec, ConfigLoader } from "./Type";
 import type { PropType, ComponentInternalInstance } from "vue";
@@ -132,8 +131,8 @@ const { $$getInstance, parentInstance } = useRegister<CustomThreeGltf, any>(
 
 const addPopup = (instance: CustomThreeGltf) => {
   const element = popupRef.value as HTMLDivElement;
-  const content = element.querySelector('.content-container');
-  debugger;
+  const contentEle = element.querySelector('.content-container');
+  if(contentEle?.children?.length==0) return;
   if (props.popupType === "2D") {
     const css2dObject = new CSS2DObject(element);
     css2dObject.center.set(0.5, 1);

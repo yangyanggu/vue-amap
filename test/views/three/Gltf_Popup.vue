@@ -57,15 +57,15 @@
           :angle="carAngle"
           :rotation="rotation"
           :move-animation="moveAnimation"
-          :show-popup="true"
-          :popup-height="2"
-          :popup-scale=[0.1,0.1,0.1]
+          :show-popup="popupVisible"
+          :popup-height="popupHeight"
+          :popup-scale="popupScale"
           popup-type="3D"
           @init="initCar"
         >
-        <div
+          <div
             style="
-              padding:20px;
+              padding: 20px;
               background: #2196f3d6;
               color: #fff;
               text-align: center;
@@ -82,12 +82,12 @@
           :position="center"
           :scale="[10, 10, 10]"
           :rotation="rotation"
-          :show-popup="true"
-          :popup-height="6"
+          :show-popup="popupVisible"
+          :popup-height="popupHeight"
         >
-        <div
+          <div
             style="
-              padding:20px;
+              padding: 20px;
               background: #f44336bd;
               color: #fff;
               text-align: center;
@@ -100,9 +100,11 @@
       </el-amap-layer-three>
     </el-amap>
     <div class="control-container">
-      <el-button @click="changeVisible">
-        {{ visible ? "隐藏" : "显示" }}
+      <el-button @click="changePopupVisible">
+        {{ popupVisible ? "隐藏Popup" : "显示Popup" }}
       </el-button>
+      <el-button @click="addPopupHeight">popup升高</el-button>
+      <el-button @click="addPopupScale">popup方大</el-button>
       <el-button @click="stop"> 停止动画 </el-button>
       <el-button @click="start"> 开始动画 </el-button>
       <el-button @click="stopCar"> 停止车辆 </el-button>
@@ -126,17 +128,6 @@ import ElAmapLoca from "@vuemap/vue-amap-loca/packages/Loca/Loca.vue";
 import ElAmapLocaLine from "@vuemap/vue-amap-loca/packages/LineLayer/LineLayer.vue";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
-const colors = [
-  "#f7fcf5",
-  "#e5f5e0",
-  "#c7e9c0",
-  "#a1d99b",
-  "#74c476",
-  "#41ab5d",
-  "#238b45",
-  "#006d2c",
-  "#00441b",
-].reverse();
 export default defineComponent({
   name: "Map",
   components: {
@@ -164,6 +155,9 @@ export default defineComponent({
       carInterval: -1 as any,
       moveAnimation: { duration: 1000, smooth: true },
       carAngle: 90,
+      popupVisible: true,
+      popupHeight: 1,
+      popupScale: 0.1,
       lights: [
         {
           type: "AmbientLight",
@@ -197,8 +191,14 @@ export default defineComponent({
       }
       this.positions = positions;
     },
-    changeVisible() {
-      this.visible = !this.visible;
+    changePopupVisible() {
+      this.popupVisible = !this.popupVisible;
+    },
+    addPopupHeight() {
+      this.popupHeight += 1;
+    },
+    addPopupScale() {
+      this.popupScale += 0.1;
     },
     initLayer(layer) {},
     clickLayer(group) {
