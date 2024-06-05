@@ -11,17 +11,17 @@ import {
   Vector2,
   AxesHelper,
   Raycaster,
-  Clock,
+  Clock
 } from "three";
 import { merge, bind } from "lodash-es";
 import { HDRCubeTextureLoader } from "three/examples/jsm/loaders/HDRCubeTextureLoader.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { ThreeLayer } from "@vuemap/three-layer";
-import type { Texture, Camera, WebGLRenderer, Scene, Object3D } from "three";
-import type { HDROptions, LightOption } from "./Type";
-import type { ThreeLayerOptions } from "@vuemap/three-layer";
 import { CSS2DRenderer } from "./CSS2DRenderer";
 import { CSS3DRenderer } from "./CSS3DRenderer";
+import type { Texture, Camera, WebGLRenderer, Scene, Object3D , PerspectiveCamera} from "three";
+import type { HDROptions, LightOption } from "./Type";
+import type { ThreeLayerOptions } from "@vuemap/three-layer";
 
 interface Options extends ThreeLayerOptions {
   lights?: LightOption[]; // 灯光数组
@@ -54,7 +54,7 @@ class CustomThreeLayer extends ThreeLayer {
   css2DRenderer = null as CSS2DRenderer | null;
   css3DRenderer = null as CSS3DRenderer | null;
 
-  constructor(map: any, options: Options, callback: () => void) {
+  constructor (map: any, options: Options, callback: () => void) {
     options.onInit = (render, scene) => {
       this.raycaster = new Raycaster();
       if (options.axesHelper) {
@@ -84,7 +84,19 @@ class CustomThreeLayer extends ThreeLayer {
     this.mouse = new Vector2();
   }
 
-  updateEffectComposerSize() {
+  updateRendererSize (){
+    const container = this.map.getContainer();
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+    this.renderer?.setSize(width, height);
+    this.css2DRenderer?.setSize(width, height);
+    this.css3DRenderer?.setSize(width, height);
+    if(this.map.getView().type === '3D'){
+      (this.camera as PerspectiveCamera).aspect = width / height;
+    }
+  }
+  
+  updateEffectComposerSize () {
     if (this.effectComposer && this.renderer) {
       const size = this.renderer.getSize(new Vector2());
       this.effectComposer.setSize(size.x, size.y);
@@ -93,7 +105,7 @@ class CustomThreeLayer extends ThreeLayer {
     }
   }
 
-  createEffect() {
+  createEffect () {
     const size = this.renderer?.getSize(new Vector2());
     this.effectComposer = new EffectComposer(this.renderer as WebGLRenderer);
     this.effectComposer.setSize(size?.x as number, size?.y as number);
@@ -104,7 +116,7 @@ class CustomThreeLayer extends ThreeLayer {
     // this.effectComposer.addPass(renderPass);
   }
 
-  creatCssRenders(map: any) {
+  creatCssRenders (map: any) {
     this.css2DRenderer = new CSS2DRenderer();
     this.css2DRenderer.domElement.style.position = "absolute";
     this.css2DRenderer.domElement.style.left = "0";
@@ -119,13 +131,13 @@ class CustomThreeLayer extends ThreeLayer {
     element.appendChild(this.css3DRenderer.domElement);
   }
 
-  addPass(pass: any) {
+  addPass (pass: any) {
     this.effectComposer?.addPass(pass);
     this.passNum++;
     this.passList.push(pass);
   }
 
-  removePass(pass: any) {
+  removePass (pass: any) {
     const index = this.passList.indexOf(pass);
     if (index !== -1) {
       this.passList.splice(index, 1);
@@ -134,7 +146,7 @@ class CustomThreeLayer extends ThreeLayer {
     this.passNum--;
   }
 
-  createLights(lights: LightOption[] | undefined) {
+  createLights (lights: LightOption[] | undefined) {
     const defaultLightOptions = {
       type: "DirectionalLight", // 灯光类型， 可选值见下面的字典
       args: [], // 灯光初始化时需要的参数，具体参数顺序可以查看threejs官网灯光的说明。 采用 ...args 的方式进行初始化
@@ -166,7 +178,7 @@ class CustomThreeLayer extends ThreeLayer {
     }
   }
 
-  createHDR(hdr: HDROptions | undefined) {
+  createHDR (hdr: HDROptions | undefined) {
     if (!hdr) {
       return;
     }
@@ -201,7 +213,7 @@ class CustomThreeLayer extends ThreeLayer {
       }) as any;
   }
 
-  addEnvMap(object) {
+  addEnvMap (object) {
     this.scene!.environment = this.envMap as Texture;
     /*const envMap = this.envMap;
     if (!envMap || !object) {
@@ -219,7 +231,7 @@ class CustomThreeLayer extends ThreeLayer {
     }*/
   }
 
-  bindEvents() {
+  bindEvents () {
     this.clickFun = bind(this._clickEvent, this);
     this.hoverFun = bind(this._hoverEvent, this);
     this.resizeFun = bind(this.updateEffectComposerSize, this);
@@ -233,20 +245,20 @@ class CustomThreeLayer extends ThreeLayer {
     this.map.on("resize", this.resizeFun);
   }
 
-  ubBindEvents() {
+  ubBindEvents () {
     this.map.off("click", this.clickFun);
     this.map.off("mousemove", this.hoverFun);
     this.map.on("off", this.resizeFun);
   }
 
-  _getOriginEvent(e: any) {
+  _getOriginEvent (e: any) {
     if (e.originEvent) {
       return e.originEvent;
     }
     return e;
   }
 
-  _clickEvent(e: any) {
+  _clickEvent (e: any) {
     e = this._getOriginEvent(e);
     const group = this._intersectGltf(e);
     if (group) {
@@ -257,7 +269,7 @@ class CustomThreeLayer extends ThreeLayer {
     }
   }
 
-  _hoverEvent(e: any) {
+  _hoverEvent (e: any) {
     e = this._getOriginEvent(e);
     const group = this._intersectGltf(e);
     if (group) {
@@ -286,7 +298,7 @@ class CustomThreeLayer extends ThreeLayer {
     this.preHoverGroup = group;
   }
 
-  _intersectGltf(e: MouseEvent): Object3D | null {
+  _intersectGltf (e: MouseEvent): Object3D | null {
     const client = this.map.getContainer();
     // 通过鼠标点击位置,计算出 raycaster 所需点的位置,以屏幕为中心点,范围 -1 到 1
     const getBoundingClientRect = client.getBoundingClientRect();
@@ -326,7 +338,7 @@ class CustomThreeLayer extends ThreeLayer {
     return null;
   }
 
-  _getGroup(object: Object3D): Object3D | null {
+  _getGroup (object: Object3D): Object3D | null {
     if (!object) {
       return null;
     }
@@ -336,7 +348,7 @@ class CustomThreeLayer extends ThreeLayer {
     return this._getGroup(object.parent as Object3D);
   }
 
-  destroy() {
+  destroy () {
     this.ubBindEvents();
     if (this.envMap) {
       this.envMap.dispose();

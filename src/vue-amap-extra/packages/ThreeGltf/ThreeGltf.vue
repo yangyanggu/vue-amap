@@ -1,6 +1,9 @@
 <template>
   <div style="display: none">
-    <div style="width: 0; height: 0; position: relative" ref="popupRef">
+    <div
+      ref="popupRef"
+      style="width: 0; height: 0; position: relative"
+    >
       <div
         class="content-container"
         style="transform: translate(-50%, -100%); position: absolute"
@@ -13,11 +16,11 @@
 <script setup lang="ts">
 import { defineOptions, getCurrentInstance, ref, watch } from "vue";
 import { useRegister, buildProps } from "@vuemap/vue-amap";
-import CustomThreeGltf from "./CustomThreeGltf";
-import type { MoveAnimation, Vec, ConfigLoader } from "./Type";
-import type { PropType, ComponentInternalInstance } from "vue";
 import { CSS2DObject } from "../ThreeLayer/CSS2DRenderer";
 import { CSS3DObject } from "../ThreeLayer/CSS3DRenderer";
+import CustomThreeGltf from "./CustomThreeGltf";
+import type { MoveAnimation, Vec, ConfigLoader } from "./Type";
+import type { PropType } from "vue";
 const popupRef = ref<HTMLDivElement>();
 
 defineOptions({
@@ -68,8 +71,8 @@ const props = defineProps(
       default: 0,
     },
     popupScale: {
-      //三维弹窗的缩放比例(只有在threelayer的cssRenderType为3D时生效)
-      type: [Number, Array<Number>],
+      //三维弹窗的缩放比例(只有在popupType为3D时生效)
+      type: [Number, Array<number>],
       default: 1,
     },
     popupType:{//信息弹窗类型
@@ -134,6 +137,9 @@ const addPopup = (instance: CustomThreeGltf) => {
   const contentEle = element.querySelector('.content-container');
   if(contentEle?.children?.length==0) return;
   if (props.popupType === "2D") {
+    if(!instance?.layer?.css2DRenderer){
+      return;
+    }
     const css2dObject = new CSS2DObject(element);
     css2dObject.center.set(0.5, 1);
     css2dObject.translateY(props.popupHeight || 0);
@@ -141,6 +147,9 @@ const addPopup = (instance: CustomThreeGltf) => {
     popup.visible = props.showPopup;
     instance.object.add(popup);
   } else if (props.popupType === "3D") {
+    if(!instance?.layer?.css3DRenderer){
+      return;
+    }
     const scales =
       typeof props.popupScale === "number"
         ? [props.popupScale, props.popupScale, props.popupScale]

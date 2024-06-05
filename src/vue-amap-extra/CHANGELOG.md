@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.4
+* 合入[Gltf增加3D popup](https://gitee.com/guyangyang/vue-amap/pulls/6)
+
 ### @vuemap/vue-amap v2.1.3
 * 合入[Gltf增加popup](https://gitee.com/guyangyang/vue-amap/pulls/5)
 

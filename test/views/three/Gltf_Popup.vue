@@ -17,13 +17,16 @@
         :alpha="true"
         :antialias="true"
         :create-canvas="false"
+        :create-css-render="true"
         @init="initLayer"
         @click="clickLayer"
         @mouseover="mouseoverLayer"
         @mouseout="mouseoutLayer"
-        :create-css-render="true"
       >
-        <el-amap-three-light-ambient color="rgb(255,255,255)" :intensity="1" />
+        <el-amap-three-light-ambient
+          color="rgb(255,255,255)"
+          :intensity="1"
+        />
         <el-amap-three-light-directional
           color="rgb(255,0,255)"
           :intensity="1"
@@ -103,12 +106,24 @@
       <el-button @click="changePopupVisible">
         {{ popupVisible ? "隐藏Popup" : "显示Popup" }}
       </el-button>
-      <el-button @click="addPopupHeight">popup升高</el-button>
-      <el-button @click="addPopupScale">popup方大</el-button>
-      <el-button @click="stop"> 停止动画 </el-button>
-      <el-button @click="start"> 开始动画 </el-button>
-      <el-button @click="stopCar"> 停止车辆 </el-button>
-      <el-button @click="startCar"> 移动车辆 </el-button>
+      <el-button @click="addPopupHeight">
+        popup升高
+      </el-button>
+      <el-button @click="addPopupScale">
+        popup方大
+      </el-button>
+      <el-button @click="stop">
+        停止动画
+      </el-button>
+      <el-button @click="start">
+        开始动画
+      </el-button>
+      <el-button @click="stopCar">
+        停止车辆
+      </el-button>
+      <el-button @click="startCar">
+        移动车辆
+      </el-button>
     </div>
   </div>
 </template>
@@ -142,7 +157,7 @@ export default defineComponent({
     ElAmapLoca,
     ElAmapLocaLine,
   },
-  data() {
+  data () {
     return {
       center: [116.306206, 39.975468],
       zoom: 16,
@@ -178,10 +193,10 @@ export default defineComponent({
     };
   },
   methods: {
-    clickMap(e) {
+    clickMap (e) {
       console.log("click map: ", e);
     },
-    initMap(map) {
+    initMap (map) {
       console.log("init map: ", map);
       const positions = [] as any;
       for (let i = 0; i < 10; i++) {
@@ -191,42 +206,42 @@ export default defineComponent({
       }
       this.positions = positions;
     },
-    changePopupVisible() {
+    changePopupVisible () {
       this.popupVisible = !this.popupVisible;
     },
-    addPopupHeight() {
+    addPopupHeight () {
       this.popupHeight += 1;
     },
-    addPopupScale() {
+    addPopupScale () {
       this.popupScale += 0.1;
     },
-    initLayer(layer) {},
-    clickLayer(group) {
+    initLayer (layer) {},
+    clickLayer (group) {
       console.log("click layer: ", group);
     },
-    mouseoverLayer(group) {
+    mouseoverLayer (group) {
       console.log("mouseoverLayer layer: ", group);
     },
-    mouseoutLayer(group) {
+    mouseoutLayer (group) {
       console.log("mouseoutLayer layer: ", group);
     },
-    init(object, $vue) {
+    init (object, $vue) {
       console.log("init gltf: ", object);
       $vue.$$startAnimations();
     },
-    clickGltf(e) {
+    clickGltf (e) {
       console.log(" click gltf: ", e);
     },
-    stop() {
+    stop () {
       (this.$refs.animation as any).$$stopAnimations();
     },
-    start() {
+    start () {
       (this.$refs.animation as any).$$startAnimations();
     },
-    initCar() {
+    initCar () {
       this.startCar();
     },
-    startCar() {
+    startCar () {
       this.carInterval = setInterval(() => {
         const lng = this.carPosition[0] + Math.random() * 0.001;
         const lat = this.carPosition[1] + Math.random() * 0.001;
@@ -236,7 +251,7 @@ export default defineComponent({
         this.carAngle = angle;
       }, 1000);
     },
-    stopCar() {
+    stopCar () {
       clearInterval(this.carInterval);
     },
   },

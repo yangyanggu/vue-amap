@@ -18,6 +18,10 @@ angle | Number                              | 模型绕Y轴旋转角度，该参
 moveAnimation | {duration: number, smooth: boolean} | 是否开启移动动画
 configLoader | Function                            | 配置loader，用于添加draco等扩展
 useModelCache | Boolean                             | 是否启用模型缓存，开启后模型批量加载同一个模型地址时只有第一个执行下载，后续模型将直接使用clone能力。默认false |
+showPopup | Boolean                                    | 是否显示popup，默认false，如果需要展示popup，需要开启将`el-amap-layer-three`的`create-css-render`属性设置为true
+popupHeight | Number                                     | popup的高度，默认 0
+popupScale | Number, Array\[number\]                    | 三维弹窗的缩放比例(只有在popupType为3D时生效)
+popupType | '2D', '3D' | 信息弹窗类型
 
 ## Events
 

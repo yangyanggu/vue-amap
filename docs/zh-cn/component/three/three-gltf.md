@@ -47,15 +47,17 @@ examples/three/three-gltf-cache
 
 名称 | 类型                                         | 说明
 ---|--------------------------------------------|---|
-scale | Number,Array | 缩放大小,可以传入number那么X Y Z都会以该值缩放，也可以传入数组[x,y,z]将按该顺序缩放
+scale | Number,Array                               | 缩放大小,可以传入number那么X Y Z都会以该值缩放，也可以传入数组[x,y,z]将按该顺序缩放
 position | Array                                      | 车辆位置经纬度
 visible | Boolean                                    | 是否显示，默认 true
 rotation | Object {x:number,y: number, z: number}     | 旋转角度,通过该参数调整模型方向
 angle | Number                                     | 模型绕Y轴旋转角度，该参数主要用于车辆模型的位置调整
 height | Number                                     | 模型高度
 moveAnimation | Object {duration: number, smooth: boolean} | 是否开启移动动画，开启动画后position和angle都会以线性改变
-showPopup | Boolean | 是否显示popup，默认false，如果需要展示popup，需要开启将`el-amap-layer-three`的`create-css-render`属性设置为true
-popupHeight | Number | popup的高度，默认 0
+showPopup | Boolean                                    | 是否显示popup，默认false，如果需要展示popup，需要开启将`el-amap-layer-three`的`create-css-render`属性设置为true
+popupHeight | Number                                     | popup的高度，默认 0
+popupScale | Number, Array\[number\]                    | 三维弹窗的缩放比例(只有在popupType为3D时生效)
+popupType | '2D', '3D' | 信息弹窗类型
 
 
 ## ref 可用方法

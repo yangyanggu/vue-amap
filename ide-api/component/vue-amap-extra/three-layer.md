@@ -22,6 +22,7 @@ opacity | Number | 透明度，默认 1
 axesHelper | Boolean | 是否开启debug的箭头，默认false
 createCanvas | Boolean | 是否创建新的canvas绘制threejs，默认false
 webGLRendererParameters | WebGLRendererParameters | 创建WebglRenderer时传递的数据
+createCssRender | Boolean | 是否创建cssRender，只有开启cssRender后，gltf组件的popup才能生效
 
 
 ## Events

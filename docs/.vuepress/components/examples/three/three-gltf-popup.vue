@@ -18,6 +18,31 @@
           :intensity="0.6"
         />
         <el-amap-three-gltf
+          :visible="visible"
+          :url="baseUrl + '/gltf/car2.gltf'"
+          :position="center"
+          :scale="[10,10,10]"
+          :rotation="rotation"
+          :show-popup="popupVisible"
+          :popup-height="popupHeight"
+          :popup-scale="0.1"
+          popup-type="3D"
+        >
+          <div
+            style="
+              width: 100px;
+              height: 100px;
+              background: #f44336bd;
+              color: #fff;
+              text-align: center;
+              vertical-align: middle;
+            "
+          >
+            测试三维3D信息弹窗
+          </div>
+        </el-amap-three-gltf>
+        <el-amap-three-gltf
+          :visible="visible"
           :url="baseUrl + '/gltf/car2.gltf'"
           :position="carPosition"
           :scale="[10,10,10]"
@@ -38,7 +63,7 @@
               vertical-align: middle;
             "
           >
-            测试三维信息弹窗
+            测试三维2D信息弹窗
           </div>
         </el-amap-three-gltf>
       </el-amap-layer-three>
@@ -81,7 +106,7 @@ const zoom = ref(18);
 const center = ref([121.59996, 31.197646]);
 const visible = ref(true);
 const rotation = ref({x: 90, y: 0, z: 0});
-const carPosition = ref([121.59996, 31.197646]);
+const carPosition = ref([121.60106, 31.197646]);
 const moveAnimation = ref({duration: 1000, smooth: true});
 const carAngle = ref(90);
 const hdrOptions = ref({
