@@ -21,12 +21,13 @@ import type { Texture, Camera, WebGLRenderer, Scene, Object3D } from "three";
 import type { HDROptions, LightOption } from "./Type";
 import type { ThreeLayerOptions } from "@vuemap/three-layer";
 import { CSS2DRenderer } from "./CSS2DRenderer";
+import { CSS3DRenderer } from "./CSS3DRenderer";
 
 interface Options extends ThreeLayerOptions {
   lights?: LightOption[]; // 灯光数组
   hdr?: HDROptions; // 开启HDR配置
   axesHelper: boolean; // 是否开启箭头，用于debug，默认不开启
-  createCssRender?: boolean; //是否创建CssRender
+  createCssRender: boolean; //是否创建CSSRender
 }
 
 class CustomThreeLayer extends ThreeLayer {
@@ -50,7 +51,8 @@ class CustomThreeLayer extends ThreeLayer {
   passList = [] as any[];
   clock = new Clock();
   preHoverGroup = null as Object3D | null;
-  cssRenderer = null as CSS2DRenderer | null;
+  css2DRenderer = null as CSS2DRenderer | null;
+  css3DRenderer = null as CSS3DRenderer | null;
 
   constructor(map: any, options: Options, callback: () => void) {
     options.onInit = (render, scene) => {
@@ -60,7 +62,7 @@ class CustomThreeLayer extends ThreeLayer {
         scene.add(axesHelper);
       }
       this.renderer?.setPixelRatio(window.devicePixelRatio);
-      if (options.createCssRender) this.creatCssRender(map);
+      if (options.createCssRender) this.creatCssRenders(map);
       this.createEffect();
       this.createLights(options.lights || []);
       this.createHDR(options.hdr);
@@ -74,7 +76,8 @@ class CustomThreeLayer extends ThreeLayer {
         this.effectComposer?.render(this.clock.getDelta());
       } else {
         this.renderer?.render(this.scene as Scene, camera as Camera);
-        this.cssRenderer?.render(this.scene as Scene, camera as Camera);
+        this.css2DRenderer?.render(this.scene as Scene, camera as Camera);
+        this.css3DRenderer?.render(this.scene as Scene, camera as Camera);
       }
     };
     super(map, options);
@@ -85,7 +88,8 @@ class CustomThreeLayer extends ThreeLayer {
     if (this.effectComposer && this.renderer) {
       const size = this.renderer.getSize(new Vector2());
       this.effectComposer.setSize(size.x, size.y);
-      this.cssRenderer?.setSize(size.x, size.y);
+      this.css2DRenderer?.setSize(size.x, size.y);
+      this.css3DRenderer?.setSize(size.x, size.y);
     }
   }
 
@@ -93,19 +97,26 @@ class CustomThreeLayer extends ThreeLayer {
     const size = this.renderer?.getSize(new Vector2());
     this.effectComposer = new EffectComposer(this.renderer as WebGLRenderer);
     this.effectComposer.setSize(size?.x as number, size?.y as number);
-    this.cssRenderer?.setSize(size?.x as number, size?.y as number);
+    this.css2DRenderer?.setSize(size?.x as number, size?.y as number);
+    this.css3DRenderer?.setSize(size?.x as number, size?.y as number);
     // const renderPass = new ThreeRenderPass( this.scene, this.camera );
     // this.renderPass = renderPass;
     // this.effectComposer.addPass(renderPass);
   }
 
-  creatCssRender(map: any) {
+  creatCssRenders(map: any) {
+    this.css2DRenderer = new CSS2DRenderer();
+    this.css2DRenderer.domElement.style.position = "absolute";
+    this.css2DRenderer.domElement.style.left = "0";
+    this.css2DRenderer.domElement.style.top = "0";
+
+    this.css3DRenderer = new CSS3DRenderer();
+    this.css3DRenderer.domElement.style.position = "absolute";
+    this.css3DRenderer.domElement.style.left = "0";
+    this.css3DRenderer.domElement.style.top = "0";
     const element = map.getContainer().querySelector(".amap-markers");
-    this.cssRenderer = new CSS2DRenderer();
-    this.cssRenderer.domElement.style.position = "absolute";
-    this.cssRenderer.domElement.style.left = "0";
-    this.cssRenderer.domElement.style.top = "0";
-    element.appendChild(this.cssRenderer.domElement);
+    element.appendChild(this.css2DRenderer.domElement);
+    element.appendChild(this.css3DRenderer.domElement);
   }
 
   addPass(pass: any) {
@@ -331,7 +342,8 @@ class CustomThreeLayer extends ThreeLayer {
       this.envMap.dispose();
       this.envMap = null;
     }
-    this.cssRenderer?.domElement?.remove();
+    this.css2DRenderer?.domElement?.remove();
+    this.css3DRenderer?.domElement?.remove();
     super.destroy();
     this.lightTypes = null as any;
     this.raycaster = undefined;
