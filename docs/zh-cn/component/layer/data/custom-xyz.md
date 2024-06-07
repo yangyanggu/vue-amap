@@ -4,7 +4,7 @@ description: 自定义瓦片纠偏图层是基于GLCustomLayer实现的瓦片加
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 自定义瓦片图层, 瓦片纠偏
+      content: 自定义瓦片纠偏图层, 瓦片纠偏, wgs84, gcj02, bd09
 ---
 
 # 自定义瓦片纠偏图层 (CustomXyzLayer)

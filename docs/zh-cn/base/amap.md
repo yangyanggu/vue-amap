@@ -4,7 +4,7 @@ description: 地图组件，提供基础的地图容器，提供vue3普通示例
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 地图组件, setup
+      content: 高德地图, 基础地图, setup, 地图初始化, 地图实例
 ---
 # 地图(AMap)
 

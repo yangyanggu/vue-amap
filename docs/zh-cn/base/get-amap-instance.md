@@ -4,7 +4,7 @@ description: vue-amap获取高德地图实例可以通过init事件或者通过r
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 地图实例, init事件, ref
+      content: 获取地图实例, init事件, ref, 地图ts类型
 ---
 # 地图
 

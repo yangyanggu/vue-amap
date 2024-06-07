@@ -1,11 +1,11 @@
 ---
 home: true
-title: 首页
+title: 官网
 description: vuemap/vue-amap是基于vue3.0对高德amap2.0和loca2.0进行封装的地图组件，支持依赖自动注入和tree-shaking
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, tree-shaking
+      content: vue-amap, amap, 高德地图, vue, vue3, loca, tree-shaking, threejs
 heroImage: https://vuejs.org/images/logo.png
 actions:
   - text: 快速上手

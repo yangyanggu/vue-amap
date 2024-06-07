@@ -4,7 +4,7 @@ description: AMap.CanvasLayer Canvas图层类，用户可以将一个 Canvas 作
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, Canvas图层类, AMap.CanvasLayer
+      content: Canvas图层类, AMap.CanvasLayer, 自定义Canvas
 ---
 
 # Canvas图层 (AMap.CanvasLayer)

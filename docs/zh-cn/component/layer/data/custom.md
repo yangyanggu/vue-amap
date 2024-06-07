@@ -4,7 +4,7 @@ description: AMap.CustomLayer 自定义图层是一种完全由开发者来指�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 自定义图层, AMap.CustomLayer
+      content: 自定义图层, AMap.CustomLayer
 ---
 
 # 自定义图层 (AMap.CustomLayer)

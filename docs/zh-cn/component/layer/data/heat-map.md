@@ -4,7 +4,7 @@ description: AMap.HeatMap 热力图，基于第三方heatmap.js实现，以特�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 热力图, AMap.HeatMap
+      content: 热力图, AMap.HeatMap, 高亮, 密集, heatmap
 ---
 
 # 热力图 (AMap.HeatMap)
