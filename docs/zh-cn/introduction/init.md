@@ -4,7 +4,7 @@ description: 初始化vue-amap组件，提供完整导入和自动按需导入�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 完整导入, 自动导入, tree-shaking
+      content: 脚本初始化, 完整导入, 自动导入, tree-shaking
 ---
 
 # 初始化

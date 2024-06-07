@@ -4,7 +4,7 @@ description: 通过RegisterMixin或者useRegister自定义自己的地图组件
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 自定义, RegisterMixin, useRegister
+      content: 自定义地图组件, RegisterMixin, useRegister
 ---
 
 # 自定义地图组件

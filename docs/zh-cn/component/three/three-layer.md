@@ -4,7 +4,7 @@ description: 基于高德地图2.0和threeJS加载Gltf模型，提供基础加�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, Gltf, threeJS
+      content: threeJS图层, HDR, 后处理, 自定义事件
 ---
 
 # ThreeJS的图层

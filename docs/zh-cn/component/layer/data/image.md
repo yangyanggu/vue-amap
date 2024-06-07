@@ -4,7 +4,7 @@ description: AMap.ImageLayer 图片图层类，用户可以将一张静态图片
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 图片图层, AMap.ImageLayer
+      content: 图片图层, AMap.ImageLayer, 静态图片
 ---
 
 # 图片图层 (AMap.ImageLayer)

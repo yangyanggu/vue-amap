@@ -4,7 +4,7 @@ description: 使用 AMap.Buildings 建筑楼块3D图层,添加独立的楼块图
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 建筑楼块3D图层, AMap.Buildings
+      content: 建筑楼块3D图层, AMap.Buildings, 3D楼块
 ---
 
 # 建筑楼块3D图层 (AMap.Buildings)

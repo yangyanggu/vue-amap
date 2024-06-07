@@ -4,7 +4,7 @@ description: AMap.Polyline 支持 lineString 和 MultiLineString
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 折线, AMap.Polyline
+      content: 折线, AMap.Polyline
 ---
 
 # 折线(AMap.Polyline)

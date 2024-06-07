@@ -4,7 +4,7 @@ description: 点光，对于可以接受光照的图层（PolygonLayer 等）会
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 点光, Loca.PointLight
+      content: 点光, Loca.PointLight
 ---
 
 # 点光 (Loca.PointLight)

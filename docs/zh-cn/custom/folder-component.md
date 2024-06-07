@@ -4,7 +4,7 @@ description: 可以将多个地图子组件封装到一个vue文件中，在多�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 自定义
+      content: 包装地图组件, 组件封装, 模块聚合
 ---
 
 # 包装地图组件

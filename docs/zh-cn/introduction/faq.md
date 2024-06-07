@@ -4,7 +4,7 @@ description: 组件库使用过程中的常见问题
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 常见问题
+      content: 高德地图, 常见问题
 ---
 
 # 常见问题

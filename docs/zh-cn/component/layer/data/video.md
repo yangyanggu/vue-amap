@@ -4,7 +4,7 @@ description: VideoLayer Video图层类，用户可以将一个 Video 作为图�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 视频图层, VideoLayer
+      content: 视频图层, VideoLayer, 视频播放
 ---
 
 # Video图层 (VideoLayer)

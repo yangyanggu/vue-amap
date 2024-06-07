@@ -4,7 +4,7 @@ description: Loca.LineLayer 线图层，支持设置描边和虚线
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 线图层, Loca.LineLayer
+      content: 线图层, Loca.LineLayer, 海量线
 ---
 
 # 线图层 (Loca.LineLayer)

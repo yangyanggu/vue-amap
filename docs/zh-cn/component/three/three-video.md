@@ -4,7 +4,7 @@ description: ThreeJS的视频实现，支持任意旋转，支持三维展示。
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, Video, threeJS
+      content: ThreeJS播放视频, Video
 ---
 
 

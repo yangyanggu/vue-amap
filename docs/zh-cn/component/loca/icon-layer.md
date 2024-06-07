@@ -4,7 +4,7 @@ description: Loca.IconLayer 图标图层,可以大批量展示图标，支持自
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 图标图层, Loca.IconLayer
+      content: 图标图层, Loca.IconLayer, 海量点
 ---
 
 # 图标图层 (Loca.IconLayer)

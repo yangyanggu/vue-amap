@@ -4,7 +4,7 @@ description: 组件安装方式提供了npm和CDN两种方法
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 组件安装, npm, CDN
+      content: 组件安装, npm, CDN
 ---
 
 # 安装

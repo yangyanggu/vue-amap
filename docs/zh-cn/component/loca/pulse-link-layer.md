@@ -4,7 +4,7 @@ description: Loca.PulseLinkLayer 连接飞线图层，可以支持弧度，宽�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 连接飞线图层, Loca.PulseLinkLayer
+      content: 连接飞线图层, Loca.PulseLinkLayer
 ---
 
 # 连接飞线图层 (Loca.PulseLinkLayer)

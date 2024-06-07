@@ -4,7 +4,7 @@ description: Loca.HexagonLayer 蜂窝网格图，将普通的点数据按照蜂�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 蜂窝网格图, Loca.HexagonLayer
+      content: 蜂窝网格图, Loca.HexagonLayer
 ---
 
 # 蜂窝网格图 (Loca.HexagonLayer)

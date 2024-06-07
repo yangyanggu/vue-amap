@@ -4,7 +4,7 @@ description: AMap.ElasticMarker 灵活点标记是可随地图级别变化而改
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 灵活点标记, AMap.ElasticMarker
+      content: 灵活点标记, AMap.ElasticMarker
 ---
 
 # 灵活点标记 (AMap.ElasticMarker)

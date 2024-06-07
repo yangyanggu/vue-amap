@@ -4,7 +4,7 @@ description: AMap.Text 纯文本标记。文本标记的展示内容为纯文本
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 文本, AMap.Text
+      content: 文本, AMap.Text
 ---
 
 # 文本 (AMap.Text)

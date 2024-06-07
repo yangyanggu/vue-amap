@@ -4,7 +4,7 @@ description: AMap.TileLayer.RoadNet 路网图层，展示道路信息
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 路网图层, AMap.TileLayer.RoadNet
+      content: 路网图层, AMap.TileLayer.RoadNet
 ---
 
 # 路网图层 (AMap.TileLayer.RoadNet)

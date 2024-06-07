@@ -4,7 +4,7 @@ description: AMap.TileLayer.WMS 用于加载OGC标准的WMS地图服务的一种
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, WMS, AMap.TileLayer.WMS
+      content: WMS, AMap.TileLayer.WMS, EPSG3857
 ---
 
 # WMS (AMap.TileLayer.WMS)

@@ -4,7 +4,7 @@ description: AMap.MouseTool 鼠标工具插件。通过该插件，可进行鼠�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 鼠标工具插件, AMap.MouseTool
+      content: 鼠标工具插件, AMap.MouseTool, 矢量图形绘制, 电子围栏
 ---
 
 # 鼠标工具插件 (AMap.MouseTool)

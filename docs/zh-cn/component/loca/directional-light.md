@@ -4,7 +4,7 @@ description: 平行光，对于可以接受光照的图层（PolygonLayer 等）
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 平行光, Loca.DirectionalLight
+      content: 平行光, Loca.DirectionalLight, 太阳光照
 ---
 
 # 平行光 (Loca.DirectionalLight)

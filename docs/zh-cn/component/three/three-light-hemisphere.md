@@ -4,7 +4,7 @@ description: 光源直接放置于场景之上，光照颜色从天空光线颜�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, HemisphereLight, threeJS
+      content: 半球光, HemisphereLight
 ---
 
 # 半球光
