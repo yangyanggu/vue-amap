@@ -24,7 +24,7 @@ jobs:
     - name: Upload GitHub Pages artifact
       uses: peaceiris/actions-gh-pages@v4
       with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         external_repository: yangyanggu/vue-amap-docs
         publish_dir: docs/.vuepress/dist
         
