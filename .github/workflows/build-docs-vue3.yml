@@ -9,22 +9,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@646cdf48217256a3d0b80361c5a50727664284f2
-      with:
-        version: 8.6.0
+    - uses: pnpm/action-setup@v4.0.0
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'pnpm'
 
     - name: Build
       run: |
-        pnpm install --no-frozen-lockfile
+        pnpm i
         pnpm run docs:build
     - name: Upload GitHub Pages artifact
-      uses: actions/upload-pages-artifact@v1.0.7
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         # Artifact name
         name: github-pages
@@ -53,5 +51,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
         
