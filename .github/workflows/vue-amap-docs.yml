@@ -1,0 +1,30 @@
+name: vue-amap-docs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v4.0.0
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'pnpm'
+
+    - name: Build
+      run: |
+        pnpm i
+        pnpm run docs:build
+    - name: Upload GitHub Pages artifact
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        personal_token: ${{ secrets.PERSONTOKEN }}
+        external_repository: yangyanggu/vue-amap-docs
+        publish_dir: docs/.vuepress/dist
+        
