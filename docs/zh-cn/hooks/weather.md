@@ -4,7 +4,7 @@ description: AMap.Weather 天气查询服务
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, hooks,天气查询, AMap.Weather
+      content: 天气查询服务,天气查询Hooks, AMap.Weather
 ---
 # 天气查询插件 (AMap.Weather)
 天气查询服务（AMAP.Weather）是 LBS 基础服务之一，地图 JS API 提供了两种查询服务：

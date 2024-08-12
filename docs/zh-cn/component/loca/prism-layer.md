@@ -4,7 +4,7 @@ description: Loca.PrismLayer 棱柱图层，使用点类型数据表达带有高
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 棱柱图层, Loca.PrismLayer
+      content: 棱柱图层, Loca.PrismLayer
 ---
 
 # 棱柱图层 (Loca.PrismLayer)

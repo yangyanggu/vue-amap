@@ -4,7 +4,7 @@ description: Loca.LinkLayer 链接线图层，可以展示两个点之间的链�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 链接线图层, Loca.LinkLayer
+      content: 链接线图层, Loca.LinkLayer
 ---
 
 # 链接线图层 (Loca.LinkLayer)

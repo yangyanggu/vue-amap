@@ -4,7 +4,7 @@ description: Loca.PointLayer 圆点图层，拥有描边的原点，可以支持
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 圆点图层, Loca.PointLayer
+      content: 圆点图层, Loca.PointLayer
 ---
 
 # 圆点图层 (Loca.PointLayer)

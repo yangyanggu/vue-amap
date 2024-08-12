@@ -4,7 +4,7 @@ description: 提供完善的JSAPI和Loca的types支持，所有组件提供ts实
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, typescript, ts
+      content: amap, loca, typescript, ts
 ---
 
 # 简介

@@ -4,7 +4,7 @@ description: AMap.MarkerClusterer 在不同的地图缩放级别对海量的数�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 点聚合, AMap.MarkerClusterer
+      content: 点聚合, AMap.MarkerClusterer, 聚合图层, 10万级
 ---
 
 # 点聚合 (AMap.MarkerCluster)

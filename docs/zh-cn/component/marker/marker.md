@@ -4,7 +4,7 @@ description: AMap.Marker 点标记适用于用户需要在地图上创建一个�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 点标记, AMap.Marker
+      content: 点标记, AMap.Marker
 ---
 
 # 点标记 (AMap.Marker)

@@ -4,7 +4,7 @@ description: Loca.PolygonLayer 面图层，支持多边形、复杂多边形、�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 面图层, Loca.PolygonLayer
+      content: 面图层, Loca.PolygonLayer
 ---
 
 # 面图层 (Loca.PolygonLayer)

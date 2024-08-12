@@ -4,7 +4,7 @@ description: 使用 AMap.VectorLayer 矢量图层，可以将点线面统一管�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 矢量标记图层, AMap.VectorLayer
+      content: 矢量标记图层, AMap.VectorLayer, 矢量图形
 ---
 
 # 矢量标记图层 (AMap.VectorLayer)

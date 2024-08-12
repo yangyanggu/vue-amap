@@ -4,7 +4,7 @@ description: 高德地图叠加3dtiles的开源实现方案，基于3d-tiles-ren
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 3dtiles, threeJS
+      content: 开源3dtiles方案, 3dtiles
 ---
 
 # 开源3dtiles方案

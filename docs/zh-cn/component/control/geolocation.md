@@ -4,7 +4,7 @@ description: AMap.Geolocation 定位服务插件。融合了浏览器定位、�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 定位, AMap.Geolocation
+      content: 定位, AMap.Geolocation, H5定位, 浏览器定位, 高精度IP, 安卓SDK辅助定位
 ---
 # 定位插件 (AMap.Geolocation)
 AMap.Geolocation 定位服务插件。融合了浏览器定位、高精度IP定位、安卓定位sdk辅助定位等多种手段，提供了获取当前准确位置、获取当前城市信息、持续定位(浏览器定位)等功能。用户可以通过两种当时获得定位的成败和结果，一种是在 getCurrentPosition的时候传入回调函数来处理定位结果，一种是通过事件监听来取得定位结果。

@@ -4,7 +4,7 @@ description: AMap.ControlBar组合了旋转、倾斜、复位在内的地图控�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 地图控制, AMap.ControlBar
+      content: 地图控制, AMap.ControlBar, 旋转, 倾斜
 ---
 # 地图控制插件 (AMap.ControlBar)
 组合了旋转、倾斜、复位在内的地图控件

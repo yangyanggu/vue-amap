@@ -4,7 +4,7 @@ description: AMap.DistrictCluster 高德地图的区划聚合图层，图层基�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 区划聚合图层, AMap.DistrictCluster
+      content: 区划聚合图层, AMap.DistrictCluster, AMapUI
 ---
 
 # 区划聚合图层

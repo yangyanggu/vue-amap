@@ -4,7 +4,7 @@ description: 从一个点向各个方向发射的光源。一个常见的例子�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, PointLight, threeJS
+      content: 点光源, PointLight
 ---
 
 # 点光源

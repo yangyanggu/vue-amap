@@ -4,7 +4,7 @@ description: AMap.GeoJSON GeoJSON类，继承自OverLayGroup，可实现GeoJSON�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, GeoJSON, AMap.GeoJSON
+      content: GeoJSON, AMap.GeoJSON
 ---
 
 # GeoJSON(AMap.GeoJSON)

@@ -4,7 +4,7 @@ description: AMap.MassMarks 展示数量为十万以内的点并有较好的性�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 海量点标记, AMap.MassMarks
+      content: 海量点标记, AMap.MassMarks, 十万级
 ---
 
 # 海量点标记 (AMap.MassMarks)

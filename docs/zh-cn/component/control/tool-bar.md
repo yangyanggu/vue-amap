@@ -4,7 +4,7 @@ description: AMap.ToolBar地图操作工具条插件。可支持视野级别缩�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 地图操作工具, AMap.ToolBar
+      content: 地图操作工具, AMap.ToolBar, 位置定位, 方向导航, 视野级别缩放
 ---
 # 地图操作工具条插件 (AMap.ToolBar)
 地图操作工具条插件。可支持方向导航、位置定位、视野级别缩放、视野级别选择等操作。继承自 AMap.Control

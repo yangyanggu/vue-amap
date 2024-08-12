@@ -4,7 +4,7 @@ description: 光线从一个点沿一个方向射出，随着光线照射的变�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, SpotLight, threeJS
+      content: 聚光灯, SpotLight
 ---
 
 # 聚光灯

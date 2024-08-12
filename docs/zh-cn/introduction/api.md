@@ -4,7 +4,7 @@ description: 组件库内置的通用API说明
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, api
+      content: 内置API, api, 坐标系转化
 ---
 
 # 简介

@@ -4,7 +4,7 @@ description: 简介
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 简介, 分包
+      content: 简介, 分包
 ---
 
 # 简介

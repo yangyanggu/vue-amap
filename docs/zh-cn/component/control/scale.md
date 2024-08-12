@@ -4,7 +4,7 @@ description: AMap.Scale位于地图左下角，用户可控制其显示与隐藏
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 比例尺插件, AMap.Scale
+      content: 比例尺插件, AMap.Scale, 地图比例尺, 比例尺
 ---
 # 比例尺插件 (AMap.Scale)
 位于地图右下角，用户可控制其显示与隐藏。继承自 AMap.Control

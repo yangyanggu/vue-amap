@@ -4,7 +4,7 @@ description: Loca图层的外部容器
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca
+      content: loca, 高德Loca
 ---
 
 # Loca

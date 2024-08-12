@@ -4,7 +4,7 @@ description: 地图插件示例
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 地图插件
+      content: 高德地图插件, 全局加载, 局部加载, 懒加载
 ---
 # 地图插件
 

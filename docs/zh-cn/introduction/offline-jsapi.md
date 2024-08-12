@@ -4,7 +4,7 @@ description: 关于下载以及使用离线JSAPI的介绍
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 离线, jsapi
+      content: 离线JSAPI, jsapi
 ---
 
 ## 说明

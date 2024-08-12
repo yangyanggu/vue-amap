@@ -4,7 +4,7 @@ description: Nuxt服务端渲染
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 服务端渲染
+      content: 高德地图, 服务端渲染, Nuxt服务端渲染
 ---
 
 # 说明

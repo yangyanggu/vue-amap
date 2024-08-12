@@ -4,7 +4,7 @@ description: gltf图层用于加载gltf模型，提供基础的模型加载和�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 面图层, threeJS
+      content: ThreeJS面图层, 面图层
 ---
 
 # ThreeJS面图层

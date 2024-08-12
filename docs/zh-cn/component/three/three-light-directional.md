@@ -4,7 +4,7 @@ description: 平行光是沿着特定方向发射的光
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, DirectionalLight, threeJS
+      content: 平行光, DirectionalLight
 ---
 
 # 平行光

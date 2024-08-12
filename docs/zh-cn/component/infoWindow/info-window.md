@@ -4,7 +4,7 @@ description: AMap.InfoWindow用于在地图上展示复杂的说明性信息的�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 信息窗体, AMap.InfoWindow
+      content: 信息窗体, AMap.InfoWindow, 弹出框
 ---
 
 # 信息窗体(AMap.InfoWindow)

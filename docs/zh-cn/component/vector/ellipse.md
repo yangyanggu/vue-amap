@@ -4,7 +4,7 @@ description: AMap.Ellipse 为用户提供在地图图面绘制椭圆形覆盖物
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 椭圆, AMap.Ellipse
+      content: 椭圆, AMap.Ellipse
 ---
 
 # 椭圆(AMap.Ellipse)

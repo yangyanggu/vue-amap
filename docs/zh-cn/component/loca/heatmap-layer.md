@@ -4,7 +4,7 @@ description: Loca.HeatMapLayer 热力图，支持 3D 和不同颜色设置的聚
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 热力图, Loca.HeatMapLayer
+      content: 热力图, Loca.HeatMapLayer
 ---
 
 # 热力图 (Loca.HeatMapLayer)

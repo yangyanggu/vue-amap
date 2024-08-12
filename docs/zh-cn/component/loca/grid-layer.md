@@ -4,7 +4,7 @@ description: Loca.GridLayer 网格图，将普通的点数据按照网格划分�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 网格图, Loca.GridLayer
+      content: 网格图, Loca.GridLayer
 ---
 
 # 网格图 (Loca.GridLayer)

@@ -4,7 +4,7 @@ description: 组件兼容直接调用高德原生API，通过使用init事件可
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 兼容高德原生SDK, init事件
+      content: 兼容高德原生SDK, init事件
 ---
 
 # 兼容高德原生 SDK

@@ -4,7 +4,7 @@ description: 1.x升级到2.x版本
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 升级
+      content: 升级, 从1.x迁移
 ---
 
 # 从1.x迁移

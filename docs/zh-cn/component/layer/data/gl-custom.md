@@ -4,7 +4,7 @@ description: AMap.GLCustomLayer 3d 自定义图层，可以使用threeJS进行�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 3d自定义图层, AMap.GLCustomLayer
+      content: 3d自定义图层, AMap.GLCustomLayer, threejs
   - - script
     - src: https://a.amap.com/jsapi_demos/static/demo-center-v2/three.js
 ---

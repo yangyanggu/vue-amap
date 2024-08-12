@@ -4,7 +4,7 @@ description: Loca.ZMarkerLayer 垂直于大地表面的 Marker 图层，支持�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 垂直Marker, Loca.ZMarkerLayer
+      content: 垂直Marker, Loca.ZMarkerLayer, 自定义DOM
 ---
 
 # 垂直于大地表面的 Marker 图层 (Loca.ZMarkerLayer)

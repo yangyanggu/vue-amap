@@ -4,7 +4,7 @@ description: AMap.TileLayer.Flexible 灵活切片图层，继承自AMap.TileLaye
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 灵活切片图层, AMap.TileLayer.Flexible
+      content: 灵活切片图层, AMap.TileLayer.Flexible
 ---
 
 # 灵活切片图层 (AMap.TileLayer.Flexible)

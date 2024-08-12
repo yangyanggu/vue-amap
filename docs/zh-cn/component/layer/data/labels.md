@@ -4,7 +4,7 @@ description: AMap.LabelsLayer 标注层，可以通过init事件、vue实例中�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 标注层, AMap.LabelsLayer
+      content: 标注层, AMap.LabelsLayer, 标注, Label
 ---
 
 # 标注层 (AMap.LabelsLayer)

@@ -4,7 +4,7 @@ description: Loca.ScatterLayer 大地面上的点，可展示三种类型：颜�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 贴地点图层, Loca.ScatterLayer
+      content: 贴地点图层, Loca.ScatterLayer, 帧动画
 ---
 
 # 贴地点图层 (Loca.ScatterLayer)

@@ -4,7 +4,7 @@ description: AMap.Circle 为用户提供在地图图面绘制圆形覆盖物的�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 圆形, AMap.Circle
+      content: 圆形, AMap.Circle
 ---
 
 # 圆形(AMap.Circle)

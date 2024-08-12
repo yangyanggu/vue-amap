@@ -4,7 +4,7 @@ description: Loca.LaserLayer 激光图层，支持展示点类型数据的激光
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 激光图层, Loca.LaserLayer
+      content: 激光图层, Loca.LaserLayer, 激光放射
 ---
 
 # 激光图层 (Loca.LaserLayer)

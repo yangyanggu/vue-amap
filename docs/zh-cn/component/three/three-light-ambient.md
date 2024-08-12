@@ -4,7 +4,7 @@ description: 环境光会均匀的照亮场景中的所有物体
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, AmbientLight, threeJS
+      content: AmbientLight, 环境光
 ---
 
 # 环境光

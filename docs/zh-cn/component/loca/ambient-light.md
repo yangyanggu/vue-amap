@@ -4,7 +4,7 @@ description: 环境光，对于可以接受光照的图层（PolygonLayer 等）
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, loca, 环境光, Loca.AmbientLight
+      content: 环境光, Loca.AmbientLight
 ---
 
 # 环境光 (Loca.AmbientLight)

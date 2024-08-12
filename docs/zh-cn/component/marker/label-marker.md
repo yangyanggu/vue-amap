@@ -4,7 +4,7 @@ description: AMap.LabelMarker 可以绘制图标，还可以为图标添加文�
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 海量标注, AMap.LabelMarker
+      content: 海量标注, AMap.LabelMarker,千级数量
 ---
 
 # 海量标注 (AMap.LabelMarker)

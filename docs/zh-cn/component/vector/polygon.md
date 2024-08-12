@@ -4,7 +4,7 @@ description: AMap.Polygon 为用户提供在地图图面绘制多边形的能力
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 多边形, AMap.Polygon
+      content: 多边形, AMap.Polygon
 ---
 
 # 多边形(AMap.Polygon)

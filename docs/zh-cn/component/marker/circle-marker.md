@@ -4,7 +4,7 @@ description: AMap.CirCleMarker
 head:
   - - meta
     - name: keywords
-      content: amap, 高德地图, vue3.0, 圆形标记, AMap.CirCleMarker
+      content: 圆形标记, AMap.CirCleMarker
 ---
 
 # 圆形标记 (AMap.CirCleMarker)
