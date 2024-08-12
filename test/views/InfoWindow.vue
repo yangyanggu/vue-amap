@@ -14,6 +14,7 @@
         :position="center"
       >
         <div>{{ text }}</div>
+        <el-input v-model="inputValue" />
       </el-amap-info-window>
     </el-amap>
     <div class="control-container">
@@ -33,47 +34,48 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import ElAmapInfoWindow from "@vuemap/vue-amap/packages/infoWindow/InfoWindow/InfoWindow.vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 
 export default defineComponent({
   name: "Map",
   components: {
     ElAmapInfoWindow,
     ElAmap},
-  data(){
+  data (){
     return {
       center: [120,31],
       zoom: 16,
       visible: true,
-      text: 'hello world'
-    }
+      text: 'hello world',
+      inputValue: ''
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    completeMap(e){
+    completeMap (e){
       console.log(e);
     },
-    moveendMap(e){
+    moveendMap (e){
       console.log('moveendMap: ', e);
     },
-    changeCenter(){
+    changeCenter (){
       const lng = this.center[0]+0.01;
       const lat = this.center[1]+0.01;
       this.center = [lng, lat];
     },
-    changeVisible(){
+    changeVisible (){
       this.visible = !this.visible;
     },
-    changeText(){
-      this.text = `MutationObserver ${ new Date().toLocaleString()}`
+    changeText (){
+      this.text = `MutationObserver ${ new Date().toLocaleString()}`;
     }
   }
-})
+});
 </script>
 
 <style scoped>

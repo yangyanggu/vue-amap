@@ -1,15 +1,19 @@
 <template>
   <div style="display: none;">
-    <div ref="contentRef">
+    <teleport
+      v-if="!!divId"
+      :to="'#'+divId"
+    >
       <slot />
-    </div>
+    </teleport>
   </div>
 </template>
 <script setup lang="ts">
-import {defineOptions, useSlots, ref} from 'vue';
+import {defineOptions, ref} from 'vue';
 import {useRegister} from "../../../mixins";
 import {buildProps} from "../../../utils/buildHelper";
 import {isMapInstance, isOverlayGroupInstance} from '../../../utils';
+import guid from "../../../utils/guid";
 import {propsTypes} from './props';
 export type {MarkerMoveOptions} from './props';
 
@@ -21,17 +25,18 @@ defineOptions({
 const props = defineProps(buildProps(propsTypes));
 const emits = defineEmits(['init','update:position']);
 
+const needTeleport = !props.content;
+
+const tempId = `marker-${guid()}`;
+
+const divId = ref('');
+
 let $amapComponent: AMap.Marker;
 
-let withSlot = false;
-const $slots = useSlots();
-let observer: MutationObserver;
-const contentRef = ref<HTMLDivElement>();
 const {$$getInstance, parentInstance} = useRegister<AMap.Marker, any>((options, parentComponent) => {
   return new Promise<AMap.Marker>((resolve) => {
-    if ($slots.default && $slots.default().length > 0) {
-      withSlot = true;
-      options.content = getSlotContent();
+    if (!options.content) {
+      options.content = `<div id="${tempId}"></div>`;
     }
     $amapComponent = new AMap.Marker(options);
     if (isMapInstance(parentComponent)) {
@@ -39,14 +44,8 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Marker, any>((options, 
     } else if (isOverlayGroupInstance(parentComponent)) {
       parentComponent.addOverlay($amapComponent);
     }
-    if(withSlot){
-      // 观察器的配置（需要观察什么变动）
-      const config = { attributes: true, childList: true, subtree: true };
-      // 创建一个观察器实例并传入回调函数
-      observer = new MutationObserver(() => {
-        $amapComponent.setContent(getSlotContent());
-      });
-      observer.observe(contentRef.value as Node, config);
+    if(needTeleport){
+      divId.value = tempId;
     }
     bindModelEvents();
     resolve($amapComponent);
@@ -68,20 +67,12 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Marker, any>((options, 
     }
   },
   destroyComponent () {
-    if(observer){
-      observer.disconnect();
-      observer = null as any;
-    }
     if ($amapComponent && parentInstance?.$amapComponent) {
       $amapComponent.setMap(null);
       $amapComponent = null as any;
     }
   },
 });
-
-const getSlotContent = () => {
-  return (contentRef.value as HTMLDivElement);
-};
 
 const bindModelEvents = () => {
   $amapComponent.on('dragend',() => {

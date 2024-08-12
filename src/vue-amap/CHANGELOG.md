@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.3
+* 解决信息框 marker 组件内不能使用表单组件的问题
+
 ### @vuemap/vue-amap v2.1.2
 * 升级@vuemap/amap-xyz-layer依赖，解决自定义瓦片纠偏图层出现黑线问题
 

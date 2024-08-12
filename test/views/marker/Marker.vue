@@ -31,6 +31,7 @@
         :key="index"
         :position="marker.position"
       >
+        <el-input v-model="text" />
         <el-button
           @click="clickButton"
         >
@@ -64,7 +65,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapMarker from "@vuemap/vue-amap/packages/marker/Marker/Marker.vue";
 
 export default defineComponent({
@@ -72,7 +73,7 @@ export default defineComponent({
   components: {
     ElAmapMarker,
     ElAmap},
-  data(){
+  data (){
     return {
       center: [121.5273285, 31.21515044],
       zoom: 16,
@@ -101,56 +102,56 @@ export default defineComponent({
         duration: 200,
         autoRotation: false
       }
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    changeCenter(){
+    changeCenter (){
       const lng = this.center[0]+0.01;
       const lat = this.center[1]+0.01;
       this.center = [lng, lat];
     },
-    changePosition() {
+    changePosition () {
       const position = this.componentMarker.position;
       this.componentMarker.position = [position[0] + 0.002, position[1] - 0.002];
     },
-    changeDraggable() {
+    changeDraggable () {
       this.componentMarker.draggable = !this.componentMarker.draggable;
     },
-    toggleVisible() {
+    toggleVisible () {
       this.componentMarker.visible = !this.componentMarker.visible;
     },
-    markerInit(e){
+    markerInit (e){
       console.log('marker init: ', e);
     },
-    clickMarker(){
-      alert('点击了标号')
+    clickMarker (){
+      alert('点击了标号');
     },
-    clickArrayMarker(marker){
-      alert(`点击了标号,标号ID： ${marker.id}`)
+    clickArrayMarker (marker){
+      alert(`点击了标号,标号ID： ${marker.id}`);
     },
-    changeText(){
-      this.text = `测试content${ new Date().toLocaleString()}`
+    changeText (){
+      this.text = `测试content${ new Date().toLocaleString()}`;
       this.testData =[
         { center: [121.38342286560045, 31.089097150616002], key: 'aaaaa' },
         { center: [121.48965024665117, 31.223329098428916], key: '021_GA021' },
         { center: [121.51779294880103, 31.234662084824777], key: '021_GA053' },
         { center: [121.47054713223952, 31.219212711974038], key: '021_GA027' },
-      ]
+      ];
     },
-    createClass(){
+    createClass (){
       return 'test b';
     },
-    clickButton(){
-      alert('测试点击')
+    clickButton (){
+      alert('测试点击');
     }
   }
-})
+});
 </script>
 
 <style scoped>

@@ -1,13 +1,17 @@
 <template>
   <div style="display: none;">
-    <div ref="infoRef">
+    <teleport
+      v-if="!!divId"
+      :to="'#'+divId"
+    >
       <slot />
-    </div>
+    </teleport>
   </div>
 </template>
 <script setup lang="ts">
-import {defineOptions, onUnmounted, onUpdated, ref} from 'vue';
+import {defineOptions, onUnmounted, ref} from 'vue';
 import {useRegister} from "../../../mixins";
+import guid from "../../../utils/guid";
 import {propsTypes} from './props';
 defineOptions({
   name: 'ElAmapInfoWindow',
@@ -17,13 +21,18 @@ const props = defineProps(propsTypes);
 
 const emits = defineEmits(['init', 'update:visible']);
 
+const needTeleport = !props.content;
+
+const tempId = `info-${guid()}`;
+
+const divId = ref('');
+
 let $amapComponent: AMap.InfoWindow;
-let observer: MutationObserver | null = null;
 
 const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((options, parentComponent) => {
   return new Promise<AMap.InfoWindow>((resolve) => {
     if (!options.content) {
-      options.content = getSlotContent();
+      options.content = `<div id="${tempId}"></div>`;
     }
     $amapComponent = new AMap.InfoWindow(options);
     $amapComponent.on('close', () => {
@@ -31,15 +40,9 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
     });
     if (props.visible) {
       $amapComponent.open(parentComponent, props.position as [number, number]);
-    }
-    if(!props.content && $amapComponent) {
-      // 观察器的配置（需要观察什么变动）
-      const config = {attributes: true, childList: true, subtree: true};
-      // 创建一个观察器实例并传入回调函数
-      observer = new MutationObserver(() => {
-        $amapComponent.setContent(getSlotContent());
-      });
-      observer.observe(infoRef.value as Node, config);
+      if(needTeleport){
+        divId.value = tempId;
+      }
     }
     resolve($amapComponent);
   });
@@ -50,6 +53,9 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
     __position (position: [number, number]){
       if (props.visible) {
         $amapComponent.open(parentInstance?.$amapComponent, position);
+        if(needTeleport){
+          divId.value = tempId;
+        }
       } else {
         $amapComponent.setPosition(position);
       }
@@ -63,10 +69,6 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
     },
   },
   destroyComponent () {
-    if(observer){
-      observer.disconnect();
-      observer = null;
-    }
     if($amapComponent){
       if($amapComponent.getIsOpen()){
         $amapComponent.close();
@@ -76,20 +78,9 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
   },
 });
 
-const infoRef = ref<HTMLDivElement>();
-const getSlotContent = () => {
-  return infoRef.value as HTMLDivElement;
-};
-
 onUnmounted(() => {
   if($amapComponent){
     $amapComponent.close();
-  }
-});
-
-onUpdated(() => {
-  if(!props.content && $amapComponent){
-    $amapComponent.setContent(getSlotContent());
   }
 });
 
