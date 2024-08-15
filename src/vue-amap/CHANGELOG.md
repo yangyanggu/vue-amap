@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.4
+* 解决marker不能使用高德默认图标问题
+
 ### @vuemap/vue-amap v2.1.3
 * 解决信息框 marker 组件内不能使用表单组件的问题
 

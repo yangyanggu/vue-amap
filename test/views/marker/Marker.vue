@@ -27,6 +27,9 @@
         :content="componentMarker2.content"
       />
       <el-amap-marker
+        :position="[121.5284285, 31.21315058]"
+      />
+      <el-amap-marker
         v-for="(marker, index) in markers"
         :key="index"
         :position="marker.position"

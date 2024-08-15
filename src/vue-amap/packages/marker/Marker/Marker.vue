@@ -9,7 +9,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {defineOptions, ref} from 'vue';
+import {defineOptions, ref, useSlots} from 'vue';
 import {useRegister} from "../../../mixins";
 import {buildProps} from "../../../utils/buildHelper";
 import {isMapInstance, isOverlayGroupInstance} from '../../../utils';
@@ -25,7 +25,6 @@ defineOptions({
 const props = defineProps(buildProps(propsTypes));
 const emits = defineEmits(['init','update:position']);
 
-const needTeleport = !props.content;
 
 const tempId = `marker-${guid()}`;
 
@@ -33,9 +32,13 @@ const divId = ref('');
 
 let $amapComponent: AMap.Marker;
 
+let withSlot = false;
+const $slots = useSlots();
+
 const {$$getInstance, parentInstance} = useRegister<AMap.Marker, any>((options, parentComponent) => {
   return new Promise<AMap.Marker>((resolve) => {
-    if (!options.content) {
+    if ($slots.default && $slots.default().length > 0) {
+      withSlot = true;
       options.content = `<div id="${tempId}"></div>`;
     }
     $amapComponent = new AMap.Marker(options);
@@ -44,7 +47,7 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Marker, any>((options, 
     } else if (isOverlayGroupInstance(parentComponent)) {
       parentComponent.addOverlay($amapComponent);
     }
-    if(needTeleport){
+    if(withSlot){
       divId.value = tempId;
     }
     bindModelEvents();
