@@ -45,7 +45,7 @@ export default defineComponent({
     return {
       center: [120,31],
       zoom: 16,
-      visible: true,
+      visible: false,
       text: 'hello world',
       inputValue: ''
     };

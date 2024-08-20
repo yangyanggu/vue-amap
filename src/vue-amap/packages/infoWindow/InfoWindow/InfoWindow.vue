@@ -64,7 +64,15 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
       // fixed Amap info-window reopen
       const position = $amapComponent.getPosition();
       if (position) {
-        !flag ? $amapComponent.close() : $amapComponent.open(parentInstance?.$amapComponent, [position.lng, position.lat]);
+        if(!flag){
+          $amapComponent.close();
+        }else{
+          $amapComponent.open(parentInstance?.$amapComponent, [position.lng, position.lat]);
+          if(needTeleport){
+            divId.value = tempId;
+          }
+        }
+        // !flag ? $amapComponent.close() : $amapComponent.open(parentInstance?.$amapComponent, [position.lng, position.lat]);
       }
     },
   },

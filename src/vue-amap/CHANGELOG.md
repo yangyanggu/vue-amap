@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.5
+* 解决infowWindow初始隐藏时，设置为显示时无法正常显示
+
 ### @vuemap/vue-amap v2.1.4
 * 解决marker不能使用高德默认图标问题
 
