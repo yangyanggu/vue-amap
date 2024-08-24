@@ -1,10 +1,10 @@
-import {defineClientConfig} from '@vuepress/client'
-import 'element-plus/theme-chalk/el-message.css'
-import {initAMapApiLoader} from '@vuemap/vue-amap'
+import {defineClientConfig} from '@vuepress/client';
+import 'element-plus/theme-chalk/index.css';
+import {initAMapApiLoader} from '@vuemap/vue-amap';
 // import VueAMapLoca from '@vuemap/vue-amap-loca/index'
 // import VueAMapExtra from '@vuemap/vue-amap-extra/index'
 export default defineClientConfig({
-  enhance({app, router}) {
+  enhance ({app, router}) {
     if (!__VUEPRESS_SSR__) {
       // app.use(VueAMap);
       // app.use(VueAMapLoca);
@@ -16,7 +16,7 @@ export default defineClientConfig({
           version: '2.0.0'
         },
         plugins: ['AMap.HawkEye', 'AMap.DistrictSearch']
-      })
+      });
       /**
        * 路由切换事件处理
        */
@@ -36,4 +36,4 @@ export default defineClientConfig({
       });
     }
   }
-})
+});

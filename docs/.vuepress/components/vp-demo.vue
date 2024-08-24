@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { computed, toRef, ref, getCurrentInstance } from 'vue'
-import { useClipboard } from '@vueuse/core'
-import { useToggle } from '../composables/toggle'
+import { computed, toRef, ref, getCurrentInstance } from 'vue';
+import { useClipboard } from '@vueuse/core';
+import {ElMessage} from 'element-plus';
+import { useToggle } from '../composables/toggle';
 
-import SourceCodeIcon from './icons/source-code.vue'
-import CopyIcon from './icons/copy-icon.vue'
-import CodepenIcon from './icons/codepen.vue'
+import SourceCodeIcon from './icons/source-code.vue';
+import CopyIcon from './icons/copy-icon.vue';
+import CodepenIcon from './icons/codepen.vue';
 
-import Example from './demo/vp-example.vue'
-import SourceCode from './demo/vp-source-code.vue'
+import Example from './demo/vp-example.vue';
+import SourceCode from './demo/vp-source-code.vue';
 
 const name = 'Demo';
 
@@ -32,51 +33,51 @@ const props = defineProps({
   importJson: {
     type: String
   }
-})
+});
 
-const vm = getCurrentInstance()
+const vm = getCurrentInstance();
 
 const decodeSource = decodeURIComponent(props.rawSource);
 
 const { copy, isSupported } = useClipboard({
   source: decodeSource,
   read: false,
-})
+});
 
-const [sourceVisible, setSourceVisible] = useToggle()
+const [sourceVisible, setSourceVisible] = useToggle();
 
-const decodedDescription = computed(() => decodeURIComponent(props.description as string))
+const decodedDescription = computed(() => decodeURIComponent(props.description as string));
 
 const copyCode = async () => {
   if (!isSupported) {
-    alert('复制失败');
+    ElMessage.error('复制失败');
   }
   try {
-    await copy()
-    alert('复制成功')
+    await copy();
+    ElMessage.success('复制成功');
   } catch (e: any) {
-    alert(e.message)
+    ElMessage.error(e.message);
   }
-}
+};
 
-const demoPath = computed(() => props.path.replaceAll('/', '-'))
+const demoPath = computed(() => props.path.replaceAll('/', '-'));
 
-function utoa(data: string): string {
-  return btoa(unescape(encodeURIComponent(data)))
+function utoa (data: string): string {
+  return btoa(unescape(encodeURIComponent(data)));
 }
 
 const openInPlayground = () => {
   const originCode: Record<string, string> = {
     'App.vue': decodeSource,
-  }
+  };
   
   if(props.importJson){
-    originCode['import-map.json'] = decodeURIComponent(props.importJson)
+    originCode['import-map.json'] = decodeURIComponent(props.importJson);
   }
-  const encoded = utoa(JSON.stringify(originCode))
-  const link = `https://amap-run.guyixi.cn/#${encoded}`
+  const encoded = utoa(JSON.stringify(originCode));
+  const link = `https://amap-run.guyixi.cn/#${encoded}`;
   window.open(link);
-}
+};
 </script>
 
 <template>

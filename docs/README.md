@@ -31,7 +31,7 @@ footerHtml: true
 
 推荐 npm 安装。
 
-```
+```shell
 // 安装amap基础库
 npm install @vuemap/vue-amap --save
 // 安装loca库
