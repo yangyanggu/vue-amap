@@ -22,7 +22,7 @@
     "@vuepress/plugin-docsearch": "2.0.0-rc.42",
     "@vuepress/plugin-register-components": "2.0.0-rc.42",
     "@vuepress/theme-default": "2.0.0-rc.42",
-    "@vuepress/client": "2.0.0-rc.2",
+    "@vuepress/client": "2.0.0-rc.15",
     "escape-html": "1.0.3",
     "markdown-it": "^14.1.0",
     "markdown-it-container": "3.0.0",
