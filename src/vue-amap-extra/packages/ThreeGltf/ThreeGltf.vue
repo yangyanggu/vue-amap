@@ -161,6 +161,7 @@ const addPopup = (instance: CustomThreeGltf) => {
     popup.visible = props.showPopup;
     instance.object.add(popup);
   }
+  instance?.refresh();
 };
 
 const $$startAnimations = () => {
@@ -183,7 +184,10 @@ watch(
       addPopup($amapComponent);
       return;
     }
-    popup.visible = val;
+    if(popup){
+      popup.visible = val;
+      $amapComponent.refresh();
+    }
   }
 );
 
@@ -193,6 +197,7 @@ watch(
     if (popup) {
       const changeVal = (val || 0) - (old || 0);
       popup.translateY(changeVal || 0);
+      $amapComponent.refresh();
     }
   }
 );
@@ -203,6 +208,7 @@ watch(
     if (popup && val) {
       const scales = typeof val === "number" ? [val, val, val] : val;
       popup.scale.set(scales[0], scales[1], scales[2]);
+      $amapComponent.refresh();
     }
   }
 );

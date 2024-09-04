@@ -50,7 +50,6 @@
           :rotation="rotation"
           :height="1000"
           :visible="visible"
-          @init="init"
           @click="clickGltf"
         />
         <el-amap-three-gltf
@@ -64,7 +63,6 @@
           :popup-height="popupHeight"
           :popup-scale="popupScale"
           popup-type="3D"
-          @init="initCar"
         >
           <div
             style="
@@ -112,18 +110,6 @@
       <el-button @click="addPopupScale">
         popup方大
       </el-button>
-      <el-button @click="stop">
-        停止动画
-      </el-button>
-      <el-button @click="start">
-        开始动画
-      </el-button>
-      <el-button @click="stopCar">
-        停止车辆
-      </el-button>
-      <el-button @click="startCar">
-        移动车辆
-      </el-button>
     </div>
   </div>
 </template>
@@ -154,8 +140,6 @@ export default defineComponent({
     ElAmapThreeLightPoint,
     ElAmapThreeLightSpot,
     ElAmap,
-    ElAmapLoca,
-    ElAmapLocaLine,
   },
   data () {
     return {
@@ -225,34 +209,8 @@ export default defineComponent({
     mouseoutLayer (group) {
       console.log("mouseoutLayer layer: ", group);
     },
-    init (object, $vue) {
-      console.log("init gltf: ", object);
-      $vue.$$startAnimations();
-    },
     clickGltf (e) {
       console.log(" click gltf: ", e);
-    },
-    stop () {
-      (this.$refs.animation as any).$$stopAnimations();
-    },
-    start () {
-      (this.$refs.animation as any).$$startAnimations();
-    },
-    initCar () {
-      this.startCar();
-    },
-    startCar () {
-      this.carInterval = setInterval(() => {
-        const lng = this.carPosition[0] + Math.random() * 0.001;
-        const lat = this.carPosition[1] + Math.random() * 0.001;
-        const newPosition = [lng, lat];
-        const angle = bearing(this.carPosition, newPosition) + 90;
-        this.carPosition = newPosition;
-        this.carAngle = angle;
-      }, 1000);
-    },
-    stopCar () {
-      clearInterval(this.carInterval);
     },
   },
 });

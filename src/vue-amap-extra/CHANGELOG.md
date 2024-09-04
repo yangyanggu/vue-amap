@@ -1,16 +1,20 @@
-### @vuemap/vue-amap v2.1.4
+### @vuemap/vue-amap-extra v2.1.5
+* 解决gltf组件有可能popup空指针异常
+* 解决gltf popup更新属性后没有立刻生效问题
+
+### @vuemap/vue-amap-extra v2.1.4
 * 合入[Gltf增加3D popup](https://gitee.com/guyangyang/vue-amap/pulls/6)
 
-### @vuemap/vue-amap v2.1.3
+### @vuemap/vue-amap-extra v2.1.3
 * 合入[Gltf增加popup](https://gitee.com/guyangyang/vue-amap/pulls/5)
 
-### @vuemap/vue-amap v2.1.2
+### @vuemap/vue-amap-extra v2.1.2
 * 升级@vuemap/three-layer 解决地图调整大小后三维模型变形问题
 
-### @vuemap/vue-amap v2.1.1
+### @vuemap/vue-amap-extra v2.1.1
 * 解决gltf组件事件报错问题
 
-### @vuemap/vue-amap v2.1.0
+### @vuemap/vue-amap-extra v2.1.0
 * 所有组件更新为组合式API
 
 ### @vuemap/vue-amap-extra v2.0.11
