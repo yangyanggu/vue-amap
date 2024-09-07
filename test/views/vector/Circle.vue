@@ -8,7 +8,7 @@
       @init="initMap"
     >
       <el-amap-circle
-        v-if="created"
+        v-if="circleCenter.length > 0"
         v-model:center="circleCenter"
         v-model:radius="radius"
         :visible="visible"
@@ -35,6 +35,9 @@
       </el-button>
       <el-button @click="createOrDestroy">
         {{ created ? '销毁' : '创建' }}
+      </el-button>
+      <el-button @click="reset">
+        重置
       </el-button>
     </div>
   </div>
@@ -88,7 +91,16 @@ export default defineComponent({
       alert('click Circle');
     },
     createOrDestroy () {
+      if(this.circleCenter.length > 0){
+        this.circleCenter = [];
+      }else{
+        this.circleCenter = [121.5273285, 31.21515044];
+      }
       this.created = !this.created;
+    },
+    reset (){
+      this.circleCenter = [121.5273285, 31.21515044];
+      this.radius = 500;
     }
   }
 });

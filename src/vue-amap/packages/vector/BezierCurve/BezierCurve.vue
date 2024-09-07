@@ -3,6 +3,7 @@
 </template>
 <script setup lang="ts">
 import {defineOptions, useAttrs} from 'vue';
+import {debounce} from "lodash-es";
 import {useRegister} from "../../../mixins";
 import {useEditor} from "../../../mixins/useEditor";
 import {
@@ -21,6 +22,7 @@ const props = defineProps(propsTypes);
 const emits = defineEmits(['init','update:path']);
 
 let $amapComponent: AMap.BezierCurve;
+let destroying = false;
 
 const {$$getInstance, parentInstance} = useRegister<AMap.BezierCurve, any>((options, parentComponent) => {
   return new Promise<AMap.BezierCurve>((resolve) => {
@@ -106,11 +108,18 @@ const {$$getInstance, parentInstance} = useRegister<AMap.BezierCurve, any>((opti
     },
     __editable (flag: boolean) {
       createEditor().then(() => {
-        flag ? editor.open() : editor.close();
+        flag ? resetEditor() : editor.close();
       });
+    },
+    __path (path: number[][]){
+      if($amapComponent){
+        $amapComponent.setPath(path);
+        resetEditor();
+      }
     }
   },
   destroyComponent () {
+    destroying = true;
     if ($amapComponent && parentInstance?.$amapComponent) {
       if (editor) {
         if(!parentInstance.isDestroy){
@@ -135,6 +144,15 @@ const {$$getInstance, parentInstance} = useRegister<AMap.BezierCurve, any>((opti
   },
 });
 
+const resetEditor = debounce(() => {
+  if(editor && props.editable){
+    editor.close();
+    editor.setTarget();
+    editor.setTarget($amapComponent);
+    editor.open();
+  }
+}, 50);
+
 const bindModelEvents = () => {
   $amapComponent.on('dragend',() => {
     emitModel($amapComponent);
@@ -143,10 +161,13 @@ const bindModelEvents = () => {
     emitModel($amapComponent);
   });
 };
-const emitModel = (target: AMap.BezierCurve) => {
+const emitModel = debounce((target: AMap.BezierCurve) => {
+  if(destroying){
+    return;
+  }
   const path = target.getPath();
   emits('update:path', path);
-};
+}, 50);
 
 let editor: AMap.BezierCurveEditor;
 const attrs = useAttrs();
@@ -177,9 +198,9 @@ const bindEditorModelEvents = () => {
   editor.on('add',(e) => {
     emitModel(e.target);
   });
-  editor.on('end',(e) => {
-    emitModel(e.target);
-  });
+  // editor.on('end',(e) => {
+  //   emitModel(e.target);
+  // });
 };
 
 defineExpose({

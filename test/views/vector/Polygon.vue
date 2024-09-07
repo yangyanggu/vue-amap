@@ -8,6 +8,7 @@
       @init="initMap"
     >
       <el-amap-polygon
+        v-if="polygon.path.length > 2"
         v-model:path="polygon.path"
         :visible="polygon.visible"
         :editable="polygon.edit"
@@ -17,6 +18,9 @@
       />
     </el-amap>
     <div class="control-container">
+      <el-button @click="toggleCreate">
+        {{ polygon.path.length > 2 ? '销毁' : '创建' }}
+      </el-button>
       <el-button @click="toggleVisible">
         {{ polygon.visible ? '隐藏标记' : '显示标记' }}
       </el-button>
@@ -26,13 +30,16 @@
       <el-button @click="changeEditable">
         {{ polygon.edit ? '停止编辑' : '开始编辑' }}
       </el-button>
+      <el-button @click="reset">
+        重置
+      </el-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapPolygon from "@vuemap/vue-amap/packages/vector/Polygon/Polygon.vue";
 
 export default defineComponent({
@@ -40,7 +47,7 @@ export default defineComponent({
   components: {
     ElAmapPolygon,
     ElAmap},
-  data(){
+  data (){
     return {
       zoom: 15,
       center: [121.5273285, 31.21515044],
@@ -50,32 +57,42 @@ export default defineComponent({
         edit: true,
         path: [[121.5273285, 31.21515044], [121.5293285, 31.21515044], [121.5293285, 31.21915044], [121.5273285, 31.21515044]],
       }
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    toggleVisible(){
+    toggleVisible (){
       this.polygon.visible = !this.polygon.visible;
     },
-    changeEditable() {
+    changeEditable () {
       this.polygon.edit = !this.polygon.edit;
     },
-    changeDraggable(){
+    changeDraggable (){
       this.polygon.draggable = !this.polygon.draggable;
     },
-    click(e) {
+    click (e) {
       alert('click GeoJSON');
     },
-    adjust(e){
-      console.log('adjust: ', e)
+    adjust (e){
+      console.log('adjust: ', e);
+    },
+    toggleCreate (){
+      if(this.polygon.path.length > 2){
+        this.polygon.path = [];
+      }else{
+        this.reset();
+      }
+    },
+    reset (){
+      this.polygon.path = [[121.5273285, 31.21515044], [121.5293285, 31.21515044], [121.5293285, 31.21915044], [121.5273285, 31.21515044]];
     }
   }
-})
+});
 </script>
 
 <style scoped>

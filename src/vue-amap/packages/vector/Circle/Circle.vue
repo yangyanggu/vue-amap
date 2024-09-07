@@ -3,6 +3,7 @@
 </template>
 <script setup lang="ts">
 import {defineOptions, useAttrs} from 'vue';
+import {debounce} from "lodash-es";
 import {useRegister} from "../../../mixins";
 import {useEditor} from "../../../mixins/useEditor";
 import {
@@ -21,6 +22,7 @@ const props = defineProps(propsTypes);
 const emits = defineEmits(['init','update:center', 'update:radius']);
 
 let $amapComponent: AMap.Circle;
+let destroying = false;
 
 const {$$getInstance, parentInstance} = useRegister<AMap.Circle, any>((options, parentComponent) => {
   return new Promise<AMap.Circle>((resolve) => {
@@ -81,11 +83,24 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Circle, any>((options, 
     },
     __editable (flag: boolean) {
       createEditor().then(() => {
-        flag ? editor.open() : editor.close();
+        flag ? resetEditor() : editor.close();
       });
+    },
+    __center (center: [number, number]) {
+      if($amapComponent){
+        $amapComponent.setCenter(center);
+        resetEditor();
+      }
+    },
+    __radius (radius: number) {
+      if($amapComponent){
+        $amapComponent.setRadius(radius);
+        resetEditor();
+      }
     }
   },
   destroyComponent () {
+    destroying = true;
     if ($amapComponent && parentInstance?.$amapComponent) {
       if (editor) {
         if(!parentInstance.isDestroy){
@@ -110,6 +125,15 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Circle, any>((options, 
   },
 });
 
+const resetEditor = debounce(() => {
+  if(editor && props.editable){
+    editor.close();
+    editor.setTarget();
+    editor.setTarget($amapComponent);
+    editor.open();
+  }
+}, 50);
+
 const bindModelEvents = () => {
   $amapComponent.on('dragend',() => {
     emitModel($amapComponent);
@@ -119,6 +143,9 @@ const bindModelEvents = () => {
   });
 };
 const emitModel = (target: AMap.Circle) => {
+  if(destroying){
+    return;
+  }
   emits('update:center', target.getCenter().toArray());
   emits('update:radius', target.getRadius());
 };
@@ -152,9 +179,9 @@ const bindEditorModelEvents = () => {
   editor.on('add',(e) => {
     emitModel(e.target);
   });
-  editor.on('end',(e) => {
-    emitModel(e.target);
-  });
+  // editor.on('end',(e) => {
+  //   emitModel(e.target);
+  // });
   editor.on('move',(e) => {
     emitModel(e.target);
   });

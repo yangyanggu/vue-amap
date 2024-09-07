@@ -8,7 +8,7 @@
       @init="initMap"
     >
       <el-amap-bezier-curve
-        v-if="polyline.created"
+        v-if="polyline.path.length > 0"
         v-model:path="polyline.path"
         :editable="polyline.editable"
         :visible="polyline.visible"
@@ -29,6 +29,9 @@
       </el-button>
       <el-button @click="changeEditable">
         {{ polyline.editable ? '停止编辑' : '开始编辑' }}
+      </el-button>
+      <el-button @click="reset">
+        重置
       </el-button>
     </div>
   </div>
@@ -65,7 +68,7 @@ export default defineComponent({
           [116.423857, 39.889498, 116.422312, 39.899639, 116.425273, 39.902273]
           //控制点，控制点，途经点，每段最多两个控制点
         ],
-        editable: false,
+        editable: true,
         visible: true,
         draggable: false,
         created: true
@@ -84,6 +87,11 @@ export default defineComponent({
     },
     toggleCreated (){
       this.polyline.created = !this.polyline.created;
+      if(this.polyline.path.length > 0) {
+        this.polyline.path = [];
+      }else{
+        this.reset();
+      }
     },
     toggleVisible (){
       this.polyline.visible = !this.polyline.visible;
@@ -94,6 +102,24 @@ export default defineComponent({
     click (e) {
       alert('click BezierCurve');
     },
+    reset (){
+      this.polyline.path = [//每个弧线段有两种描述方式
+        [116.37, 39.91],//起点
+        //第一段弧线
+        [116.380298, 39.907771, 116.38, 39.90],//控制点，途经点
+        //第二段弧线
+        [116.385298, 39.907771, 116.40, 39.90],//控制点，途经点//弧线段有两种描述方式1
+        //第三段弧线
+        [//弧线段有两种描述方式2
+          [116.392872, 39.887391],//控制点
+          [116.40772, 39.909252],//控制点
+          [116.41, 39.89]//途经点
+        ],
+        //第四段弧线
+        [116.423857, 39.889498, 116.422312, 39.899639, 116.425273, 39.902273]
+        //控制点，控制点，途经点，每段最多两个控制点
+      ];
+    }
   }
 });
 </script>

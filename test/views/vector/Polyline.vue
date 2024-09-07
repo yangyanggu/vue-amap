@@ -8,6 +8,7 @@
       @init="initMap"
     >
       <el-amap-polyline
+        v-if="polyline.path.length > 1"
         v-model:path="polyline.path"
         :editable="polyline.editable"
         :visible="polyline.visible"
@@ -25,13 +26,19 @@
       <el-button @click="changeEditable">
         {{ polyline.editable ? '停止编辑' : '开始编辑' }}
       </el-button>
+      <el-button @click="toggleCreate">
+        {{ polyline.path.length > 1 ? '销毁' : '创建' }}
+      </el-button>
+      <el-button @click="reset">
+        重置
+      </el-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapPolyline from "@vuemap/vue-amap/packages/vector/Polyline/Polyline.vue";
 
 export default defineComponent({
@@ -39,7 +46,7 @@ export default defineComponent({
   components: {
     ElAmapPolyline,
     ElAmap},
-  data(){
+  data (){
     return {
       zoom: 15,
       center: [121.5273285, 31.25515044],
@@ -49,29 +56,39 @@ export default defineComponent({
         visible: true,
         draggable: false
       }
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    toggleVisible(){
+    toggleVisible (){
       this.polyline.visible = !this.polyline.visible;
     },
-    changeEditable() {
+    changeEditable () {
       this.polyline.editable = !this.polyline.editable;
     },
-    changeDraggable(){
+    changeDraggable (){
       this.polyline.draggable = !this.polyline.draggable;
     },
-    click(e) {
+    click (e) {
       alert('click GeoJSON');
     },
+    toggleCreate (){
+      if(this.polyline.path.length > 1){
+        this.polyline.path = [];
+      }else{
+        this.reset();
+      }
+    },
+    reset (){
+      this.polyline.path = [[121.5389385, 31.21515044], [121.5389385, 31.29615044], [121.5273285, 31.21515044]];
+    }
   }
-})
+});
 </script>
 
 <style scoped>

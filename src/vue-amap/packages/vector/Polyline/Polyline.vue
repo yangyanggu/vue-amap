@@ -3,6 +3,7 @@
 </template>
 <script setup lang="ts">
 import {defineOptions, useAttrs} from 'vue';
+import {debounce} from "lodash-es";
 import {useRegister} from "../../../mixins";
 import {useEditor} from "../../../mixins/useEditor";
 import {
@@ -22,6 +23,7 @@ const props = defineProps(propsTypes);
 const emits = defineEmits(['init','update:path']);
 
 let $amapComponent: AMap.Polyline;
+let destroying = false;
 
 const {$$getInstance, parentInstance} = useRegister<AMap.Polyline, any>((options, parentComponent) => {
   return new Promise<AMap.Polyline>((resolve) => {
@@ -107,11 +109,18 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Polyline, any>((options
     },
     __editable (flag: boolean) {
       createEditor().then(() => {
-        flag ? editor.open() : editor.close();
+        flag ? resetEditor() : editor.close();
       });
+    },
+    __path (path: AMap.LngLatLike[]){
+      if($amapComponent){
+        $amapComponent.setPath(path);
+        resetEditor();
+      }
     }
   },
   destroyComponent () {
+    destroying = true;
     if ($amapComponent && parentInstance?.$amapComponent) {
       if (editor) {
         if(!parentInstance.isDestroy){
@@ -136,6 +145,15 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Polyline, any>((options
   },
 });
 
+const resetEditor = debounce(() => {
+  if(editor && props.editable){
+    editor.close();
+    editor.setTarget();
+    editor.setTarget($amapComponent);
+    editor.open();
+  }
+}, 50);
+
 const bindModelEvents = () => {
   $amapComponent.on('dragend',() => {
     emitModel($amapComponent);
@@ -145,6 +163,9 @@ const bindModelEvents = () => {
   });
 };
 const emitModel = (target: AMap.Polyline) => {
+  if(destroying){
+    return;
+  }
   const paths = target.getPath();
   const pathArray = paths?.map(convertLnglat);
   emits('update:path', pathArray);
@@ -179,9 +200,9 @@ const bindEditorModelEvents = () => {
   editor.on('add',(e) => {
     emitModel(e.target);
   });
-  editor.on('end',(e) => {
-    emitModel(e.target);
-  });
+  // editor.on('end',(e) => {
+  //   emitModel(e.target);
+  // });
 };
 
 defineExpose({

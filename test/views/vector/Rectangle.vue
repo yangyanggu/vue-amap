@@ -8,6 +8,7 @@
       @init="initMap"
     >
       <el-amap-rectangle
+        v-if="path.length > 0"
         v-model:bounds="path"
         :visible="visible"
         :editable="edit"
@@ -25,13 +26,19 @@
       <el-button @click="changeEditable">
         {{ edit ? '停止编辑' : '开始编辑' }}
       </el-button>
+      <el-button @click="toggleCreate">
+        {{ path.length > 0 ? '销毁' : '创建' }}
+      </el-button>
+      <el-button @click="reset">
+        重置
+      </el-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapRectangle from "@vuemap/vue-amap/packages/vector/Rectangle/Rectangle.vue";
 
 export default defineComponent({
@@ -39,7 +46,7 @@ export default defineComponent({
   components: {
     ElAmapRectangle,
     ElAmap},
-  data(){
+  data (){
     return {
       zoom: 15,
       center: [121.5273285, 31.21515044],
@@ -47,29 +54,39 @@ export default defineComponent({
       visible: true,
       edit: true,
       path: [[121.5273285, 31.21515044], [121.5293285, 31.21515044]],
-    }
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e){
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map){
       console.log('init map: ', map);
     },
-    toggleVisible(){
+    toggleVisible (){
       this.visible = !this.visible;
     },
-    changeEditable() {
+    changeEditable () {
       this.edit = !this.edit;
     },
-    changeDraggable(){
+    changeDraggable (){
       this.draggable = !this.draggable;
     },
-    click(e) {
+    click (e) {
       alert('click GeoJSON');
     },
+    toggleCreate (){
+      if(this.path.length > 0){
+        this.path = [];
+      }else{
+        this.reset();
+      }
+    },
+    reset (){
+      this.path = [[121.5273285, 31.21515044], [121.5293285, 31.21515044]];
+    }
   }
-})
+});
 </script>
 
 <style scoped>
