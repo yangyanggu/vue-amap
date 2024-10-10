@@ -42,6 +42,9 @@
       <el-button @click="switchPitchEnable">
         切换
       </el-button>
+      <el-button @click="reset">
+        重置
+      </el-button>
       <input id="search">
     </div>
   </div>
@@ -72,7 +75,7 @@ export default defineComponent({
       pitch: 50,
       rotation: 0,
       eyeOpen: true,
-      created: false,
+      created: true,
       pitchEnable: true
     };
   },
@@ -105,6 +108,10 @@ export default defineComponent({
     },
     switchPitchEnable (){
       this.pitchEnable = !this.pitchEnable;
+    },
+    reset (){
+      this.pitch = 0;
+      this.rotation = 0;
     }
   }
 });

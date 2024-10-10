@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.8
+* 优化地图的pitch和rotation的v-model实现
+
 ### @vuemap/vue-amap v2.1.7
 * 修复地图 pitchEnable 无法动态变更问题
 

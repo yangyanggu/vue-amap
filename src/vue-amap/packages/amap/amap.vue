@@ -118,12 +118,15 @@ const bindModelEvents = () => {
   $amapComponent.on('zoomchange',() => {
     emits('update:zoom', $amapComponent.getZoom());
   });
-  $amapComponent.on('rotatechange',() => {
+  $amapComponent.on('rotateend',() => {
     emits('update:rotation', $amapComponent.getRotation());
-    emits('update:pitch', $amapComponent.getPitch());
+    // emits('update:pitch', $amapComponent.getPitch());
   });
   $amapComponent.on('dragging',() => {
     emits('update:center', getCenter());
+    // emits('update:pitch', $amapComponent.getPitch());
+  });
+  $amapComponent.on('dragend',() => {
     emits('update:pitch', $amapComponent.getPitch());
   });
   $amapComponent.on('touchmove',() => {
