@@ -9,6 +9,7 @@
       :show-label="false"
       view-mode="3D"
       :terrain="true"
+      :pitch-enable="pitchEnable"
       :extra-options="{vectorMapForeign: 'style_zh_cn'}"
       @click="clickMap"
       @init="initMap"
@@ -37,6 +38,9 @@
       </el-button>
       <el-button @click="changeEyeOpen">
         鹰眼显隐
+      </el-button>
+      <el-button @click="switchPitchEnable">
+        切换
       </el-button>
       <input id="search">
     </div>
@@ -69,6 +73,7 @@ export default defineComponent({
       rotation: 0,
       eyeOpen: true,
       created: false,
+      pitchEnable: true
     };
   },
   methods: {
@@ -97,6 +102,9 @@ export default defineComponent({
     },
     getLocation (e){
       console.log('getLocation: ', e);
+    },
+    switchPitchEnable (){
+      this.pitchEnable = !this.pitchEnable;
     }
   }
 });

@@ -97,6 +97,11 @@ const {$$getInstance} = useRegister((options) => {
         $amapComponent.setStatus({rotateEnable: flag});
       }
     },
+    __pitchEnable (flag: boolean){
+      if($amapComponent){
+        $amapComponent.setStatus({pitchEnable: flag});
+      }
+    },
     __resizeEnable (flag: boolean){
       if($amapComponent){
         $amapComponent.setStatus({resizeEnable: flag});
