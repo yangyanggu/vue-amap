@@ -7,6 +7,9 @@
 [![star](https://gitee.com/guyangyang/vue-amap/badge/star.svg?theme=dark)](https://gitee.com/guyangyang/vue-amap/stargazers)
 [![GitHub Repo stars](https://img.shields.io/github/stars/yangyanggu/vue-amap)](https://github.com/yangyanggu/vue-amap)
 
+## 其他语言说明
+* [English](./README_en.md)
+
 ## 文档
 **[https://vue-amap.guyixi.cn](https://vue-amap.guyixi.cn)**
 
