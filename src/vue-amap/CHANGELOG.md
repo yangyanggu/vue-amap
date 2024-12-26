@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.9
+* 升级自定义瓦片纠偏插件
+
 ### @vuemap/vue-amap v2.1.8
 * 优化地图的pitch和rotation的v-model实现
 

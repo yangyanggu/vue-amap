@@ -218,8 +218,8 @@ importers:
         specifier: ^0.0.17
         version: 0.0.17
       '@vuemap/amap-xyz-layer':
-        specifier: 0.0.12
-        version: 0.0.12
+        specifier: 0.0.13
+        version: 0.0.13
       '@vuemap/district-cluster':
         specifier: 0.0.11
         version: 0.0.11
@@ -3496,8 +3496,8 @@ packages:
       '@vuemap/amap-jsapi-types': 0.0.17
     dev: false
 
-  /@vuemap/amap-xyz-layer@0.0.12:
-    resolution: {integrity: sha512-eyInU8AmwXOgkCXILiQoqaCq6vZX/ZOmv7jBsWcRifDhbDOloJ1322d+3iWeIVgSl9STRFX0uPRnGduk3RvNog==}
+  /@vuemap/amap-xyz-layer@0.0.13:
+    resolution: {integrity: sha512-F6ZSoRGuQzeW9ETKFKES3WwbEogK68vBW5fpY5QGWAf54zumkfpJAIoU2x9gx1bzMT7hwDY895xIhNRuF1LwOw==}
     engines: {node: '>= 16'}
     dependencies:
       '@math.gl/core': 3.6.3
@@ -6144,7 +6144,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
