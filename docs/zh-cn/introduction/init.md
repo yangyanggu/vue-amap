@@ -181,6 +181,33 @@ window.VueAMap.lazyAMapApiLoaderInstance.then(() => {
 });
 ```
 
+## initAMapApiLoader懒加载
+
+除了在`main.js`中执行`initAMapApiLoader`外，还可以在需要的页面执行该方法，实现高德JSAPI的懒加载，至于CSS文件还是在main.js中正常加载。
+#### 1、创建mapLoadUtil.js文件
+```JS
+import {initAMapApiLoader} from '@vuemap/vue-amap';
+export function initMapLoad(){
+  initAMapApiLoader({
+    key: 'YOUR_KEY',
+    //Loca:{
+    //  version: '2.0.0'
+    //} // 如果需要使用loca组件库，需要加载Loca
+  })
+}
+```
+#### 2. 在需要加载地图的页面的onBeforeMount生命周期中执行
+
+```JS
+import {onBeforeMount} from 'vue'
+import {initMapLoad} from '@/util/mapLoadUtil.js'
+
+onBeforeMount(() => {
+  initMapLoad()
+})
+```
+
+
 ## 参数
 
 参数名  | 类型                                 | 默认值                  | 描述                                                                                                               |

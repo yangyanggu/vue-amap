@@ -21,6 +21,11 @@ const decoded = computed(() => {
 </template>
 
 <style scoped lang="scss">
+.example-source{
+  overflow: hidden;
+  transition: height 0.5s;
+  height: 0;
+}
 .language-vue {
   margin: 0;
   border-radius: 0;

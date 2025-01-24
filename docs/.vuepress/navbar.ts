@@ -1,9 +1,5 @@
 export default [
   {
-      text: '掘金2024年度人气创作者打榜',
-      link: 'https://activity.juejin.cn/rank/2024/writer/1095583114462696?utm_campaign=annual_2024&utm_medium=self_web_share&utm_source=%E9%A1%BE%E6%B4%8B%E6%B4%8B'
-  },
-  {
     text: '其他版本文档',
     children: [
       {
@@ -67,4 +63,4 @@ export default [
       },
     ]
   },
-]
+];
