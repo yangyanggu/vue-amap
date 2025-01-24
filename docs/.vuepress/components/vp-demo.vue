@@ -120,7 +120,6 @@ const openInPlayground = () => {
         :demo="demoPath"
       />
       <SourceCode
-        v-show="sourceVisible"
         :style="{height: sourceVisible ? 'calc-size(auto, size)' : 0}"
         :source="source"
       />
