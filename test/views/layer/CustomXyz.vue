@@ -6,7 +6,6 @@
       :zoom="zoom"
       :pitch="60"
       view-mode="3D"
-      :mask="mask"
       @click="clickMap"
       @init="initMap"
     >
@@ -16,6 +15,13 @@
         :mask="mask"
         :altitude="altitude"
         :visible="visible"
+      />
+      <el-amap-layer-canvas
+        v-if="canvas"
+        :canvas="canvas"
+        :bounds="bounds"
+        :z-index="180"
+        @init="initLayer"
       />
       <el-amap-loca>
         <el-amap-ambient-light
@@ -43,29 +49,32 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import ElAmapLayerCustomXyz from "@vuemap/vue-amap/packages/layer/data/CustomXyz/CustomXyz.vue";
-import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue'
+import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
 import ElAmapLoca from '@vuemap/vue-amap-loca/packages/Loca/Loca.vue';
 import ElAmapAmbientLight from '@vuemap/vue-amap-loca/packages/AmbientLight/AmbientLight.vue';
 import ElAmapLocaPolygon from '@vuemap/vue-amap-loca/packages/PolygonLayer/PolygonLayer.vue';
+import ElAmapLayerCanvas from "@vuemap/vue-amap/packages/layer/data/Canvas/Canvas.vue";
 
 export default defineComponent({
   name: "Map",
   components: {
+    ElAmapLayerCanvas,
     ElAmapLayerCustomXyz,
     ElAmap,
     ElAmapLoca,
     ElAmapAmbientLight,
     ElAmapLocaPolygon
   },
-  data(){
+  data (){
     return {
       center: [116.335036, 39.900082],
+      bounds: [116.335036, 39.900082,116.345036, 39.956275],
       zoom: 9,
       visible: true,
       subdomains: ["1", "2", "3", "4"],
       mask: undefined as any,
       polygonData: undefined as any,
-      altitude: 10000,
+      altitude: 0,
       style: {
         height: 10000,
         topColor (index, feature) {
@@ -75,16 +84,18 @@ export default defineComponent({
           return 'rgba(0,255,255,0.4)';
         },
         sideBottomColor (index, feature) {
-          return '#00C6DA'
+          return '#00C6DA';
         }
-      }
-    }
+      },
+      canvas: null as any,
+      context: null as any,
+    };
   },
   methods: {
-    clickMap(e){
+    clickMap (e) {
       console.log('click map: ', e);
     },
-    initMap(map){
+    initMap (map) {
       console.log('init map: ', map);
       const opts = {
         subdistrict: 0,
@@ -98,9 +109,9 @@ export default defineComponent({
       district.search('北京市', (status, result) => {
         const bounds = result.districtList[0].boundaries;
         for (let i = 0; i < bounds.length; i += 1) {
-          maskArea.push([bounds[i].map(item => item.toArray())])
+          maskArea.push([bounds[i].map(item => item.toArray())]);
         }
-        console.log('maskArea: ', maskArea)
+        console.log('maskArea: ', maskArea);
         this.mask = maskArea;
         this.polygonData = {
           "type": "FeatureCollection",
@@ -113,14 +124,43 @@ export default defineComponent({
               }
             }
           ]
-        }
-      })
+        };
+      });
+      const canvas = document.createElement('canvas') as any;
+      canvas.width = canvas.height = 200;
+
+      const context = canvas.getContext('2d');
+      context.fillStyle = 'rgb(0,100,255)';
+      context.strokeStyle = 'white';
+      context.globalAlpha = 1;
+      context.lineWidth = 2;
+      this.canvas = canvas;
+      this.context = context;
     },
-    changeVisible(){
+    changeVisible () {
       this.visible = !this.visible;
     },
+    initLayer (layer) {
+      let radious = 0;
+      const draw = () => {
+        this.context.clearRect(0, 0, 200, 200);
+        this.context.globalAlpha = (this.context.globalAlpha - 0.01 + 1) % 1;
+        radious = (radious + 1) % 100;
+
+        this.context.beginPath();
+        this.context.arc(100, 100, radious, 0, 2 * Math.PI);
+        this.context.fill();
+        this.context.stroke();
+
+        // 刷新渲染图层
+        layer.reFresh();
+
+        AMap.Util.requestAnimFrame(draw);
+      };
+      draw();
+    }
   }
-})
+});
 </script>
 
 <style scoped>

@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.10
+* 升级自定义瓦片纠偏插件, 解决与CanvasLayer图层冲突问题
+
 ### @vuemap/vue-amap v2.1.9
 * 升级自定义瓦片纠偏插件
 
