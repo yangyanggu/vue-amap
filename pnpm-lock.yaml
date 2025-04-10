@@ -218,8 +218,8 @@ importers:
         specifier: ^0.0.17
         version: 0.0.17
       '@vuemap/amap-xyz-layer':
-        specifier: 0.0.14
-        version: 0.0.14
+        specifier: 0.0.15
+        version: 0.0.15
       '@vuemap/district-cluster':
         specifier: 0.0.11
         version: 0.0.11
@@ -3496,8 +3496,8 @@ packages:
       '@vuemap/amap-jsapi-types': 0.0.17
     dev: false
 
-  /@vuemap/amap-xyz-layer@0.0.14:
-    resolution: {integrity: sha512-312G56Sz/ki4OKxn1y7iVDqLtL9XYqPOisR6TNt8DWPfqjsqCi7P2xd/COiZSPb1USKRtGjmQIo/XbztEkFKng==}
+  /@vuemap/amap-xyz-layer@0.0.15:
+    resolution: {integrity: sha512-L3rsgk2+i277RlMScpxVpjPBhSfMCeHcyFv7zkomMzd/J9W+X8yTUgSFvzVLWnnlXEXL80vNgs7lIJpSxa5vNg==}
     engines: {node: '>= 16'}
     dependencies:
       '@math.gl/core': 3.6.3
