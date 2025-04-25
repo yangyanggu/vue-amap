@@ -1,6 +1,6 @@
 {
   "name": "@vuemap/vue-amap",
-  "version": "2.1.11",
+  "version": "2.1.12",
   "description": "高德地图vue3版本封装",
   "keywords": [
     "vue-amap",
@@ -41,7 +41,7 @@
   "dependencies": {
     "@vuemap/amap-jsapi-types": "^0.0.17",
     "@vuemap/amap-jsapi-loader": "1.0.4",
-    "@vuemap/district-cluster": "0.0.11",
+    "@vuemap/district-cluster": "0.0.12",
     "@vuemap/amap-xyz-layer": "0.0.15",
     "lodash-es": "^4.17.21"
   },

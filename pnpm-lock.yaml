@@ -221,8 +221,8 @@ importers:
         specifier: 0.0.15
         version: 0.0.15
       '@vuemap/district-cluster':
-        specifier: 0.0.11
-        version: 0.0.11
+        specifier: 0.0.12
+        version: 0.0.12
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -3505,8 +3505,8 @@ packages:
       gl-matrix: 3.4.3
     dev: false
 
-  /@vuemap/district-cluster@0.0.11:
-    resolution: {integrity: sha512-SY01gFe8uhP5FKjzyTe0x2yL2K5VmwD5UKlEUU4e09UUZphXCj2Ci7iunX0L29nWINkBjdfxu8dXzhIcx9T3ug==}
+  /@vuemap/district-cluster@0.0.12:
+    resolution: {integrity: sha512-JmZxl99PfCsF98dvxTmi17Ti3XaQMwcKidgduiIQvAPNTKmZjBAR1RRtdQjxooIuJiLXJo9itWIRuBaD9MseTQ==}
     engines: {node: '>= 16'}
     dependencies:
       '@turf/helpers': 6.5.0
