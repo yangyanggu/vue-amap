@@ -9,7 +9,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {defineOptions, onUnmounted, ref} from 'vue';
+import {defineOptions, nextTick, onUnmounted, ref} from 'vue';
 import {useRegister} from "../../../mixins";
 import guid from "../../../utils/guid";
 import {propsTypes} from './props';
@@ -42,6 +42,9 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
       $amapComponent.open(parentComponent, props.position as [number, number]);
       if(needTeleport){
         divId.value = tempId;
+        nextTick(() => {
+          $amapComponent.setAnchor($amapComponent.getAnchor() as string);
+        });
       }
     }
     resolve($amapComponent);
@@ -70,6 +73,9 @@ const {$$getInstance, parentInstance} = useRegister<AMap.InfoWindow, AMap.Map>((
           $amapComponent.open(parentInstance?.$amapComponent, [position.lng, position.lat]);
           if(needTeleport){
             divId.value = tempId;
+            nextTick(() => {
+              $amapComponent.setAnchor($amapComponent.getAnchor() as string);
+            });
           }
         }
         // !flag ? $amapComponent.close() : $amapComponent.open(parentInstance?.$amapComponent, [position.lng, position.lat]);

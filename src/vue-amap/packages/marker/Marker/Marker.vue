@@ -9,7 +9,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {defineOptions, ref, useSlots} from 'vue';
+import {defineOptions, nextTick, ref, useSlots} from 'vue';
 import {useRegister} from "../../../mixins";
 import {buildProps} from "../../../utils/buildHelper";
 import {isMapInstance, isOverlayGroupInstance} from '../../../utils';
@@ -49,6 +49,9 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Marker, any>((options, 
     }
     if(withSlot){
       divId.value = tempId;
+      nextTick(() => {
+        $amapComponent.setAnchor($amapComponent.getAnchor() as string);
+      });
     }
     bindModelEvents();
     resolve($amapComponent);

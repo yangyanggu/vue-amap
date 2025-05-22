@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.13
+* 解决marker和infowindow由于异步加载导致anchor定位不准问题
+
 ### @vuemap/vue-amap v2.1.12
 * 升级区划聚合插件，解决更新数据不能立刻渲染问题
 

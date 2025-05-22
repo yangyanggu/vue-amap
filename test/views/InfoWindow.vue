@@ -9,6 +9,9 @@
       @complete="completeMap"
       @moveend="moveendMap"
     >
+      <el-amap-marker
+        :position="center"
+      />
       <el-amap-info-window
         v-model:visible="visible"
         :position="center"
@@ -35,10 +38,12 @@
 import {defineComponent} from "vue";
 import ElAmapInfoWindow from "@vuemap/vue-amap/packages/infoWindow/InfoWindow/InfoWindow.vue";
 import ElAmap from '@vuemap/vue-amap/packages/amap/amap.vue';
+import ElAmapMarker from "@vuemap/vue-amap/packages/marker/Marker/Marker.vue";
 
 export default defineComponent({
   name: "Map",
   components: {
+    ElAmapMarker,
     ElAmapInfoWindow,
     ElAmap},
   data (){
