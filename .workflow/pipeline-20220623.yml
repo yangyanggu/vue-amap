@@ -32,7 +32,10 @@ stages:
       - step: deploy@agent
         name: deploy_agent
         displayName: 主机部署
-        hostGroupID: aliyun
+        hostGroupID:
+          ID: aliyun
+          hostID:
+            - f511e341-841f-4307-8ffc-5dbe96d9949e
         deployArtifact:
           - source: build
             name: dist
