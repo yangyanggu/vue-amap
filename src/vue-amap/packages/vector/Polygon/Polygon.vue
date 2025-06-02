@@ -92,6 +92,19 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Polygon, any>((options,
         $amapComponent.setPath(path);
         resetEditor();
       }
+    },
+    __draggable (flag: boolean) {
+      $amapComponent.setOptions({
+        draggable: flag
+      });
+      if(editor){
+        if(editor.editingPolyObj && editor.editingPolyObj.origin_options){
+          editor.editingPolyObj.origin_options.draggable = flag;
+        }
+      }
+      if(props.editable){
+        resetEditor();
+      }
     }
   },
   destroyComponent () {
@@ -122,8 +135,8 @@ const {$$getInstance, parentInstance} = useRegister<AMap.Polygon, any>((options,
 const resetEditor = debounce(() => {
   if(editor && props.editable){
     editor.close();
-    editor.setTarget();
-    editor.setTarget($amapComponent);
+    // editor.setTarget();
+    // editor.setTarget($amapComponent);
     editor.open();
   }
 }, 50);
@@ -144,8 +157,8 @@ const emitModel = (target: AMap.Polygon) => {
   const pathArray = paths?.map(convertLnglat);
   emits('update:path', pathArray);
 };
-
-let editor: AMap.PolygonEditor;
+let editor: any;
+// let editor: AMap.PolygonEditor;
 const attrs = useAttrs();
 const createEditor = () => {
   return new Promise<void>((resolve) => {

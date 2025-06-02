@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.14
+* 解决高德面编辑插件与可拖拽属性冲突的问题
+
 ### @vuemap/vue-amap v2.1.13
 * 解决marker和infowindow由于异步加载导致anchor定位不准问题
 
