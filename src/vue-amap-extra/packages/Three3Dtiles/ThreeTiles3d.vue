@@ -27,7 +27,7 @@ defineProps(buildProps({
   },
   // 缩放比例
   scale: {
-    type: Object as PropType<number | Vec>
+    type: [Number,Object] as PropType<number | Vec>
   },
   // 旋转角度
   rotation: {

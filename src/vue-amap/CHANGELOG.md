@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.15
+* 解决Flexible和InfoWindow部分属性字段类型限制错误问题
+
 ### @vuemap/vue-amap v2.1.14
 * 解决高德面编辑插件与可拖拽属性冲突的问题
 

@@ -5,7 +5,6 @@
 import {defineOptions} from 'vue';
 import {useRegister} from "../../../../mixins";
 import {buildProps} from "../../../../utils/buildHelper";
-import type {PropType} from 'vue';
 
 defineOptions({
   name: 'ElAmapLayerFlexible',
@@ -23,7 +22,7 @@ defineProps(buildProps({
     type: Array
   }, // 支持的缩放级别范围，默认范围 [2-30]
   opacity: {
-    type: Object as PropType<[number, number]>
+    type: Number
   }, // 热力图透明度区间数组，取值范围 [0,1] ，0表示完全透明，1表示不透明，默认： [0,1]
   tileSize: {
     type: Number
