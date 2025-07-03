@@ -1,3 +1,6 @@
+### @vuemap/vue-amap v2.1.16
+* LabelMarker增加rotation属性
+
 ### @vuemap/vue-amap v2.1.15
 * 解决Flexible和InfoWindow部分属性字段类型限制错误问题
 

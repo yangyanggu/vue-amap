@@ -34,7 +34,10 @@ defineProps(buildProps({
   text: {
     type: Object
   }, // 标注文本设置
-  extData: null
+  extData: null,
+  rotation: {
+    type: Number
+  }
 }));
 const emits = defineEmits(['init']);
 

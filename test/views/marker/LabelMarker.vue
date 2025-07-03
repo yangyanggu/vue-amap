@@ -14,6 +14,7 @@
           :position="labelOptions.position"
           :text="labelOptions.text"
           :icon="labelOptions.icon"
+          :rotation="labelOptions.rotation"
           @init="markerInit"
         />
         <el-amap-label-marker
@@ -36,6 +37,9 @@
       </el-button>
       <el-button @click="createOrDestroy">
         {{ created ? '销毁' : '创建' }}
+      </el-button>
+      <el-button @click="rotate">
+        旋转图标
       </el-button>
     </div>
   </div>
@@ -81,6 +85,7 @@ export default defineComponent({
           clipOrigin: [459, 92],
           clipSize: [50, 68]
         },
+        rotation: 0
       },
       labels: [] as any[],
       created: true,
@@ -171,6 +176,9 @@ export default defineComponent({
       console.log('item: ', item);
       console.log('labels[0]: ', this.labels[0]);
       console.log('是否相等: ', item === this.labels[0]);
+    },
+    rotate (){
+      this.labelOptions.rotation += 15;
     }
   }
 });
