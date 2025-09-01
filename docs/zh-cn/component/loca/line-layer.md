@@ -65,7 +65,7 @@ lineWidth  | Number, Function | 线宽度（默认单位:px） default 2
 altitude  | Number, Function | 海拔高度，优先级低于数据中的高度信息。单位：米
 borderWidth | Number, Function | 边框宽度（默认单位:px） default 0
 borderColor | String, Function | 边框颜色 default '#fff'
-dashArray | [Number, Number, Number, Number], Function | 连接线的虚线配置信息：[实线长度, 虚线长度, 实线长度, 虚线长度]; default [10, 0, 10, 0]
+dash | [Number, Number, Number, Number], Function | 连接线的虚线配置信息：[实线长度, 虚线长度, 实线长度, 虚线长度]; default [10, 0, 10, 0]
 
 ### defaultStyleValue参数
 
@@ -80,7 +80,7 @@ lineWidth  | Number | 边框宽度（默认单位:px） default 2
 altitude  | Number | 海拔高度，优先级低于数据中的高度信息。单位：米 default 0
 borderWidth | Number | 边框宽度（默认单位:px） default 0
 borderColor | String, Function | 边框颜色 default '#fff'
-dashArray | [Number, Number, Number, Number] | 连接线的虚线配置信息：[实线长度, 虚线长度, 实线长度, 虚线长度]; default [10, 0, 10, 0]
+dash | [Number, Number, Number, Number] | 连接线的虚线配置信息：[实线长度, 虚线长度, 实线长度, 虚线长度]; default [10, 0, 10, 0]
 
 ### style说明
 所有loca的Layer组件对Style设置提供了默认处理，支持function回调方式的属性都提供了默认回调实现，优先读取geojson的properties中的值，读取不到的情况下会读取defaultStyleValue配置的值，最后会使用组件内默认设置的值。<br/>
@@ -101,7 +101,7 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
     var i = index % colors.length;
     return 100 * i;
   },
-  dashArray: [10, 0, 10, 0],
+  dash: [10, 0, 10, 0],
 }
 ```
 
@@ -139,7 +139,7 @@ style数据有可以有三个来源，优先级按顺序处理，第一个最高
   altitude: 0,
   borderWidth: 0,
   borderColor: '#fff',
-  dashArray: [10, 0, 10, 0]
+  dash: [10, 0, 10, 0]
 }
 ```
 

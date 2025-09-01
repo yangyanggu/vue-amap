@@ -49,8 +49,8 @@ const layerStyle = ref({
     const i = index % colors.length;
     return 100 * i;
   },
-  // dashArray: [10, 5, 10, 0],
-  dashArray: [10, 0, 10, 0],
+  // dash: [10, 5, 10, 0],
+  dash: [10, 0, 10, 0],
 })
 
 
