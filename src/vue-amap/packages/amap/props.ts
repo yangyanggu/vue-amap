@@ -119,4 +119,11 @@ export const propsType = buildProps({
     type: Boolean,
     default: false
   }, //是否开启地形，默认不开启
+  showOversea: {
+    type: Boolean,
+    default: false
+  }, // 是否展示世界地图图面
+  languageCode: {
+    type: String
+  }//设置语言 默认："zh"（简体中文），可选："en"（英文）
 });

@@ -22,7 +22,7 @@ defineOptions({
   inheritAttrs: false
 });
 const props = defineProps(propsTypes);
-const emits = defineEmits(['init']);
+const emits = defineEmits(['init','update:name']);
 
 const saveInputId = ref<string>(guid());
 const saveVisible = ref<boolean>(true);
@@ -54,6 +54,11 @@ const {$$getInstance} = useRegister<AMap.Autocomplete, AMap.Map>((options, paren
         }, debounce);
       };
       $amapComponent = new AMap.AutoComplete(options);
+      $amapComponent.on('select', (e) => {
+        if(e?.poi?.name){
+          emits('update:name', e.poi.name);
+        }
+      });
       resolve($amapComponent);
     });
   });

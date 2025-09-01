@@ -22,6 +22,7 @@
       <el-amap-control-scale />
       <el-amap-control-tool-bar />
       <el-amap-search-box
+        v-model:name="searchName"
         input-id="search"
         :input-custom="true"
         placeholder="请输入地点关键字"
@@ -76,7 +77,8 @@ export default defineComponent({
       rotation: 0,
       eyeOpen: true,
       created: true,
-      pitchEnable: true
+      pitchEnable: true,
+      searchName: ''
     };
   },
   methods: {

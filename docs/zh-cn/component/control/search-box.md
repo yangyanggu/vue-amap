@@ -57,6 +57,7 @@ type | String | 输入提示时限定POI类型，多个类型用“|”分隔，
 city | String | 输入提示时限定城市。可选值：城市名（中文或中文全拼）、citycode、adcode；默认值：“全国”
 citylimit | Boolean | 是否强制限制在设置的城市内搜索,默认值为：false，true：强制限制设定城市，false：不强制限制设定城市
 placeholder | String | 默认输入框的placeholder属性
+name | String | 在选择POI数据后会将name回显在该属性上，使用`v-model:name`，<Badge text="2.1.17+支持" />
 
 
 ## ref 可用方法

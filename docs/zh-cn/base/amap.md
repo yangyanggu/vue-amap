@@ -51,6 +51,9 @@ touchZoomCenter | Number | 可缺省，当touchZoomCenter=1的时候，手机端
 showLabel | Boolean | 是否展示地图文字和 POI 信息。默认 true
 terrain | Boolean | 是否开启地形，默认false。当前只有版本 2.1Beta支持，需要在初始化时配置version: '2.1Beta'
 extraOptions | Object | 额外扩展属性，会直接将属性拷贝到初始化的options中，当key与props内的一样时会被props覆盖
+showOversea | Boolean | 是否展示世界地图图面，需要在高德官方开通，[文档说明](https://lbs.amap.com/api/javascript-api-v2/guide/map/world-map) <Badge text="2.1.17+支持" />
+languageCode | String | 设置语言 默认："zh"（简体中文），可选："en"（英文），需要在高德官方开通，[文档说明](https://lbs.amap.com/api/javascript-api-v2/guide/map/englishmap) <Badge text="2.1.17+支持" />
+
 
 ## 动态属性
 

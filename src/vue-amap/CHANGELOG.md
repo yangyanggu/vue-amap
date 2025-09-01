@@ -1,3 +1,7 @@
+### @vuemap/vue-amap v2.1.17
+* el-amap 组件增加showOversea 、 languageCode属性
+* el-amap-search-box 增加 `v-model:name`，支持在选择poi结果后回显name
+
 ### @vuemap/vue-amap v2.1.16
 * LabelMarker增加rotation属性
 
